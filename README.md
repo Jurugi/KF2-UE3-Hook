@@ -18,3 +18,5 @@ Simply redump the SDK and replace/redo the 5 or so function calls that the hook 
 See post here for help https://www.unknowncheats.me/forum/unreal-engine-3-a/237415-killing-floor-2-ue3-sdk.html
 
 2) VAC doesn't really work on this game, it's just to serve as an example of a detour hook done on x64 bit for UE3. 
+
+3) Small anti-copy paste added.
