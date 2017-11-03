@@ -11,6 +11,7 @@ Killing Floor 2 UE3 Hook
 // 48 8B 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 85 C0 74 10 83 B8
 */
 Example hook made for Unreal Engine 3 on the game Killing Floor 2
+The purpose is mostly to demonstrate how a hack could be made on any Unreal Engine game in 64bit very quickly, even given the lack of references/info around. There's not much stealth or other methods applied (but don't worry, there's nothing to check for Detour hooks here).
 
 1) When the game updates, the hardcoded FName indexes in ProcessEvent have a low probability of shifting or breaking. 
 To fix:
