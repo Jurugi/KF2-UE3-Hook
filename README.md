@@ -22,4 +22,4 @@ See post here for help https://www.unknowncheats.me/forum/unreal-engine-3-a/2374
 3) Small anti-copy paste added. Most of aimbot function stripped (if you can't make one using at least 3 of the available ways then you probably should not be using this).
 
 
-The purpose is mostly to demonstrate how a hack could be made on any Unreal Engine game in 64bit very quickly, even given the lack of references/info around. There's not much stealth or other methods applied (but don't worry, there's nothing to check for Detour hooks here).
+The purpose is mostly to demonstrate how a hack could be made on any Unreal Engine game in 64bit very quickly, even given the lack of references/info around. There's not much stealth or other methods applied here. Sometimes the methods are varied depending on how well the dev integrates Unreal Engine to their project.
