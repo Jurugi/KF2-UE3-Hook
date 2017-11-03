@@ -19,4 +19,4 @@ See post here for help https://www.unknowncheats.me/forum/unreal-engine-3-a/2374
 
 2) VAC doesn't really work on this game, it's just to serve as an example of a detour hook done on x64 bit for UE3. 
 
-3) Small anti-copy paste added.
+3) Small anti-copy paste added. Most of aimbot function stripped (if you can't make one using at least 3 of the available ways then you probably should not be using this).
