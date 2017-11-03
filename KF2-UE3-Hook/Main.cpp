@@ -69,47 +69,6 @@ void SetRotation(UCanvas* Canvas, AKFPawn_Monster* Target)
 	// Get head location
 	Target->Mesh->GetBoneLocation(Target->HeadBoneName, AimLocation); //headbone is just named "head" for all zeds
 	AimLocation.Z += (1.5f * Target->CurrentHeadScale); // scale of the head
-
-	// Get player location and rotator
-	MyLocation = gUE.gPlayerController->PlayerCamera->Location;
-	MyRotation = gUE.gPlayerController->PlayerCamera->Rotation;
-
-	// Check angles
-	float ViewAngle = GetViewAngle(Canvas, Target->Location, MyLocation, MyRotation);
-	if (!CheckAngle(ViewAngle, gUE.gPlayerController->FOVAngle / 5.0f)) return;
-
-	// Check visibility
-	if (!gUE.gPlayerController->Trace(MyLocation, AimLocation, (AActor*)Target)) return;
-
-	// Accuracy adjustments
-	if (gUE.gPlayerController->Pawn->Weapon /*&& gUE.gPlayerController->Pawn->Weapon->IsA(AWeapon::StaticClass())*/)
-	{
-		float fDistance;
-		Difference = VectorSubtract(AimLocation, MyLocation);
-		Canvas->VSize(Difference, fDistance);
-
-		float ZedTimeScale = 0.0073f;
-		if (gUE.gPlayerController->TargetZEDTimeEffectIntensity >= 1.0f) ZedTimeScale = gUE.gPlayerController->TargetZEDTimeEffectIntensity / 75.0f;
-
-		float ScaleValue = gUE.gPlayerController->Pawn->PlayerReplicationInfo->ExactPing + (float)(fDistance * ZedTimeScale); // most bullets here are just fast projectiles
-		if (ScaleValue < 1.0f) ScaleValue = 1.0;
-
-		float fVelocity;
-		Velocity = Target->Velocity;
-		Canvas->VSize(Velocity, fVelocity);
-		if (fVelocity > 100.0f) 
-		{
-			Velocity.X *= ScaleValue / fVelocity; Velocity.Y *= ScaleValue / fVelocity; Velocity.Z *= ScaleValue / fVelocity;
-			AimLocation = VectorAdd(AimLocation, Velocity);
-		}
-	}
-
-	Difference = VectorSubtract(AimLocation, MyLocation);
-	AimRotation_Temp = VectorToRotation(Difference);
-	Canvas->Normalize(AimRotation_Temp, AimRotation);
-	AimRotation = LimitRotation(Canvas, MyRotation, AimRotation); // fix for doing 180s and general rotation limits
-	
-	gUE.gPlayerController->Rotation = AimRotation;
 }
 
 
