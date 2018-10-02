@@ -13,8 +13,8 @@ Note: after the 2018 update, I fixed this for you in the SDK. Functions included
 
 2) VAC doesn't really work on this game, it's just to serve as an example of a hook done on x64 bit for Unreal Engine 3.
 
-3) Small anti-copy paste added.
+3) Small anti-copy paste added in SDK (2018).
 
 The purpose is mostly to demonstrate how a hack could be made on any Unreal Engine game in 64bit very quickly, even given the lack of references/info around. 
 
-I add anti-copy paste which are easy to fix and striped a few lines of features to deter noobs.
+I added anti-copy paste which are easy to fix and striped a few lines of features to deter noobs.
