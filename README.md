@@ -10,7 +10,7 @@ When the game updates, the hardcoded FName indexes had a low probability of shif
 
 2) VAC doesn't really work on this game, it's just to serve as an example of a hook done on x64 bit for Unreal Engine 3.
 
-3) Updated SDK for Halloween update 10/1/2018. Small anti-copy pastes added in SDK.
+3) Updated SDK for Halloween update 10/1/2018. 
 
 The purpose is mostly to demonstrate how a hack could be made on any Unreal Engine game in 64bit very quickly, even given the lack of references/info around. 
 
