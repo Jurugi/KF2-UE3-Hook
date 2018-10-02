@@ -17,4 +17,4 @@ Note: after the 2018 update, I fixed this for you in the SDK. Functions included
 
 The purpose is mostly to demonstrate how a hack could be made on any Unreal Engine game in 64bit very quickly, even given the lack of references/info around. 
 
-I added anti-copy paste which are easy to fix and striped a few lines of features to deter noobs that can't even use the supplied SDK.
+I added anti-copy paste which are easy to fix and striped a few lines of features to deter noobs that can't use the supplied SDK.
