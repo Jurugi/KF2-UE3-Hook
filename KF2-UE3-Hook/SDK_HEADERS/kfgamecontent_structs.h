@@ -50,12 +50,90 @@ struct FsRallyTriggerInfo
 	float                                              SelfTakenDamageModifier;                          		// 0x000C (0x0004) [0x0000000000000000]              
 };
 
+// ScriptStruct kfgamecontent.KFAISpawnManager_Endless.MacroDifficultyWaveInfo
+// 0x0010
+struct FMacroDifficultyWaveInfo
+{
+	TArray< struct FDifficultyWaveInfo >               MacroDifficultyWaveSettings;                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
 // ScriptStruct kfgamecontent.KFPhysicsVolume.TouchThrottling
 // 0x000C
 struct FTouchThrottling
 {
 	class AActor*                                      HitActor;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
 	float                                              HitTime;                                          		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// ScriptStruct kfgamecontent.KFExplosion_HuskCannonFireballGroundFire.CachedExplosionInfo
+// 0x0014
+struct FCachedExplosionInfo
+{
+	class UGameExplosion*                              ExplosionTemplate;                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	struct FVector                                     Direction;                                        		// 0x0008 (0x000C) [0x0000000000000000]              
+};
+
+// ScriptStruct kfgamecontent.KFGameDifficulty_Endless.ZedAdjustments
+// 0x0010
+struct FZedAdjustments
+{
+	TArray< struct FStatAdjustments >                  ZedsToAdjust;                                     		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// ScriptStruct kfgamecontent.KFGameDifficulty_Endless.SpecialWaveInfo
+// 0x0014
+struct FSpecialWaveInfo
+{
+	unsigned char                                      ZedType;                                          		// 0x0000 (0x0001) [0x0000000000000000]              
+	float                                              PctChance;                                        		// 0x0004 (0x0004) [0x0000000000000000]              
+	float                                              WaveScale;                                        		// 0x0008 (0x0004) [0x0000000000000000]              
+	float                                              SpawnRateMultiplier;                              		// 0x000C (0x0004) [0x0000000000000000]              
+	DWORD                                              bSpawnEnraged : 1;                                		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// ScriptStruct kfgamecontent.KFGameDifficulty_Endless.SpecialWaveDifficultyInfo
+// 0x0010
+struct FSpecialWaveDifficultyInfo
+{
+	TArray< struct FSpecialWaveInfo >                  SpecialWaveInfos;                                 		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// ScriptStruct kfgamecontent.KFGameDifficulty_Endless.ZedDifficultyOverride
+// 0x0014
+struct FZedDifficultyOverride
+{
+	class UClass*                                      ClassToAdjust;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	float                                              HealthMod;                                        		// 0x0008 (0x0004) [0x0000000000000000]              
+	float                                              DamageMod;                                        		// 0x000C (0x0004) [0x0000000000000000]              
+	float                                              SoloDamageMod;                                    		// 0x0010 (0x0004) [0x0000000000000000]              
+};
+
+// ScriptStruct kfgamecontent.KFGameDifficulty_Endless.DifficultyOverride
+// 0x0010
+struct FDifficultyOverride
+{
+	TArray< struct FZedDifficultyOverride >            ZedsOverride;                                     		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// ScriptStruct kfgamecontent.KFGameDifficulty_Endless.DifficultyScaling
+// 0x0138
+struct FDifficultyScaling
+{
+	TArray< struct FDifficultySettings >               Difficulties;                                     		// 0x0000 (0x0010) [0x0000000000000000]              
+	struct FDifficultySettings                         DifficultyIncrement;                              		// 0x0010 (0x0048) [0x0000000000000000]              
+	int                                                CurrentDifficultyIndex;                           		// 0x0058 (0x0004) [0x0000000000000000]              
+	float                                              BaseUpgradeZedPctChance;                          		// 0x005C (0x0004) [0x0000000000000000]              
+	float                                              IncreaseUpgradeZedPctChance;                      		// 0x0060 (0x0004) [0x0000000000000000]              
+	float                                              UpgradeZedPctChance;                              		// 0x0064 (0x0004) [0x0000000000000000]              
+	float                                              BaseFullUpgradeZedPctChance;                      		// 0x0068 (0x0004) [0x0000000000000000]              
+	float                                              IncreaseFullUpgradeZedPctChance;                  		// 0x006C (0x0004) [0x0000000000000000]              
+	float                                              FullUpgradeZedPctChance;                          		// 0x0070 (0x0004) [0x0000000000000000]              
+	TArray< struct FZedAdjustments >                   ZedAdjustmentsByDifficulty;                       		// 0x0074 (0x0010) [0x0000000000000000]              
+	struct FStatAdjustments                            ZedAdjustmentIncrement;                           		// 0x0084 (0x0074) [0x0000000000000000]              
+	TArray< float >                                    OutbreakPctChances;                               		// 0x00F8 (0x0010) [0x0000000000000000]              
+	TArray< float >                                    SpecialWavePctChance;                             		// 0x0108 (0x0010) [0x0000000000000000]              
+	TArray< struct FSpecialWaveDifficultyInfo >        DifficultySpecialWaveTypes;                       		// 0x0118 (0x0010) [0x0000000000000000]              
+	TArray< struct FDifficultyOverride >               ZedDiffOverride;                                  		// 0x0128 (0x0010) [0x0000000000000000]              
 };
 
 // ScriptStruct kfgamecontent.KFTutorialSectionInfo.STutorialSlide
@@ -81,104 +159,6 @@ struct FSControllerTutorialSlide
 	TArray< struct FString >                           KeyGBAs;                                          		// 0x0038 (0x0010) [0x0000000000000000]              
 };
 
-// ScriptStruct kfgamecontent.KFGameInfo_WeeklySurvival.SpawnReplacement
-// 0x0010
-struct FSpawnReplacement
-{
-	int                                                SpawnEntry;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
-	class UClass*                                      NewClass;                                         		// 0x0004 (0x0008) [0x0000000000000000]              
-	float                                              PercentChance;                                    		// 0x000C (0x0004) [0x0000000000000000]              
-};
-
-// ScriptStruct kfgamecontent.KFGameInfo_WeeklySurvival.StatAdjustments
-// 0x0070
-struct FStatAdjustments
-{
-	class UClass*                                      ClassToAdjust;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
-	float                                              HealthScale;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
-	float                                              HeadHealthScale;                                  		// 0x000C (0x0004) [0x0000000000000000]              
-	float                                              ShieldScale;                                      		// 0x0010 (0x0004) [0x0000000000000000]              
-	DWORD                                              bStartEnraged : 1;                                		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
-	DWORD                                              bExplosiveDeath : 1;                              		// 0x0014 (0x0004) [0x0000000000000000] [0x00000002] 
-	class UKFGameExplosion*                            ExplosionTemplate;                                		// 0x0018 (0x0008) [0x0000000000000000]              
-	class UClass*                                      ExplosionIgnoreClass;                             		// 0x0020 (0x0008) [0x0000000000000000]              
-	TArray< float >                                    BeefcakeScaleIncreases;                           		// 0x0028 (0x0010) [0x0000000000000000]              
-	TArray< float >                                    BeefcakeHealthIncreases;                          		// 0x0038 (0x0010) [0x0000000000000000]              
-	float                                              MaxBeefcake;                                      		// 0x0048 (0x0004) [0x0000000000000000]              
-	float                                              MaxBeefcakeHealth;                                		// 0x004C (0x0004) [0x0000000000000000]              
-	float                                              DamageDealtScale;                                 		// 0x0050 (0x0004) [0x0000000000000000]              
-	float                                              DamageTakenScale;                                 		// 0x0054 (0x0004) [0x0000000000000000]              
-	struct FVector2D                                   OverrideDeflationRate;                            		// 0x0058 (0x0008) [0x0000000000000000]              
-	class UKFAIWaveInfo*                               AdditionalSubSpawns;                              		// 0x0060 (0x0008) [0x0000000000000000]              
-	struct FVector2D                                   AdditionalSubSpawnCount;                          		// 0x0068 (0x0008) [0x0000000000000000]              
-};
-
-// ScriptStruct kfgamecontent.KFGameInfo_WeeklySurvival.WeeklyOverrides
-// 0x0178
-struct FWeeklyOverrides
-{
-	int                                                EventDifficulty;                                  		// 0x0000 (0x0004) [0x0000000000000000]              
-	int                                                GameLength;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
-	DWORD                                              bHeadshotsOnly : 1;                               		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	float                                              SpawnRateMultiplier;                              		// 0x000C (0x0004) [0x0000000000000000]              
-	float                                              GlobalDamageTickRate;                             		// 0x0010 (0x0004) [0x0000000000000000]              
-	float                                              GlobalDamageTickAmount;                           		// 0x0014 (0x0004) [0x0000000000000000]              
-	float                                              GlobalAmmoCostScale;                              		// 0x0018 (0x0004) [0x0000000000000000]              
-	class UKFGFxObject_TraderItems*                    SpawnWeaponList;                                  		// 0x001C (0x0008) [0x0000000000000000]              
-	class UKFGFxObject_TraderItems*                    TraderWeaponList;                                 		// 0x0024 (0x0008) [0x0000000000000000]              
-	DWORD                                              bDisableGrenades : 1;                             		// 0x002C (0x0004) [0x0000000000000000] [0x00000001] 
-	TArray< struct FSpawnReplacement >                 SpawnReplacementList;                             		// 0x0030 (0x0010) [0x0000000000000000]              
-	DWORD                                              bAllowSpawnReplacementDuringBossWave : 1;         		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
-	TArray< struct FSpawnReplacement >                 BossSpawnReplacementList;                         		// 0x0044 (0x0010) [0x0000000000000000]              
-	TArray< struct FStatAdjustments >                  ZedsToAdjust;                                     		// 0x0054 (0x0010) [0x0000000000000000]              
-	DWORD                                              bDisableTraders : 1;                              		// 0x0064 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned char                                      PickupResetTime;                                  		// 0x0068 (0x0001) [0x0000000000000000]              
-	float                                              OverrideItemPickupModifier;                       		// 0x006C (0x0004) [0x0000000000000000]              
-	float                                              OverrideAmmoPickupModifier;                       		// 0x0070 (0x0004) [0x0000000000000000]              
-	TArray< float >                                    WaveItemPickupModifiers;                          		// 0x0074 (0x0010) [0x0000000000000000]              
-	TArray< float >                                    WaveAmmoPickupModifiers;                          		// 0x0084 (0x0010) [0x0000000000000000]              
-	DWORD                                              bUseOverrideItemRespawnTime : 1;                  		// 0x0094 (0x0004) [0x0000000000000000] [0x00000001] 
-	struct FNumPlayerMods                              OverrideItemRespawnTime;                          		// 0x0098 (0x001C) [0x0000000000000000]              
-	DWORD                                              bUseOverrideAmmoRespawnTime : 1;                  		// 0x00B4 (0x0004) [0x0000000000000000] [0x00000001] 
-	struct FNumPlayerMods                              OverrideAmmoRespawnTime;                          		// 0x00B8 (0x001C) [0x0000000000000000]              
-	DWORD                                              bPermanentZedTime : 1;                            		// 0x00D4 (0x0004) [0x0000000000000000] [0x00000001] 
-	int                                                PermanentZedTimeCutoff;                           		// 0x00D8 (0x0004) [0x0000000000000000]              
-	float                                              PermanentZedResetTime;                            		// 0x00DC (0x0004) [0x0000000000000000]              
-	float                                              OverrideZedTimeSlomoScale;                        		// 0x00E0 (0x0004) [0x0000000000000000]              
-	float                                              ZedTimeRadius;                                    		// 0x00E4 (0x0004) [0x0000000000000000]              
-	float                                              ZedTimeBossRadius;                                		// 0x00E8 (0x0004) [0x0000000000000000]              
-	float                                              ZedTimeHeight;                                    		// 0x00EC (0x0004) [0x0000000000000000]              
-	DWORD                                              bScaleOnHealth : 1;                               		// 0x00F0 (0x0004) [0x0000000000000000] [0x00000001] 
-	float                                              StartingDamageSizeScale;                          		// 0x00F4 (0x0004) [0x0000000000000000]              
-	float                                              DeadDamageSizeScale;                              		// 0x00F8 (0x0004) [0x0000000000000000]              
-	float                                              OverrideSpawnDerateTime;                          		// 0x00FC (0x0004) [0x0000000000000000]              
-	float                                              OverrideTeleportDerateTime;                       		// 0x0100 (0x0004) [0x0000000000000000]              
-	float                                              GlobalGravityZ;                                   		// 0x0104 (0x0004) [0x0000000000000000]              
-	DWORD                                              bUseBeefcakeRules : 1;                            		// 0x0108 (0x0004) [0x0000000000000000] [0x00000001] 
-	TArray< float >                                    WaveAICountScale;                                 		// 0x010C (0x0010) [0x0000000000000000]              
-	float                                              ZedSpawnHeadScale;                                		// 0x011C (0x0004) [0x0000000000000000]              
-	float                                              PlayerSpawnHeadScale;                             		// 0x0120 (0x0004) [0x0000000000000000]              
-	DWORD                                              bHumanSprintEnabled : 1;                          		// 0x0124 (0x0004) [0x0000000000000000] [0x00000001] 
-	float                                              OffPerkCostScale;                                 		// 0x0128 (0x0004) [0x0000000000000000]              
-	DWORD                                              bBackupMeleeSprintSpeed : 1;                      		// 0x012C (0x0004) [0x0000000000000000] [0x00000001] 
-	class UKFAIWaveInfo*                               AdditionalBossWaveInfo;                           		// 0x0130 (0x0008) [0x0000000000000000]              
-	float                                              AdditionalBossWaveFrequency;                      		// 0x0138 (0x0004) [0x0000000000000000]              
-	float                                              AdditionalBossWaveStartDelay;                     		// 0x013C (0x0004) [0x0000000000000000]              
-	struct FVector2D                                   AdditionalBossSpawnCount;                         		// 0x0140 (0x0008) [0x0000000000000000]              
-	DWORD                                              bContinuousAdditionalBossWave : 1;                		// 0x0148 (0x0004) [0x0000000000000000] [0x00000001] 
-	float                                              CrushScale;                                       		// 0x014C (0x0004) [0x0000000000000000]              
-	float                                              JumpDamageScale;                                  		// 0x0150 (0x0004) [0x0000000000000000]              
-	int                                                NumJumpsAllowed;                                  		// 0x0154 (0x0004) [0x0000000000000000]              
-	DWORD                                              bUseZedDamageInflation : 1;                       		// 0x0158 (0x0004) [0x0000000000000000] [0x00000001] 
-	float                                              ZeroHealthInflation;                              		// 0x015C (0x0004) [0x0000000000000000]              
-	float                                              GlobalDeflationRate;                              		// 0x0160 (0x0004) [0x0000000000000000]              
-	float                                              InflationDeathGravity;                            		// 0x0164 (0x0004) [0x0000000000000000]              
-	float                                              InflationExplosionTimer;                          		// 0x0168 (0x0004) [0x0000000000000000]              
-	DWORD                                              bDisableHeadless : 1;                             		// 0x016C (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned char                                      MaxPerkLevel;                                     		// 0x0170 (0x0001) [0x0000000000000000]              
-	int                                                MaxBoomsPerFrame;                                 		// 0x0174 (0x0004) [0x0000000000000000]              
-};
-
 // ScriptStruct kfgamecontent.KFGameReplicationInfoVersus.sPlayerZedSpawnWaitTimeData
 // 0x0009
 struct FsPlayerZedSpawnWaitTimeData
@@ -186,6 +166,20 @@ struct FsPlayerZedSpawnWaitTimeData
 	unsigned char                                      SpawnWaitTime;                                    		// 0x0000 (0x0001) [0x0000000000000000]              
 	DWORD                                              bTakeOverActive : 1;                              		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
 	unsigned char                                      DirtyFlag;                                        		// 0x0008 (0x0001) [0x0000000000000000]              
+};
+
+// ScriptStruct kfgamecontent.KFMapObjective_AreaDefense.DoshHoldMaxReward
+// 0x002C
+struct FDoshHoldMaxReward
+{
+	int                                                WaveMaxReward[ 0xB ];                             		// 0x0000 (0x002C) [0x0000000000000000]              
+};
+
+// ScriptStruct kfgamecontent.KFMapObjective_DoshHold.WaveLengthPctChances
+// 0x002C
+struct FWaveLengthPctChances
+{
+	float                                              PctChances[ 0xB ];                                		// 0x0000 (0x002C) [0x0000000000000000]              
 };
 
 // ScriptStruct kfgamecontent.KFMGA_TargetGame.sTargetGameData
@@ -244,6 +238,15 @@ struct FPatriarchBattlePhaseInfo
 	DWORD                                              bCanSummonMinions : 1;                            		// 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
 	TArray< DWORD >                                    bCanMoveWhenMinigunning;                          		// 0x0038 (0x0010) [0x0000000000000000]              
 	TArray< float >                                    HealAmounts;                                      		// 0x0048 (0x0010) [0x0000000000000000]              
+};
+
+// ScriptStruct kfgamecontent.KFSM_DAR_EMPAttack.EMPBlastHitInfo
+// 0x003C
+struct FEMPBlastHitInfo
+{
+	class AActor*                                      HitActor;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	struct FVector                                     HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	struct FTraceHitInfo                               HitInfo;                                          		// 0x0014 (0x0028) [0x0000000000000000]              
 };
 
 // ScriptStruct kfgamecontent.KFTrigger_MinigameGenerator.GeneratorStatus

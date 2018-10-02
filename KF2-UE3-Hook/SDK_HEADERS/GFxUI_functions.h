@@ -30,7 +30,7 @@ void UGFxFSCmdHandler::eventFSCommand ( )
 	static UFunction* pFnFSCommand = NULL;
 
 	if ( ! pFnFSCommand )
-		pFnFSCommand = (UFunction*) UObject::GObjObjects()->Data[ 37988 ];
+		pFnFSCommand = (UFunction*) UObject::GObjObjects()->Data[ 38019 ];
 
 	UGFxFSCmdHandler_eventFSCommand_Parms FSCommand_Parms;
 
@@ -46,7 +46,7 @@ void UGFxInteraction::CloseAllMoviePlayers ( )
 	static UFunction* pFnCloseAllMoviePlayers = NULL;
 
 	if ( ! pFnCloseAllMoviePlayers )
-		pFnCloseAllMoviePlayers = (UFunction*) UObject::GObjObjects()->Data[ 38013 ];
+		pFnCloseAllMoviePlayers = (UFunction*) UObject::GObjObjects()->Data[ 38044 ];
 
 	UGFxInteraction_execCloseAllMoviePlayers_Parms CloseAllMoviePlayers_Parms;
 
@@ -66,7 +66,7 @@ void UGFxInteraction::NotifySplitscreenLayoutChanged ( )
 	static UFunction* pFnNotifySplitscreenLayoutChanged = NULL;
 
 	if ( ! pFnNotifySplitscreenLayoutChanged )
-		pFnNotifySplitscreenLayoutChanged = (UFunction*) UObject::GObjObjects()->Data[ 38012 ];
+		pFnNotifySplitscreenLayoutChanged = (UFunction*) UObject::GObjObjects()->Data[ 38043 ];
 
 	UGFxInteraction_execNotifySplitscreenLayoutChanged_Parms NotifySplitscreenLayoutChanged_Parms;
 
@@ -86,7 +86,7 @@ void UGFxInteraction::NotifyPlayerRemoved ( )
 	static UFunction* pFnNotifyPlayerRemoved = NULL;
 
 	if ( ! pFnNotifyPlayerRemoved )
-		pFnNotifyPlayerRemoved = (UFunction*) UObject::GObjObjects()->Data[ 38009 ];
+		pFnNotifyPlayerRemoved = (UFunction*) UObject::GObjObjects()->Data[ 38040 ];
 
 	UGFxInteraction_execNotifyPlayerRemoved_Parms NotifyPlayerRemoved_Parms;
 
@@ -106,7 +106,7 @@ void UGFxInteraction::NotifyPlayerAdded ( )
 	static UFunction* pFnNotifyPlayerAdded = NULL;
 
 	if ( ! pFnNotifyPlayerAdded )
-		pFnNotifyPlayerAdded = (UFunction*) UObject::GObjObjects()->Data[ 38006 ];
+		pFnNotifyPlayerAdded = (UFunction*) UObject::GObjObjects()->Data[ 38037 ];
 
 	UGFxInteraction_execNotifyPlayerAdded_Parms NotifyPlayerAdded_Parms;
 
@@ -126,7 +126,7 @@ void UGFxInteraction::NotifyGameSessionEnded ( )
 	static UFunction* pFnNotifyGameSessionEnded = NULL;
 
 	if ( ! pFnNotifyGameSessionEnded )
-		pFnNotifyGameSessionEnded = (UFunction*) UObject::GObjObjects()->Data[ 38005 ];
+		pFnNotifyGameSessionEnded = (UFunction*) UObject::GObjObjects()->Data[ 38036 ];
 
 	UGFxInteraction_execNotifyGameSessionEnded_Parms NotifyGameSessionEnded_Parms;
 
@@ -146,7 +146,7 @@ void UGFxInteraction::GetFocusMovie ( )
 	static UFunction* pFnGetFocusMovie = NULL;
 
 	if ( ! pFnGetFocusMovie )
-		pFnGetFocusMovie = (UFunction*) UObject::GObjObjects()->Data[ 38002 ];
+		pFnGetFocusMovie = (UFunction*) UObject::GObjObjects()->Data[ 38033 ];
 
 	UGFxInteraction_execGetFocusMovie_Parms GetFocusMovie_Parms;
 
@@ -166,7 +166,7 @@ void UGFxMoviePlayer::SetVisibility ( )
 	static UFunction* pFnSetVisibility = NULL;
 
 	if ( ! pFnSetVisibility )
-		pFnSetVisibility = (UFunction*) UObject::GObjObjects()->Data[ 37312 ];
+		pFnSetVisibility = (UFunction*) UObject::GObjObjects()->Data[ 37343 ];
 
 	UGFxMoviePlayer_execSetVisibility_Parms SetVisibility_Parms;
 
@@ -186,7 +186,7 @@ void UGFxMoviePlayer::UpdateSplitscreenLayout ( )
 	static UFunction* pFnUpdateSplitscreenLayout = NULL;
 
 	if ( ! pFnUpdateSplitscreenLayout )
-		pFnUpdateSplitscreenLayout = (UFunction*) UObject::GObjObjects()->Data[ 37313 ];
+		pFnUpdateSplitscreenLayout = (UFunction*) UObject::GObjObjects()->Data[ 37344 ];
 
 	UGFxMoviePlayer_execUpdateSplitscreenLayout_Parms UpdateSplitscreenLayout_Parms;
 
@@ -206,7 +206,7 @@ void UGFxMoviePlayer::ApplyPriorityVisibilityEffect ( )
 	static UFunction* pFnApplyPriorityVisibilityEffect = NULL;
 
 	if ( ! pFnApplyPriorityVisibilityEffect )
-		pFnApplyPriorityVisibilityEffect = (UFunction*) UObject::GObjObjects()->Data[ 37315 ];
+		pFnApplyPriorityVisibilityEffect = (UFunction*) UObject::GObjObjects()->Data[ 37346 ];
 
 	UGFxMoviePlayer_execApplyPriorityVisibilityEffect_Parms ApplyPriorityVisibilityEffect_Parms;
 
@@ -222,7 +222,7 @@ void UGFxMoviePlayer::ApplyPriorityBlurEffect ( )
 	static UFunction* pFnApplyPriorityBlurEffect = NULL;
 
 	if ( ! pFnApplyPriorityBlurEffect )
-		pFnApplyPriorityBlurEffect = (UFunction*) UObject::GObjObjects()->Data[ 37316 ];
+		pFnApplyPriorityBlurEffect = (UFunction*) UObject::GObjObjects()->Data[ 37347 ];
 
 	UGFxMoviePlayer_execApplyPriorityBlurEffect_Parms ApplyPriorityBlurEffect_Parms;
 
@@ -238,7 +238,7 @@ void UGFxMoviePlayer::eventApplyPriorityEffect ( )
 	static UFunction* pFnApplyPriorityEffect = NULL;
 
 	if ( ! pFnApplyPriorityEffect )
-		pFnApplyPriorityEffect = (UFunction*) UObject::GObjObjects()->Data[ 37318 ];
+		pFnApplyPriorityEffect = (UFunction*) UObject::GObjObjects()->Data[ 37349 ];
 
 	UGFxMoviePlayer_eventApplyPriorityEffect_Parms ApplyPriorityEffect_Parms;
 
@@ -254,7 +254,7 @@ void UGFxMoviePlayer::PlaySoundFromTheme ( )
 	static UFunction* pFnPlaySoundFromTheme = NULL;
 
 	if ( ! pFnPlaySoundFromTheme )
-		pFnPlaySoundFromTheme = (UFunction*) UObject::GObjObjects()->Data[ 37320 ];
+		pFnPlaySoundFromTheme = (UFunction*) UObject::GObjObjects()->Data[ 37351 ];
 
 	UGFxMoviePlayer_execPlaySoundFromTheme_Parms PlaySoundFromTheme_Parms;
 
@@ -270,7 +270,7 @@ void UGFxMoviePlayer::eventOnFocusLost ( )
 	static UFunction* pFnOnFocusLost = NULL;
 
 	if ( ! pFnOnFocusLost )
-		pFnOnFocusLost = (UFunction*) UObject::GObjObjects()->Data[ 37327 ];
+		pFnOnFocusLost = (UFunction*) UObject::GObjObjects()->Data[ 37358 ];
 
 	UGFxMoviePlayer_eventOnFocusLost_Parms OnFocusLost_Parms;
 
@@ -286,7 +286,7 @@ void UGFxMoviePlayer::eventOnFocusGained ( )
 	static UFunction* pFnOnFocusGained = NULL;
 
 	if ( ! pFnOnFocusGained )
-		pFnOnFocusGained = (UFunction*) UObject::GObjObjects()->Data[ 37335 ];
+		pFnOnFocusGained = (UFunction*) UObject::GObjObjects()->Data[ 37366 ];
 
 	UGFxMoviePlayer_eventOnFocusGained_Parms OnFocusGained_Parms;
 
@@ -302,7 +302,7 @@ void UGFxMoviePlayer::ConsoleCommand ( )
 	static UFunction* pFnConsoleCommand = NULL;
 
 	if ( ! pFnConsoleCommand )
-		pFnConsoleCommand = (UFunction*) UObject::GObjObjects()->Data[ 37337 ];
+		pFnConsoleCommand = (UFunction*) UObject::GObjObjects()->Data[ 37368 ];
 
 	UGFxMoviePlayer_execConsoleCommand_Parms ConsoleCommand_Parms;
 
@@ -318,7 +318,7 @@ void UGFxMoviePlayer::eventGetPC ( )
 	static UFunction* pFnGetPC = NULL;
 
 	if ( ! pFnGetPC )
-		pFnGetPC = (UFunction*) UObject::GObjObjects()->Data[ 37339 ];
+		pFnGetPC = (UFunction*) UObject::GObjObjects()->Data[ 37370 ];
 
 	UGFxMoviePlayer_eventGetPC_Parms GetPC_Parms;
 
@@ -334,7 +334,7 @@ void UGFxMoviePlayer::eventGetLP ( )
 	static UFunction* pFnGetLP = NULL;
 
 	if ( ! pFnGetLP )
-		pFnGetLP = (UFunction*) UObject::GObjObjects()->Data[ 37342 ];
+		pFnGetLP = (UFunction*) UObject::GObjObjects()->Data[ 37373 ];
 
 	UGFxMoviePlayer_eventGetLP_Parms GetLP_Parms;
 
@@ -350,7 +350,7 @@ void UGFxMoviePlayer::Init ( )
 	static UFunction* pFnInit = NULL;
 
 	if ( ! pFnInit )
-		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 37345 ];
+		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 37376 ];
 
 	UGFxMoviePlayer_execInit_Parms Init_Parms;
 
@@ -366,7 +366,7 @@ void UGFxMoviePlayer::SetWidgetPathBinding ( )
 	static UFunction* pFnSetWidgetPathBinding = NULL;
 
 	if ( ! pFnSetWidgetPathBinding )
-		pFnSetWidgetPathBinding = (UFunction*) UObject::GObjObjects()->Data[ 37349 ];
+		pFnSetWidgetPathBinding = (UFunction*) UObject::GObjObjects()->Data[ 37380 ];
 
 	UGFxMoviePlayer_execSetWidgetPathBinding_Parms SetWidgetPathBinding_Parms;
 
@@ -386,7 +386,7 @@ void UGFxMoviePlayer::eventPostWidgetInit ( )
 	static UFunction* pFnPostWidgetInit = NULL;
 
 	if ( ! pFnPostWidgetInit )
-		pFnPostWidgetInit = (UFunction*) UObject::GObjObjects()->Data[ 37354 ];
+		pFnPostWidgetInit = (UFunction*) UObject::GObjObjects()->Data[ 37385 ];
 
 	UGFxMoviePlayer_eventPostWidgetInit_Parms PostWidgetInit_Parms;
 
@@ -402,7 +402,7 @@ void UGFxMoviePlayer::eventWidgetUnloaded ( )
 	static UFunction* pFnWidgetUnloaded = NULL;
 
 	if ( ! pFnWidgetUnloaded )
-		pFnWidgetUnloaded = (UFunction*) UObject::GObjObjects()->Data[ 37357 ];
+		pFnWidgetUnloaded = (UFunction*) UObject::GObjObjects()->Data[ 37388 ];
 
 	UGFxMoviePlayer_eventWidgetUnloaded_Parms WidgetUnloaded_Parms;
 
@@ -418,7 +418,7 @@ void UGFxMoviePlayer::eventWidgetInitialized ( )
 	static UFunction* pFnWidgetInitialized = NULL;
 
 	if ( ! pFnWidgetInitialized )
-		pFnWidgetInitialized = (UFunction*) UObject::GObjObjects()->Data[ 37358 ];
+		pFnWidgetInitialized = (UFunction*) UObject::GObjObjects()->Data[ 37389 ];
 
 	UGFxMoviePlayer_eventWidgetInitialized_Parms WidgetInitialized_Parms;
 
@@ -434,7 +434,7 @@ void UGFxMoviePlayer::ActionScriptConstructor ( )
 	static UFunction* pFnActionScriptConstructor = NULL;
 
 	if ( ! pFnActionScriptConstructor )
-		pFnActionScriptConstructor = (UFunction*) UObject::GObjObjects()->Data[ 37363 ];
+		pFnActionScriptConstructor = (UFunction*) UObject::GObjObjects()->Data[ 37394 ];
 
 	UGFxMoviePlayer_execActionScriptConstructor_Parms ActionScriptConstructor_Parms;
 
@@ -454,7 +454,7 @@ void UGFxMoviePlayer::ActionScriptObject ( )
 	static UFunction* pFnActionScriptObject = NULL;
 
 	if ( ! pFnActionScriptObject )
-		pFnActionScriptObject = (UFunction*) UObject::GObjObjects()->Data[ 37368 ];
+		pFnActionScriptObject = (UFunction*) UObject::GObjObjects()->Data[ 37399 ];
 
 	UGFxMoviePlayer_execActionScriptObject_Parms ActionScriptObject_Parms;
 
@@ -474,7 +474,7 @@ void UGFxMoviePlayer::ActionScriptString ( )
 	static UFunction* pFnActionScriptString = NULL;
 
 	if ( ! pFnActionScriptString )
-		pFnActionScriptString = (UFunction*) UObject::GObjObjects()->Data[ 37371 ];
+		pFnActionScriptString = (UFunction*) UObject::GObjObjects()->Data[ 37402 ];
 
 	UGFxMoviePlayer_execActionScriptString_Parms ActionScriptString_Parms;
 
@@ -494,7 +494,7 @@ void UGFxMoviePlayer::ActionScriptFloat ( )
 	static UFunction* pFnActionScriptFloat = NULL;
 
 	if ( ! pFnActionScriptFloat )
-		pFnActionScriptFloat = (UFunction*) UObject::GObjObjects()->Data[ 37374 ];
+		pFnActionScriptFloat = (UFunction*) UObject::GObjObjects()->Data[ 37405 ];
 
 	UGFxMoviePlayer_execActionScriptFloat_Parms ActionScriptFloat_Parms;
 
@@ -514,7 +514,7 @@ void UGFxMoviePlayer::ActionScriptInt ( )
 	static UFunction* pFnActionScriptInt = NULL;
 
 	if ( ! pFnActionScriptInt )
-		pFnActionScriptInt = (UFunction*) UObject::GObjObjects()->Data[ 37377 ];
+		pFnActionScriptInt = (UFunction*) UObject::GObjObjects()->Data[ 37408 ];
 
 	UGFxMoviePlayer_execActionScriptInt_Parms ActionScriptInt_Parms;
 
@@ -534,7 +534,7 @@ void UGFxMoviePlayer::ActionScriptVoid ( )
 	static UFunction* pFnActionScriptVoid = NULL;
 
 	if ( ! pFnActionScriptVoid )
-		pFnActionScriptVoid = (UFunction*) UObject::GObjObjects()->Data[ 37380 ];
+		pFnActionScriptVoid = (UFunction*) UObject::GObjObjects()->Data[ 37411 ];
 
 	UGFxMoviePlayer_execActionScriptVoid_Parms ActionScriptVoid_Parms;
 
@@ -554,7 +554,7 @@ void UGFxMoviePlayer::Invoke ( )
 	static UFunction* pFnInvoke = NULL;
 
 	if ( ! pFnInvoke )
-		pFnInvoke = (UFunction*) UObject::GObjObjects()->Data[ 37383 ];
+		pFnInvoke = (UFunction*) UObject::GObjObjects()->Data[ 37414 ];
 
 	UGFxMoviePlayer_execInvoke_Parms Invoke_Parms;
 
@@ -574,7 +574,7 @@ void UGFxMoviePlayer::ActionScriptSetFunction ( )
 	static UFunction* pFnActionScriptSetFunction = NULL;
 
 	if ( ! pFnActionScriptSetFunction )
-		pFnActionScriptSetFunction = (UFunction*) UObject::GObjObjects()->Data[ 37385 ];
+		pFnActionScriptSetFunction = (UFunction*) UObject::GObjObjects()->Data[ 37416 ];
 
 	UGFxMoviePlayer_execActionScriptSetFunction_Parms ActionScriptSetFunction_Parms;
 
@@ -594,7 +594,7 @@ void UGFxMoviePlayer::CreateArray ( )
 	static UFunction* pFnCreateArray = NULL;
 
 	if ( ! pFnCreateArray )
-		pFnCreateArray = (UFunction*) UObject::GObjObjects()->Data[ 37398 ];
+		pFnCreateArray = (UFunction*) UObject::GObjObjects()->Data[ 37429 ];
 
 	UGFxMoviePlayer_execCreateArray_Parms CreateArray_Parms;
 
@@ -614,7 +614,7 @@ void UGFxMoviePlayer::CreateObject ( )
 	static UFunction* pFnCreateObject = NULL;
 
 	if ( ! pFnCreateObject )
-		pFnCreateObject = (UFunction*) UObject::GObjObjects()->Data[ 37401 ];
+		pFnCreateObject = (UFunction*) UObject::GObjObjects()->Data[ 37432 ];
 
 	UGFxMoviePlayer_execCreateObject_Parms CreateObject_Parms;
 
@@ -634,7 +634,7 @@ void UGFxMoviePlayer::SetVariableStringArray ( )
 	static UFunction* pFnSetVariableStringArray = NULL;
 
 	if ( ! pFnSetVariableStringArray )
-		pFnSetVariableStringArray = (UFunction*) UObject::GObjObjects()->Data[ 37403 ];
+		pFnSetVariableStringArray = (UFunction*) UObject::GObjObjects()->Data[ 37434 ];
 
 	UGFxMoviePlayer_execSetVariableStringArray_Parms SetVariableStringArray_Parms;
 
@@ -654,7 +654,7 @@ void UGFxMoviePlayer::SetVariableFloatArray ( )
 	static UFunction* pFnSetVariableFloatArray = NULL;
 
 	if ( ! pFnSetVariableFloatArray )
-		pFnSetVariableFloatArray = (UFunction*) UObject::GObjObjects()->Data[ 37409 ];
+		pFnSetVariableFloatArray = (UFunction*) UObject::GObjObjects()->Data[ 37440 ];
 
 	UGFxMoviePlayer_execSetVariableFloatArray_Parms SetVariableFloatArray_Parms;
 
@@ -674,7 +674,7 @@ void UGFxMoviePlayer::SetVariableIntArray ( )
 	static UFunction* pFnSetVariableIntArray = NULL;
 
 	if ( ! pFnSetVariableIntArray )
-		pFnSetVariableIntArray = (UFunction*) UObject::GObjObjects()->Data[ 37415 ];
+		pFnSetVariableIntArray = (UFunction*) UObject::GObjObjects()->Data[ 37446 ];
 
 	UGFxMoviePlayer_execSetVariableIntArray_Parms SetVariableIntArray_Parms;
 
@@ -694,7 +694,7 @@ void UGFxMoviePlayer::SetVariableArray ( )
 	static UFunction* pFnSetVariableArray = NULL;
 
 	if ( ! pFnSetVariableArray )
-		pFnSetVariableArray = (UFunction*) UObject::GObjObjects()->Data[ 37421 ];
+		pFnSetVariableArray = (UFunction*) UObject::GObjObjects()->Data[ 37452 ];
 
 	UGFxMoviePlayer_execSetVariableArray_Parms SetVariableArray_Parms;
 
@@ -714,7 +714,7 @@ void UGFxMoviePlayer::GetVariableStringArray ( )
 	static UFunction* pFnGetVariableStringArray = NULL;
 
 	if ( ! pFnGetVariableStringArray )
-		pFnGetVariableStringArray = (UFunction*) UObject::GObjObjects()->Data[ 37427 ];
+		pFnGetVariableStringArray = (UFunction*) UObject::GObjObjects()->Data[ 37458 ];
 
 	UGFxMoviePlayer_execGetVariableStringArray_Parms GetVariableStringArray_Parms;
 
@@ -734,7 +734,7 @@ void UGFxMoviePlayer::GetVariableFloatArray ( )
 	static UFunction* pFnGetVariableFloatArray = NULL;
 
 	if ( ! pFnGetVariableFloatArray )
-		pFnGetVariableFloatArray = (UFunction*) UObject::GObjObjects()->Data[ 37433 ];
+		pFnGetVariableFloatArray = (UFunction*) UObject::GObjObjects()->Data[ 37464 ];
 
 	UGFxMoviePlayer_execGetVariableFloatArray_Parms GetVariableFloatArray_Parms;
 
@@ -754,7 +754,7 @@ void UGFxMoviePlayer::GetVariableIntArray ( )
 	static UFunction* pFnGetVariableIntArray = NULL;
 
 	if ( ! pFnGetVariableIntArray )
-		pFnGetVariableIntArray = (UFunction*) UObject::GObjObjects()->Data[ 37439 ];
+		pFnGetVariableIntArray = (UFunction*) UObject::GObjObjects()->Data[ 37470 ];
 
 	UGFxMoviePlayer_execGetVariableIntArray_Parms GetVariableIntArray_Parms;
 
@@ -774,7 +774,7 @@ void UGFxMoviePlayer::GetVariableArray ( )
 	static UFunction* pFnGetVariableArray = NULL;
 
 	if ( ! pFnGetVariableArray )
-		pFnGetVariableArray = (UFunction*) UObject::GObjObjects()->Data[ 37445 ];
+		pFnGetVariableArray = (UFunction*) UObject::GObjObjects()->Data[ 37476 ];
 
 	UGFxMoviePlayer_execGetVariableArray_Parms GetVariableArray_Parms;
 
@@ -794,7 +794,7 @@ void UGFxMoviePlayer::SetVariableObject ( )
 	static UFunction* pFnSetVariableObject = NULL;
 
 	if ( ! pFnSetVariableObject )
-		pFnSetVariableObject = (UFunction*) UObject::GObjObjects()->Data[ 37451 ];
+		pFnSetVariableObject = (UFunction*) UObject::GObjObjects()->Data[ 37482 ];
 
 	UGFxMoviePlayer_execSetVariableObject_Parms SetVariableObject_Parms;
 
@@ -814,7 +814,7 @@ void UGFxMoviePlayer::SetVariableString ( )
 	static UFunction* pFnSetVariableString = NULL;
 
 	if ( ! pFnSetVariableString )
-		pFnSetVariableString = (UFunction*) UObject::GObjObjects()->Data[ 37457 ];
+		pFnSetVariableString = (UFunction*) UObject::GObjObjects()->Data[ 37488 ];
 
 	UGFxMoviePlayer_execSetVariableString_Parms SetVariableString_Parms;
 
@@ -834,7 +834,7 @@ void UGFxMoviePlayer::SetVariableInt ( )
 	static UFunction* pFnSetVariableInt = NULL;
 
 	if ( ! pFnSetVariableInt )
-		pFnSetVariableInt = (UFunction*) UObject::GObjObjects()->Data[ 37460 ];
+		pFnSetVariableInt = (UFunction*) UObject::GObjObjects()->Data[ 37491 ];
 
 	UGFxMoviePlayer_execSetVariableInt_Parms SetVariableInt_Parms;
 
@@ -854,7 +854,7 @@ void UGFxMoviePlayer::SetVariableNumber ( )
 	static UFunction* pFnSetVariableNumber = NULL;
 
 	if ( ! pFnSetVariableNumber )
-		pFnSetVariableNumber = (UFunction*) UObject::GObjObjects()->Data[ 37463 ];
+		pFnSetVariableNumber = (UFunction*) UObject::GObjObjects()->Data[ 37494 ];
 
 	UGFxMoviePlayer_execSetVariableNumber_Parms SetVariableNumber_Parms;
 
@@ -874,7 +874,7 @@ void UGFxMoviePlayer::SetVariableBool ( )
 	static UFunction* pFnSetVariableBool = NULL;
 
 	if ( ! pFnSetVariableBool )
-		pFnSetVariableBool = (UFunction*) UObject::GObjObjects()->Data[ 37466 ];
+		pFnSetVariableBool = (UFunction*) UObject::GObjObjects()->Data[ 37497 ];
 
 	UGFxMoviePlayer_execSetVariableBool_Parms SetVariableBool_Parms;
 
@@ -894,7 +894,7 @@ void UGFxMoviePlayer::SetVariable ( )
 	static UFunction* pFnSetVariable = NULL;
 
 	if ( ! pFnSetVariable )
-		pFnSetVariable = (UFunction*) UObject::GObjObjects()->Data[ 37469 ];
+		pFnSetVariable = (UFunction*) UObject::GObjObjects()->Data[ 37500 ];
 
 	UGFxMoviePlayer_execSetVariable_Parms SetVariable_Parms;
 
@@ -914,7 +914,7 @@ void UGFxMoviePlayer::GetVariableObject ( )
 	static UFunction* pFnGetVariableObject = NULL;
 
 	if ( ! pFnGetVariableObject )
-		pFnGetVariableObject = (UFunction*) UObject::GObjObjects()->Data[ 37472 ];
+		pFnGetVariableObject = (UFunction*) UObject::GObjObjects()->Data[ 37503 ];
 
 	UGFxMoviePlayer_execGetVariableObject_Parms GetVariableObject_Parms;
 
@@ -934,7 +934,7 @@ void UGFxMoviePlayer::GetVariableString ( )
 	static UFunction* pFnGetVariableString = NULL;
 
 	if ( ! pFnGetVariableString )
-		pFnGetVariableString = (UFunction*) UObject::GObjObjects()->Data[ 37475 ];
+		pFnGetVariableString = (UFunction*) UObject::GObjObjects()->Data[ 37506 ];
 
 	UGFxMoviePlayer_execGetVariableString_Parms GetVariableString_Parms;
 
@@ -954,7 +954,7 @@ void UGFxMoviePlayer::GetVariableInt ( )
 	static UFunction* pFnGetVariableInt = NULL;
 
 	if ( ! pFnGetVariableInt )
-		pFnGetVariableInt = (UFunction*) UObject::GObjObjects()->Data[ 37479 ];
+		pFnGetVariableInt = (UFunction*) UObject::GObjObjects()->Data[ 37510 ];
 
 	UGFxMoviePlayer_execGetVariableInt_Parms GetVariableInt_Parms;
 
@@ -974,7 +974,7 @@ void UGFxMoviePlayer::GetVariableNumber ( )
 	static UFunction* pFnGetVariableNumber = NULL;
 
 	if ( ! pFnGetVariableNumber )
-		pFnGetVariableNumber = (UFunction*) UObject::GObjObjects()->Data[ 37482 ];
+		pFnGetVariableNumber = (UFunction*) UObject::GObjObjects()->Data[ 37513 ];
 
 	UGFxMoviePlayer_execGetVariableNumber_Parms GetVariableNumber_Parms;
 
@@ -994,7 +994,7 @@ void UGFxMoviePlayer::GetVariableBool ( )
 	static UFunction* pFnGetVariableBool = NULL;
 
 	if ( ! pFnGetVariableBool )
-		pFnGetVariableBool = (UFunction*) UObject::GObjObjects()->Data[ 37485 ];
+		pFnGetVariableBool = (UFunction*) UObject::GObjObjects()->Data[ 37516 ];
 
 	UGFxMoviePlayer_execGetVariableBool_Parms GetVariableBool_Parms;
 
@@ -1014,7 +1014,7 @@ void UGFxMoviePlayer::GetVariable ( )
 	static UFunction* pFnGetVariable = NULL;
 
 	if ( ! pFnGetVariable )
-		pFnGetVariable = (UFunction*) UObject::GObjObjects()->Data[ 37488 ];
+		pFnGetVariable = (UFunction*) UObject::GObjObjects()->Data[ 37519 ];
 
 	UGFxMoviePlayer_execGetVariable_Parms GetVariable_Parms;
 
@@ -1034,7 +1034,7 @@ void UGFxMoviePlayer::GetAVMVersion ( )
 	static UFunction* pFnGetAVMVersion = NULL;
 
 	if ( ! pFnGetAVMVersion )
-		pFnGetAVMVersion = (UFunction*) UObject::GObjObjects()->Data[ 37491 ];
+		pFnGetAVMVersion = (UFunction*) UObject::GObjObjects()->Data[ 37522 ];
 
 	UGFxMoviePlayer_execGetAVMVersion_Parms GetAVMVersion_Parms;
 
@@ -1054,7 +1054,7 @@ void UGFxMoviePlayer::eventFilterButtonInput ( )
 	static UFunction* pFnFilterButtonInput = NULL;
 
 	if ( ! pFnFilterButtonInput )
-		pFnFilterButtonInput = (UFunction*) UObject::GObjObjects()->Data[ 37494 ];
+		pFnFilterButtonInput = (UFunction*) UObject::GObjObjects()->Data[ 37525 ];
 
 	UGFxMoviePlayer_eventFilterButtonInput_Parms FilterButtonInput_Parms;
 
@@ -1070,7 +1070,7 @@ void UGFxMoviePlayer::FlushPlayerInput ( )
 	static UFunction* pFnFlushPlayerInput = NULL;
 
 	if ( ! pFnFlushPlayerInput )
-		pFnFlushPlayerInput = (UFunction*) UObject::GObjObjects()->Data[ 37496 ];
+		pFnFlushPlayerInput = (UFunction*) UObject::GObjObjects()->Data[ 37527 ];
 
 	UGFxMoviePlayer_execFlushPlayerInput_Parms FlushPlayerInput_Parms;
 
@@ -1090,7 +1090,7 @@ void UGFxMoviePlayer::ClearFocusIgnoreKeys ( )
 	static UFunction* pFnClearFocusIgnoreKeys = NULL;
 
 	if ( ! pFnClearFocusIgnoreKeys )
-		pFnClearFocusIgnoreKeys = (UFunction*) UObject::GObjObjects()->Data[ 37501 ];
+		pFnClearFocusIgnoreKeys = (UFunction*) UObject::GObjObjects()->Data[ 37532 ];
 
 	UGFxMoviePlayer_execClearFocusIgnoreKeys_Parms ClearFocusIgnoreKeys_Parms;
 
@@ -1110,7 +1110,7 @@ void UGFxMoviePlayer::AddFocusIgnoreKey ( )
 	static UFunction* pFnAddFocusIgnoreKey = NULL;
 
 	if ( ! pFnAddFocusIgnoreKey )
-		pFnAddFocusIgnoreKey = (UFunction*) UObject::GObjObjects()->Data[ 37503 ];
+		pFnAddFocusIgnoreKey = (UFunction*) UObject::GObjObjects()->Data[ 37534 ];
 
 	UGFxMoviePlayer_execAddFocusIgnoreKey_Parms AddFocusIgnoreKey_Parms;
 
@@ -1130,7 +1130,7 @@ void UGFxMoviePlayer::ClearCaptureKeys ( )
 	static UFunction* pFnClearCaptureKeys = NULL;
 
 	if ( ! pFnClearCaptureKeys )
-		pFnClearCaptureKeys = (UFunction*) UObject::GObjObjects()->Data[ 37504 ];
+		pFnClearCaptureKeys = (UFunction*) UObject::GObjObjects()->Data[ 37535 ];
 
 	UGFxMoviePlayer_execClearCaptureKeys_Parms ClearCaptureKeys_Parms;
 
@@ -1150,7 +1150,7 @@ void UGFxMoviePlayer::AddCaptureKey ( )
 	static UFunction* pFnAddCaptureKey = NULL;
 
 	if ( ! pFnAddCaptureKey )
-		pFnAddCaptureKey = (UFunction*) UObject::GObjObjects()->Data[ 37506 ];
+		pFnAddCaptureKey = (UFunction*) UObject::GObjObjects()->Data[ 37537 ];
 
 	UGFxMoviePlayer_execAddCaptureKey_Parms AddCaptureKey_Parms;
 
@@ -1170,7 +1170,7 @@ void UGFxMoviePlayer::SetMovieCanReceiveInput ( )
 	static UFunction* pFnSetMovieCanReceiveInput = NULL;
 
 	if ( ! pFnSetMovieCanReceiveInput )
-		pFnSetMovieCanReceiveInput = (UFunction*) UObject::GObjObjects()->Data[ 37507 ];
+		pFnSetMovieCanReceiveInput = (UFunction*) UObject::GObjObjects()->Data[ 37538 ];
 
 	UGFxMoviePlayer_execSetMovieCanReceiveInput_Parms SetMovieCanReceiveInput_Parms;
 
@@ -1190,7 +1190,7 @@ void UGFxMoviePlayer::SetMovieCanReceiveFocus ( )
 	static UFunction* pFnSetMovieCanReceiveFocus = NULL;
 
 	if ( ! pFnSetMovieCanReceiveFocus )
-		pFnSetMovieCanReceiveFocus = (UFunction*) UObject::GObjObjects()->Data[ 37509 ];
+		pFnSetMovieCanReceiveFocus = (UFunction*) UObject::GObjObjects()->Data[ 37540 ];
 
 	UGFxMoviePlayer_execSetMovieCanReceiveFocus_Parms SetMovieCanReceiveFocus_Parms;
 
@@ -1210,7 +1210,7 @@ void UGFxMoviePlayer::SetPerspective3D ( )
 	static UFunction* pFnSetPerspective3D = NULL;
 
 	if ( ! pFnSetPerspective3D )
-		pFnSetPerspective3D = (UFunction*) UObject::GObjObjects()->Data[ 37511 ];
+		pFnSetPerspective3D = (UFunction*) UObject::GObjObjects()->Data[ 37542 ];
 
 	UGFxMoviePlayer_execSetPerspective3D_Parms SetPerspective3D_Parms;
 
@@ -1230,7 +1230,7 @@ void UGFxMoviePlayer::SetView3D ( )
 	static UFunction* pFnSetView3D = NULL;
 
 	if ( ! pFnSetView3D )
-		pFnSetView3D = (UFunction*) UObject::GObjObjects()->Data[ 37513 ];
+		pFnSetView3D = (UFunction*) UObject::GObjObjects()->Data[ 37544 ];
 
 	UGFxMoviePlayer_execSetView3D_Parms SetView3D_Parms;
 
@@ -1250,7 +1250,7 @@ void UGFxMoviePlayer::GetVisibleFrameRect ( )
 	static UFunction* pFnGetVisibleFrameRect = NULL;
 
 	if ( ! pFnGetVisibleFrameRect )
-		pFnGetVisibleFrameRect = (UFunction*) UObject::GObjObjects()->Data[ 37515 ];
+		pFnGetVisibleFrameRect = (UFunction*) UObject::GObjObjects()->Data[ 37546 ];
 
 	UGFxMoviePlayer_execGetVisibleFrameRect_Parms GetVisibleFrameRect_Parms;
 
@@ -1270,7 +1270,7 @@ void UGFxMoviePlayer::SetAlignment ( )
 	static UFunction* pFnSetAlignment = NULL;
 
 	if ( ! pFnSetAlignment )
-		pFnSetAlignment = (UFunction*) UObject::GObjObjects()->Data[ 37517 ];
+		pFnSetAlignment = (UFunction*) UObject::GObjObjects()->Data[ 37548 ];
 
 	UGFxMoviePlayer_execSetAlignment_Parms SetAlignment_Parms;
 
@@ -1290,7 +1290,7 @@ void UGFxMoviePlayer::SetViewScaleMode ( )
 	static UFunction* pFnSetViewScaleMode = NULL;
 
 	if ( ! pFnSetViewScaleMode )
-		pFnSetViewScaleMode = (UFunction*) UObject::GObjObjects()->Data[ 37522 ];
+		pFnSetViewScaleMode = (UFunction*) UObject::GObjObjects()->Data[ 37553 ];
 
 	UGFxMoviePlayer_execSetViewScaleMode_Parms SetViewScaleMode_Parms;
 
@@ -1310,7 +1310,7 @@ void UGFxMoviePlayer::SetViewport ( )
 	static UFunction* pFnSetViewport = NULL;
 
 	if ( ! pFnSetViewport )
-		pFnSetViewport = (UFunction*) UObject::GObjObjects()->Data[ 37526 ];
+		pFnSetViewport = (UFunction*) UObject::GObjObjects()->Data[ 37557 ];
 
 	UGFxMoviePlayer_execSetViewport_Parms SetViewport_Parms;
 
@@ -1330,7 +1330,7 @@ void UGFxMoviePlayer::IsViewportInFocus ( )
 	static UFunction* pFnIsViewportInFocus = NULL;
 
 	if ( ! pFnIsViewportInFocus )
-		pFnIsViewportInFocus = (UFunction*) UObject::GObjObjects()->Data[ 37528 ];
+		pFnIsViewportInFocus = (UFunction*) UObject::GObjObjects()->Data[ 37559 ];
 
 	UGFxMoviePlayer_execIsViewportInFocus_Parms IsViewportInFocus_Parms;
 
@@ -1350,7 +1350,7 @@ void UGFxMoviePlayer::GetGameViewportClient ( )
 	static UFunction* pFnGetGameViewportClient = NULL;
 
 	if ( ! pFnGetGameViewportClient )
-		pFnGetGameViewportClient = (UFunction*) UObject::GObjObjects()->Data[ 37533 ];
+		pFnGetGameViewportClient = (UFunction*) UObject::GObjObjects()->Data[ 37564 ];
 
 	UGFxMoviePlayer_execGetGameViewportClient_Parms GetGameViewportClient_Parms;
 
@@ -1370,7 +1370,7 @@ void UGFxMoviePlayer::SetPriority ( )
 	static UFunction* pFnSetPriority = NULL;
 
 	if ( ! pFnSetPriority )
-		pFnSetPriority = (UFunction*) UObject::GObjObjects()->Data[ 37535 ];
+		pFnSetPriority = (UFunction*) UObject::GObjObjects()->Data[ 37566 ];
 
 	UGFxMoviePlayer_execSetPriority_Parms SetPriority_Parms;
 
@@ -1390,7 +1390,7 @@ void UGFxMoviePlayer::SetExternalTexture ( )
 	static UFunction* pFnSetExternalTexture = NULL;
 
 	if ( ! pFnSetExternalTexture )
-		pFnSetExternalTexture = (UFunction*) UObject::GObjObjects()->Data[ 37537 ];
+		pFnSetExternalTexture = (UFunction*) UObject::GObjObjects()->Data[ 37568 ];
 
 	UGFxMoviePlayer_execSetExternalTexture_Parms SetExternalTexture_Parms;
 
@@ -1410,7 +1410,7 @@ void UGFxMoviePlayer::SetExternalInterface ( )
 	static UFunction* pFnSetExternalInterface = NULL;
 
 	if ( ! pFnSetExternalInterface )
-		pFnSetExternalInterface = (UFunction*) UObject::GObjObjects()->Data[ 37539 ];
+		pFnSetExternalInterface = (UFunction*) UObject::GObjObjects()->Data[ 37570 ];
 
 	UGFxMoviePlayer_execSetExternalInterface_Parms SetExternalInterface_Parms;
 
@@ -1426,7 +1426,7 @@ void UGFxMoviePlayer::SetTimingMode ( )
 	static UFunction* pFnSetTimingMode = NULL;
 
 	if ( ! pFnSetTimingMode )
-		pFnSetTimingMode = (UFunction*) UObject::GObjObjects()->Data[ 37544 ];
+		pFnSetTimingMode = (UFunction*) UObject::GObjObjects()->Data[ 37575 ];
 
 	UGFxMoviePlayer_execSetTimingMode_Parms SetTimingMode_Parms;
 
@@ -1446,7 +1446,7 @@ void UGFxMoviePlayer::SetMovieInfo ( )
 	static UFunction* pFnSetMovieInfo = NULL;
 
 	if ( ! pFnSetMovieInfo )
-		pFnSetMovieInfo = (UFunction*) UObject::GObjObjects()->Data[ 37547 ];
+		pFnSetMovieInfo = (UFunction*) UObject::GObjObjects()->Data[ 37578 ];
 
 	UGFxMoviePlayer_execSetMovieInfo_Parms SetMovieInfo_Parms;
 
@@ -1462,7 +1462,7 @@ void UGFxMoviePlayer::eventConditionalClearPause ( )
 	static UFunction* pFnConditionalClearPause = NULL;
 
 	if ( ! pFnConditionalClearPause )
-		pFnConditionalClearPause = (UFunction*) UObject::GObjObjects()->Data[ 37550 ];
+		pFnConditionalClearPause = (UFunction*) UObject::GObjObjects()->Data[ 37581 ];
 
 	UGFxMoviePlayer_eventConditionalClearPause_Parms ConditionalClearPause_Parms;
 
@@ -1478,7 +1478,7 @@ void UGFxMoviePlayer::eventOnCleanup ( )
 	static UFunction* pFnOnCleanup = NULL;
 
 	if ( ! pFnOnCleanup )
-		pFnOnCleanup = (UFunction*) UObject::GObjObjects()->Data[ 37552 ];
+		pFnOnCleanup = (UFunction*) UObject::GObjObjects()->Data[ 37583 ];
 
 	UGFxMoviePlayer_eventOnCleanup_Parms OnCleanup_Parms;
 
@@ -1494,7 +1494,7 @@ void UGFxMoviePlayer::eventOnClose ( )
 	static UFunction* pFnOnClose = NULL;
 
 	if ( ! pFnOnClose )
-		pFnOnClose = (UFunction*) UObject::GObjObjects()->Data[ 37555 ];
+		pFnOnClose = (UFunction*) UObject::GObjObjects()->Data[ 37586 ];
 
 	UGFxMoviePlayer_eventOnClose_Parms OnClose_Parms;
 
@@ -1510,7 +1510,7 @@ void UGFxMoviePlayer::Close ( )
 	static UFunction* pFnClose = NULL;
 
 	if ( ! pFnClose )
-		pFnClose = (UFunction*) UObject::GObjObjects()->Data[ 37556 ];
+		pFnClose = (UFunction*) UObject::GObjObjects()->Data[ 37587 ];
 
 	UGFxMoviePlayer_execClose_Parms Close_Parms;
 
@@ -1530,7 +1530,7 @@ void UGFxMoviePlayer::SetPause ( )
 	static UFunction* pFnSetPause = NULL;
 
 	if ( ! pFnSetPause )
-		pFnSetPause = (UFunction*) UObject::GObjObjects()->Data[ 37557 ];
+		pFnSetPause = (UFunction*) UObject::GObjObjects()->Data[ 37588 ];
 
 	UGFxMoviePlayer_execSetPause_Parms SetPause_Parms;
 
@@ -1550,7 +1550,7 @@ void UGFxMoviePlayer::RefreshViewportFlags ( )
 	static UFunction* pFnRefreshViewportFlags = NULL;
 
 	if ( ! pFnRefreshViewportFlags )
-		pFnRefreshViewportFlags = (UFunction*) UObject::GObjObjects()->Data[ 37559 ];
+		pFnRefreshViewportFlags = (UFunction*) UObject::GObjObjects()->Data[ 37590 ];
 
 	UGFxMoviePlayer_execRefreshViewportFlags_Parms RefreshViewportFlags_Parms;
 
@@ -1570,7 +1570,7 @@ void UGFxMoviePlayer::OnPostAdvance ( )
 	static UFunction* pFnOnPostAdvance = NULL;
 
 	if ( ! pFnOnPostAdvance )
-		pFnOnPostAdvance = (UFunction*) UObject::GObjObjects()->Data[ 37561 ];
+		pFnOnPostAdvance = (UFunction*) UObject::GObjObjects()->Data[ 37592 ];
 
 	UGFxMoviePlayer_execOnPostAdvance_Parms OnPostAdvance_Parms;
 
@@ -1586,7 +1586,7 @@ void UGFxMoviePlayer::PostAdvance ( )
 	static UFunction* pFnPostAdvance = NULL;
 
 	if ( ! pFnPostAdvance )
-		pFnPostAdvance = (UFunction*) UObject::GObjObjects()->Data[ 37562 ];
+		pFnPostAdvance = (UFunction*) UObject::GObjObjects()->Data[ 37593 ];
 
 	UGFxMoviePlayer_execPostAdvance_Parms PostAdvance_Parms;
 
@@ -1606,7 +1606,7 @@ void UGFxMoviePlayer::Advance ( )
 	static UFunction* pFnAdvance = NULL;
 
 	if ( ! pFnAdvance )
-		pFnAdvance = (UFunction*) UObject::GObjObjects()->Data[ 37353 ];
+		pFnAdvance = (UFunction*) UObject::GObjObjects()->Data[ 37384 ];
 
 	UGFxMoviePlayer_execAdvance_Parms Advance_Parms;
 
@@ -1626,7 +1626,7 @@ void UGFxMoviePlayer::eventStart ( )
 	static UFunction* pFnStart = NULL;
 
 	if ( ! pFnStart )
-		pFnStart = (UFunction*) UObject::GObjObjects()->Data[ 37565 ];
+		pFnStart = (UFunction*) UObject::GObjObjects()->Data[ 37596 ];
 
 	UGFxMoviePlayer_eventStart_Parms Start_Parms;
 
@@ -1646,7 +1646,7 @@ void UGFxObject::eventWidgetUnloaded ( )
 	static UFunction* pFnWidgetUnloaded = NULL;
 
 	if ( ! pFnWidgetUnloaded )
-		pFnWidgetUnloaded = (UFunction*) UObject::GObjObjects()->Data[ 37914 ];
+		pFnWidgetUnloaded = (UFunction*) UObject::GObjObjects()->Data[ 37945 ];
 
 	UGFxObject_eventWidgetUnloaded_Parms WidgetUnloaded_Parms;
 
@@ -1662,7 +1662,7 @@ void UGFxObject::eventWidgetInitialized ( )
 	static UFunction* pFnWidgetInitialized = NULL;
 
 	if ( ! pFnWidgetInitialized )
-		pFnWidgetInitialized = (UFunction*) UObject::GObjObjects()->Data[ 37909 ];
+		pFnWidgetInitialized = (UFunction*) UObject::GObjObjects()->Data[ 37940 ];
 
 	UGFxObject_eventWidgetInitialized_Parms WidgetInitialized_Parms;
 
@@ -1678,7 +1678,7 @@ void UGFxObject::AttachMovie ( )
 	static UFunction* pFnAttachMovie = NULL;
 
 	if ( ! pFnAttachMovie )
-		pFnAttachMovie = (UFunction*) UObject::GObjObjects()->Data[ 37903 ];
+		pFnAttachMovie = (UFunction*) UObject::GObjObjects()->Data[ 37934 ];
 
 	UGFxObject_execAttachMovie_Parms AttachMovie_Parms;
 
@@ -1698,7 +1698,7 @@ void UGFxObject::CreateEmptyMovieClip ( )
 	static UFunction* pFnCreateEmptyMovieClip = NULL;
 
 	if ( ! pFnCreateEmptyMovieClip )
-		pFnCreateEmptyMovieClip = (UFunction*) UObject::GObjObjects()->Data[ 37898 ];
+		pFnCreateEmptyMovieClip = (UFunction*) UObject::GObjObjects()->Data[ 37929 ];
 
 	UGFxObject_execCreateEmptyMovieClip_Parms CreateEmptyMovieClip_Parms;
 
@@ -1718,7 +1718,7 @@ void UGFxObject::GotoAndStopI ( )
 	static UFunction* pFnGotoAndStopI = NULL;
 
 	if ( ! pFnGotoAndStopI )
-		pFnGotoAndStopI = (UFunction*) UObject::GObjObjects()->Data[ 37896 ];
+		pFnGotoAndStopI = (UFunction*) UObject::GObjObjects()->Data[ 37927 ];
 
 	UGFxObject_execGotoAndStopI_Parms GotoAndStopI_Parms;
 
@@ -1738,7 +1738,7 @@ void UGFxObject::GotoAndStop ( )
 	static UFunction* pFnGotoAndStop = NULL;
 
 	if ( ! pFnGotoAndStop )
-		pFnGotoAndStop = (UFunction*) UObject::GObjObjects()->Data[ 37894 ];
+		pFnGotoAndStop = (UFunction*) UObject::GObjObjects()->Data[ 37925 ];
 
 	UGFxObject_execGotoAndStop_Parms GotoAndStop_Parms;
 
@@ -1758,7 +1758,7 @@ void UGFxObject::GotoAndPlayI ( )
 	static UFunction* pFnGotoAndPlayI = NULL;
 
 	if ( ! pFnGotoAndPlayI )
-		pFnGotoAndPlayI = (UFunction*) UObject::GObjObjects()->Data[ 37892 ];
+		pFnGotoAndPlayI = (UFunction*) UObject::GObjObjects()->Data[ 37923 ];
 
 	UGFxObject_execGotoAndPlayI_Parms GotoAndPlayI_Parms;
 
@@ -1778,7 +1778,7 @@ void UGFxObject::GotoAndPlay ( )
 	static UFunction* pFnGotoAndPlay = NULL;
 
 	if ( ! pFnGotoAndPlay )
-		pFnGotoAndPlay = (UFunction*) UObject::GObjObjects()->Data[ 37890 ];
+		pFnGotoAndPlay = (UFunction*) UObject::GObjObjects()->Data[ 37921 ];
 
 	UGFxObject_execGotoAndPlay_Parms GotoAndPlay_Parms;
 
@@ -1798,7 +1798,7 @@ void UGFxObject::ActionScriptArray ( )
 	static UFunction* pFnActionScriptArray = NULL;
 
 	if ( ! pFnActionScriptArray )
-		pFnActionScriptArray = (UFunction*) UObject::GObjObjects()->Data[ 37886 ];
+		pFnActionScriptArray = (UFunction*) UObject::GObjObjects()->Data[ 37917 ];
 
 	UGFxObject_execActionScriptArray_Parms ActionScriptArray_Parms;
 
@@ -1818,7 +1818,7 @@ void UGFxObject::ActionScriptObject ( )
 	static UFunction* pFnActionScriptObject = NULL;
 
 	if ( ! pFnActionScriptObject )
-		pFnActionScriptObject = (UFunction*) UObject::GObjObjects()->Data[ 37883 ];
+		pFnActionScriptObject = (UFunction*) UObject::GObjObjects()->Data[ 37914 ];
 
 	UGFxObject_execActionScriptObject_Parms ActionScriptObject_Parms;
 
@@ -1838,7 +1838,7 @@ void UGFxObject::ActionScriptString ( )
 	static UFunction* pFnActionScriptString = NULL;
 
 	if ( ! pFnActionScriptString )
-		pFnActionScriptString = (UFunction*) UObject::GObjObjects()->Data[ 37880 ];
+		pFnActionScriptString = (UFunction*) UObject::GObjObjects()->Data[ 37911 ];
 
 	UGFxObject_execActionScriptString_Parms ActionScriptString_Parms;
 
@@ -1858,7 +1858,7 @@ void UGFxObject::ActionScriptFloat ( )
 	static UFunction* pFnActionScriptFloat = NULL;
 
 	if ( ! pFnActionScriptFloat )
-		pFnActionScriptFloat = (UFunction*) UObject::GObjObjects()->Data[ 37877 ];
+		pFnActionScriptFloat = (UFunction*) UObject::GObjObjects()->Data[ 37908 ];
 
 	UGFxObject_execActionScriptFloat_Parms ActionScriptFloat_Parms;
 
@@ -1878,7 +1878,7 @@ void UGFxObject::ActionScriptInt ( )
 	static UFunction* pFnActionScriptInt = NULL;
 
 	if ( ! pFnActionScriptInt )
-		pFnActionScriptInt = (UFunction*) UObject::GObjObjects()->Data[ 37874 ];
+		pFnActionScriptInt = (UFunction*) UObject::GObjObjects()->Data[ 37905 ];
 
 	UGFxObject_execActionScriptInt_Parms ActionScriptInt_Parms;
 
@@ -1898,7 +1898,7 @@ void UGFxObject::ActionScriptVoid ( )
 	static UFunction* pFnActionScriptVoid = NULL;
 
 	if ( ! pFnActionScriptVoid )
-		pFnActionScriptVoid = (UFunction*) UObject::GObjObjects()->Data[ 37872 ];
+		pFnActionScriptVoid = (UFunction*) UObject::GObjObjects()->Data[ 37903 ];
 
 	UGFxObject_execActionScriptVoid_Parms ActionScriptVoid_Parms;
 
@@ -1918,7 +1918,7 @@ void UGFxObject::Invoke ( )
 	static UFunction* pFnInvoke = NULL;
 
 	if ( ! pFnInvoke )
-		pFnInvoke = (UFunction*) UObject::GObjObjects()->Data[ 37867 ];
+		pFnInvoke = (UFunction*) UObject::GObjObjects()->Data[ 37898 ];
 
 	UGFxObject_execInvoke_Parms Invoke_Parms;
 
@@ -1938,7 +1938,7 @@ void UGFxObject::ActionScriptSetFunctionOn ( )
 	static UFunction* pFnActionScriptSetFunctionOn = NULL;
 
 	if ( ! pFnActionScriptSetFunctionOn )
-		pFnActionScriptSetFunctionOn = (UFunction*) UObject::GObjObjects()->Data[ 37864 ];
+		pFnActionScriptSetFunctionOn = (UFunction*) UObject::GObjObjects()->Data[ 37895 ];
 
 	UGFxObject_execActionScriptSetFunctionOn_Parms ActionScriptSetFunctionOn_Parms;
 
@@ -1958,7 +1958,7 @@ void UGFxObject::ActionScriptSetFunction ( )
 	static UFunction* pFnActionScriptSetFunction = NULL;
 
 	if ( ! pFnActionScriptSetFunction )
-		pFnActionScriptSetFunction = (UFunction*) UObject::GObjObjects()->Data[ 37862 ];
+		pFnActionScriptSetFunction = (UFunction*) UObject::GObjObjects()->Data[ 37893 ];
 
 	UGFxObject_execActionScriptSetFunction_Parms ActionScriptSetFunction_Parms;
 
@@ -1978,7 +1978,7 @@ void UGFxObject::SetElementMemberString ( )
 	static UFunction* pFnSetElementMemberString = NULL;
 
 	if ( ! pFnSetElementMemberString )
-		pFnSetElementMemberString = (UFunction*) UObject::GObjObjects()->Data[ 37858 ];
+		pFnSetElementMemberString = (UFunction*) UObject::GObjObjects()->Data[ 37889 ];
 
 	UGFxObject_execSetElementMemberString_Parms SetElementMemberString_Parms;
 
@@ -1998,7 +1998,7 @@ void UGFxObject::SetElementMemberInt ( )
 	static UFunction* pFnSetElementMemberInt = NULL;
 
 	if ( ! pFnSetElementMemberInt )
-		pFnSetElementMemberInt = (UFunction*) UObject::GObjObjects()->Data[ 37854 ];
+		pFnSetElementMemberInt = (UFunction*) UObject::GObjObjects()->Data[ 37885 ];
 
 	UGFxObject_execSetElementMemberInt_Parms SetElementMemberInt_Parms;
 
@@ -2018,7 +2018,7 @@ void UGFxObject::SetElementMemberFloat ( )
 	static UFunction* pFnSetElementMemberFloat = NULL;
 
 	if ( ! pFnSetElementMemberFloat )
-		pFnSetElementMemberFloat = (UFunction*) UObject::GObjObjects()->Data[ 37850 ];
+		pFnSetElementMemberFloat = (UFunction*) UObject::GObjObjects()->Data[ 37881 ];
 
 	UGFxObject_execSetElementMemberFloat_Parms SetElementMemberFloat_Parms;
 
@@ -2038,7 +2038,7 @@ void UGFxObject::SetElementMemberBool ( )
 	static UFunction* pFnSetElementMemberBool = NULL;
 
 	if ( ! pFnSetElementMemberBool )
-		pFnSetElementMemberBool = (UFunction*) UObject::GObjObjects()->Data[ 37846 ];
+		pFnSetElementMemberBool = (UFunction*) UObject::GObjObjects()->Data[ 37877 ];
 
 	UGFxObject_execSetElementMemberBool_Parms SetElementMemberBool_Parms;
 
@@ -2058,7 +2058,7 @@ void UGFxObject::SetElementMemberObject ( )
 	static UFunction* pFnSetElementMemberObject = NULL;
 
 	if ( ! pFnSetElementMemberObject )
-		pFnSetElementMemberObject = (UFunction*) UObject::GObjObjects()->Data[ 37842 ];
+		pFnSetElementMemberObject = (UFunction*) UObject::GObjObjects()->Data[ 37873 ];
 
 	UGFxObject_execSetElementMemberObject_Parms SetElementMemberObject_Parms;
 
@@ -2078,7 +2078,7 @@ void UGFxObject::SetElementMember ( )
 	static UFunction* pFnSetElementMember = NULL;
 
 	if ( ! pFnSetElementMember )
-		pFnSetElementMember = (UFunction*) UObject::GObjObjects()->Data[ 37838 ];
+		pFnSetElementMember = (UFunction*) UObject::GObjObjects()->Data[ 37869 ];
 
 	UGFxObject_execSetElementMember_Parms SetElementMember_Parms;
 
@@ -2098,7 +2098,7 @@ void UGFxObject::GetElementMemberString ( )
 	static UFunction* pFnGetElementMemberString = NULL;
 
 	if ( ! pFnGetElementMemberString )
-		pFnGetElementMemberString = (UFunction*) UObject::GObjObjects()->Data[ 37834 ];
+		pFnGetElementMemberString = (UFunction*) UObject::GObjObjects()->Data[ 37865 ];
 
 	UGFxObject_execGetElementMemberString_Parms GetElementMemberString_Parms;
 
@@ -2118,7 +2118,7 @@ void UGFxObject::GetElementMemberInt ( )
 	static UFunction* pFnGetElementMemberInt = NULL;
 
 	if ( ! pFnGetElementMemberInt )
-		pFnGetElementMemberInt = (UFunction*) UObject::GObjObjects()->Data[ 37830 ];
+		pFnGetElementMemberInt = (UFunction*) UObject::GObjObjects()->Data[ 37861 ];
 
 	UGFxObject_execGetElementMemberInt_Parms GetElementMemberInt_Parms;
 
@@ -2138,7 +2138,7 @@ void UGFxObject::GetElementMemberFloat ( )
 	static UFunction* pFnGetElementMemberFloat = NULL;
 
 	if ( ! pFnGetElementMemberFloat )
-		pFnGetElementMemberFloat = (UFunction*) UObject::GObjObjects()->Data[ 37826 ];
+		pFnGetElementMemberFloat = (UFunction*) UObject::GObjObjects()->Data[ 37857 ];
 
 	UGFxObject_execGetElementMemberFloat_Parms GetElementMemberFloat_Parms;
 
@@ -2158,7 +2158,7 @@ void UGFxObject::GetElementMemberBool ( )
 	static UFunction* pFnGetElementMemberBool = NULL;
 
 	if ( ! pFnGetElementMemberBool )
-		pFnGetElementMemberBool = (UFunction*) UObject::GObjObjects()->Data[ 37822 ];
+		pFnGetElementMemberBool = (UFunction*) UObject::GObjObjects()->Data[ 37853 ];
 
 	UGFxObject_execGetElementMemberBool_Parms GetElementMemberBool_Parms;
 
@@ -2178,7 +2178,7 @@ void UGFxObject::GetElementMemberObject ( )
 	static UFunction* pFnGetElementMemberObject = NULL;
 
 	if ( ! pFnGetElementMemberObject )
-		pFnGetElementMemberObject = (UFunction*) UObject::GObjObjects()->Data[ 37817 ];
+		pFnGetElementMemberObject = (UFunction*) UObject::GObjObjects()->Data[ 37848 ];
 
 	UGFxObject_execGetElementMemberObject_Parms GetElementMemberObject_Parms;
 
@@ -2198,7 +2198,7 @@ void UGFxObject::GetElementMember ( )
 	static UFunction* pFnGetElementMember = NULL;
 
 	if ( ! pFnGetElementMember )
-		pFnGetElementMember = (UFunction*) UObject::GObjObjects()->Data[ 37813 ];
+		pFnGetElementMember = (UFunction*) UObject::GObjObjects()->Data[ 37844 ];
 
 	UGFxObject_execGetElementMember_Parms GetElementMember_Parms;
 
@@ -2218,7 +2218,7 @@ void UGFxObject::SetElementColorTransform ( )
 	static UFunction* pFnSetElementColorTransform = NULL;
 
 	if ( ! pFnSetElementColorTransform )
-		pFnSetElementColorTransform = (UFunction*) UObject::GObjObjects()->Data[ 37810 ];
+		pFnSetElementColorTransform = (UFunction*) UObject::GObjObjects()->Data[ 37841 ];
 
 	UGFxObject_execSetElementColorTransform_Parms SetElementColorTransform_Parms;
 
@@ -2238,7 +2238,7 @@ void UGFxObject::SetElementPosition ( )
 	static UFunction* pFnSetElementPosition = NULL;
 
 	if ( ! pFnSetElementPosition )
-		pFnSetElementPosition = (UFunction*) UObject::GObjObjects()->Data[ 37806 ];
+		pFnSetElementPosition = (UFunction*) UObject::GObjObjects()->Data[ 37837 ];
 
 	UGFxObject_execSetElementPosition_Parms SetElementPosition_Parms;
 
@@ -2258,7 +2258,7 @@ void UGFxObject::SetElementVisible ( )
 	static UFunction* pFnSetElementVisible = NULL;
 
 	if ( ! pFnSetElementVisible )
-		pFnSetElementVisible = (UFunction*) UObject::GObjObjects()->Data[ 37803 ];
+		pFnSetElementVisible = (UFunction*) UObject::GObjObjects()->Data[ 37834 ];
 
 	UGFxObject_execSetElementVisible_Parms SetElementVisible_Parms;
 
@@ -2278,7 +2278,7 @@ void UGFxObject::SetElementDisplayMatrix ( )
 	static UFunction* pFnSetElementDisplayMatrix = NULL;
 
 	if ( ! pFnSetElementDisplayMatrix )
-		pFnSetElementDisplayMatrix = (UFunction*) UObject::GObjObjects()->Data[ 37800 ];
+		pFnSetElementDisplayMatrix = (UFunction*) UObject::GObjObjects()->Data[ 37831 ];
 
 	UGFxObject_execSetElementDisplayMatrix_Parms SetElementDisplayMatrix_Parms;
 
@@ -2298,7 +2298,7 @@ void UGFxObject::SetElementDisplayInfo ( )
 	static UFunction* pFnSetElementDisplayInfo = NULL;
 
 	if ( ! pFnSetElementDisplayInfo )
-		pFnSetElementDisplayInfo = (UFunction*) UObject::GObjObjects()->Data[ 37797 ];
+		pFnSetElementDisplayInfo = (UFunction*) UObject::GObjObjects()->Data[ 37828 ];
 
 	UGFxObject_execSetElementDisplayInfo_Parms SetElementDisplayInfo_Parms;
 
@@ -2318,7 +2318,7 @@ void UGFxObject::GetElementDisplayMatrix ( )
 	static UFunction* pFnGetElementDisplayMatrix = NULL;
 
 	if ( ! pFnGetElementDisplayMatrix )
-		pFnGetElementDisplayMatrix = (UFunction*) UObject::GObjObjects()->Data[ 37794 ];
+		pFnGetElementDisplayMatrix = (UFunction*) UObject::GObjObjects()->Data[ 37825 ];
 
 	UGFxObject_execGetElementDisplayMatrix_Parms GetElementDisplayMatrix_Parms;
 
@@ -2338,7 +2338,7 @@ void UGFxObject::GetElementDisplayInfo ( )
 	static UFunction* pFnGetElementDisplayInfo = NULL;
 
 	if ( ! pFnGetElementDisplayInfo )
-		pFnGetElementDisplayInfo = (UFunction*) UObject::GObjObjects()->Data[ 37791 ];
+		pFnGetElementDisplayInfo = (UFunction*) UObject::GObjObjects()->Data[ 37822 ];
 
 	UGFxObject_execGetElementDisplayInfo_Parms GetElementDisplayInfo_Parms;
 
@@ -2358,7 +2358,7 @@ void UGFxObject::SetElementString ( )
 	static UFunction* pFnSetElementString = NULL;
 
 	if ( ! pFnSetElementString )
-		pFnSetElementString = (UFunction*) UObject::GObjObjects()->Data[ 37788 ];
+		pFnSetElementString = (UFunction*) UObject::GObjObjects()->Data[ 37819 ];
 
 	UGFxObject_execSetElementString_Parms SetElementString_Parms;
 
@@ -2378,7 +2378,7 @@ void UGFxObject::SetElementInt ( )
 	static UFunction* pFnSetElementInt = NULL;
 
 	if ( ! pFnSetElementInt )
-		pFnSetElementInt = (UFunction*) UObject::GObjObjects()->Data[ 37785 ];
+		pFnSetElementInt = (UFunction*) UObject::GObjObjects()->Data[ 37816 ];
 
 	UGFxObject_execSetElementInt_Parms SetElementInt_Parms;
 
@@ -2398,7 +2398,7 @@ void UGFxObject::SetElementFloat ( )
 	static UFunction* pFnSetElementFloat = NULL;
 
 	if ( ! pFnSetElementFloat )
-		pFnSetElementFloat = (UFunction*) UObject::GObjObjects()->Data[ 37782 ];
+		pFnSetElementFloat = (UFunction*) UObject::GObjObjects()->Data[ 37813 ];
 
 	UGFxObject_execSetElementFloat_Parms SetElementFloat_Parms;
 
@@ -2418,7 +2418,7 @@ void UGFxObject::SetElementBool ( )
 	static UFunction* pFnSetElementBool = NULL;
 
 	if ( ! pFnSetElementBool )
-		pFnSetElementBool = (UFunction*) UObject::GObjObjects()->Data[ 37779 ];
+		pFnSetElementBool = (UFunction*) UObject::GObjObjects()->Data[ 37810 ];
 
 	UGFxObject_execSetElementBool_Parms SetElementBool_Parms;
 
@@ -2438,7 +2438,7 @@ void UGFxObject::SetElementObject ( )
 	static UFunction* pFnSetElementObject = NULL;
 
 	if ( ! pFnSetElementObject )
-		pFnSetElementObject = (UFunction*) UObject::GObjObjects()->Data[ 37776 ];
+		pFnSetElementObject = (UFunction*) UObject::GObjObjects()->Data[ 37807 ];
 
 	UGFxObject_execSetElementObject_Parms SetElementObject_Parms;
 
@@ -2458,7 +2458,7 @@ void UGFxObject::SetElement ( )
 	static UFunction* pFnSetElement = NULL;
 
 	if ( ! pFnSetElement )
-		pFnSetElement = (UFunction*) UObject::GObjObjects()->Data[ 37773 ];
+		pFnSetElement = (UFunction*) UObject::GObjObjects()->Data[ 37804 ];
 
 	UGFxObject_execSetElement_Parms SetElement_Parms;
 
@@ -2478,7 +2478,7 @@ void UGFxObject::GetElementString ( )
 	static UFunction* pFnGetElementString = NULL;
 
 	if ( ! pFnGetElementString )
-		pFnGetElementString = (UFunction*) UObject::GObjObjects()->Data[ 37770 ];
+		pFnGetElementString = (UFunction*) UObject::GObjObjects()->Data[ 37801 ];
 
 	UGFxObject_execGetElementString_Parms GetElementString_Parms;
 
@@ -2498,7 +2498,7 @@ void UGFxObject::GetElementInt ( )
 	static UFunction* pFnGetElementInt = NULL;
 
 	if ( ! pFnGetElementInt )
-		pFnGetElementInt = (UFunction*) UObject::GObjObjects()->Data[ 37767 ];
+		pFnGetElementInt = (UFunction*) UObject::GObjObjects()->Data[ 37798 ];
 
 	UGFxObject_execGetElementInt_Parms GetElementInt_Parms;
 
@@ -2518,7 +2518,7 @@ void UGFxObject::GetElementFloat ( )
 	static UFunction* pFnGetElementFloat = NULL;
 
 	if ( ! pFnGetElementFloat )
-		pFnGetElementFloat = (UFunction*) UObject::GObjObjects()->Data[ 37764 ];
+		pFnGetElementFloat = (UFunction*) UObject::GObjObjects()->Data[ 37795 ];
 
 	UGFxObject_execGetElementFloat_Parms GetElementFloat_Parms;
 
@@ -2538,7 +2538,7 @@ void UGFxObject::GetElementBool ( )
 	static UFunction* pFnGetElementBool = NULL;
 
 	if ( ! pFnGetElementBool )
-		pFnGetElementBool = (UFunction*) UObject::GObjObjects()->Data[ 37761 ];
+		pFnGetElementBool = (UFunction*) UObject::GObjObjects()->Data[ 37792 ];
 
 	UGFxObject_execGetElementBool_Parms GetElementBool_Parms;
 
@@ -2558,7 +2558,7 @@ void UGFxObject::GetElementObject ( )
 	static UFunction* pFnGetElementObject = NULL;
 
 	if ( ! pFnGetElementObject )
-		pFnGetElementObject = (UFunction*) UObject::GObjObjects()->Data[ 37757 ];
+		pFnGetElementObject = (UFunction*) UObject::GObjObjects()->Data[ 37788 ];
 
 	UGFxObject_execGetElementObject_Parms GetElementObject_Parms;
 
@@ -2578,7 +2578,7 @@ void UGFxObject::GetElement ( )
 	static UFunction* pFnGetElement = NULL;
 
 	if ( ! pFnGetElement )
-		pFnGetElement = (UFunction*) UObject::GObjObjects()->Data[ 37754 ];
+		pFnGetElement = (UFunction*) UObject::GObjObjects()->Data[ 37785 ];
 
 	UGFxObject_execGetElement_Parms GetElement_Parms;
 
@@ -2598,7 +2598,7 @@ void UGFxObject::SetText ( )
 	static UFunction* pFnSetText = NULL;
 
 	if ( ! pFnSetText )
-		pFnSetText = (UFunction*) UObject::GObjObjects()->Data[ 37751 ];
+		pFnSetText = (UFunction*) UObject::GObjObjects()->Data[ 37782 ];
 
 	UGFxObject_execSetText_Parms SetText_Parms;
 
@@ -2618,7 +2618,7 @@ void UGFxObject::GetText ( )
 	static UFunction* pFnGetText = NULL;
 
 	if ( ! pFnGetText )
-		pFnGetText = (UFunction*) UObject::GObjObjects()->Data[ 37749 ];
+		pFnGetText = (UFunction*) UObject::GObjObjects()->Data[ 37780 ];
 
 	UGFxObject_execGetText_Parms GetText_Parms;
 
@@ -2638,7 +2638,7 @@ void UGFxObject::SetVisible ( )
 	static UFunction* pFnSetVisible = NULL;
 
 	if ( ! pFnSetVisible )
-		pFnSetVisible = (UFunction*) UObject::GObjObjects()->Data[ 37747 ];
+		pFnSetVisible = (UFunction*) UObject::GObjObjects()->Data[ 37778 ];
 
 	UGFxObject_execSetVisible_Parms SetVisible_Parms;
 
@@ -2658,7 +2658,7 @@ void UGFxObject::SetDisplayMatrix3D ( )
 	static UFunction* pFnSetDisplayMatrix3D = NULL;
 
 	if ( ! pFnSetDisplayMatrix3D )
-		pFnSetDisplayMatrix3D = (UFunction*) UObject::GObjObjects()->Data[ 37745 ];
+		pFnSetDisplayMatrix3D = (UFunction*) UObject::GObjObjects()->Data[ 37776 ];
 
 	UGFxObject_execSetDisplayMatrix3D_Parms SetDisplayMatrix3D_Parms;
 
@@ -2678,7 +2678,7 @@ void UGFxObject::SetDisplayMatrix ( )
 	static UFunction* pFnSetDisplayMatrix = NULL;
 
 	if ( ! pFnSetDisplayMatrix )
-		pFnSetDisplayMatrix = (UFunction*) UObject::GObjObjects()->Data[ 37743 ];
+		pFnSetDisplayMatrix = (UFunction*) UObject::GObjObjects()->Data[ 37774 ];
 
 	UGFxObject_execSetDisplayMatrix_Parms SetDisplayMatrix_Parms;
 
@@ -2698,7 +2698,7 @@ void UGFxObject::SetColorTransform ( )
 	static UFunction* pFnSetColorTransform = NULL;
 
 	if ( ! pFnSetColorTransform )
-		pFnSetColorTransform = (UFunction*) UObject::GObjObjects()->Data[ 37741 ];
+		pFnSetColorTransform = (UFunction*) UObject::GObjObjects()->Data[ 37772 ];
 
 	UGFxObject_execSetColorTransform_Parms SetColorTransform_Parms;
 
@@ -2718,7 +2718,7 @@ void UGFxObject::SetPosition ( )
 	static UFunction* pFnSetPosition = NULL;
 
 	if ( ! pFnSetPosition )
-		pFnSetPosition = (UFunction*) UObject::GObjObjects()->Data[ 37738 ];
+		pFnSetPosition = (UFunction*) UObject::GObjObjects()->Data[ 37769 ];
 
 	UGFxObject_execSetPosition_Parms SetPosition_Parms;
 
@@ -2738,7 +2738,7 @@ void UGFxObject::SetDisplayInfo ( )
 	static UFunction* pFnSetDisplayInfo = NULL;
 
 	if ( ! pFnSetDisplayInfo )
-		pFnSetDisplayInfo = (UFunction*) UObject::GObjObjects()->Data[ 37736 ];
+		pFnSetDisplayInfo = (UFunction*) UObject::GObjObjects()->Data[ 37767 ];
 
 	UGFxObject_execSetDisplayInfo_Parms SetDisplayInfo_Parms;
 
@@ -2758,7 +2758,7 @@ void UGFxObject::GetDisplayMatrix3D ( )
 	static UFunction* pFnGetDisplayMatrix3D = NULL;
 
 	if ( ! pFnGetDisplayMatrix3D )
-		pFnGetDisplayMatrix3D = (UFunction*) UObject::GObjObjects()->Data[ 37734 ];
+		pFnGetDisplayMatrix3D = (UFunction*) UObject::GObjObjects()->Data[ 37765 ];
 
 	UGFxObject_execGetDisplayMatrix3D_Parms GetDisplayMatrix3D_Parms;
 
@@ -2778,7 +2778,7 @@ void UGFxObject::GetDisplayMatrix ( )
 	static UFunction* pFnGetDisplayMatrix = NULL;
 
 	if ( ! pFnGetDisplayMatrix )
-		pFnGetDisplayMatrix = (UFunction*) UObject::GObjObjects()->Data[ 37732 ];
+		pFnGetDisplayMatrix = (UFunction*) UObject::GObjObjects()->Data[ 37763 ];
 
 	UGFxObject_execGetDisplayMatrix_Parms GetDisplayMatrix_Parms;
 
@@ -2798,7 +2798,7 @@ void UGFxObject::GetColorTransform ( )
 	static UFunction* pFnGetColorTransform = NULL;
 
 	if ( ! pFnGetColorTransform )
-		pFnGetColorTransform = (UFunction*) UObject::GObjObjects()->Data[ 37730 ];
+		pFnGetColorTransform = (UFunction*) UObject::GObjObjects()->Data[ 37761 ];
 
 	UGFxObject_execGetColorTransform_Parms GetColorTransform_Parms;
 
@@ -2818,7 +2818,7 @@ void UGFxObject::GetPosition ( )
 	static UFunction* pFnGetPosition = NULL;
 
 	if ( ! pFnGetPosition )
-		pFnGetPosition = (UFunction*) UObject::GObjObjects()->Data[ 37726 ];
+		pFnGetPosition = (UFunction*) UObject::GObjObjects()->Data[ 37757 ];
 
 	UGFxObject_execGetPosition_Parms GetPosition_Parms;
 
@@ -2838,7 +2838,7 @@ void UGFxObject::GetDisplayInfo ( )
 	static UFunction* pFnGetDisplayInfo = NULL;
 
 	if ( ! pFnGetDisplayInfo )
-		pFnGetDisplayInfo = (UFunction*) UObject::GObjObjects()->Data[ 37724 ];
+		pFnGetDisplayInfo = (UFunction*) UObject::GObjObjects()->Data[ 37755 ];
 
 	UGFxObject_execGetDisplayInfo_Parms GetDisplayInfo_Parms;
 
@@ -2858,7 +2858,7 @@ void UGFxObject::TranslateString ( )
 	static UFunction* pFnTranslateString = NULL;
 
 	if ( ! pFnTranslateString )
-		pFnTranslateString = (UFunction*) UObject::GObjObjects()->Data[ 37720 ];
+		pFnTranslateString = (UFunction*) UObject::GObjObjects()->Data[ 37751 ];
 
 	UGFxObject_execTranslateString_Parms TranslateString_Parms;
 
@@ -2878,7 +2878,7 @@ void UGFxObject::SetFunction ( )
 	static UFunction* pFnSetFunction = NULL;
 
 	if ( ! pFnSetFunction )
-		pFnSetFunction = (UFunction*) UObject::GObjObjects()->Data[ 37716 ];
+		pFnSetFunction = (UFunction*) UObject::GObjObjects()->Data[ 37747 ];
 
 	UGFxObject_execSetFunction_Parms SetFunction_Parms;
 
@@ -2898,7 +2898,7 @@ void UGFxObject::SetObject ( )
 	static UFunction* pFnSetObject = NULL;
 
 	if ( ! pFnSetObject )
-		pFnSetObject = (UFunction*) UObject::GObjObjects()->Data[ 37713 ];
+		pFnSetObject = (UFunction*) UObject::GObjObjects()->Data[ 37744 ];
 
 	UGFxObject_execSetObject_Parms SetObject_Parms;
 
@@ -2918,7 +2918,7 @@ void UGFxObject::SetString ( )
 	static UFunction* pFnSetString = NULL;
 
 	if ( ! pFnSetString )
-		pFnSetString = (UFunction*) UObject::GObjObjects()->Data[ 37709 ];
+		pFnSetString = (UFunction*) UObject::GObjObjects()->Data[ 37740 ];
 
 	UGFxObject_execSetString_Parms SetString_Parms;
 
@@ -2938,7 +2938,7 @@ void UGFxObject::SetInt ( )
 	static UFunction* pFnSetInt = NULL;
 
 	if ( ! pFnSetInt )
-		pFnSetInt = (UFunction*) UObject::GObjObjects()->Data[ 37706 ];
+		pFnSetInt = (UFunction*) UObject::GObjObjects()->Data[ 37737 ];
 
 	UGFxObject_execSetInt_Parms SetInt_Parms;
 
@@ -2958,7 +2958,7 @@ void UGFxObject::SetFloat ( )
 	static UFunction* pFnSetFloat = NULL;
 
 	if ( ! pFnSetFloat )
-		pFnSetFloat = (UFunction*) UObject::GObjObjects()->Data[ 37703 ];
+		pFnSetFloat = (UFunction*) UObject::GObjObjects()->Data[ 37734 ];
 
 	UGFxObject_execSetFloat_Parms SetFloat_Parms;
 
@@ -2978,7 +2978,7 @@ void UGFxObject::SetBool ( )
 	static UFunction* pFnSetBool = NULL;
 
 	if ( ! pFnSetBool )
-		pFnSetBool = (UFunction*) UObject::GObjObjects()->Data[ 37700 ];
+		pFnSetBool = (UFunction*) UObject::GObjObjects()->Data[ 37731 ];
 
 	UGFxObject_execSetBool_Parms SetBool_Parms;
 
@@ -2998,7 +2998,7 @@ void UGFxObject::Set ( )
 	static UFunction* pFnSet = NULL;
 
 	if ( ! pFnSet )
-		pFnSet = (UFunction*) UObject::GObjObjects()->Data[ 37697 ];
+		pFnSet = (UFunction*) UObject::GObjObjects()->Data[ 37728 ];
 
 	UGFxObject_execSet_Parms Set_Parms;
 
@@ -3018,7 +3018,7 @@ void UGFxObject::GetObject ( )
 	static UFunction* pFnGetObject = NULL;
 
 	if ( ! pFnGetObject )
-		pFnGetObject = (UFunction*) UObject::GObjObjects()->Data[ 37693 ];
+		pFnGetObject = (UFunction*) UObject::GObjObjects()->Data[ 37724 ];
 
 	UGFxObject_execGetObject_Parms GetObject_Parms;
 
@@ -3038,7 +3038,7 @@ void UGFxObject::GetString ( )
 	static UFunction* pFnGetString = NULL;
 
 	if ( ! pFnGetString )
-		pFnGetString = (UFunction*) UObject::GObjObjects()->Data[ 37690 ];
+		pFnGetString = (UFunction*) UObject::GObjObjects()->Data[ 37721 ];
 
 	UGFxObject_execGetString_Parms GetString_Parms;
 
@@ -3058,7 +3058,7 @@ void UGFxObject::GetInt ( )
 	static UFunction* pFnGetInt = NULL;
 
 	if ( ! pFnGetInt )
-		pFnGetInt = (UFunction*) UObject::GObjObjects()->Data[ 37687 ];
+		pFnGetInt = (UFunction*) UObject::GObjObjects()->Data[ 37718 ];
 
 	UGFxObject_execGetInt_Parms GetInt_Parms;
 
@@ -3078,7 +3078,7 @@ void UGFxObject::GetFloat ( )
 	static UFunction* pFnGetFloat = NULL;
 
 	if ( ! pFnGetFloat )
-		pFnGetFloat = (UFunction*) UObject::GObjObjects()->Data[ 37684 ];
+		pFnGetFloat = (UFunction*) UObject::GObjObjects()->Data[ 37715 ];
 
 	UGFxObject_execGetFloat_Parms GetFloat_Parms;
 
@@ -3098,7 +3098,7 @@ void UGFxObject::GetBool ( )
 	static UFunction* pFnGetBool = NULL;
 
 	if ( ! pFnGetBool )
-		pFnGetBool = (UFunction*) UObject::GObjObjects()->Data[ 37681 ];
+		pFnGetBool = (UFunction*) UObject::GObjObjects()->Data[ 37712 ];
 
 	UGFxObject_execGetBool_Parms GetBool_Parms;
 
@@ -3118,7 +3118,7 @@ void UGFxObject::Get ( )
 	static UFunction* pFnGet = NULL;
 
 	if ( ! pFnGet )
-		pFnGet = (UFunction*) UObject::GObjObjects()->Data[ 37678 ];
+		pFnGet = (UFunction*) UObject::GObjObjects()->Data[ 37709 ];
 
 	UGFxObject_execGet_Parms Get_Parms;
 
@@ -3138,7 +3138,7 @@ void UGFxAction_CloseMovie::eventIsValidLevelSequenceObject ( )
 	static UFunction* pFnIsValidLevelSequenceObject = NULL;
 
 	if ( ! pFnIsValidLevelSequenceObject )
-		pFnIsValidLevelSequenceObject = (UFunction*) UObject::GObjObjects()->Data[ 37306 ];
+		pFnIsValidLevelSequenceObject = (UFunction*) UObject::GObjObjects()->Data[ 37337 ];
 
 	UGFxAction_CloseMovie_eventIsValidLevelSequenceObject_Parms IsValidLevelSequenceObject_Parms;
 
@@ -3154,7 +3154,7 @@ void UGFxAction_GetVariable::eventIsValidLevelSequenceObject ( )
 	static UFunction* pFnIsValidLevelSequenceObject = NULL;
 
 	if ( ! pFnIsValidLevelSequenceObject )
-		pFnIsValidLevelSequenceObject = (UFunction*) UObject::GObjObjects()->Data[ 37310 ];
+		pFnIsValidLevelSequenceObject = (UFunction*) UObject::GObjObjects()->Data[ 37341 ];
 
 	UGFxAction_GetVariable_eventIsValidLevelSequenceObject_Parms IsValidLevelSequenceObject_Parms;
 
@@ -3170,7 +3170,7 @@ void UGFxAction_Invoke::eventIsValidLevelSequenceObject ( )
 	static UFunction* pFnIsValidLevelSequenceObject = NULL;
 
 	if ( ! pFnIsValidLevelSequenceObject )
-		pFnIsValidLevelSequenceObject = (UFunction*) UObject::GObjObjects()->Data[ 37624 ];
+		pFnIsValidLevelSequenceObject = (UFunction*) UObject::GObjObjects()->Data[ 37655 ];
 
 	UGFxAction_Invoke_eventIsValidLevelSequenceObject_Parms IsValidLevelSequenceObject_Parms;
 
@@ -3186,7 +3186,7 @@ void UGFxAction_OpenMovie::eventIsValidLevelSequenceObject ( )
 	static UFunction* pFnIsValidLevelSequenceObject = NULL;
 
 	if ( ! pFnIsValidLevelSequenceObject )
-		pFnIsValidLevelSequenceObject = (UFunction*) UObject::GObjObjects()->Data[ 37640 ];
+		pFnIsValidLevelSequenceObject = (UFunction*) UObject::GObjObjects()->Data[ 37671 ];
 
 	UGFxAction_OpenMovie_eventIsValidLevelSequenceObject_Parms IsValidLevelSequenceObject_Parms;
 
@@ -3202,7 +3202,7 @@ void UGFxAction_SetVariable::eventIsValidLevelSequenceObject ( )
 	static UFunction* pFnIsValidLevelSequenceObject = NULL;
 
 	if ( ! pFnIsValidLevelSequenceObject )
-		pFnIsValidLevelSequenceObject = (UFunction*) UObject::GObjObjects()->Data[ 37647 ];
+		pFnIsValidLevelSequenceObject = (UFunction*) UObject::GObjObjects()->Data[ 37678 ];
 
 	UGFxAction_SetVariable_eventIsValidLevelSequenceObject_Parms IsValidLevelSequenceObject_Parms;
 
@@ -3218,7 +3218,7 @@ void UGFxFSCmdHandler_Kismet::eventFSCommand ( )
 	static UFunction* pFnFSCommand = NULL;
 
 	if ( ! pFnFSCommand )
-		pFnFSCommand = (UFunction*) UObject::GObjObjects()->Data[ 37994 ];
+		pFnFSCommand = (UFunction*) UObject::GObjObjects()->Data[ 38025 ];
 
 	UGFxFSCmdHandler_Kismet_eventFSCommand_Parms FSCommand_Parms;
 
@@ -3238,7 +3238,7 @@ void UGFxClikWidget::AS3RemoveEventListener ( )
 	static UFunction* pFnAS3RemoveEventListener = NULL;
 
 	if ( ! pFnAS3RemoveEventListener )
-		pFnAS3RemoveEventListener = (UFunction*) UObject::GObjObjects()->Data[ 37973 ];
+		pFnAS3RemoveEventListener = (UFunction*) UObject::GObjObjects()->Data[ 38004 ];
 
 	UGFxClikWidget_execAS3RemoveEventListener_Parms AS3RemoveEventListener_Parms;
 
@@ -3254,7 +3254,7 @@ void UGFxClikWidget::ASRemoveAllEventListeners ( )
 	static UFunction* pFnASRemoveAllEventListeners = NULL;
 
 	if ( ! pFnASRemoveAllEventListeners )
-		pFnASRemoveAllEventListeners = (UFunction*) UObject::GObjObjects()->Data[ 37971 ];
+		pFnASRemoveAllEventListeners = (UFunction*) UObject::GObjObjects()->Data[ 38002 ];
 
 	UGFxClikWidget_execASRemoveAllEventListeners_Parms ASRemoveAllEventListeners_Parms;
 
@@ -3270,7 +3270,7 @@ void UGFxClikWidget::AS3AddEventListener ( )
 	static UFunction* pFnAS3AddEventListener = NULL;
 
 	if ( ! pFnAS3AddEventListener )
-		pFnAS3AddEventListener = (UFunction*) UObject::GObjObjects()->Data[ 37965 ];
+		pFnAS3AddEventListener = (UFunction*) UObject::GObjObjects()->Data[ 37996 ];
 
 	UGFxClikWidget_execAS3AddEventListener_Parms AS3AddEventListener_Parms;
 
@@ -3286,7 +3286,7 @@ void UGFxClikWidget::ASAddEventListener ( )
 	static UFunction* pFnASAddEventListener = NULL;
 
 	if ( ! pFnASAddEventListener )
-		pFnASAddEventListener = (UFunction*) UObject::GObjObjects()->Data[ 37961 ];
+		pFnASAddEventListener = (UFunction*) UObject::GObjObjects()->Data[ 37992 ];
 
 	UGFxClikWidget_execASAddEventListener_Parms ASAddEventListener_Parms;
 
@@ -3302,7 +3302,7 @@ void UGFxClikWidget::SetListener ( )
 	static UFunction* pFnSetListener = NULL;
 
 	if ( ! pFnSetListener )
-		pFnSetListener = (UFunction*) UObject::GObjObjects()->Data[ 37957 ];
+		pFnSetListener = (UFunction*) UObject::GObjObjects()->Data[ 37988 ];
 
 	UGFxClikWidget_execSetListener_Parms SetListener_Parms;
 
@@ -3318,7 +3318,7 @@ void UGFxClikWidget::GetEventStringFromTypename ( )
 	static UFunction* pFnGetEventStringFromTypename = NULL;
 
 	if ( ! pFnGetEventStringFromTypename )
-		pFnGetEventStringFromTypename = (UFunction*) UObject::GObjObjects()->Data[ 37953 ];
+		pFnGetEventStringFromTypename = (UFunction*) UObject::GObjObjects()->Data[ 37984 ];
 
 	UGFxClikWidget_execGetEventStringFromTypename_Parms GetEventStringFromTypename_Parms;
 
@@ -3334,7 +3334,7 @@ void UGFxClikWidget::RemoveAllEventListeners ( )
 	static UFunction* pFnRemoveAllEventListeners = NULL;
 
 	if ( ! pFnRemoveAllEventListeners )
-		pFnRemoveAllEventListeners = (UFunction*) UObject::GObjObjects()->Data[ 37951 ];
+		pFnRemoveAllEventListeners = (UFunction*) UObject::GObjObjects()->Data[ 37982 ];
 
 	UGFxClikWidget_execRemoveAllEventListeners_Parms RemoveAllEventListeners_Parms;
 
@@ -3350,7 +3350,7 @@ void UGFxClikWidget::AddAS3EventListener ( )
 	static UFunction* pFnAddAS3EventListener = NULL;
 
 	if ( ! pFnAddAS3EventListener )
-		pFnAddAS3EventListener = (UFunction*) UObject::GObjObjects()->Data[ 37942 ];
+		pFnAddAS3EventListener = (UFunction*) UObject::GObjObjects()->Data[ 37973 ];
 
 	UGFxClikWidget_execAddAS3EventListener_Parms AddAS3EventListener_Parms;
 
@@ -3366,7 +3366,7 @@ void UGFxClikWidget::AddEventListener ( )
 	static UFunction* pFnAddEventListener = NULL;
 
 	if ( ! pFnAddEventListener )
-		pFnAddEventListener = (UFunction*) UObject::GObjObjects()->Data[ 37933 ];
+		pFnAddEventListener = (UFunction*) UObject::GObjObjects()->Data[ 37964 ];
 
 	UGFxClikWidget_execAddEventListener_Parms AddEventListener_Parms;
 
@@ -3382,7 +3382,7 @@ void UGFxClikWidget::EventListener ( )
 	static UFunction* pFnEventListener = NULL;
 
 	if ( ! pFnEventListener )
-		pFnEventListener = (UFunction*) UObject::GObjObjects()->Data[ 37931 ];
+		pFnEventListener = (UFunction*) UObject::GObjObjects()->Data[ 37962 ];
 
 	UGFxClikWidget_execEventListener_Parms EventListener_Parms;
 

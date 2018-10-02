@@ -131,15 +131,6 @@
 # ========================================================================================= #
 */
 
-// Enum Engine.StaticMesh.EFlexCollisionLevel
-/*enum EFlexCollisionLevel
-{
-	Auto                                               = 0,
-	On                                                 = 1,
-	Off                                                = 2,
-	EFlexCollisionLevel_MAX                            = 3
-};*/
-
 // Enum Engine.Actor.EActorMetricsType
 /*enum EActorMetricsType
 {
@@ -422,7 +413,8 @@
 	TEXTUREGROUP_CosmeticNormalMap                     = 36,
 	TEXTUREGROUP_CosmeticSpecular                      = 37,
 	TEXTUREGROUP_UIWithMips                            = 38,
-	TEXTUREGROUP_MAX                                   = 39
+	TEXTUREGROUP_UIStreamable                          = 39,
+	TEXTUREGROUP_MAX                                   = 40
 };*/
 
 // Enum Engine.Texture.TextureMipGenSettings
@@ -466,9 +458,10 @@
 	PNS_NonExistent                                    = 0,
 	PNS_Creating                                       = 1,
 	PNS_Created                                        = 2,
-	PNS_Dissolving                                     = 3,
-	PNS_Dissolved                                      = 4,
-	PNS_MAX                                            = 5
+	PNS_Complete                                       = 3,
+	PNS_Dissolving                                     = 4,
+	PNS_Dissolved                                      = 5,
+	PNS_MAX                                            = 6
 };*/
 
 // Enum Engine.OnlineSubsystem.ENATType
@@ -518,8 +511,9 @@
 	ITP_Item                                           = 3,
 	ITP_CraftingComponent                              = 4,
 	ITP_Emote                                          = 5,
-	ITP_NONE                                           = 6,
-	ITP_MAX                                            = 7
+	ITP_SFX                                            = 6,
+	ITP_NONE                                           = 7,
+	ITP_MAX                                            = 8
 };*/
 
 // Enum Engine.OnlineSubsystem.ItemRarity
@@ -701,12 +695,13 @@
 	OCT_MAX                                            = 2
 };*/
 
-// Enum Engine.OnlineSubsystem.EOnlineCreateGameSessionFlag
-/*enum EOnlineCreateGameSessionFlag
+// Enum Engine.OnlineSubsystem.EFreeTrialNotification
+/*enum EFreeTrialNotification
 {
-	OCGSF_New                                          = 0,
-	OCGSF_ReSubmit                                     = 1,
-	OCGSF_MAX                                          = 2
+	FTN_FeatureUnavailable                             = 0,
+	FTN_NetworkCheckFailed                             = 1,
+	FTN_BuyGame                                        = 2,
+	FTN_MAX                                            = 3
 };*/
 
 // Enum Engine.OnlineSubsystem.EOnlineFriendState
@@ -717,6 +712,14 @@
 	OFS_Away                                           = 2,
 	OFS_Busy                                           = 3,
 	OFS_MAX                                            = 4
+};*/
+
+// Enum Engine.OnlineSubsystem.EOnlineCreateGameSessionFlag
+/*enum EOnlineCreateGameSessionFlag
+{
+	OCGSF_New                                          = 0,
+	OCGSF_ReSubmit                                     = 1,
+	OCGSF_MAX                                          = 2
 };*/
 
 // Enum Engine.OnlineSubsystem.EOnlineAccountTier
@@ -3348,6 +3351,15 @@
 	SIDE_MAX                                           = 3
 };*/
 
+// Enum Engine.StaticMesh.EFlexCollisionLevel
+/*enum EFlexCollisionLevel
+{
+	Auto                                               = 0,
+	On                                                 = 1,
+	Off                                                = 2,
+	EFlexCollisionLevel_MAX                            = 3
+};*/
+
 // Enum Engine.TerrainMaterial.ETerrainMappingType
 /*enum ETerrainMappingType
 {
@@ -3648,7 +3660,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 125 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Actor" );
 
 		return pClassPointer;
 	};
@@ -3832,7 +3844,7 @@ public:
 	void FastTrace ( );
 	void PointCheckComponent ( );
 	void TraceComponent ( );
-	bool Trace ( FVector Start, FVector End, AActor* Hit );
+	bool Trace(FVector Start, FVector End, AActor* Hit);
 	void VolumeBasedDestroy ( );
 	void eventOutsideWorldBounds ( );
 	void eventFellOutOfWorld ( );
@@ -3938,7 +3950,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 127 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Info" );
 
 		return pClassPointer;
 	};
@@ -3964,7 +3976,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 129 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ZoneInfo" );
 
 		return pClassPointer;
 	};
@@ -4209,7 +4221,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 131 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.WorldInfo" );
 
 		return pClassPointer;
 	};
@@ -4306,7 +4318,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 133 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DownloadableContentEnumerator" );
 
 		return pClassPointer;
 	};
@@ -4345,7 +4357,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 135 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DownloadableContentManager" );
 
 		return pClassPointer;
 	};
@@ -4638,7 +4650,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 137 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Engine" );
 
 		return pClassPointer;
 	};
@@ -4712,7 +4724,8 @@ public:
 	DWORD                                              bClearAnimSetLinkupCachesOnLoadMap : 1;           		// 0x0A30 (0x0004) [0x0000000000000000] [0x00000200] 
 	DWORD                                              bEnableSecondaryDisplay : 1;                      		// 0x0A30 (0x0004) [0x0000000000000000] [0x00000400] 
 	DWORD                                              bEnableSecondaryViewport : 1;                     		// 0x0A30 (0x0004) [0x0000000000000000] [0x00000800] 
-	DWORD                                              bTrialActive : 1;                                 		// 0x0A30 (0x0004) [0x0000000000000000] [0x00001000] 
+	DWORD                                              bPartialInstallLaunch : 1;                        		// 0x0A30 (0x0004) [0x0000000000000000] [0x00001000] 
+	DWORD                                              bTrialActive : 1;                                 		// 0x0A30 (0x0004) [0x0000000000000000] [0x00002000] 
 	class UOnlineSubsystem*                            OnlineSubsystem;                                  		// 0x0A34 (0x0008) [0x0000000000000000]              
 	class UPlayfabInterface*                           PlayfabInterfaceInst;                             		// 0x0A3C (0x0008) [0x0000000000000000]              
 	class UGamePadLightbarSubsystem*                   GamePadLightbarSubsystem;                         		// 0x0A44 (0x0008) [0x0000000000000000]              
@@ -4742,11 +4755,12 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 139 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameEngine" );
 
 		return pClassPointer;
 	};
 
+	void WasLaunchedOnPartialInstall ( );
 	void GetChunkInstallProgress ( );
 	void GetChunksInstallProgress ( );
 	void AreChunksInstalled ( );
@@ -4781,7 +4795,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 141 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.EngineBaseTypes" );
 
 		return pClassPointer;
 	};
@@ -4812,7 +4826,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 143 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Brush" );
 
 		return pClassPointer;
 	};
@@ -4834,7 +4848,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 145 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.BrushShape" );
 
 		return pClassPointer;
 	};
@@ -4860,7 +4874,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 147 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Volume" );
 
 		return pClassPointer;
 	};
@@ -4890,7 +4904,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 149 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.BlockingVolume" );
 
 		return pClassPointer;
 	};
@@ -4914,7 +4928,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 151 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DynamicBlockingVolume" );
 
 		return pClassPointer;
 	};
@@ -4941,7 +4955,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 153 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CullDistanceVolume" );
 
 		return pClassPointer;
 	};
@@ -4969,7 +4983,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 155 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LevelGridVolume" );
 
 		return pClassPointer;
 	};
@@ -4998,7 +5012,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 157 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LevelStreamingVolume" );
 
 		return pClassPointer;
 	};
@@ -5023,7 +5037,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 159 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LightmassCharacterIndirectDetailVolume" );
 
 		return pClassPointer;
 	};
@@ -5045,7 +5059,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 161 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LightmassImportanceVolume" );
 
 		return pClassPointer;
 	};
@@ -5067,7 +5081,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 163 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MassiveLODOverrideVolume" );
 
 		return pClassPointer;
 	};
@@ -5089,7 +5103,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 165 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PathBlockingVolume" );
 
 		return pClassPointer;
 	};
@@ -5137,7 +5151,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 167 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PhysicsVolume" );
 
 		return pClassPointer;
 	};
@@ -5179,7 +5193,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 169 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DefaultPhysicsVolume" );
 
 		return pClassPointer;
 	};
@@ -5203,7 +5217,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 171 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GravityVolume" );
 
 		return pClassPointer;
 	};
@@ -5234,7 +5248,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 173 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LadderVolume" );
 
 		return pClassPointer;
 	};
@@ -5262,7 +5276,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 175 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PortalVolume" );
 
 		return pClassPointer;
 	};
@@ -5289,7 +5303,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 177 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PostProcessVolume" );
 
 		return pClassPointer;
 	};
@@ -5314,7 +5328,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 179 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PrecomputedVisibilityOverrideVolume" );
 
 		return pClassPointer;
 	};
@@ -5336,7 +5350,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 181 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PrecomputedVisibilityVolume" );
 
 		return pClassPointer;
 	};
@@ -5363,7 +5377,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 183 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ReverbVolume" );
 
 		return pClassPointer;
 	};
@@ -5386,7 +5400,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 185 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TriggerVolume" );
 
 		return pClassPointer;
 	};
@@ -5414,7 +5428,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 187 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DroppedPickup" );
 
 		return pClassPointer;
 	};
@@ -5460,7 +5474,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 189 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DynamicSMActor" );
 
 		return pClassPointer;
 	};
@@ -5509,7 +5523,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 191 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpActor" );
 
 		return pClassPointer;
 	};
@@ -5546,7 +5560,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 193 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FlexActor" );
 
 		return pClassPointer;
 	};
@@ -5575,7 +5589,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 195 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Emitter" );
 
 		return pClassPointer;
 	};
@@ -5628,7 +5642,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 197 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.EmitterPool" );
 
 		return pClassPointer;
 	};
@@ -5699,7 +5713,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 199 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.HUD" );
 
 		return pClassPointer;
 	};
@@ -5739,7 +5753,7 @@ public:
 	void RemovePostRenderedActor ( );
 	void DrawActorOverlays ( );
 	void eventPostBeginPlay ( );
-	void Draw2DLine ();
+	void Draw2DLine ( );
 	void Draw3DLine ( );
 };
 
@@ -5787,7 +5801,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 201 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AutoTestManager" );
 
 		return pClassPointer;
 	};
@@ -5835,7 +5849,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 203 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CoverGroup" );
 
 		return pClassPointer;
 	};
@@ -5866,7 +5880,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 205 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FileWriter" );
 
 		return pClassPointer;
 	};
@@ -5892,7 +5906,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 207 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FileLog" );
 
 		return pClassPointer;
 	};
@@ -5904,7 +5918,7 @@ public:
 UClass* AFileLog::pClassPointer = NULL;
 
 // Class Engine.GameInfo
-// 0x0254 (0x0498 - 0x0244)
+// 0x0258 (0x049C - 0x0244)
 class AGameInfo : public AInfo
 {
 public:
@@ -5941,77 +5955,78 @@ public:
 	TArray< class APlayerController* >                 ArbitrationPCs;                                   		// 0x0288 (0x0010) [0x0000000000000000]              
 	float                                              ArbitrationHandshakeTimeout;                      		// 0x0298 (0x0004) [0x0000000000000000]              
 	float                                              GameDifficulty;                                   		// 0x029C (0x0004) [0x0000000000000000]              
-	int                                                GoreLevel;                                        		// 0x02A0 (0x0004) [0x0000000000000000]              
-	float                                              GameSpeed;                                        		// 0x02A4 (0x0004) [0x0000000000000000]              
-	class UClass*                                      DefaultPawnClass;                                 		// 0x02A8 (0x0008) [0x0000000000000000]              
-	class UClass*                                      HUDType;                                          		// 0x02B0 (0x0008) [0x0000000000000000]              
-	class UClass*                                      SecondaryHUDType;                                 		// 0x02B8 (0x0008) [0x0000000000000000]              
-	int                                                MaxSpectators;                                    		// 0x02C0 (0x0004) [0x0000000000000000]              
-	int                                                MaxSpectatorsAllowed;                             		// 0x02C4 (0x0004) [0x0000000000000000]              
-	int                                                NumSpectators;                                    		// 0x02C8 (0x0004) [0x0000000000000000]              
-	int                                                MaxPlayers;                                       		// 0x02CC (0x0004) [0x0000000000000000]              
-	int                                                MaxPlayersAllowed;                                		// 0x02D0 (0x0004) [0x0000000000000000]              
-	int                                                NumPlayers;                                       		// 0x02D4 (0x0004) [0x0000000000000000]              
-	int                                                NumBots;                                          		// 0x02D8 (0x0004) [0x0000000000000000]              
-	int                                                NumTravellingPlayers;                             		// 0x02DC (0x0004) [0x0000000000000000]              
-	int                                                CurrentID;                                        		// 0x02E0 (0x0004) [0x0000000000000000]              
-	struct FString                                     DefaultPlayerName;                                		// 0x02E4 (0x0010) [0x0000000000000000]              
-	struct FString                                     GameName;                                         		// 0x02F4 (0x0010) [0x0000000000000000]              
-	float                                              FearCostFallOff;                                  		// 0x0304 (0x0004) [0x0000000000000000]              
-	int                                                GoalScore;                                        		// 0x0308 (0x0004) [0x0000000000000000]              
-	int                                                MaxLives;                                         		// 0x030C (0x0004) [0x0000000000000000]              
-	int                                                TimeLimit;                                        		// 0x0310 (0x0004) [0x0000000000000000]              
-	class UClass*                                      DeathMessageClass;                                		// 0x0314 (0x0008) [0x0000000000000000]              
-	class UClass*                                      GameMessageClass;                                 		// 0x031C (0x0008) [0x0000000000000000]              
-	class AMutator*                                    BaseMutator;                                      		// 0x0324 (0x0008) [0x0000000000000000]              
-	class UClass*                                      AccessControlClass;                               		// 0x032C (0x0008) [0x0000000000000000]              
-	class AAccessControl*                              AccessControl;                                    		// 0x0334 (0x0008) [0x0000000000000000]              
-	class UClass*                                      BroadcastHandlerClass;                            		// 0x033C (0x0008) [0x0000000000000000]              
-	class ABroadcastHandler*                           BroadcastHandler;                                 		// 0x0344 (0x0008) [0x0000000000000000]              
-	class UClass*                                      AutoTestManagerClass;                             		// 0x034C (0x0008) [0x0000000000000000]              
-	class AAutoTestManager*                            MyAutoTestManager;                                		// 0x0354 (0x0008) [0x0000000000000000]              
-	class UClass*                                      PlayerControllerClass;                            		// 0x035C (0x0008) [0x0000000000000000]              
-	class UClass*                                      PlayerReplicationInfoClass;                       		// 0x0364 (0x0008) [0x0000000000000000]              
-	class UClass*                                      GameReplicationInfoClass;                         		// 0x036C (0x0008) [0x0000000000000000]              
-	class AGameReplicationInfo*                        GameReplicationInfo;                              		// 0x0374 (0x0008) [0x0000000000000000]              
-	class ACrowdPopulationManagerBase*                 PopulationManager;                                		// 0x037C (0x0008) [0x0000000000000000]              
-	class UClass*                                      PopulationManagerClass;                           		// 0x0384 (0x0008) [0x0000000000000000]              
-	float                                              MaxIdleTime;                                      		// 0x038C (0x0004) [0x0000000000000000]              
-	float                                              MaxTimeMargin;                                    		// 0x0390 (0x0004) [0x0000000000000000]              
-	float                                              TimeMarginSlack;                                  		// 0x0394 (0x0004) [0x0000000000000000]              
-	float                                              MinTimeMargin;                                    		// 0x0398 (0x0004) [0x0000000000000000]              
-	TArray< class APlayerReplicationInfo* >            InactivePRIArray;                                 		// 0x039C (0x0010) [0x0000000000000000]              
-	TArray< struct FScriptDelegate >                   Pausers;                                          		// 0x03AC (0x0010) [0x0000000000000000]              
-	class UOnlineSubsystem*                            OnlineSub;                                        		// 0x03BC (0x0008) [0x0000000000000000]              
-	class UPlayfabInterface*                           PlayfabInter;                                     		// 0x03C4 (0x0008) [0x0000000000000000]              
-	class UOnlineGameInterface*                        GameInterface;                                    		// 0x03CC (0x0010) [0x0000000000000000]              
-	unsigned char                                      UnknownData00[ 0x8 ];                             		// 0x03D4 (0x0008) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	class UClass*                                      OnlineStatsWriteClass;                            		// 0x03DC (0x0008) [0x0000000000000000]              
-	int                                                LeaderboardId;                                    		// 0x03E4 (0x0004) [0x0000000000000000]              
-	int                                                ArbitratedLeaderboardId;                          		// 0x03E8 (0x0004) [0x0000000000000000]              
-	class ACoverReplicator*                            CoverReplicatorBase;                              		// 0x03EC (0x0008) [0x0000000000000000]              
-	class UClass*                                      OnlineGameSettingsClass;                          		// 0x03F4 (0x0008) [0x0000000000000000]              
-	struct FString                                     ServerOptions;                                    		// 0x03FC (0x0010) [0x0000000000000000]              
-	int                                                AdjustedNetSpeed;                                 		// 0x040C (0x0004) [0x0000000000000000]              
-	float                                              LastNetSpeedUpdateTime;                           		// 0x0410 (0x0004) [0x0000000000000000]              
-	int                                                TotalNetBandwidth;                                		// 0x0414 (0x0004) [0x0000000000000000]              
-	int                                                MinDynamicBandwidth;                              		// 0x0418 (0x0004) [0x0000000000000000]              
-	int                                                MaxDynamicBandwidth;                              		// 0x041C (0x0004) [0x0000000000000000]              
-	float                                              StandbyRxCheatTime;                               		// 0x0420 (0x0004) [0x0000000000000000]              
-	float                                              StandbyTxCheatTime;                               		// 0x0424 (0x0004) [0x0000000000000000]              
-	int                                                BadPingThreshold;                                 		// 0x0428 (0x0004) [0x0000000000000000]              
-	float                                              PercentMissingForRxStandby;                       		// 0x042C (0x0004) [0x0000000000000000]              
-	float                                              PercentMissingForTxStandby;                       		// 0x0430 (0x0004) [0x0000000000000000]              
-	float                                              PercentForBadPing;                                		// 0x0434 (0x0004) [0x0000000000000000]              
-	float                                              JoinInProgressStandbyWaitTime;                    		// 0x0438 (0x0004) [0x0000000000000000]              
-	class UMaterial*                                   StreamingPauseIcon;                               		// 0x043C (0x0008) [0x0000000000000000]              
-	TArray< struct FGameClassShortName >               GameInfoClassAliases;                             		// 0x0444 (0x0010) [0x0000000000000000]              
-	struct FString                                     DefaultGameType;                                  		// 0x0454 (0x0010) [0x0000000000000000]              
-	TArray< struct FGameTypePrefix >                   DefaultMapPrefixes;                               		// 0x0464 (0x0010) [0x0000000000000000]              
-	TArray< struct FGameTypePrefix >                   CustomMapPrefixes;                                		// 0x0474 (0x0010) [0x0000000000000000]              
-	int                                                AnimTreePoolSize;                                 		// 0x0484 (0x0004) [0x0000000000000000]              
-	struct FScriptDelegate                             __CanUnpause__Delegate;                           		// 0x0488 (0x0010) [0x0000000000000000]              
-	unsigned char                                      UnknownData01[ 0x4 ];                             		// 0x048C (0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	float                                              GameDifficultyModifier;                           		// 0x02A0 (0x0004) [0x0000000000000000]              
+	int                                                GoreLevel;                                        		// 0x02A4 (0x0004) [0x0000000000000000]              
+	float                                              GameSpeed;                                        		// 0x02A8 (0x0004) [0x0000000000000000]              
+	class UClass*                                      DefaultPawnClass;                                 		// 0x02AC (0x0008) [0x0000000000000000]              
+	class UClass*                                      HUDType;                                          		// 0x02B4 (0x0008) [0x0000000000000000]              
+	class UClass*                                      SecondaryHUDType;                                 		// 0x02BC (0x0008) [0x0000000000000000]              
+	int                                                MaxSpectators;                                    		// 0x02C4 (0x0004) [0x0000000000000000]              
+	int                                                MaxSpectatorsAllowed;                             		// 0x02C8 (0x0004) [0x0000000000000000]              
+	int                                                NumSpectators;                                    		// 0x02CC (0x0004) [0x0000000000000000]              
+	int                                                MaxPlayers;                                       		// 0x02D0 (0x0004) [0x0000000000000000]              
+	int                                                MaxPlayersAllowed;                                		// 0x02D4 (0x0004) [0x0000000000000000]              
+	int                                                NumPlayers;                                       		// 0x02D8 (0x0004) [0x0000000000000000]              
+	int                                                NumBots;                                          		// 0x02DC (0x0004) [0x0000000000000000]              
+	int                                                NumTravellingPlayers;                             		// 0x02E0 (0x0004) [0x0000000000000000]              
+	int                                                CurrentID;                                        		// 0x02E4 (0x0004) [0x0000000000000000]              
+	struct FString                                     DefaultPlayerName;                                		// 0x02E8 (0x0010) [0x0000000000000000]              
+	struct FString                                     GameName;                                         		// 0x02F8 (0x0010) [0x0000000000000000]              
+	float                                              FearCostFallOff;                                  		// 0x0308 (0x0004) [0x0000000000000000]              
+	int                                                GoalScore;                                        		// 0x030C (0x0004) [0x0000000000000000]              
+	int                                                MaxLives;                                         		// 0x0310 (0x0004) [0x0000000000000000]              
+	int                                                TimeLimit;                                        		// 0x0314 (0x0004) [0x0000000000000000]              
+	class UClass*                                      DeathMessageClass;                                		// 0x0318 (0x0008) [0x0000000000000000]              
+	class UClass*                                      GameMessageClass;                                 		// 0x0320 (0x0008) [0x0000000000000000]              
+	class AMutator*                                    BaseMutator;                                      		// 0x0328 (0x0008) [0x0000000000000000]              
+	class UClass*                                      AccessControlClass;                               		// 0x0330 (0x0008) [0x0000000000000000]              
+	class AAccessControl*                              AccessControl;                                    		// 0x0338 (0x0008) [0x0000000000000000]              
+	class UClass*                                      BroadcastHandlerClass;                            		// 0x0340 (0x0008) [0x0000000000000000]              
+	class ABroadcastHandler*                           BroadcastHandler;                                 		// 0x0348 (0x0008) [0x0000000000000000]              
+	class UClass*                                      AutoTestManagerClass;                             		// 0x0350 (0x0008) [0x0000000000000000]              
+	class AAutoTestManager*                            MyAutoTestManager;                                		// 0x0358 (0x0008) [0x0000000000000000]              
+	class UClass*                                      PlayerControllerClass;                            		// 0x0360 (0x0008) [0x0000000000000000]              
+	class UClass*                                      PlayerReplicationInfoClass;                       		// 0x0368 (0x0008) [0x0000000000000000]              
+	class UClass*                                      GameReplicationInfoClass;                         		// 0x0370 (0x0008) [0x0000000000000000]              
+	class AGameReplicationInfo*                        GameReplicationInfo;                              		// 0x0378 (0x0008) [0x0000000000000000]              
+	class ACrowdPopulationManagerBase*                 PopulationManager;                                		// 0x0380 (0x0008) [0x0000000000000000]              
+	class UClass*                                      PopulationManagerClass;                           		// 0x0388 (0x0008) [0x0000000000000000]              
+	float                                              MaxIdleTime;                                      		// 0x0390 (0x0004) [0x0000000000000000]              
+	float                                              MaxTimeMargin;                                    		// 0x0394 (0x0004) [0x0000000000000000]              
+	float                                              TimeMarginSlack;                                  		// 0x0398 (0x0004) [0x0000000000000000]              
+	float                                              MinTimeMargin;                                    		// 0x039C (0x0004) [0x0000000000000000]              
+	TArray< class APlayerReplicationInfo* >            InactivePRIArray;                                 		// 0x03A0 (0x0010) [0x0000000000000000]              
+	TArray< struct FScriptDelegate >                   Pausers;                                          		// 0x03B0 (0x0010) [0x0000000000000000]              
+	class UOnlineSubsystem*                            OnlineSub;                                        		// 0x03C0 (0x0008) [0x0000000000000000]              
+	class UPlayfabInterface*                           PlayfabInter;                                     		// 0x03C8 (0x0008) [0x0000000000000000]              
+	class UOnlineGameInterface*                        GameInterface;                                    		// 0x03D0 (0x0010) [0x0000000000000000]              
+	unsigned char                                      UnknownData00[ 0x8 ];                             		// 0x03D8 (0x0008) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	class UClass*                                      OnlineStatsWriteClass;                            		// 0x03E0 (0x0008) [0x0000000000000000]              
+	int                                                LeaderboardId;                                    		// 0x03E8 (0x0004) [0x0000000000000000]              
+	int                                                ArbitratedLeaderboardId;                          		// 0x03EC (0x0004) [0x0000000000000000]              
+	class ACoverReplicator*                            CoverReplicatorBase;                              		// 0x03F0 (0x0008) [0x0000000000000000]              
+	class UClass*                                      OnlineGameSettingsClass;                          		// 0x03F8 (0x0008) [0x0000000000000000]              
+	struct FString                                     ServerOptions;                                    		// 0x0400 (0x0010) [0x0000000000000000]              
+	int                                                AdjustedNetSpeed;                                 		// 0x0410 (0x0004) [0x0000000000000000]              
+	float                                              LastNetSpeedUpdateTime;                           		// 0x0414 (0x0004) [0x0000000000000000]              
+	int                                                TotalNetBandwidth;                                		// 0x0418 (0x0004) [0x0000000000000000]              
+	int                                                MinDynamicBandwidth;                              		// 0x041C (0x0004) [0x0000000000000000]              
+	int                                                MaxDynamicBandwidth;                              		// 0x0420 (0x0004) [0x0000000000000000]              
+	float                                              StandbyRxCheatTime;                               		// 0x0424 (0x0004) [0x0000000000000000]              
+	float                                              StandbyTxCheatTime;                               		// 0x0428 (0x0004) [0x0000000000000000]              
+	int                                                BadPingThreshold;                                 		// 0x042C (0x0004) [0x0000000000000000]              
+	float                                              PercentMissingForRxStandby;                       		// 0x0430 (0x0004) [0x0000000000000000]              
+	float                                              PercentMissingForTxStandby;                       		// 0x0434 (0x0004) [0x0000000000000000]              
+	float                                              PercentForBadPing;                                		// 0x0438 (0x0004) [0x0000000000000000]              
+	float                                              JoinInProgressStandbyWaitTime;                    		// 0x043C (0x0004) [0x0000000000000000]              
+	class UMaterial*                                   StreamingPauseIcon;                               		// 0x0440 (0x0008) [0x0000000000000000]              
+	TArray< struct FGameClassShortName >               GameInfoClassAliases;                             		// 0x0448 (0x0010) [0x0000000000000000]              
+	struct FString                                     DefaultGameType;                                  		// 0x0458 (0x0010) [0x0000000000000000]              
+	TArray< struct FGameTypePrefix >                   DefaultMapPrefixes;                               		// 0x0468 (0x0010) [0x0000000000000000]              
+	TArray< struct FGameTypePrefix >                   CustomMapPrefixes;                                		// 0x0478 (0x0010) [0x0000000000000000]              
+	int                                                AnimTreePoolSize;                                 		// 0x0488 (0x0004) [0x0000000000000000]              
+	struct FScriptDelegate                             __CanUnpause__Delegate;                           		// 0x048C (0x0010) [0x0000000000000000]              
+	unsigned char                                      UnknownData01[ 0x4 ];                             		// 0x0490 (0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 private:
 	static UClass* pClassPointer;
@@ -6020,7 +6035,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 209 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameInfo" );
 
 		return pClassPointer;
 	};
@@ -6165,8 +6180,10 @@ public:
 	void PauseLogin ( );
 	void eventPreLogin ( );
 	void RequiresPassword ( );
+	void GetModifiedGameDifficulty ( );
 	void ProcessClientTravel ( );
 	void ProcessServerTravel ( );
+	void GetShouldShowLength ( );
 	void CheckNextMap ( );
 	void RemoveMutator ( );
 	void AddMutator ( );
@@ -6225,7 +6242,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 211 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Mutator" );
 
 		return pClassPointer;
 	};
@@ -6279,7 +6296,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 213 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PotentialClimbWatcher" );
 
 		return pClassPointer;
 	};
@@ -6307,7 +6324,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 215 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Route" );
 
 		return pClassPointer;
 	};
@@ -6332,7 +6349,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 217 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.WindPointSource" );
 
 		return pClassPointer;
 	};
@@ -6369,7 +6386,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 219 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Inventory" );
 
 		return pClassPointer;
 	};
@@ -6429,7 +6446,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 221 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Weapon" );
 
 		return pClassPointer;
 	};
@@ -6541,7 +6558,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 223 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InventoryManager" );
 
 		return pClassPointer;
 	};
@@ -6595,7 +6612,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 225 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Keypoint" );
 
 		return pClassPointer;
 	};
@@ -6619,7 +6636,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 227 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TargetPoint" );
 
 		return pClassPointer;
 	};
@@ -6642,7 +6659,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 229 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialInstanceActor" );
 
 		return pClassPointer;
 	};
@@ -6675,7 +6692,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 231 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MatineeActor" );
 
 		return pClassPointer;
 	};
@@ -6768,7 +6785,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 233 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavigationPoint" );
 
 		return pClassPointer;
 	};
@@ -6843,7 +6860,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 235 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CoverLink" );
 
 		return pClassPointer;
 	};
@@ -6915,7 +6932,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 237 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DoorMarker" );
 
 		return pClassPointer;
 	};
@@ -6944,7 +6961,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 239 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DynamicAnchor" );
 
 		return pClassPointer;
 	};
@@ -6968,7 +6985,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 241 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Ladder" );
 
 		return pClassPointer;
 	};
@@ -6991,7 +7008,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 243 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AutoLadder" );
 
 		return pClassPointer;
 	};
@@ -7019,7 +7036,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 245 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LiftCenter" );
 
 		return pClassPointer;
 	};
@@ -7047,7 +7064,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 247 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LiftExit" );
 
 		return pClassPointer;
 	};
@@ -7072,7 +7089,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 249 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PathNode" );
 
 		return pClassPointer;
 	};
@@ -7097,7 +7114,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 251 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.VolumePathNode" );
 
 		return pClassPointer;
 	};
@@ -7130,7 +7147,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 253 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PickupFactory" );
 
 		return pClassPointer;
 	};
@@ -7180,7 +7197,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 255 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PlayerStart" );
 
 		return pClassPointer;
 	};
@@ -7205,7 +7222,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 257 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PortalMarker" );
 
 		return pClassPointer;
 	};
@@ -7279,7 +7296,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 259 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Pylon" );
 
 		return pClassPointer;
 	};
@@ -7313,7 +7330,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 261 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AISwitchablePylon" );
 
 		return pClassPointer;
 	};
@@ -7339,7 +7356,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 263 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DynamicPylon" );
 
 		return pClassPointer;
 	};
@@ -7377,7 +7394,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 265 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Teleporter" );
 
 		return pClassPointer;
 	};
@@ -7406,7 +7423,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 267 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Note" );
 
 		return pClassPointer;
 	};
@@ -7447,7 +7464,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 269 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Projectile" );
 
 		return pClassPointer;
 	};
@@ -7490,7 +7507,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 271 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RigidBodyBase" );
 
 		return pClassPointer;
 	};
@@ -7513,7 +7530,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 273 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCaptureActor" );
 
 		return pClassPointer;
 	};
@@ -7537,7 +7554,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 275 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCapture2DActor" );
 
 		return pClassPointer;
 	};
@@ -7561,7 +7578,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 277 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCaptureCubeMapActor" );
 
 		return pClassPointer;
 	};
@@ -7585,7 +7602,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 279 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCaptureReflectActor" );
 
 		return pClassPointer;
 	};
@@ -7607,7 +7624,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 281 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCapturePortalActor" );
 
 		return pClassPointer;
 	};
@@ -7636,7 +7653,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 283 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PortalTeleporter" );
 
 		return pClassPointer;
 	};
@@ -7663,7 +7680,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 285 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.StaticMeshActorBase" );
 
 		return pClassPointer;
 	};
@@ -7696,7 +7713,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 287 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.StaticMeshActor" );
 
 		return pClassPointer;
 	};
@@ -7723,7 +7740,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 289 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.StaticMeshCollectionActor" );
 
 		return pClassPointer;
 	};
@@ -7748,7 +7765,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 291 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.StaticMeshActorBasedOnExtremeContent" );
 
 		return pClassPointer;
 	};
@@ -7775,7 +7792,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 293 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Trigger" );
 
 		return pClassPointer;
 	};
@@ -7805,7 +7822,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 295 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Trigger_PawnsOnly" );
 
 		return pClassPointer;
 	};
@@ -7834,7 +7851,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 297 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorComponent" );
 
 		return pClassPointer;
 	};
@@ -7941,7 +7958,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 299 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AudioComponent" );
 
 		return pClassPointer;
 	};
@@ -7980,7 +7997,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 301 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SplineAudioComponent" );
 
 		return pClassPointer;
 	};
@@ -8004,7 +8021,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 303 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MultiCueSplineAudioComponent" );
 
 		return pClassPointer;
 	};
@@ -8036,7 +8053,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 305 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SimpleSplineAudioComponent" );
 
 		return pClassPointer;
 	};
@@ -8068,7 +8085,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 307 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SimpleSplineNonLoopAudioComponent" );
 
 		return pClassPointer;
 	};
@@ -8097,7 +8114,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 309 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.HeightFogComponent" );
 
 		return pClassPointer;
 	};
@@ -8236,7 +8253,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 311 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PrimitiveComponent" );
 
 		return pClassPointer;
 	};
@@ -8307,7 +8324,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 313 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ArrowComponent" );
 
 		return pClassPointer;
 	};
@@ -8334,7 +8351,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 315 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.BrushComponent" );
 
 		return pClassPointer;
 	};
@@ -8356,7 +8373,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 317 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CameraConeComponent" );
 
 		return pClassPointer;
 	};
@@ -8384,7 +8401,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 319 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CylinderComponent" );
 
 		return pClassPointer;
 	};
@@ -8413,7 +8430,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 321 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawBoxComponent" );
 
 		return pClassPointer;
 	};
@@ -8442,7 +8459,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 323 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawCapsuleComponent" );
 
 		return pClassPointer;
 	};
@@ -8468,7 +8485,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 325 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawConeComponent" );
 
 		return pClassPointer;
 	};
@@ -8500,7 +8517,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 327 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawCylinderComponent" );
 
 		return pClassPointer;
 	};
@@ -8528,7 +8545,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 329 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawFrustumComponent" );
 
 		return pClassPointer;
 	};
@@ -8553,7 +8570,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 331 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawQuadComponent" );
 
 		return pClassPointer;
 	};
@@ -8582,7 +8599,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 333 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawSphereComponent" );
 
 		return pClassPointer;
 	};
@@ -8604,7 +8621,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 335 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawPylonRadiusComponent" );
 
 		return pClassPointer;
 	};
@@ -8626,7 +8643,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 337 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawSoundRadiusComponent" );
 
 		return pClassPointer;
 	};
@@ -8656,7 +8673,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 339 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawTaperedCapsuleComponent" );
 
 		return pClassPointer;
 	};
@@ -8678,7 +8695,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 341 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LevelGridVolumeRenderingComponent" );
 
 		return pClassPointer;
 	};
@@ -8705,7 +8722,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 343 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LineBatchComponent" );
 
 		return pClassPointer;
 	};
@@ -8732,7 +8749,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 345 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ModelComponent" );
 
 		return pClassPointer;
 	};
@@ -8762,7 +8779,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 347 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpriteComponent" );
 
 		return pClassPointer;
 	};
@@ -8798,7 +8815,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 349 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RadialBlurComponent" );
 
 		return pClassPointer;
 	};
@@ -8846,7 +8863,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 351 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCaptureComponent" );
 
 		return pClassPointer;
 	};
@@ -8878,7 +8895,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 353 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCapture2DComponent" );
 
 		return pClassPointer;
 	};
@@ -8911,7 +8928,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 355 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCapture2DHitMaskComponent" );
 
 		return pClassPointer;
 	};
@@ -8940,7 +8957,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 357 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCaptureCubeMapComponent" );
 
 		return pClassPointer;
 	};
@@ -8965,7 +8982,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 359 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCapturePortalComponent" );
 
 		return pClassPointer;
 	};
@@ -8990,7 +9007,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 361 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SceneCaptureReflectComponent" );
 
 		return pClassPointer;
 	};
@@ -9017,7 +9034,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 363 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.WindDirectionalSourceComponent" );
 
 		return pClassPointer;
 	};
@@ -9041,7 +9058,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 365 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.WindPointSourceComponent" );
 
 		return pClassPointer;
 	};
@@ -9071,7 +9088,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 367 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactory" );
 
 		return pClassPointer;
 	};
@@ -9095,7 +9112,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 369 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryActor" );
 
 		return pClassPointer;
 	};
@@ -9123,7 +9140,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 371 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryAI" );
 
 		return pClassPointer;
 	};
@@ -9146,7 +9163,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 373 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryAmbientSound" );
 
 		return pClassPointer;
 	};
@@ -9168,7 +9185,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 375 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryAmbientSoundMovable" );
 
 		return pClassPointer;
 	};
@@ -9191,7 +9208,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 377 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryAmbientSoundSimple" );
 
 		return pClassPointer;
 	};
@@ -9213,7 +9230,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 379 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryAmbientSoundNonLoop" );
 
 		return pClassPointer;
 	};
@@ -9235,7 +9252,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 381 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryAmbientSoundSimpleToggleable" );
 
 		return pClassPointer;
 	};
@@ -9257,7 +9274,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 383 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryAmbientSoundNonLoopingToggleable" );
 
 		return pClassPointer;
 	};
@@ -9283,7 +9300,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 385 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryApexDestructible" );
 
 		return pClassPointer;
 	};
@@ -9306,7 +9323,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 387 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryArchetype" );
 
 		return pClassPointer;
 	};
@@ -9328,7 +9345,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 389 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryCoverLink" );
 
 		return pClassPointer;
 	};
@@ -9350,7 +9367,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 391 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryDominantDirectionalLight" );
 
 		return pClassPointer;
 	};
@@ -9372,7 +9389,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 393 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryDominantDirectionalLightMovable" );
 
 		return pClassPointer;
 	};
@@ -9402,7 +9419,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 395 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryDynamicSM" );
 
 		return pClassPointer;
 	};
@@ -9424,7 +9441,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 397 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryMover" );
 
 		return pClassPointer;
 	};
@@ -9456,7 +9473,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 399 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryRigidBody" );
 
 		return pClassPointer;
 	};
@@ -9479,7 +9496,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 401 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryEmitter" );
 
 		return pClassPointer;
 	};
@@ -9502,7 +9519,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 403 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryFlex" );
 
 		return pClassPointer;
 	};
@@ -9526,7 +9543,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 405 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryFracturedStaticMesh" );
 
 		return pClassPointer;
 	};
@@ -9549,7 +9566,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 407 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryLensFlare" );
 
 		return pClassPointer;
 	};
@@ -9571,7 +9588,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 409 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryLight" );
 
 		return pClassPointer;
 	};
@@ -9593,7 +9610,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 411 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryPathNode" );
 
 		return pClassPointer;
 	};
@@ -9624,7 +9641,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 413 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryPhysicsAsset" );
 
 		return pClassPointer;
 	};
@@ -9646,7 +9663,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 415 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryPlayerStart" );
 
 		return pClassPointer;
 	};
@@ -9668,7 +9685,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 417 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryPylon" );
 
 		return pClassPointer;
 	};
@@ -9693,7 +9710,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 419 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactorySkeletalMesh" );
 
 		return pClassPointer;
 	};
@@ -9717,7 +9734,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 421 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryStaticMesh" );
 
 		return pClassPointer;
 	};
@@ -9739,7 +9756,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 423 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryTrigger" );
 
 		return pClassPointer;
 	};
@@ -9762,7 +9779,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 425 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryVehicle" );
 
 		return pClassPointer;
 	};
@@ -9785,7 +9802,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 427 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AISubsystem" );
 
 		return pClassPointer;
 	};
@@ -9813,7 +9830,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 429 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AkBank" );
 
 		return pClassPointer;
 	};
@@ -9835,7 +9852,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 431 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AkBaseSoundObject" );
 
 		return pClassPointer;
 	};
@@ -9878,7 +9895,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 433 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AkEvent" );
 
 		return pClassPointer;
 	};
@@ -9917,7 +9934,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 435 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundCue" );
 
 		return pClassPointer;
 	};
@@ -9943,7 +9960,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 437 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.BookMark" );
 
 		return pClassPointer;
 	};
@@ -9967,7 +9984,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 439 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.BookMark2D" );
 
 		return pClassPointer;
 	};
@@ -9990,7 +10007,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 441 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.KismetBookMark" );
 
 		return pClassPointer;
 	};
@@ -10032,7 +10049,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 443 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Canvas" );
 
 		return pClassPointer;
 	};
@@ -10042,11 +10059,11 @@ public:
 	void DrawDebugGraph ( );
 	void DrawTextureDoubleLine ( );
 	void DrawTextureLine ( );
-	void Draw2DLine (float X1, float Y1, float X2, float Y2, FColor Color);
+	void Draw2DLine ( );
 	void SetDrawColorStruct ( );
 	void EnableStencilTest ( );
-	void SetDrawColor ( unsigned char A, unsigned char R, unsigned char G, unsigned char B );
-	void DrawBox ( float Height, float Width );
+	void SetDrawColor ( );
+	void DrawBox ( );
 	void DrawRect ( );
 	void DrawIcon ( );
 	void DrawScaledIcon ( );
@@ -10057,14 +10074,14 @@ public:
 	void PushMaskRegion ( );
 	void SetClip ( );
 	void SetOrigin ( );
-	void SetPos ( float X, float Y );
+	void SetPos ( );
 	void GetDefaultCanvasFont ( );
 	void eventReset ( );
 	void PopTransform ( );
 	void PushTranslationMatrix ( );
 	void DeProject ( );
-	void Project ( FVector In, FVector &Out );
-	void DrawText ( struct FString Text, float ScaleX, float ScaleY );
+	void Project(FVector In, FVector &Out);
+	void DrawText(struct FString Text, float ScaleX, float ScaleY);
 	void TextSize ( );
 	void StrLen ( );
 	void CreateFontRenderInfo ( );
@@ -10094,7 +10111,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 445 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Channel" );
 
 		return pClassPointer;
 	};
@@ -10117,7 +10134,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 447 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorChannel" );
 
 		return pClassPointer;
 	};
@@ -10140,7 +10157,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 449 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ControlChannel" );
 
 		return pClassPointer;
 	};
@@ -10163,7 +10180,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 451 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FileChannel" );
 
 		return pClassPointer;
 	};
@@ -10186,7 +10203,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 453 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.VoiceChannel" );
 
 		return pClassPointer;
 	};
@@ -10275,7 +10292,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 455 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Controller" );
 
 		return pClassPointer;
 	};
@@ -10558,7 +10575,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 457 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PlayerController" );
 
 		return pClassPointer;
 	};
@@ -10864,6 +10881,7 @@ public:
 	void SetFOV ( );
 	void FixFOV ( );
 	void eventDestroyed ( );
+	void eventExit ( );
 	void CleanupPawn ( );
 	void eventClearOnlineDelegates ( );
 	void OnPartyMembersInfoChanged ( );
@@ -11009,7 +11027,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 459 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CheatManager" );
 
 		return pClassPointer;
 	};
@@ -11130,7 +11148,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 461 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Client" );
 
 		return pClassPointer;
 	};
@@ -11154,7 +11172,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 467 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ClipPadEntry" );
 
 		return pClassPointer;
 	};
@@ -11190,7 +11208,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 469 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CloudSaveSystem" );
 
 		return pClassPointer;
 	};
@@ -11235,7 +11253,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 471 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CodecMovie" );
 
 		return pClassPointer;
 	};
@@ -11258,7 +11276,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 473 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CodecMovieBink" );
 
 		return pClassPointer;
 	};
@@ -11281,7 +11299,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 475 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CodecMovieFallback" );
 
 		return pClassPointer;
 	};
@@ -11305,7 +11323,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 477 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CurveEdPresetCurve" );
 
 		return pClassPointer;
 	};
@@ -11327,7 +11345,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 479 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CustomPropertyItemHandler" );
 
 		return pClassPointer;
 	};
@@ -11363,7 +11381,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 481 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DamageType" );
 
 		return pClassPointer;
 	};
@@ -11386,7 +11404,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 483 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.KillZDamageType" );
 
 		return pClassPointer;
 	};
@@ -11409,7 +11427,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 485 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionFloatConstant" );
 
 		return pClassPointer;
 	};
@@ -11437,7 +11455,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 487 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionFloatParameterBase" );
 
 		return pClassPointer;
 	};
@@ -11460,7 +11478,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 489 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionFloatConstantCurve" );
 
 		return pClassPointer;
 	};
@@ -11484,7 +11502,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 491 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionFloatUniform" );
 
 		return pClassPointer;
 	};
@@ -11507,7 +11525,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 493 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionFloatUniformCurve" );
 
 		return pClassPointer;
 	};
@@ -11534,7 +11552,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 495 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionFloatUniformRange" );
 
 		return pClassPointer;
 	};
@@ -11559,7 +11577,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 497 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionVectorConstant" );
 
 		return pClassPointer;
 	};
@@ -11587,7 +11605,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 499 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionVectorParameterBase" );
 
 		return pClassPointer;
 	};
@@ -11612,7 +11630,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 501 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionVectorConstantCurve" );
 
 		return pClassPointer;
 	};
@@ -11640,7 +11658,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 503 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionVectorUniform" );
 
 		return pClassPointer;
 	};
@@ -11668,7 +11686,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 505 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionVectorUniformCurve" );
 
 		return pClassPointer;
 	};
@@ -11694,7 +11712,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 507 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionVectorUniformRange" );
 
 		return pClassPointer;
 	};
@@ -11717,7 +11735,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 509 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Download" );
 
 		return pClassPointer;
 	};
@@ -11740,7 +11758,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 511 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ChannelDownload" );
 
 		return pClassPointer;
 	};
@@ -11764,7 +11782,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 513 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.EdCoordSystem" );
 
 		return pClassPointer;
 	};
@@ -11786,7 +11804,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 515 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.EditorLinkSelectionInterface" );
 
 		return pClassPointer;
 	};
@@ -11808,7 +11826,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 517 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.EngineTypes" );
 
 		return pClassPointer;
 	};
@@ -11837,7 +11855,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 519 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FaceFXAnimSet" );
 
 		return pClassPointer;
 	};
@@ -11868,7 +11886,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 521 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FaceFXAsset" );
 
 		return pClassPointer;
 	};
@@ -11905,7 +11923,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 523 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Font" );
 
 		return pClassPointer;
 	};
@@ -11933,7 +11951,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 525 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MultiFont" );
 
 		return pClassPointer;
 	};
@@ -11957,7 +11975,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 527 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FontImportOptions" );
 
 		return pClassPointer;
 	};
@@ -11988,7 +12006,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 529 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ForceFeedbackManager" );
 
 		return pClassPointer;
 	};
@@ -12017,7 +12035,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 531 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ForceFeedbackWaveform" );
 
 		return pClassPointer;
 	};
@@ -12050,7 +12068,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 533 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GamePadLightbarSubsystem" );
 
 		return pClassPointer;
 	};
@@ -12094,7 +12112,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 535 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameplayEvents" );
 
 		return pClassPointer;
 	};
@@ -12120,7 +12138,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 537 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameplayEventsReader" );
 
 		return pClassPointer;
 	};
@@ -12158,7 +12176,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 539 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameplayEventsWriterBase" );
 
 		return pClassPointer;
 	};
@@ -12210,7 +12228,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 541 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameplayEventsUploadAnalytics" );
 
 		return pClassPointer;
 	};
@@ -12256,7 +12274,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 543 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameplayEventsWriter" );
 
 		return pClassPointer;
 	};
@@ -12311,7 +12329,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 545 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameplayEventsHandler" );
 
 		return pClassPointer;
 	};
@@ -12341,7 +12359,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 547 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GenericParamListStatEntry" );
 
 		return pClassPointer;
 	};
@@ -12373,7 +12391,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 549 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GuidCache" );
 
 		return pClassPointer;
 	};
@@ -12395,7 +12413,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 551 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.HttpBaseInterface" );
 
 		return pClassPointer;
 	};
@@ -12426,7 +12444,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 553 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.HttpRequestInterface" );
 
 		return pClassPointer;
 	};
@@ -12457,7 +12475,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 555 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.HttpResponseInterface" );
 
 		return pClassPointer;
 	};
@@ -12494,7 +12512,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 557 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.IniLocPatcher" );
 
 		return pClassPointer;
 	};
@@ -12535,7 +12553,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 559 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Interface_NavigationHandle" );
 
 		return pClassPointer;
 	};
@@ -12558,7 +12576,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 561 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Interface_Speaker" );
 
 		return pClassPointer;
 	};
@@ -12583,7 +12601,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 563 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpCurveEdSetup" );
 
 		return pClassPointer;
 	};
@@ -12622,7 +12640,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 565 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrack" );
 
 		return pClassPointer;
 	};
@@ -12648,7 +12666,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 567 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.JsonObject" );
 
 		return pClassPointer;
 	};
@@ -12685,7 +12703,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 569 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.KMeshProps" );
 
 		return pClassPointer;
 	};
@@ -12708,7 +12726,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 571 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LevelBase" );
 
 		return pClassPointer;
 	};
@@ -12734,7 +12752,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 573 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Level" );
 
 		return pClassPointer;
 	};
@@ -12757,7 +12775,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 577 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PendingLevel" );
 
 		return pClassPointer;
 	};
@@ -12779,7 +12797,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 579 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DemoPlayPendingLevel" );
 
 		return pClassPointer;
 	};
@@ -12801,7 +12819,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 581 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NetPendingLevel" );
 
 		return pClassPointer;
 	};
@@ -12848,7 +12866,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 583 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LevelStreaming" );
 
 		return pClassPointer;
 	};
@@ -12871,7 +12889,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 585 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LevelStreamingAlwaysLoaded" );
 
 		return pClassPointer;
 	};
@@ -12895,7 +12913,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 587 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LevelStreamingDistance" );
 
 		return pClassPointer;
 	};
@@ -12917,7 +12935,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 589 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LevelStreamingKismet" );
 
 		return pClassPointer;
 	};
@@ -12939,7 +12957,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 591 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LevelStreamingPersistent" );
 
 		return pClassPointer;
 	};
@@ -12963,7 +12981,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 593 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LightmappedSurfaceCollection" );
 
 		return pClassPointer;
 	};
@@ -12998,7 +13016,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 595 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LightmassLevelSettings" );
 
 		return pClassPointer;
 	};
@@ -13021,7 +13039,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 597 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LightmassPrimitiveSettingsObject" );
 
 		return pClassPointer;
 	};
@@ -13045,7 +13063,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 599 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MapInfo" );
 
 		return pClassPointer;
 	};
@@ -13068,7 +13086,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 601 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Model" );
 
 		return pClassPointer;
 	};
@@ -13090,7 +13108,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 603 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MusicTrackDataStructures" );
 
 		return pClassPointer;
 	};
@@ -13113,7 +13131,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 605 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavigationMeshBase" );
 
 		return pClassPointer;
 	};
@@ -13156,7 +13174,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 607 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NetDriver" );
 
 		return pClassPointer;
 	};
@@ -13186,7 +13204,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 627 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DemoRecDriver" );
 
 		return pClassPointer;
 	};
@@ -13209,7 +13227,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 633 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ObjectReferencer" );
 
 		return pClassPointer;
 	};
@@ -13231,7 +13249,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 635 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineAuthInterface" );
 
 		return pClassPointer;
 	};
@@ -13315,7 +13333,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 637 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineGameInterface" );
 
 		return pClassPointer;
 	};
@@ -13485,7 +13503,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 639 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineMatchmakingStats" );
 
 		return pClassPointer;
 	};
@@ -13516,7 +13534,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 641 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlinePlayerStorage" );
 
 		return pClassPointer;
 	};
@@ -13573,7 +13591,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 643 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineProfileSettings" );
 
 		return pClassPointer;
 	};
@@ -13604,7 +13622,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 645 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineStats" );
 
 		return pClassPointer;
 	};
@@ -13636,7 +13654,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 647 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineStatsRead" );
 
 		return pClassPointer;
 	};
@@ -13674,7 +13692,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 649 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineStatsWrite" );
 
 		return pClassPointer;
 	};
@@ -13774,7 +13792,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 651 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineSubsystem" );
 
 		return pClassPointer;
 	};
@@ -13856,6 +13874,9 @@ public:
 	void ClearInFlight ( );
 	void ClearNewlyAdded ( );
 	void IsExchangeable ( );
+	void CanCheckFreeTrialState ( );
+	void IsFreeTrialPeriodActive ( );
+	void IsGameOwned ( );
 	void OpenGameStorePage ( );
 	void OpenURL ( );
 	void OpenItemPurchaseOverlay ( );
@@ -13878,7 +13899,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 653 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PackageMapLevel" );
 
 		return pClassPointer;
 	};
@@ -13900,7 +13921,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 655 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PackageMapSeekFree" );
 
 		return pClassPointer;
 	};
@@ -13923,7 +13944,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 657 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PatchScriptCommandlet" );
 
 		return pClassPointer;
 	};
@@ -13948,13 +13969,14 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 659 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PlatformInterfaceBase" );
 
 		return pClassPointer;
 	};
 
 	void ClearDelegate ( );
 	void AddDelegate ( );
+	void GetDiscordRPCIntegration ( );
 	void GetRazerIntegration ( );
 	void GetAlienFXIntegration ( );
 	void GetLogitechIntegration ( );
@@ -13990,7 +14012,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 661 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MicroTransactionBase" );
 
 		return pClassPointer;
 	};
@@ -14017,7 +14039,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 663 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MicroTransactionProxy" );
 
 		return pClassPointer;
 	};
@@ -14048,7 +14070,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 665 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Player" );
 
 		return pClassPointer;
 	};
@@ -14099,7 +14121,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 667 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LocalPlayer" );
 
 		return pClassPointer;
 	};
@@ -14156,7 +14178,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 669 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NetConnection" );
 
 		return pClassPointer;
 	};
@@ -14179,7 +14201,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 673 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ChildConnection" );
 
 		return pClassPointer;
 	};
@@ -14201,7 +14223,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 676 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DemoRecConnection" );
 
 		return pClassPointer;
 	};
@@ -14282,7 +14304,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 678 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PlayfabInterface" );
 
 		return pClassPointer;
 	};
@@ -14375,7 +14397,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 680 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Polys" );
 
 		return pClassPointer;
 	};
@@ -14398,7 +14420,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 682 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PostProcessChain" );
 
 		return pClassPointer;
 	};
@@ -14433,7 +14455,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 684 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PostProcessEffect" );
 
 		return pClassPointer;
 	};
@@ -14487,7 +14509,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 686 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientOcclusionEffect" );
 
 		return pClassPointer;
 	};
@@ -14510,7 +14532,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 688 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.BlurEffect" );
 
 		return pClassPointer;
 	};
@@ -14541,7 +14563,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 690 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DOFEffect" );
 
 		return pClassPointer;
 	};
@@ -14577,7 +14599,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 692 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DOFAndBloomEffect" );
 
 		return pClassPointer;
 	};
@@ -14604,7 +14626,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 694 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DOFBloomMotionBlurEffect" );
 
 		return pClassPointer;
 	};
@@ -14650,7 +14672,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 696 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UberPostProcessEffect" );
 
 		return pClassPointer;
 	};
@@ -14673,7 +14695,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 698 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialEffect" );
 
 		return pClassPointer;
 	};
@@ -14700,7 +14722,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 700 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MotionBlurEffect" );
 
 		return pClassPointer;
 	};
@@ -14759,7 +14781,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 702 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWPostProcessEffect" );
 
 		return pClassPointer;
 	};
@@ -14789,7 +14811,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 704 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PrimitiveComponentFactory" );
 
 		return pClassPointer;
 	};
@@ -14812,7 +14834,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 706 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MeshComponentFactory" );
 
 		return pClassPointer;
 	};
@@ -14835,7 +14857,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 708 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.StaticMeshComponentFactory" );
 
 		return pClassPointer;
 	};
@@ -14876,7 +14898,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 710 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ReachSpec" );
 
 		return pClassPointer;
 	};
@@ -14903,7 +14925,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 712 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AdvancedReachSpec" );
 
 		return pClassPointer;
 	};
@@ -14925,7 +14947,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 714 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CeilingReachSpec" );
 
 		return pClassPointer;
 	};
@@ -14947,7 +14969,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 716 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ForcedReachSpec" );
 
 		return pClassPointer;
 	};
@@ -14970,7 +14992,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 718 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CoverSlipReachSpec" );
 
 		return pClassPointer;
 	};
@@ -14992,7 +15014,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 720 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FloorToCeilingReachSpec" );
 
 		return pClassPointer;
 	};
@@ -15015,7 +15037,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 722 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MantleReachSpec" );
 
 		return pClassPointer;
 	};
@@ -15038,7 +15060,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 724 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SlotToSlotReachSpec" );
 
 		return pClassPointer;
 	};
@@ -15061,7 +15083,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 726 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SwatTurnReachSpec" );
 
 		return pClassPointer;
 	};
@@ -15083,7 +15105,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 728 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.WallTransReachSpec" );
 
 		return pClassPointer;
 	};
@@ -15105,7 +15127,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 730 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LadderReachSpec" );
 
 		return pClassPointer;
 	};
@@ -15127,7 +15149,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 732 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ProscribedReachSpec" );
 
 		return pClassPointer;
 	};
@@ -15149,7 +15171,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 734 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TeleportReachSpec" );
 
 		return pClassPointer;
 	};
@@ -15202,7 +15224,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 736 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SavedMove" );
 
 		return pClassPointer;
 	};
@@ -15238,7 +15260,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 738 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SaveGameSummary" );
 
 		return pClassPointer;
 	};
@@ -15261,7 +15283,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 740 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ScriptViewportClient" );
 
 		return pClassPointer;
 	};
@@ -15324,7 +15346,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 742 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameViewportClient" );
 
 		return pClassPointer;
 	};
@@ -15381,7 +15403,7 @@ public:
 	void ShouldForceFullscreenViewport ( );
 	void GetMousePosition ( );
 	void IsFullScreenViewport ( );
-	void GetViewportSize ( FVector2D &Out );
+	void GetViewportSize(FVector2D &Out);
 	void ConsoleCommand ( );
 	void HandleInputChar ( );
 	void HandleInputAxis ( );
@@ -15404,7 +15426,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 744 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Selection" );
 
 		return pClassPointer;
 	};
@@ -15426,7 +15448,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 746 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ServerCommandlet" );
 
 		return pClassPointer;
 	};
@@ -15452,7 +15474,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 748 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Settings" );
 
 		return pClassPointer;
 	};
@@ -15543,7 +15565,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 750 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineGameSearch" );
 
 		return pClassPointer;
 	};
@@ -15618,7 +15640,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 752 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineGameSettings" );
 
 		return pClassPointer;
 	};
@@ -15641,7 +15663,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 754 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ShaderCache" );
 
 		return pClassPointer;
 	};
@@ -15664,7 +15686,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 756 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ShadowMap1D" );
 
 		return pClassPointer;
 	};
@@ -15693,7 +15715,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 758 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ShadowMap2D" );
 
 		return pClassPointer;
 	};
@@ -15715,7 +15737,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 760 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SmokeTestCommandlet" );
 
 		return pClassPointer;
 	};
@@ -15747,7 +15769,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 762 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpeechRecognition" );
 
 		return pClassPointer;
 	};
@@ -15769,7 +15791,7 @@ public:
 	unsigned char                                      UnknownData01[ 0x10 ];                            		// 0x0090 (0x0010) MISSED OFFSET
 	int                                                LightMapResolution;                               		// 0x00A0 (0x0004) [0x0000000000000000]              
 	int                                                LightMapCoordinateIndex;                          		// 0x00A4 (0x0004) [0x0000000000000000]              
-	int                                                SplatterMapCoordinateIndex_[1];                  		// 0x00A8 (0x0004) [0x0000000000000000]              
+	int                                                SplatterMapCoordinateIndex;                  			// 0x00A8 (0x0004) [0x0000000000000000]              
 	unsigned char                                      UnknownData02[ 0x5C ];                            		// 0x00AC (0x005C) MISSED OFFSET
 	class URB_BodySetup*                               BodySetup;                                        		// 0x0108 (0x0008) [0x0000000000000000]              
 	unsigned char                                      UnknownData03[ 0x4C ];                            		// 0x0110 (0x004C) MISSED OFFSET
@@ -15802,7 +15824,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 764 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.StaticMesh" );
 
 		return pClassPointer;
 	};
@@ -15824,7 +15846,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 786 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Surface" );
 
 		return pClassPointer;
 	};
@@ -15953,7 +15975,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 788 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialInterface" );
 
 		return pClassPointer;
 	};
@@ -16007,7 +16029,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 798 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_BodySetup" );
 
 		return pClassPointer;
 	};
@@ -16091,7 +16113,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 801 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InstancedFoliageSettings" );
 
 		return pClassPointer;
 	};
@@ -16137,7 +16159,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 806 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FlexAsset" );
 
 		return pClassPointer;
 	};
@@ -16190,7 +16212,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 810 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FracturedStaticMesh" );
 
 		return pClassPointer;
 	};
@@ -16258,7 +16280,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 813 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleSystem" );
 
 		return pClassPointer;
 	};
@@ -16329,7 +16351,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 843 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Texture" );
 
 		return pClassPointer;
 	};
@@ -16387,7 +16409,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 845 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Texture2D" );
 
 		return pClassPointer;
 	};
@@ -16412,7 +16434,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 847 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LightMapTexture2D" );
 
 		return pClassPointer;
 	};
@@ -16435,7 +16457,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 849 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ShadowMapTexture2D" );
 
 		return pClassPointer;
 	};
@@ -16459,7 +16481,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 851 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWSplatterMapTexture2D" );
 
 		return pClassPointer;
 	};
@@ -16482,7 +16504,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 853 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TranslationContext" );
 
 		return pClassPointer;
 	};
@@ -16506,7 +16528,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 855 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TranslatorTag" );
 
 		return pClassPointer;
 	};
@@ -16529,7 +16551,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 857 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.StringsTag" );
 
 		return pClassPointer;
 	};
@@ -16552,7 +16574,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 859 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWFixupSplattermapUVCommandlet" );
 
 		return pClassPointer;
 	};
@@ -16579,7 +16601,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 861 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWGenerateLightmapUVCommandlet" );
 
 		return pClassPointer;
 	};
@@ -16602,7 +16624,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 863 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWOnlineLobby" );
 
 		return pClassPointer;
 	};
@@ -16648,7 +16670,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 865 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWOnlineUGCInterface" );
 
 		return pClassPointer;
 	};
@@ -16678,7 +16700,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 867 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWSplatterMap2D" );
 
 		return pClassPointer;
 	};
@@ -16701,7 +16723,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 869 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIRoot" );
 
 		return pClassPointer;
 	};
@@ -16739,7 +16761,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 871 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Interaction" );
 
 		return pClassPointer;
 	};
@@ -16792,7 +16814,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 873 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIInteraction" );
 
 		return pClassPointer;
 	};
@@ -16831,7 +16853,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 875 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIManager" );
 
 		return pClassPointer;
 	};
@@ -16860,7 +16882,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 877 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.WaveFormBase" );
 
 		return pClassPointer;
 	};
@@ -16883,7 +16905,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 879 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.World" );
 
 		return pClassPointer;
 	};
@@ -16908,7 +16930,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 881 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.EnvironmentVolume" );
 
 		return pClassPointer;
 	};
@@ -16932,7 +16954,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 883 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TestSplittingVolume" );
 
 		return pClassPointer;
 	};
@@ -16960,7 +16982,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 885 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AIController" );
 
 		return pClassPointer;
 	};
@@ -16993,7 +17015,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 887 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CrowdAgentBase" );
 
 		return pClassPointer;
 	};
@@ -17016,7 +17038,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 889 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CrowdPopulationManagerBase" );
 
 		return pClassPointer;
 	};
@@ -17038,7 +17060,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 891 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PathTargetPoint" );
 
 		return pClassPointer;
 	};
@@ -17064,7 +17086,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 893 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshObstacle" );
 
 		return pClassPointer;
 	};
@@ -17095,7 +17117,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 895 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PylonSeed" );
 
 		return pClassPointer;
 	};
@@ -17117,7 +17139,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 897 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CoverGroupRenderingComponent" );
 
 		return pClassPointer;
 	};
@@ -17140,7 +17162,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 899 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MeshComponent" );
 
 		return pClassPointer;
 	};
@@ -17196,7 +17218,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 901 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.StaticMeshComponent" );
 
 		return pClassPointer;
 	};
@@ -17228,7 +17250,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 903 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CoverMeshComponent" );
 
 		return pClassPointer;
 	};
@@ -17250,7 +17272,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 905 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshRenderingComponent" );
 
 		return pClassPointer;
 	};
@@ -17272,7 +17294,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 907 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PathRenderingComponent" );
 
 		return pClassPointer;
 	};
@@ -17294,7 +17316,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 909 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RouteRenderingComponent" );
 
 		return pClassPointer;
 	};
@@ -17316,7 +17338,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 911 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AICommandBase" );
 
 		return pClassPointer;
 	};
@@ -17341,7 +17363,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 913 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AutoNavMeshPathObstacleUnregister" );
 
 		return pClassPointer;
 	};
@@ -17363,7 +17385,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 915 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Interface_NavMeshPathObject" );
 
 		return pClassPointer;
 	};
@@ -17385,7 +17407,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 917 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Interface_NavMeshPathSwitch" );
 
 		return pClassPointer;
 	};
@@ -17408,7 +17430,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 919 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Interface_NavMeshPathObstacle" );
 
 		return pClassPointer;
 	};
@@ -17430,7 +17452,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 921 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Interface_PylonGeometryProvider" );
 
 		return pClassPointer;
 	};
@@ -17452,7 +17474,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 923 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Interface_RVO" );
 
 		return pClassPointer;
 	};
@@ -17495,7 +17517,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 925 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavigationHandle" );
 
 		return pClassPointer;
 	};
@@ -17566,7 +17588,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 927 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoal_Filter" );
 
 		return pClassPointer;
 	};
@@ -17590,7 +17612,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 929 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoalFilter_MinPathDistance" );
 
 		return pClassPointer;
 	};
@@ -17614,7 +17636,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 931 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoalFilter_NotNearOtherAI" );
 
 		return pClassPointer;
 	};
@@ -17639,7 +17661,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 933 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoalFilter_OutOfViewFrom" );
 
 		return pClassPointer;
 	};
@@ -17665,7 +17687,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 935 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoalFilter_OutSideOfDotProductWedge" );
 
 		return pClassPointer;
 	};
@@ -17689,7 +17711,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 937 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoalFilter_PolyEncompassesAI" );
 
 		return pClassPointer;
 	};
@@ -17717,7 +17739,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 939 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshPathConstraint" );
 
 		return pClassPointer;
 	};
@@ -17742,7 +17764,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 941 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshPath_AlongLine" );
 
 		return pClassPointer;
 	};
@@ -17766,7 +17788,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 943 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshPath_EnforceTwoWayEdges" );
 
 		return pClassPointer;
 	};
@@ -17793,7 +17815,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 945 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshPath_MinDistBetweenSpecsOfType" );
 
 		return pClassPointer;
 	};
@@ -17818,7 +17840,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 947 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshPath_SameCoverLink" );
 
 		return pClassPointer;
 	};
@@ -17846,7 +17868,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 949 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshPath_Toward" );
 
 		return pClassPointer;
 	};
@@ -17877,7 +17899,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 951 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshPath_WithinDistanceEnvelope" );
 
 		return pClassPointer;
 	};
@@ -17904,7 +17926,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 953 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshPath_WithinTraversalDist" );
 
 		return pClassPointer;
 	};
@@ -17935,7 +17957,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 955 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshPathGoalEvaluator" );
 
 		return pClassPointer;
 	};
@@ -17967,7 +17989,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 957 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoal_At" );
 
 		return pClassPointer;
 	};
@@ -17996,7 +18018,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 959 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoal_ClosestActorInList" );
 
 		return pClassPointer;
 	};
@@ -18025,7 +18047,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 961 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoal_GenericFilterContainer" );
 
 		return pClassPointer;
 	};
@@ -18053,7 +18075,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 963 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoal_Null" );
 
 		return pClassPointer;
 	};
@@ -18079,7 +18101,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 965 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoal_PolyEncompassesAI" );
 
 		return pClassPointer;
 	};
@@ -18106,7 +18128,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 967 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoal_Random" );
 
 		return pClassPointer;
 	};
@@ -18135,7 +18157,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 969 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshGoal_WithinDistanceEnvelope" );
 
 		return pClassPointer;
 	};
@@ -18161,7 +18183,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 971 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PathConstraint" );
 
 		return pClassPointer;
 	};
@@ -18186,7 +18208,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 973 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Path_AlongLine" );
 
 		return pClassPointer;
 	};
@@ -18214,7 +18236,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 975 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Path_AvoidInEscapableNodes" );
 
 		return pClassPointer;
 	};
@@ -18242,7 +18264,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 977 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Path_MinDistBetweenSpecsOfType" );
 
 		return pClassPointer;
 	};
@@ -18267,7 +18289,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 979 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Path_TowardGoal" );
 
 		return pClassPointer;
 	};
@@ -18292,7 +18314,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 981 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Path_TowardPoint" );
 
 		return pClassPointer;
 	};
@@ -18322,7 +18344,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 983 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Path_WithinDistanceEnvelope" );
 
 		return pClassPointer;
 	};
@@ -18349,7 +18371,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 985 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Path_WithinTraversalDist" );
 
 		return pClassPointer;
 	};
@@ -18378,7 +18400,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 987 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PathGoalEvaluator" );
 
 		return pClassPointer;
 	};
@@ -18405,7 +18427,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 989 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Goal_AtActor" );
 
 		return pClassPointer;
 	};
@@ -18429,7 +18451,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 991 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Goal_Null" );
 
 		return pClassPointer;
 	};
@@ -18468,7 +18490,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 993 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkeletalMeshActor" );
 
 		return pClassPointer;
 	};
@@ -18520,7 +18542,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 995 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkeletalMeshActorBasedOnExtremeContent" );
 
 		return pClassPointer;
 	};
@@ -18544,7 +18566,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 997 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkeletalMeshActorSpawnable" );
 
 		return pClassPointer;
 	};
@@ -18566,7 +18588,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 999 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkeletalMeshCinematicActor" );
 
 		return pClassPointer;
 	};
@@ -18589,7 +18611,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1001 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkeletalMeshActorMAT" );
 
 		return pClassPointer;
 	};
@@ -18637,7 +18659,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1003 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.HeadTrackingComponent" );
 
 		return pClassPointer;
 	};
@@ -18663,7 +18685,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1005 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimationCompressionAlgorithm" );
 
 		return pClassPointer;
 	};
@@ -18693,7 +18715,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1007 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimationCompressionAlgorithm_Automatic" );
 
 		return pClassPointer;
 	};
@@ -18715,7 +18737,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1009 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimationCompressionAlgorithm_BitwiseCompressOnly" );
 
 		return pClassPointer;
 	};
@@ -18737,7 +18759,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1011 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimationCompressionAlgorithm_LeastDestructive" );
 
 		return pClassPointer;
 	};
@@ -18761,7 +18783,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1013 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimationCompressionAlgorithm_RemoveEverySecondKey" );
 
 		return pClassPointer;
 	};
@@ -18791,7 +18813,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1015 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimationCompressionAlgorithm_RemoveLinearKeys" );
 
 		return pClassPointer;
 	};
@@ -18832,7 +18854,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1017 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimationCompressionAlgorithm_PerTrackCompression" );
 
 		return pClassPointer;
 	};
@@ -18856,7 +18878,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1019 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimationCompressionAlgorithm_RemoveTrivialKeys" );
 
 		return pClassPointer;
 	};
@@ -18878,7 +18900,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1021 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimationCompressionAlgorithm_RevertToRaw" );
 
 		return pClassPointer;
 	};
@@ -18900,7 +18922,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1023 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimMetaData" );
 
 		return pClassPointer;
 	};
@@ -18925,7 +18947,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1025 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimMetaData_SkelControl" );
 
 		return pClassPointer;
 	};
@@ -18948,7 +18970,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1027 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimMetaData_SkelControlKeyFrame" );
 
 		return pClassPointer;
 	};
@@ -18971,7 +18993,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1029 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify" );
 
 		return pClassPointer;
 	};
@@ -19000,7 +19022,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1031 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_AkEvent" );
 
 		return pClassPointer;
 	};
@@ -19023,7 +19045,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1033 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_CameraEffect" );
 
 		return pClassPointer;
 	};
@@ -19049,7 +19071,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1035 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_ClothingMaxDistanceScale" );
 
 		return pClassPointer;
 	};
@@ -19072,7 +19094,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1037 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_Footstep" );
 
 		return pClassPointer;
 	};
@@ -19098,7 +19120,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1039 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_ForceField" );
 
 		return pClassPointer;
 	};
@@ -19121,7 +19143,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1041 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_Kismet" );
 
 		return pClassPointer;
 	};
@@ -19152,7 +19174,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1043 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_PlayParticleEffect" );
 
 		return pClassPointer;
 	};
@@ -19178,7 +19200,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1045 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_Rumble" );
 
 		return pClassPointer;
 	};
@@ -19203,7 +19225,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1047 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_Script" );
 
 		return pClassPointer;
 	};
@@ -19225,7 +19247,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1049 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_Scripted" );
 
 		return pClassPointer;
 	};
@@ -19250,7 +19272,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1051 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_PawnMaterialParam" );
 
 		return pClassPointer;
 	};
@@ -19285,7 +19307,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1053 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_ViewShake" );
 
 		return pClassPointer;
 	};
@@ -19315,7 +19337,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1055 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_Sound" );
 
 		return pClassPointer;
 	};
@@ -19356,7 +19378,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1057 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_Trails" );
 
 		return pClassPointer;
 	};
@@ -19386,7 +19408,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1059 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimObject" );
 
 		return pClassPointer;
 	};
@@ -19432,7 +19454,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1061 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNode" );
 
 		return pClassPointer;
 	};
@@ -19464,7 +19486,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1063 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlendBase" );
 
 		return pClassPointer;
 	};
@@ -19492,7 +19514,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1065 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNode_MultiBlendPerBone" );
 
 		return pClassPointer;
 	};
@@ -19528,7 +19550,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1067 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeAimOffset" );
 
 		return pClassPointer;
 	};
@@ -19556,7 +19578,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1069 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlend" );
 
 		return pClassPointer;
 	};
@@ -19580,7 +19602,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1071 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeAdditiveBlending" );
 
 		return pClassPointer;
 	};
@@ -19607,7 +19629,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1073 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlendPerBone" );
 
 		return pClassPointer;
 	};
@@ -19633,7 +19655,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1075 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeCrossfader" );
 
 		return pClassPointer;
 	};
@@ -19661,7 +19683,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1077 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodePlayCustomAnim" );
 
 		return pClassPointer;
 	};
@@ -19695,7 +19717,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1079 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlendDirectional" );
 
 		return pClassPointer;
 	};
@@ -19725,7 +19747,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1081 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlendList" );
 
 		return pClassPointer;
 	};
@@ -19753,7 +19775,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1083 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlendByBase" );
 
 		return pClassPointer;
 	};
@@ -19775,7 +19797,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1085 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlendByPhysics" );
 
 		return pClassPointer;
 	};
@@ -19797,7 +19819,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1087 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlendByPosture" );
 
 		return pClassPointer;
 	};
@@ -19834,7 +19856,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1089 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlendByProperty" );
 
 		return pClassPointer;
 	};
@@ -19866,7 +19888,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1091 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlendBySpeed" );
 
 		return pClassPointer;
 	};
@@ -19892,7 +19914,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1093 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeRandom" );
 
 		return pClassPointer;
 	};
@@ -19916,7 +19938,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1095 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeBlendMultiBone" );
 
 		return pClassPointer;
 	};
@@ -19940,7 +19962,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1097 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeMirror" );
 
 		return pClassPointer;
 	};
@@ -19963,7 +19985,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1099 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeScalePlayRate" );
 
 		return pClassPointer;
 	};
@@ -19986,7 +20008,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1101 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeScaleRateBySpeed" );
 
 		return pClassPointer;
 	};
@@ -20020,7 +20042,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1103 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeSlot" );
 
 		return pClassPointer;
 	};
@@ -20055,7 +20077,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1105 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeSynch" );
 
 		return pClassPointer;
 	};
@@ -20117,7 +20139,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1107 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimTree" );
 
 		return pClassPointer;
 	};
@@ -20188,7 +20210,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1109 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeSequence" );
 
 		return pClassPointer;
 	};
@@ -20225,7 +20247,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1111 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeSequenceBlendBase" );
 
 		return pClassPointer;
 	};
@@ -20261,7 +20283,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1113 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeSequenceBlendByAim" );
 
 		return pClassPointer;
 	};
@@ -20295,7 +20317,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1115 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNodeFrame" );
 
 		return pClassPointer;
 	};
@@ -20319,7 +20341,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1117 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MorphNodeBase" );
 
 		return pClassPointer;
 	};
@@ -20344,7 +20366,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1119 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MorphNodeMultiPose" );
 
 		return pClassPointer;
 	};
@@ -20372,7 +20394,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1121 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MorphNodePose" );
 
 		return pClassPointer;
 	};
@@ -20396,7 +20418,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1123 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MorphNodeWeightBase" );
 
 		return pClassPointer;
 	};
@@ -20419,7 +20441,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1125 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MorphNodeWeight" );
 
 		return pClassPointer;
 	};
@@ -20455,7 +20477,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1127 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MorphNodeWeightByBoneAngle" );
 
 		return pClassPointer;
 	};
@@ -20487,7 +20509,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1129 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MorphNodeWeightByBoneRotation" );
 
 		return pClassPointer;
 	};
@@ -20536,7 +20558,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1131 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControlBase" );
 
 		return pClassPointer;
 	};
@@ -20574,7 +20596,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1133 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControl_CCD_IK" );
 
 		return pClassPointer;
 	};
@@ -20597,7 +20619,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1135 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControl_Multiply" );
 
 		return pClassPointer;
 	};
@@ -20621,7 +20643,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1137 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControl_TwistBone" );
 
 		return pClassPointer;
 	};
@@ -20662,7 +20684,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1139 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControlLimb" );
 
 		return pClassPointer;
 	};
@@ -20693,7 +20715,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1141 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControlFootPlacement" );
 
 		return pClassPointer;
 	};
@@ -20750,7 +20772,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1143 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControlLookAt" );
 
 		return pClassPointer;
 	};
@@ -20787,7 +20809,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1145 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControlSingleBone" );
 
 		return pClassPointer;
 	};
@@ -20814,7 +20836,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1147 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControlHandlebars" );
 
 		return pClassPointer;
 	};
@@ -20844,7 +20866,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1149 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControlWheel" );
 
 		return pClassPointer;
 	};
@@ -20872,7 +20894,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1151 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControlSpline" );
 
 		return pClassPointer;
 	};
@@ -20907,7 +20929,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1153 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkelControlTrail" );
 
 		return pClassPointer;
 	};
@@ -20964,7 +20986,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1155 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimSequence" );
 
 		return pClassPointer;
 	};
@@ -20999,7 +21021,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1157 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimSet" );
 
 		return pClassPointer;
 	};
@@ -21024,7 +21046,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1159 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MorphTarget" );
 
 		return pClassPointer;
 	};
@@ -21049,7 +21071,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1161 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MorphTargetSet" );
 
 		return pClassPointer;
 	};
@@ -21072,7 +21094,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1163 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MorphWeightSequence" );
 
 		return pClassPointer;
 	};
@@ -21096,7 +21118,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1165 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DecalActorBase" );
 
 		return pClassPointer;
 	};
@@ -21118,7 +21140,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1167 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DecalActor" );
 
 		return pClassPointer;
 	};
@@ -21140,7 +21162,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1169 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DecalActorMovable" );
 
 		return pClassPointer;
 	};
@@ -21170,7 +21192,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1171 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DecalManager" );
 
 		return pClassPointer;
 	};
@@ -21255,7 +21277,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1173 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DecalComponent" );
 
 		return pClassPointer;
 	};
@@ -21282,7 +21304,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1175 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryDecal" );
 
 		return pClassPointer;
 	};
@@ -21304,7 +21326,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1177 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryDecalMovable" );
 
 		return pClassPointer;
 	};
@@ -21425,7 +21447,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1179 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Material" );
 
 		return pClassPointer;
 	};
@@ -21447,7 +21469,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1181 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DecalMaterial" );
 
 		return pClassPointer;
 	};
@@ -21472,7 +21494,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1183 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FogVolumeDensityInfo" );
 
 		return pClassPointer;
 	};
@@ -21500,7 +21522,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1185 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FogVolumeConeDensityInfo" );
 
 		return pClassPointer;
 	};
@@ -21522,7 +21544,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1187 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FogVolumeConstantDensityInfo" );
 
 		return pClassPointer;
 	};
@@ -21544,7 +21566,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1189 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FogVolumeLinearHalfspaceDensityInfo" );
 
 		return pClassPointer;
 	};
@@ -21566,7 +21588,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1191 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FogVolumeSphericalDensityInfo" );
 
 		return pClassPointer;
 	};
@@ -21599,7 +21621,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1193 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ExponentialHeightFogComponent" );
 
 		return pClassPointer;
 	};
@@ -21632,7 +21654,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1195 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FogVolumeDensityComponent" );
 
 		return pClassPointer;
 	};
@@ -21661,7 +21683,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1197 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FogVolumeConeDensityComponent" );
 
 		return pClassPointer;
 	};
@@ -21684,7 +21706,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1199 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FogVolumeConstantDensityComponent" );
 
 		return pClassPointer;
 	};
@@ -21709,7 +21731,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1201 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FogVolumeLinearHalfspaceDensityComponent" );
 
 		return pClassPointer;
 	};
@@ -21735,7 +21757,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1203 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FogVolumeSphericalDensityComponent" );
 
 		return pClassPointer;
 	};
@@ -21759,7 +21781,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1205 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryFogVolumeConstantDensityInfo" );
 
 		return pClassPointer;
 	};
@@ -21781,7 +21803,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1207 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryFogVolumeLinearHalfspaceDensityInfo" );
 
 		return pClassPointer;
 	};
@@ -21803,7 +21825,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1209 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryFogVolumeSphericalDensityInfo" );
 
 		return pClassPointer;
 	};
@@ -21834,7 +21856,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1211 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexDestructibleActor" );
 
 		return pClassPointer;
 	};
@@ -21881,7 +21903,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1213 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FracturedStaticMeshActor" );
 
 		return pClassPointer;
 	};
@@ -21936,7 +21958,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1215 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FracturedStaticMeshPart" );
 
 		return pClassPointer;
 	};
@@ -21975,7 +21997,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1217 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FractureManager" );
 
 		return pClassPointer;
 	};
@@ -22014,7 +22036,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1219 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ImageReflection" );
 
 		return pClassPointer;
 	};
@@ -22041,7 +22063,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1221 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ImageReflectionSceneCapture" );
 
 		return pClassPointer;
 	};
@@ -22065,7 +22087,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1223 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ImageReflectionShadowPlane" );
 
 		return pClassPointer;
 	};
@@ -22091,7 +22113,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1225 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ImageReflectionComponent" );
 
 		return pClassPointer;
 	};
@@ -22116,7 +22138,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1227 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ImageReflectionShadowPlaneComponent" );
 
 		return pClassPointer;
 	};
@@ -22144,7 +22166,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1229 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexComponentBase" );
 
 		return pClassPointer;
 	};
@@ -22167,7 +22189,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1231 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexDynamicComponent" );
 
 		return pClassPointer;
 	};
@@ -22189,7 +22211,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1233 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexStaticComponent" );
 
 		return pClassPointer;
 	};
@@ -22216,7 +22238,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1235 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexStaticDestructibleComponent" );
 
 		return pClassPointer;
 	};
@@ -22248,7 +22270,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1237 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FlexComponent" );
 
 		return pClassPointer;
 	};
@@ -22280,7 +22302,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1239 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FracturedBaseComponent" );
 
 		return pClassPointer;
 	};
@@ -22312,7 +22334,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1241 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FracturedSkinnedMeshComponent" );
 
 		return pClassPointer;
 	};
@@ -22345,7 +22367,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1243 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FracturedStaticMeshComponent" );
 
 		return pClassPointer;
 	};
@@ -22382,7 +22404,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1245 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ImageBasedReflectionComponent" );
 
 		return pClassPointer;
 	};
@@ -22417,7 +22439,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1247 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InstancedStaticMeshComponent" );
 
 		return pClassPointer;
 	};
@@ -22442,7 +22464,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1249 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SplineMeshComponent" );
 
 		return pClassPointer;
 	};
@@ -22469,7 +22491,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1251 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexAsset" );
 
 		return pClassPointer;
 	};
@@ -22518,7 +22540,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1253 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexClothingAsset" );
 
 		return pClassPointer;
 	};
@@ -22551,7 +22573,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1255 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexDestructibleAsset" );
 
 		return pClassPointer;
 	};
@@ -22575,7 +22597,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1257 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexGenericAsset" );
 
 		return pClassPointer;
 	};
@@ -22598,7 +22620,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1259 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpFilter" );
 
 		return pClassPointer;
 	};
@@ -22622,7 +22644,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1261 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpFilter_Classes" );
 
 		return pClassPointer;
 	};
@@ -22645,7 +22667,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1263 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpFilter_Custom" );
 
 		return pClassPointer;
 	};
@@ -22677,7 +22699,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1265 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpGroup" );
 
 		return pClassPointer;
 	};
@@ -22707,7 +22729,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1267 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpGroupAI" );
 
 		return pClassPointer;
 	};
@@ -22732,7 +22754,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1269 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpGroupCamera" );
 
 		return pClassPointer;
 	};
@@ -22754,7 +22776,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1271 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpGroupDirector" );
 
 		return pClassPointer;
 	};
@@ -22780,7 +22802,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1273 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpGroupInst" );
 
 		return pClassPointer;
 	};
@@ -22809,7 +22831,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1275 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpGroupInstAI" );
 
 		return pClassPointer;
 	};
@@ -22831,7 +22853,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1277 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpGroupInstCamera" );
 
 		return pClassPointer;
 	};
@@ -22853,7 +22875,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1279 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpGroupInstDirector" );
 
 		return pClassPointer;
 	};
@@ -22877,7 +22899,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1281 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackBoolProp" );
 
 		return pClassPointer;
 	};
@@ -22901,7 +22923,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1283 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackDirector" );
 
 		return pClassPointer;
 	};
@@ -22927,7 +22949,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1285 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackEvent" );
 
 		return pClassPointer;
 	};
@@ -22953,7 +22975,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1287 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackFaceFX" );
 
 		return pClassPointer;
 	};
@@ -22977,7 +22999,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1289 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackFloatBase" );
 
 		return pClassPointer;
 	};
@@ -23004,7 +23026,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1291 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackAnimControl" );
 
 		return pClassPointer;
 	};
@@ -23027,7 +23049,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1293 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackFade" );
 
 		return pClassPointer;
 	};
@@ -23053,7 +23075,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1295 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackFloatMaterialParam" );
 
 		return pClassPointer;
 	};
@@ -23076,7 +23098,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1297 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackFloatParticleParam" );
 
 		return pClassPointer;
 	};
@@ -23099,7 +23121,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1299 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackFloatProp" );
 
 		return pClassPointer;
 	};
@@ -23122,7 +23144,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1301 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackMorphWeight" );
 
 		return pClassPointer;
 	};
@@ -23146,7 +23168,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1303 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackMoveAxis" );
 
 		return pClassPointer;
 	};
@@ -23169,7 +23191,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1305 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackSkelControlScale" );
 
 		return pClassPointer;
 	};
@@ -23192,7 +23214,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1307 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackSkelControlStrength" );
 
 		return pClassPointer;
 	};
@@ -23214,7 +23236,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1309 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackSlomo" );
 
 		return pClassPointer;
 	};
@@ -23246,7 +23268,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1311 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackHeadTracking" );
 
 		return pClassPointer;
 	};
@@ -23270,7 +23292,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1313 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackLinearColorBase" );
 
 		return pClassPointer;
 	};
@@ -23293,7 +23315,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1315 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackLinearColorProp" );
 
 		return pClassPointer;
 	};
@@ -23330,7 +23352,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1317 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackMove" );
 
 		return pClassPointer;
 	};
@@ -23357,7 +23379,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1319 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackNotify" );
 
 		return pClassPointer;
 	};
@@ -23382,7 +23404,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1321 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackParticleReplay" );
 
 		return pClassPointer;
 	};
@@ -23410,7 +23432,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1323 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackToggle" );
 
 		return pClassPointer;
 	};
@@ -23434,7 +23456,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1325 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackVectorBase" );
 
 		return pClassPointer;
 	};
@@ -23456,7 +23478,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1327 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackAudioMaster" );
 
 		return pClassPointer;
 	};
@@ -23479,7 +23501,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1329 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackColorProp" );
 
 		return pClassPointer;
 	};
@@ -23501,7 +23523,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1331 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackColorScale" );
 
 		return pClassPointer;
 	};
@@ -23528,7 +23550,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1333 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackSound" );
 
 		return pClassPointer;
 	};
@@ -23554,7 +23576,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1335 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackVectorMaterialParam" );
 
 		return pClassPointer;
 	};
@@ -23577,7 +23599,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1337 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackVectorProp" );
 
 		return pClassPointer;
 	};
@@ -23603,7 +23625,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1339 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackVisibility" );
 
 		return pClassPointer;
 	};
@@ -23625,7 +23647,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1341 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInst" );
 
 		return pClassPointer;
 	};
@@ -23650,7 +23672,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1343 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstAnimControl" );
 
 		return pClassPointer;
 	};
@@ -23672,7 +23694,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1345 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstAudioMaster" );
 
 		return pClassPointer;
 	};
@@ -23694,7 +23716,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1347 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstColorScale" );
 
 		return pClassPointer;
 	};
@@ -23718,7 +23740,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1349 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstDirector" );
 
 		return pClassPointer;
 	};
@@ -23741,7 +23763,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1351 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstEvent" );
 
 		return pClassPointer;
 	};
@@ -23765,7 +23787,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1353 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstFaceFX" );
 
 		return pClassPointer;
 	};
@@ -23787,7 +23809,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1355 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstFade" );
 
 		return pClassPointer;
 	};
@@ -23811,7 +23833,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1357 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstFloatMaterialParam" );
 
 		return pClassPointer;
 	};
@@ -23834,7 +23856,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1359 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstFloatParticleParam" );
 
 		return pClassPointer;
 	};
@@ -23861,7 +23883,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1361 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstHeadTracking" );
 
 		return pClassPointer;
 	};
@@ -23883,7 +23905,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1363 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstMorphWeight" );
 
 		return pClassPointer;
 	};
@@ -23910,7 +23932,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1365 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstMove" );
 
 		return pClassPointer;
 	};
@@ -23933,7 +23955,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1367 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstNotify" );
 
 		return pClassPointer;
 	};
@@ -23956,7 +23978,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1369 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstParticleReplay" );
 
 		return pClassPointer;
 	};
@@ -23980,7 +24002,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1371 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstProperty" );
 
 		return pClassPointer;
 	};
@@ -24005,7 +24027,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1373 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstBoolProp" );
 
 		return pClassPointer;
 	};
@@ -24029,7 +24051,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1375 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstColorProp" );
 
 		return pClassPointer;
 	};
@@ -24054,7 +24076,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1377 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstFloatProp" );
 
 		return pClassPointer;
 	};
@@ -24078,7 +24100,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1379 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstLinearColorProp" );
 
 		return pClassPointer;
 	};
@@ -24102,7 +24124,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1381 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstVectorProp" );
 
 		return pClassPointer;
 	};
@@ -24124,7 +24146,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1383 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstSkelControlScale" );
 
 		return pClassPointer;
 	};
@@ -24147,7 +24169,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1385 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstSkelControlStrength" );
 
 		return pClassPointer;
 	};
@@ -24170,7 +24192,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1387 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstSlomo" );
 
 		return pClassPointer;
 	};
@@ -24194,7 +24216,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1389 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstSound" );
 
 		return pClassPointer;
 	};
@@ -24219,7 +24241,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1391 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstToggle" );
 
 		return pClassPointer;
 	};
@@ -24243,7 +24265,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1393 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstVectorMaterialParam" );
 
 		return pClassPointer;
 	};
@@ -24267,7 +24289,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1395 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpTrackInstVisibility" );
 
 		return pClassPointer;
 	};
@@ -24307,7 +24329,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1397 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpression" );
 
 		return pClassPointer;
 	};
@@ -24330,7 +24352,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1399 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionAbs" );
 
 		return pClassPointer;
 	};
@@ -24352,7 +24374,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1401 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionActorWorldPosition" );
 
 		return pClassPointer;
 	};
@@ -24376,7 +24398,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1403 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionAdd" );
 
 		return pClassPointer;
 	};
@@ -24400,7 +24422,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1405 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionAppendVector" );
 
 		return pClassPointer;
 	};
@@ -24427,7 +24449,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1407 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionBumpOffset" );
 
 		return pClassPointer;
 	};
@@ -24449,7 +24471,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1409 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionCameraVector" );
 
 		return pClassPointer;
 	};
@@ -24471,7 +24493,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1411 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionCameraWorldPosition" );
 
 		return pClassPointer;
 	};
@@ -24494,7 +24516,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1413 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionCeil" );
 
 		return pClassPointer;
 	};
@@ -24519,7 +24541,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1415 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionClamp" );
 
 		return pClassPointer;
 	};
@@ -24546,7 +24568,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1417 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionComment" );
 
 		return pClassPointer;
 	};
@@ -24573,7 +24595,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1419 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionComponentMask" );
 
 		return pClassPointer;
 	};
@@ -24596,7 +24618,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1421 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionConstant" );
 
 		return pClassPointer;
 	};
@@ -24620,7 +24642,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1423 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionConstant2Vector" );
 
 		return pClassPointer;
 	};
@@ -24645,7 +24667,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1425 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionConstant3Vector" );
 
 		return pClassPointer;
 	};
@@ -24671,7 +24693,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1427 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionConstant4Vector" );
 
 		return pClassPointer;
 	};
@@ -24696,7 +24718,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1429 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionConstantBiasScale" );
 
 		return pClassPointer;
 	};
@@ -24721,7 +24743,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1431 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionConstantClamp" );
 
 		return pClassPointer;
 	};
@@ -24745,7 +24767,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1433 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionCosine" );
 
 		return pClassPointer;
 	};
@@ -24769,7 +24791,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1435 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionCrossProduct" );
 
 		return pClassPointer;
 	};
@@ -24795,7 +24817,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1437 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionCustom" );
 
 		return pClassPointer;
 	};
@@ -24818,7 +24840,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1439 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionCustomTexture" );
 
 		return pClassPointer;
 	};
@@ -24844,7 +24866,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1441 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDepthBiasedAlpha" );
 
 		return pClassPointer;
 	};
@@ -24871,7 +24893,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1443 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDepthBiasedBlend" );
 
 		return pClassPointer;
 	};
@@ -24895,7 +24917,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1445 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDepthOfFieldFunction" );
 
 		return pClassPointer;
 	};
@@ -24918,7 +24940,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1447 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDeriveNormalZ" );
 
 		return pClassPointer;
 	};
@@ -24943,7 +24965,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1449 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDesaturation" );
 
 		return pClassPointer;
 	};
@@ -24965,7 +24987,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1451 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDestColor" );
 
 		return pClassPointer;
 	};
@@ -24988,7 +25010,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1453 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDestDepth" );
 
 		return pClassPointer;
 	};
@@ -25012,7 +25034,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1455 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDistance" );
 
 		return pClassPointer;
 	};
@@ -25036,7 +25058,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1457 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDivide" );
 
 		return pClassPointer;
 	};
@@ -25060,7 +25082,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1459 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDotProduct" );
 
 		return pClassPointer;
 	};
@@ -25083,7 +25105,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1461 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDynamicParameter" );
 
 		return pClassPointer;
 	};
@@ -25105,7 +25127,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1463 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionMeshEmitterDynamicParameter" );
 
 		return pClassPointer;
 	};
@@ -25128,7 +25150,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1465 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFloor" );
 
 		return pClassPointer;
 	};
@@ -25151,7 +25173,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1467 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFluidNormal" );
 
 		return pClassPointer;
 	};
@@ -25175,7 +25197,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1469 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFmod" );
 
 		return pClassPointer;
 	};
@@ -25197,7 +25219,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1471 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFoliageImpulseDirection" );
 
 		return pClassPointer;
 	};
@@ -25219,7 +25241,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1473 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFoliageNormalizedRotationAxisAndAngle" );
 
 		return pClassPointer;
 	};
@@ -25243,7 +25265,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1475 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFontSample" );
 
 		return pClassPointer;
 	};
@@ -25268,7 +25290,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1477 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFontSampleParameter" );
 
 		return pClassPointer;
 	};
@@ -25291,7 +25313,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1479 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFrac" );
 
 		return pClassPointer;
 	};
@@ -25315,7 +25337,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1481 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFresnel" );
 
 		return pClassPointer;
 	};
@@ -25346,7 +25368,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1483 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFunctionInput" );
 
 		return pClassPointer;
 	};
@@ -25374,7 +25396,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1485 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFunctionOutput" );
 
 		return pClassPointer;
 	};
@@ -25401,7 +25423,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1487 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionIf" );
 
 		return pClassPointer;
 	};
@@ -25425,7 +25447,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1489 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionLandscapeLayerBlend" );
 
 		return pClassPointer;
 	};
@@ -25447,7 +25469,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1491 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionLensFlareIntensity" );
 
 		return pClassPointer;
 	};
@@ -25469,7 +25491,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1493 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionLensFlareOcclusion" );
 
 		return pClassPointer;
 	};
@@ -25491,7 +25513,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1495 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionLensFlareRadialDistance" );
 
 		return pClassPointer;
 	};
@@ -25513,7 +25535,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1497 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionLensFlareRayDistance" );
 
 		return pClassPointer;
 	};
@@ -25535,7 +25557,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1499 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionLensFlareSourceDistance" );
 
 		return pClassPointer;
 	};
@@ -25557,7 +25579,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1501 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionLightmapUVs" );
 
 		return pClassPointer;
 	};
@@ -25581,7 +25603,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1503 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionLightmassReplace" );
 
 		return pClassPointer;
 	};
@@ -25603,7 +25625,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1505 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionLightVector" );
 
 		return pClassPointer;
 	};
@@ -25628,7 +25650,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1507 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionLinearInterpolate" );
 
 		return pClassPointer;
 	};
@@ -25653,7 +25675,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1509 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionMaterialFunctionCall" );
 
 		return pClassPointer;
 	};
@@ -25675,7 +25697,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1511 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionMeshEmitterVertexColor" );
 
 		return pClassPointer;
 	};
@@ -25699,7 +25721,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1513 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionMultiply" );
 
 		return pClassPointer;
 	};
@@ -25722,7 +25744,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1515 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionNormalize" );
 
 		return pClassPointer;
 	};
@@ -25744,7 +25766,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1517 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionObjectOrientation" );
 
 		return pClassPointer;
 	};
@@ -25766,7 +25788,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1519 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionObjectRadius" );
 
 		return pClassPointer;
 	};
@@ -25788,7 +25810,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1521 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionObjectWorldPosition" );
 
 		return pClassPointer;
 	};
@@ -25810,7 +25832,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1523 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionOcclusionPercentage" );
 
 		return pClassPointer;
 	};
@@ -25833,7 +25855,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1525 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionOneMinus" );
 
 		return pClassPointer;
 	};
@@ -25859,7 +25881,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1527 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionPanner" );
 
 		return pClassPointer;
 	};
@@ -25884,7 +25906,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1529 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionParameter" );
 
 		return pClassPointer;
 	};
@@ -25907,7 +25929,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1531 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionScalarParameter" );
 
 		return pClassPointer;
 	};
@@ -25932,7 +25954,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1533 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionStaticBoolParameter" );
 
 		return pClassPointer;
 	};
@@ -25956,7 +25978,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1535 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionStaticSwitchParameter" );
 
 		return pClassPointer;
 	};
@@ -25984,7 +26006,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1537 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionStaticComponentMaskParameter" );
 
 		return pClassPointer;
 	};
@@ -26007,7 +26029,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1539 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionVectorParameter" );
 
 		return pClassPointer;
 	};
@@ -26030,7 +26052,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1541 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionParticleMacroUV" );
 
 		return pClassPointer;
 	};
@@ -26052,7 +26074,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1543 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionPerInstanceRandom" );
 
 		return pClassPointer;
 	};
@@ -26075,7 +26097,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1545 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionPixelDepth" );
 
 		return pClassPointer;
 	};
@@ -26099,7 +26121,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1547 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionPower" );
 
 		return pClassPointer;
 	};
@@ -26123,7 +26145,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1549 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionQualitySwitch" );
 
 		return pClassPointer;
 	};
@@ -26145,7 +26167,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1551 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionReflectionVector" );
 
 		return pClassPointer;
 	};
@@ -26170,7 +26192,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1553 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionRotateAboutAxis" );
 
 		return pClassPointer;
 	};
@@ -26197,7 +26219,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1555 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionRotator" );
 
 		return pClassPointer;
 	};
@@ -26221,7 +26243,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1557 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionSceneDepth" );
 
 		return pClassPointer;
 	};
@@ -26246,7 +26268,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1559 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionSceneTexture" );
 
 		return pClassPointer;
 	};
@@ -26269,7 +26291,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1561 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionScreenPosition" );
 
 		return pClassPointer;
 	};
@@ -26291,7 +26313,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1563 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionScreenSize" );
 
 		return pClassPointer;
 	};
@@ -26315,7 +26337,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1565 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionSine" );
 
 		return pClassPointer;
 	};
@@ -26343,7 +26365,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1567 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionSphereMask" );
 
 		return pClassPointer;
 	};
@@ -26367,7 +26389,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1569 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionSPHFluidNormal" );
 
 		return pClassPointer;
 	};
@@ -26390,7 +26412,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1571 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionSPHFluidThickness" );
 
 		return pClassPointer;
 	};
@@ -26413,7 +26435,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1573 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionSPHFluidVertexColor" );
 
 		return pClassPointer;
 	};
@@ -26436,7 +26458,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1575 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionSquareRoot" );
 
 		return pClassPointer;
 	};
@@ -26459,7 +26481,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1577 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionStaticBool" );
 
 		return pClassPointer;
 	};
@@ -26486,7 +26508,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1579 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionStaticSwitch" );
 
 		return pClassPointer;
 	};
@@ -26510,7 +26532,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1581 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionSubtract" );
 
 		return pClassPointer;
 	};
@@ -26537,7 +26559,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1583 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTerrainLayerCoords" );
 
 		return pClassPointer;
 	};
@@ -26565,7 +26587,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1585 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTerrainLayerSwitch" );
 
 		return pClassPointer;
 	};
@@ -26593,7 +26615,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1587 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTerrainLayerWeight" );
 
 		return pClassPointer;
 	};
@@ -26615,7 +26637,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1589 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTexelSize" );
 
 		return pClassPointer;
 	};
@@ -26642,7 +26664,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1591 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureCoordinate" );
 
 		return pClassPointer;
 	};
@@ -26665,7 +26687,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1593 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureObject" );
 
 		return pClassPointer;
 	};
@@ -26690,7 +26712,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1595 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureSample" );
 
 		return pClassPointer;
 	};
@@ -26715,7 +26737,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1597 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionDepthBiasBlend" );
 
 		return pClassPointer;
 	};
@@ -26737,7 +26759,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1599 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionFlipBookSample" );
 
 		return pClassPointer;
 	};
@@ -26759,7 +26781,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1601 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionMeshSubUV" );
 
 		return pClassPointer;
 	};
@@ -26781,7 +26803,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1603 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionMeshSubUVBlend" );
 
 		return pClassPointer;
 	};
@@ -26803,7 +26825,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1605 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionParticleSubUV" );
 
 		return pClassPointer;
 	};
@@ -26828,7 +26850,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1607 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureSampleParameter" );
 
 		return pClassPointer;
 	};
@@ -26850,7 +26872,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1609 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureObjectParameter" );
 
 		return pClassPointer;
 	};
@@ -26872,7 +26894,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1611 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureSampleParameter2D" );
 
 		return pClassPointer;
 	};
@@ -26896,7 +26918,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1613 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionAntialiasedTextureMask" );
 
 		return pClassPointer;
 	};
@@ -26918,7 +26940,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1615 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureSampleParameterFlipbook" );
 
 		return pClassPointer;
 	};
@@ -26940,7 +26962,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1617 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureSampleParameterMeshSubUV" );
 
 		return pClassPointer;
 	};
@@ -26962,7 +26984,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1619 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureSampleParameterMeshSubUVBlend" );
 
 		return pClassPointer;
 	};
@@ -26984,7 +27006,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1621 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureSampleParameterSubUV" );
 
 		return pClassPointer;
 	};
@@ -27006,7 +27028,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1623 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureSampleParameterCube" );
 
 		return pClassPointer;
 	};
@@ -27028,7 +27050,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1625 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureSampleParameterMovie" );
 
 		return pClassPointer;
 	};
@@ -27051,7 +27073,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1627 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTextureSampleParameterNormal" );
 
 		return pClassPointer;
 	};
@@ -27074,7 +27096,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1629 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTime" );
 
 		return pClassPointer;
 	};
@@ -27099,7 +27121,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1631 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTransform" );
 
 		return pClassPointer;
 	};
@@ -27124,7 +27146,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1633 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTransformPosition" );
 
 		return pClassPointer;
 	};
@@ -27146,7 +27168,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1635 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionTwoSidedSign" );
 
 		return pClassPointer;
 	};
@@ -27168,7 +27190,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1637 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionVertexColor" );
 
 		return pClassPointer;
 	};
@@ -27190,7 +27212,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1639 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionWindDirectionAndSpeed" );
 
 		return pClassPointer;
 	};
@@ -27212,7 +27234,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1641 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionWorldNormal" );
 
 		return pClassPointer;
 	};
@@ -27234,7 +27256,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1643 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialExpressionWorldPosition" );
 
 		return pClassPointer;
 	};
@@ -27264,7 +27286,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1645 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialFunction" );
 
 		return pClassPointer;
 	};
@@ -27302,7 +27324,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1647 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialInstance" );
 
 		return pClassPointer;
 	};
@@ -27337,7 +27359,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1649 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialInstanceConstant" );
 
 		return pClassPointer;
 	};
@@ -27371,7 +27393,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1651 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LandscapeMaterialInstanceConstant" );
 
 		return pClassPointer;
 	};
@@ -27400,7 +27422,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1653 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialInstanceTimeVarying" );
 
 		return pClassPointer;
 	};
@@ -27444,7 +27466,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1655 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.EmitterCameraLensEffectBase" );
 
 		return pClassPointer;
 	};
@@ -27472,7 +27494,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1657 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleEventManager" );
 
 		return pClassPointer;
 	};
@@ -27559,7 +27581,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1659 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleSystemComponent" );
 
 		return pClassPointer;
 	};
@@ -27628,7 +27650,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1661 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionFloatParticleParameter" );
 
 		return pClassPointer;
 	};
@@ -27650,7 +27672,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1663 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionVectorParticleParameter" );
 
 		return pClassPointer;
 	};
@@ -27688,7 +27710,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1665 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleEmitter" );
 
 		return pClassPointer;
 	};
@@ -27711,7 +27733,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1667 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleSpriteEmitter" );
 
 		return pClassPointer;
 	};
@@ -27747,7 +27769,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1669 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleLODLevel" );
 
 		return pClassPointer;
 	};
@@ -27782,7 +27804,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1671 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModule" );
 
 		return pClassPointer;
 	};
@@ -27805,7 +27827,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1673 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleAccelerationBase" );
 
 		return pClassPointer;
 	};
@@ -27829,7 +27851,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1675 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleAcceleration" );
 
 		return pClassPointer;
 	};
@@ -27852,7 +27874,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1677 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleAccelerationOverLifetime" );
 
 		return pClassPointer;
 	};
@@ -27874,7 +27896,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1679 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleAttractorBase" );
 
 		return pClassPointer;
 	};
@@ -27911,7 +27933,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1681 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleAttractorBoneSocket" );
 
 		return pClassPointer;
 	};
@@ -27937,7 +27959,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1683 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleAttractorLine" );
 
 		return pClassPointer;
 	};
@@ -27968,7 +27990,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1685 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleAttractorParticle" );
 
 		return pClassPointer;
 	};
@@ -27997,7 +28019,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1687 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleAttractorPoint" );
 
 		return pClassPointer;
 	};
@@ -28037,7 +28059,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1689 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleAttractorSkelVertSurface" );
 
 		return pClassPointer;
 	};
@@ -28059,7 +28081,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1691 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleBeamBase" );
 
 		return pClassPointer;
 	};
@@ -28089,7 +28111,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1693 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleBeamModifier" );
 
 		return pClassPointer;
 	};
@@ -28131,7 +28153,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1695 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleBeamNoise" );
 
 		return pClassPointer;
 	};
@@ -28164,7 +28186,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1697 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleBeamSource" );
 
 		return pClassPointer;
 	};
@@ -28198,7 +28220,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1699 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleBeamTarget" );
 
 		return pClassPointer;
 	};
@@ -28220,7 +28242,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1701 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleCameraBase" );
 
 		return pClassPointer;
 	};
@@ -28245,7 +28267,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1703 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleCameraOffset" );
 
 		return pClassPointer;
 	};
@@ -28267,7 +28289,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1705 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleCollisionBase" );
 
 		return pClassPointer;
 	};
@@ -28306,7 +28328,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1707 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleCollision" );
 
 		return pClassPointer;
 	};
@@ -28330,7 +28352,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1709 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleCollisionActor" );
 
 		return pClassPointer;
 	};
@@ -28352,7 +28374,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1711 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleColorBase" );
 
 		return pClassPointer;
 	};
@@ -28377,7 +28399,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1713 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleColor" );
 
 		return pClassPointer;
 	};
@@ -28400,7 +28422,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1715 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleColor_Seeded" );
 
 		return pClassPointer;
 	};
@@ -28424,7 +28446,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1717 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleColorByParameter" );
 
 		return pClassPointer;
 	};
@@ -28448,7 +28470,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1719 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleColorOverDensity" );
 
 		return pClassPointer;
 	};
@@ -28473,7 +28495,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1721 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleColorOverLife" );
 
 		return pClassPointer;
 	};
@@ -28497,7 +28519,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1723 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleColorScaleOverDensity" );
 
 		return pClassPointer;
 	};
@@ -28522,7 +28544,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1725 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleColorScaleOverLife" );
 
 		return pClassPointer;
 	};
@@ -28544,7 +28566,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1727 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleEventBase" );
 
 		return pClassPointer;
 	};
@@ -28567,7 +28589,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1729 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleEventGenerator" );
 
 		return pClassPointer;
 	};
@@ -28591,7 +28613,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1731 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleEventReceiverBase" );
 
 		return pClassPointer;
 	};
@@ -28614,7 +28636,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1733 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleEventReceiverKillParticles" );
 
 		return pClassPointer;
 	};
@@ -28641,7 +28663,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1735 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleEventReceiverSpawn" );
 
 		return pClassPointer;
 	};
@@ -28663,7 +28685,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1737 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWParticleModuleEventReceiverBlood" );
 
 		return pClassPointer;
 	};
@@ -28686,7 +28708,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1739 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWParticleModuleEventReceiverSFX" );
 
 		return pClassPointer;
 	};
@@ -28709,7 +28731,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1741 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleForceFieldBase" );
 
 		return pClassPointer;
 	};
@@ -28733,7 +28755,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1743 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleFlexForceField" );
 
 		return pClassPointer;
 	};
@@ -28756,7 +28778,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1745 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleKillBase" );
 
 		return pClassPointer;
 	};
@@ -28783,7 +28805,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1747 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleKillBox" );
 
 		return pClassPointer;
 	};
@@ -28809,7 +28831,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1749 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleKillHeight" );
 
 		return pClassPointer;
 	};
@@ -28831,7 +28853,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1751 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLifetimeBase" );
 
 		return pClassPointer;
 	};
@@ -28854,7 +28876,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1753 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLifetime" );
 
 		return pClassPointer;
 	};
@@ -28877,7 +28899,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1755 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLifetime_Seeded" );
 
 		return pClassPointer;
 	};
@@ -28899,7 +28921,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1757 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationBase" );
 
 		return pClassPointer;
 	};
@@ -28924,7 +28946,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1759 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocation" );
 
 		return pClassPointer;
 	};
@@ -28947,7 +28969,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1761 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocation_Seeded" );
 
 		return pClassPointer;
 	};
@@ -28969,7 +28991,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1763 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationWorldOffset" );
 
 		return pClassPointer;
 	};
@@ -28992,7 +29014,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1765 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationWorldOffset_Seeded" );
 
 		return pClassPointer;
 	};
@@ -29024,7 +29046,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1767 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationBoneSocket" );
 
 		return pClassPointer;
 	};
@@ -29050,7 +29072,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1769 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationDirect" );
 
 		return pClassPointer;
 	};
@@ -29078,7 +29100,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1771 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationEmitter" );
 
 		return pClassPointer;
 	};
@@ -29101,7 +29123,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1773 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationEmitterDirect" );
 
 		return pClassPointer;
 	};
@@ -29133,7 +29155,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1775 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationPrimitiveBase" );
 
 		return pClassPointer;
 	};
@@ -29160,7 +29182,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1777 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationPrimitiveCylinder" );
 
 		return pClassPointer;
 	};
@@ -29183,7 +29205,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1779 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationPrimitiveCylinder_Seeded" );
 
 		return pClassPointer;
 	};
@@ -29206,7 +29228,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1781 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationPrimitiveSphere" );
 
 		return pClassPointer;
 	};
@@ -29229,7 +29251,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1783 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationPrimitiveSphere_Seeded" );
 
 		return pClassPointer;
 	};
@@ -29263,7 +29285,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1785 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationSkelVertSurface" );
 
 		return pClassPointer;
 	};
@@ -29296,7 +29318,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1787 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleLocationStaticVertSurface" );
 
 		return pClassPointer;
 	};
@@ -29319,7 +29341,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1789 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSourceMovement" );
 
 		return pClassPointer;
 	};
@@ -29341,7 +29363,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1791 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleMaterialBase" );
 
 		return pClassPointer;
 	};
@@ -29365,7 +29387,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1793 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleMaterialByParameter" );
 
 		return pClassPointer;
 	};
@@ -29388,7 +29410,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1795 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleMeshMaterial" );
 
 		return pClassPointer;
 	};
@@ -29411,7 +29433,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1797 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleOrbitBase" );
 
 		return pClassPointer;
 	};
@@ -29440,7 +29462,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1799 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleOrbit" );
 
 		return pClassPointer;
 	};
@@ -29462,7 +29484,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1801 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleOrientationBase" );
 
 		return pClassPointer;
 	};
@@ -29485,7 +29507,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1803 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleOrientationAxisLock" );
 
 		return pClassPointer;
 	};
@@ -29507,7 +29529,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1805 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleParameterBase" );
 
 		return pClassPointer;
 	};
@@ -29532,7 +29554,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1807 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleParameterDynamic" );
 
 		return pClassPointer;
 	};
@@ -29555,7 +29577,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1809 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleParameterDynamic_Seeded" );
 
 		return pClassPointer;
 	};
@@ -29622,7 +29644,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1811 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleRequired" );
 
 		return pClassPointer;
 	};
@@ -29644,7 +29666,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1813 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleRotationBase" );
 
 		return pClassPointer;
 	};
@@ -29668,7 +29690,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1815 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleMeshRotation" );
 
 		return pClassPointer;
 	};
@@ -29691,7 +29713,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1817 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleMeshRotation_Seeded" );
 
 		return pClassPointer;
 	};
@@ -29714,7 +29736,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1819 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleRotation" );
 
 		return pClassPointer;
 	};
@@ -29737,7 +29759,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1821 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleRotation_Seeded" );
 
 		return pClassPointer;
 	};
@@ -29761,7 +29783,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1823 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleRotationOverLifetime" );
 
 		return pClassPointer;
 	};
@@ -29783,7 +29805,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1825 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleRotationRateBase" );
 
 		return pClassPointer;
 	};
@@ -29806,7 +29828,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1827 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleMeshRotationRate" );
 
 		return pClassPointer;
 	};
@@ -29829,7 +29851,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1829 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleMeshRotationRate_Seeded" );
 
 		return pClassPointer;
 	};
@@ -29852,7 +29874,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1831 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleMeshRotationRateMultiplyLife" );
 
 		return pClassPointer;
 	};
@@ -29876,7 +29898,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1833 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleMeshRotationRateOverLife" );
 
 		return pClassPointer;
 	};
@@ -29899,7 +29921,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1835 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleRotationRate" );
 
 		return pClassPointer;
 	};
@@ -29922,7 +29944,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1837 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleRotationRate_Seeded" );
 
 		return pClassPointer;
 	};
@@ -29945,7 +29967,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1839 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleRotationRateMultiplyLife" );
 
 		return pClassPointer;
 	};
@@ -29967,7 +29989,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1841 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSizeBase" );
 
 		return pClassPointer;
 	};
@@ -29990,7 +30012,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1843 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSize" );
 
 		return pClassPointer;
 	};
@@ -30013,7 +30035,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1845 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSize_Seeded" );
 
 		return pClassPointer;
 	};
@@ -30039,7 +30061,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1847 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSizeMultiplyLife" );
 
 		return pClassPointer;
 	};
@@ -30067,7 +30089,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1849 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSizeMultiplyVelocity" );
 
 		return pClassPointer;
 	};
@@ -30093,7 +30115,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1851 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSizeScale" );
 
 		return pClassPointer;
 	};
@@ -30119,7 +30141,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1853 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSizeScaleByTime" );
 
 		return pClassPointer;
 	};
@@ -30142,7 +30164,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1855 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSizeScaleOverDensity" );
 
 		return pClassPointer;
 	};
@@ -30166,7 +30188,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1857 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSpawnBase" );
 
 		return pClassPointer;
 	};
@@ -30191,7 +30213,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1859 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleFlexSpawn" );
 
 		return pClassPointer;
 	};
@@ -30217,7 +30239,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1861 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSpawn" );
 
 		return pClassPointer;
 	};
@@ -30248,7 +30270,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1863 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSpawnPerUnit" );
 
 		return pClassPointer;
 	};
@@ -30270,7 +30292,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1865 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleStoreSpawnTimeBase" );
 
 		return pClassPointer;
 	};
@@ -30292,7 +30314,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1867 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleStoreSpawnTime" );
 
 		return pClassPointer;
 	};
@@ -30314,7 +30336,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1869 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSubUVBase" );
 
 		return pClassPointer;
 	};
@@ -30338,7 +30360,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1871 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSubUV" );
 
 		return pClassPointer;
 	};
@@ -30363,7 +30385,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1873 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSubUVMovie" );
 
 		return pClassPointer;
 	};
@@ -30387,7 +30409,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1875 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSubUVDirect" );
 
 		return pClassPointer;
 	};
@@ -30410,7 +30432,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1877 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleSubUVSelect" );
 
 		return pClassPointer;
 	};
@@ -30432,7 +30454,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1879 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTrailBase" );
 
 		return pClassPointer;
 	};
@@ -30462,7 +30484,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1881 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTrailSource" );
 
 		return pClassPointer;
 	};
@@ -30486,7 +30508,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1883 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTrailSpawn" );
 
 		return pClassPointer;
 	};
@@ -30510,7 +30532,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1885 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTrailTaper" );
 
 		return pClassPointer;
 	};
@@ -30532,7 +30554,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1887 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataBase" );
 
 		return pClassPointer;
 	};
@@ -30567,7 +30589,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1889 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataAnimTrail" );
 
 		return pClassPointer;
 	};
@@ -30591,7 +30613,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1891 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataApex" );
 
 		return pClassPointer;
 	};
@@ -30626,7 +30648,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1893 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataBeam" );
 
 		return pClassPointer;
 	};
@@ -30666,7 +30688,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1895 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataBeam2" );
 
 		return pClassPointer;
 	};
@@ -30702,7 +30724,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1897 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataMesh" );
 
 		return pClassPointer;
 	};
@@ -30729,7 +30751,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1899 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataMeshPhysX" );
 
 		return pClassPointer;
 	};
@@ -30756,7 +30778,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1901 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataPhysX" );
 
 		return pClassPointer;
 	};
@@ -30798,7 +30820,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1903 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataRibbon" );
 
 		return pClassPointer;
 	};
@@ -30828,7 +30850,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1905 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataTrail" );
 
 		return pClassPointer;
 	};
@@ -30863,7 +30885,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1907 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleTypeDataTrail2" );
 
 		return pClassPointer;
 	};
@@ -30886,7 +30908,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1909 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleUberBase" );
 
 		return pClassPointer;
 	};
@@ -30914,7 +30936,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1911 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleUberLTISIVCL" );
 
 		return pClassPointer;
 	};
@@ -30943,7 +30965,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1913 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleUberLTISIVCLIL" );
 
 		return pClassPointer;
 	};
@@ -30978,7 +31000,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1915 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleUberLTISIVCLILIRSSBLIRR" );
 
 		return pClassPointer;
 	};
@@ -31027,7 +31049,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1917 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleUberRainDrops" );
 
 		return pClassPointer;
 	};
@@ -31074,7 +31096,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1919 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleUberRainImpacts" );
 
 		return pClassPointer;
 	};
@@ -31106,7 +31128,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1921 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleUberRainSplashA" );
 
 		return pClassPointer;
 	};
@@ -31137,7 +31159,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1923 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleUberRainSplashB" );
 
 		return pClassPointer;
 	};
@@ -31161,7 +31183,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1925 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleVelocityBase" );
 
 		return pClassPointer;
 	};
@@ -31185,7 +31207,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1927 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleVelocity" );
 
 		return pClassPointer;
 	};
@@ -31208,7 +31230,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1929 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleVelocity_Seeded" );
 
 		return pClassPointer;
 	};
@@ -31233,7 +31255,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1931 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleVelocityCone" );
 
 		return pClassPointer;
 	};
@@ -31256,7 +31278,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1933 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleVelocityInheritParent" );
 
 		return pClassPointer;
 	};
@@ -31280,7 +31302,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1935 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleVelocityOverLifetime" );
 
 		return pClassPointer;
 	};
@@ -31302,7 +31324,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1937 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleWorldForcesBase" );
 
 		return pClassPointer;
 	};
@@ -31326,7 +31348,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1939 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModulePhysicsVolumes" );
 
 		return pClassPointer;
 	};
@@ -31350,7 +31372,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1941 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleWorldAttractor" );
 
 		return pClassPointer;
 	};
@@ -31372,7 +31394,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1943 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleEventSendToGame" );
 
 		return pClassPointer;
 	};
@@ -31397,7 +31419,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1945 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleSystemReplay" );
 
 		return pClassPointer;
 	};
@@ -31456,7 +31478,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1947 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PhysXParticleSystem" );
 
 		return pClassPointer;
 	};
@@ -31504,7 +31526,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1949 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.KActor" );
 
 		return pClassPointer;
 	};
@@ -31542,7 +31564,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1951 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.KActorFromStatic" );
 
 		return pClassPointer;
 	};
@@ -31579,7 +31601,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1953 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.KActorSpawnable" );
 
 		return pClassPointer;
 	};
@@ -31606,7 +31628,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1955 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FlexForceFieldActor" );
 
 		return pClassPointer;
 	};
@@ -31635,7 +31657,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1957 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.KAsset" );
 
 		return pClassPointer;
 	};
@@ -31855,7 +31877,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1959 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Pawn" );
 
 		return pClassPointer;
 	};
@@ -32144,7 +32166,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1961 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Vehicle" );
 
 		return pClassPointer;
 	};
@@ -32283,7 +32305,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1963 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SVehicle" );
 
 		return pClassPointer;
 	};
@@ -32347,7 +32369,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1965 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_ConstraintActor" );
 
 		return pClassPointer;
 	};
@@ -32382,7 +32404,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1967 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_LineImpulseActor" );
 
 		return pClassPointer;
 	};
@@ -32410,7 +32432,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1969 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_RadialImpulseActor" );
 
 		return pClassPointer;
 	};
@@ -32436,7 +32458,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1971 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_Thruster" );
 
 		return pClassPointer;
 	};
@@ -32469,7 +32491,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1973 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.WorldAttractor" );
 
 		return pClassPointer;
 	};
@@ -32505,7 +32527,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1975 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FlexForceFieldComponent" );
 
 		return pClassPointer;
 	};
@@ -32530,7 +32552,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1977 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_ConstraintDrawComponent" );
 
 		return pClassPointer;
 	};
@@ -32558,7 +32580,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1979 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_RadialImpulseComponent" );
 
 		return pClassPointer;
 	};
@@ -32599,7 +32621,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1981 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_Handle" );
 
 		return pClassPointer;
 	};
@@ -32644,7 +32666,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1983 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_Spring" );
 
 		return pClassPointer;
 	};
@@ -32686,7 +32708,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1985 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SVehicleSimBase" );
 
 		return pClassPointer;
 	};
@@ -32718,7 +32740,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1987 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SVehicleSimCar" );
 
 		return pClassPointer;
 	};
@@ -32752,7 +32774,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1989 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SVehicleSimTank" );
 
 		return pClassPointer;
 	};
@@ -32782,7 +32804,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1991 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryFlexForceField" );
 
 		return pClassPointer;
 	};
@@ -32816,7 +32838,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1993 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryApexClothing" );
 
 		return pClassPointer;
 	};
@@ -32839,7 +32861,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1995 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexDestructibleDamageParameters" );
 
 		return pClassPointer;
 	};
@@ -32903,7 +32925,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1997 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FlexContainer" );
 
 		return pClassPointer;
 	};
@@ -32927,7 +32949,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1999 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FractureMaterial" );
 
 		return pClassPointer;
 	};
@@ -32975,7 +32997,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2001 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PhysicalMaterial" );
 
 		return pClassPointer;
 	};
@@ -33001,7 +33023,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2003 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PhysicalMaterialPropertyBase" );
 
 		return pClassPointer;
 	};
@@ -33029,7 +33051,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2005 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PhysicsAsset" );
 
 		return pClassPointer;
 	};
@@ -33064,7 +33086,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2007 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PhysicsAssetInstance" );
 
 		return pClassPointer;
 	};
@@ -33104,7 +33126,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2009 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PhysicsLODVerticalEmitter" );
 
 		return pClassPointer;
 	};
@@ -33157,7 +33179,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2011 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_BodyInstance" );
 
 		return pClassPointer;
 	};
@@ -33227,7 +33249,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2013 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_ConstraintInstance" );
 
 		return pClassPointer;
 	};
@@ -33302,7 +33324,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2015 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_ConstraintSetup" );
 
 		return pClassPointer;
 	};
@@ -33324,7 +33346,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2017 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_BSJointSetup" );
 
 		return pClassPointer;
 	};
@@ -33346,7 +33368,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2019 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_DistanceJointSetup" );
 
 		return pClassPointer;
 	};
@@ -33368,7 +33390,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2021 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_HingeSetup" );
 
 		return pClassPointer;
 	};
@@ -33390,7 +33412,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2023 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_PrismaticSetup" );
 
 		return pClassPointer;
 	};
@@ -33412,7 +33434,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2025 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_PulleyJointSetup" );
 
 		return pClassPointer;
 	};
@@ -33434,7 +33456,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2027 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_SkelJointSetup" );
 
 		return pClassPointer;
 	};
@@ -33456,7 +33478,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2029 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_StayUprightSetup" );
 
 		return pClassPointer;
 	};
@@ -33523,7 +33545,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2031 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SVehicleWheel" );
 
 		return pClassPointer;
 	};
@@ -33567,7 +33589,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2033 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxGenericForceFieldBrush" );
 
 		return pClassPointer;
 	};
@@ -33593,7 +33615,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2035 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_ForceFieldExcludeVolume" );
 
 		return pClassPointer;
 	};
@@ -33625,7 +33647,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2037 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxForceField" );
 
 		return pClassPointer;
 	};
@@ -33660,7 +33682,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2039 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxCylindricalForceField" );
 
 		return pClassPointer;
 	};
@@ -33683,7 +33705,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2041 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxCylindricalForceFieldCapsule" );
 
 		return pClassPointer;
 	};
@@ -33726,7 +33748,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2043 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxForceFieldGeneric" );
 
 		return pClassPointer;
 	};
@@ -33756,7 +33778,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2045 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxForceFieldRadial" );
 
 		return pClassPointer;
 	};
@@ -33793,7 +33815,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2047 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxForceFieldTornado" );
 
 		return pClassPointer;
 	};
@@ -33831,7 +33853,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2049 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxGenericForceField" );
 
 		return pClassPointer;
 	};
@@ -33855,7 +33877,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2051 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxGenericForceFieldBox" );
 
 		return pClassPointer;
 	};
@@ -33881,7 +33903,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2053 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxGenericForceFieldCapsule" );
 
 		return pClassPointer;
 	};
@@ -33908,7 +33930,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2055 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxRadialForceField" );
 
 		return pClassPointer;
 	};
@@ -33932,7 +33954,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2057 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxRadialCustomForceField" );
 
 		return pClassPointer;
 	};
@@ -33966,7 +33988,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2059 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxTornadoAngularForceField" );
 
 		return pClassPointer;
 	};
@@ -33989,7 +34011,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2061 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxTornadoAngularForceFieldCapsule" );
 
 		return pClassPointer;
 	};
@@ -34022,7 +34044,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2063 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxTornadoForceField" );
 
 		return pClassPointer;
 	};
@@ -34045,7 +34067,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2065 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxTornadoForceFieldCapsule" );
 
 		return pClassPointer;
 	};
@@ -34068,7 +34090,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2067 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxForceFieldSpawnable" );
 
 		return pClassPointer;
 	};
@@ -34107,7 +34129,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2069 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_CylindricalForceActor" );
 
 		return pClassPointer;
 	};
@@ -34143,7 +34165,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2071 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_RadialForceActor" );
 
 		return pClassPointer;
 	};
@@ -34181,7 +34203,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2073 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxForceFieldComponent" );
 
 		return pClassPointer;
 	};
@@ -34215,7 +34237,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2075 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxForceFieldCylindricalComponent" );
 
 		return pClassPointer;
 	};
@@ -34255,7 +34277,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2077 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxForceFieldGenericComponent" );
 
 		return pClassPointer;
 	};
@@ -34282,7 +34304,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2079 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxForceFieldRadialComponent" );
 
 		return pClassPointer;
 	};
@@ -34316,7 +34338,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2081 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NxForceFieldTornadoComponent" );
 
 		return pClassPointer;
 	};
@@ -34338,7 +34360,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2083 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ForceFieldShape" );
 
 		return pClassPointer;
 	};
@@ -34366,7 +34388,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2085 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ForceFieldShapeBox" );
 
 		return pClassPointer;
 	};
@@ -34395,7 +34417,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2087 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ForceFieldShapeCapsule" );
 
 		return pClassPointer;
 	};
@@ -34425,7 +34447,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2089 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ForceFieldShapeSphere" );
 
 		return pClassPointer;
 	};
@@ -34464,7 +34486,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2091 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PrefabInstance" );
 
 		return pClassPointer;
 	};
@@ -34491,7 +34513,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2093 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Prefab" );
 
 		return pClassPointer;
 	};
@@ -34530,7 +34552,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2095 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SequenceObject" );
 
 		return pClassPointer;
 	};
@@ -34568,7 +34590,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2097 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SequenceFrame" );
 
 		return pClassPointer;
 	};
@@ -34590,7 +34612,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2099 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SequenceFrameWrapped" );
 
 		return pClassPointer;
 	};
@@ -34637,7 +34659,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2101 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SequenceOp" );
 
 		return pClassPointer;
 	};
@@ -34689,7 +34711,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2103 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Sequence" );
 
 		return pClassPointer;
 	};
@@ -34716,7 +34738,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2105 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PrefabSequence" );
 
 		return pClassPointer;
 	};
@@ -34740,7 +34762,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2107 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PrefabSequenceContainer" );
 
 		return pClassPointer;
 	};
@@ -34765,7 +34787,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2109 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SequenceAction" );
 
 		return pClassPointer;
 	};
@@ -34790,7 +34812,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2111 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ActivateRemoteEvent" );
 
 		return pClassPointer;
 	};
@@ -34816,7 +34838,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2113 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_AndGate" );
 
 		return pClassPointer;
 	};
@@ -34840,7 +34862,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2115 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ApplySoundNode" );
 
 		return pClassPointer;
 	};
@@ -34863,7 +34885,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2117 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_AttachToEvent" );
 
 		return pClassPointer;
 	};
@@ -34893,7 +34915,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2119 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_CameraFade" );
 
 		return pClassPointer;
 	};
@@ -34935,7 +34957,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2121 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_CameraLookAt" );
 
 		return pClassPointer;
 	};
@@ -34968,7 +34990,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2123 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_CameraShake" );
 
 		return pClassPointer;
 	};
@@ -34995,7 +35017,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2125 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ChangeCollision" );
 
 		return pClassPointer;
 	};
@@ -35018,7 +35040,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2127 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_CommitMapChange" );
 
 		return pClassPointer;
 	};
@@ -35043,7 +35065,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2129 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ConvertToString" );
 
 		return pClassPointer;
 	};
@@ -35069,7 +35091,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2131 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_DrawText" );
 
 		return pClassPointer;
 	};
@@ -35093,7 +35115,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2133 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_FinishSequence" );
 
 		return pClassPointer;
 	};
@@ -35118,7 +35140,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2135 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Gate" );
 
 		return pClassPointer;
 	};
@@ -35141,7 +35163,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2137 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_GetDistance" );
 
 		return pClassPointer;
 	};
@@ -35167,7 +35189,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2139 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_GetLocationAndRotation" );
 
 		return pClassPointer;
 	};
@@ -35191,7 +35213,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2141 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_GetProperty" );
 
 		return pClassPointer;
 	};
@@ -35217,7 +35239,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2143 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_GetVectorComponents" );
 
 		return pClassPointer;
 	};
@@ -35241,7 +35263,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2145 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_GetVelocity" );
 
 		return pClassPointer;
 	};
@@ -35275,7 +35297,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2147 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_HeadTrackingControl" );
 
 		return pClassPointer;
 	};
@@ -35301,7 +35323,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2149 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_IsInObjectList" );
 
 		return pClassPointer;
 	};
@@ -35326,7 +35348,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2151 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Latent" );
 
 		return pClassPointer;
 	};
@@ -35364,7 +35386,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2153 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ActorFactory" );
 
 		return pClassPointer;
 	};
@@ -35387,7 +35409,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2155 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ActorFactoryEx" );
 
 		return pClassPointer;
 	};
@@ -35412,7 +35434,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2157 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ProjectileFactory" );
 
 		return pClassPointer;
 	};
@@ -35441,7 +35463,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2159 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_AIMoveToActor" );
 
 		return pClassPointer;
 	};
@@ -35471,7 +35493,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2161 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Delay" );
 
 		return pClassPointer;
 	};
@@ -35499,7 +35521,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2163 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_DelaySwitch" );
 
 		return pClassPointer;
 	};
@@ -35521,7 +35543,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2165 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ForceGarbageCollection" );
 
 		return pClassPointer;
 	};
@@ -35574,7 +35596,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2167 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Interp" );
 
 		return pClassPointer;
 	};
@@ -35603,7 +35625,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2169 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_LevelStreamingBase" );
 
 		return pClassPointer;
 	};
@@ -35628,7 +35650,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2171 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_LevelStreaming" );
 
 		return pClassPointer;
 	};
@@ -35653,7 +35675,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2173 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_MultiLevelStreaming" );
 
 		return pClassPointer;
 	};
@@ -35678,7 +35700,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2175 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_LevelVisibility" );
 
 		return pClassPointer;
 	};
@@ -35711,7 +35733,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2177 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_PlaySound" );
 
 		return pClassPointer;
 	};
@@ -35738,7 +35760,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2179 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_PrepareMapChange" );
 
 		return pClassPointer;
 	};
@@ -35778,7 +35800,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2181 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetDOFParams" );
 
 		return pClassPointer;
 	};
@@ -35804,7 +35826,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2183 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetMotionBlurParams" );
 
 		return pClassPointer;
 	};
@@ -35837,7 +35859,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2185 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_StreamInTextures" );
 
 		return pClassPointer;
 	};
@@ -35862,7 +35884,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2187 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_WaitForLevelsVisible" );
 
 		return pClassPointer;
 	};
@@ -35891,7 +35913,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2189 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Log" );
 
 		return pClassPointer;
 	};
@@ -35918,7 +35940,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2191 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_FeatureTest" );
 
 		return pClassPointer;
 	};
@@ -35943,7 +35965,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2193 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ModifyCover" );
 
 		return pClassPointer;
 	};
@@ -35973,7 +35995,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2195 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ModifyHealth" );
 
 		return pClassPointer;
 	};
@@ -36005,7 +36027,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2197 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ParticleEventGenerator" );
 
 		return pClassPointer;
 	};
@@ -36028,7 +36050,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2199 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_PhysXSwitch" );
 
 		return pClassPointer;
 	};
@@ -36059,7 +36081,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2201 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_PlayCameraAnim" );
 
 		return pClassPointer;
 	};
@@ -36087,7 +36109,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2203 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_PlayFaceFXAnim" );
 
 		return pClassPointer;
 	};
@@ -36110,7 +36132,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2205 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_PlayMusicTrack" );
 
 		return pClassPointer;
 	};
@@ -36135,7 +36157,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2207 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Possess" );
 
 		return pClassPointer;
 	};
@@ -36158,7 +36180,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2209 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_RangeSwitch" );
 
 		return pClassPointer;
 	};
@@ -36183,7 +36205,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2211 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetActiveAnimChild" );
 
 		return pClassPointer;
 	};
@@ -36206,7 +36228,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2213 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetApexClothingParam" );
 
 		return pClassPointer;
 	};
@@ -36228,7 +36250,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2215 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetBlockRigidBody" );
 
 		return pClassPointer;
 	};
@@ -36252,7 +36274,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2217 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetCameraTarget" );
 
 		return pClassPointer;
 	};
@@ -36277,7 +36299,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2219 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetMaterial" );
 
 		return pClassPointer;
 	};
@@ -36302,7 +36324,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2221 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetMatInstScalarParam" );
 
 		return pClassPointer;
 	};
@@ -36329,7 +36351,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2223 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetMesh" );
 
 		return pClassPointer;
 	};
@@ -36352,7 +36374,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2225 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetPhysics" );
 
 		return pClassPointer;
 	};
@@ -36374,7 +36396,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2227 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetRigidBodyIgnoreVehicles" );
 
 		return pClassPointer;
 	};
@@ -36396,7 +36418,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2229 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetSequenceVariable" );
 
 		return pClassPointer;
 	};
@@ -36420,7 +36442,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2231 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_AccessObjectList" );
 
 		return pClassPointer;
 	};
@@ -36446,7 +36468,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2233 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_AddFloat" );
 
 		return pClassPointer;
 	};
@@ -36472,7 +36494,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2235 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_AddInt" );
 
 		return pClassPointer;
 	};
@@ -36496,7 +36518,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2237 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_CastToFloat" );
 
 		return pClassPointer;
 	};
@@ -36521,7 +36543,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2239 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_CastToInt" );
 
 		return pClassPointer;
 	};
@@ -36547,7 +36569,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2241 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_DivideFloat" );
 
 		return pClassPointer;
 	};
@@ -36573,7 +36595,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2243 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_DivideInt" );
 
 		return pClassPointer;
 	};
@@ -36596,7 +36618,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2245 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ModifyObjectList" );
 
 		return pClassPointer;
 	};
@@ -36622,7 +36644,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2247 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_MultiplyFloat" );
 
 		return pClassPointer;
 	};
@@ -36648,7 +36670,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2249 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_MultiplyInt" );
 
 		return pClassPointer;
 	};
@@ -36671,7 +36693,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2251 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetBool" );
 
 		return pClassPointer;
 	};
@@ -36695,7 +36717,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2253 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetFloat" );
 
 		return pClassPointer;
 	};
@@ -36720,7 +36742,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2255 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetInt" );
 
 		return pClassPointer;
 	};
@@ -36748,7 +36770,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2257 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetLocation" );
 
 		return pClassPointer;
 	};
@@ -36773,7 +36795,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2259 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetObject" );
 
 		return pClassPointer;
 	};
@@ -36798,7 +36820,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2261 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetString" );
 
 		return pClassPointer;
 	};
@@ -36825,7 +36847,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2263 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SubtractFloat" );
 
 		return pClassPointer;
 	};
@@ -36851,7 +36873,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2265 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SubtractInt" );
 
 		return pClassPointer;
 	};
@@ -36877,7 +36899,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2267 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetVectorComponents" );
 
 		return pClassPointer;
 	};
@@ -36910,7 +36932,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2269 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetWorldAttractorParam" );
 
 		return pClassPointer;
 	};
@@ -36937,7 +36959,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2271 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Switch" );
 
 		return pClassPointer;
 	};
@@ -36960,7 +36982,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2273 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_RandomSwitch" );
 
 		return pClassPointer;
 	};
@@ -36985,7 +37007,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2275 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Timer" );
 
 		return pClassPointer;
 	};
@@ -37007,7 +37029,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2277 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Toggle" );
 
 		return pClassPointer;
 	};
@@ -37037,7 +37059,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2279 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Trace" );
 
 		return pClassPointer;
 	};
@@ -37060,7 +37082,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2281 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SequenceCondition" );
 
 		return pClassPointer;
 	};
@@ -37083,7 +37105,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2283 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_CompareBool" );
 
 		return pClassPointer;
 	};
@@ -37108,7 +37130,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2285 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_CompareFloat" );
 
 		return pClassPointer;
 	};
@@ -37132,7 +37154,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2287 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_CompareInt" );
 
 		return pClassPointer;
 	};
@@ -37154,7 +37176,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2289 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_CompareObject" );
 
 		return pClassPointer;
 	};
@@ -37176,7 +37198,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2291 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_GetServerType" );
 
 		return pClassPointer;
 	};
@@ -37202,7 +37224,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2293 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_Increment" );
 
 		return pClassPointer;
 	};
@@ -37227,7 +37249,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2295 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_IncrementFloat" );
 
 		return pClassPointer;
 	};
@@ -37249,7 +37271,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2297 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_IsAlive" );
 
 		return pClassPointer;
 	};
@@ -37271,7 +37293,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2299 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_IsBenchmarking" );
 
 		return pClassPointer;
 	};
@@ -37294,7 +37316,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2301 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_IsConsole" );
 
 		return pClassPointer;
 	};
@@ -37316,7 +37338,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2303 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_IsInCombat" );
 
 		return pClassPointer;
 	};
@@ -37339,7 +37361,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2305 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_IsLoggedIn" );
 
 		return pClassPointer;
 	};
@@ -37362,7 +37384,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2307 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_IsPIE" );
 
 		return pClassPointer;
 	};
@@ -37385,7 +37407,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2309 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_IsSameTeam" );
 
 		return pClassPointer;
 	};
@@ -37407,7 +37429,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2311 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_MatureLanguage" );
 
 		return pClassPointer;
 	};
@@ -37429,7 +37451,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2313 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_ShowGore" );
 
 		return pClassPointer;
 	};
@@ -37451,7 +37473,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2315 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_SwitchBase" );
 
 		return pClassPointer;
 	};
@@ -37478,7 +37500,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2317 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_SwitchClass" );
 
 		return pClassPointer;
 	};
@@ -37505,7 +37527,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2319 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_SwitchObject" );
 
 		return pClassPointer;
 	};
@@ -37531,7 +37553,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2321 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqCond_SwitchPlatform" );
 
 		return pClassPointer;
 	};
@@ -37566,7 +37588,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2323 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SequenceEvent" );
 
 		return pClassPointer;
 	};
@@ -37593,7 +37615,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2325 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_AISeeEnemy" );
 
 		return pClassPointer;
 	};
@@ -37618,7 +37640,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2327 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_AnalogInput" );
 
 		return pClassPointer;
 	};
@@ -37641,7 +37663,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2329 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_AnimNotify" );
 
 		return pClassPointer;
 	};
@@ -37665,7 +37687,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2331 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_Console" );
 
 		return pClassPointer;
 	};
@@ -37687,7 +37709,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2333 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_ConstraintBroken" );
 
 		return pClassPointer;
 	};
@@ -37709,7 +37731,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2335 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_Destroyed" );
 
 		return pClassPointer;
 	};
@@ -37731,7 +37753,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2337 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_GetInventory" );
 
 		return pClassPointer;
 	};
@@ -37756,7 +37778,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2339 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_Input" );
 
 		return pClassPointer;
 	};
@@ -37778,7 +37800,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2341 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_LevelBeginning" );
 
 		return pClassPointer;
 	};
@@ -37800,7 +37822,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2343 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_LevelLoaded" );
 
 		return pClassPointer;
 	};
@@ -37823,7 +37845,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2345 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_LevelStartup" );
 
 		return pClassPointer;
 	};
@@ -37846,7 +37868,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2347 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_Mover" );
 
 		return pClassPointer;
 	};
@@ -37880,7 +37902,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2349 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_ParticleEvent" );
 
 		return pClassPointer;
 	};
@@ -37904,7 +37926,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2351 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_ProjectileLanded" );
 
 		return pClassPointer;
 	};
@@ -37928,7 +37950,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2353 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_RemoteEvent" );
 
 		return pClassPointer;
 	};
@@ -37952,7 +37974,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2355 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_RigidBodyCollision" );
 
 		return pClassPointer;
 	};
@@ -37974,7 +37996,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2357 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_SeeDeath" );
 
 		return pClassPointer;
 	};
@@ -37997,7 +38019,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2359 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_SequenceActivated" );
 
 		return pClassPointer;
 	};
@@ -38025,7 +38047,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2361 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_TakeDamage" );
 
 		return pClassPointer;
 	};
@@ -38058,7 +38080,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2363 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_Touch" );
 
 		return pClassPointer;
 	};
@@ -38089,7 +38111,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2365 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_TouchInput" );
 
 		return pClassPointer;
 	};
@@ -38118,7 +38140,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2367 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_Used" );
 
 		return pClassPointer;
 	};
@@ -38141,7 +38163,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2369 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SequenceVariable" );
 
 		return pClassPointer;
 	};
@@ -38175,7 +38197,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2371 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpData" );
 
 		return pClassPointer;
 	};
@@ -38198,7 +38220,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2373 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Bool" );
 
 		return pClassPointer;
 	};
@@ -38222,7 +38244,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2375 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_External" );
 
 		return pClassPointer;
 	};
@@ -38245,7 +38267,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2377 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Float" );
 
 		return pClassPointer;
 	};
@@ -38269,7 +38291,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2379 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_RandomFloat" );
 
 		return pClassPointer;
 	};
@@ -38292,7 +38314,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2381 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Int" );
 
 		return pClassPointer;
 	};
@@ -38316,7 +38338,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2383 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_RandomInt" );
 
 		return pClassPointer;
 	};
@@ -38341,7 +38363,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2385 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Named" );
 
 		return pClassPointer;
 	};
@@ -38366,7 +38388,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2387 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Object" );
 
 		return pClassPointer;
 	};
@@ -38391,7 +38413,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2389 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Character" );
 
 		return pClassPointer;
 	};
@@ -38416,7 +38438,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2391 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Group" );
 
 		return pClassPointer;
 	};
@@ -38439,7 +38461,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2393 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_ObjectList" );
 
 		return pClassPointer;
 	};
@@ -38467,7 +38489,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2395 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_ObjectVolume" );
 
 		return pClassPointer;
 	};
@@ -38492,7 +38514,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2397 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Player" );
 
 		return pClassPointer;
 	};
@@ -38517,7 +38539,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2399 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_String" );
 
 		return pClassPointer;
 	};
@@ -38540,7 +38562,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2401 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Vector" );
 
 		return pClassPointer;
 	};
@@ -38565,7 +38587,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2403 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientSound" );
 
 		return pClassPointer;
 	};
@@ -38587,7 +38609,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2405 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientSoundMovable" );
 
 		return pClassPointer;
 	};
@@ -38612,7 +38634,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2407 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientSoundSimple" );
 
 		return pClassPointer;
 	};
@@ -38634,7 +38656,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2409 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientSoundNonLoop" );
 
 		return pClassPointer;
 	};
@@ -38663,7 +38685,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2411 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientSoundSimpleToggleable" );
 
 		return pClassPointer;
 	};
@@ -38692,7 +38714,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2413 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientSoundNonLoopingToggleable" );
 
 		return pClassPointer;
 	};
@@ -38717,7 +38739,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2415 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientSoundSpline" );
 
 		return pClassPointer;
 	};
@@ -38740,7 +38762,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2417 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientSoundSimpleSpline" );
 
 		return pClassPointer;
 	};
@@ -38763,7 +38785,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2419 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientSoundSplineMultiCue" );
 
 		return pClassPointer;
 	};
@@ -38785,7 +38807,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2421 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DistributionFloatSoundParameter" );
 
 		return pClassPointer;
 	};
@@ -38809,7 +38831,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2423 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNode" );
 
 		return pClassPointer;
 	};
@@ -38831,7 +38853,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2425 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ForcedLoopSoundNode" );
 
 		return pClassPointer;
 	};
@@ -38867,7 +38889,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2427 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeAmbient" );
 
 		return pClassPointer;
 	};
@@ -38892,7 +38914,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2429 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeAmbientNonLoop" );
 
 		return pClassPointer;
 	};
@@ -38914,7 +38936,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2431 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeAmbientNonLoopToggle" );
 
 		return pClassPointer;
 	};
@@ -38947,7 +38969,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2433 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeAttenuation" );
 
 		return pClassPointer;
 	};
@@ -38985,7 +39007,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2435 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeAttenuationAndGain" );
 
 		return pClassPointer;
 	};
@@ -39008,7 +39030,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2437 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeConcatenator" );
 
 		return pClassPointer;
 	};
@@ -39030,7 +39052,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2439 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeConcatenatorRadio" );
 
 		return pClassPointer;
 	};
@@ -39055,7 +39077,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2441 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeDelay" );
 
 		return pClassPointer;
 	};
@@ -39078,7 +39100,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2443 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeDistanceCrossFade" );
 
 		return pClassPointer;
 	};
@@ -39101,7 +39123,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2445 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeDoppler" );
 
 		return pClassPointer;
 	};
@@ -39131,7 +39153,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2447 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeEnveloper" );
 
 		return pClassPointer;
 	};
@@ -39157,7 +39179,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2449 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeLooping" );
 
 		return pClassPointer;
 	};
@@ -39179,7 +39201,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2451 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeMature" );
 
 		return pClassPointer;
 	};
@@ -39202,7 +39224,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2453 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeMixer" );
 
 		return pClassPointer;
 	};
@@ -39230,7 +39252,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2455 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeModulator" );
 
 		return pClassPointer;
 	};
@@ -39254,7 +39276,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2457 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeModulatorContinuous" );
 
 		return pClassPointer;
 	};
@@ -39290,7 +39312,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2459 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeOscillator" );
 
 		return pClassPointer;
 	};
@@ -39317,7 +39339,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2461 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeRandom" );
 
 		return pClassPointer;
 	};
@@ -39380,7 +39402,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2463 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeWave" );
 
 		return pClassPointer;
 	};
@@ -39405,7 +39427,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2465 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeWaveStreaming" );
 
 		return pClassPointer;
 	};
@@ -39433,7 +39455,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2467 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundNodeWaveParam" );
 
 		return pClassPointer;
 	};
@@ -39480,7 +39502,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2469 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LandscapeProxy" );
 
 		return pClassPointer;
 	};
@@ -39504,7 +39526,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2471 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Landscape" );
 
 		return pClassPointer;
 	};
@@ -39573,7 +39595,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2473 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Terrain" );
 
 		return pClassPointer;
 	};
@@ -39604,7 +39626,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2475 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LandscapeGizmoActor" );
 
 		return pClassPointer;
 	};
@@ -39643,7 +39665,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2477 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LandscapeGizmoActiveActor" );
 
 		return pClassPointer;
 	};
@@ -39697,7 +39719,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2479 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LandscapeComponent" );
 
 		return pClassPointer;
 	};
@@ -39719,7 +39741,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2481 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LandscapeGizmoRenderComponent" );
 
 		return pClassPointer;
 	};
@@ -39756,7 +39778,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2483 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LandscapeHeightfieldCollisionComponent" );
 
 		return pClassPointer;
 	};
@@ -39795,7 +39817,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2485 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TerrainComponent" );
 
 		return pClassPointer;
 	};
@@ -39831,7 +39853,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2487 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LandscapeInfo" );
 
 		return pClassPointer;
 	};
@@ -39857,7 +39879,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2489 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LandscapeLayerInfoObject" );
 
 		return pClassPointer;
 	};
@@ -39881,7 +39903,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2491 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TerrainWeightMapTexture" );
 
 		return pClassPointer;
 	};
@@ -39904,7 +39926,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2493 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TerrainLayerSetup" );
 
 		return pClassPointer;
 	};
@@ -39936,7 +39958,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2495 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TerrainMaterial" );
 
 		return pClassPointer;
 	};
@@ -39963,7 +39985,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2497 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DataStoreClient" );
 
 		return pClassPointer;
 	};
@@ -40021,7 +40043,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2499 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Console" );
 
 		return pClassPointer;
 	};
@@ -40032,6 +40054,7 @@ public:
 	void ProcessControlKey ( );
 	void FlushPlayerInput ( );
 	void InputChar ( );
+	void AttempDisconnect ( );
 	void InputKey ( );
 	void PostRender_Console ( );
 	void StartTyping ( );
@@ -40072,7 +40095,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2501 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Input" );
 
 		return pClassPointer;
 	};
@@ -40155,7 +40178,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2503 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PlayerInput" );
 
 		return pClassPointer;
 	};
@@ -40196,7 +40219,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2505 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PlayerManagerInteraction" );
 
 		return pClassPointer;
 	};
@@ -40226,7 +40249,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2507 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UISceneClient" );
 
 		return pClassPointer;
 	};
@@ -40253,7 +40276,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2509 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UISoundTheme" );
 
 		return pClassPointer;
 	};
@@ -40276,7 +40299,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2511 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStoreSubscriber" );
 
 		return pClassPointer;
 	};
@@ -40304,7 +40327,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2513 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStorePublisher" );
 
 		return pClassPointer;
 	};
@@ -40327,7 +40350,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2515 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider" );
 
 		return pClassPointer;
 	};
@@ -40350,7 +40373,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2517 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_OnlinePlayerDataBase" );
 
 		return pClassPointer;
 	};
@@ -40381,7 +40404,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2519 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_OnlineFriendMessages" );
 
 		return pClassPointer;
 	};
@@ -40425,7 +40448,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2521 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_OnlineFriends" );
 
 		return pClassPointer;
 	};
@@ -40461,7 +40484,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2523 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_OnlinePartyChatList" );
 
 		return pClassPointer;
 	};
@@ -40494,7 +40517,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2525 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_OnlinePlayerStorage" );
 
 		return pClassPointer;
 	};
@@ -40530,7 +40553,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2527 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_OnlineProfileSettings" );
 
 		return pClassPointer;
 	};
@@ -40560,7 +40583,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2529 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_PlayerAchievements" );
 
 		return pClassPointer;
 	};
@@ -40597,7 +40620,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2531 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_OnlinePlayerStorageArray" );
 
 		return pClassPointer;
 	};
@@ -40624,7 +40647,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2533 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_SettingsArray" );
 
 		return pClassPointer;
 	};
@@ -40650,7 +40673,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2535 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore" );
 
 		return pClassPointer;
 	};
@@ -40684,7 +40707,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2537 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_DynamicResource" );
 
 		return pClassPointer;
 	};
@@ -40711,7 +40734,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2539 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_Fonts" );
 
 		return pClassPointer;
 	};
@@ -40735,7 +40758,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2541 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_GameResource" );
 
 		return pClassPointer;
 	};
@@ -40762,7 +40785,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2543 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_MenuItems" );
 
 		return pClassPointer;
 	};
@@ -40789,7 +40812,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2545 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_GameState" );
 
 		return pClassPointer;
 	};
@@ -40814,7 +40837,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2547 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_Registry" );
 
 		return pClassPointer;
 	};
@@ -40838,7 +40861,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2549 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_Remote" );
 
 		return pClassPointer;
 	};
@@ -40867,7 +40890,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2551 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_OnlineGameSearch" );
 
 		return pClassPointer;
 	};
@@ -40928,7 +40951,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2553 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_OnlinePlayerData" );
 
 		return pClassPointer;
 	};
@@ -40970,7 +40993,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2555 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_OnlineStats" );
 
 		return pClassPointer;
 	};
@@ -40998,7 +41021,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2557 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_Settings" );
 
 		return pClassPointer;
 	};
@@ -41023,7 +41046,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2559 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_OnlineGameSettings" );
 
 		return pClassPointer;
 	};
@@ -41054,7 +41077,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2561 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_StringBase" );
 
 		return pClassPointer;
 	};
@@ -41078,7 +41101,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2563 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_InputAlias" );
 
 		return pClassPointer;
 	};
@@ -41111,7 +41134,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2565 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataStore_StringAliasMap" );
 
 		return pClassPointer;
 	};
@@ -41139,7 +41162,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2567 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIPropertyDataProvider" );
 
 		return pClassPointer;
 	};
@@ -41164,7 +41187,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2569 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_Settings" );
 
 		return pClassPointer;
 	};
@@ -41187,7 +41210,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2571 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIResourceDataProvider" );
 
 		return pClassPointer;
 	};
@@ -41232,7 +41255,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2573 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIDataProvider_MenuItem" );
 
 		return pClassPointer;
 	};
@@ -41256,7 +41279,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2575 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIResourceCombinationProvider" );
 
 		return pClassPointer;
 	};
@@ -41291,7 +41314,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2577 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameUISceneClient" );
 
 		return pClassPointer;
 	};
@@ -41322,7 +41345,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2579 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Scene" );
 
 		return pClassPointer;
 	};
@@ -41347,7 +41370,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2581 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InstancedFoliageActor" );
 
 		return pClassPointer;
 	};
@@ -41383,7 +41406,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2583 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InteractiveFoliageActor" );
 
 		return pClassPointer;
 	};
@@ -41408,7 +41431,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2585 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InteractiveFoliageComponent" );
 
 		return pClassPointer;
 	};
@@ -41430,7 +41453,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2587 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactoryInteractiveFoliage" );
 
 		return pClassPointer;
 	};
@@ -41457,7 +41480,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2589 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FluidInfluenceActor" );
 
 		return pClassPointer;
 	};
@@ -41483,7 +41506,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2591 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FluidSurfaceActor" );
 
 		return pClassPointer;
 	};
@@ -41507,7 +41530,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2593 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FluidSurfaceActorMovable" );
 
 		return pClassPointer;
 	};
@@ -41555,7 +41578,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2595 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FluidInfluenceComponent" );
 
 		return pClassPointer;
 	};
@@ -41630,7 +41653,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2597 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FluidSurfaceComponent" );
 
 		return pClassPointer;
 	};
@@ -41656,7 +41679,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2599 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpeedTreeActor" );
 
 		return pClassPointer;
 	};
@@ -41705,7 +41728,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2601 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpeedTreeComponent" );
 
 		return pClassPointer;
 	};
@@ -41730,7 +41753,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2603 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpeedTreeActorFactory" );
 
 		return pClassPointer;
 	};
@@ -41753,7 +41776,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2605 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpeedTreeComponentFactory" );
 
 		return pClassPointer;
 	};
@@ -41787,7 +41810,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2607 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpeedTree" );
 
 		return pClassPointer;
 	};
@@ -41811,7 +41834,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2609 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LensFlareSource" );
 
 		return pClassPointer;
 	};
@@ -41864,7 +41887,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2611 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LensFlareComponent" );
 
 		return pClassPointer;
 	};
@@ -41914,7 +41937,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2613 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LensFlare" );
 
 		return pClassPointer;
 	};
@@ -41955,7 +41978,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2615 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TextureFlipBook" );
 
 		return pClassPointer;
 	};
@@ -41985,7 +42008,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2617 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Texture2DComposite" );
 
 		return pClassPointer;
 	};
@@ -42015,7 +42038,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2619 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Texture2DDynamic" );
 
 		return pClassPointer;
 	};
@@ -42053,7 +42076,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2621 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TextureCube" );
 
 		return pClassPointer;
 	};
@@ -42091,7 +42114,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2623 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TextureMovie" );
 
 		return pClassPointer;
 	};
@@ -42120,7 +42143,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2625 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TextureRenderTarget" );
 
 		return pClassPointer;
 	};
@@ -42149,7 +42172,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2627 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TextureRenderTarget2D" );
 
 		return pClassPointer;
 	};
@@ -42176,7 +42199,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2629 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ScriptedTexture" );
 
 		return pClassPointer;
 	};
@@ -42201,7 +42224,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2631 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TextureRenderTargetCube" );
 
 		return pClassPointer;
 	};
@@ -42270,7 +42293,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2633 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AudioDevice" );
 
 		return pClassPointer;
 	};
@@ -42299,7 +42322,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2635 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundClass" );
 
 		return pClassPointer;
 	};
@@ -42328,7 +42351,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2637 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SoundMode" );
 
 		return pClassPointer;
 	};
@@ -42351,7 +42374,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2639 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MatineePawn" );
 
 		return pClassPointer;
 	};
@@ -42405,7 +42428,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2641 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Scout" );
 
 		return pClassPointer;
 	};
@@ -42441,7 +42464,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2643 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Light" );
 
 		return pClassPointer;
 	};
@@ -42470,7 +42493,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2645 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DirectionalLight" );
 
 		return pClassPointer;
 	};
@@ -42492,7 +42515,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2647 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DirectionalLightToggleable" );
 
 		return pClassPointer;
 	};
@@ -42514,7 +42537,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2649 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DominantDirectionalLight" );
 
 		return pClassPointer;
 	};
@@ -42536,7 +42559,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2651 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DominantDirectionalLightMovable" );
 
 		return pClassPointer;
 	};
@@ -42558,7 +42581,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2653 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PointLight" );
 
 		return pClassPointer;
 	};
@@ -42580,7 +42603,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2655 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DominantPointLight" );
 
 		return pClassPointer;
 	};
@@ -42602,7 +42625,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2657 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PointLightMovable" );
 
 		return pClassPointer;
 	};
@@ -42624,7 +42647,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2659 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PointLightToggleable" );
 
 		return pClassPointer;
 	};
@@ -42649,7 +42672,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2661 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkyLight" );
 
 		return pClassPointer;
 	};
@@ -42671,7 +42694,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2663 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkyLightToggleable" );
 
 		return pClassPointer;
 	};
@@ -42693,7 +42716,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2665 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpotLight" );
 
 		return pClassPointer;
 	};
@@ -42715,7 +42738,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2667 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DominantSpotLight" );
 
 		return pClassPointer;
 	};
@@ -42737,7 +42760,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2669 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GeneratedMeshAreaLight" );
 
 		return pClassPointer;
 	};
@@ -42759,7 +42782,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2671 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpotLightMovable" );
 
 		return pClassPointer;
 	};
@@ -42781,7 +42804,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2673 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpotLightToggleable" );
 
 		return pClassPointer;
 	};
@@ -42808,7 +42831,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2675 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.StaticLightCollectionActor" );
 
 		return pClassPointer;
 	};
@@ -42892,7 +42915,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2677 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LightComponent" );
 
 		return pClassPointer;
 	};
@@ -42930,7 +42953,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2679 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DirectionalLightComponent" );
 
 		return pClassPointer;
 	};
@@ -42957,7 +42980,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2681 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DominantDirectionalLightComponent" );
 
 		return pClassPointer;
 	};
@@ -42994,7 +43017,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2683 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PointLightComponent" );
 
 		return pClassPointer;
 	};
@@ -43020,7 +43043,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2685 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DominantPointLightComponent" );
 
 		return pClassPointer;
 	};
@@ -43048,7 +43071,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2687 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SpotLightComponent" );
 
 		return pClassPointer;
 	};
@@ -43074,7 +43097,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2689 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DominantSpotLightComponent" );
 
 		return pClassPointer;
 	};
@@ -43098,7 +43121,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2691 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkyLightComponent" );
 
 		return pClassPointer;
 	};
@@ -43123,7 +43146,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2693 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SphericalHarmonicLightComponent" );
 
 		return pClassPointer;
 	};
@@ -43153,7 +43176,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2695 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LightEnvironmentComponent" );
 
 		return pClassPointer;
 	};
@@ -43213,7 +43236,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2697 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DynamicLightEnvironmentComponent" );
 
 		return pClassPointer;
 	};
@@ -43241,7 +43264,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2699 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleLightEnvironmentComponent" );
 
 		return pClassPointer;
 	};
@@ -43263,7 +43286,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2701 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawLightConeComponent" );
 
 		return pClassPointer;
 	};
@@ -43285,7 +43308,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2703 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DrawLightRadiusComponent" );
 
 		return pClassPointer;
 	};
@@ -43310,7 +43333,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2705 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LightFunction" );
 
 		return pClassPointer;
 	};
@@ -43569,7 +43592,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2707 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkeletalMeshComponent" );
 
 		return pClassPointer;
 	};
@@ -43631,7 +43654,7 @@ public:
 	void GetBoneMatrix ( );
 	void GetBoneName ( );
 	void MatchRefBone ( );
-	void GetBoneLocation ( FName Name, FVector &Out );
+	void GetBoneLocation(FName Name, FVector &Out);
 	void GetBoneQuaternion ( );
 	void FindMorphNode ( );
 	void FindSkelControl ( );
@@ -43846,7 +43869,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2709 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkeletalMesh" );
 
 		return pClassPointer;
 	};
@@ -43877,7 +43900,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2711 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkeletalMeshSocket" );
 
 		return pClassPointer;
 	};
@@ -43911,7 +43934,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2713 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SplineActor" );
 
 		return pClassPointer;
 	};
@@ -43961,7 +43984,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2715 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SplineLoftActor" );
 
 		return pClassPointer;
 	};
@@ -43985,7 +44008,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2717 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SplineLoftActorMovable" );
 
 		return pClassPointer;
 	};
@@ -44014,7 +44037,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2719 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SplineComponent" );
 
 		return pClassPointer;
 	};
@@ -44078,7 +44101,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2721 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ProcBuilding" );
 
 		return pClassPointer;
 	};
@@ -44106,7 +44129,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2723 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ProcBuilding_SimpleLODActor" );
 
 		return pClassPointer;
 	};
@@ -44135,7 +44158,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2725 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeBase" );
 
 		return pClassPointer;
 	};
@@ -44162,7 +44185,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2727 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeAlternate" );
 
 		return pClassPointer;
 	};
@@ -44190,7 +44213,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2729 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeComment" );
 
 		return pClassPointer;
 	};
@@ -44221,7 +44244,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2731 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeCorner" );
 
 		return pClassPointer;
 	};
@@ -44247,7 +44270,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2733 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeCycle" );
 
 		return pClassPointer;
 	};
@@ -44271,7 +44294,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2735 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeEdgeAngle" );
 
 		return pClassPointer;
 	};
@@ -44295,7 +44318,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2737 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeEdgeMesh" );
 
 		return pClassPointer;
 	};
@@ -44321,7 +44344,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2739 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeExtractTopBottom" );
 
 		return pClassPointer;
 	};
@@ -44344,7 +44367,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2741 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeLODQuad" );
 
 		return pClassPointer;
 	};
@@ -44370,7 +44393,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2743 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeMesh" );
 
 		return pClassPointer;
 	};
@@ -44393,7 +44416,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2745 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeOcclusion" );
 
 		return pClassPointer;
 	};
@@ -44421,7 +44444,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2747 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeQuad" );
 
 		return pClassPointer;
 	};
@@ -44446,7 +44469,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2749 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeRandom" );
 
 		return pClassPointer;
 	};
@@ -44470,7 +44493,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2751 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeRepeat" );
 
 		return pClassPointer;
 	};
@@ -44495,7 +44518,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2753 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeSize" );
 
 		return pClassPointer;
 	};
@@ -44519,7 +44542,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2755 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeSplit" );
 
 		return pClassPointer;
 	};
@@ -44542,7 +44565,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2757 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeSubRuleset" );
 
 		return pClassPointer;
 	};
@@ -44567,7 +44590,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2759 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeTransform" );
 
 		return pClassPointer;
 	};
@@ -44590,7 +44613,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2761 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeVariation" );
 
 		return pClassPointer;
 	};
@@ -44621,7 +44644,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2763 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PBRuleNodeWindowWall" );
 
 		return pClassPointer;
 	};
@@ -44664,7 +44687,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2765 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ProcBuildingRuleset" );
 
 		return pClassPointer;
 	};
@@ -44686,7 +44709,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2767 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ReplicationInfo" );
 
 		return pClassPointer;
 	};
@@ -44725,7 +44748,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2769 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameReplicationInfo" );
 
 		return pClassPointer;
 	};
@@ -44805,7 +44828,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2771 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PlayerReplicationInfo" );
 
 		return pClassPointer;
 	};
@@ -44856,7 +44879,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2773 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TeamInfo" );
 
 		return pClassPointer;
 	};
@@ -44932,7 +44955,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2775 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Camera" );
 
 		return pClassPointer;
 	};
@@ -44997,7 +45020,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2777 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CameraActor" );
 
 		return pClassPointer;
 	};
@@ -45021,7 +45044,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2779 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DynamicCameraActor" );
 
 		return pClassPointer;
 	};
@@ -45050,7 +45073,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2781 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CameraAnim" );
 
 		return pClassPointer;
 	};
@@ -45098,7 +45121,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2783 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CameraAnimInst" );
 
 		return pClassPointer;
 	};
@@ -45136,7 +45159,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2785 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CameraModifier" );
 
 		return pClassPointer;
 	};
@@ -45170,7 +45193,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2787 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CameraModifier_CameraShake" );
 
 		return pClassPointer;
 	};
@@ -45214,7 +45237,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2789 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CameraShake" );
 
 		return pClassPointer;
 	};
@@ -45238,7 +45261,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2791 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CloudStorageUpgradeHelper" );
 
 		return pClassPointer;
 	};
@@ -45266,14 +45289,14 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2793 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AlienFXLEDInterface" );
 
 		return pClassPointer;
 	};
 
 	void eventLEDPulseLighting ( );
 	void eventLEDSetFlashingRBG ( );
-	void TickAlienFX ( );
+	void UpdateAlienFX ( );
 	void eventLedStopEffects ( );
 	void eventLedRestoreLighting ( );
 	void eventSetColor ( );
@@ -45300,7 +45323,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2795 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnalyticEventsBase" );
 
 		return pClassPointer;
 	};
@@ -45342,7 +45365,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2797 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MultiProviderAnalytics" );
 
 		return pClassPointer;
 	};
@@ -45386,7 +45409,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2799 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AppNotificationsBase" );
 
 		return pClassPointer;
 	};
@@ -45417,7 +45440,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2801 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CloudStorageBase" );
 
 		return pClassPointer;
 	};
@@ -45449,6 +45472,38 @@ public:
 
 UClass* UCloudStorageBase::pClassPointer = NULL;
 
+// Class Engine.DiscordRPCIntegration
+// 0x0014 (0x0094 - 0x0080)
+class UDiscordRPCIntegration : public UPlatformInterfaceBase
+{
+public:
+	DWORD                                              bDiscordReady : 1;                                		// 0x0080 (0x0004) [0x0000000000000000] [0x00000001] 
+	struct FScriptDelegate                             __JoinLobby__Delegate;                            		// 0x0084 (0x0010) [0x0000000000000000]              
+	unsigned char                                      UnknownData00[ 0x4 ];                             		// 0x0088 (0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class Engine.DiscordRPCIntegration" );
+
+		return pClassPointer;
+	};
+
+	void CreateGamePresence ( );
+	void CreateMenuPresence ( );
+	void TickDiscord ( );
+	void ShutDown ( );
+	void eventInit ( );
+	void InternalJoinLobby ( );
+	void JoinLobby ( );
+};
+
+UClass* UDiscordRPCIntegration::pClassPointer = NULL;
+
 // Class Engine.FacebookIntegration
 // 0x0060 (0x00E0 - 0x0080)
 class UFacebookIntegration : public UPlatformInterfaceBase
@@ -45468,7 +45523,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2803 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FacebookIntegration" );
 
 		return pClassPointer;
 	};
@@ -45496,7 +45551,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2805 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InAppMessageBase" );
 
 		return pClassPointer;
 	};
@@ -45522,7 +45577,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2807 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InGameAdManager" );
 
 		return pClassPointer;
 	};
@@ -45552,7 +45607,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2809 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LogitechLEDInterface" );
 
 		return pClassPointer;
 	};
@@ -45589,11 +45644,12 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2811 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MixerIntegration" );
 
 		return pClassPointer;
 	};
 
+	void ForceMixerScene ( );
 	void MoveUserToGroup ( );
 	void MoveAllUsersToGroup ( );
 	void CreateParticipantGroup ( );
@@ -45628,7 +45684,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2813 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RazerLEDInterface" );
 
 		return pClassPointer;
 	};
@@ -45656,7 +45712,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2815 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TwitterIntegrationBase" );
 
 		return pClassPointer;
 	};
@@ -45692,7 +45748,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2817 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PlatformInterfaceWebResponse" );
 
 		return pClassPointer;
 	};
@@ -45719,7 +45775,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2819 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWIndoorLightingVolume" );
 
 		return pClassPointer;
 	};
@@ -45745,7 +45801,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2821 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWOutdoorLightingVolume" );
 
 		return pClassPointer;
 	};
@@ -45772,7 +45828,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2823 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWDeferredWorkManager" );
 
 		return pClassPointer;
 	};
@@ -45801,7 +45857,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2825 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWSceneCapture2DDPGComponent" );
 
 		return pClassPointer;
 	};
@@ -45823,7 +45879,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2827 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWMaterialExpressionLightBrightnessMultiplier" );
 
 		return pClassPointer;
 	};
@@ -45845,7 +45901,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 6217 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_MobileTouch" );
 
 		return pClassPointer;
 	};
@@ -45874,7 +45930,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 6225 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_AttachToActor" );
 
 		return pClassPointer;
 	};
@@ -45899,7 +45955,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 6239 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ToggleHidden" );
 
 		return pClassPointer;
 	};
@@ -45924,7 +45980,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 6260 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetVelocity" );
 
 		return pClassPointer;
 	};
@@ -45951,7 +46007,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 6266 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Teleport" );
 
 		return pClassPointer;
 	};
@@ -45977,7 +46033,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 6282 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_Destroy" );
 
 		return pClassPointer;
 	};
@@ -46009,7 +46065,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 6351 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.LocalMessage" );
 
 		return pClassPointer;
 	};
@@ -46040,7 +46096,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 6362 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_HitWall" );
 
 		return pClassPointer;
 	};
@@ -46062,7 +46118,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7161 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlinePlayerInterface" );
 
 		return pClassPointer;
 	};
@@ -46226,7 +46282,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7198 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineCommunityContentInterface" );
 
 		return pClassPointer;
 	};
@@ -46273,7 +46329,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7203 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineGameDVRInterface" );
 
 		return pClassPointer;
 	};
@@ -46309,7 +46365,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7208 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SharedCloudFileInterface" );
 
 		return pClassPointer;
 	};
@@ -46342,7 +46398,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7213 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UserCloudFileInterface" );
 
 		return pClassPointer;
 	};
@@ -46385,7 +46441,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7222 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineSocialInterface" );
 
 		return pClassPointer;
 	};
@@ -46419,7 +46475,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7227 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineTitleFileCacheInterface" );
 
 		return pClassPointer;
 	};
@@ -46457,7 +46513,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7232 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineTitleFileInterface" );
 
 		return pClassPointer;
 	};
@@ -46491,7 +46547,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7237 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlinePartyInterface" );
 
 		return pClassPointer;
 	};
@@ -46532,7 +46588,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7242 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlinePartyChatInterface" );
 
 		return pClassPointer;
 	};
@@ -46575,7 +46631,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7247 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineNewsInterface" );
 
 		return pClassPointer;
 	};
@@ -46602,7 +46658,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7252 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineStatsInterface" );
 
 		return pClassPointer;
 	};
@@ -46655,7 +46711,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7257 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineVoiceInterface" );
 
 		return pClassPointer;
 	};
@@ -46706,7 +46762,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7262 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineContentInterface" );
 
 		return pClassPointer;
 	};
@@ -46768,7 +46824,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7271 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineSystemInterface" );
 
 		return pClassPointer;
 	};
@@ -46812,7 +46868,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7276 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineMarketplaceInterface" );
 
 		return pClassPointer;
 	};
@@ -46857,7 +46913,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7281 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlinePlayerInterfaceEx" );
 
 		return pClassPointer;
 	};
@@ -46963,7 +47019,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7289 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineAccountInterface" );
 
 		return pClassPointer;
 	};
@@ -47022,7 +47078,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 7715 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AccessControl" );
 
 		return pClassPointer;
 	};
@@ -47086,7 +47142,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 8028 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Admin" );
 
 		return pClassPointer;
 	};
@@ -47120,7 +47176,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 8071 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ApexDestructibleActorSpawnable" );
 
 		return pClassPointer;
 	};
@@ -47143,7 +47199,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 8083 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.EmitterSpawnable" );
 
 		return pClassPointer;
 	};
@@ -47167,7 +47223,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 8109 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.KAssetSpawnable" );
 
 		return pClassPointer;
 	};
@@ -47189,7 +47245,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 8120 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactorySkeletalMeshCinematic" );
 
 		return pClassPointer;
 	};
@@ -47211,7 +47267,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 8122 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ActorFactorySkeletalMeshMAT" );
 
 		return pClassPointer;
 	};
@@ -47233,7 +47289,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 8623 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ToggleGodMode" );
 
 		return pClassPointer;
 	};
@@ -47255,7 +47311,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 8624 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_Death" );
 
 		return pClassPointer;
 	};
@@ -47278,7 +47334,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 9259 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ControlMovieTexture" );
 
 		return pClassPointer;
 	};
@@ -47303,7 +47359,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 12215 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetSoundMode" );
 
 		return pClassPointer;
 	};
@@ -47327,7 +47383,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 12233 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_FlyThroughHasEnded" );
 
 		return pClassPointer;
 	};
@@ -47351,7 +47407,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 12317 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ConsoleCommand" );
 
 		return pClassPointer;
 	};
@@ -47382,7 +47438,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 12324 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ToggleCinematicMode" );
 
 		return pClassPointer;
 	};
@@ -47407,7 +47463,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 12336 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ForceFeedback" );
 
 		return pClassPointer;
 	};
@@ -47429,7 +47485,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 12341 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ToggleHUD" );
 
 		return pClassPointer;
 	};
@@ -47454,7 +47510,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 12348 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ToggleInput" );
 
 		return pClassPointer;
 	};
@@ -47476,7 +47532,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 12523 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DmgType_Suicided" );
 
 		return pClassPointer;
 	};
@@ -47521,7 +47577,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 12569 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.GameMessage" );
 
 		return pClassPointer;
 	};
@@ -47545,7 +47601,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 12592 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CoverReplicator" );
 
 		return pClassPointer;
 	};
@@ -47587,7 +47643,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 13684 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SplineComponentSimplified" );
 
 		return pClassPointer;
 	};
@@ -47609,7 +47665,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 13739 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AmbientSoundSimpleSplineNonLoop" );
 
 		return pClassPointer;
 	};
@@ -47638,7 +47694,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 14743 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.AnimNotify_PlayFaceFXAnim" );
 
 		return pClassPointer;
 	};
@@ -47663,7 +47719,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 15365 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.BroadcastHandler" );
 
 		return pClassPointer;
 	};
@@ -47694,7 +47750,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 16270 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.HttpFactory" );
 
 		return pClassPointer;
 	};
@@ -47717,7 +47773,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 16509 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CloudSaveSystemKVSInterface" );
 
 		return pClassPointer;
 	};
@@ -47741,7 +47797,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 16513 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CloudSaveSystemDataBlobStoreInterface" );
 
 		return pClassPointer;
 	};
@@ -47770,7 +47826,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 16663 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.CloudStorageBaseCloudSaveSystemKVS" );
 
 		return pClassPointer;
 	};
@@ -47798,7 +47854,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 16699 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ColorScaleVolume" );
 
 		return pClassPointer;
 	};
@@ -47823,7 +47879,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 18147 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetDamageInstigator" );
 
 		return pClassPointer;
 	};
@@ -47846,7 +47902,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 18150 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.VolumeTimer" );
 
 		return pClassPointer;
 	};
@@ -47870,7 +47926,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 18234 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TWSeqEvent_LightFlicker" );
 
 		return pClassPointer;
 	};
@@ -47892,7 +47948,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 18377 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DmgType_Crushed" );
 
 		return pClassPointer;
 	};
@@ -47914,7 +47970,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 18379 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DmgType_Fell" );
 
 		return pClassPointer;
 	};
@@ -47936,7 +47992,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 18382 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DmgType_Telefragged" );
 
 		return pClassPointer;
 	};
@@ -47959,7 +48015,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 18660 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DynamicPhysicsVolume" );
 
 		return pClassPointer;
 	};
@@ -47982,7 +48038,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 18715 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DynamicSMActor_Spawnable" );
 
 		return pClassPointer;
 	};
@@ -48005,7 +48061,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 18724 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.DynamicTriggerVolume" );
 
 		return pClassPointer;
 	};
@@ -48031,7 +48087,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 19031 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetParticleSysParam" );
 
 		return pClassPointer;
 	};
@@ -48055,7 +48111,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 19537 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ExponentialHeightFog" );
 
 		return pClassPointer;
 	};
@@ -48081,7 +48137,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 19658 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FailedConnect" );
 
 		return pClassPointer;
 	};
@@ -48105,7 +48161,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 20984 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FracturedSMActorSpawnable" );
 
 		return pClassPointer;
 	};
@@ -48127,7 +48183,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 20989 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.FracturedStaticMeshActor_Spawnable" );
 
 		return pClassPointer;
 	};
@@ -48150,7 +48206,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 21912 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_PlayerSpawned" );
 
 		return pClassPointer;
 	};
@@ -48174,7 +48230,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 23042 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.HeightFog" );
 
 		return pClassPointer;
 	};
@@ -48199,7 +48255,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 23586 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.InterpActor_ForCinematic" );
 
 		return pClassPointer;
 	};
@@ -48222,7 +48278,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 25383 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.MaterialInstanceTimeVaryingActor" );
 
 		return pClassPointer;
 	};
@@ -48247,7 +48303,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 26050 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_GiveInventory" );
 
 		return pClassPointer;
 	};
@@ -48270,7 +48326,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 26053 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_AssignController" );
 
 		return pClassPointer;
 	};
@@ -48292,7 +48348,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 26577 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.NavMeshBoundsVolume" );
 
 		return pClassPointer;
 	};
@@ -48314,7 +48370,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 27514 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineEventsInterface" );
 
 		return pClassPointer;
 	};
@@ -48339,7 +48395,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 27531 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineGameDownloadInterface" );
 
 		return pClassPointer;
 	};
@@ -48381,7 +48437,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 29171 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlinePlaylistGameTypeProvider" );
 
 		return pClassPointer;
 	};
@@ -48411,7 +48467,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 29217 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineRecentPlayersList" );
 
 		return pClassPointer;
 	};
@@ -48450,7 +48506,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 29566 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.OnlineSuppliedUIInterface" );
 
 		return pClassPointer;
 	};
@@ -48477,7 +48533,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 30139 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleForceFieldCylindrical" );
 
 		return pClassPointer;
 	};
@@ -48499,7 +48555,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 30142 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleForceFieldGeneric" );
 
 		return pClassPointer;
 	};
@@ -48521,7 +48577,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 30145 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleForceFieldRadial" );
 
 		return pClassPointer;
 	};
@@ -48543,7 +48599,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 30148 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ParticleModuleForceFieldTornado" );
 
 		return pClassPointer;
 	};
@@ -48565,7 +48621,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 30946 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.PathNode_Dynamic" );
 
 		return pClassPointer;
 	};
@@ -48588,7 +48644,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 30954 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_AIReachedRouteActor" );
 
 		return pClassPointer;
 	};
@@ -48610,7 +48666,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 31502 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_PickupStatusChange" );
 
 		return pClassPointer;
 	};
@@ -48633,7 +48689,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 32270 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RadialBlurActor" );
 
 		return pClassPointer;
 	};
@@ -48659,7 +48715,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 32491 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ToggleConstraintDrive" );
 
 		return pClassPointer;
 	};
@@ -48681,7 +48737,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 32536 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_BSJointActor" );
 
 		return pClassPointer;
 	};
@@ -48703,7 +48759,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 32541 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_ConstraintActorSpawnable" );
 
 		return pClassPointer;
 	};
@@ -48725,7 +48781,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 32603 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_HingeActor" );
 
 		return pClassPointer;
 	};
@@ -48747,7 +48803,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 32620 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_PrismaticActor" );
 
 		return pClassPointer;
 	};
@@ -48769,7 +48825,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 32625 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.RB_PulleyJointActor" );
 
 		return pClassPointer;
 	};
@@ -48791,7 +48847,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 32690 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.ReverbVolumeToggleable" );
 
 		return pClassPointer;
 	};
@@ -48815,7 +48871,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 32903 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_AddRemoveFaceFXAnimSet" );
 
 		return pClassPointer;
 	};
@@ -48837,7 +48893,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 32907 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_AIAbortMoveToActor" );
 
 		return pClassPointer;
 	};
@@ -48860,7 +48916,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33126 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_MITV_Activate" );
 
 		return pClassPointer;
 	};
@@ -48887,7 +48943,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33264 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetMatInstTexParam" );
 
 		return pClassPointer;
 	};
@@ -48912,7 +48968,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33269 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetMatInstVectorParam" );
 
 		return pClassPointer;
 	};
@@ -48937,7 +48993,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33288 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetSkelControlTarget" );
 
 		return pClassPointer;
 	};
@@ -48960,7 +49016,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33303 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_SetVector" );
 
 		return pClassPointer;
 	};
@@ -48983,7 +49039,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33393 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_ToggleAffectedByHitEffects" );
 
 		return pClassPointer;
 	};
@@ -49005,7 +49061,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33418 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqAct_UpdatePhysBonesFromAnim" );
 
 		return pClassPointer;
 	};
@@ -49031,7 +49087,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33524 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqEvent_LOS" );
 
 		return pClassPointer;
 	};
@@ -49054,7 +49110,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33640 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Byte" );
 
 		return pClassPointer;
 	};
@@ -49076,7 +49132,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33656 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Name" );
 
 		return pClassPointer;
 	};
@@ -49098,7 +49154,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 33686 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SeqVar_Union" );
 
 		return pClassPointer;
 	};
@@ -49120,7 +49176,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 34322 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkeletalMeshActorMATSpawnable" );
 
 		return pClassPointer;
 	};
@@ -49142,7 +49198,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 34327 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.SkeletalMeshActorMATWalkable" );
 
 		return pClassPointer;
 	};
@@ -49164,7 +49220,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 35625 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Trigger_Dynamic" );
 
 		return pClassPointer;
 	};
@@ -49187,7 +49243,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 35629 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.Trigger_LOS" );
 
 		return pClassPointer;
 	};
@@ -49212,7 +49268,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 35649 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TriggeredPath" );
 
 		return pClassPointer;
 	};
@@ -49238,7 +49294,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 35663 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.TriggerStreamingLevel" );
 
 		return pClassPointer;
 	};
@@ -49265,7 +49321,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 35948 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UICharacterSummary" );
 
 		return pClassPointer;
 	};
@@ -49295,7 +49351,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 36581 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIGameInfoSummary" );
 
 		return pClassPointer;
 	};
@@ -49321,7 +49377,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 36703 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIMapSummary" );
 
 		return pClassPointer;
 	};
@@ -49347,7 +49403,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 36725 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UIWeaponSummary" );
 
 		return pClassPointer;
 	};
@@ -49383,7 +49439,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 36731 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.UserCloudFileCloudSaveSystemDataBlobStore" );
 
 		return pClassPointer;
 	};
@@ -49419,7 +49475,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 36866 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.WaterVolume" );
 
 		return pClassPointer;
 	};
@@ -49446,7 +49502,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 37193 ];
+			pClassPointer = UObject::FindClass ( "Class Engine.WindDirectionalSource" );
 
 		return pClassPointer;
 	};

@@ -423,6 +423,566 @@ struct AKFAIController_ZedPatriarch_eventPossess_Parms
 	// DWORD                                           bVehicleTransition : 1;                           		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
+// Function kfgamecontent.AICommand_BloatKing_Gorge.Popped
+// [0x00020002] 
+struct UAICommand_BloatKing_Gorge_execPopped_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_BloatKing_Gorge.Pushed
+// [0x00020002] 
+struct UAICommand_BloatKing_Gorge_execPushed_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_BloatKing_Gorge.StartGorge
+// [0x00022002] 
+struct UAICommand_BloatKing_Gorge_execStartGorge_Parms
+{
+	// class AKFAIController_ZedBloatKing*             AI;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class UAICommand_BloatKing_Gorge*               Cmd;                                              		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.EnterZedVictoryState
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execEnterZedVictoryState_Parms
+{
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.PawnDied
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execPawnDied_Parms
+{
+	// class APawn*                                    inPawn;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.EndArmorEnrage
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execEndArmorEnrage_Parms
+{
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.StartArmorEnrage
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execStartArmorEnrage_Parms
+{
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.SetEnrageTimer
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execSetEnrageTimer_Parms
+{
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.GetNumMinionsToSpawn
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execGetNumMinionsToSpawn_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// int                                             LivingPlayerCount;                                		// 0x0004 (0x0004) [0x0000000000000000]              
+	// float                                           MaxPlayers;                                       		// 0x0008 (0x0004) [0x0000000000000000]              
+	// unsigned char                                   NumMinsToSpawn;                                   		// 0x000C (0x0001) [0x0000000000000000]              
+	// class AKFGameInfo*                              KFGI;                                             		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.GetWaveInfo
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execGetWaveInfo_Parms
+{
+	// int                                             GameDifficulty;                                   		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class UKFAIWaveInfo*                            ReturnValue;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.StopBossWave
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execStopBossWave_Parms
+{
+	// class AKFGameInfo*                              KFGI;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.PauseBossWave
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execPauseBossWave_Parms
+{
+	// class AKFGameInfo*                              KFGI;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.SpawnMinions
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execSpawnMinions_Parms
+{
+	// class UKFAIWaveInfo*                            SpawnInfo;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFGameInfo*                              KFGI;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.StartMinionWaves
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execStartMinionWaves_Parms
+{
+	// class AKFGameInfo*                              KFGI;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           TimerIdx;                                         		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.ShouldSprint
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execShouldSprint_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           DistToEnemy;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+	// float                                           CurrentSprintDistance;                            		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.EvaluateSprinting
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execEvaluateSprinting_Parms
+{
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.ChangeEnemy
+// [0x00024802] ( FUNC_Event )
+struct AKFAIController_ZedBloatKing_eventChangeEnemy_Parms
+{
+	// class APawn*                                    NewEnemy;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bCanTaunt : 1;                                    		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class APawn*                                    OldEnemy;                                         		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.NotifySpecialMoveEnded
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execNotifySpecialMoveEnded_Parms
+{
+	// class UKFSpecialMove*                           SM;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.SeePlayer
+// [0x00020802] ( FUNC_Event )
+struct AKFAIController_ZedBloatKing_eventSeePlayer_Parms
+{
+	// class APawn*                                    Seen;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.CanDoGorgeAttack
+// [0x00820002] 
+struct AKFAIController_ZedBloatKing_execCanDoGorgeAttack_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPawn*                                  KFP;                                              		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  ViewDirection;                                    		// 0x000C (0x000C) [0x0000000000000000]              
+	// struct FVector                                  ToTarget;                                         		// 0x0018 (0x000C) [0x0000000000000000]              
+	// float                                           DotAngle;                                         		// 0x0024 (0x0004) [0x0000000000000000]              
+	// float                                           ToTargetRange;                                    		// 0x0028 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.TriggerGorge
+// [0x00024002] 
+struct AKFAIController_ZedBloatKing_execTriggerGorge_Parms
+{
+	// DWORD                                           bForced : 1;                                      		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.EvaluateSpecialMoves
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execEvaluateSpecialMoves_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.AmIAllowedToSuicideWhenStuck
+// [0x00020002] 
+struct AKFAIController_ZedBloatKing_execAmIAllowedToSuicideWhenStuck_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.Tick
+// [0x00020102] 
+struct AKFAIController_ZedBloatKing_execTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKing.Possess
+// [0x00020802] ( FUNC_Event )
+struct AKFAIController_ZedBloatKing_eventPossess_Parms
+{
+	// class APawn*                                    inPawn;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bVehicleTransition : 1;                           		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.AICommand_BloatKingSubspawn_Explode.Popped
+// [0x00020002] 
+struct UAICommand_BloatKingSubspawn_Explode_execPopped_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_BloatKingSubspawn_Explode.Pushed
+// [0x00020002] 
+struct UAICommand_BloatKingSubspawn_Explode_execPushed_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_BloatKingSubspawn_Explode.StartExplode
+// [0x00022002] 
+struct UAICommand_BloatKingSubspawn_Explode_execStartExplode_Parms
+{
+	// class AKFAIController_ZedBloatKingSubspawn*     AI;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class UAICommand_BloatKingSubspawn_Explode*     Cmd;                                              		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKingSubspawn.CheckMeleeTargetExplosion
+// [0x00820002] 
+struct AKFAIController_ZedBloatKingSubspawn_execCheckMeleeTargetExplosion_Parms
+{
+	// struct FVector                                  ToTarget;                                         		// 0x0000 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKingSubspawn.CanDoStrike
+// [0x00020002] 
+struct AKFAIController_ZedBloatKingSubspawn_execCanDoStrike_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKingSubspawn.Tick
+// [0x00020102] 
+struct AKFAIController_ZedBloatKingSubspawn_execTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedBloatKingSubspawn.Possess
+// [0x00020802] ( FUNC_Event )
+struct AKFAIController_ZedBloatKingSubspawn_eventPossess_Parms
+{
+	// class APawn*                                    inPawn;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bVehicleTransition : 1;                           		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.AICommand_RangedAttack.HandleAICommandSpecialAction
+// [0x00020802] ( FUNC_Event )
+struct UAICommand_RangedAttack_eventHandleAICommandSpecialAction_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_RangedAttack.Popped
+// [0x00020002] 
+struct UAICommand_RangedAttack_execPopped_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_RangedAttack.Pushed
+// [0x00020002] 
+struct UAICommand_RangedAttack_execPushed_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_DAR_EMPAttack.Popped
+// [0x00020002] 
+struct UAICommand_DAR_EMPAttack_execPopped_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_DAR_EMPAttack.Pushed
+// [0x00020002] 
+struct UAICommand_DAR_EMPAttack_execPushed_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_DAR_EMPAttack.EMPAttack
+// [0x00022002] 
+struct UAICommand_DAR_EMPAttack_execEMPAttack_Parms
+{
+	// class AKFAIController_ZedDAR_EMP*               AI;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class UAICommand_DAR_EMPAttack*                 Cmd;                                              		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.OnArmorLoss
+// [0x00020002] 
+struct AKFAIController_ZedDAR_execOnArmorLoss_Parms
+{
+	// struct FName                                    ArmorName;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.CanEvade
+// [0x00024002] 
+struct AKFAIController_ZedDAR_execCanEvade_Parms
+{
+	// DWORD                                           bOverrideSpecialMove : 1;                         		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.ShouldSprint
+// [0x00020002] 
+struct AKFAIController_ZedDAR_execShouldSprint_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.GetStartFireLocation
+// [0x00020002] 
+struct AKFAIController_ZedDAR_execGetStartFireLocation_Parms
+{
+	// struct FVector                                  ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.FireRangedAttack
+// [0x00820002] 
+struct AKFAIController_ZedDAR_execFireRangedAttack_Parms
+{
+	// class UClass*                                   RangedProjectileClass;                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  ProjectileOffset;                                 		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  SocketLocation;                                   		// 0x0014 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  DirToEnemy;                                       		// 0x0020 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x002C (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0038 (0x000C) [0x0000000000000000]              
+	// class AKFProjectile*                            SpawnedProjectile;                                		// 0x0044 (0x0008) [0x0000000000000000]              
+	// class AActor*                                   HitActor;                                         		// 0x004C (0x0008) [0x0000000000000000]              
+	// struct FVector                                  AimLocation;                                      		// 0x0054 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  AimDispalcement;                                  		// 0x0060 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  displacementToHitLoc;                             		// 0x006C (0x000C) [0x0000000000000000]              
+	// float                                           distanceToHitLoc;                                 		// 0x0078 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.StartRangedAttack
+// [0x00020000] 
+struct AKFAIController_ZedDAR_execStartRangedAttack_Parms
+{
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.SetEnemy
+// [0x00020802] ( FUNC_Event )
+struct AKFAIController_ZedDAR_eventSetEnemy_Parms
+{
+	// class APawn*                                    NewEnemy;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.Tick
+// [0x00020102] 
+struct AKFAIController_ZedDAR_execTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           DistToTargetSqr;                                  		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.CanDoRangedAttack
+// [0x00020002] 
+struct AKFAIController_ZedDAR_execCanDoRangedAttack_Parms
+{
+	// float                                           DistanceToTargetSqr;                              		// 0x0000 (0x0004) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.GetAttackIntervalByDifficulty
+// [0x00020002] 
+struct AKFAIController_ZedDAR_execGetAttackIntervalByDifficulty_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR.PostBeginPlay
+// [0x00020802] ( FUNC_Event )
+struct AKFAIController_ZedDAR_eventPostBeginPlay_Parms
+{
+};
+
+// Function kfgamecontent.KFAIController_Ranged.DebugAimError
+// [0x00824002] 
+struct AKFAIController_Ranged_execDebugAimError_Parms
+{
+	// struct FName                                    SocketName;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           AimError;                                         		// 0x0008 (0x0004) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x000C (0x0004) [0x0000000000000000]              
+	// class AKFDebugLines*                            KFDL;                                             		// 0x0010 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  SocketLocation;                                   		// 0x0018 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  DirToEnemy;                                       		// 0x0024 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRotation;                                   		// 0x0030 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR_EMP.StartRangedAttack
+// [0x00020002] 
+struct AKFAIController_ZedDAR_EMP_execStartRangedAttack_Parms
+{
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.DeactivateHitPSC
+// [0x00020002] 
+struct UKFSM_DAR_EMPAttack_execDeactivateHitPSC_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.DeactivatePSC
+// [0x00020002] 
+struct UKFSM_DAR_EMPAttack_execDeactivatePSC_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.ReleaseVictims
+// [0x00820002] 
+struct UKFSM_DAR_EMPAttack_execReleaseVictims_Parms
+{
+	// struct FEMPBlastHitInfo                         BlastHitInfo;                                     		// 0x0000 (0x003C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.ApplyDamage
+// [0x00820002] 
+struct UKFSM_DAR_EMPAttack_execApplyDamage_Parms
+{
+	// struct FEMPBlastHitInfo                         BlastHitInfo;                                     		// 0x0000 (0x003C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.GetEnemyByTrace
+// [0x00C20002] 
+struct UKFSM_DAR_EMPAttack_execGetEnemyByTrace_Parms
+{
+	// TArray< struct FEMPBlastHitInfo >               out_EMPBlastHitInfo;                              		// 0x0000 (0x0010) [0x0000000000000000]              
+	// struct FVector                                  StartLocation;                                    		// 0x0010 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  EndLocation;                                      		// 0x001C (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0028 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0034 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   HitActor;                                         		// 0x0040 (0x0008) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x0048 (0x0028) [0x0000000000000000]              
+	// struct FEMPBlastHitInfo                         BlastHitInfo;                                     		// 0x0070 (0x003C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.SetEMPEndPoint
+// [0x00820002] 
+struct UKFSM_DAR_EMPAttack_execSetEMPEndPoint_Parms
+{
+	// struct FVector                                  SocketLocation;                                   		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  EMPEnd;                                           		// 0x000C (0x000C) [0x0000000000000000]              
+	// DWORD                                           bHitTarget : 1;                                   		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	// struct FEMPBlastHitInfo                         BlastHitInfo;                                     		// 0x001C (0x003C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRot;                                        		// 0x0058 (0x000C) [0x0000000000000000]              
+	// TArray< struct FEMPBlastHitInfo >               HitList;                                          		// 0x0064 (0x0010) [0x0000000000000000]              
+	// struct FVector                                  HitLoc;                                           		// 0x0074 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNrm;                                           		// 0x0080 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   HitActor;                                         		// 0x008C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.WithinRange
+// [0x00020002] 
+struct UKFSM_DAR_EMPAttack_execWithinRange_Parms
+{
+	// class AActor*                                   HitActor;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.IsValidTarget
+// [0x00020002] 
+struct UKFSM_DAR_EMPAttack_execIsValidTarget_Parms
+{
+	// class AActor*                                   HitActor;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.DisableEMP
+// [0x00020002] 
+struct UKFSM_DAR_EMPAttack_execDisableEMP_Parms
+{
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.ToggleEMP
+// [0x00820002] 
+struct UKFSM_DAR_EMPAttack_execToggleEMP_Parms
+{
+	// DWORD                                           bEnabled : 1;                                     		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// struct FParticleSysParam                        SourceParam;                                      		// 0x0004 (0x0040) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.SpecialMoveEnded
+// [0x00020002] 
+struct UKFSM_DAR_EMPAttack_execSpecialMoveEnded_Parms
+{
+	// struct FName                                    PrevMove;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FName                                    NextMove;                                         		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_DAR_EMPAttack.SpecialMoveStarted
+// [0x00020002] 
+struct UKFSM_DAR_EMPAttack_execSpecialMoveStarted_Parms
+{
+	// DWORD                                           bForced : 1;                                      		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// struct FName                                    PrevMove;                                         		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.AICommand_DAR_LaserAttack.Popped
+// [0x00020002] 
+struct UAICommand_DAR_LaserAttack_execPopped_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_DAR_LaserAttack.Pushed
+// [0x00020002] 
+struct UAICommand_DAR_LaserAttack_execPushed_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_DAR_LaserAttack.LaserAttack
+// [0x00022002] 
+struct UAICommand_DAR_LaserAttack_execLaserAttack_Parms
+{
+	// class AKFAIController_ZedDAR_Laser*             AI;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class UAICommand_DAR_LaserAttack*               Cmd;                                              		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR_Laser.GetStartFireLocation
+// [0x00820002] 
+struct AKFAIController_ZedDAR_Laser_execGetStartFireLocation_Parms
+{
+	// struct FVector                                  ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  SocketLocation;                                   		// 0x000C (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRotation;                                   		// 0x0018 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR_Laser.StartRangedAttack
+// [0x00020002] 
+struct AKFAIController_ZedDAR_Laser_execStartRangedAttack_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_DAR_RocketAttack.Popped
+// [0x00020002] 
+struct UAICommand_DAR_RocketAttack_execPopped_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_DAR_RocketAttack.Pushed
+// [0x00020002] 
+struct UAICommand_DAR_RocketAttack_execPushed_Parms
+{
+};
+
+// Function kfgamecontent.AICommand_DAR_RocketAttack.RocketAttack
+// [0x00022002] 
+struct UAICommand_DAR_RocketAttack_execRocketAttack_Parms
+{
+	// class AKFAIController_ZedDAR_Rocket*            AI;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class UAICommand_DAR_RocketAttack*              Cmd;                                              		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR_Rocket.GetStartFireLocation
+// [0x00820002] 
+struct AKFAIController_ZedDAR_Rocket_execGetStartFireLocation_Parms
+{
+	// struct FVector                                  ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  SocketLocation;                                   		// 0x000C (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRotation;                                   		// 0x0018 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAIController_ZedDAR_Rocket.StartRangedAttack
+// [0x00020002] 
+struct AKFAIController_ZedDAR_Rocket_execStartRangedAttack_Parms
+{
+};
+
 // Function kfgamecontent.AICommand_FleshpoundKing_ChestBeamAttack.Popped
 // [0x00020002] 
 struct UAICommand_FleshpoundKing_ChestBeamAttack_execPopped_Parms
@@ -536,6 +1096,13 @@ struct AKFAIController_ZedFleshpoundKing_eventSeePlayer_Parms
 	// class APawn*                                    Seen;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFAIController_ZedFleshpoundKing.AmIAllowedToSuicideWhenStuck
+// [0x00020002] 
+struct AKFAIController_ZedFleshpoundKing_execAmIAllowedToSuicideWhenStuck_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
 // Function kfgamecontent.KFAIController_ZedFleshpoundKing.Possess
 // [0x00020802] ( FUNC_Event )
 struct AKFAIController_ZedFleshpoundKing_eventPossess_Parms
@@ -593,17 +1160,6 @@ struct UAICommand_Husk_Suicide_execSuicide_Parms
 	// class AKFAIController_ZedHusk*                  AI;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 	// class UAICommand_Husk_Suicide*                  Cmd;                                              		// 0x000C (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFAIController_ZedHusk.DebugAimError
-// [0x00820002] 
-struct AKFAIController_ZedHusk_execDebugAimError_Parms
-{
-	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
-	// class AKFDebugLines*                            KFDL;                                             		// 0x0004 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  SocketLocation;                                   		// 0x000C (0x000C) [0x0000000000000000]              
-	// struct FVector                                  DirToEnemy;                                       		// 0x0018 (0x000C) [0x0000000000000000]              
-	// struct FRotator                                 SocketRotation;                                   		// 0x0024 (0x000C) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFAIController_ZedHusk.ShootFireball
@@ -695,27 +1251,6 @@ struct AKFAIController_ZedHusk_eventPostBeginPlay_Parms
 	// class AKFGameInfo*                              KFGI;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFAIController_ZedHusk.Possess
-// [0x00020802] ( FUNC_Event )
-struct AKFAIController_ZedHusk_eventPossess_Parms
-{
-	// class APawn*                                    inPawn;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           bVehicleTransition : 1;                           		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFAIController_ZedHusk.IsNearDoor
-// [0x00020002] 
-struct AKFAIController_ZedHusk_execIsNearDoor_Parms
-{
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.AICommand_HuskFireBallAttack.HandleAICommandSpecialAction
-// [0x00020802] ( FUNC_Event )
-struct UAICommand_HuskFireBallAttack_eventHandleAICommandSpecialAction_Parms
-{
-};
-
 // Function kfgamecontent.AICommand_HuskFireBallAttack.Popped
 // [0x00020002] 
 struct UAICommand_HuskFireBallAttack_execPopped_Parms
@@ -757,43 +1292,6 @@ struct UKFSM_Husk_FireBallAttack_execSpecialMoveEnded_Parms
 // [0x00020002] 
 struct UKFSM_Husk_FireBallAttack_execNotifyFireballFired_Parms
 {
-};
-
-// Function kfgamecontent.KFSM_Husk_FireBallAttack.PlayAnimation
-// [0x00020002] 
-struct UKFSM_Husk_FireBallAttack_execPlayAnimation_Parms
-{
-	// int                                             AnimNum;                                          		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFSM_Husk_FireBallAttack.SpecialMoveStarted
-// [0x00020002] 
-struct UKFSM_Husk_FireBallAttack_execSpecialMoveStarted_Parms
-{
-	// DWORD                                           bForced : 1;                                      		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	// struct FName                                    PrevMove;                                         		// 0x0004 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFSM_Husk_FireBallAttack.GetFireOffset
-// [0x00020002] 
-struct UKFSM_Husk_FireBallAttack_execGetFireOffset_Parms
-{
-	// struct FVector                                  ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFSM_Husk_FireBallAttack.InternalCanDoSpecialMove
-// [0x00080002] 
-struct UKFSM_Husk_FireBallAttack_execInternalCanDoSpecialMove_Parms
-{
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFSM_Husk_FireBallAttack.PackFlagsBase
-// [0x00022002] 
-struct UKFSM_Husk_FireBallAttack_execPackFlagsBase_Parms
-{
-	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-	// unsigned char                                   ReturnValue;                                      		// 0x0008 (0x0001) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.AICommand_HuskFlameThrowerAttack.Popped
@@ -1680,6 +2178,34 @@ struct AKFAIController_ZedSiren_execPreMoveToEnemy_Parms
 {
 };
 
+// Function kfgamecontent.KFActor_DestructibleTracker.OnDestroyed
+// [0x00020002] 
+struct AKFActor_DestructibleTracker_execOnDestroyed_Parms
+{
+	// class AKFDestructibleActor*                     DActor;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFActor_DestructibleTracker.Destroyed
+// [0x00020802] ( FUNC_Event )
+struct AKFActor_DestructibleTracker_eventDestroyed_Parms
+{
+	// class AKFDestructibleActor*                     DActor;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFActor_DestructibleTracker.SetupActorDelegates
+// [0x00020002] 
+struct AKFActor_DestructibleTracker_execSetupActorDelegates_Parms
+{
+	// class AKFDestructibleActor*                     DActor;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFActor_DestructibleTracker.SetInitialState
+// [0x00020902] ( FUNC_Event )
+struct AKFActor_DestructibleTracker_eventSetInitialState_Parms
+{
+};
+
 // Function kfgamecontent.KFAffliction_Fire_Patriarch.SetMaterialParameter
 // [0x00020002] 
 struct UKFAffliction_Fire_Patriarch_execSetMaterialParameter_Parms
@@ -1942,6 +2468,16 @@ struct AKFProj_Husk_Fireball_execPrepareExplosionTemplate_Parms
 {
 };
 
+// Function kfgamecontent.KFProj_Husk_Fireball.ProcessTouch
+// [0x00020102] 
+struct AKFProj_Husk_Fireball_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+	// class AKFPawn_Monster*                          KFPM;                                             		// 0x0020 (0x0008) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFAIController_HuskFriendlyTest.CanDoFlamethrower
 // [0x00020002] 
 struct AKFAIController_HuskFriendlyTest_execCanDoFlamethrower_Parms
@@ -1969,6 +2505,675 @@ struct AKFAIController_HuskFriendlyTest_eventScriptGetTeamNum_Parms
 // [0x00020000] 
 struct AKFAIController_HuskFriendlyTest_execInitPlayerReplicationInfo_Parms
 {
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.ApplyHeadChunkGore
+// [0x00020102] 
+struct AKFPawn_ZedBloatKing_execApplyHeadChunkGore_Parms
+{
+	// class UClass*                                   dmgType;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitDirection;                                     		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.PlayHeadAsplode
+// [0x00020102] 
+struct AKFPawn_ZedBloatKing_execPlayHeadAsplode_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.PlayDismemberment
+// [0x00024102] 
+struct AKFPawn_ZedBloatKing_execPlayDismemberment_Parms
+{
+	// int                                             InHitZoneIndex;                                   		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class UClass*                                   InDmgType;                                        		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitDirection;                                     		// 0x000C (0x000C) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.CauseHeadTrauma
+// [0x00024002] 
+struct AKFPawn_ZedBloatKing_execCauseHeadTrauma_Parms
+{
+	// float                                           BleedOutTime;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.PlayPoopSpawnFX
+// [0x00820102] 
+struct AKFPawn_ZedBloatKing_execPlayPoopSpawnFX_Parms
+{
+	// struct FVector                                  SocketLocation;                                   		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRotation;                                   		// 0x000C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.SpawnPoopMonster
+// [0x00820002] 
+struct AKFPawn_ZedBloatKing_execSpawnPoopMonster_Parms
+{
+	// class AKFPawn_Monster*                          NewZed;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  X;                                                		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  Y;                                                		// 0x0014 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  Z;                                                		// 0x0020 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.AllowNextPoopMonster
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execAllowNextPoopMonster_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.RemoveGorgeVictim
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execRemoveGorgeVictim_Parms
+{
+	// class AKFPawn*                                  OldPawn;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.AddGorgeVictim
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execAddGorgeVictim_Parms
+{
+	// class AKFPawn*                                  NewPawn;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bHuman : 1;                                       		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// int                                             I;                                                		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.PlayFartSpawnFX
+// [0x00820102] 
+struct AKFPawn_ZedBloatKing_execPlayFartSpawnFX_Parms
+{
+	// struct FVector                                  SocketLocation;                                   		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRotation;                                   		// 0x000C (0x000C) [0x0000000000000000]              
+	// class AKFExplosion_BloatKingFart*               ExploActor;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.TimerFartAttack
+// [0x00820102] 
+struct AKFPawn_ZedBloatKing_execTimerFartAttack_Parms
+{
+	// struct FVector                                  FartLocation;                                     		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 FartRotation;                                     		// 0x000C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.ClearFartTimer
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execClearFartTimer_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.SetFartAttackTimer
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execSetFartAttackTimer_Parms
+{
+	// float                                           HealthPct;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           TimerValue;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.ANIMNOTIFY_PukeMineAttack
+// [0x00820102] 
+struct AKFPawn_ZedBloatKing_execANIMNOTIFY_PukeMineAttack_Parms
+{
+	// struct FVector                                  SpawnLocation;                                    		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SpawnRotation;                                    		// 0x000C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.PlayFootStepSound
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedBloatKing_eventPlayFootStepSound_Parms
+{
+	// int                                             FootDown;                                         		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.AdjustMovementSpeed
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execAdjustMovementSpeed_Parms
+{
+	// float                                           SpeedAdjust;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.SetEnraged
+// [0x00020102] 
+struct AKFPawn_ZedBloatKing_execSetEnraged_Parms
+{
+	// DWORD                                           bNewEnraged : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           bSuccess : 1;                                     		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.IsEnraged
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedBloatKing_eventIsEnraged_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.ShouldPlaySpecialMeleeAnims
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execShouldPlaySpecialMeleeAnims_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.CanDoSpecialMove
+// [0x00024902] ( FUNC_Event )
+struct AKFPawn_ZedBloatKing_eventCanDoSpecialMove_Parms
+{
+	// unsigned char                                   AMove;                                            		// 0x0000 (0x0001) [0x0000000000000000]              
+	// DWORD                                           bForceCheck : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.ZedExplodeArmor
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execZedExplodeArmor_Parms
+{
+	// int                                             ArmorZoneIdx;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+	// struct FName                                    ArmorZoneName;                                    		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.GetHitZoneSkinTypeEffects
+// [0x00020102] 
+struct AKFPawn_ZedBloatKing_execGetHitZoneSkinTypeEffects_Parms
+{
+	// int                                             HitZoneIdx;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class UKFSkinTypeEffects*                       ReturnValue;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.PlayHit
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execPlayHit_Parms
+{
+	// float                                           Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  Momentum;                                         		// 0x0020 (0x000C) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x002C (0x0028) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.GetHitZoneIndex
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execGetHitZoneIndex_Parms
+{
+	// struct FName                                    BoneName;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             ReturnValue;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.TakeDamage
+// [0x00024802] ( FUNC_Event )
+struct AKFPawn_ZedBloatKing_eventTakeDamage_Parms
+{
+	// int                                             Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
+	// struct FVector                                  Momentum;                                         		// 0x0018 (0x000C) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0024 (0x0008) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x002C (0x0028) [0x0000000000000000]              
+	// class AActor*                                   DamageCauser;                                     		// 0x0054 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.CanObliterateDoors
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execCanObliterateDoors_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.PlayBossMusic
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execPlayBossMusic_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.PossessedBy
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execPossessedBy_Parms
+{
+	// class AController*                              C;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bVehicleTransition : 1;                           		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.GetNumMinionsToSpawn
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execGetNumMinionsToSpawn_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.GetWaveInfo
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execGetWaveInfo_Parms
+{
+	// int                                             BattlePhase;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             Difficulty;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
+	// class UKFAIWaveInfo*                            ReturnValue;                                      		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.OnZedDied
+// [0x00020002] 
+struct AKFPawn_ZedBloatKing_execOnZedDied_Parms
+{
+	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.GetBossCameraOffset
+// [0x00020102] 
+struct AKFPawn_ZedBloatKing_execGetBossCameraOffset_Parms
+{
+	// struct FVector                                  ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.GetBossCameraSocket
+// [0x00020102] 
+struct AKFPawn_ZedBloatKing_execGetBossCameraSocket_Parms
+{
+	// struct FName                                    ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.UseAnimatedBossCamera
+// [0x00020102] 
+struct AKFPawn_ZedBloatKing_execUseAnimatedBossCamera_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.SetAnimatedBossCamera
+// [0x00024102] 
+struct AKFPawn_ZedBloatKing_execSetAnimatedBossCamera_Parms
+{
+	// DWORD                                           bEnable : 1;                                      		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// struct FVector                                  CameraOffset;                                     		// 0x0004 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.GetHealthPercent
+// [0x00020102] 
+struct AKFPawn_ZedBloatKing_execGetHealthPercent_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.IsABoss
+// [0x00022902] ( FUNC_Event )
+struct AKFPawn_ZedBloatKing_eventIsABoss_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.GetRandomBossCaption
+// [0x00020102] 
+struct AKFPawn_ZedBloatKing_execGetRandomBossCaption_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.GetMonsterPawn
+// [0x00020102] 
+struct AKFPawn_ZedBloatKing_execGetMonsterPawn_Parms
+{
+	// class AKFPawn_Monster*                          ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKing.ReplicatedEvent
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedBloatKing_eventReplicatedEvent_Parms
+{
+	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.GetTraderAdviceID
+// [0x00022002] 
+struct AKFPawn_ZedBloat_execGetTraderAdviceID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.SpawnPukeMinesOnDeath
+// [0x00020002] 
+struct AKFPawn_ZedBloat_execSpawnPukeMinesOnDeath_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.SpawnPukeMine
+// [0x00020002] 
+struct AKFPawn_ZedBloat_execSpawnPukeMine_Parms
+{
+	// struct FVector                                  SpawnLocation;                                    		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SpawnRotation;                                    		// 0x000C (0x000C) [0x0000000000000000]              
+	// class AKFProjectile*                            PukeMine;                                         		// 0x0018 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.DealExplosionDamage
+// [0x00820002] 
+struct AKFPawn_ZedBloat_execDealExplosionDamage_Parms
+{
+	// class APawn*                                    P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   HitActor;                                         		// 0x0020 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.HitExplosiveBone
+// [0x00020002] 
+struct AKFPawn_ZedBloat_execHitExplosiveBone_Parms
+{
+	// struct FName                                    HitBoneName;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// unsigned char                                   JointIndex;                                       		// 0x000C (0x0001) [0x0000000000000000]              
+	// class UKFCharacterInfo_Monster*                 MonsterInfo;                                      		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.TakeHitZoneDamage
+// [0x00020002] 
+struct AKFPawn_ZedBloat_execTakeHitZoneDamage_Parms
+{
+	// float                                           Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0004 (0x0008) [0x0000000000000000]              
+	// int                                             HitZoneIdx;                                       		// 0x000C (0x0004) [0x0000000000000000]              
+	// struct FVector                                  InstigatorLocation;                               		// 0x0010 (0x000C) [0x0000000000000000]              
+	// int                                             HitZoneIndex;                                     		// 0x001C (0x0004) [0x0000000000000000]              
+	// struct FName                                    HitBoneName;                                      		// 0x0020 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.Died
+// [0x00020002] 
+struct AKFPawn_ZedBloat_execDied_Parms
+{
+	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.HasInjuredHitZones
+// [0x00020102] 
+struct AKFPawn_ZedBloat_execHasInjuredHitZones_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.CanInjureHitZone
+// [0x00020002] 
+struct AKFPawn_ZedBloat_execCanInjureHitZone_Parms
+{
+	// class UClass*                                   DamageType;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             HitZoneIdx;                                       		// 0x0008 (0x0004) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.CanPukeOnTarget
+// [0x00820002] 
+struct AKFPawn_ZedBloat_execCanPukeOnTarget_Parms
+{
+	// class APawn*                                    PukeTarget;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  PukeLocation;                                     		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  PukeDirection;                                    		// 0x0014 (0x000C) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	// struct FVector                                  VectToEnemy;                                      		// 0x0024 (0x000C) [0x0000000000000000]              
+	// struct FBox                                     ActorBox;                                         		// 0x0030 (0x001C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.DealPukeDamage
+// [0x00820002] 
+struct AKFPawn_ZedBloat_execDealPukeDamage_Parms
+{
+	// class APawn*                                    Victim;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  Origin;                                           		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  VectToEnemy;                                      		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.Puke
+// [0x00820002] 
+struct AKFPawn_ZedBloat_execPuke_Parms
+{
+	// class APawn*                                    P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  PukeLocation;                                     		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  PukeDirection;                                    		// 0x0014 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 PukeRotation;                                     		// 0x0020 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x002C (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0038 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  EndTrace;                                         		// 0x0044 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  Momentum;                                         		// 0x0050 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   HitActor;                                         		// 0x005C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.ANIMNOTIFY_PukeAttack
+// [0x00020002] 
+struct AKFPawn_ZedBloat_execANIMNOTIFY_PukeAttack_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedBloat.PostBeginPlay
+// [0x00020102] 
+struct AKFPawn_ZedBloat_execPostBeginPlay_Parms
+{
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.StopPullingPawn
+// [0x00024002] 
+struct UKFSM_BloatKing_Gorge_execStopPullingPawn_Parms
+{
+	// class AKFPawn*                                  OldVictim;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bReachedEnd : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPawn_Monster*                          MonsterVictim;                                    		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.StartPullingPawn
+// [0x00020002] 
+struct UKFSM_BloatKing_Gorge_execStartPullingPawn_Parms
+{
+	// class AKFPawn*                                  NewVictim;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.RemoveVictim
+// [0x00024002] 
+struct UKFSM_BloatKing_Gorge_execRemoveVictim_Parms
+{
+	// class AKFPawn*                                  OldVictim;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bReachedEnd : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.AddNewVictim
+// [0x00020002] 
+struct UKFSM_BloatKing_Gorge_execAddNewVictim_Parms
+{
+	// class AKFPawn*                                  NewVictim;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.UpdateVictims
+// [0x00820002] 
+struct UKFSM_BloatKing_Gorge_execUpdateVictims_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AKFPawn*                                  CurrentPawn;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  MoveVector;                                       		// 0x000C (0x000C) [0x0000000000000000]              
+	// struct FVector                                  SocketLocation;                                   		// 0x0018 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRotation;                                   		// 0x0024 (0x000C) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0030 (0x0004) [0x0000000000000000]              
+	// DWORD                                           bIsHuman : 1;                                     		// 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.IsValidPullClass
+// [0x00022002] 
+struct UKFSM_BloatKing_Gorge_execIsValidPullClass_Parms
+{
+	// class AKFPawn*                                  PullPawn;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPawn_Monster*                          MonsterPawn;                                      		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.FindNewVictims
+// [0x00820002] 
+struct UKFSM_BloatKing_Gorge_execFindNewVictims_Parms
+{
+	// class AKFPawn*                                  PullPawn;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  ViewDirection;                                    		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  ToTarget;                                         		// 0x0014 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  Extent;                                           		// 0x0020 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x002C (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0038 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   HitActor;                                         		// 0x0044 (0x0008) [0x0000000000000000]              
+	// float                                           DotAngle;                                         		// 0x004C (0x0004) [0x0000000000000000]              
+	// float                                           ToTargetRange;                                    		// 0x0050 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.Tick
+// [0x00020002] 
+struct UKFSM_BloatKing_Gorge_execTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AKFPawn*                                  TestPawn;                                         		// 0x0004 (0x0008) [0x0000000000000000]              
+	// class AKFPawn_Monster*                          MonsterToKill;                                    		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.TimeOut
+// [0x00020002] 
+struct UKFSM_BloatKing_Gorge_execTimeOut_Parms
+{
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.PlayAnimation
+// [0x00020002] 
+struct UKFSM_BloatKing_Gorge_execPlayAnimation_Parms
+{
+	// float                                           Duration;                                         		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.SpecialMoveEnded
+// [0x00020002] 
+struct UKFSM_BloatKing_Gorge_execSpecialMoveEnded_Parms
+{
+	// struct FName                                    PrevMove;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FName                                    NextMove;                                         		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class AKFPawn*                                  PullPawn;                                         		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.StartGorgePull
+// [0x00020002] 
+struct UKFSM_BloatKing_Gorge_execStartGorgePull_Parms
+{
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.SpecialMoveStarted
+// [0x00020002] 
+struct UKFSM_BloatKing_Gorge_execSpecialMoveStarted_Parms
+{
+	// DWORD                                           bForced : 1;                                      		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// struct FName                                    PrevMove;                                         		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKing_Gorge.GetGorgeCooldown
+// [0x00022002] 
+struct UKFSM_BloatKing_Gorge_execGetGorgeCooldown_Parms
+{
+	// class AKFPawn*                                  inPawn;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             Difficulty;                                       		// 0x0008 (0x0004) [0x0000000000000000]              
+	// float                                           ReturnValue;                                      		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKingSubspawn.ApplyHeadChunkGore
+// [0x00020102] 
+struct AKFPawn_ZedBloatKingSubspawn_execApplyHeadChunkGore_Parms
+{
+	// class UClass*                                   dmgType;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitDirection;                                     		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKingSubspawn.PlayHeadAsplode
+// [0x00020102] 
+struct AKFPawn_ZedBloatKingSubspawn_execPlayHeadAsplode_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKingSubspawn.CauseHeadTrauma
+// [0x00024002] 
+struct AKFPawn_ZedBloatKingSubspawn_execCauseHeadTrauma_Parms
+{
+	// float                                           BleedOutTime;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKingSubspawn.Explode
+// [0x00020102] 
+struct AKFPawn_ZedBloatKingSubspawn_execExplode_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKingSubspawn.PlayDying
+// [0x00020102] 
+struct AKFPawn_ZedBloatKingSubspawn_execPlayDying_Parms
+{
+	// class UClass*                                   DamageType;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLoc;                                           		// 0x0008 (0x000C) [0x0000000000000000]              
+	// class AKFExplosionActor*                        ExploActor;                                       		// 0x0014 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKingSubspawn.DelayExplode
+// [0x00020002] 
+struct AKFPawn_ZedBloatKingSubspawn_execDelayExplode_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKingSubspawn.Tick
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedBloatKingSubspawn_eventTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKingSubspawn.Died
+// [0x00020002] 
+struct AKFPawn_ZedBloatKingSubspawn_execDied_Parms
+{
+	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedBloatKingSubspawn.CanDoSpecialMove
+// [0x00024902] ( FUNC_Event )
+struct AKFPawn_ZedBloatKingSubspawn_eventCanDoSpecialMove_Parms
+{
+	// unsigned char                                   AMove;                                            		// 0x0000 (0x0001) [0x0000000000000000]              
+	// DWORD                                           bForceCheck : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedClot_AlphaKing.StartArmorLoss
+// [0x00020002] 
+struct AKFAIController_ZedClot_AlphaKing_execStartArmorLoss_Parms
+{
+};
+
+// Function kfgamecontent.KFAIController_ZedClot_AlphaKing.ShouldSprint
+// [0x00020002] 
+struct AKFAIController_ZedClot_AlphaKing_execShouldSprint_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedClot_AlphaKing.SetCanSprintWhenDamaged
+// [0x00020002] 
+struct AKFAIController_ZedClot_AlphaKing_execSetCanSprintWhenDamaged_Parms
+{
+	// DWORD                                           bNewSprintDamagedStatus : 1;                      		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedClot_AlphaKing.SetSprintingDisabled
+// [0x00020002] 
+struct AKFAIController_ZedClot_AlphaKing_execSetSprintingDisabled_Parms
+{
+	// DWORD                                           bNewSprintStatus : 1;                             		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAIController_ZedClot_AlphaKing.SetCanSprint
+// [0x00020002] 
+struct AKFAIController_ZedClot_AlphaKing_execSetCanSprint_Parms
+{
+	// DWORD                                           bNewSprintStatus : 1;                             		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFAIController_ZedClot_AlphaKing.Timer_CheckForRally
@@ -2029,12 +3234,151 @@ struct UKFSM_AlphaRally_execPackRallyFlags_Parms
 	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFDifficulty_ClotAlpha.GetSpecialAlphaChance
-// [0x00022002] 
-struct UKFDifficulty_ClotAlpha_execGetSpecialAlphaChance_Parms
+// Function kfgamecontent.KFPawn_ZedDAR.ShouldAllowHeadBoneToBreak
+// [0x00020102] 
+struct AKFPawn_ZedDAR_execShouldAllowHeadBoneToBreak_Parms
 {
-	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-	// float                                           ReturnValue;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+	// struct FName                                    BoneName;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.OnExploded
+// [0x00020100] 
+struct AKFPawn_ZedDAR_execOnExploded_Parms
+{
+	// class AController*                              SuicideController;                                		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.WeeklyShouldExplodeOnDeath
+// [0x00020002] 
+struct AKFPawn_ZedDAR_execWeeklyShouldExplodeOnDeath_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.TriggerExplosion
+// [0x00024102] 
+struct AKFPawn_ZedDAR_execTriggerExplosion_Parms
+{
+	// DWORD                                           bIgnoreHumans : 1;                                		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFExplosionActorReplicated*              ExploActor;                                       		// 0x0004 (0x0008) [0x0000000000000000]              
+	// class AController*                              DamageInstigator;                                 		// 0x000C (0x0008) [0x0000000000000000]              
+	// class AController*                              OldController;                                    		// 0x0014 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bExplodeOnDeath : 1;                              		// 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.HitZoneInjured
+// [0x00024102] 
+struct AKFPawn_ZedDAR_execHitZoneInjured_Parms
+{
+	// int                                             HitZoneIdx;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.CanInjureHitZone
+// [0x00020002] 
+struct AKFPawn_ZedDAR_execCanInjureHitZone_Parms
+{
+	// class UClass*                                   DamageType;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             HitZoneIdx;                                       		// 0x0008 (0x0004) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.PlayDeadHitEffects
+// [0x00024102] 
+struct AKFPawn_ZedDAR_execPlayDeadHitEffects_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitDirection;                                     		// 0x000C (0x000C) [0x0000000000000000]              
+	// int                                             HitZoneIndex;                                     		// 0x0018 (0x0004) [0x0000000000000000]              
+	// struct FName                                    HitZoneName;                                      		// 0x001C (0x0008) [0x0000000000000000]              
+	// struct FName                                    HitBoneName;                                      		// 0x0024 (0x0008) [0x0000000000000000]              
+	// class UClass*                                   dmgType;                                          		// 0x002C (0x0008) [0x0000000000000000]              
+	// DWORD                                           bUseHitImpulse : 1;                               		// 0x0034 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class UClass*                                   PinProjectileClass;                               		// 0x0038 (0x0008) [0x0000000000000000]              
+	// class AKFPawn*                                  DeadPawn;                                         		// 0x0040 (0x0008) [0x0000000000000000]              
+	// class AKFGoreManager*                           GoreManager;                                      		// 0x0048 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bIsDismemberingHit : 1;                           		// 0x0050 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           bWasObliterated : 1;                              		// 0x0054 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.NotifySpecialMoveEnded
+// [0x00020102] 
+struct AKFPawn_ZedDAR_execNotifySpecialMoveEnded_Parms
+{
+	// class UKFSpecialMove*                           FinishedMove;                                     		// 0x0000 (0x0008) [0x0000000000000000]              
+	// unsigned char                                   SMHandle;                                         		// 0x0008 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.SetSprinting
+// [0x00020002] 
+struct AKFPawn_ZedDAR_execSetSprinting_Parms
+{
+	// DWORD                                           bNewSprintStatus : 1;                             		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.ZedExplodeArmor
+// [0x00020002] 
+struct AKFPawn_ZedDAR_execZedExplodeArmor_Parms
+{
+	// int                                             ArmorZoneIdx;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+	// struct FName                                    ArmorZoneName;                                    		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.CauseHeadTrauma
+// [0x00024000] 
+struct AKFPawn_ZedDAR_execCauseHeadTrauma_Parms
+{
+	// float                                           BleedOutTime;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.GetHitZoneSkinTypeEffects
+// [0x00020102] 
+struct AKFPawn_ZedDAR_execGetHitZoneSkinTypeEffects_Parms
+{
+	// int                                             HitZoneIdx;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class UKFSkinTypeEffects*                       ReturnValue;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.GetHitZoneIndex
+// [0x00020002] 
+struct AKFPawn_ZedDAR_execGetHitZoneIndex_Parms
+{
+	// struct FName                                    BoneName;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             ReturnValue;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.PlayHit
+// [0x00020002] 
+struct AKFPawn_ZedDAR_execPlayHit_Parms
+{
+	// float                                           Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  Momentum;                                         		// 0x0020 (0x000C) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x002C (0x0028) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.OnStackingAfflictionChanged
+// [0x00020002] 
+struct AKFPawn_ZedDAR_execOnStackingAfflictionChanged_Parms
+{
+	// unsigned char                                   Id;                                               		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.StartRangedAttack
+// [0x00020102] 
+struct AKFPawn_ZedDAR_execStartRangedAttack_Parms
+{
+	// class UKFSM_RangedAttack*                       RangedSM;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR.PossessedBy
+// [0x00020002] 
+struct AKFPawn_ZedDAR_execPossessedBy_Parms
+{
+	// class AController*                              C;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bVehicleTransition : 1;                           		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFPawn_ZedFleshpoundKing.UpdateShieldUI
@@ -2096,6 +3440,16 @@ struct AKFPawn_ZedFleshpoundKing_execSetShieldScale_Parms
 	// float                                           InScale;                                          		// 0x0000 (0x0004) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFPawn_ZedFleshpoundKing.HandleAfflictionsOnHit
+// [0x00020002] 
+struct AKFPawn_ZedFleshpoundKing_execHandleAfflictionsOnHit_Parms
+{
+	// class AController*                              DamageInstigator;                                 		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitDir;                                           		// 0x0008 (0x000C) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0014 (0x0008) [0x0000000000000000]              
+	// class AActor*                                   DamageCauser;                                     		// 0x001C (0x0008) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFPawn_ZedFleshpoundKing.AdjustDamage
 // [0x00420002] 
 struct AKFPawn_ZedFleshpoundKing_execAdjustDamage_Parms
@@ -2116,6 +3470,13 @@ struct AKFPawn_ZedFleshpoundKing_execTriggerRagePoundExplosion_Parms
 	// struct FVector                                  ExploLocation;                                    		// 0x0000 (0x000C) [0x0000000000000000]              
 	// DWORD                                           bIsFinalPound : 1;                                		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
 	// class AKFExplosionActor*                        ExploActor;                                       		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedFleshpoundKing.StopBossWave
+// [0x00020002] 
+struct AKFPawn_ZedFleshpoundKing_execStopBossWave_Parms
+{
+	// class AKFGameInfo*                              KFGI;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFPawn_ZedFleshpoundKing.PauseBossWave
@@ -2403,6 +3764,8 @@ struct AKFPawn_ZedFleshpound_execUpdateGameplayMICParams_Parms
 struct AKFPawn_ZedFleshpound_execSetEnraged_Parms
 {
 	// DWORD                                           bNewEnraged : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           bSuccess : 1;                                     		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFPawn_ZedFleshpound.IsEnraged
@@ -2485,14 +3848,6 @@ struct AKFPawn_ZedFleshpound_eventReplicatedEvent_Parms
 // [0x00020902] ( FUNC_Event )
 struct AKFPawn_ZedFleshpound_eventPreBeginPlay_Parms
 {
-};
-
-// Function kfgamecontent.KFPawn_ZedFleshpound.GetAIPawnClassToSpawn
-// [0x00022802] ( FUNC_Event )
-struct AKFPawn_ZedFleshpound_eventGetAIPawnClassToSpawn_Parms
-{
-	// class UClass*                                   ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AWorldInfo*                               WI;                                               		// 0x0008 (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFSM_FleshpoundKing_ChestBeam.SpecialMoveEnded
@@ -2699,6 +4054,1036 @@ struct AKFAIController_ZedScrake_execShouldSprint_Parms
 struct AKFAIController_ZedScrake_execAmIAllowedToSuicideWhenStuck_Parms
 {
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAISpawnManager_Endless.OnBossDied
+// [0x00020002] 
+struct UKFAISpawnManager_Endless_execOnBossDied_Parms
+{
+};
+
+// Function kfgamecontent.KFAISpawnManager_Endless.OnDifficultyUpdated
+// [0x00020002] 
+struct UKFAISpawnManager_Endless_execOnDifficultyUpdated_Parms
+{
+};
+
+// Function kfgamecontent.KFAISpawnManager_Endless.GetWaveSettings
+// [0x00420002] 
+struct UKFAISpawnManager_Endless_execGetWaveSettings_Parms
+{
+	// struct FDifficultyWaveInfo                      WaveInfo;                                         		// 0x0000 (0x0010) [0x0000000000000000]              
+	// int                                             AdjustedGameDifficulty;                           		// 0x0010 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFAISpawnManager_Endless.GetAvailableSquads
+// [0x00024002] 
+struct UKFAISpawnManager_Endless_execGetAvailableSquads_Parms
+{
+	// unsigned char                                   MyWaveIndex;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// DWORD                                           bNeedsSpecialSquad : 1;                           		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFAISpawnManager_Endless.SetupNextWave
+// [0x00024002] 
+struct UKFAISpawnManager_Endless_execSetupNextWave_Parms
+{
+	// unsigned char                                   NextWaveIndex;                                    		// 0x0000 (0x0001) [0x0000000000000000]              
+	// int                                             TimeToNextWaveBuffer;                             		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.SetMonsterDefaults
+// [0x00020002] 
+struct AKFGameInfo_Endless_execSetMonsterDefaults_Parms
+{
+	// class AKFPawn_Monster*                          P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFAIController*                          KFAIC;                                            		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.HasCustomTraderVoiceGroup
+// [0x00022002] 
+struct AKFGameInfo_Endless_execHasCustomTraderVoiceGroup_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.GetTotalWaveCountScale
+// [0x00020002] 
+struct AKFGameInfo_Endless_execGetTotalWaveCountScale_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           WaveScale;                                        		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.CalculateMinimumRespawnDosh
+// [0x00020002] 
+struct AKFGameInfo_Endless_execCalculateMinimumRespawnDosh_Parms
+{
+	// float                                           UsedMaxRespawnDosh;                               		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.SetWave
+// [0x00020202] ( FUNC_Exec )
+struct AKFGameInfo_Endless_execSetWave_Parms
+{
+	// unsigned char                                   NewWaveNum;                                       		// 0x0000 (0x0001) [0x0000000000000000]              
+	// int                                             CurrRound;                                        		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.ShouldOverrideDoshOnKill
+// [0x00C20002] 
+struct AKFGameInfo_Endless_execShouldOverrideDoshOnKill_Parms
+{
+	// class UClass*                                   KilledPawn;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           DoshGiven;                                        		// 0x0008 (0x0004) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
+	// struct FStatAdjustments                         ToAdjust;                                         		// 0x0010 (0x0074) [0x0000000000000000]              
+	// TArray< struct FStatAdjustments >               ZedsToAdjust;                                     		// 0x0084 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.DoDeathExplosion
+// [0x00020002] 
+struct AKFGameInfo_Endless_execDoDeathExplosion_Parms
+{
+	// class APawn*                                    DeadPawn;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UKFGameExplosion*                         ExplosionTemplate;                                		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class UClass*                                   ExplosionIgnoreClass;                             		// 0x0010 (0x0008) [0x0000000000000000]              
+	// class AKFExplosionActorReplicated*              ExploActor;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.Tick
+// [0x00020002] 
+struct AKFGameInfo_Endless_execTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.EndOutbreakRound
+// [0x00020002] 
+struct AKFGameInfo_Endless_execEndOutbreakRound_Parms
+{
+	// class AKFPawn*                                  KFP;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.StartOutbreakRound
+// [0x00020002] 
+struct AKFGameInfo_Endless_execStartOutbreakRound_Parms
+{
+	// int                                             OutbreakIdx;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.ReduceDamage
+// [0x00C20002] 
+struct AKFGameInfo_Endless_execReduceDamage_Parms
+{
+	// int                                             Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class APawn*                                    injured;                                          		// 0x0004 (0x0008) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x000C (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0014 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  Momentum;                                         		// 0x0020 (0x000C) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x002C (0x0008) [0x0000000000000000]              
+	// class AActor*                                   DamageCauser;                                     		// 0x0034 (0x0008) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x003C (0x0028) [0x0000000000000000]              
+	// struct FStatAdjustments                         ToAdjust;                                         		// 0x0064 (0x0074) [0x0000000000000000]              
+	// TArray< struct FStatAdjustments >               ZedsToAdjust;                                     		// 0x00D8 (0x0010) [0x0000000000000000]              
+	// class AKFPawn*                                  InstigatorPawn;                                   		// 0x00E8 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.RestartPlayer
+// [0x00020002] 
+struct AKFGameInfo_Endless_execRestartPlayer_Parms
+{
+	// class AController*                              NewPlayer;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFPawn_Human*                            KFPH;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.GetGameInfoSpawnRateMod
+// [0x00020002] 
+struct AKFGameInfo_Endless_execGetGameInfoSpawnRateMod_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           AdjustedSpawnRateMod;                             		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.StartHoePlus
+// [0x00020002] 
+struct AKFGameInfo_Endless_execStartHoePlus_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.GetFullyUpgradedAIType
+// [0x00020002] 
+struct AKFGameInfo_Endless_execGetFullyUpgradedAIType_Parms
+{
+	// unsigned char                                   AIType;                                           		// 0x0000 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   ReturnValue;                                      		// 0x0001 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.GetUpgradedAIType
+// [0x00020002] 
+struct AKFGameInfo_Endless_execGetUpgradedAIType_Parms
+{
+	// unsigned char                                   AIType;                                           		// 0x0000 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   ReturnValue;                                      		// 0x0001 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.ShouldFullyUpgradeAIType
+// [0x00020002] 
+struct AKFGameInfo_Endless_execShouldFullyUpgradeAIType_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           DieRoll;                                          		// 0x0004 (0x0004) [0x0000000000000000]              
+	// DWORD                                           bShouldUpgrade : 1;                               		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           UpgradeChance;                                    		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.ShouldUpgradeAIType
+// [0x00020002] 
+struct AKFGameInfo_Endless_execShouldUpgradeAIType_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           DieRoll;                                          		// 0x0004 (0x0004) [0x0000000000000000]              
+	// DWORD                                           bShouldUpgrade : 1;                               		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           UpgradeChance;                                    		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.GetAISpawnType
+// [0x00020002] 
+struct AKFGameInfo_Endless_execGetAISpawnType_Parms
+{
+	// unsigned char                                   AIType;                                           		// 0x0000 (0x0001) [0x0000000000000000]              
+	// class UClass*                                   ReturnValue;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
+	// unsigned char                                   OldAIType;                                        		// 0x000C (0x0001) [0x0000000000000000]              
+	// struct FString                                  OldAITypeStr;                                     		// 0x0010 (0x0010) [0x0000000000000000]              
+	// struct FString                                  NewAITypeStr;                                     		// 0x0020 (0x0010) [0x0000000000000000]              
+	// class UClass*                                   OverrideType;                                     		// 0x0030 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.IncrementDifficulty
+// [0x00020002] 
+struct AKFGameInfo_Endless_execIncrementDifficulty_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.SetBossIndex
+// [0x00820002] 
+struct AKFGameInfo_Endless_execSetBossIndex_Parms
+{
+	// int                                             OldBossIndex;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+	// struct FSpawnReplacement                        Replacement;                                      		// 0x0004 (0x0010) [0x0000000000000000]              
+	// int                                             ReplaceIdx;                                       		// 0x0014 (0x0004) [0x0000000000000000]              
+	// DWORD                                           bShouldCacheBoss : 1;                             		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.BossDied
+// [0x00024002] 
+struct AKFGameInfo_Endless_execBossDied_Parms
+{
+	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bCheckWaveEnded : 1;                              		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPawn_Monster*                          AIP;                                              		// 0x000C (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0014 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.HellOnEarthPlusRoundIncrement
+// [0x00020002] 
+struct AKFGameInfo_Endless_execHellOnEarthPlusRoundIncrement_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.WaveEnded
+// [0x00020002] 
+struct AKFGameInfo_Endless_execWaveEnded_Parms
+{
+	// unsigned char                                   WinCondition;                                     		// 0x0000 (0x0001) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.TrySetNextWaveSpecial
+// [0x00020002] 
+struct AKFGameInfo_Endless_execTrySetNextWaveSpecial_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           OutbreakPct;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+	// float                                           SpecialWavePct;                                   		// 0x0008 (0x0004) [0x0000000000000000]              
+	// int                                             OutbreakEventIdx;                                 		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.PlayWaveStartDialog
+// [0x00020000] 
+struct AKFGameInfo_Endless_execPlayWaveStartDialog_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.GetWaveStartMessage
+// [0x00020002] 
+struct AKFGameInfo_Endless_execGetWaveStartMessage_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// int                                             tempInt;                                          		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.WaveStarted
+// [0x00020002] 
+struct AKFGameInfo_Endless_execWaveStarted_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.GetShouldShowLength
+// [0x00022002] 
+struct AKFGameInfo_Endless_execGetShouldShowLength_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.ResetDifficulty
+// [0x00020002] 
+struct AKFGameInfo_Endless_execResetDifficulty_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.InitSpawnManager
+// [0x00020002] 
+struct AKFGameInfo_Endless_execInitSpawnManager_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.PostBeginPlay
+// [0x00020802] ( FUNC_Event )
+struct AKFGameInfo_Endless_eventPostBeginPlay_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Endless.InitGame
+// [0x00420802] ( FUNC_Event )
+struct AKFGameInfo_Endless_eventInitGame_Parms
+{
+	// struct FString                                  Options;                                          		// 0x0000 (0x0010) [0x0000000000000000]              
+	// struct FString                                  ErrorMessage;                                     		// 0x0010 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.DebugKillZeds
+// [0x00020002] 
+struct AKFGameInfo_Survival_execDebugKillZeds_Parms
+{
+	// class APlayerController*                        PC;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.TryRestartGame
+// [0x00020002] 
+struct AKFGameInfo_Survival_execTryRestartGame_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.UpdateCurrentMapVoteTime
+// [0x00024002] 
+struct AKFGameInfo_Survival_execUpdateCurrentMapVoteTime_Parms
+{
+	// unsigned char                                   NewTime;                                          		// 0x0000 (0x0001) [0x0000000000000000]              
+	// DWORD                                           bStartTime : 1;                                   		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.ProcessAwards
+// [0x00020002] 
+struct AKFGameInfo_Survival_execProcessAwards_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.GetEndOfMatchTime
+// [0x00020002] 
+struct AKFGameInfo_Survival_execGetEndOfMatchTime_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.ShowPostGameMenu
+// [0x00020002] 
+struct AKFGameInfo_Survival_execShowPostGameMenu_Parms
+{
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.SetZedsToVictoryState
+// [0x00020002] 
+struct AKFGameInfo_Survival_execSetZedsToVictoryState_Parms
+{
+	// class AKFAIController*                          KFAIC;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.SetWonGameCamera
+// [0x00020002] 
+struct AKFGameInfo_Survival_execSetWonGameCamera_Parms
+{
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.GetNextMap
+// [0x00020002] 
+struct AKFGameInfo_Survival_execGetNextMap_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0010 (0x0008) [0x0000000000000000]              
+	// int                                             NextMapIndex;                                     		// 0x0018 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.EndOfMatch
+// [0x00020002] 
+struct AKFGameInfo_Survival_execEndOfMatch_Parms
+{
+	// DWORD                                           bVictory : 1;                                     		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.RestartGame
+// [0x00020002] 
+struct AKFGameInfo_Survival_execRestartGame_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.NotifyTraderOpened
+// [0x00020002] 
+struct AKFGameInfo_Survival_execNotifyTraderOpened_Parms
+{
+	// TArray< class USequenceObject* >                AllTraderOpenedEvents;                            		// 0x0000 (0x0010) [0x0000000000000000]              
+	// TArray< int >                                   OutputLinksToActivate;                            		// 0x0010 (0x0010) [0x0000000000000000]              
+	// class UKFSeqEvent_TraderOpened*                 TraderOpenedEvt;                                  		// 0x0020 (0x0008) [0x0000000000000000]              
+	// class USequence*                                GameSeq;                                          		// 0x0028 (0x0008) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0030 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.OpenTrader
+// [0x00020002] 
+struct AKFGameInfo_Survival_execOpenTrader_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.DoTraderTimeCleanup
+// [0x00020000] 
+struct AKFGameInfo_Survival_execDoTraderTimeCleanup_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.SkipTrader
+// [0x00020002] 
+struct AKFGameInfo_Survival_execSkipTrader_Parms
+{
+	// int                                             TimeAfterSkipTrader;                              		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.CloseTraderTimer
+// [0x00020000] 
+struct AKFGameInfo_Survival_execCloseTraderTimer_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.LogWaveEndAnalyticsFor
+// [0x00020002] 
+struct AKFGameInfo_Survival_execLogWaveEndAnalyticsFor_Parms
+{
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0008 (0x0004) [0x0000000000000000]              
+	// TArray< struct FWeaponDamage >                  Weapons;                                          		// 0x000C (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.Timer_FinalizeEndOfWaveStats
+// [0x00020002] 
+struct AKFGameInfo_Survival_execTimer_FinalizeEndOfWaveStats_Parms
+{
+	// DWORD                                           bOpeningTrader : 1;                               		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.WaveEnded
+// [0x00020002] 
+struct AKFGameInfo_Survival_execWaveEnded_Parms
+{
+	// unsigned char                                   WinCondition;                                     		// 0x0000 (0x0001) [0x0000000000000000]              
+	// TArray< class USequenceObject* >                AllWaveEndEvents;                                 		// 0x0004 (0x0010) [0x0000000000000000]              
+	// TArray< int >                                   OutputLinksToActivate;                            		// 0x0014 (0x0010) [0x0000000000000000]              
+	// class UKFSeqEvent_WaveEnd*                      WaveEndEvt;                                       		// 0x0024 (0x0008) [0x0000000000000000]              
+	// class USequence*                                GameSeq;                                          		// 0x002C (0x0008) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0034 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.ObjectiveFailed
+// [0x00020002] 
+struct AKFGameInfo_Survival_execObjectiveFailed_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.CheckWaveEnd
+// [0x00024002] 
+struct AKFGameInfo_Survival_execCheckWaveEnd_Parms
+{
+	// DWORD                                           bForceWaveEnd : 1;                                		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.WaveStarted
+// [0x00020002] 
+struct AKFGameInfo_Survival_execWaveStarted_Parms
+{
+	// TArray< class USequenceObject* >                AllWaveStartEvents;                               		// 0x0000 (0x0010) [0x0000000000000000]              
+	// TArray< class USequenceObject* >                AllWaveProgressEvents;                            		// 0x0010 (0x0010) [0x0000000000000000]              
+	// TArray< int >                                   OutputLinksToActivate;                            		// 0x0020 (0x0010) [0x0000000000000000]              
+	// class UKFSeqEvent_WaveStart*                    WaveStartEvt;                                     		// 0x0030 (0x0008) [0x0000000000000000]              
+	// class UKFSeqEvent_WaveProgress*                 WaveProgressEvt;                                  		// 0x0038 (0x0008) [0x0000000000000000]              
+	// class USequence*                                GameSeq;                                          		// 0x0040 (0x0008) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0048 (0x0004) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x004C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.DetermineNextTraderIndex
+// [0x00020002] 
+struct AKFGameInfo_Survival_execDetermineNextTraderIndex_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   NextTraderIndex;                                  		// 0x0001 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.SetupNextTrader
+// [0x00020002] 
+struct AKFGameInfo_Survival_execSetupNextTrader_Parms
+{
+	// unsigned char                                   NextTraderIndex;                                  		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.ResetPickups
+// [0x00020002] 
+struct AKFGameInfo_Survival_execResetPickups_Parms
+{
+	// TArray< class AKFPickupFactory* >               PickupList;                                       		// 0x0000 (0x0010) [0x0000000000000000]              
+	// int                                             NumPickups;                                       		// 0x0010 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.ResetAllPickups
+// [0x00020002] 
+struct AKFGameInfo_Survival_execResetAllPickups_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.GetWaveStartMessage
+// [0x00020002] 
+struct AKFGameInfo_Survival_execGetWaveStartMessage_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.IsMapObjectiveEnabled
+// [0x00020002] 
+struct AKFGameInfo_Survival_execIsMapObjectiveEnabled_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.StartWave
+// [0x00020002] 
+struct AKFGameInfo_Survival_execStartWave_Parms
+{
+	// int                                             WaveBuffer;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.IsWaveActive
+// [0x00020000] 
+struct AKFGameInfo_Survival_execIsWaveActive_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.WinMatch
+// [0x00020202] ( FUNC_Exec )
+struct AKFGameInfo_Survival_execWinMatch_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.SetWave
+// [0x00020202] ( FUNC_Exec )
+struct AKFGameInfo_Survival_execSetWave_Parms
+{
+	// unsigned char                                   NewWaveNum;                                       		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.EndCurrentWave
+// [0x00020202] ( FUNC_Exec )
+struct AKFGameInfo_Survival_execEndCurrentWave_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.ToggleSpawning
+// [0x00024202] ( FUNC_Exec )
+struct AKFGameInfo_Survival_execToggleSpawning_Parms
+{
+	// struct FString                                  ZedTypeString;                                    		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.FindCollectibles
+// [0x00020000] 
+struct AKFGameInfo_Survival_execFindCollectibles_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.AllowWaveCheats
+// [0x00020002] 
+struct AKFGameInfo_Survival_execAllowWaveCheats_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.CalculateLateJoinerStartingDosh
+// [0x00020002] 
+struct AKFGameInfo_Survival_execCalculateLateJoinerStartingDosh_Parms
+{
+	// int                                             MinimumRespawnDosh;                               		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.GetAdjustedDeathPenalty
+// [0x00024002] 
+struct AKFGameInfo_Survival_execGetAdjustedDeathPenalty_Parms
+{
+	// class AKFPlayerReplicationInfo*                 KilledPlayerPRI;                                  		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bLateJoiner : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// int                                             ReturnValue;                                      		// 0x000C (0x0004) [0x0000000000000000]              
+	// float                                           MinimumRespawnDosh;                               		// 0x0010 (0x0004) [0x0000000000000000]              
+	// float                                           PlayerRespawnDosh;                                		// 0x0014 (0x0004) [0x0000000000000000]              
+	// float                                           UsedMaxRespawnDosh;                               		// 0x0018 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.CalculateMinimumRespawnDosh
+// [0x00020002] 
+struct AKFGameInfo_Survival_execCalculateMinimumRespawnDosh_Parms
+{
+	// float                                           UsedMaxRespawnDosh;                               		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.RewardSurvivingPlayers
+// [0x00020002] 
+struct AKFGameInfo_Survival_execRewardSurvivingPlayers_Parms
+{
+	// int                                             PlayerCut;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             PlayerCount;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class AKFTeamInfo_Human*                        T;                                                		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.UpdateWaveEndDialogInfo
+// [0x00020002] 
+struct AKFGameInfo_Survival_execUpdateWaveEndDialogInfo_Parms
+{
+	// int                                             PlayersAlive;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             PlayersTotal;                                     		// 0x0004 (0x0004) [0x0000000000000000]              
+	// int                                             MostZedsKilled;                                   		// 0x0008 (0x0004) [0x0000000000000000]              
+	// int                                             MostDoshEarned;                                   		// 0x000C (0x0004) [0x0000000000000000]              
+	// int                                             BestTeammateScore;                                		// 0x0010 (0x0004) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0014 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      KilledMostZeds;                                   		// 0x001C (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      EarnedMostDosh;                                   		// 0x0024 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      BestTeammate;                                     		// 0x002C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.IsMultiplayerGame
+// [0x00020002] 
+struct AKFGameInfo_Survival_execIsMultiplayerGame_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.Timer
+// [0x00020802] ( FUNC_Event )
+struct AKFGameInfo_Survival_eventTimer_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.CanSpectate
+// [0x00020002] 
+struct AKFGameInfo_Survival_execCanSpectate_Parms
+{
+	// class APlayerController*                        Viewer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class APlayerReplicationInfo*                   ViewTarget;                                       		// 0x0008 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.OnServerTitleDataRead
+// [0x00020002] 
+struct AKFGameInfo_Survival_execOnServerTitleDataRead_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.UpdateGameSettings
+// [0x00020002] 
+struct AKFGameInfo_Survival_execUpdateGameSettings_Parms
+{
+	// struct FName                                    SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UKFOnlineGameSettings*                    KFGameSettings;                                   		// 0x0008 (0x0008) [0x0000000000000000]              
+	// int                                             NumHumanPlayers;                                  		// 0x0010 (0x0004) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0014 (0x0004) [0x0000000000000000]              
+	// class UKFGameEngine*                            KFEngine;                                         		// 0x0018 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.BossDied
+// [0x00024002] 
+struct AKFGameInfo_Survival_execBossDied_Parms
+{
+	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bCheckWaveEnded : 1;                              		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPawn_Monster*                          AIP;                                              		// 0x000C (0x0008) [0x0000000000000000]              
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0014 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x001C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.ReduceDamage
+// [0x00420002] 
+struct AKFGameInfo_Survival_execReduceDamage_Parms
+{
+	// int                                             Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class APawn*                                    injured;                                          		// 0x0004 (0x0008) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x000C (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0014 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  Momentum;                                         		// 0x0020 (0x000C) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x002C (0x0008) [0x0000000000000000]              
+	// class AActor*                                   DamageCauser;                                     		// 0x0034 (0x0008) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x003C (0x0028) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.Killed
+// [0x00020002] 
+struct AKFGameInfo_Survival_execKilled_Parms
+{
+	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AController*                              KilledPlayer;                                     		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class APawn*                                    KilledPawn;                                       		// 0x0010 (0x0008) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
+	// class USequence*                                GameSeq;                                          		// 0x0020 (0x0008) [0x0000000000000000]              
+	// TArray< class USequenceObject* >                AllWaveProgressEvents;                            		// 0x0028 (0x0010) [0x0000000000000000]              
+	// class UKFSeqEvent_WaveProgress*                 WaveProgressEvt;                                  		// 0x0038 (0x0008) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0040 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.RestartPlayer
+// [0x00020002] 
+struct AKFGameInfo_Survival_execRestartPlayer_Parms
+{
+	// class AController*                              NewPlayer;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerReplicationInfo*                 KFPRI;                                            		// 0x0010 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bWasWaitingForClientPerkData : 1;                 		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.PlayerCanRestart
+// [0x00020002] 
+struct AKFGameInfo_Survival_execPlayerCanRestart_Parms
+{
+	// class APlayerController*                        aPlayer;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.IsPlayerReady
+// [0x00020002] 
+struct AKFGameInfo_Survival_execIsPlayerReady_Parms
+{
+	// class AKFPlayerReplicationInfo*                 PRI;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPlayerController*                      KFPC;                                             		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.GetGameIntensityForMusic
+// [0x00020002] 
+struct AKFGameInfo_Survival_execGetGameIntensityForMusic_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.PlayWaveStartDialog
+// [0x00020002] 
+struct AKFGameInfo_Survival_execPlayWaveStartDialog_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.StartMatch
+// [0x00020002] 
+struct AKFGameInfo_Survival_execStartMatch_Parms
+{
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.InitSpawnManager
+// [0x00020002] 
+struct AKFGameInfo_Survival_execInitSpawnManager_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.PostBeginPlay
+// [0x00020802] ( FUNC_Event )
+struct AKFGameInfo_Survival_eventPostBeginPlay_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.PreBeginPlay
+// [0x00020802] ( FUNC_Event )
+struct AKFGameInfo_Survival_eventPreBeginPlay_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.ShouldPlayActionMusicTrack
+// [0x00022002] 
+struct AKFGameInfo_Survival_execShouldPlayActionMusicTrack_Parms
+{
+	// class AKFGameReplicationInfo*                   GRI;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_Survival.ShouldPlayMusicAtStart
+// [0x00022002] 
+struct AKFGameInfo_Survival_execShouldPlayMusicAtStart_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.ShouldSpawnEnraged
+// [0x00820002] 
+struct UKFGameDifficulty_Endless_execShouldSpawnEnraged_Parms
+{
+	// unsigned char                                   AIType;                                           		// 0x0000 (0x0001) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	// TArray< struct FSpecialWaveInfo >               CurrentSpecialWave;                               		// 0x0008 (0x0010) [0x0000000000000000]              
+	// struct FSpecialWaveInfo                         CurrentWaveInfo;                                  		// 0x0018 (0x0014) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetCurrentDifficultyIndex
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execGetCurrentDifficultyIndex_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetCharSprintWhenDamagedChanceByDifficulty
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execGetCharSprintWhenDamagedChanceByDifficulty_Parms
+{
+	// class AKFPawn_Monster*                          P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           GameDifficulty;                                   		// 0x0008 (0x0004) [0x0000000000000000]              
+	// float                                           ReturnValue;                                      		// 0x000C (0x0004) [0x0000000000000000]              
+	// class AKFGameInfo_Endless*                      KFGI;                                             		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetCharSprintChanceByDifficulty
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execGetCharSprintChanceByDifficulty_Parms
+{
+	// class AKFPawn_Monster*                          P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           GameDifficulty;                                   		// 0x0008 (0x0004) [0x0000000000000000]              
+	// float                                           ReturnValue;                                      		// 0x000C (0x0004) [0x0000000000000000]              
+	// class AKFGameInfo_Endless*                      KFGI;                                             		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetCharHeadHealthModDifficulty
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execGetCharHeadHealthModDifficulty_Parms
+{
+	// class AKFPawn_Monster*                          P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           GameDifficulty;                                   		// 0x0008 (0x0004) [0x0000000000000000]              
+	// float                                           ReturnValue;                                      		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetCharHealthModDifficulty
+// [0x00820002] 
+struct UKFGameDifficulty_Endless_execGetCharHealthModDifficulty_Parms
+{
+	// class AKFPawn_Monster*                          P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           GameDifficulty;                                   		// 0x0008 (0x0004) [0x0000000000000000]              
+	// float                                           ReturnValue;                                      		// 0x000C (0x0004) [0x0000000000000000]              
+	// TArray< struct FZedDifficultyOverride >         ZedsToAdjust;                                     		// 0x0010 (0x0010) [0x0000000000000000]              
+	// struct FZedDifficultyOverride                   ZedDifficulty;                                    		// 0x0020 (0x0014) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetAIHealthModifier
+// [0x00C24002] 
+struct UKFGameDifficulty_Endless_execGetAIHealthModifier_Parms
+{
+	// class AKFPawn_Monster*                          P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           GameDifficulty;                                   		// 0x0008 (0x0004) [0x0000000000000000]              
+	// unsigned char                                   NumLivingPlayers;                                 		// 0x000C (0x0001) [0x0000000000000000]              
+	// float                                           HealthMod;                                        		// 0x0010 (0x0004) [0x0000000000000000]              
+	// float                                           HeadHealthMod;                                    		// 0x0014 (0x0004) [0x0000000000000000]              
+	// DWORD                                           bApplyDifficultyScaling : 1;                      		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	// TArray< struct FStatAdjustments >               ZedsToAdjust;                                     		// 0x001C (0x0010) [0x0000000000000000]              
+	// struct FStatAdjustments                         ZedAdjustment;                                    		// 0x002C (0x0074) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetAIDamageModifier
+// [0x00820002] 
+struct UKFGameDifficulty_Endless_execGetAIDamageModifier_Parms
+{
+	// class AKFPawn_Monster*                          P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           GameDifficulty;                                   		// 0x0008 (0x0004) [0x0000000000000000]              
+	// DWORD                                           bSoloPlay : 1;                                    		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           ReturnValue;                                      		// 0x0010 (0x0004) [0x0000000000000000]              
+	// float                                           PerZedDamageMod;                                  		// 0x0014 (0x0004) [0x0000000000000000]              
+	// float                                           SoloPlayDamageMod;                                		// 0x0018 (0x0004) [0x0000000000000000]              
+	// TArray< struct FZedDifficultyOverride >         ZedsToAdjust;                                     		// 0x001C (0x0010) [0x0000000000000000]              
+	// struct FZedDifficultyOverride                   ZedDifficulty;                                    		// 0x002C (0x0014) [0x0000000000000000]              
+	// DWORD                                           bFoundOverride : 1;                               		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetSpecialWaveSpawnRateMod
+// [0x00820002] 
+struct UKFGameDifficulty_Endless_execGetSpecialWaveSpawnRateMod_Parms
+{
+	// unsigned char                                   AIType;                                           		// 0x0000 (0x0001) [0x0000000000000000]              
+	// float                                           ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+	// TArray< struct FSpecialWaveInfo >               SpecialWaves;                                     		// 0x0008 (0x0010) [0x0000000000000000]              
+	// struct FSpecialWaveInfo                         It;                                               		// 0x0018 (0x0014) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetSpecialWaveScale
+// [0x00820002] 
+struct UKFGameDifficulty_Endless_execGetSpecialWaveScale_Parms
+{
+	// unsigned char                                   AIType;                                           		// 0x0000 (0x0001) [0x0000000000000000]              
+	// float                                           ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+	// TArray< struct FSpecialWaveInfo >               SpecialWaves;                                     		// 0x0008 (0x0010) [0x0000000000000000]              
+	// struct FSpecialWaveInfo                         It;                                               		// 0x0018 (0x0014) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetSpecialWaveModifiers
+// [0x00C20002] 
+struct UKFGameDifficulty_Endless_execGetSpecialWaveModifiers_Parms
+{
+	// unsigned char                                   AIType;                                           		// 0x0000 (0x0001) [0x0000000000000000]              
+	// float                                           WaveCountMod;                                     		// 0x0004 (0x0004) [0x0000000000000000]              
+	// float                                           SpawnRateMod;                                     		// 0x0008 (0x0004) [0x0000000000000000]              
+	// TArray< struct FSpecialWaveInfo >               SpecialWaves;                                     		// 0x000C (0x0010) [0x0000000000000000]              
+	// struct FSpecialWaveInfo                         It;                                               		// 0x001C (0x0014) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetSpecialWaveType
+// [0x00820002] 
+struct UKFGameDifficulty_Endless_execGetSpecialWaveType_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// TArray< struct FSpecialWaveInfo >               SpecialWaves;                                     		// 0x0004 (0x0010) [0x0000000000000000]              
+	// float                                           RandF;                                            		// 0x0014 (0x0004) [0x0000000000000000]              
+	// float                                           TotalProb;                                        		// 0x0018 (0x0004) [0x0000000000000000]              
+	// struct FSpecialWaveInfo                         It;                                               		// 0x001C (0x0014) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetSpeicalWavePctChance
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execGetSpeicalWavePctChance_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetOutbreakPctChance
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execGetOutbreakPctChance_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetZedsOverride
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execGetZedsOverride_Parms
+{
+	// TArray< struct FZedDifficultyOverride >         ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetZedsToAdjust
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execGetZedsToAdjust_Parms
+{
+	// TArray< struct FStatAdjustments >               ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.ShouldStartHoePlus
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execShouldStartHoePlus_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.SetZedFullUpgradeToBase
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execSetZedFullUpgradeToBase_Parms
+{
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.SetZedUpgradeToBase
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execSetZedUpgradeToBase_Parms
+{
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.IncreaseZedFullUpgradePct
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execIncreaseZedFullUpgradePct_Parms
+{
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.IncreaseZedUpgradePct
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execIncreaseZedUpgradePct_Parms
+{
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetZedFullUpgradePctChance
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execGetZedFullUpgradePctChance_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.GetZedUpgradePctChance
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execGetZedUpgradePctChance_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.SetDifficultyScaling
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execSetDifficultyScaling_Parms
+{
+	// float                                           StartingGameDifficulty;                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             DiffScalingIndex;                                 		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.SetDifficultySettings
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execSetDifficultySettings_Parms
+{
+	// float                                           GameDifficulty;                                   		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             DiffSettingIndex;                                 		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.IncrementDifficulty
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execIncrementDifficulty_Parms
+{
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.AdjustZedStats
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execAdjustZedStats_Parms
+{
+	// int                                             DifficultyIndex;                                  		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.AdjustDifficulties
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execAdjustDifficulties_Parms
+{
+	// int                                             DifficultyIndex;                                  		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameDifficulty_Endless.IncrementHoePlus
+// [0x00020002] 
+struct UKFGameDifficulty_Endless_execIncrementHoePlus_Parms
+{
+	// int                                             DifficultyIndex;                                  		// 0x0000 (0x0004) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFAISpawnManager_Versus.ResetSpawnManager
@@ -2931,16 +5316,17 @@ struct UKFAISpawnManager_Versus_execSpawnSquad_Parms
 };
 
 // Function kfgamecontent.KFAISpawnManager_Versus.SetupNextWave
-// [0x00020002] 
+// [0x00024002] 
 struct UKFAISpawnManager_Versus_execSetupNextWave_Parms
 {
 	// unsigned char                                   NextWaveIndex;                                    		// 0x0000 (0x0001) [0x0000000000000000]              
-	// int                                             I;                                                		// 0x0004 (0x0004) [0x0000000000000000]              
-	// int                                             J;                                                		// 0x0008 (0x0004) [0x0000000000000000]              
-	// int                                             SquadZedCount;                                    		// 0x000C (0x0004) [0x0000000000000000]              
-	// TArray< class UKFAISpawnSquad* >                SquadList;                                        		// 0x0010 (0x0010) [0x0000000000000000]              
-	// class AKFPlayerControllerVersus*                KFPCV;                                            		// 0x0020 (0x0008) [0x0000000000000000]              
-	// float                                           SpawnWaitTime;                                    		// 0x0028 (0x0004) [0x0000000000000000]              
+	// int                                             TimeToNextWaveBuffer;                             		// 0x0004 (0x0004) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0008 (0x0004) [0x0000000000000000]              
+	// int                                             J;                                                		// 0x000C (0x0004) [0x0000000000000000]              
+	// int                                             SquadZedCount;                                    		// 0x0010 (0x0004) [0x0000000000000000]              
+	// TArray< class UKFAISpawnSquad* >                SquadList;                                        		// 0x0014 (0x0010) [0x0000000000000000]              
+	// class AKFPlayerControllerVersus*                KFPCV;                                            		// 0x0024 (0x0008) [0x0000000000000000]              
+	// float                                           SpawnWaitTime;                                    		// 0x002C (0x0004) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFAISpawnManager_Versus.GetAIAliveCount
@@ -2948,6 +5334,33 @@ struct UKFAISpawnManager_Versus_execSetupNextWave_Parms
 struct UKFAISpawnManager_Versus_execGetAIAliveCount_Parms
 {
 	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPlayerControllerVersus.GetPawnBasedMixerScene
+// [0x00020103] ( FUNC_Final )
+struct AKFPlayerControllerVersus_execGetPawnBasedMixerScene_Parms
+{
+	// class APawn*                                    inPawn;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FString                                  ReturnValue;                                      		// 0x0008 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPlayerControllerVersus.MixerStartupComplete
+// [0x00080102] 
+struct AKFPlayerControllerVersus_execMixerStartupComplete_Parms
+{
+};
+
+// Function kfgamecontent.KFPlayerControllerVersus.GivePawn
+// [0x010201C2] 
+struct AKFPlayerControllerVersus_execGivePawn_Parms
+{
+	// class APawn*                                    NewPawn;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPlayerControllerVersus.ClientMatchStarted
+// [0x010201C0] 
+struct AKFPlayerControllerVersus_execClientMatchStarted_Parms
+{
 };
 
 // Function kfgamecontent.KFPlayerControllerVersus.SetHaveUpdatePerk
@@ -3078,6 +5491,13 @@ struct AKFPlayerControllerVersus_execClientRestart_Parms
 struct AKFPlayerControllerVersus_execRestart_Parms
 {
 	// DWORD                                           bVehicleTransition : 1;                           		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_VersusSurvival.IsMapObjectiveEnabled
+// [0x00020002] 
+struct AKFGameInfo_VersusSurvival_execIsMapObjectiveEnabled_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFGameInfo_VersusSurvival.GetEndOfMatchTime
@@ -3566,415 +5986,6 @@ struct AKFGameInfo_VersusSurvival_eventPreBeginPlay_Parms
 {
 };
 
-// Function kfgamecontent.KFGameInfo_Survival.DebugKillZeds
-// [0x00020002] 
-struct AKFGameInfo_Survival_execDebugKillZeds_Parms
-{
-	// class APlayerController*                        PC;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.TryRestartGame
-// [0x00020002] 
-struct AKFGameInfo_Survival_execTryRestartGame_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.UpdateCurrentMapVoteTime
-// [0x00024002] 
-struct AKFGameInfo_Survival_execUpdateCurrentMapVoteTime_Parms
-{
-	// unsigned char                                   NewTime;                                          		// 0x0000 (0x0001) [0x0000000000000000]              
-	// DWORD                                           bStartTime : 1;                                   		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.ProcessAwards
-// [0x00020002] 
-struct AKFGameInfo_Survival_execProcessAwards_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.GetEndOfMatchTime
-// [0x00020002] 
-struct AKFGameInfo_Survival_execGetEndOfMatchTime_Parms
-{
-	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.ShowPostGameMenu
-// [0x00020002] 
-struct AKFGameInfo_Survival_execShowPostGameMenu_Parms
-{
-	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.SetZedsToVictoryState
-// [0x00020002] 
-struct AKFGameInfo_Survival_execSetZedsToVictoryState_Parms
-{
-	// class AKFAIController*                          KFAIC;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.SetWonGameCamera
-// [0x00020002] 
-struct AKFGameInfo_Survival_execSetWonGameCamera_Parms
-{
-	// class AKFPlayerController*                      KFPC;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.GetNextMap
-// [0x00020002] 
-struct AKFGameInfo_Survival_execGetNextMap_Parms
-{
-	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
-	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0010 (0x0008) [0x0000000000000000]              
-	// int                                             NextMapIndex;                                     		// 0x0018 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.EndOfMatch
-// [0x00020002] 
-struct AKFGameInfo_Survival_execEndOfMatch_Parms
-{
-	// DWORD                                           bVictory : 1;                                     		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	// class AKFPlayerController*                      KFPC;                                             		// 0x0004 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.NotifyTraderOpened
-// [0x00020002] 
-struct AKFGameInfo_Survival_execNotifyTraderOpened_Parms
-{
-	// TArray< class USequenceObject* >                AllTraderOpenedEvents;                            		// 0x0000 (0x0010) [0x0000000000000000]              
-	// TArray< int >                                   OutputLinksToActivate;                            		// 0x0010 (0x0010) [0x0000000000000000]              
-	// class UKFSeqEvent_TraderOpened*                 TraderOpenedEvt;                                  		// 0x0020 (0x0008) [0x0000000000000000]              
-	// class USequence*                                GameSeq;                                          		// 0x0028 (0x0008) [0x0000000000000000]              
-	// int                                             I;                                                		// 0x0030 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.OpenTrader
-// [0x00020002] 
-struct AKFGameInfo_Survival_execOpenTrader_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.DoTraderTimeCleanup
-// [0x00020000] 
-struct AKFGameInfo_Survival_execDoTraderTimeCleanup_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.CloseTraderTimer
-// [0x00020000] 
-struct AKFGameInfo_Survival_execCloseTraderTimer_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.LogWaveEndAnalyticsFor
-// [0x00020002] 
-struct AKFGameInfo_Survival_execLogWaveEndAnalyticsFor_Parms
-{
-	// class AKFPlayerController*                      KFPC;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
-	// int                                             I;                                                		// 0x0008 (0x0004) [0x0000000000000000]              
-	// TArray< struct FWeaponDamage >                  Weapons;                                          		// 0x000C (0x0010) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.Timer_FinalizeEndOfWaveStats
-// [0x00020002] 
-struct AKFGameInfo_Survival_execTimer_FinalizeEndOfWaveStats_Parms
-{
-	// DWORD                                           bOpeningTrader : 1;                               		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	// class AKFPlayerController*                      KFPC;                                             		// 0x0004 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.WaveEnded
-// [0x00020002] 
-struct AKFGameInfo_Survival_execWaveEnded_Parms
-{
-	// unsigned char                                   WinCondition;                                     		// 0x0000 (0x0001) [0x0000000000000000]              
-	// TArray< class USequenceObject* >                AllWaveEndEvents;                                 		// 0x0004 (0x0010) [0x0000000000000000]              
-	// TArray< int >                                   OutputLinksToActivate;                            		// 0x0014 (0x0010) [0x0000000000000000]              
-	// class UKFSeqEvent_WaveEnd*                      WaveEndEvt;                                       		// 0x0024 (0x0008) [0x0000000000000000]              
-	// class USequence*                                GameSeq;                                          		// 0x002C (0x0008) [0x0000000000000000]              
-	// int                                             I;                                                		// 0x0034 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.CheckWaveEnd
-// [0x00024002] 
-struct AKFGameInfo_Survival_execCheckWaveEnd_Parms
-{
-	// DWORD                                           bForceWaveEnd : 1;                                		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.WaveStarted
-// [0x00020002] 
-struct AKFGameInfo_Survival_execWaveStarted_Parms
-{
-	// TArray< class USequenceObject* >                AllWaveStartEvents;                               		// 0x0000 (0x0010) [0x0000000000000000]              
-	// TArray< int >                                   OutputLinksToActivate;                            		// 0x0010 (0x0010) [0x0000000000000000]              
-	// class UKFSeqEvent_WaveStart*                    WaveStartEvt;                                     		// 0x0020 (0x0008) [0x0000000000000000]              
-	// class USequence*                                GameSeq;                                          		// 0x0028 (0x0008) [0x0000000000000000]              
-	// int                                             I;                                                		// 0x0030 (0x0004) [0x0000000000000000]              
-	// class AKFPlayerController*                      KFPC;                                             		// 0x0034 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.DetermineNextTraderIndex
-// [0x00020002] 
-struct AKFGameInfo_Survival_execDetermineNextTraderIndex_Parms
-{
-	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
-	// unsigned char                                   NextTraderIndex;                                  		// 0x0001 (0x0001) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.SetupNextTrader
-// [0x00020002] 
-struct AKFGameInfo_Survival_execSetupNextTrader_Parms
-{
-	// unsigned char                                   NextTraderIndex;                                  		// 0x0000 (0x0001) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.ResetPickups
-// [0x00020002] 
-struct AKFGameInfo_Survival_execResetPickups_Parms
-{
-	// TArray< class AKFPickupFactory* >               PickupList;                                       		// 0x0000 (0x0010) [0x0000000000000000]              
-	// int                                             NumPickups;                                       		// 0x0010 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.ResetAllPickups
-// [0x00020002] 
-struct AKFGameInfo_Survival_execResetAllPickups_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.StartWave
-// [0x00020002] 
-struct AKFGameInfo_Survival_execStartWave_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.IsWaveActive
-// [0x00020000] 
-struct AKFGameInfo_Survival_execIsWaveActive_Parms
-{
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.WinMatch
-// [0x00020202] ( FUNC_Exec )
-struct AKFGameInfo_Survival_execWinMatch_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.SetWave
-// [0x00020202] ( FUNC_Exec )
-struct AKFGameInfo_Survival_execSetWave_Parms
-{
-	// unsigned char                                   NewWaveNum;                                       		// 0x0000 (0x0001) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.EndCurrentWave
-// [0x00020202] ( FUNC_Exec )
-struct AKFGameInfo_Survival_execEndCurrentWave_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.ToggleSpawning
-// [0x00024202] ( FUNC_Exec )
-struct AKFGameInfo_Survival_execToggleSpawning_Parms
-{
-	// struct FString                                  ZedTypeString;                                    		// 0x0000 (0x0010) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.AllowWaveCheats
-// [0x00020002] 
-struct AKFGameInfo_Survival_execAllowWaveCheats_Parms
-{
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.GetAdjustedDeathPenalty
-// [0x00024002] 
-struct AKFGameInfo_Survival_execGetAdjustedDeathPenalty_Parms
-{
-	// class AKFPlayerReplicationInfo*                 KilledPlayerPRI;                                  		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           bLateJoiner : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	// int                                             ReturnValue;                                      		// 0x000C (0x0004) [0x0000000000000000]              
-	// float                                           MinimumRespawnDosh;                               		// 0x0010 (0x0004) [0x0000000000000000]              
-	// float                                           PlayerRespawnDosh;                                		// 0x0014 (0x0004) [0x0000000000000000]              
-	// float                                           UsedMaxRespawnDosh;                               		// 0x0018 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.RewardSurvivingPlayers
-// [0x00020002] 
-struct AKFGameInfo_Survival_execRewardSurvivingPlayers_Parms
-{
-	// int                                             PlayerCut;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
-	// int                                             PlayerCount;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
-	// class AKFPlayerController*                      KFPC;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
-	// class AKFTeamInfo_Human*                        T;                                                		// 0x0010 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.UpdateWaveEndDialogInfo
-// [0x00020002] 
-struct AKFGameInfo_Survival_execUpdateWaveEndDialogInfo_Parms
-{
-	// int                                             PlayersAlive;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
-	// int                                             PlayersTotal;                                     		// 0x0004 (0x0004) [0x0000000000000000]              
-	// int                                             MostZedsKilled;                                   		// 0x0008 (0x0004) [0x0000000000000000]              
-	// int                                             MostDoshEarned;                                   		// 0x000C (0x0004) [0x0000000000000000]              
-	// int                                             BestTeammateScore;                                		// 0x0010 (0x0004) [0x0000000000000000]              
-	// class AKFPlayerController*                      KFPC;                                             		// 0x0014 (0x0008) [0x0000000000000000]              
-	// class AKFPlayerController*                      KilledMostZeds;                                   		// 0x001C (0x0008) [0x0000000000000000]              
-	// class AKFPlayerController*                      EarnedMostDosh;                                   		// 0x0024 (0x0008) [0x0000000000000000]              
-	// class AKFPlayerController*                      BestTeammate;                                     		// 0x002C (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.IsMultiplayerGame
-// [0x00020002] 
-struct AKFGameInfo_Survival_execIsMultiplayerGame_Parms
-{
-	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.Timer
-// [0x00020802] ( FUNC_Event )
-struct AKFGameInfo_Survival_eventTimer_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.CanSpectate
-// [0x00020002] 
-struct AKFGameInfo_Survival_execCanSpectate_Parms
-{
-	// class APlayerController*                        Viewer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class APlayerReplicationInfo*                   ViewTarget;                                       		// 0x0008 (0x0008) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.UpdateGameSettings
-// [0x00020002] 
-struct AKFGameInfo_Survival_execUpdateGameSettings_Parms
-{
-	// struct FName                                    SessionName;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class UKFOnlineGameSettings*                    KFGameSettings;                                   		// 0x0008 (0x0008) [0x0000000000000000]              
-	// int                                             NumHumanPlayers;                                  		// 0x0010 (0x0004) [0x0000000000000000]              
-	// int                                             I;                                                		// 0x0014 (0x0004) [0x0000000000000000]              
-	// class UKFGameEngine*                            KFEngine;                                         		// 0x0018 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.BossDied
-// [0x00024002] 
-struct AKFGameInfo_Survival_execBossDied_Parms
-{
-	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           bCheckWaveEnded : 1;                              		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	// class AKFPawn_Monster*                          AIP;                                              		// 0x000C (0x0008) [0x0000000000000000]              
-	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0014 (0x0008) [0x0000000000000000]              
-	// class AKFPlayerController*                      KFPC;                                             		// 0x001C (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.ReduceDamage
-// [0x00420002] 
-struct AKFGameInfo_Survival_execReduceDamage_Parms
-{
-	// int                                             Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
-	// class APawn*                                    injured;                                          		// 0x0004 (0x0008) [0x0000000000000000]              
-	// class AController*                              InstigatedBy;                                     		// 0x000C (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0014 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  Momentum;                                         		// 0x0020 (0x000C) [0x0000000000000000]              
-	// class UClass*                                   DamageType;                                       		// 0x002C (0x0008) [0x0000000000000000]              
-	// class AActor*                                   DamageCauser;                                     		// 0x0034 (0x0008) [0x0000000000000000]              
-	// struct FTraceHitInfo                            HitInfo;                                          		// 0x003C (0x0028) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.Killed
-// [0x00020002] 
-struct AKFGameInfo_Survival_execKilled_Parms
-{
-	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AController*                              KilledPlayer;                                     		// 0x0008 (0x0008) [0x0000000000000000]              
-	// class APawn*                                    KilledPawn;                                       		// 0x0010 (0x0008) [0x0000000000000000]              
-	// class UClass*                                   DamageType;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.RestartPlayer
-// [0x00020002] 
-struct AKFGameInfo_Survival_execRestartPlayer_Parms
-{
-	// class AController*                              NewPlayer;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AKFPlayerController*                      KFPC;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
-	// class AKFPlayerReplicationInfo*                 KFPRI;                                            		// 0x0010 (0x0008) [0x0000000000000000]              
-	// DWORD                                           bWasWaitingForClientPerkData : 1;                 		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.PlayerCanRestart
-// [0x00020002] 
-struct AKFGameInfo_Survival_execPlayerCanRestart_Parms
-{
-	// class APlayerController*                        aPlayer;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.IsPlayerReady
-// [0x00020002] 
-struct AKFGameInfo_Survival_execIsPlayerReady_Parms
-{
-	// class AKFPlayerReplicationInfo*                 PRI;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	// class AKFPlayerController*                      KFPC;                                             		// 0x000C (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.GetGameIntensityForMusic
-// [0x00020002] 
-struct AKFGameInfo_Survival_execGetGameIntensityForMusic_Parms
-{
-	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.PlayWaveStartDialog
-// [0x00020002] 
-struct AKFGameInfo_Survival_execPlayWaveStartDialog_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.StartMatch
-// [0x00020002] 
-struct AKFGameInfo_Survival_execStartMatch_Parms
-{
-	// class AKFPlayerController*                      KFPC;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.InitSpawnManager
-// [0x00020002] 
-struct AKFGameInfo_Survival_execInitSpawnManager_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.PostBeginPlay
-// [0x00020802] ( FUNC_Event )
-struct AKFGameInfo_Survival_eventPostBeginPlay_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.PreBeginPlay
-// [0x00020802] ( FUNC_Event )
-struct AKFGameInfo_Survival_eventPreBeginPlay_Parms
-{
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.ShouldPlayActionMusicTrack
-// [0x00022002] 
-struct AKFGameInfo_Survival_execShouldPlayActionMusicTrack_Parms
-{
-	// class AKFGameReplicationInfo*                   GRI;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFGameInfo_Survival.ShouldPlayMusicAtStart
-// [0x00022002] 
-struct AKFGameInfo_Survival_execShouldPlayMusicAtStart_Parms
-{
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
 // Function kfgamecontent.KFPawn_ZedScrake.OnStackingAfflictionChanged
 // [0x00020002] 
 struct AKFPawn_ZedScrake_execOnStackingAfflictionChanged_Parms
@@ -4036,13 +6047,6 @@ struct AKFPawn_ZedScrake_execCanBlock_Parms
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
-// Function kfgamecontent.KFPawn_ZedScrake.SetEnraged
-// [0x00020102] 
-struct AKFPawn_ZedScrake_execSetEnraged_Parms
-{
-	// DWORD                                           bNewEnraged : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
 // Function kfgamecontent.KFPawn_ZedScrake.TakeDamage
 // [0x00024802] ( FUNC_Event )
 struct AKFPawn_ZedScrake_eventTakeDamage_Parms
@@ -4087,6 +6091,34 @@ struct AKFPawn_ZedScrake_eventPostBeginPlay_Parms
 {
 };
 
+// Function kfgamecontent.KFBloodRainVolume.Timer_SetActive
+// [0x00080102] 
+struct AKFBloodRainVolume_execTimer_SetActive_Parms
+{
+};
+
+// Function kfgamecontent.KFBloodRainVolume.SetActive
+// [0x00020102] 
+struct AKFBloodRainVolume_execSetActive_Parms
+{
+	// DWORD                                           bActive : 1;                                      		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFBloodRainVolume.AddSplatter
+// [0x00820102] 
+struct AKFBloodRainVolume_execAddSplatter_Parms
+{
+	// struct FVector                                  V;                                                		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  D;                                                		// 0x000C (0x000C) [0x0000000000000000]              
+	// int                                             SplatCount;                                       		// 0x0018 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFBloodRainVolume.PostBeginPlay
+// [0x00020902] ( FUNC_Event )
+struct AKFBloodRainVolume_eventPostBeginPlay_Parms
+{
+};
+
 // Function kfgamecontent.KFCollectibleActor.Reset
 // [0x00020100] 
 struct AKFCollectibleActor_execReset_Parms
@@ -4119,159 +6151,6 @@ struct UKFDifficulty_Bloat_execGetPukeMinesToSpawnOnDeath_Parms
 	// unsigned char                                   ReturnValue;                                      		// 0x0010 (0x0001) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFPawn_ZedBloat.GetTraderAdviceID
-// [0x00022002] 
-struct AKFPawn_ZedBloat_execGetTraderAdviceID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.SpawnPukeMinesOnDeath
-// [0x00020002] 
-struct AKFPawn_ZedBloat_execSpawnPukeMinesOnDeath_Parms
-{
-	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.SpawnPukeMine
-// [0x00020002] 
-struct AKFPawn_ZedBloat_execSpawnPukeMine_Parms
-{
-	// struct FVector                                  SpawnLocation;                                    		// 0x0000 (0x000C) [0x0000000000000000]              
-	// struct FRotator                                 SpawnRotation;                                    		// 0x000C (0x000C) [0x0000000000000000]              
-	// class AKFProjectile*                            PukeMine;                                         		// 0x0018 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.DealExplosionDamage
-// [0x00820002] 
-struct AKFPawn_ZedBloat_execDealExplosionDamage_Parms
-{
-	// class APawn*                                    P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
-	// class AActor*                                   HitActor;                                         		// 0x0020 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.HitExplosiveBone
-// [0x00020002] 
-struct AKFPawn_ZedBloat_execHitExplosiveBone_Parms
-{
-	// struct FName                                    HitBoneName;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	// unsigned char                                   JointIndex;                                       		// 0x000C (0x0001) [0x0000000000000000]              
-	// class UKFCharacterInfo_Monster*                 MonsterInfo;                                      		// 0x0010 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.TakeHitZoneDamage
-// [0x00020002] 
-struct AKFPawn_ZedBloat_execTakeHitZoneDamage_Parms
-{
-	// float                                           Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
-	// class UClass*                                   DamageType;                                       		// 0x0004 (0x0008) [0x0000000000000000]              
-	// int                                             HitZoneIdx;                                       		// 0x000C (0x0004) [0x0000000000000000]              
-	// struct FVector                                  InstigatorLocation;                               		// 0x0010 (0x000C) [0x0000000000000000]              
-	// int                                             HitZoneIndex;                                     		// 0x001C (0x0004) [0x0000000000000000]              
-	// struct FName                                    HitBoneName;                                      		// 0x0020 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.Died
-// [0x00020002] 
-struct AKFPawn_ZedBloat_execDied_Parms
-{
-	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class UClass*                                   DamageType;                                       		// 0x0008 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.HasInjuredHitZones
-// [0x00020102] 
-struct AKFPawn_ZedBloat_execHasInjuredHitZones_Parms
-{
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.CanInjureHitZone
-// [0x00020002] 
-struct AKFPawn_ZedBloat_execCanInjureHitZone_Parms
-{
-	// class UClass*                                   DamageType;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
-	// int                                             HitZoneIdx;                                       		// 0x0008 (0x0004) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.CanPukeOnTarget
-// [0x00820002] 
-struct AKFPawn_ZedBloat_execCanPukeOnTarget_Parms
-{
-	// class APawn*                                    PukeTarget;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  PukeLocation;                                     		// 0x0008 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  PukeDirection;                                    		// 0x0014 (0x000C) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
-	// struct FVector                                  VectToEnemy;                                      		// 0x0024 (0x000C) [0x0000000000000000]              
-	// struct FBox                                     ActorBox;                                         		// 0x0030 (0x001C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.DealPukeDamage
-// [0x00820002] 
-struct AKFPawn_ZedBloat_execDealPukeDamage_Parms
-{
-	// class APawn*                                    Victim;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  Origin;                                           		// 0x0008 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  VectToEnemy;                                      		// 0x0014 (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.Puke
-// [0x00820002] 
-struct AKFPawn_ZedBloat_execPuke_Parms
-{
-	// class APawn*                                    P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  PukeLocation;                                     		// 0x0008 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  PukeDirection;                                    		// 0x0014 (0x000C) [0x0000000000000000]              
-	// struct FRotator                                 PukeRotation;                                     		// 0x0020 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x002C (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x0038 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  EndTrace;                                         		// 0x0044 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  Momentum;                                         		// 0x0050 (0x000C) [0x0000000000000000]              
-	// class AActor*                                   HitActor;                                         		// 0x005C (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.ANIMNOTIFY_PukeAttack
-// [0x00020002] 
-struct AKFPawn_ZedBloat_execANIMNOTIFY_PukeAttack_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedBloat.PostBeginPlay
-// [0x00020102] 
-struct AKFPawn_ZedBloat_execPostBeginPlay_Parms
-{
-};
-
-// Function kfgamecontent.KFDifficulty_Crawler.GetSpecialCrawlerChance
-// [0x00022002] 
-struct UKFDifficulty_Crawler_execGetSpecialCrawlerChance_Parms
-{
-	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-	// float                                           ReturnValue;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFDifficulty_Fleshpound.GetSpecialFleshpoundChance
-// [0x00022002] 
-struct UKFDifficulty_Fleshpound_execGetSpecialFleshpoundChance_Parms
-{
-	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-	// float                                           ReturnValue;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFDifficulty_Gorefast.GetSpecialGorefastChance
-// [0x00022002] 
-struct UKFDifficulty_Gorefast_execGetSpecialGorefastChance_Parms
-{
-	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-	// float                                           ReturnValue;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
-};
-
 // Function kfgamecontent.KFDifficulty_Husk.GetFireballSettings
 // [0x00822002] 
 struct UKFDifficulty_Husk_execGetFireballSettings_Parms
@@ -4285,6 +6164,14 @@ struct UKFDifficulty_Husk_execGetFireballSettings_Parms
 // Function kfgamecontent.KFDT_Ballistic_AA12Shotgun.CanDismemberHitZone
 // [0x00022102] 
 struct UKFDT_Ballistic_AA12Shotgun_execCanDismemberHitZone_Parms
+{
+	// struct FName                                    InHitZoneName;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFDT_Ballistic_AF2011.CanDismemberHitZone
+// [0x00022102] 
+struct UKFDT_Ballistic_AF2011_execCanDismemberHitZone_Parms
 {
 	// struct FName                                    InHitZoneName;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
@@ -4399,6 +6286,22 @@ struct UKFDT_Fire_DragonsBreathDoT_execGetKillerDialogID_Parms
 	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFDT_Ballistic_ElephantGun.CanDismemberHitZone
+// [0x00022102] 
+struct UKFDT_Ballistic_ElephantGun_execCanDismemberHitZone_Parms
+{
+	// struct FName                                    InHitZoneName;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFDT_Ballistic_FNFal.CanDismemberHitZone
+// [0x00022102] 
+struct UKFDT_Ballistic_FNFal_execCanDismemberHitZone_Parms
+{
+	// struct FName                                    InHitZoneName;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
 // Function kfgamecontent.KFDT_Ballistic_HansAK12.GetKillerDialogID
 // [0x00022002] 
 struct UKFDT_Ballistic_HansAK12_execGetKillerDialogID_Parms
@@ -4414,6 +6317,7 @@ struct UKFDT_Ballistic_Hemogoblin_execApplySecondaryDamage_Parms
 	// int                                             DamageTaken;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
 	// class AController*                              InstigatedBy;                                     		// 0x000C (0x0008) [0x0000000000000000]              
 	// class UClass*                                   ToxicDT;                                          		// 0x0014 (0x0008) [0x0000000000000000]              
+	// int                                             ToxicDamageTaken;                                 		// 0x001C (0x0004) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFDT_Ballistic_Hemogoblin.PlayImpactHitEffects
@@ -4510,9 +6414,35 @@ struct UKFDT_Ballistic_M4Shotgun_execCanDismemberHitZone_Parms
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
+// Function kfgamecontent.KFDT_Ballistic_M99.CanDismemberHitZone
+// [0x00022102] 
+struct UKFDT_Ballistic_M99_execCanDismemberHitZone_Parms
+{
+	// struct FName                                    InHitZoneName;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
 // Function kfgamecontent.KFDT_Ballistic_MB500.CanDismemberHitZone
 // [0x00022102] 
 struct UKFDT_Ballistic_MB500_execCanDismemberHitZone_Parms
+{
+	// struct FName                                    InHitZoneName;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFDT_Ballistic_MedicRifleGrenadeLauncher.ApplySecondaryDamage
+// [0x00026002] 
+struct UKFDT_Ballistic_MedicRifleGrenadeLauncher_execApplySecondaryDamage_Parms
+{
+	// class AKFPawn*                                  Victim;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             DamageTaken;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x000C (0x0008) [0x0000000000000000]              
+	// class UClass*                                   ToxicDT;                                          		// 0x0014 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFDT_Ballistic_MKB42.CanDismemberHitZone
+// [0x00022102] 
+struct UKFDT_Ballistic_MKB42_execCanDismemberHitZone_Parms
 {
 	// struct FName                                    InHitZoneName;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
@@ -4550,12 +6480,13 @@ struct AKFProj_Nail_Nailgun_execProcessTouch_Parms
 };
 
 // Function kfgamecontent.KFProj_Nail_Nailgun.HitWall
-// [0x00020902] ( FUNC_Event )
+// [0x00820902] ( FUNC_Event )
 struct AKFProj_Nail_Nailgun_eventHitWall_Parms
 {
 	// struct FVector                                  HitNormal;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
 	// class AActor*                                   Wall;                                             		// 0x000C (0x0008) [0x0000000000000000]              
 	// class UPrimitiveComponent*                      WallComp;                                         		// 0x0014 (0x0008) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x001C (0x0028) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFDT_Ballistic_PatMinigun.GetKillerDialogID
@@ -4646,6 +6577,35 @@ struct UKFDT_Ballistic_Winchester_execCanDismemberHitZone_Parms
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
+// Function kfgamecontent.KFDT_SwingMinigame.PlayImpactHitEffects
+// [0x00026002] 
+struct UKFDT_SwingMinigame_execPlayImpactHitEffects_Parms
+{
+	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitDirection;                                     		// 0x0014 (0x000C) [0x0000000000000000]              
+	// unsigned char                                   HitZoneIndex;                                     		// 0x0020 (0x0001) [0x0000000000000000]              
+	// class APawn*                                    HitInstigator;                                    		// 0x0024 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFDT_Bludgeon_BloatKing.GetKillerDialogID
+// [0x00022002] 
+struct UKFDT_Bludgeon_BloatKing_execGetKillerDialogID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFDT_Bludgeon_BloatKingGorge.PlayImpactHitEffects
+// [0x00026002] 
+struct UKFDT_Bludgeon_BloatKingGorge_execPlayImpactHitEffects_Parms
+{
+	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitDirection;                                     		// 0x0014 (0x000C) [0x0000000000000000]              
+	// unsigned char                                   HitZoneIndex;                                     		// 0x0020 (0x0001) [0x0000000000000000]              
+	// class APawn*                                    HitInstigator;                                    		// 0x0024 (0x0008) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFDT_Bludgeon_Patriarch.GetKillerDialogID
 // [0x00022002] 
 struct UKFDT_Bludgeon_Patriarch_execGetKillerDialogID_Parms
@@ -4680,6 +6640,15 @@ struct UKFDT_Explosive_CrawlerSuicide_execCanDismemberHitZone_Parms
 struct UKFDT_Explosive_HansHEGrenade_execGetKillerDialogID_Parms
 {
 	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFDT_Explosive_HuskCannon.ApplySecondaryDamage
+// [0x00026002] 
+struct UKFDT_Explosive_HuskCannon_execApplySecondaryDamage_Parms
+{
+	// class AKFPawn*                                  Victim;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             DamageTaken;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x000C (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFDT_Explosive_HuskSuicide.CanDismemberHitZone
@@ -4776,6 +6745,34 @@ struct UKFDT_Fire_FlareGunDoT_execGetKillerDialogID_Parms
 	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFDT_Fire_Mac10.ApplySecondaryDamage
+// [0x00026002] 
+struct UKFDT_Fire_Mac10_execApplySecondaryDamage_Parms
+{
+	// class AKFPawn*                                  Victim;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             DamageTaken;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFDT_Fire_Mac10.PlayImpactHitEffects
+// [0x00026002] 
+struct UKFDT_Fire_Mac10_execPlayImpactHitEffects_Parms
+{
+	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitDirection;                                     		// 0x0014 (0x000C) [0x0000000000000000]              
+	// unsigned char                                   HitZoneIndex;                                     		// 0x0020 (0x0001) [0x0000000000000000]              
+	// class APawn*                                    HitInstigator;                                    		// 0x0024 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFDT_Fire_Mac10.CanDismemberHitZone
+// [0x00022102] 
+struct UKFDT_Fire_Mac10_execCanDismemberHitZone_Parms
+{
+	// struct FName                                    InHitZoneName;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
 // Function kfgamecontent.KFDT_Freeze_FreezeGrenade.PlayImpactHitEffects
 // [0x00026002] 
 struct UKFDT_Freeze_FreezeGrenade_execPlayImpactHitEffects_Parms
@@ -4787,6 +6784,27 @@ struct UKFDT_Freeze_FreezeGrenade_execPlayImpactHitEffects_Parms
 	// class APawn*                                    HitInstigator;                                    		// 0x0024 (0x0008) [0x0000000000000000]              
 	// float                                           ParamValue;                                       		// 0x002C (0x0004) [0x0000000000000000]              
 	// int                                             MICIndex;                                         		// 0x0030 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFDT_Freeze_FreezeThrower.PlayImpactHitEffects
+// [0x00026002] 
+struct UKFDT_Freeze_FreezeThrower_execPlayImpactHitEffects_Parms
+{
+	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitDirection;                                     		// 0x0014 (0x000C) [0x0000000000000000]              
+	// unsigned char                                   HitZoneIndex;                                     		// 0x0020 (0x0001) [0x0000000000000000]              
+	// class APawn*                                    HitInstigator;                                    		// 0x0024 (0x0008) [0x0000000000000000]              
+	// float                                           ParamValue;                                       		// 0x002C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFDT_Krampus_ChipperPit.ApplyKillResults
+// [0x00022002] 
+struct UKFDT_Krampus_ChipperPit_execApplyKillResults_Parms
+{
+	// class AKFPawn*                                  KilledPawn;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class AWorldInfo*                               WI;                                               		// 0x0010 (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFDT_Microwave_Beam.CheckObliterate
@@ -5054,17 +7072,6 @@ struct UKFDT_Slashing_ZweihanderHeavy_execCanDismemberHitZone_Parms
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
-// Function kfgamecontent.KFDT_SwingMinigame.PlayImpactHitEffects
-// [0x00026002] 
-struct UKFDT_SwingMinigame_execPlayImpactHitEffects_Parms
-{
-	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitDirection;                                     		// 0x0014 (0x000C) [0x0000000000000000]              
-	// unsigned char                                   HitZoneIndex;                                     		// 0x0020 (0x0001) [0x0000000000000000]              
-	// class APawn*                                    HitInstigator;                                    		// 0x0024 (0x0008) [0x0000000000000000]              
-};
-
 // Function kfgamecontent.KFDT_Toxic_HansGrenade.GetKillerDialogID
 // [0x00022002] 
 struct UKFDT_Toxic_HansGrenade_execGetKillerDialogID_Parms
@@ -5109,6 +7116,13 @@ struct AKFExplosion_GroundFire_execSpawnExplosionParticleSystem_Parms
 	// class UParticleSystem*                          Template;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFExplosion_GroundIce.SpawnExplosionParticleSystem
+// [0x00020102] 
+struct AKFExplosion_GroundIce_execSpawnExplosionParticleSystem_Parms
+{
+	// class UParticleSystem*                          Template;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFExplosion_HansSmokeGrenade.GetEffectCheckRadius
 // [0x00020002] 
 struct AKFExplosion_HansSmokeGrenade_execGetEffectCheckRadius_Parms
@@ -5138,6 +7152,20 @@ struct AKFExplosion_HansSmokeGrenade_eventDestroyed_Parms
 // Function kfgamecontent.KFExplosion_HansSmokeGrenade.Explode
 // [0x00024102] 
 struct AKFExplosion_HansSmokeGrenade_execExplode_Parms
+{
+	// class UGameExplosion*                           NewExplosionTemplate;                             		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  Direction;                                        		// 0x0008 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFExplosion_HuskCannonFireballGroundFire.Timer_DelayExplosion
+// [0x00020102] 
+struct AKFExplosion_HuskCannonFireballGroundFire_execTimer_DelayExplosion_Parms
+{
+};
+
+// Function kfgamecontent.KFExplosion_HuskCannonFireballGroundFire.Explode
+// [0x00024102] 
+struct AKFExplosion_HuskCannonFireballGroundFire_execExplode_Parms
 {
 	// class UGameExplosion*                           NewExplosionTemplate;                             		// 0x0000 (0x0008) [0x0000000000000000]              
 	// struct FVector                                  Direction;                                        		// 0x0008 (0x000C) [0x0000000000000000]              
@@ -5219,6 +7247,14 @@ struct AKFExplosion_SirenScream_execSpecialCringeEffectsFor_Parms
 	// class AKFProjectile*                            KFProj;                                           		// 0x000C (0x0008) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFExplosionActor_HuskCannon.GetDamageFor
+// [0x00020102] 
+struct AKFExplosionActor_HuskCannon_execGetDamageFor_Parms
+{
+	// class AActor*                                   Victim;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           ReturnValue;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFExplosionActorC4.GetDamageFor
 // [0x00020102] 
 struct AKFExplosionActorC4_execGetDamageFor_Parms
@@ -5238,603 +7274,6 @@ struct UKFGameConductorVersus_execUpdateOverallStatus_Parms
 // [0x00020002] 
 struct UKFGameConductorVersus_execTimerUpdate_Parms
 {
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.OnInstigatorControllerLeft
-// [0x00020102] 
-struct AKFProj_BloatPukeMine_execOnInstigatorControllerLeft_Parms
-{
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.Destroyed
-// [0x00020902] ( FUNC_Event )
-struct AKFProj_BloatPukeMine_eventDestroyed_Parms
-{
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.SpawnBurstEffect
-// [0x00020102] 
-struct AKFProj_BloatPukeMine_execSpawnBurstEffect_Parms
-{
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.FadeOut
-// [0x00020102] 
-struct AKFProj_BloatPukeMine_execFadeOut_Parms
-{
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.TornOff
-// [0x00020902] ( FUNC_Event )
-struct AKFProj_BloatPukeMine_eventTornOff_Parms
-{
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.Tick
-// [0x00020902] ( FUNC_Event )
-struct AKFProj_BloatPukeMine_eventTick_Parms
-{
-	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
-	// float                                           FadeOutSize;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.TriggerExplosion
-// [0x00020102] 
-struct AKFProj_BloatPukeMine_execTriggerExplosion_Parms
-{
-	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
-	// class AActor*                                   HitActor;                                         		// 0x0018 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.Timer_Explode
-// [0x00020002] 
-struct AKFProj_BloatPukeMine_execTimer_Explode_Parms
-{
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.Detonate
-// [0x00020002] 
-struct AKFProj_BloatPukeMine_execDetonate_Parms
-{
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.TakeDamage
-// [0x00024822] ( FUNC_Event )
-struct AKFProj_BloatPukeMine_eventTakeDamage_Parms
-{
-	// int                                             InDamage;                                         		// 0x0000 (0x0004) [0x0000000000000000]              
-	// class AController*                              InstigatedBy;                                     		// 0x0004 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
-	// struct FVector                                  Momentum;                                         		// 0x0018 (0x000C) [0x0000000000000000]              
-	// class UClass*                                   DamageType;                                       		// 0x0024 (0x0008) [0x0000000000000000]              
-	// struct FTraceHitInfo                            HitInfo;                                          		// 0x002C (0x0028) [0x0000000000000000]              
-	// class AActor*                                   DamageCauser;                                     		// 0x0054 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.Touch
-// [0x00020902] ( FUNC_Event )
-struct AKFProj_BloatPukeMine_eventTouch_Parms
-{
-	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class UPrimitiveComponent*                      OtherComp;                                        		// 0x0008 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x001C (0x000C) [0x0000000000000000]              
-	// class APawn*                                    P;                                                		// 0x0028 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.ValidTouch
-// [0x00020102] 
-struct AKFProj_BloatPukeMine_execValidTouch_Parms
-{
-	// class APawn*                                    Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.SpawnImpactDecal
-// [0x00020102] 
-struct AKFProj_BloatPukeMine_execSpawnImpactDecal_Parms
-{
-	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.PlayImpactSound
-// [0x00024102] 
-struct AKFProj_BloatPukeMine_execPlayImpactSound_Parms
-{
-	// DWORD                                           bIsAtRest : 1;                                    		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.SwapToGroundFX
-// [0x00020102] 
-struct AKFProj_BloatPukeMine_execSwapToGroundFX_Parms
-{
-	// struct FRotator                                 GroundRotation;                                   		// 0x0000 (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.Stick
-// [0x00820102] 
-struct AKFProj_BloatPukeMine_execStick_Parms
-{
-	// struct FVector                                  StuckLocation;                                    		// 0x0000 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  StuckNormal;                                      		// 0x000C (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0018 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x0024 (0x000C) [0x0000000000000000]              
-	// struct FRotator                                 StuckRotation;                                    		// 0x0030 (0x000C) [0x0000000000000000]              
-	// class AKFProj_BloatPukeMine*                    PukeMine;                                         		// 0x003C (0x0008) [0x0000000000000000]              
-	// struct FRotator                                 RandRot;                                          		// 0x0044 (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.Bounce
-// [0x00820102] 
-struct AKFProj_BloatPukeMine_execBounce_Parms
-{
-	// struct FVector                                  HitNormal;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
-	// class AActor*                                   BouncedOff;                                       		// 0x000C (0x0008) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
-	// struct FVector                                  VNorm;                                            		// 0x0018 (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.Bump
-// [0x00020902] ( FUNC_Event )
-struct AKFProj_BloatPukeMine_eventBump_Parms
-{
-	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class UPrimitiveComponent*                      OtherComp;                                        		// 0x0008 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x0010 (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.CanStick
-// [0x00480102] 
-struct AKFProj_BloatPukeMine_execCanStick_Parms
-{
-	// class AActor*                                   HitActor;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x0008 (0x000C) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.HitWall
-// [0x00020902] ( FUNC_Event )
-struct AKFProj_BloatPukeMine_eventHitWall_Parms
-{
-	// struct FVector                                  HitNormal;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
-	// class AActor*                                   Wall;                                             		// 0x000C (0x0008) [0x0000000000000000]              
-	// class UPrimitiveComponent*                      WallComp;                                         		// 0x0014 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.Explode
-// [0x00020100] 
-struct AKFProj_BloatPukeMine_execExplode_Parms
-{
-	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.StopSimulating
-// [0x00080100] 
-struct AKFProj_BloatPukeMine_execStopSimulating_Parms
-{
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.ShutDown
-// [0x00020100] 
-struct AKFProj_BloatPukeMine_execShutDown_Parms
-{
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.PostBeginPlay
-// [0x00820902] ( FUNC_Event )
-struct AKFProj_BloatPukeMine_eventPostBeginPlay_Parms
-{
-	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_BloatPukeMine.ReplicatedEvent
-// [0x00020902] ( FUNC_Event )
-struct AKFProj_BloatPukeMine_eventReplicatedEvent_Parms
-{
-	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPickupFactory_Ammo.CurrentPickupIsAmmo
-// [0x00020002] 
-struct AKFPickupFactory_Ammo_execCurrentPickupIsAmmo_Parms
-{
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFPickupFactory_Ammo.PickedUpBy
-// [0x00020002] 
-struct AKFPickupFactory_Ammo_execPickedUpBy_Parms
-{
-	// class APawn*                                    P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AKFGameInfo*                              KFGI;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPickupFactory_Ammo.GiveTo
-// [0x00020002] 
-struct AKFPickupFactory_Ammo_execGiveTo_Parms
-{
-	// class APawn*                                    P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AKFInventoryManager*                      KFIM;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPickupFactory_Ammo.SetInitialState
-// [0x00020902] ( FUNC_Event )
-struct AKFPickupFactory_Ammo_eventSetInitialState_Parms
-{
-};
-
-// Function kfgamecontent.KFPickupFactory_Ammo.InitializePickup
-// [0x00020102] 
-struct AKFPickupFactory_Ammo_execInitializePickup_Parms
-{
-	// class AKFGameInfo*                              KFGI;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedClot_Cyst.GetTraderAdviceID
-// [0x00022002] 
-struct AKFPawn_ZedClot_Cyst_execGetTraderAdviceID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedClot.GetSpotterDialogID
-// [0x00020002] 
-struct AKFPawn_ZedClot_execGetSpotterDialogID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-	// int                                             EmergeType;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedClot.PostInitAnimTree
-// [0x00020902] ( FUNC_Event )
-struct AKFPawn_ZedClot_eventPostInitAnimTree_Parms
-{
-	// class USkeletalMeshComponent*                   SkelComp;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedClot_Slasher.GetTraderAdviceID
-// [0x00022002] 
-struct AKFPawn_ZedClot_Slasher_execGetTraderAdviceID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedClot_Alpha.GetTraderAdviceID
-// [0x00022002] 
-struct AKFPawn_ZedClot_Alpha_execGetTraderAdviceID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedClot_Alpha.GetAIPawnClassToSpawn
-// [0x00022802] ( FUNC_Event )
-struct AKFPawn_ZedClot_Alpha_eventGetAIPawnClassToSpawn_Parms
-{
-	// class UClass*                                   ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AWorldInfo*                               WI;                                               		// 0x0008 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawler.GetSpotterDialogID
-// [0x00020002] 
-struct AKFPawn_ZedCrawler_execGetSpotterDialogID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-	// int                                             EmergeType;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawler.Tick
-// [0x00020102] 
-struct AKFPawn_ZedCrawler_execTick_Parms
-{
-	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawler.DrawDebugRotation
-// [0x00820102] 
-struct AKFPawn_ZedCrawler_execDrawDebugRotation_Parms
-{
-	// struct FVector                                  vExtent;                                          		// 0x0000 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  StartLoc;                                         		// 0x000C (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawler.GetOverheadDebugText
-// [0x00420102] 
-struct AKFPawn_ZedCrawler_execGetOverheadDebugText_Parms
-{
-	// class AKFHUDBase*                               HUD;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
-	// TArray< struct FString >                        OverheadTexts;                                    		// 0x0008 (0x0010) [0x0000000000000000]              
-	// TArray< struct FColor >                         OverheadColors;                                   		// 0x0018 (0x0010) [0x0000000000000000]              
-	// struct FString                                  DebugText;                                        		// 0x0028 (0x0010) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawler.SpiderBumpLevel
-// [0x00024802] ( FUNC_Event )
-struct AKFPawn_ZedCrawler_eventSpiderBumpLevel_Parms
-{
-	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
-	// class AActor*                                   Wall;                                             		// 0x0018 (0x0008) [0x0000000000000000]              
-	// class UAICommand*                               ActiveCommand;                                    		// 0x0020 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawler.SpecialMoveTo_Leap
-// [0x00024002] 
-struct AKFPawn_ZedCrawler_execSpecialMoveTo_Leap_Parms
-{
-	// class ANavigationPoint*                         Start;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class ANavigationPoint*                         End;                                              		// 0x0008 (0x0008) [0x0000000000000000]              
-	// float                                           JumpTime;                                         		// 0x0010 (0x0004) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawler.PossessedBy
-// [0x00020802] ( FUNC_Event )
-struct AKFPawn_ZedCrawler_eventPossessedBy_Parms
-{
-	// class AController*                              C;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           bVehicleTransition : 1;                           		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	// class AKFAIController_ZedCrawler*               CrawlerController;                                		// 0x000C (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawler.GetAIPawnClassToSpawn
-// [0x00022802] ( FUNC_Event )
-struct AKFPawn_ZedCrawler_eventGetAIPawnClassToSpawn_Parms
-{
-	// class UClass*                                   ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AWorldInfo*                               WI;                                               		// 0x0008 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedGorefast.GetTraderAdviceID
-// [0x00022002] 
-struct AKFPawn_ZedGorefast_execGetTraderAdviceID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedGorefast.GetAIPawnClassToSpawn
-// [0x00022802] ( FUNC_Event )
-struct AKFPawn_ZedGorefast_eventGetAIPawnClassToSpawn_Parms
-{
-	// class UClass*                                   ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AWorldInfo*                               WI;                                               		// 0x0008 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.GetTraderAdviceID
-// [0x00022002] 
-struct AKFPawn_ZedStalker_execGetTraderAdviceID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.GetSpotterDialogID
-// [0x00020002] 
-struct AKFPawn_ZedStalker_execGetSpotterDialogID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.GetKillerDialogID
-// [0x00020002] 
-struct AKFPawn_ZedStalker_execGetKillerDialogID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.IsStalkerPawn
-// [0x00022002] 
-struct AKFPawn_ZedStalker_execIsStalkerPawn_Parms
-{
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.ReCloakTimer
-// [0x00020102] 
-struct AKFPawn_ZedStalker_execReCloakTimer_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.PlayHeadAsplode
-// [0x00020102] 
-struct AKFPawn_ZedStalker_execPlayHeadAsplode_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.PlayHit
-// [0x00020002] 
-struct AKFPawn_ZedStalker_execPlayHit_Parms
-{
-	// float                                           Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
-	// class AController*                              InstigatedBy;                                     		// 0x0004 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
-	// class UClass*                                   DamageType;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  Momentum;                                         		// 0x0020 (0x000C) [0x0000000000000000]              
-	// struct FTraceHitInfo                            HitInfo;                                          		// 0x002C (0x0028) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.OnStackingAfflictionChanged
-// [0x00020002] 
-struct AKFPawn_ZedStalker_execOnStackingAfflictionChanged_Parms
-{
-	// unsigned char                                   Id;                                               		// 0x0000 (0x0001) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.CauseHeadTrauma
-// [0x00024002] 
-struct AKFPawn_ZedStalker_execCauseHeadTrauma_Parms
-{
-	// float                                           BleedOutTime;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.PlayDying
-// [0x00020102] 
-struct AKFPawn_ZedStalker_execPlayDying_Parms
-{
-	// class UClass*                                   DamageType;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLoc;                                           		// 0x0008 (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.Rally
-// [0x00024102] 
-struct AKFPawn_ZedStalker_execRally_Parms
-{
-	// class AKFPawn*                                  RallyInstigator;                                  		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class UParticleSystem*                          RallyEffect;                                      		// 0x0008 (0x0008) [0x0000000000000000]              
-	// struct FName                                    EffectBoneName;                                   		// 0x0010 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  EffectOffset;                                     		// 0x0018 (0x000C) [0x0000000000000000]              
-	// class UParticleSystem*                          AltRallyEffect;                                   		// 0x0024 (0x0008) [0x0000000000000000]              
-	// struct FName                                    AltEffectBoneNames[ 0x2 ];                        		// 0x002C (0x0010) [0x0000000000000000]              
-	// struct FVector                                  AltEffectOffset;                                  		// 0x003C (0x000C) [0x0000000000000000]              
-	// DWORD                                           bSkipEffects : 1;                                 		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
-	// DWORD                                           ReturnValue : 1;                                  		// 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
-	// class APlayerController*                        PC;                                               		// 0x0050 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.CallOutCloakingExpired
-// [0x00020002] 
-struct AKFPawn_ZedStalker_execCallOutCloakingExpired_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.CallOutCloaking
-// [0x00024002] 
-struct AKFPawn_ZedStalker_execCallOutCloaking_Parms
-{
-	// class AKFPlayerController*                      CallOutController;                                		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.UpdateSpottedStatus
-// [0x00020902] ( FUNC_Event )
-struct AKFPawn_ZedStalker_eventUpdateSpottedStatus_Parms
-{
-	// DWORD                                           bOldSpottedByLP : 1;                              		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	// class AKFPerk*                                  LocalPerk;                                        		// 0x0004 (0x0008) [0x0000000000000000]              
-	// float                                           DistanceSq;                                       		// 0x000C (0x0004) [0x0000000000000000]              
-	// float                                           Range;                                            		// 0x0010 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.GetMinCloakPct
-// [0x00080102] 
-struct AKFPawn_ZedStalker_execGetMinCloakPct_Parms
-{
-	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.Tick
-// [0x00020902] ( FUNC_Event )
-struct AKFPawn_ZedStalker_eventTick_Parms
-{
-	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
-	// float                                           MinCloakPct;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.PlayStealthSoundLoopEnd
-// [0x00020102] 
-struct AKFPawn_ZedStalker_execPlayStealthSoundLoopEnd_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.PlayStealthSoundLoop
-// [0x00020102] 
-struct AKFPawn_ZedStalker_execPlayStealthSoundLoop_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.TerminateEffectsOnDeath
-// [0x00020102] 
-struct AKFPawn_ZedStalker_execTerminateEffectsOnDeath_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.NotifyGoreMeshActive
-// [0x00020902] ( FUNC_Event )
-struct AKFPawn_ZedStalker_eventNotifyGoreMeshActive_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.UpdateGameplayMICParams
-// [0x00020102] 
-struct AKFPawn_ZedStalker_execUpdateGameplayMICParams_Parms
-{
-	// DWORD                                           bIsSpotted : 1;                                   		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.ClientCloakingStateUpdated
-// [0x00020102] 
-struct AKFPawn_ZedStalker_execClientCloakingStateUpdated_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.SetCloaked
-// [0x00020002] 
-struct AKFPawn_ZedStalker_execSetCloaked_Parms
-{
-	// DWORD                                           bNewCloaking : 1;                                 		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.ReplicatedEvent
-// [0x00020902] ( FUNC_Event )
-struct AKFPawn_ZedStalker_eventReplicatedEvent_Parms
-{
-	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedStalker.PostBeginPlay
-// [0x00020902] ( FUNC_Event )
-struct AKFPawn_ZedStalker_eventPostBeginPlay_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedSiren.GetTraderAdviceID
-// [0x00022002] 
-struct AKFPawn_ZedSiren_execGetTraderAdviceID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedSiren.GetSpotterDialogID
-// [0x00020002] 
-struct AKFPawn_ZedSiren_execGetSpotterDialogID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedSiren.GetKillerDialogID
-// [0x00020002] 
-struct AKFPawn_ZedSiren_execGetKillerDialogID_Parms
-{
-	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedSiren.TerminateEffectsOnDeath
-// [0x00020102] 
-struct AKFPawn_ZedSiren_execTerminateEffectsOnDeath_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedSiren.EnableScreamFlicker
-// [0x00020102] 
-struct AKFPawn_ZedSiren_execEnableScreamFlicker_Parms
-{
-	// DWORD                                           bEnabled : 1;                                     		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFPawn_ZedSiren.ANIMNOTIFY_SirenScream
-// [0x00020102] 
-struct AKFPawn_ZedSiren_execANIMNOTIFY_SirenScream_Parms
-{
-	// class UKFSM_Siren_Scream*                       ScreamSM;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedSiren.SetCharacterArch
-// [0x00024102] 
-struct AKFPawn_ZedSiren_execSetCharacterArch_Parms
-{
-	// class UKFCharacterInfoBase*                     Info;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           bForce : 1;                                       		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFPawn_ZedHans.GetHitZoneSkinTypeEffects
@@ -6177,6 +7616,804 @@ struct AKFPawn_ZedHans_eventReplicatedEvent_Parms
 	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFPawn_ZedClot_Cyst.GetTraderAdviceID
+// [0x00022002] 
+struct AKFPawn_ZedClot_Cyst_execGetTraderAdviceID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot.GetSpotterDialogID
+// [0x00020002] 
+struct AKFPawn_ZedClot_execGetSpotterDialogID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             EmergeType;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot.PostInitAnimTree
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedClot_eventPostInitAnimTree_Parms
+{
+	// class USkeletalMeshComponent*                   SkelComp;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_Alpha.GetTraderAdviceID
+// [0x00022002] 
+struct AKFPawn_ZedClot_Alpha_execGetTraderAdviceID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.SetSprinting
+// [0x00020002] 
+struct AKFPawn_ZedClot_AlphaKing_execSetSprinting_Parms
+{
+	// DWORD                                           bNewSprintStatus : 1;                             		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.SetEnraged
+// [0x00020102] 
+struct AKFPawn_ZedClot_AlphaKing_execSetEnraged_Parms
+{
+	// DWORD                                           bNewEnraged : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           bSuccess : 1;                                     		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.ZedExplodeArmor
+// [0x00020002] 
+struct AKFPawn_ZedClot_AlphaKing_execZedExplodeArmor_Parms
+{
+	// int                                             ArmorZoneIdx;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+	// struct FName                                    ArmorZoneName;                                    		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.GetHitZoneSkinTypeEffects
+// [0x00020102] 
+struct AKFPawn_ZedClot_AlphaKing_execGetHitZoneSkinTypeEffects_Parms
+{
+	// int                                             HitZoneIdx;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class UKFSkinTypeEffects*                       ReturnValue;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.GetHitZoneIndex
+// [0x00020002] 
+struct AKFPawn_ZedClot_AlphaKing_execGetHitZoneIndex_Parms
+{
+	// struct FName                                    BoneName;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             ReturnValue;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.PlayHit
+// [0x00020002] 
+struct AKFPawn_ZedClot_AlphaKing_execPlayHit_Parms
+{
+	// float                                           Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  Momentum;                                         		// 0x0020 (0x000C) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x002C (0x0028) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.GetRallyBoostResistance
+// [0x00020102] 
+struct AKFPawn_ZedClot_AlphaKing_execGetRallyBoostResistance_Parms
+{
+	// int                                             NewDamage;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.GetRallyBoostDamage
+// [0x00020102] 
+struct AKFPawn_ZedClot_AlphaKing_execGetRallyBoostDamage_Parms
+{
+	// int                                             NewDamage;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.Rally
+// [0x00024102] 
+struct AKFPawn_ZedClot_AlphaKing_execRally_Parms
+{
+	// class AKFPawn*                                  RallyInstigator;                                  		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UParticleSystem*                          RallyEffect;                                      		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FName                                    EffectBoneName;                                   		// 0x0010 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  EffectOffset;                                     		// 0x0018 (0x000C) [0x0000000000000000]              
+	// class UParticleSystem*                          AltRallyEffect;                                   		// 0x0024 (0x0008) [0x0000000000000000]              
+	// struct FName                                    AltEffectBoneNames[ 0x2 ];                        		// 0x002C (0x0010) [0x0000000000000000]              
+	// struct FVector                                  AltEffectOffset;                                  		// 0x003C (0x000C) [0x0000000000000000]              
+	// DWORD                                           bSkipEffects : 1;                                 		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           ReturnValue : 1;                                  		// 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.PossessedBy
+// [0x00020802] ( FUNC_Event )
+struct AKFPawn_ZedClot_AlphaKing_eventPossessedBy_Parms
+{
+	// class AController*                              C;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bVehicleTransition : 1;                           		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFAIController_ZedClot_AlphaKing*        AlphaController;                                  		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.PostBeginPlay
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedClot_AlphaKing_eventPostBeginPlay_Parms
+{
+	// class UClass*                                   MyDifficultySettings;                             		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedClot_Slasher.GetTraderAdviceID
+// [0x00022002] 
+struct AKFPawn_ZedClot_Slasher_execGetTraderAdviceID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedSiren.GetTraderAdviceID
+// [0x00022002] 
+struct AKFPawn_ZedSiren_execGetTraderAdviceID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedSiren.GetSpotterDialogID
+// [0x00020002] 
+struct AKFPawn_ZedSiren_execGetSpotterDialogID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedSiren.GetKillerDialogID
+// [0x00020002] 
+struct AKFPawn_ZedSiren_execGetKillerDialogID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedSiren.TerminateEffectsOnDeath
+// [0x00020102] 
+struct AKFPawn_ZedSiren_execTerminateEffectsOnDeath_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedSiren.EnableScreamFlicker
+// [0x00020102] 
+struct AKFPawn_ZedSiren_execEnableScreamFlicker_Parms
+{
+	// DWORD                                           bEnabled : 1;                                     		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedSiren.ANIMNOTIFY_SirenScream
+// [0x00020102] 
+struct AKFPawn_ZedSiren_execANIMNOTIFY_SirenScream_Parms
+{
+	// class UKFSM_Siren_Scream*                       ScreamSM;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedSiren.SetCharacterArch
+// [0x00024102] 
+struct AKFPawn_ZedSiren_execSetCharacterArch_Parms
+{
+	// class UKFCharacterInfoBase*                     Info;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bForce : 1;                                       		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.GetTraderAdviceID
+// [0x00022002] 
+struct AKFPawn_ZedStalker_execGetTraderAdviceID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.GetSpotterDialogID
+// [0x00020002] 
+struct AKFPawn_ZedStalker_execGetSpotterDialogID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.GetKillerDialogID
+// [0x00020002] 
+struct AKFPawn_ZedStalker_execGetKillerDialogID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.IsStalkerPawn
+// [0x00022002] 
+struct AKFPawn_ZedStalker_execIsStalkerPawn_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.ReCloakTimer
+// [0x00020102] 
+struct AKFPawn_ZedStalker_execReCloakTimer_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.PlayHeadAsplode
+// [0x00020102] 
+struct AKFPawn_ZedStalker_execPlayHeadAsplode_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.PlayHit
+// [0x00020002] 
+struct AKFPawn_ZedStalker_execPlayHit_Parms
+{
+	// float                                           Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  Momentum;                                         		// 0x0020 (0x000C) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x002C (0x0028) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.OnStackingAfflictionChanged
+// [0x00020002] 
+struct AKFPawn_ZedStalker_execOnStackingAfflictionChanged_Parms
+{
+	// unsigned char                                   Id;                                               		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.CauseHeadTrauma
+// [0x00024002] 
+struct AKFPawn_ZedStalker_execCauseHeadTrauma_Parms
+{
+	// float                                           BleedOutTime;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.PlayDying
+// [0x00020102] 
+struct AKFPawn_ZedStalker_execPlayDying_Parms
+{
+	// class UClass*                                   DamageType;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLoc;                                           		// 0x0008 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.Rally
+// [0x00024102] 
+struct AKFPawn_ZedStalker_execRally_Parms
+{
+	// class AKFPawn*                                  RallyInstigator;                                  		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UParticleSystem*                          RallyEffect;                                      		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FName                                    EffectBoneName;                                   		// 0x0010 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  EffectOffset;                                     		// 0x0018 (0x000C) [0x0000000000000000]              
+	// class UParticleSystem*                          AltRallyEffect;                                   		// 0x0024 (0x0008) [0x0000000000000000]              
+	// struct FName                                    AltEffectBoneNames[ 0x2 ];                        		// 0x002C (0x0010) [0x0000000000000000]              
+	// struct FVector                                  AltEffectOffset;                                  		// 0x003C (0x000C) [0x0000000000000000]              
+	// DWORD                                           bSkipEffects : 1;                                 		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           ReturnValue : 1;                                  		// 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
+	// class APlayerController*                        PC;                                               		// 0x0050 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.CallOutCloakingExpired
+// [0x00020002] 
+struct AKFPawn_ZedStalker_execCallOutCloakingExpired_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.CallOutCloaking
+// [0x00024002] 
+struct AKFPawn_ZedStalker_execCallOutCloaking_Parms
+{
+	// class AKFPlayerController*                      CallOutController;                                		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.UpdateSpottedStatus
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedStalker_eventUpdateSpottedStatus_Parms
+{
+	// DWORD                                           bOldSpottedByLP : 1;                              		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPerk*                                  LocalPerk;                                        		// 0x0004 (0x0008) [0x0000000000000000]              
+	// float                                           DistanceSq;                                       		// 0x000C (0x0004) [0x0000000000000000]              
+	// float                                           Range;                                            		// 0x0010 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.GetMinCloakPct
+// [0x00080102] 
+struct AKFPawn_ZedStalker_execGetMinCloakPct_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.Tick
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedStalker_eventTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           MinCloakPct;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.PlayStealthSoundLoopEnd
+// [0x00020102] 
+struct AKFPawn_ZedStalker_execPlayStealthSoundLoopEnd_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.PlayStealthSoundLoop
+// [0x00020102] 
+struct AKFPawn_ZedStalker_execPlayStealthSoundLoop_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.TerminateEffectsOnDeath
+// [0x00020102] 
+struct AKFPawn_ZedStalker_execTerminateEffectsOnDeath_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.NotifyGoreMeshActive
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedStalker_eventNotifyGoreMeshActive_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.UpdateGameplayMICParams
+// [0x00020102] 
+struct AKFPawn_ZedStalker_execUpdateGameplayMICParams_Parms
+{
+	// DWORD                                           bIsSpotted : 1;                                   		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.ClientCloakingStateUpdated
+// [0x00020102] 
+struct AKFPawn_ZedStalker_execClientCloakingStateUpdated_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.SetCloaked
+// [0x00020002] 
+struct AKFPawn_ZedStalker_execSetCloaked_Parms
+{
+	// DWORD                                           bNewCloaking : 1;                                 		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.ReplicatedEvent
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedStalker_eventReplicatedEvent_Parms
+{
+	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedStalker.PostBeginPlay
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedStalker_eventPostBeginPlay_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawler.GetSpotterDialogID
+// [0x00020002] 
+struct AKFPawn_ZedCrawler_execGetSpotterDialogID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             EmergeType;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawler.Tick
+// [0x00020102] 
+struct AKFPawn_ZedCrawler_execTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawler.DrawDebugRotation
+// [0x00820102] 
+struct AKFPawn_ZedCrawler_execDrawDebugRotation_Parms
+{
+	// struct FVector                                  vExtent;                                          		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  StartLoc;                                         		// 0x000C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawler.GetOverheadDebugText
+// [0x00420102] 
+struct AKFPawn_ZedCrawler_execGetOverheadDebugText_Parms
+{
+	// class AKFHUDBase*                               HUD;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
+	// TArray< struct FString >                        OverheadTexts;                                    		// 0x0008 (0x0010) [0x0000000000000000]              
+	// TArray< struct FColor >                         OverheadColors;                                   		// 0x0018 (0x0010) [0x0000000000000000]              
+	// struct FString                                  DebugText;                                        		// 0x0028 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawler.SpiderBumpLevel
+// [0x00024802] ( FUNC_Event )
+struct AKFPawn_ZedCrawler_eventSpiderBumpLevel_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
+	// class AActor*                                   Wall;                                             		// 0x0018 (0x0008) [0x0000000000000000]              
+	// class UAICommand*                               ActiveCommand;                                    		// 0x0020 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawler.SpecialMoveTo_Leap
+// [0x00024002] 
+struct AKFPawn_ZedCrawler_execSpecialMoveTo_Leap_Parms
+{
+	// class ANavigationPoint*                         Start;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class ANavigationPoint*                         End;                                              		// 0x0008 (0x0008) [0x0000000000000000]              
+	// float                                           JumpTime;                                         		// 0x0010 (0x0004) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawler.PossessedBy
+// [0x00020802] ( FUNC_Event )
+struct AKFPawn_ZedCrawler_eventPossessedBy_Parms
+{
+	// class AController*                              C;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bVehicleTransition : 1;                           		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFAIController_ZedCrawler*               CrawlerController;                                		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawlerKing.Timer_CheckForExplode
+// [0x00820102] 
+struct AKFPawn_ZedCrawlerKing_execTimer_CheckForExplode_Parms
+{
+	// class AKFGoreManager*                           GoreManager;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+	// TArray< struct FName >                          OutGibBoneList;                                   		// 0x0008 (0x0010) [0x0000000000000000]              
+	// int                                             NumGibs;                                          		// 0x0018 (0x0004) [0x0000000000000000]              
+	// struct FVector                                  Impulse;                                          		// 0x001C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawlerKing.CancelExplosion
+// [0x00020102] 
+struct AKFPawn_ZedCrawlerKing_execCancelExplosion_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawlerKing.PlayDying
+// [0x00020102] 
+struct AKFPawn_ZedCrawlerKing_execPlayDying_Parms
+{
+	// class UClass*                                   DamageType;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLoc;                                           		// 0x0008 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawlerKing.Died
+// [0x00020002] 
+struct AKFPawn_ZedCrawlerKing_execDied_Parms
+{
+	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawlerKing.PlayHeadAsplode
+// [0x00020102] 
+struct AKFPawn_ZedCrawlerKing_execPlayHeadAsplode_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedCrawlerKing.CauseHeadTrauma
+// [0x00024002] 
+struct AKFPawn_ZedCrawlerKing_execCauseHeadTrauma_Parms
+{
+	// float                                           BleedOutTime;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedGorefast.GetTraderAdviceID
+// [0x00022002] 
+struct AKFPawn_ZedGorefast_execGetTraderAdviceID_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.OnInstigatorControllerLeft
+// [0x00020102] 
+struct AKFProj_BloatPukeMine_execOnInstigatorControllerLeft_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.Destroyed
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_BloatPukeMine_eventDestroyed_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.SpawnBurstEffect
+// [0x00020102] 
+struct AKFProj_BloatPukeMine_execSpawnBurstEffect_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.FadeOut
+// [0x00020102] 
+struct AKFProj_BloatPukeMine_execFadeOut_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.TornOff
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_BloatPukeMine_eventTornOff_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.Tick
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_BloatPukeMine_eventTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           FadeOutSize;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.TriggerExplosion
+// [0x00020102] 
+struct AKFProj_BloatPukeMine_execTriggerExplosion_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
+	// class AActor*                                   HitActor;                                         		// 0x0018 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.Timer_Explode
+// [0x00020002] 
+struct AKFProj_BloatPukeMine_execTimer_Explode_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.Detonate
+// [0x00020002] 
+struct AKFProj_BloatPukeMine_execDetonate_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.TakeDamage
+// [0x00024822] ( FUNC_Event )
+struct AKFProj_BloatPukeMine_eventTakeDamage_Parms
+{
+	// int                                             InDamage;                                         		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AController*                              InstigatedBy;                                     		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
+	// struct FVector                                  Momentum;                                         		// 0x0018 (0x000C) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0024 (0x0008) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x002C (0x0028) [0x0000000000000000]              
+	// class AActor*                                   DamageCauser;                                     		// 0x0054 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.Touch
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_BloatPukeMine_eventTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      OtherComp;                                        		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x001C (0x000C) [0x0000000000000000]              
+	// class APawn*                                    P;                                                		// 0x0028 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.ValidTouch
+// [0x00020102] 
+struct AKFProj_BloatPukeMine_execValidTouch_Parms
+{
+	// class APawn*                                    Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.SpawnImpactDecal
+// [0x00020102] 
+struct AKFProj_BloatPukeMine_execSpawnImpactDecal_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.PlayImpactSound
+// [0x00024102] 
+struct AKFProj_BloatPukeMine_execPlayImpactSound_Parms
+{
+	// DWORD                                           bIsAtRest : 1;                                    		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.SwapToGroundFX
+// [0x00020102] 
+struct AKFProj_BloatPukeMine_execSwapToGroundFX_Parms
+{
+	// struct FRotator                                 GroundRotation;                                   		// 0x0000 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.Stick
+// [0x00820102] 
+struct AKFProj_BloatPukeMine_execStick_Parms
+{
+	// struct FVector                                  StuckLocation;                                    		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  StuckNormal;                                      		// 0x000C (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0018 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0024 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 StuckRotation;                                    		// 0x0030 (0x000C) [0x0000000000000000]              
+	// class AKFProj_BloatPukeMine*                    PukeMine;                                         		// 0x003C (0x0008) [0x0000000000000000]              
+	// struct FRotator                                 RandRot;                                          		// 0x0044 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.Bounce
+// [0x00820102] 
+struct AKFProj_BloatPukeMine_execBounce_Parms
+{
+	// struct FVector                                  HitNormal;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   BouncedOff;                                       		// 0x000C (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+	// struct FVector                                  VNorm;                                            		// 0x0018 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.Bump
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_BloatPukeMine_eventBump_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      OtherComp;                                        		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0010 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.CanStick
+// [0x00480102] 
+struct AKFProj_BloatPukeMine_execCanStick_Parms
+{
+	// class AActor*                                   HitActor;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0008 (0x000C) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.HitWall
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_BloatPukeMine_eventHitWall_Parms
+{
+	// struct FVector                                  HitNormal;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   Wall;                                             		// 0x000C (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      WallComp;                                         		// 0x0014 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.Explode
+// [0x00020100] 
+struct AKFProj_BloatPukeMine_execExplode_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.StopSimulating
+// [0x00080100] 
+struct AKFProj_BloatPukeMine_execStopSimulating_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.ShutDown
+// [0x00020100] 
+struct AKFProj_BloatPukeMine_execShutDown_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.PostBeginPlay
+// [0x00820902] ( FUNC_Event )
+struct AKFProj_BloatPukeMine_eventPostBeginPlay_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_BloatPukeMine.ReplicatedEvent
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_BloatPukeMine_eventReplicatedEvent_Parms
+{
+	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPickupFactory_Ammo.CurrentPickupIsAmmo
+// [0x00020002] 
+struct AKFPickupFactory_Ammo_execCurrentPickupIsAmmo_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFPickupFactory_Ammo.PickedUpBy
+// [0x00020002] 
+struct AKFPickupFactory_Ammo_execPickedUpBy_Parms
+{
+	// class APawn*                                    P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFGameInfo*                              KFGI;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPickupFactory_Ammo.GiveTo
+// [0x00020002] 
+struct AKFPickupFactory_Ammo_execGiveTo_Parms
+{
+	// class APawn*                                    P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFInventoryManager*                      KFIM;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPickupFactory_Ammo.SetInitialState
+// [0x00020902] ( FUNC_Event )
+struct AKFPickupFactory_Ammo_eventSetInitialState_Parms
+{
+};
+
+// Function kfgamecontent.KFPickupFactory_Ammo.InitializePickup
+// [0x00020102] 
+struct AKFPickupFactory_Ammo_execInitializePickup_Parms
+{
+	// class AKFGameInfo*                              KFGI;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameReplicationInfo_Endless.WaveStarted
+// [0x00020102] 
+struct AKFGameReplicationInfo_Endless_execWaveStarted_Parms
+{
+	// int                                             ModeIndex;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameReplicationInfo_Endless.IsWeeklyWave
+// [0x00420102] 
+struct AKFGameReplicationInfo_Endless_execIsWeeklyWave_Parms
+{
+	// int                                             ModIndex;                                         		// 0x0000 (0x0004) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameReplicationInfo_Endless.IsSpecialWave
+// [0x00420102] 
+struct AKFGameReplicationInfo_Endless_execIsSpecialWave_Parms
+{
+	// int                                             ModIndex;                                         		// 0x0000 (0x0004) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameReplicationInfo_Endless.IsBossWaveNext
+// [0x00020102] 
+struct AKFGameReplicationInfo_Endless_execIsBossWaveNext_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameReplicationInfo_Endless.IsBossWave
+// [0x00020102] 
+struct AKFGameReplicationInfo_Endless_execIsBossWave_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameReplicationInfo_Endless.IsFinalWave
+// [0x00020102] 
+struct AKFGameReplicationInfo_Endless_execIsFinalWave_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFOutbreakEvent_Endless.GetOutbreakId
+// [0x00022002] 
+struct UKFOutbreakEvent_Endless_execGetOutbreakId_Parms
+{
+	// int                                             SetEventsIndex;                                   		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFOutbreakEvent_Endless.AdjustScoreDamage
+// [0x00020002] 
+struct UKFOutbreakEvent_Endless_execAdjustScoreDamage_Parms
+{
+	// class AController*                              InstigatedBy;                                     		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class APawn*                                    DamagedPawn;                                      		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFOutbreakEvent_Endless.AdjustMonsterDefaults
+// [0x00C20002] 
+struct UKFOutbreakEvent_Endless_execAdjustMonsterDefaults_Parms
+{
+	// class AKFPawn_Monster*                          P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FStatAdjustments                         ToAdjust;                                         		// 0x0008 (0x0074) [0x0000000000000000]              
+	// TArray< struct FStatAdjustments >               ZedsToAdjust;                                     		// 0x007C (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFOutbreakEvent_Endless.OnScoreKill
+// [0x00820002] 
+struct UKFOutbreakEvent_Endless_execOnScoreKill_Parms
+{
+	// class APawn*                                    KilledPawn;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FStatAdjustments                         ToAdjust;                                         		// 0x0008 (0x0074) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFTutorialSectionInfo.OpenDelayTimer
 // [0x00020002] 
 struct UKFTutorialSectionInfo_execOpenDelayTimer_Parms
@@ -6193,6 +8430,13 @@ struct UKFTutorialSectionInfo_execGetSlides_Parms
 	// TArray< struct FSTutorialSlide >                MergedSlides;                                     		// 0x0018 (0x0010) [0x0000000000000000]              
 	// struct FSTutorialSlide                          NextSlide;                                        		// 0x0028 (0x003C) [0x0000000000000000]              
 	// struct FSTutorialSlide                          NewSlide;                                         		// 0x0064 (0x003C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_Tutorial.IsMapObjectiveEnabled
+// [0x00020002] 
+struct AKFGameInfo_Tutorial_execIsMapObjectiveEnabled_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFGameInfo_Tutorial.OnTraderMenuClosed
@@ -6586,6 +8830,8 @@ struct AKFPawn_ZedScrake_Versus_execTimer_RageBump_Parms
 struct AKFPawn_ZedScrake_Versus_execSetEnraged_Parms
 {
 	// DWORD                                           bNewEnraged : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           bSuccess : 1;                                     		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFPawn_ZedScrake_Versus.SetSprinting
@@ -6626,6 +8872,8 @@ struct AKFPawn_ZedFleshPound_Versus_execTimer_RageBump_Parms
 struct AKFPawn_ZedFleshPound_Versus_execSetEnraged_Parms
 {
 	// DWORD                                           bNewEnraged : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           bSuccess : 1;                                     		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFPawn_ZedFleshPound_Versus.SetSprinting
@@ -7061,55 +9309,6 @@ struct AKFGFXHudWrapper_Versus_execPostBeginPlay_Parms
 	// class AKFPawn_Monster*                          KFP;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.ApplyGlobalDamage
-// [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execApplyGlobalDamage_Parms
-{
-	// class AKFPawn_Human*                            Pawn;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.ReduceDamage
-// [0x00C20002] 
-struct AKFGameInfo_WeeklySurvival_execReduceDamage_Parms
-{
-	// int                                             Damage;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
-	// class APawn*                                    injured;                                          		// 0x0004 (0x0008) [0x0000000000000000]              
-	// class AController*                              InstigatedBy;                                     		// 0x000C (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0014 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  Momentum;                                         		// 0x0020 (0x000C) [0x0000000000000000]              
-	// class UClass*                                   DamageType;                                       		// 0x002C (0x0008) [0x0000000000000000]              
-	// class AActor*                                   DamageCauser;                                     		// 0x0034 (0x0008) [0x0000000000000000]              
-	// struct FTraceHitInfo                            HitInfo;                                          		// 0x003C (0x0028) [0x0000000000000000]              
-	// int                                             HitZoneIdx;                                       		// 0x0064 (0x0004) [0x0000000000000000]              
-	// class AKFPawn*                                  InstigatorPawn;                                   		// 0x0068 (0x0008) [0x0000000000000000]              
-	// struct FStatAdjustments                         ToAdjust;                                         		// 0x0070 (0x0070) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.AdjustForBeefcakeRules
-// [0x00824002] 
-struct AKFGameInfo_WeeklySurvival_execAdjustForBeefcakeRules_Parms
-{
-	// class APawn*                                    Pawn;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
-	// unsigned char                                   Type;                                             		// 0x0008 (0x0001) [0x0000000000000000]              
-	// float                                           CurrentScale;                                     		// 0x000C (0x0004) [0x0000000000000000]              
-	// float                                           PercentIncrease;                                  		// 0x0010 (0x0004) [0x0000000000000000]              
-	// class AKFPawn_Monster*                          KFP;                                              		// 0x0014 (0x0008) [0x0000000000000000]              
-	// struct FStatAdjustments                         StatAdjust;                                       		// 0x001C (0x0070) [0x0000000000000000]              
-	// float                                           IntendedHeadScaling;                              		// 0x008C (0x0004) [0x0000000000000000]              
-	// float                                           OldHealthMax;                                     		// 0x0090 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.AdjustPawnScale
-// [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execAdjustPawnScale_Parms
-{
-	// class APawn*                                    Pawn;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
-	// float                                           ScalePercent;                                     		// 0x0008 (0x0004) [0x0000000000000000]              
-	// class AKFPawn_Monster*                          MonsterPawn;                                      		// 0x000C (0x0008) [0x0000000000000000]              
-	// class AKFPawn_Human*                            HumanPawn;                                        		// 0x0014 (0x0008) [0x0000000000000000]              
-	// int                                             CurrentHealth;                                    		// 0x001C (0x0004) [0x0000000000000000]              
-};
-
 // Function kfgamecontent.KFGameInfo_WeeklySurvival.DoDeathExplosion
 // [0x00020002] 
 struct AKFGameInfo_WeeklySurvival_execDoDeathExplosion_Parms
@@ -7120,68 +9319,12 @@ struct AKFGameInfo_WeeklySurvival_execDoDeathExplosion_Parms
 	// class AKFExplosionActorReplicated*              ExploActor;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.NotifyIgnoredScream
-// [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execNotifyIgnoredScream_Parms
-{
-	// class AKFPawn*                                  ScreamPawn;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.NotifyRally
-// [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execNotifyRally_Parms
-{
-	// class AKFPawn*                                  RalliedPawn;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.ScoreKill
-// [0x00820002] 
-struct AKFGameInfo_WeeklySurvival_execScoreKill_Parms
-{
-	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AController*                              Other;                                            		// 0x0008 (0x0008) [0x0000000000000000]              
-	// struct FStatAdjustments                         ToAdjust;                                         		// 0x0010 (0x0070) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.PassiveHeal
-// [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execPassiveHeal_Parms
-{
-	// int                                             HealAmount;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
-	// int                                             HealthBeforeHeal;                                 		// 0x0004 (0x0004) [0x0000000000000000]              
-	// class AController*                              InstigatedBy;                                     		// 0x0008 (0x0008) [0x0000000000000000]              
-	// class APawn*                                    HealedPawn;                                       		// 0x0010 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.ScoreHeal
-// [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execScoreHeal_Parms
-{
-	// int                                             HealAmount;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
-	// int                                             HealthBeforeHeal;                                 		// 0x0004 (0x0004) [0x0000000000000000]              
-	// class AController*                              InstigatedBy;                                     		// 0x0008 (0x0008) [0x0000000000000000]              
-	// class APawn*                                    HealedPawn;                                       		// 0x0010 (0x0008) [0x0000000000000000]              
-	// class UClass*                                   DamageType;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.ScoreDamage
-// [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execScoreDamage_Parms
-{
-	// int                                             DamageAmount;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
-	// int                                             HealthBeforeDamage;                               		// 0x0004 (0x0004) [0x0000000000000000]              
-	// class AController*                              InstigatedBy;                                     		// 0x0008 (0x0008) [0x0000000000000000]              
-	// class APawn*                                    DamagedPawn;                                      		// 0x0010 (0x0008) [0x0000000000000000]              
-	// class UClass*                                   DamageType;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
-};
-
 // Function kfgamecontent.KFGameInfo_WeeklySurvival.RestartPlayer
 // [0x00020002] 
 struct AKFGameInfo_WeeklySurvival_execRestartPlayer_Parms
 {
 	// class AController*                              NewPlayer;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
 	// class AKFPawn_Human*                            KFPH;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
-	// class AKFInventoryManager*                      KFIM;                                             		// 0x0010 (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFGameInfo_WeeklySurvival.AdjustStartingGrenadeCount
@@ -7198,41 +9341,15 @@ struct AKFGameInfo_WeeklySurvival_execAllowPrimaryWeapon_Parms
 {
 	// struct FString                                  ClassPath;                                        		// 0x0000 (0x0010) [0x0000000000000000]              
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
-	// struct FSTraderItem                             Item;                                             		// 0x0014 (0x0064) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.GetGameInfoSpawnRateMod
-// [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execGetGameInfoSpawnRateMod_Parms
-{
-	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.SetMonsterDefaults
-// [0x00820002] 
-struct AKFGameInfo_WeeklySurvival_execSetMonsterDefaults_Parms
-{
-	// class AKFPawn_Monster*                          P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FStatAdjustments                         ToAdjust;                                         		// 0x0008 (0x0070) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.GetBossAISpawnType
-// [0x00820002] 
-struct AKFGameInfo_WeeklySurvival_execGetBossAISpawnType_Parms
-{
-	// class UClass*                                   ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FSpawnReplacement                        Replacement;                                      		// 0x0008 (0x0010) [0x0000000000000000]              
-	// int                                             BossIdx;                                          		// 0x0018 (0x0004) [0x0000000000000000]              
+	// struct FSTraderItem                             Item;                                             		// 0x0014 (0x0094) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFGameInfo_WeeklySurvival.GetAISpawnType
-// [0x00820002] 
+// [0x00020002] 
 struct AKFGameInfo_WeeklySurvival_execGetAISpawnType_Parms
 {
 	// unsigned char                                   AIType;                                           		// 0x0000 (0x0001) [0x0000000000000000]              
 	// class UClass*                                   ReturnValue;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
-	// struct FSpawnReplacement                        Replacement;                                      		// 0x000C (0x0010) [0x0000000000000000]              
-	// float                                           RandF;                                            		// 0x001C (0x0004) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFGameInfo_WeeklySurvival.ResetPickups
@@ -7301,23 +9418,6 @@ struct AKFGameInfo_WeeklySurvival_execStartWave_Parms
 {
 };
 
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.GetTotalWaveCountScale
-// [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execGetTotalWaveCountScale_Parms
-{
-	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.ModifyGroundSpeed
-// [0x00420002] 
-struct AKFGameInfo_WeeklySurvival_execModifyGroundSpeed_Parms
-{
-	// class AKFPawn*                                  PlayerPawn;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
-	// float                                           GroundSpeed;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
-	// class AKFWeapon*                                KFW;                                              		// 0x000C (0x0008) [0x0000000000000000]              
-	// class AKFInventoryManager*                      KFIM;                                             		// 0x0014 (0x0008) [0x0000000000000000]              
-};
-
 // Function kfgamecontent.KFGameInfo_WeeklySurvival.EndOfMatch
 // [0x00020002] 
 struct AKFGameInfo_WeeklySurvival_execEndOfMatch_Parms
@@ -7352,6 +9452,14 @@ struct AKFGameInfo_WeeklySurvival_execTickZedTime_Parms
 struct AKFGameInfo_WeeklySurvival_execTick_Parms
 {
 	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFGameInfo_WeeklySurvival.SetBossIndex
+// [0x00820002] 
+struct AKFGameInfo_WeeklySurvival_execSetBossIndex_Parms
+{
+	// struct FSpawnReplacement                        Replacement;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+	// int                                             ReplaceIdx;                                       		// 0x0010 (0x0004) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFGameInfo_WeeklySurvival.PostLogin
@@ -7391,12 +9499,6 @@ struct AKFGameInfo_WeeklySurvival_execSetPermanentZedTime_Parms
 	// class AKFPlayerController*                      KFPC;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.SetWorldInfoOverrides
-// [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execSetWorldInfoOverrides_Parms
-{
-};
-
 // Function kfgamecontent.KFGameInfo_WeeklySurvival.SetSpawnPointOverrides
 // [0x00020002] 
 struct AKFGameInfo_WeeklySurvival_execSetSpawnPointOverrides_Parms
@@ -7414,21 +9516,42 @@ struct AKFGameInfo_WeeklySurvival_execSetZedTimeOverrides_Parms
 // [0x00820002] 
 struct AKFGameInfo_WeeklySurvival_execSetPickupItemList_Parms
 {
-	// struct FSTraderItem                             TraderItem;                                       		// 0x0000 (0x0064) [0x0000000000000000]              
-	// class AKFPickupFactory_Item*                    ItemFactory;                                      		// 0x0064 (0x0008) [0x0000000000000000]              
-	// int                                             Idx;                                              		// 0x006C (0x0004) [0x0000000000000000]              
+	// struct FSTraderItem                             TraderItem;                                       		// 0x0000 (0x0094) [0x0000000000000000]              
+	// class AKFPickupFactory_Item*                    ItemFactory;                                      		// 0x0094 (0x0008) [0x0000000000000000]              
+	// int                                             Idx;                                              		// 0x009C (0x0004) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.SetGameLength
+// Function kfgamecontent.KFGameInfo_WeeklySurvival.SetModifiedGameLength
 // [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execSetGameLength_Parms
+struct AKFGameInfo_WeeklySurvival_execSetModifiedGameLength_Parms
 {
 };
 
-// Function kfgamecontent.KFGameInfo_WeeklySurvival.SetGameDifficulty
+// Function kfgamecontent.KFGameInfo_WeeklySurvival.UsesModifiedLength
 // [0x00020002] 
-struct AKFGameInfo_WeeklySurvival_execSetGameDifficulty_Parms
+struct AKFGameInfo_WeeklySurvival_execUsesModifiedLength_Parms
 {
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_WeeklySurvival.SetModifiedGameDifficulty
+// [0x00020002] 
+struct AKFGameInfo_WeeklySurvival_execSetModifiedGameDifficulty_Parms
+{
+};
+
+// Function kfgamecontent.KFGameInfo_WeeklySurvival.UsesModifiedDifficulty
+// [0x00020002] 
+struct AKFGameInfo_WeeklySurvival_execUsesModifiedDifficulty_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFGameInfo_WeeklySurvival.CreateOutbreakEvent
+// [0x00020002] 
+struct AKFGameInfo_WeeklySurvival_execCreateOutbreakEvent_Parms
+{
+	// class UKFGameEngine*                            KGE;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFGameInfo_WeeklySurvival.PreBeginPlay
@@ -7443,7 +9566,6 @@ struct AKFGameInfo_WeeklySurvival_eventInitGame_Parms
 {
 	// struct FString                                  Options;                                          		// 0x0000 (0x0010) [0x0000000000000000]              
 	// struct FString                                  ErrorMessage;                                     		// 0x0010 (0x0010) [0x0000000000000000]              
-	// class UKFGameEngine*                            KGE;                                              		// 0x0020 (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFGameInfo_WeeklySurvival.GametypeChecksWaveLength
@@ -7469,101 +9591,32 @@ struct AKFGameInfo_WeeklySurvival_eventSetGameType_Parms
 	// struct FString                                  Portal;                                           		// 0x0020 (0x0010) [0x0000000000000000]              
 	// class UClass*                                   ReturnValue;                                      		// 0x0030 (0x0008) [0x0000000000000000]              
 	// class UKFGameEngine*                            KGE;                                              		// 0x0038 (0x0008) [0x0000000000000000]              
+	// int                                             WeeklyIndex;                                      		// 0x0040 (0x0004) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.GetRallyBoostResistance
-// [0x00020102] 
-struct AKFPawn_ZedClot_AlphaKing_execGetRallyBoostResistance_Parms
+// Function kfgamecontent.KFOutbreakEvent_Weekly.GetOutbreakId
+// [0x00022002] 
+struct UKFOutbreakEvent_Weekly_execGetOutbreakId_Parms
 {
-	// int                                             NewDamage;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             SetEventsIndex;                                   		// 0x0000 (0x0004) [0x0000000000000000]              
 	// int                                             ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.GetRallyBoostDamage
-// [0x00020102] 
-struct AKFPawn_ZedClot_AlphaKing_execGetRallyBoostDamage_Parms
-{
-	// int                                             NewDamage;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
-	// int                                             ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.Rally
-// [0x00024102] 
-struct AKFPawn_ZedClot_AlphaKing_execRally_Parms
-{
-	// class AKFPawn*                                  RallyInstigator;                                  		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class UParticleSystem*                          RallyEffect;                                      		// 0x0008 (0x0008) [0x0000000000000000]              
-	// struct FName                                    EffectBoneName;                                   		// 0x0010 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  EffectOffset;                                     		// 0x0018 (0x000C) [0x0000000000000000]              
-	// class UParticleSystem*                          AltRallyEffect;                                   		// 0x0024 (0x0008) [0x0000000000000000]              
-	// struct FName                                    AltEffectBoneNames[ 0x2 ];                        		// 0x002C (0x0010) [0x0000000000000000]              
-	// struct FVector                                  AltEffectOffset;                                  		// 0x003C (0x000C) [0x0000000000000000]              
-	// DWORD                                           bSkipEffects : 1;                                 		// 0x0048 (0x0004) [0x0000000000000000] [0x00000001] 
-	// DWORD                                           ReturnValue : 1;                                  		// 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.PossessedBy
-// [0x00020802] ( FUNC_Event )
-struct AKFPawn_ZedClot_AlphaKing_eventPossessedBy_Parms
-{
-	// class AController*                              C;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-	// DWORD                                           bVehicleTransition : 1;                           		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	// class AKFAIController_ZedClot_AlphaKing*        AlphaController;                                  		// 0x000C (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedClot_AlphaKing.PostBeginPlay
-// [0x00020902] ( FUNC_Event )
-struct AKFPawn_ZedClot_AlphaKing_eventPostBeginPlay_Parms
-{
-	// class UClass*                                   MyDifficultySettings;                             		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0008 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawlerKing.Timer_CheckForExplode
-// [0x00820102] 
-struct AKFPawn_ZedCrawlerKing_execTimer_CheckForExplode_Parms
-{
-	// class AKFGoreManager*                           GoreManager;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
-	// TArray< struct FName >                          OutGibBoneList;                                   		// 0x0008 (0x0010) [0x0000000000000000]              
-	// int                                             NumGibs;                                          		// 0x0018 (0x0004) [0x0000000000000000]              
-	// struct FVector                                  Impulse;                                          		// 0x001C (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawlerKing.CancelExplosion
-// [0x00020102] 
-struct AKFPawn_ZedCrawlerKing_execCancelExplosion_Parms
-{
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawlerKing.PlayDying
-// [0x00020102] 
-struct AKFPawn_ZedCrawlerKing_execPlayDying_Parms
-{
-	// class UClass*                                   DamageType;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLoc;                                           		// 0x0008 (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawlerKing.Died
+// Function kfgamecontent.KFOutbreakEvent_Weekly.AdjustScoreDamage
 // [0x00020002] 
-struct AKFPawn_ZedCrawlerKing_execDied_Parms
+struct UKFOutbreakEvent_Weekly_execAdjustScoreDamage_Parms
 {
-	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class UClass*                                   DamageType;                                       		// 0x0008 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AController*                              InstigatedBy;                                     		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class APawn*                                    DamagedPawn;                                      		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0010 (0x0008) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFPawn_ZedCrawlerKing.PlayHeadAsplode
-// [0x00020102] 
-struct AKFPawn_ZedCrawlerKing_execPlayHeadAsplode_Parms
+// Function kfgamecontent.KFOutbreakEvent_Weekly.OnScoreKill
+// [0x00820002] 
+struct UKFOutbreakEvent_Weekly_execOnScoreKill_Parms
 {
-};
-
-// Function kfgamecontent.KFPawn_ZedCrawlerKing.CauseHeadTrauma
-// [0x00024002] 
-struct AKFPawn_ZedCrawlerKing_execCauseHeadTrauma_Parms
-{
-	// float                                           BleedOutTime;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class APawn*                                    KilledPawn;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FStatAdjustments                         ToAdjust;                                         		// 0x0008 (0x0074) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFGFxHUD_PlayerStatusVersus.ClearBuffIcons
@@ -7721,6 +9774,776 @@ struct AKFInventory_Money_execDropFrom_Parms
 	// class AKFDroppedPickup_Cash*                    KFDP;                                             		// 0x0018 (0x0008) [0x0000000000000000]              
 	// class APlayerReplicationInfo*                   PRI;                                              		// 0x0020 (0x0008) [0x0000000000000000]              
 	// int                                             Amount;                                           		// 0x0028 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetActorCount
+// [0x00020100] 
+struct AKFMapObjective_AreaDefense_execGetActorCount_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetLocalizedRequirements
+// [0x00020100] 
+struct AKFMapObjective_AreaDefense_execGetLocalizedRequirements_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.UsesMultipleActors
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execUsesMultipleActors_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetLocalizedDescription
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetLocalizedDescription_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetLocalizedName
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetLocalizedName_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetIcon
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetIcon_Parms
+{
+	// class UTexture2D*                               ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetIconLocation
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetIconLocation_Parms
+{
+	// struct FVector                                  ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.ShouldDrawIcon
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execShouldDrawIcon_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetMaxXPReward
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetMaxXPReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0004 (0x0008) [0x0000000000000000]              
+	// int                                             ArrayEnd;                                         		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetXPReward
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetXPReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             MaxDoshReward;                                    		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetMaxVoshReward
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetMaxVoshReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetVoshReward
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetVoshReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             MaxDoshReward;                                    		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetMaxDoshReward
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetMaxDoshReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0004 (0x0008) [0x0000000000000000]              
+	// int                                             ArrayEnd;                                         		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetDoshReward
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetDoshReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.HasFailedObjective
+// [0x00020100] 
+struct AKFMapObjective_AreaDefense_execHasFailedObjective_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetSpawnRateMod
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetSpawnRateMod_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0004 (0x0008) [0x0000000000000000]              
+	// int                                             NumPlayersAlive;                                  		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetPlayersInObjective
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetPlayersInObjective_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.IsBonus
+// [0x00020002] 
+struct AKFMapObjective_AreaDefense_execIsBonus_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetActivationPctChance
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGetActivationPctChance_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GetProgress
+// [0x00020100] 
+struct AKFMapObjective_AreaDefense_execGetProgress_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.UsesProgress
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execUsesProgress_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.IsCurrentGameModeBlacklisted
+// [0x00020002] 
+struct AKFMapObjective_AreaDefense_execIsCurrentGameModeBlacklisted_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class UClass*                                   CurrGameClass;                                    		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.CanActivateObjective
+// [0x00020002] 
+struct AKFMapObjective_AreaDefense_execCanActivateObjective_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.IsActive
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execIsActive_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.GrantReward
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execGrantReward_Parms
+{
+	// class AKFPawn_Human*                            PlayerToReward;                                   		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.DeactivateObjective
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execDeactivateObjective_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             J;                                                		// 0x0004 (0x0004) [0x0000000000000000]              
+	// class UKFSeqEvent_MapObjectiveActivated*        ActivationEvent;                                  		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.SetTrailActorType
+// [0x00020100] 
+struct AKFMapObjective_AreaDefense_execSetTrailActorType_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.ActivateObjective
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execActivateObjective_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             J;                                                		// 0x0004 (0x0004) [0x0000000000000000]              
+	// class UKFSeqEvent_MapObjectiveActivated*        ActivationEvent;                                  		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.IsValidZed
+// [0x00020002] 
+struct AKFMapObjective_AreaDefense_execIsValidZed_Parms
+{
+	// class AActor*                                   PotentialZed;                                     		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPawn_Monster*                          KFPM;                                             		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.UpdateMeshArrayState
+// [0x00020102] 
+struct AKFMapObjective_AreaDefense_execUpdateMeshArrayState_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             J;                                                		// 0x0004 (0x0004) [0x0000000000000000]              
+	// int                                             K;                                                		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.UnTouch
+// [0x00020802] ( FUNC_Event )
+struct AKFMapObjective_AreaDefense_eventUnTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.Touch
+// [0x00020802] ( FUNC_Event )
+struct AKFMapObjective_AreaDefense_eventTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      OtherComp;                                        		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x001C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.PostBeginPlay
+// [0x00020902] ( FUNC_Event )
+struct AKFMapObjective_AreaDefense_eventPostBeginPlay_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             J;                                                		// 0x0004 (0x0004) [0x0000000000000000]              
+	// int                                             K;                                                		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_AreaDefense.ReplicatedEvent
+// [0x00020902] ( FUNC_Event )
+struct AKFMapObjective_AreaDefense_eventReplicatedEvent_Parms
+{
+	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFReplicatedShowPathObjective.GetPathClass
+// [0x00020102] 
+struct AKFReplicatedShowPathObjective_execGetPathClass_Parms
+{
+	// class UClass*                                   ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFReplicatedShowPathObjective.SetObjeciveType
+// [0x00020102] 
+struct AKFReplicatedShowPathObjective_execSetObjeciveType_Parms
+{
+	// unsigned char                                   ObjEnum;                                          		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.GetActorCount
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execGetActorCount_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.UsesMultipleActors
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execUsesMultipleActors_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.HasFailedObjective
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execHasFailedObjective_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.GetLocalizedRequirements
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execGetLocalizedRequirements_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.GetProgress
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execGetProgress_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.CheckTriggerActivation
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execCheckTriggerActivation_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.OnTriggerReactivated
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execOnTriggerReactivated_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.OnTriggerActivated
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execOnTriggerActivated_Parms
+{
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.Timer_AllowRemindPlayers
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execTimer_AllowRemindPlayers_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.Timer_CheckObjective
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execTimer_CheckObjective_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             PlayerCount;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.UnTouch
+// [0x00020802] ( FUNC_Event )
+struct AKFMapObjective_ActivateTrigger_eventUnTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             PlayerCount;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.Touch
+// [0x00020802] ( FUNC_Event )
+struct AKFMapObjective_ActivateTrigger_eventTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      OtherComp;                                        		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x001C (0x000C) [0x0000000000000000]              
+	// int                                             PlayerCount;                                      		// 0x0028 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.ActivateTrigger
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execActivateTrigger_Parms
+{
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.PlayDeactivationDialog
+// [0x00020002] 
+struct AKFMapObjective_ActivateTrigger_execPlayDeactivationDialog_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.DeactivateObjective
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execDeactivateObjective_Parms
+{
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFPawn_Human*                            KFPH;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.SetTrailActorType
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execSetTrailActorType_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.ActivateObjective
+// [0x00020102] 
+struct AKFMapObjective_ActivateTrigger_execActivateObjective_Parms
+{
+	// int                                             PlayerCount;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_ActivateTrigger.ReplicatedEvent
+// [0x00020902] ( FUNC_Event )
+struct AKFMapObjective_ActivateTrigger_eventReplicatedEvent_Parms
+{
+	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFTrigger_ObjectiveLever.AllowReactivation
+// [0x00020002] 
+struct AKFTrigger_ObjectiveLever_execAllowReactivation_Parms
+{
+};
+
+// Function kfgamecontent.KFTrigger_ObjectiveLever.ActivateGame
+// [0x00020002] 
+struct AKFTrigger_ObjectiveLever_execActivateGame_Parms
+{
+};
+
+// Function kfgamecontent.KFTrigger_ObjectiveLever.ReadyToActivate
+// [0x00020102] 
+struct AKFTrigger_ObjectiveLever_execReadyToActivate_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           bReadyToActivate : 1;                             		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.HasFailedObjective
+// [0x00020102] 
+struct AKFMapObjective_DoshHold_execHasFailedObjective_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.GetLocalizedRequirements
+// [0x00020102] 
+struct AKFMapObjective_DoshHold_execGetLocalizedRequirements_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+	// int                                             PlayerCount;                                      		// 0x0010 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.GetActivationPctChance
+// [0x00020102] 
+struct AKFMapObjective_DoshHold_execGetActivationPctChance_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0004 (0x0008) [0x0000000000000000]              
+	// int                                             ArrayEnd;                                         		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.GetProgress
+// [0x00020102] 
+struct AKFMapObjective_DoshHold_execGetProgress_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             MaxDoshReward;                                    		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.PlayDeactivationDialog
+// [0x00020002] 
+struct AKFMapObjective_DoshHold_execPlayDeactivationDialog_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.DeactivateObjective
+// [0x00020102] 
+struct AKFMapObjective_DoshHold_execDeactivateObjective_Parms
+{
+	// class AKFPawn_Human*                            KFPH;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+	// TArray< class AKFPawn_Human* >                  CachedHumans;                                     		// 0x0010 (0x0010) [0x0000000000000000]              
+	// DWORD                                           bOneHumanAlive : 1;                               		// 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.Timer_CheckWaveProgress
+// [0x00020102] 
+struct AKFMapObjective_DoshHold_execTimer_CheckWaveProgress_Parms
+{
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// float                                           WaveProgress;                                     		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.ActivateObjective
+// [0x00020102] 
+struct AKFMapObjective_DoshHold_execActivateObjective_Parms
+{
+	// int                                             PlayerCount;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.ActivationVO
+// [0x00020002] 
+struct AKFMapObjective_DoshHold_execActivationVO_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.StartPenaltyCheck
+// [0x00020002] 
+struct AKFMapObjective_DoshHold_execStartPenaltyCheck_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.Timer_AllowRemindPlayers
+// [0x00020102] 
+struct AKFMapObjective_DoshHold_execTimer_AllowRemindPlayers_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.CheckBonusState
+// [0x00020002] 
+struct AKFMapObjective_DoshHold_execCheckBonusState_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             PlayerCount;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_DoshHold.Touch
+// [0x00020802] ( FUNC_Event )
+struct AKFMapObjective_DoshHold_eventTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      OtherComp;                                        		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x001C (0x000C) [0x0000000000000000]              
+	// int                                             PlayerCount;                                      		// 0x0028 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetActorCount
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetActorCount_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.UsesMultipleActors
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execUsesMultipleActors_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetLivingPlayerCount
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetLivingPlayerCount_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AController*                              P;                                                		// 0x0004 (0x0008) [0x0000000000000000]              
+	// int                                             UsedLivingHumanPlayersCount;                      		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.HasFailedObjective
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execHasFailedObjective_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetSpawnRateMod
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetSpawnRateMod_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0004 (0x0008) [0x0000000000000000]              
+	// int                                             NumPlayersAlive;                                  		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetMaxXPReward
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetMaxXPReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetXPReward
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetXPReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             MaxXP;                                            		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetMaxVoshReward
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetMaxVoshReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetVoshReward
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetVoshReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             MaxDosh;                                          		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetMaxDoshReward
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetMaxDoshReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetDoshReward
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetDoshReward_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             MaxDosh;                                          		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetIcon
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetIcon_Parms
+{
+	// class UTexture2D*                               ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetIconLocation
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetIconLocation_Parms
+{
+	// struct FVector                                  ReturnValue;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.ShouldDrawIcon
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execShouldDrawIcon_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetLocalizedName
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetLocalizedName_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetLocalizedRequirements
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetLocalizedRequirements_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetLocalizedDescription
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetLocalizedDescription_Parms
+{
+	// struct FString                                  ReturnValue;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetActivationPctChance
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetActivationPctChance_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetTotalProgress
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetTotalProgress_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.GetProgress
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execGetProgress_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.UsesProgress
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execUsesProgress_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.IsCurrentGameModeBlacklisted
+// [0x00020002] 
+struct AKFMapObjective_RepairActors_execIsCurrentGameModeBlacklisted_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class UClass*                                   CurrGameClass;                                    		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.CanActivateObjective
+// [0x00020002] 
+struct AKFMapObjective_RepairActors_execCanActivateObjective_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.IsBonus
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execIsBonus_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.IsActive
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execIsActive_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.OnActorRepaired
+// [0x00020002] 
+struct AKFMapObjective_RepairActors_execOnActorRepaired_Parms
+{
+	// class AKFRepairableActor*                       RepairedActor;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFGameReplicationInfo*                   KFGRI;                                            		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.ChooseNextActorToRepair
+// [0x00020002] 
+struct AKFMapObjective_RepairActors_execChooseNextActorToRepair_Parms
+{
+	// class AKFRepairableActor*                       ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+	// int                                             ChosenActorIndex;                                 		// 0x0008 (0x0004) [0x0000000000000000]              
+	// class AKFRepairableActor*                       ChosenActor;                                      		// 0x000C (0x0008) [0x0000000000000000]              
+	// TArray< class AKFRepairableActor* >             ValidActors;                                      		// 0x0014 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.UpdateTrailActor
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execUpdateTrailActor_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.ActivateNextRepairableActor
+// [0x00020002] 
+struct AKFMapObjective_RepairActors_execActivateNextRepairableActor_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.PlayDeactivationDialog
+// [0x00020002] 
+struct AKFMapObjective_RepairActors_execPlayDeactivationDialog_Parms
+{
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.DeactivateObjective
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execDeactivateObjective_Parms
+{
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFPawn_Human*                            KFPH;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class AKFRepairableActor*                       CurrActor;                                        		// 0x0010 (0x0008) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0018 (0x0004) [0x0000000000000000]              
+	// class UKFSeqEvent_MapObjectiveActivated*        ActivationEvent;                                  		// 0x001C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.ActivateObjective
+// [0x00020102] 
+struct AKFMapObjective_RepairActors_execActivateObjective_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             PlayerCount;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+	// class UKFSeqEvent_MapObjectiveActivated*        ActivationEvent;                                  		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class AKFRepairableActor*                       CurrActor;                                        		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFMapObjective_RepairActors.ReplicatedEvent
+// [0x00020902] ( FUNC_Event )
+struct AKFMapObjective_RepairActors_eventReplicatedEvent_Parms
+{
+	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFMG_TargetGame.NotifyWinners
@@ -8538,6 +11361,21 @@ struct AKFMGVolume_DoshToss_eventTouch_Parms
 	// struct FVector                                  HitNormal;                                        		// 0x001C (0x000C) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFvolume_RagdollThrow.IsActorExcluded
+// [0x00020102] 
+struct AKFvolume_RagdollThrow_execIsActorExcluded_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFvolume_RagdollThrow.CausePainTo
+// [0x00020102] 
+struct AKFvolume_RagdollThrow_execCausePainTo_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFvolume_RagdollThrow.Touch
 // [0x00820902] ( FUNC_Event )
 struct AKFvolume_RagdollThrow_eventTouch_Parms
@@ -8551,6 +11389,138 @@ struct AKFvolume_RagdollThrow_eventTouch_Parms
 	// struct FVector                                  HitDirection;                                     		// 0x0038 (0x000C) [0x0000000000000000]              
 	// int                                             LastHitIdx;                                       		// 0x0044 (0x0004) [0x0000000000000000]              
 	// struct FHitTracking                             NewHit;                                           		// 0x0048 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR_EMP.OnZedDied
+// [0x00020002] 
+struct AKFPawn_ZedDAR_EMP_execOnZedDied_Parms
+{
+	// class AController*                              Killer;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UKFSM_DAR_EMPAttack*                      EMPSM;                                            		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR_EMP.GetWeaponStartTraceLocation
+// [0x00824902] ( FUNC_Event )
+struct AKFPawn_ZedDAR_EMP_eventGetWeaponStartTraceLocation_Parms
+{
+	// class AWeapon*                                  CurrentWeapon;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  ReturnValue;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// class AKFAIController_ZedDAR_EMP*               DARAI;                                            		// 0x0014 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  SocketLoc;                                        		// 0x001C (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRot;                                        		// 0x0028 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR_EMP.ToggleEMPBurst
+// [0x00020102] 
+struct AKFPawn_ZedDAR_EMP_execToggleEMPBurst_Parms
+{
+	// DWORD                                           bEnable : 1;                                      		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class UKFSM_DAR_EMPAttack*                      EMPSM;                                            		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR_EMP.ANIMNOTIFY_EMPEnd
+// [0x00020102] 
+struct AKFPawn_ZedDAR_EMP_execANIMNOTIFY_EMPEnd_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR_EMP.ANIMNOTIFY_EMPStart
+// [0x00020102] 
+struct AKFPawn_ZedDAR_EMP_execANIMNOTIFY_EMPStart_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR_Laser.ANIMNOTIFY_FireLaser_R
+// [0x00020102] 
+struct AKFPawn_ZedDAR_Laser_execANIMNOTIFY_FireLaser_R_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR_Laser.ANIMNOTIFY_FireLaser_L
+// [0x00020102] 
+struct AKFPawn_ZedDAR_Laser_execANIMNOTIFY_FireLaser_L_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR_Rocket.ANIMNOTIFY_FireRocket_R
+// [0x00020102] 
+struct AKFPawn_ZedDAR_Rocket_execANIMNOTIFY_FireRocket_R_Parms
+{
+};
+
+// Function kfgamecontent.KFPawn_ZedDAR_Rocket.ANIMNOTIFY_FireRocket_L
+// [0x00020102] 
+struct AKFPawn_ZedDAR_Rocket_execANIMNOTIFY_FireRocket_L_Parms
+{
+};
+
+// Function kfgamecontent.KFTrigger_BloatKingGorge.Touch
+// [0x00020802] ( FUNC_Event )
+struct AKFTrigger_BloatKingGorge_eventTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      OtherComp;                                        		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x001C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFTrigger_BloatKingGorge.BaseChange
+// [0x00020802] ( FUNC_Event )
+struct AKFTrigger_BloatKingGorge_eventBaseChange_Parms
+{
+};
+
+// Function kfgamecontent.KFZedArmorInfo_BloatKing.UpdateArmorPieces
+// [0x00820102] 
+struct UKFZedArmorInfo_BloatKing_execUpdateArmorPieces_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+	// struct FVector                                  SocketLocation;                                   		// 0x0004 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRotation;                                   		// 0x0010 (0x000C) [0x0000000000000000]              
+	// class UKFCharacterInfo_Monster*                 MonsterArch;                                      		// 0x001C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFZedArmorInfo_BloatKing.UpdateArmorUI
+// [0x00820102] 
+struct UKFZedArmorInfo_BloatKing_execUpdateArmorUI_Parms
+{
+	// struct FSCompressedArmorInfo                    CompressedArmorInfoList[ 0x3 ];                   		// 0x0000 (0x0024) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0024 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFZedArmorInfo_BloatKing.ExplodeArmor
+// [0x00020002] 
+struct UKFZedArmorInfo_BloatKing_execExplodeArmor_Parms
+{
+	// int                                             ArmorZoneIdx;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+	// struct FName                                    ArmorZoneName;                                    		// 0x0004 (0x0008) [0x0000000000000000]              
+	// unsigned char                                   StatusField;                                      		// 0x000C (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFZedArmorInfo_BloatKing.GetKFPC
+// [0x00020102] 
+struct UKFZedArmorInfo_BloatKing_execGetKFPC_Parms
+{
+	// class AKFPlayerController*                      ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFZedArmorInfo_ClotKing.UpdateArmorPieces
+// [0x00820102] 
+struct UKFZedArmorInfo_ClotKing_execUpdateArmorPieces_Parms
+{
+	// struct FVector                                  SocketLocation;                                   		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRotation;                                   		// 0x000C (0x000C) [0x0000000000000000]              
+	// class UKFCharacterInfo_Monster*                 MonsterArch;                                      		// 0x0018 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFZedArmorInfo_ClotKing.ExplodeArmor
+// [0x00020002] 
+struct UKFZedArmorInfo_ClotKing_execExplodeArmor_Parms
+{
+	// int                                             ArmorZoneIdx;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+	// struct FName                                    ArmorZoneName;                                    		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FName                                    AdjustedZoneName;                                 		// 0x000C (0x0008) [0x0000000000000000]              
+	// unsigned char                                   StatusField;                                      		// 0x0014 (0x0001) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFSM_Emerge_Crawler.PushOverlappingHumans
@@ -8631,6 +11601,36 @@ struct AKFPlayerCamera_Versus_execPostBeginPlay_Parms
 {
 };
 
+// Function kfgamecontent.KFZedArmorInfo_EvilDAR.UpdateArmorPieces
+// [0x00820102] 
+struct UKFZedArmorInfo_EvilDAR_execUpdateArmorPieces_Parms
+{
+	// struct FVector                                  SocketLocation;                                   		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 SocketRotation;                                   		// 0x000C (0x000C) [0x0000000000000000]              
+	// class UKFCharacterInfo_Monster*                 MonsterArch;                                      		// 0x0018 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFZedArmorInfo_EvilDAR.ExplodeArmor
+// [0x00020002] 
+struct UKFZedArmorInfo_EvilDAR_execExplodeArmor_Parms
+{
+	// int                                             ArmorZoneIdx;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
+	// struct FName                                    ArmorZoneName;                                    		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FName                                    AdjustedZoneName;                                 		// 0x000C (0x0008) [0x0000000000000000]              
+	// unsigned char                                   StatusField;                                      		// 0x0014 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFZedArmorInfo_EvilDAR.AdjustBoneDamage
+// [0x00420002] 
+struct UKFZedArmorInfo_EvilDAR_execAdjustBoneDamage_Parms
+{
+	// int                                             InDamage;                                         		// 0x0000 (0x0004) [0x0000000000000000]              
+	// struct FName                                    BoneName;                                         		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  DamagerSource;                                    		// 0x000C (0x000C) [0x0000000000000000]              
+	// unsigned char                                   PrevArmorZoneStatus;                              		// 0x0018 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   HeadByte;                                         		// 0x0019 (0x0001) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFPawn_ZedFleshpound_Mixer.UsePlayerControlledZedSkin
 // [0x00020902] ( FUNC_Event )
 struct AKFPawn_ZedFleshpound_Mixer_eventUsePlayerControlledZedSkin_Parms
@@ -8651,6 +11651,13 @@ struct UKFSkinTypeEffects_HansShield_execAttachEffectToHitLocation_Parms
 	// struct FName                                    HitBoneName;                                      		// 0x0034 (0x0008) [0x0000000000000000]              
 	// int                                             HitBoneIdx;                                       		// 0x003C (0x0004) [0x0000000000000000]              
 	// class UParticleSystemComponent*                 PSC;                                              		// 0x0040 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFPawn_ZedFleshpoundMini_Mixer.UsePlayerControlledZedSkin
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedFleshpoundMini_Mixer_eventUsePlayerControlledZedSkin_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFProj_HansHEGrenade.SpecialRandSpin
@@ -9464,6 +12471,13 @@ struct AKFWeap_Minigun_Patriarch_Versus_execPostBeginPlay_Parms
 {
 };
 
+// Function kfgamecontent.KFPawn_ZedScrake_Mixer.UsePlayerControlledZedSkin
+// [0x00020902] ( FUNC_Event )
+struct AKFPawn_ZedScrake_Mixer_eventUsePlayerControlledZedSkin_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
 // Function kfgamecontent.KFSM_Siren_Scream.SpecialMoveEnded
 // [0x00020002] 
 struct UKFSM_Siren_Scream_execSpecialMoveEnded_Parms
@@ -9733,6 +12747,7 @@ struct AKFWeap_MedicBase_execProcessInstantHitEx_Parms
 	// class AKFPawn*                                  HealTarget;                                       		// 0x0070 (0x0008) [0x0000000000000000]              
 	// class AKFPlayerController*                      Healer;                                           		// 0x0078 (0x0008) [0x0000000000000000]              
 	// class AKFPerk*                                  InstigatorPerk;                                   		// 0x0080 (0x0008) [0x0000000000000000]              
+	// float                                           AdjustedHealAmount;                               		// 0x0088 (0x0004) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFWeap_MedicBase.ConsumeAmmo
@@ -9872,6 +12887,65 @@ struct AKFProj_Bolt_Crossbow_execSyncOriginalLocation_Parms
 {
 };
 
+// Function kfgamecontent.KFProj_Bullet_DragonsBreath.StopSimulating
+// [0x00880102] 
+struct AKFProj_Bullet_DragonsBreath_execStopSimulating_Parms
+{
+	// struct FVector                                  FlameSpawnVel;                                    		// 0x0000 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_Bullet_DragonsBreath.TriggerExplosion
+// [0x00020102] 
+struct AKFProj_Bullet_DragonsBreath_execTriggerExplosion_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
+	// class AActor*                                   HitActor;                                         		// 0x0018 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_Bullet_DragonsBreath.ProcessTouch
+// [0x00020102] 
+struct AKFProj_Bullet_DragonsBreath_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_MolotovSplash.PrepareExplosionTemplate
+// [0x00080102] 
+struct AKFProj_MolotovSplash_execPrepareExplosionTemplate_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_MolotovSplash.PrepareExplosionActor
+// [0x00880102] 
+struct AKFProj_MolotovSplash_execPrepareExplosionActor_Parms
+{
+	// class AGameExplosionActor*                      GEA;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFExplosion_Molotov*                     KFEM;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  ExplosionDir;                                     		// 0x0010 (0x000C) [0x0000000000000000]              
+	// class AKFPawn*                                  KFPInstigator;                                    		// 0x001C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_MolotovSplash.ProcessTouch
+// [0x00020102] 
+struct AKFProj_MolotovSplash_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_MolotovSplash.HitWall
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_MolotovSplash_eventHitWall_Parms
+{
+	// struct FVector                                  HitNormal;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   Wall;                                             		// 0x000C (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      WallComp;                                         		// 0x0014 (0x0008) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFProj_Bullet_Pellet.ShouldWarnAIWhenFired
 // [0x00020002] 
 struct AKFProj_Bullet_Pellet_execShouldWarnAIWhenFired_Parms
@@ -9983,6 +13057,15 @@ struct AKFProj_EMPGrenade_execPostBeginPlay_Parms
 {
 };
 
+// Function kfgamecontent.KFProj_EMPGrenade_Mini.ProcessTouch
+// [0x00020102] 
+struct AKFProj_EMPGrenade_Mini_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFProj_FlareGun.StopSimulating
 // [0x00880102] 
 struct AKFProj_FlareGun_execStopSimulating_Parms
@@ -10026,40 +13109,6 @@ struct AKFProj_FlareGun_execSpawnFlightEffects_Parms
 {
 };
 
-// Function kfgamecontent.KFProj_MolotovSplash.PrepareExplosionTemplate
-// [0x00080102] 
-struct AKFProj_MolotovSplash_execPrepareExplosionTemplate_Parms
-{
-};
-
-// Function kfgamecontent.KFProj_MolotovSplash.PrepareExplosionActor
-// [0x00880102] 
-struct AKFProj_MolotovSplash_execPrepareExplosionActor_Parms
-{
-	// class AGameExplosionActor*                      GEA;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AKFExplosion_Molotov*                     KFEM;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  ExplosionDir;                                     		// 0x0010 (0x000C) [0x0000000000000000]              
-	// class AKFPawn*                                  KFPInstigator;                                    		// 0x001C (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_MolotovSplash.ProcessTouch
-// [0x00020102] 
-struct AKFProj_MolotovSplash_execProcessTouch_Parms
-{
-	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFProj_MolotovSplash.HitWall
-// [0x00020902] ( FUNC_Event )
-struct AKFProj_MolotovSplash_eventHitWall_Parms
-{
-	// struct FVector                                  HitNormal;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
-	// class AActor*                                   Wall;                                             		// 0x000C (0x0008) [0x0000000000000000]              
-	// class UPrimitiveComponent*                      WallComp;                                         		// 0x0014 (0x0008) [0x0000000000000000]              
-};
-
 // Function kfgamecontent.KFProj_FlashBangGrenade.GrenadeIsAtRest
 // [0x00020902] ( FUNC_Event )
 struct AKFProj_FlashBangGrenade_eventGrenadeIsAtRest_Parms
@@ -10072,6 +13121,24 @@ struct AKFProj_FlashBangGrenade_execPostBeginPlay_Parms
 {
 };
 
+// Function kfgamecontent.KFProj_FlashBangGrenade_Mini.ProcessTouch
+// [0x00020102] 
+struct AKFProj_FlashBangGrenade_Mini_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_FragGrenade_Mini.ProcessTouch
+// [0x00020102] 
+struct AKFProj_FragGrenade_Mini_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFProj_FreezeGrenade.GrenadeIsAtRest
 // [0x00020902] ( FUNC_Event )
 struct AKFProj_FreezeGrenade_eventGrenadeIsAtRest_Parms
@@ -10082,6 +13149,62 @@ struct AKFProj_FreezeGrenade_eventGrenadeIsAtRest_Parms
 // [0x00020102] 
 struct AKFProj_FreezeGrenade_execPostBeginPlay_Parms
 {
+};
+
+// Function kfgamecontent.KFProj_FreezeGrenade_Mini.ProcessTouch
+// [0x00020102] 
+struct AKFProj_FreezeGrenade_Mini_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_GroundIce.PrepareExplosionTemplate
+// [0x00080102] 
+struct AKFProj_GroundIce_execPrepareExplosionTemplate_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_GroundIce.PrepareExplosionActor
+// [0x00080102] 
+struct AKFProj_GroundIce_execPrepareExplosionActor_Parms
+{
+	// class AGameExplosionActor*                      GEA;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFExplosionActorLingering*               KFE_GroundFire;                                   		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_GroundIce.Touch
+// [0x00020900] ( FUNC_Event )
+struct AKFProj_GroundIce_eventTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      OtherComp;                                        		// 0x0008 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x001C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_GroundIce.PostBeginPlay
+// [0x00020102] 
+struct AKFProj_GroundIce_execPostBeginPlay_Parms
+{
+	// class AKFPlayerReplicationInfo*                 InstigatorPRI;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_GroundIce.ReplicatedEvent
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_GroundIce_eventReplicatedEvent_Parms
+{
+	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_GroundIce.WarnAI
+// [0x00820002] 
+struct AKFProj_GroundIce_execWarnAI_Parms
+{
+	// struct FVector                                  Direction;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AKFPawn_Monster*                          KFPM;                                             		// 0x000C (0x0008) [0x0000000000000000]              
+	// struct FVector                                  DangerPoint;                                      		// 0x0014 (0x000C) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFProj_GrenadeShard.Tick
@@ -10133,6 +13256,210 @@ struct AKFProj_HealingDart_eventTick_Parms
 struct AKFProj_HealingDart_execInitializeSeek_Parms
 {
 	// class AKFPawn*                                  KFP;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_HEGrenade_Mini.ProcessTouch
+// [0x00020102] 
+struct AKFProj_HEGrenade_Mini_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_HuskCannon_Fireball.SpawnFlightEffects
+// [0x00020102] 
+struct AKFProj_HuskCannon_Fireball_execSpawnFlightEffects_Parms
+{
+};
+
+// Function kfgamecontent.KFProj_HuskCannon_Fireball.GetIncapMod
+// [0x00020002] 
+struct AKFProj_HuskCannon_Fireball_execGetIncapMod_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_HuskCannon_Fireball.SetExplosionActorClass
+// [0x00080102] 
+struct AKFProj_HuskCannon_Fireball_execSetExplosionActorClass_Parms
+{
+	// class AKFPlayerReplicationInfo*                 InstigatorPRI;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_HuskCannon_Fireball.PrepareExplosionTemplate
+// [0x00080102] 
+struct AKFProj_HuskCannon_Fireball_execPrepareExplosionTemplate_Parms
+{
+	// DWORD                                           bUseConcussiveForce : 1;                          		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AWeapon*                                  OwnerWeapon;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
+	// class APawn*                                    OwnerPawn;                                        		// 0x000C (0x0008) [0x0000000000000000]              
+	// class AKFPlayerReplicationInfo*                 PRI;                                              		// 0x0014 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_HuskCannon_Fireball.ProcessTouch
+// [0x00020102] 
+struct AKFProj_HuskCannon_Fireball_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_HuskCannon_Fireball.TriggerExplosion
+// [0x00820102] 
+struct AKFProj_HuskCannon_Fireball_execTriggerExplosion_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x000C (0x000C) [0x0000000000000000]              
+	// class AActor*                                   HitActor;                                         		// 0x0018 (0x0008) [0x0000000000000000]              
+	// class AKFExplosionActorLingering*               GFExplosionActor;                                 		// 0x0020 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  GroundExplosionHitNormal;                         		// 0x0028 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_HuskCannon_Fireball.PrepareExplosionActor
+// [0x00080102] 
+struct AKFProj_HuskCannon_Fireball_execPrepareExplosionActor_Parms
+{
+	// class AGameExplosionActor*                      GEA;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFExplosionActor_HuskCannon*             HuskExplode;                                      		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_HuskCannon_Fireball.PostBeginPlay
+// [0x00020102] 
+struct AKFProj_HuskCannon_Fireball_execPostBeginPlay_Parms
+{
+	// class AKFWeap_HuskCannon*                       HuskCannon;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerReplicationInfo*                 InstigatorPRI;                                    		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_HuskCannon_Fireball.ReplicatedEvent
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_HuskCannon_Fireball_eventReplicatedEvent_Parms
+{
+	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.AdjustDamage
+// [0x00420002] 
+struct AKFWeap_HuskCannon_execAdjustDamage_Parms
+{
+	// int                                             InDamage;                                         		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0004 (0x0008) [0x0000000000000000]              
+	// class AActor*                                   DamageCauser;                                     		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.GetChargeFXLevel
+// [0x00020102] 
+struct AKFWeap_HuskCannon_execGetChargeFXLevel_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             ChargeLevel;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.GetChargeLevel
+// [0x00020102] 
+struct AKFWeap_HuskCannon_execGetChargeLevel_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.CauseMuzzleFlash
+// [0x00020102] 
+struct AKFWeap_HuskCannon_execCauseMuzzleFlash_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.SpawnProjectile
+// [0x00020102] 
+struct AKFWeap_HuskCannon_execSpawnProjectile_Parms
+{
+	// class UClass*                                   KFProjClass;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  RealStartLoc;                                     		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  AimDir;                                           		// 0x0014 (0x000C) [0x0000000000000000]              
+	// class AKFProjectile*                            ReturnValue;                                      		// 0x0020 (0x0008) [0x0000000000000000]              
+	// class AKFProj_HuskCannon_Fireball*              HuskBall;                                         		// 0x0028 (0x0008) [0x0000000000000000]              
+	// int                                             Charges;                                          		// 0x0030 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.Timer_StopFireEffects
+// [0x00020102] 
+struct AKFWeap_HuskCannon_execTimer_StopFireEffects_Parms
+{
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.FireAmmunition
+// [0x00020102] 
+struct AKFWeap_HuskCannon_execFireAmmunition_Parms
+{
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.OnStartFire
+// [0x00020102] 
+struct AKFWeap_HuskCannon_execOnStartFire_Parms
+{
+	// class AKFPawn*                                  PawnInst;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.StartFire
+// [0x00020102] 
+struct AKFWeap_HuskCannon_execStartFire_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.ConsumeAmmo
+// [0x00020102] 
+struct AKFWeap_HuskCannon_execConsumeAmmo_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// class AKFPerk*                                  InstigatorPerk;                                   		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.CalculateTraderWeaponStatDamage
+// [0x00022102] 
+struct AKFWeap_HuskCannon_execCalculateTraderWeaponStatDamage_Parms
+{
+	// float                                           ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           CalculatedDamage;                                 		// 0x0004 (0x0004) [0x0000000000000000]              
+	// class UClass*                                   DamageType;                                       		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class UGameExplosion*                           ExplosionInstance;                                		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_HuskCannon.GetTraderFilter
+// [0x00022902] ( FUNC_Event )
+struct AKFWeap_HuskCannon_eventGetTraderFilter_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_MedicGrenade_Mini.ProcessTouch
+// [0x00020102] 
+struct AKFProj_MedicGrenade_Mini_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_MedicGrenade_Mini.Bounce
+// [0x00020102] 
+struct AKFProj_MedicGrenade_Mini_execBounce_Parms
+{
+	// struct FVector                                  HitNormal;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   BouncedOff;                                       		// 0x000C (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFProj_MedicGrenade_Mini.HitWall
+// [0x00820902] ( FUNC_Event )
+struct AKFProj_MedicGrenade_Mini_eventHitWall_Parms
+{
+	// struct FVector                                  HitNormal;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   Wall;                                             		// 0x000C (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      WallComp;                                         		// 0x0014 (0x0008) [0x0000000000000000]              
+	// struct FTraceHitInfo                            HitInfo;                                          		// 0x001C (0x0028) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFProj_MicrowaveImpact.PrepareExplosionTemplate
@@ -10218,6 +13545,24 @@ struct AKFProj_MolotovGrenade_eventHitWall_Parms
 // [0x00020102] 
 struct AKFProj_MolotovGrenade_execSpawnFlightEffects_Parms
 {
+};
+
+// Function kfgamecontent.KFProj_MolotovGrenade_Mini.HitWall
+// [0x00020902] ( FUNC_Event )
+struct AKFProj_MolotovGrenade_Mini_eventHitWall_Parms
+{
+	// struct FVector                                  HitNormal;                                        		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AActor*                                   Wall;                                             		// 0x000C (0x0008) [0x0000000000000000]              
+	// class UPrimitiveComponent*                      WallComp;                                         		// 0x0014 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFProj_NailBombGrenade_Mini.ProcessTouch
+// [0x00020102] 
+struct AKFProj_NailBombGrenade_Mini_execProcessTouch_Parms
+{
+	// class AActor*                                   Other;                                            		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitNormal;                                        		// 0x0014 (0x000C) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFProj_Rocket_Seeker6.Tick
@@ -10348,6 +13693,15 @@ struct AKFWeap_RocketLauncher_Seeker6_execFindTargets_Parms
 	// float                                           BestScore;                                        		// 0x0078 (0x0004) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFWeap_RocketLauncher_Seeker6.CanLockOnTo
+// [0x00020102] 
+struct AKFWeap_RocketLauncher_Seeker6_execCanLockOnTo_Parms
+{
+	// class AActor*                                   TA;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFPawn*                                  PawnTarget;                                       		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFWeap_RocketLauncher_Seeker6.Tick
 // [0x00020902] ( FUNC_Event )
 struct AKFWeap_RocketLauncher_Seeker6_eventTick_Parms
@@ -10363,6 +13717,15 @@ struct AKFWeap_RocketLauncher_Seeker6_eventTick_Parms
 // [0x00020102] 
 struct AKFWeap_RocketLauncher_Seeker6_execAltFireMode_Parms
 {
+};
+
+// Function kfgamecontent.KFProj_Thrown_C4.SetWeaponSkin
+// [0x00020102] 
+struct AKFProj_Thrown_C4_execSetWeaponSkin_Parms
+{
+	// int                                             SkinID;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// TArray< class UMaterialInterface* >             SkinMICs;                                         		// 0x0004 (0x0010) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0014 (0x0004) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFProj_Thrown_C4.OnInstigatorControllerLeft
@@ -10739,6 +14102,16 @@ struct AKFWeap_Thrown_C4_execSetIronSights_Parms
 	// DWORD                                           bNewIronSights : 1;                               		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
+// Function kfgamecontent.KFSeqAct_BloodRain.Activated
+// [0x00020802] ( FUNC_Event )
+struct UKFSeqAct_BloodRain_eventActivated_Parms
+{
+	// class AWorldInfo*                               WI;                                               		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class USeqVar_Object*                           ObjVar;                                           		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class AKFBloodRainVolume*                       BRV;                                              		// 0x0010 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bVolumesAreActive : 1;                            		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
 // Function kfgamecontent.KFSeqAct_MinigameActivateGenerator.Activated
 // [0x00020802] ( FUNC_Event )
 struct UKFSeqAct_MinigameActivateGenerator_eventActivated_Parms
@@ -10914,6 +14287,30 @@ struct UKFSeqEvent_MinigameGeneratorStateChanged_execStateChanged_Parms
 	// DWORD                                           bIsActive : 1;                                    		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
 	// DWORD                                           bReactivated : 1;                                 		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
 	// TArray< int >                                   ActiveIndices;                                    		// 0x0018 (0x0010) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKingSubspawn_Explode.SpecialMoveEnded
+// [0x00020002] 
+struct UKFSM_BloatKingSubspawn_Explode_execSpecialMoveEnded_Parms
+{
+	// struct FName                                    PrevMove;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FName                                    NextMove;                                         		// 0x0008 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKingSubspawn_Explode.SpecialMoveStarted
+// [0x00020002] 
+struct UKFSM_BloatKingSubspawn_Explode_execSpecialMoveStarted_Parms
+{
+	// DWORD                                           bForced : 1;                                      		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	// struct FName                                    PrevMove;                                         		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFSM_BloatKingSubspawn_Explode.Tick
+// [0x00020002] 
+struct UKFSM_BloatKingSubspawn_Explode_execTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// class AKFPawn_Monster*                          OwnerMonster;                                     		// 0x0004 (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.SprayActor_Flame.SetSprayLength
@@ -11572,23 +14969,6 @@ struct AKFVolume_DisableZedJump_eventTouch_Parms
 	// struct FVector                                  HitNormal;                                        		// 0x001C (0x000C) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFWeapAttach_MultiAmmo.PlayReloadMagazineAnim
-// [0x00020102] 
-struct AKFWeapAttach_MultiAmmo_execPlayReloadMagazineAnim_Parms
-{
-	// unsigned char                                   NewWeaponState;                                   		// 0x0000 (0x0001) [0x0000000000000000]              
-	// class AKFPawn*                                  P;                                                		// 0x0004 (0x0008) [0x0000000000000000]              
-	// struct FName                                    AnimName;                                         		// 0x000C (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_MultiAmmo.CauseMuzzleFlash
-// [0x00020102] 
-struct AKFWeapAttach_MultiAmmo_execCauseMuzzleFlash_Parms
-{
-	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
-	// DWORD                                           AutoShellEject : 1;                               		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
 // Function kfgamecontent.KFWeap_AssaultRifle_M16M203.TryToAltReload
 // [0x00020102] 
 struct AKFWeap_AssaultRifle_M16M203_execTryToAltReload_Parms
@@ -11715,6 +15095,118 @@ struct AKFWeap_AssaultRifle_Medic_eventGetTraderFilter_Parms
 	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.UpdateOpticsUI
+// [0x00024102] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execUpdateOpticsUI_Parms
+{
+	// DWORD                                           bForceUpdate : 1;                                 		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.TryToAltReload
+// [0x00020102] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execTryToAltReload_Parms
+{
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.CanAltAutoReload
+// [0x00020102] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execCanAltAutoReload_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.CanOverrideMagReload
+// [0x00020102] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execCanOverrideMagReload_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.ServerSetAltAmmoCount
+// [0x002200C2] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execServerSetAltAmmoCount_Parms
+{
+	// unsigned char                                   Amount;                                           		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.ServerSendToAltReload
+// [0x002200C2] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execServerSendToAltReload_Parms
+{
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.SendToAltReload
+// [0x00020102] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execSendToAltReload_Parms
+{
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.ShouldAutoReload
+// [0x00020102] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execShouldAutoReload_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.CauseMuzzleFlash
+// [0x00020102] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execCauseMuzzleFlash_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// DWORD                                           AutoShellEject : 1;                               		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.SetOriginalValuesFromPickup
+// [0x00020002] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execSetOriginalValuesFromPickup_Parms
+{
+	// class AKFWeapon*                                PickedUpWeapon;                                   		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.ClientGiveSecondaryAmmo
+// [0x010201C2] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execClientGiveSecondaryAmmo_Parms
+{
+	// unsigned char                                   Amount;                                           		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.AddSecondaryAmmo
+// [0x00020002] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execAddSecondaryAmmo_Parms
+{
+	// int                                             Amount;                                           		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             ReturnValue;                                      		// 0x0004 (0x0004) [0x0000000000000000]              
+	// int                                             OldAmmo;                                          		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.InitializeAmmo
+// [0x00020002] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execInitializeAmmo_Parms
+{
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.AltFireMode
+// [0x00020102] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execAltFireMode_Parms
+{
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.GetAltTraderFilter
+// [0x00022902] ( FUNC_Event )
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_eventGetAltTraderFilter_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher.GetSecondaryAmmoForHUD
+// [0x00020102] 
+struct AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher_execGetSecondaryAmmoForHUD_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFWeap_Beam_Microwave.GetTraderFilter
 // [0x00022902] ( FUNC_Event )
 struct AKFWeap_Beam_Microwave_eventGetTraderFilter_Parms
@@ -11738,21 +15230,15 @@ struct AKFWeap_Beam_Microwave_execCustomFire_Parms
 	// class AKFExplosionActorReplicated*              ExploActor;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
 	// struct FVector                                  SpawnLoc;                                         		// 0x0008 (0x000C) [0x0000000000000000]              
 	// struct FRotator                                 SpawnRot;                                         		// 0x0014 (0x000C) [0x0000000000000000]              
+	// float                                           ModifiedDamage;                                   		// 0x0020 (0x0004) [0x0000000000000000]              
+	// float                                           OriginalDamage;                                   		// 0x0024 (0x0004) [0x0000000000000000]              
+	// float                                           OriginalDamageRadius;                             		// 0x0028 (0x0004) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFWeap_Beam_Microwave.AltFireMode
 // [0x00020102] 
 struct AKFWeap_Beam_Microwave_execAltFireMode_Parms
 {
-};
-
-// Function kfgamecontent.KFWeap_Beam_Microwave.GetLoopEndFireAnim
-// [0x00020102] 
-struct AKFWeap_Beam_Microwave_execGetLoopEndFireAnim_Parms
-{
-	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
-	// struct FName                                    ReturnValue;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
-	// DWORD                                           bPlayFireLast : 1;                                		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFWeap_Beam_Microwave.GetWeaponFireAnim
@@ -11762,21 +15248,6 @@ struct AKFWeap_Beam_Microwave_execGetWeaponFireAnim_Parms
 	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
 	// struct FName                                    ReturnValue;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
 	// DWORD                                           bPlayFireLast : 1;                                		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFWeapAttach_MaceAndShield.PlayWeaponMeshAnim
-// [0x00020100] 
-struct AKFWeapAttach_MaceAndShield_execPlayWeaponMeshAnim_Parms
-{
-	// struct FName                                    AnimName;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class UAnimNodeSlot*                            SyncNode;                                         		// 0x0008 (0x0008) [0x0000000000000000]              
-	// DWORD                                           bLoop : 1;                                        		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFWeapAttach_MaceAndShield.PlayWeaponFireAnim
-// [0x00020100] 
-struct AKFWeapAttach_MaceAndShield_execPlayWeaponFireAnim_Parms
-{
 };
 
 // Function kfgamecontent.KFWeap_Blunt_MaceAndShield.SwapToShieldMeleeSettings
@@ -11789,32 +15260,6 @@ struct AKFWeap_Blunt_MaceAndShield_execSwapToShieldMeleeSettings_Parms
 // [0x00020102] 
 struct AKFWeap_Blunt_MaceAndShield_execSwapToMaceMeleeSettings_Parms
 {
-};
-
-// Function kfgamecontent.KFWeapAttach_Pulverizer.UpdateThirdPersonWeaponAction
-// [0x00020102] 
-struct AKFWeapAttach_Pulverizer_execUpdateThirdPersonWeaponAction_Parms
-{
-	// unsigned char                                   NewWeaponState;                                   		// 0x0000 (0x0001) [0x0000000000000000]              
-	// class AKFPawn*                                  P;                                                		// 0x0004 (0x0008) [0x0000000000000000]              
-	// unsigned char                                   ThirdPersonAnimRateByte;                          		// 0x000C (0x0001) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_Pulverizer.PlayPulverizerShoot
-// [0x00020102] 
-struct AKFWeapAttach_Pulverizer_execPlayPulverizerShoot_Parms
-{
-	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_Pulverizer.ThirdPersonFireEffects
-// [0x00020102] 
-struct AKFWeapAttach_Pulverizer_execThirdPersonFireEffects_Parms
-{
-	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
-	// class AKFPawn*                                  P;                                                		// 0x000C (0x0008) [0x0000000000000000]              
-	// unsigned char                                   ThirdPersonAnimRateByte;                          		// 0x0014 (0x0001) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function kfgamecontent.KFWeap_Blunt_Pulverizer.CanReload
@@ -11870,11 +15315,27 @@ struct AKFWeap_Blunt_Pulverizer_execGetPulverizerAim_Parms
 	// struct FRotator                                 R;                                                		// 0x0018 (0x000C) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFWeap_Blunt_Pulverizer.SetExplosionActorClass
+// [0x00080102] 
+struct AKFWeap_Blunt_Pulverizer_execSetExplosionActorClass_Parms
+{
+	// class AKFPlayerReplicationInfo*                 InstigatorPRI;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Blunt_Pulverizer.PrepareExplosionTemplate
+// [0x00080102] 
+struct AKFWeap_Blunt_Pulverizer_execPrepareExplosionTemplate_Parms
+{
+	// class AKFPlayerReplicationInfo*                 InstigatorPRI;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFPlayerController*                      KFPC;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class AKFPerk*                                  InstigatorPerk;                                   		// 0x0010 (0x0008) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFWeap_Blunt_Pulverizer.CustomFire
 // [0x00820102] 
 struct AKFWeap_Blunt_Pulverizer_execCustomFire_Parms
 {
-	// class AKFExplosionActorReplicated*              ExploActor;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFExplosionActor*                        ExploActor;                                       		// 0x0000 (0x0008) [0x0000000000000000]              
 	// struct FVector                                  SpawnLoc;                                         		// 0x0008 (0x000C) [0x0000000000000000]              
 	// struct FRotator                                 SpawnRot;                                         		// 0x0014 (0x000C) [0x0000000000000000]              
 };
@@ -11921,23 +15382,6 @@ struct AKFWeap_Bow_Crossbow_execShouldPlayFireLast_Parms
 struct AKFWeap_Edged_Knife_execAllowedForAllPerks_Parms
 {
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// Function kfgamecontent.KFWeapAttach_Eviscerator.ThirdPersonFireEffects
-// [0x00020102] 
-struct AKFWeapAttach_Eviscerator_execThirdPersonFireEffects_Parms
-{
-	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
-	// class AKFPawn*                                  P;                                                		// 0x000C (0x0008) [0x0000000000000000]              
-	// unsigned char                                   ThirdPersonAnimRateByte;                          		// 0x0014 (0x0001) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
-	// float                                           Duration;                                         		// 0x001C (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_Eviscerator.PreBeginPlay
-// [0x00020802] ( FUNC_Event )
-struct AKFWeapAttach_Eviscerator_eventPreBeginPlay_Parms
-{
 };
 
 // Function kfgamecontent.KFWeap_Eviscerator.BlockInterruptTimer
@@ -12046,34 +15490,6 @@ struct AKFWeap_Eviscerator_eventPostInitAnimTree_Parms
 // [0x00020902] ( FUNC_Event )
 struct AKFWeap_Eviscerator_eventPreBeginPlay_Parms
 {
-};
-
-// Function kfgamecontent.KFWeapAttach_Flamethrower.TurnOffFireSpray
-// [0x00080102] 
-struct AKFWeapAttach_Flamethrower_execTurnOffFireSpray_Parms
-{
-	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_Flamethrower.TurnOnFireSpray
-// [0x00080102] 
-struct AKFWeapAttach_Flamethrower_execTurnOnFireSpray_Parms
-{
-	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_Flamethrower.TurnOffPilot
-// [0x00080102] 
-struct AKFWeapAttach_Flamethrower_execTurnOffPilot_Parms
-{
-	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_Flamethrower.TurnOnPilot
-// [0x00080102] 
-struct AKFWeapAttach_Flamethrower_execTurnOnPilot_Parms
-{
-	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFWeap_Flame_CaulkBurn.SetFOV
@@ -12207,6 +15623,108 @@ struct AKFWeap_Healer_Syringe_execInitializeAmmo_Parms
 {
 };
 
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.GetTraderFilter
+// [0x00022902] ( FUNC_Event )
+struct AKFWeap_Ice_FreezeThrower_eventGetTraderFilter_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.SetPilotDynamicLightEnabled
+// [0x00020100] 
+struct AKFWeap_Ice_FreezeThrower_execSetPilotDynamicLightEnabled_Parms
+{
+	// DWORD                                           bLightEnabled : 1;                                		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.IsHeavyWeapon
+// [0x00020102] 
+struct AKFWeap_Ice_FreezeThrower_execIsHeavyWeapon_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.ModifyRecoil
+// [0x00420102] 
+struct AKFWeap_Ice_FreezeThrower_execModifyRecoil_Parms
+{
+	// float                                           CurrentRecoilModifier;                            		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.HandleWeaponShotTaken
+// [0x00020002] 
+struct AKFWeap_Ice_FreezeThrower_execHandleWeaponShotTaken_Parms
+{
+	// unsigned char                                   FireMode;                                         		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.ShouldAutoReload
+// [0x00020102] 
+struct AKFWeap_Ice_FreezeThrower_execShouldAutoReload_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	// DWORD                                           bRequestReload : 1;                               		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.AddMultiShotSpread
+// [0x00820102] 
+struct AKFWeap_Ice_FreezeThrower_execAddMultiShotSpread_Parms
+{
+	// struct FRotator                                 BaseAim;                                          		// 0x0000 (0x000C) [0x0000000000000000]              
+	// unsigned char                                   PelletNum;                                        		// 0x000C (0x0001) [0x0000000000000000]              
+	// struct FRotator                                 ReturnValue;                                      		// 0x0010 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  X;                                                		// 0x001C (0x000C) [0x0000000000000000]              
+	// struct FVector                                  Y;                                                		// 0x0028 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  Z;                                                		// 0x0034 (0x000C) [0x0000000000000000]              
+	// float                                           CurrentSpread;                                    		// 0x0040 (0x0004) [0x0000000000000000]              
+	// float                                           RandY;                                            		// 0x0044 (0x0004) [0x0000000000000000]              
+	// float                                           RandZ;                                            		// 0x0048 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.AddSpread
+// [0x00020102] 
+struct AKFWeap_Ice_FreezeThrower_execAddSpread_Parms
+{
+	// struct FRotator                                 BaseAim;                                          		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FRotator                                 ReturnValue;                                      		// 0x000C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.GetNumProjectilesToFire
+// [0x00020102] 
+struct AKFWeap_Ice_FreezeThrower_execGetNumProjectilesToFire_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   ReturnValue;                                      		// 0x0001 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.SpawnProjectile
+// [0x00820102] 
+struct AKFWeap_Ice_FreezeThrower_execSpawnProjectile_Parms
+{
+	// class UClass*                                   KFProjClass;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  RealStartLoc;                                     		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  AimDir;                                           		// 0x0014 (0x000C) [0x0000000000000000]              
+	// class AKFProjectile*                            ReturnValue;                                      		// 0x0020 (0x0008) [0x0000000000000000]              
+	// int                                             I;                                                		// 0x0028 (0x0004) [0x0000000000000000]              
+	// struct FRotator                                 AimRot;                                           		// 0x002C (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.AltFireMode
+// [0x00020102] 
+struct AKFWeap_Ice_FreezeThrower_execAltFireMode_Parms
+{
+};
+
+// Function kfgamecontent.KFWeap_Ice_FreezeThrower.GetWeaponFireAnim
+// [0x00020102] 
+struct AKFWeap_Ice_FreezeThrower_execGetWeaponFireAnim_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// struct FName                                    ReturnValue;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bPlayFireLast : 1;                                		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
 // Function kfgamecontent.KFWeap_LMG_Stoner63A.GetReloadAnimName
 // [0x00020102] 
 struct AKFWeap_LMG_Stoner63A_execGetReloadAnimName_Parms
@@ -12267,6 +15785,26 @@ struct AKFWeap_LMG_Stoner63A_eventReplicatedEvent_Parms
 	// struct FName                                    VarName;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFWeap_Pistol_AF2011.SpawnProjectile
+// [0x00020102] 
+struct AKFWeap_Pistol_AF2011_execSpawnProjectile_Parms
+{
+	// class UClass*                                   KFProjClass;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  RealStartLoc;                                     		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  AimDir;                                           		// 0x0014 (0x000C) [0x0000000000000000]              
+	// class AKFProjectile*                            ReturnValue;                                      		// 0x0020 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Pistol_DualAF2011.SpawnProjectile
+// [0x00020102] 
+struct AKFWeap_Pistol_DualAF2011_execSpawnProjectile_Parms
+{
+	// class UClass*                                   KFProjClass;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  RealStartLoc;                                     		// 0x0008 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  AimDir;                                           		// 0x0014 (0x000C) [0x0000000000000000]              
+	// class AKFProjectile*                            ReturnValue;                                      		// 0x0020 (0x0008) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFWeap_Pistol_DualFlare.GetAltTraderFilter
 // [0x00022902] ( FUNC_Event )
 struct AKFWeap_Pistol_DualFlare_eventGetAltTraderFilter_Parms
@@ -12298,51 +15836,6 @@ struct AKFWeap_Rifle_Hemogoblin_execProcessInstantHitEx_Parms
 struct AKFWeap_Rifle_Hemogoblin_eventGetTraderFilter_Parms
 {
 	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_Railgun.SpawnTracer
-// [0x00820102] 
-struct AKFWeapAttach_Railgun_execSpawnTracer_Parms
-{
-	// struct FVector                                  EffectLocation;                                   		// 0x0000 (0x000C) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
-	// class UParticleSystemComponent*                 E;                                                		// 0x0018 (0x0008) [0x0000000000000000]              
-	// struct FVector                                  Dir;                                              		// 0x0020 (0x000C) [0x0000000000000000]              
-	// float                                           DistSq;                                           		// 0x002C (0x0004) [0x0000000000000000]              
-	// float                                           TracerDuration;                                   		// 0x0030 (0x0004) [0x0000000000000000]              
-	// struct FKFTracerInfo                            TracerInfo;                                       		// 0x0034 (0x0020) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_Railgun.Destroyed
-// [0x00020102] 
-struct AKFWeapAttach_Railgun_execDestroyed_Parms
-{
-};
-
-// Function kfgamecontent.KFWeapAttach_Railgun.DetachFrom
-// [0x00020102] 
-struct AKFWeapAttach_Railgun_execDetachFrom_Parms
-{
-	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_Railgun.AttachTo
-// [0x00020102] 
-struct AKFWeapAttach_Railgun_execAttachTo_Parms
-{
-	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
-};
-
-// Function kfgamecontent.KFWeapAttach_Railgun.StopAmbientSound
-// [0x00020102] 
-struct AKFWeapAttach_Railgun_execStopAmbientSound_Parms
-{
-};
-
-// Function kfgamecontent.KFWeapAttach_Railgun.StartAmbientSound
-// [0x00020102] 
-struct AKFWeapAttach_Railgun_execStartAmbientSound_Parms
-{
 };
 
 // Function kfgamecontent.KFWeap_Rifle_RailGun.WorldToCanvas
@@ -12523,12 +16016,11 @@ struct AKFWeap_Rifle_RailGun_execShouldPlayFireLast_Parms
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
-// Function kfgamecontent.KFWeap_Rifle_RailGun.PlayFireEffects
-// [0x00024102] 
-struct AKFWeap_Rifle_RailGun_execPlayFireEffects_Parms
+// Function kfgamecontent.KFWeap_Rifle_RailGun.StartFire
+// [0x00020102] 
+struct AKFWeap_Rifle_RailGun_execStartFire_Parms
 {
 	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0004 (0x000C) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFWeap_Rifle_RailGun.ClientWeaponSet
@@ -12583,14 +16075,6 @@ struct AKFWeap_Shotgun_DoubleBarrel_execCauseMuzzleFlash_Parms
 	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFWeap_Shotgun_DoubleBarrel.PlayFireEffects
-// [0x00024102] 
-struct AKFWeap_Shotgun_DoubleBarrel_execPlayFireEffects_Parms
-{
-	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
-	// struct FVector                                  HitLocation;                                      		// 0x0004 (0x000C) [0x0000000000000000]              
-};
-
 // Function kfgamecontent.KFWeap_Shotgun_DoubleBarrel.GetWeaponFireAnim
 // [0x00020102] 
 struct AKFWeap_Shotgun_DoubleBarrel_execGetWeaponFireAnim_Parms
@@ -12617,6 +16101,37 @@ struct AKFWeap_Shotgun_DoubleBarrel_execAltFireMode_Parms
 struct AKFWeap_Shotgun_DragonsBreath_eventGetAltTraderFilter_Parms
 {
 	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Shotgun_ElephantGun.BeginState
+// [0x00820102] 
+struct AKFWeap_Shotgun_ElephantGun_execBeginState_Parms
+{
+	// struct FName                                    PreviousStateName;                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  UsedKickMomentum;                                 		// 0x0008 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Shotgun_ElephantGun.GetWeaponFireAnim
+// [0x00020102] 
+struct AKFWeap_Shotgun_ElephantGun_execGetWeaponFireAnim_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// struct FName                                    ReturnValue;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Shotgun_ElephantGun.GetNumProjectilesToFire
+// [0x00020102] 
+struct AKFWeap_Shotgun_ElephantGun_execGetNumProjectilesToFire_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   ReturnValue;                                      		// 0x0001 (0x0001) [0x0000000000000000]              
+	// float                                           MagPercentFull;                                   		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeap_Shotgun_ElephantGun.AltFireMode
+// [0x00020102] 
+struct AKFWeap_Shotgun_ElephantGun_execAltFireMode_Parms
+{
 };
 
 // Function kfgamecontent.KFWeap_Shotgun_HZ12.ShouldPlayFireLast
@@ -12725,6 +16240,13 @@ struct AKFWeap_Shotgun_Nailgun_execConsumeAmmo_Parms
 	// int                                             AmountToConsume;                                  		// 0x0004 (0x0004) [0x0000000000000000]              
 };
 
+// Function kfgamecontent.KFWeap_SMG_Mac10.GetAltTraderFilter
+// [0x00022902] ( FUNC_Event )
+struct AKFWeap_SMG_Mac10_eventGetAltTraderFilter_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
 // Function kfgamecontent.KFWeap_SMG_Medic.GetTraderFilter
 // [0x00022902] ( FUNC_Event )
 struct AKFWeap_SMG_Medic_eventGetTraderFilter_Parms
@@ -12732,29 +16254,12 @@ struct AKFWeap_SMG_Medic_eventGetTraderFilter_Parms
 	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFWeapAttach_Dual_C4.UnHide
-// [0x00020102] 
-struct AKFWeapAttach_Dual_C4_execUnHide_Parms
-{
-};
-
-// Function kfgamecontent.KFWeapAttach_Dual_C4.ThirdPersonFireEffects
-// [0x00020102] 
-struct AKFWeapAttach_Dual_C4_execThirdPersonFireEffects_Parms
-{
-	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
-	// class AKFPawn*                                  P;                                                		// 0x000C (0x0008) [0x0000000000000000]              
-	// unsigned char                                   ThirdPersonAnimRateByte;                          		// 0x0014 (0x0001) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
-	// float                                           Duration;                                         		// 0x001C (0x0004) [0x0000000000000000]              
-};
-
 // Function kfgamecontent.KFWeap_Welder.TickAutoUnequip
 // [0x00020102] 
 struct AKFWeap_Welder_execTickAutoUnequip_Parms
 {
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	// class AKFDoorTrigger*                           Trigger;                                          		// 0x0004 (0x0008) [0x0000000000000000]              
+	// class ATrigger_PawnsOnly*                       Trigger;                                          		// 0x0004 (0x0008) [0x0000000000000000]              
 	// class AKFInventoryManager*                      KFIM;                                             		// 0x000C (0x0008) [0x0000000000000000]              
 };
 
@@ -12762,7 +16267,7 @@ struct AKFWeap_Welder_execTickAutoUnequip_Parms
 // [0x00020102] 
 struct AKFWeap_Welder_execPlayReadyTransition_Parms
 {
-	// class AKFDoorActor*                             PreviousTarget;                                   		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFWeldableComponent*                     PreviousTarget;                                   		// 0x0000 (0x0008) [0x0000000000000000]              
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 	// struct FName                                    AnimName;                                         		// 0x000C (0x0008) [0x0000000000000000]              
 	// float                                           Duration;                                         		// 0x0014 (0x0004) [0x0000000000000000]              
@@ -12772,7 +16277,7 @@ struct AKFWeap_Welder_execPlayReadyTransition_Parms
 // [0x002400C3] ( FUNC_Final )
 struct AKFWeap_Welder_execServerSetWeldTarget_Parms
 {
-	// class AKFDoorActor*                             NewTarget;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFWeldableComponent*                     NewTarget;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
 	// DWORD                                           bDelayedStart : 1;                                		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
@@ -12788,17 +16293,19 @@ struct AKFWeap_Welder_execFindRepairableDoor_Parms
 	// class AKFPlayerController*                      KFPC;                                             		// 0x0030 (0x0008) [0x0000000000000000]              
 };
 
-// Function kfgamecontent.KFWeap_Welder.TraceDoorActors
+// Function kfgamecontent.KFWeap_Welder.TraceWeldables
 // [0x00820102] 
-struct AKFWeap_Welder_execTraceDoorActors_Parms
+struct AKFWeap_Welder_execTraceWeldables_Parms
 {
-	// class AKFDoorActor*                             ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
-	// class AKFDoorActor*                             door;                                             		// 0x0008 (0x0008) [0x0000000000000000]              
+	// class AKFWeldableComponent*                     ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class AKFWeldableComponent*                     WeldableComponent;                                		// 0x0008 (0x0008) [0x0000000000000000]              
 	// struct FVector                                  HitLoc;                                           		// 0x0010 (0x000C) [0x0000000000000000]              
 	// struct FVector                                  HitNorm;                                          		// 0x001C (0x000C) [0x0000000000000000]              
 	// struct FVector                                  StartTrace;                                       		// 0x0028 (0x000C) [0x0000000000000000]              
 	// struct FVector                                  EndTrace;                                         		// 0x0034 (0x000C) [0x0000000000000000]              
 	// struct FVector                                  AdjustedAim;                                      		// 0x0040 (0x000C) [0x0000000000000000]              
+	// DWORD                                           bIsRepairableActor : 1;                           		// 0x004C (0x0004) [0x0000000000000000] [0x00000001] 
+	// class AKFDoorActor*                             WeldableDoor;                                     		// 0x0050 (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFWeap_Welder.TickWeldTarget
@@ -12806,7 +16313,7 @@ struct AKFWeap_Welder_execTraceDoorActors_Parms
 struct AKFWeap_Welder_execTickWeldTarget_Parms
 {
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	// class AKFDoorActor*                             PreviousTarget;                                   		// 0x0004 (0x0008) [0x0000000000000000]              
+	// class AKFWeldableComponent*                     PreviousTarget;                                   		// 0x0004 (0x0008) [0x0000000000000000]              
 };
 
 // Function kfgamecontent.KFWeap_Welder.CheckDelayedStartFire
@@ -12943,6 +16450,247 @@ struct AKFWeap_Welder_execSetShownInInventory_Parms
 struct AKFWeap_Welder_eventPreBeginPlay_Parms
 {
 	// class UKFGameEngine*                            KFGEngine;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Dual_C4.UnHide
+// [0x00020102] 
+struct AKFWeapAttach_Dual_C4_execUnHide_Parms
+{
+};
+
+// Function kfgamecontent.KFWeapAttach_Dual_C4.ThirdPersonFireEffects
+// [0x00020102] 
+struct AKFWeapAttach_Dual_C4_execThirdPersonFireEffects_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AKFPawn*                                  P;                                                		// 0x000C (0x0008) [0x0000000000000000]              
+	// unsigned char                                   ThirdPersonAnimRateByte;                          		// 0x0014 (0x0001) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           Duration;                                         		// 0x001C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Eviscerator.ThirdPersonFireEffects
+// [0x00020102] 
+struct AKFWeapAttach_Eviscerator_execThirdPersonFireEffects_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AKFPawn*                                  P;                                                		// 0x000C (0x0008) [0x0000000000000000]              
+	// unsigned char                                   ThirdPersonAnimRateByte;                          		// 0x0014 (0x0001) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           Duration;                                         		// 0x001C (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Eviscerator.PreBeginPlay
+// [0x00020802] ( FUNC_Event )
+struct AKFWeapAttach_Eviscerator_eventPreBeginPlay_Parms
+{
+};
+
+// Function kfgamecontent.KFWeapAttach_Flamethrower.TurnOffFireSpray
+// [0x00080102] 
+struct AKFWeapAttach_Flamethrower_execTurnOffFireSpray_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Flamethrower.TurnOnFireSpray
+// [0x00080102] 
+struct AKFWeapAttach_Flamethrower_execTurnOnFireSpray_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Flamethrower.TurnOffPilot
+// [0x00080102] 
+struct AKFWeapAttach_Flamethrower_execTurnOffPilot_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Flamethrower.TurnOnPilot
+// [0x00080102] 
+struct AKFWeapAttach_Flamethrower_execTurnOnPilot_Parms
+{
+	// int                                             I;                                                		// 0x0000 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_HuskCannon.GetChargeFXLevel
+// [0x00020002] 
+struct AKFWeapAttach_HuskCannon_execGetChargeFXLevel_Parms
+{
+	// int                                             ReturnValue;                                      		// 0x0000 (0x0004) [0x0000000000000000]              
+	// int                                             MaxCharges;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
+	// int                                             Charges;                                          		// 0x0008 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_HuskCannon.CauseMuzzleFlash
+// [0x00020102] 
+struct AKFWeapAttach_HuskCannon_execCauseMuzzleFlash_Parms
+{
+	// unsigned char                                   FiringMode;                                       		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_HuskCannon.ThirdPersonFireEffects
+// [0x00020102] 
+struct AKFWeapAttach_HuskCannon_execThirdPersonFireEffects_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AKFPawn*                                  P;                                                		// 0x000C (0x0008) [0x0000000000000000]              
+	// unsigned char                                   ThirdPersonAnimRateByte;                          		// 0x0014 (0x0001) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeapAttach_HuskCannon.FirstPersonFireEffects
+// [0x00020102] 
+struct AKFWeapAttach_HuskCannon_execFirstPersonFireEffects_Parms
+{
+	// class AWeapon*                                  W;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x0008 (0x000C) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_HuskCannon.Tick
+// [0x00020902] ( FUNC_Event )
+struct AKFWeapAttach_HuskCannon_eventTick_Parms
+{
+	// float                                           DeltaTime;                                        		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           ChargeRTPC;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_HuskCannon.StartFire
+// [0x00020102] 
+struct AKFWeapAttach_HuskCannon_execStartFire_Parms
+{
+};
+
+// Function kfgamecontent.KFWeapAttach_M99.SpawnTracer
+// [0x00820102] 
+struct AKFWeapAttach_M99_execSpawnTracer_Parms
+{
+	// struct FVector                                  EffectLocation;                                   		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
+	// class UParticleSystemComponent*                 PSC;                                              		// 0x0018 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  Dir;                                              		// 0x0020 (0x000C) [0x0000000000000000]              
+	// float                                           DistSq;                                           		// 0x002C (0x0004) [0x0000000000000000]              
+	// float                                           TracerDuration;                                   		// 0x0030 (0x0004) [0x0000000000000000]              
+	// struct FKFTracerInfo                            TracerInfo;                                       		// 0x0034 (0x0020) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_MaceAndShield.PlayWeaponMeshAnim
+// [0x00020100] 
+struct AKFWeapAttach_MaceAndShield_execPlayWeaponMeshAnim_Parms
+{
+	// struct FName                                    AnimName;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UAnimNodeSlot*                            SyncNode;                                         		// 0x0008 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bLoop : 1;                                        		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeapAttach_MaceAndShield.PlayWeaponFireAnim
+// [0x00020100] 
+struct AKFWeapAttach_MaceAndShield_execPlayWeaponFireAnim_Parms
+{
+};
+
+// Function kfgamecontent.KFWeapAttach_MultiAmmo.PlayReloadMagazineAnim
+// [0x00020102] 
+struct AKFWeapAttach_MultiAmmo_execPlayReloadMagazineAnim_Parms
+{
+	// unsigned char                                   NewWeaponState;                                   		// 0x0000 (0x0001) [0x0000000000000000]              
+	// class AKFPawn*                                  P;                                                		// 0x0004 (0x0008) [0x0000000000000000]              
+	// struct FName                                    AnimName;                                         		// 0x000C (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_MultiAmmo.CauseMuzzleFlash
+// [0x00020102] 
+struct AKFWeapAttach_MultiAmmo_execCauseMuzzleFlash_Parms
+{
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// DWORD                                           AutoShellEject : 1;                               		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeapAttach_PowerGloves.PlayWeaponMeshAnim
+// [0x00020100] 
+struct AKFWeapAttach_PowerGloves_execPlayWeaponMeshAnim_Parms
+{
+	// struct FName                                    AnimName;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UAnimNodeSlot*                            SyncNode;                                         		// 0x0008 (0x0008) [0x0000000000000000]              
+	// DWORD                                           bLoop : 1;                                        		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeapAttach_PowerGloves.PlayWeaponFireAnim
+// [0x00020100] 
+struct AKFWeapAttach_PowerGloves_execPlayWeaponFireAnim_Parms
+{
+};
+
+// Function kfgamecontent.KFWeapAttach_Pulverizer.UpdateThirdPersonWeaponAction
+// [0x00020102] 
+struct AKFWeapAttach_Pulverizer_execUpdateThirdPersonWeaponAction_Parms
+{
+	// unsigned char                                   NewWeaponState;                                   		// 0x0000 (0x0001) [0x0000000000000000]              
+	// class AKFPawn*                                  P;                                                		// 0x0004 (0x0008) [0x0000000000000000]              
+	// unsigned char                                   ThirdPersonAnimRateByte;                          		// 0x000C (0x0001) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Pulverizer.PlayPulverizerShoot
+// [0x00020102] 
+struct AKFWeapAttach_Pulverizer_execPlayPulverizerShoot_Parms
+{
+	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Pulverizer.ThirdPersonFireEffects
+// [0x00020102] 
+struct AKFWeapAttach_Pulverizer_execThirdPersonFireEffects_Parms
+{
+	// struct FVector                                  HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
+	// class AKFPawn*                                  P;                                                		// 0x000C (0x0008) [0x0000000000000000]              
+	// unsigned char                                   ThirdPersonAnimRateByte;                          		// 0x0014 (0x0001) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0018 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function kfgamecontent.KFWeapAttach_Railgun.SpawnTracer
+// [0x00820102] 
+struct AKFWeapAttach_Railgun_execSpawnTracer_Parms
+{
+	// struct FVector                                  EffectLocation;                                   		// 0x0000 (0x000C) [0x0000000000000000]              
+	// struct FVector                                  HitLocation;                                      		// 0x000C (0x000C) [0x0000000000000000]              
+	// class UParticleSystemComponent*                 E;                                                		// 0x0018 (0x0008) [0x0000000000000000]              
+	// struct FVector                                  Dir;                                              		// 0x0020 (0x000C) [0x0000000000000000]              
+	// float                                           DistSq;                                           		// 0x002C (0x0004) [0x0000000000000000]              
+	// float                                           TracerDuration;                                   		// 0x0030 (0x0004) [0x0000000000000000]              
+	// struct FKFTracerInfo                            TracerInfo;                                       		// 0x0034 (0x0020) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Railgun.Destroyed
+// [0x00020102] 
+struct AKFWeapAttach_Railgun_execDestroyed_Parms
+{
+};
+
+// Function kfgamecontent.KFWeapAttach_Railgun.DetachFrom
+// [0x00020102] 
+struct AKFWeapAttach_Railgun_execDetachFrom_Parms
+{
+	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Railgun.AttachTo
+// [0x00020102] 
+struct AKFWeapAttach_Railgun_execAttachTo_Parms
+{
+	// class AKFPawn*                                  P;                                                		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function kfgamecontent.KFWeapAttach_Railgun.StopAmbientSound
+// [0x00020102] 
+struct AKFWeapAttach_Railgun_execStopAmbientSound_Parms
+{
+};
+
+// Function kfgamecontent.KFWeapAttach_Railgun.StartAmbientSound
+// [0x00020102] 
+struct AKFWeapAttach_Railgun_execStartAmbientSound_Parms
+{
 };
 
 

@@ -31,7 +31,7 @@ struct FIncapSettingsInfo
 };
 
 // ScriptStruct KFGame.KFPawn.KFHitFxInfo
-// 0x0028
+// 0x0030
 struct FKFHitFxInfo
 {
 	struct FVector                                     HitLocation;                                      		// 0x0000 (0x000C) [0x0000000000000000]              
@@ -40,6 +40,7 @@ struct FKFHitFxInfo
 	unsigned char                                      HitBoneIndex;                                     		// 0x0020 (0x0001) [0x0000000000000000]              
 	DWORD                                              bRadialDamage : 1;                                		// 0x0024 (0x0004) [0x0000000000000000] [0x00000001] 
 	DWORD                                              bObliterated : 1;                                 		// 0x0024 (0x0004) [0x0000000000000000] [0x00000002] 
+	class APlayerReplicationInfo*                      DamagerPRI;                                       		// 0x0028 (0x0008) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFPawn.KFRadialHitFxInfo
@@ -293,14 +294,15 @@ struct FWeaponDamage
 };
 
 // ScriptStruct KFGame.EphemeralMatchStats.PerkXPGain
-// 0x0018
+// 0x001C
 struct FPerkXPGain
 {
 	class UClass*                                      PerkClass;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
 	int                                                XPDelta;                                          		// 0x0008 (0x0004) [0x0000000000000000]              
 	int                                                SecondaryXPGain;                                  		// 0x000C (0x0004) [0x0000000000000000]              
-	float                                              StartXPPercentage;                                		// 0x0010 (0x0004) [0x0000000000000000]              
-	int                                                StartLevel;                                       		// 0x0014 (0x0004) [0x0000000000000000]              
+	int                                                BonusXP;                                          		// 0x0010 (0x0004) [0x0000000000000000]              
+	float                                              StartXPPercentage;                                		// 0x0014 (0x0004) [0x0000000000000000]              
+	int                                                StartLevel;                                       		// 0x0018 (0x0004) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.EphemeralMatchStats.AARAward
@@ -582,6 +584,25 @@ struct FAttachedGoreChunkInfo
 	class UStaticMeshComponent*                        AttachedComponent;                                		// 0x0004 (0x0008) [0x0000000000000000]              
 };
 
+// ScriptStruct KFGame.KFPawn_Monster.ExtraVFXInfo
+// 0x0028
+struct FExtraVFXInfo
+{
+	class UParticleSystem*                             VFX;                                              		// 0x0000 (0x0008) [0x0000000000000000]              
+	struct FName                                       SocketName;                                       		// 0x0008 (0x0008) [0x0000000000000000]              
+	struct FName                                       Label;                                            		// 0x0010 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SFXStartEvent;                                    		// 0x0018 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SFXStopEvent;                                     		// 0x0020 (0x0008) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFPawn_Monster.ExtraVFXAttachmentInfo
+// 0x0030
+struct FExtraVFXAttachmentInfo
+{
+	class UParticleSystemComponent*                    VFXComponent;                                     		// 0x0000 (0x0008) [0x0000000000000000]              
+	struct FExtraVFXInfo                               Info;                                             		// 0x0008 (0x0028) [0x0000000000000000]              
+};
+
 // ScriptStruct KFGame.KFPawn_Monster.DamageModifierInfo
 // 0x0018
 struct FDamageModifierInfo
@@ -744,7 +765,7 @@ struct FSTraderItemWeaponStats
 };
 
 // ScriptStruct KFGame.KFGFxObject_TraderItems.STraderItem
-// 0x0064
+// 0x0094
 struct FSTraderItem
 {
 	class UClass*                                      WeaponDef;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
@@ -756,19 +777,21 @@ struct FSTraderItem
 	struct FString                                     SecondaryAmmoImagePath;                           		// 0x0034 (0x0010) [0x0000000000000000]              
 	float                                              GroupPriority;                                    		// 0x0044 (0x0004) [0x0000000000000000]              
 	TArray< struct FSTraderItemWeaponStats >           WeaponStats;                                      		// 0x0048 (0x0010) [0x0000000000000000]              
-	unsigned char                                      InitialSpareMags;                                 		// 0x0058 (0x0001) [0x0000000000000000]              
-	unsigned char                                      MagazineCapacity;                                 		// 0x0059 (0x0001) [0x0000000000000000]              
-	unsigned char                                      BlocksRequired;                                   		// 0x005A (0x0001) [0x0000000000000000]              
-	unsigned char                                      InitialSecondaryAmmo;                             		// 0x005B (0x0001) [0x0000000000000000]              
-	unsigned char                                      MaxSecondaryAmmo;                                 		// 0x005C (0x0001) [0x0000000000000000]              
-	unsigned char                                      TraderFilter;                                     		// 0x005D (0x0001) [0x0000000000000000]              
-	unsigned char                                      AltTraderFilter;                                  		// 0x005E (0x0001) [0x0000000000000000]              
-	unsigned char                                      InventoryGroup;                                   		// 0x005F (0x0001) [0x0000000000000000]              
-	int                                                ItemId;                                           		// 0x0060 (0x0004) [0x0000000000000000]              
+	int                                                WeaponUpgradeWeight[ 0x6 ];                       		// 0x0058 (0x0018) [0x0000000000000000]              
+	float                                              WeaponUpgradeDmgMultiplier[ 0x6 ];                		// 0x0070 (0x0018) [0x0000000000000000]              
+	unsigned char                                      InitialSpareMags;                                 		// 0x0088 (0x0001) [0x0000000000000000]              
+	unsigned char                                      MagazineCapacity;                                 		// 0x0089 (0x0001) [0x0000000000000000]              
+	unsigned char                                      BlocksRequired;                                   		// 0x008A (0x0001) [0x0000000000000000]              
+	unsigned char                                      InitialSecondaryAmmo;                             		// 0x008B (0x0001) [0x0000000000000000]              
+	unsigned char                                      MaxSecondaryAmmo;                                 		// 0x008C (0x0001) [0x0000000000000000]              
+	unsigned char                                      TraderFilter;                                     		// 0x008D (0x0001) [0x0000000000000000]              
+	unsigned char                                      AltTraderFilter;                                  		// 0x008E (0x0001) [0x0000000000000000]              
+	unsigned char                                      InventoryGroup;                                   		// 0x008F (0x0001) [0x0000000000000000]              
+	int                                                ItemId;                                           		// 0x0090 (0x0004) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFGFxMenu_Trader.SItemInformation
-// 0x0088
+// 0x00BC
 struct FSItemInformation
 {
 	DWORD                                              bIsSecondaryAmmo : 1;                             		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
@@ -780,7 +803,8 @@ struct FSItemInformation
 	unsigned char                                      MagazineCapacity;                                 		// 0x0018 (0x0001) [0x0000000000000000]              
 	int                                                AutoFillDosh;                                     		// 0x001C (0x0004) [0x0000000000000000]              
 	int                                                AmmoPricePerMagazine;                             		// 0x0020 (0x0004) [0x0000000000000000]              
-	struct FSTraderItem                                DefaultItem;                                      		// 0x0024 (0x0064) [0x0000000000000000]              
+	struct FSTraderItem                                DefaultItem;                                      		// 0x0024 (0x0094) [0x0000000000000000]              
+	int                                                ItemUpgradeLevel;                                 		// 0x00B8 (0x0004) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFBossCamera.CameraOffsets
@@ -793,12 +817,13 @@ struct FCameraOffsets
 };
 
 // ScriptStruct KFGame.KFCharacterInfo_Human.SkinVariant
-// 0x0014
+// 0x001C
 struct FSkinVariant
 {
 	int                                                UnlockAssetID;                                    		// 0x0000 (0x0004) [0x0000000000000000]              
 	class UTexture*                                    UITexture;                                        		// 0x0004 (0x0008) [0x0000000000000000]              
 	class UMaterialInstance*                           Skin;                                             		// 0x000C (0x0008) [0x0000000000000000]              
+	class UMaterialInstance*                           Skin1p;                                           		// 0x0014 (0x0008) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFCharacterInfo_Human.AttachmentOverrideList
@@ -815,7 +840,7 @@ struct FAttachmentOverrideList
 };
 
 // ScriptStruct KFGame.KFCharacterInfo_Human.AttachmentVariants
-// 0x00A0
+// 0x00B8
 struct FAttachmentVariants
 {
 	class UKFCharacterAttachment*                      AttachmentItem;                                   		// 0x0000 (0x0008) [0x0000000000000000]              
@@ -825,15 +850,17 @@ struct FAttachmentVariants
 	DWORD                                              bMaskHeadMesh : 1;                                		// 0x0014 (0x0004) [0x0000000000000000] [0x00000002] 
 	struct FString                                     MeshName;                                         		// 0x0018 (0x0010) [0x0000000000000000]              
 	struct FName                                       SocketName;                                       		// 0x0028 (0x0008) [0x0000000000000000]              
-	struct FVector                                     RelativeTranslation;                              		// 0x0030 (0x000C) [0x0000000000000000]              
-	struct FRotator                                    RelativeRotation;                                 		// 0x003C (0x000C) [0x0000000000000000]              
-	struct FVector                                     RelativeScale;                                    		// 0x0048 (0x000C) [0x0000000000000000]              
-	float                                              MaxDrawDistance;                                  		// 0x0054 (0x0004) [0x0000000000000000]              
-	int                                                SkinMaterialID;                                   		// 0x0058 (0x0004) [0x0000000000000000]              
-	TArray< struct FSkinVariant >                      SkinVariations;                                   		// 0x005C (0x0010) [0x0000000000000000]              
-	struct FAttachmentOverrideList                     OverrideList;                                     		// 0x006C (0x0014) [0x0000000000000000]              
-	TArray< unsigned char >                            SpecialOverrideIds;                               		// 0x0080 (0x0010) [0x0000000000000000]              
-	TArray< class UKFCharacterAttachment* >            SpecialOverrideAttachments;                       		// 0x0090 (0x0010) [0x0000000000000000]              
+	struct FString                                     MeshName1p;                                       		// 0x0030 (0x0010) [0x0000000000000000]              
+	struct FName                                       SocketName1p;                                     		// 0x0040 (0x0008) [0x0000000000000000]              
+	struct FVector                                     RelativeTranslation;                              		// 0x0048 (0x000C) [0x0000000000000000]              
+	struct FRotator                                    RelativeRotation;                                 		// 0x0054 (0x000C) [0x0000000000000000]              
+	struct FVector                                     RelativeScale;                                    		// 0x0060 (0x000C) [0x0000000000000000]              
+	float                                              MaxDrawDistance;                                  		// 0x006C (0x0004) [0x0000000000000000]              
+	int                                                SkinMaterialID;                                   		// 0x0070 (0x0004) [0x0000000000000000]              
+	TArray< struct FSkinVariant >                      SkinVariations;                                   		// 0x0074 (0x0010) [0x0000000000000000]              
+	struct FAttachmentOverrideList                     OverrideList;                                     		// 0x0084 (0x0014) [0x0000000000000000]              
+	TArray< unsigned char >                            SpecialOverrideIds;                               		// 0x0098 (0x0010) [0x0000000000000000]              
+	TArray< class UKFCharacterAttachment* >            SpecialOverrideAttachments;                       		// 0x00A8 (0x0010) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFCharacterInfo_Human.FirstPersonArmVariants
@@ -854,7 +881,7 @@ struct FOutfitVariants
 };
 
 // ScriptStruct KFGame.KFSkinTypeEffects.SkinEffectInfo
-// 0x0020
+// 0x0028
 struct FSkinEffectInfo
 {
 	unsigned char                                      Type;                                             		// 0x0000 (0x0001) [0x0000000000000000]              
@@ -863,6 +890,7 @@ struct FSkinEffectInfo
 	DWORD                                              bAttachToHitLocation : 1;                         		// 0x000C (0x0004) [0x0000000000000000] [0x00000002] 
 	class UAkEvent*                                    DefaultSound;                                     		// 0x0010 (0x0008) [0x0000000000000000]              
 	class UAkEvent*                                    LocalSound;                                       		// 0x0018 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    LocalTakeHitSound;                                		// 0x0020 (0x0008) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFPlayerReplicationInfo.CustomizationInfo
@@ -921,6 +949,7 @@ struct FPerkInfo
 {
 	class UClass*                                      PerkClass;                                        		// 0x0000 (0x0008) [0x0000000000000000]              
 	unsigned char                                      PerkLevel;                                        		// 0x0008 (0x0001) [0x0000000000000000]              
+	unsigned char                                      PrestigeLevel;                                    		// 0x0009 (0x0001) [0x0000000000000000]              
 	class AKFPerk*                                     PerkArchetype;                                    		// 0x000C (0x0008) [0x0000000000000000]              
 };
 
@@ -1004,6 +1033,17 @@ struct FDailyEventInformation
 	unsigned char                                      SecondaryType;                                    		// 0x0001 (0x0001) [0x0000000000000000]              
 	TArray< struct FName >                             ObjectiveClasses;                                 		// 0x0004 (0x0010) [0x0000000000000000]              
 	int                                                CompletionAmount;                                 		// 0x0014 (0x0004) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFTraderVoiceGroupBase.TraderDialogEventInfo
+// 0x0018
+struct FTraderDialogEventInfo
+{
+	int                                                EventID;                                          		// 0x0000 (0x0004) [0x0000000000000000]              
+	class UAkEvent*                                    AudioCue;                                         		// 0x0004 (0x0008) [0x0000000000000000]              
+	unsigned char                                      Priority;                                         		// 0x000C (0x0001) [0x0000000000000000]              
+	float                                              Cooldown;                                         		// 0x0010 (0x0004) [0x0000000000000000]              
+	float                                              Chance;                                           		// 0x0014 (0x0004) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFPlayerController.PlayerAvatarPS4
@@ -1275,6 +1315,15 @@ struct FDialogResponseInfo
 	int                                                RespondingToID;                                   		// 0x0014 (0x0004) [0x0000000000000000]              
 };
 
+// ScriptStruct KFGame.KFWeldableActor.FXTemplate
+// 0x0020
+struct FFXTemplate
+{
+	class UParticleSystem*                             ParticleTemplate;                                 		// 0x0000 (0x0008) [0x0000000000000000]              
+	struct FVector                                     RelativeOffset;                                   		// 0x0008 (0x000C) [0x0000000000000000]              
+	struct FRotator                                    RelativeRotation;                                 		// 0x0014 (0x000C) [0x0000000000000000]              
+};
+
 // ScriptStruct KFGame.KFDoorActor.DoorMeshAttachment
 // 0x0014
 struct FDoorMeshAttachment
@@ -1337,8 +1386,16 @@ struct FsLullInfo
 	float                                              Cooldown;                                         		// 0x0004 (0x0004) [0x0000000000000000]              
 };
 
+// ScriptStruct KFGame.KFGameDifficultyInfo.MapOverrideInfo
+// 0x0014
+struct FMapOverrideInfo
+{
+	struct FString                                     MapName;                                          		// 0x0000 (0x0010) [0x0000000000000000]              
+	int                                                TraderTime;                                       		// 0x0010 (0x0004) [0x0000000000000000]              
+};
+
 // ScriptStruct KFGame.KFGameDifficultyInfo.DifficultySettings
-// 0x0038
+// 0x0048
 struct FDifficultySettings
 {
 	int                                                TraderTime;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
@@ -1355,6 +1412,7 @@ struct FDifficultySettings
 	float                                              HardAttackChance;                                 		// 0x002C (0x0004) [0x0000000000000000]              
 	float                                              SelfInflictedDamageMod;                           		// 0x0030 (0x0004) [0x0000000000000000]              
 	float                                              SpawnRateModifier;                                		// 0x0034 (0x0004) [0x0000000000000000]              
+	TArray< struct FMapOverrideInfo >                  TraderTimerMapOverride;                           		// 0x0038 (0x0010) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFGameDifficultyInfo.NumPlayerMods
@@ -1394,6 +1452,13 @@ struct FsGameMode
 	int                                                LocalizeID;                                       		// 0x002C (0x0004) [0x0000000000000000]              
 };
 
+// ScriptStruct KFGame.KFGameInfo.LateArrivalStart
+// 0x0010
+struct FLateArrivalStart
+{
+	TArray< int >                                      StartingDosh;                                     		// 0x0000 (0x0010) [0x0000000000000000]              
+};
+
 // ScriptStruct KFGame.KFGameInfo.KFPlayerReservation
 // 0x000C
 struct FKFPlayerReservation
@@ -1408,6 +1473,106 @@ struct FPlayerGroupStruct
 {
 	unsigned char                                      Team;                                             		// 0x0000 (0x0001) [0x0000000000000000]              
 	TArray< struct FUniqueNetId >                      PlayerGroup;                                      		// 0x0004 (0x0010) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFOutbreakEvent.SpawnReplacement
+// 0x0010
+struct FSpawnReplacement
+{
+	int                                                SpawnEntry;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
+	class UClass*                                      NewClass;                                         		// 0x0004 (0x0008) [0x0000000000000000]              
+	float                                              PercentChance;                                    		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFOutbreakEvent.StatAdjustments
+// 0x0074
+struct FStatAdjustments
+{
+	class UClass*                                      ClassToAdjust;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	float                                              HealthScale;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
+	float                                              HeadHealthScale;                                  		// 0x000C (0x0004) [0x0000000000000000]              
+	float                                              ShieldScale;                                      		// 0x0010 (0x0004) [0x0000000000000000]              
+	DWORD                                              bStartEnraged : 1;                                		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bExplosiveDeath : 1;                              		// 0x0014 (0x0004) [0x0000000000000000] [0x00000002] 
+	class UKFGameExplosion*                            ExplosionTemplate;                                		// 0x0018 (0x0008) [0x0000000000000000]              
+	class UClass*                                      ExplosionIgnoreClass;                             		// 0x0020 (0x0008) [0x0000000000000000]              
+	TArray< float >                                    BeefcakeScaleIncreases;                           		// 0x0028 (0x0010) [0x0000000000000000]              
+	TArray< float >                                    BeefcakeHealthIncreases;                          		// 0x0038 (0x0010) [0x0000000000000000]              
+	float                                              MaxBeefcake;                                      		// 0x0048 (0x0004) [0x0000000000000000]              
+	float                                              MaxBeefcakeHealth;                                		// 0x004C (0x0004) [0x0000000000000000]              
+	float                                              DamageDealtScale;                                 		// 0x0050 (0x0004) [0x0000000000000000]              
+	float                                              DamageTakenScale;                                 		// 0x0054 (0x0004) [0x0000000000000000]              
+	struct FVector2D                                   OverrideDeflationRate;                            		// 0x0058 (0x0008) [0x0000000000000000]              
+	class UKFAIWaveInfo*                               AdditionalSubSpawns;                              		// 0x0060 (0x0008) [0x0000000000000000]              
+	struct FVector2D                                   AdditionalSubSpawnCount;                          		// 0x0068 (0x0008) [0x0000000000000000]              
+	int                                                DoshGiven;                                        		// 0x0070 (0x0004) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFOutbreakEvent.WeeklyOverrides
+// 0x017C
+struct FWeeklyOverrides
+{
+	int                                                EventDifficulty;                                  		// 0x0000 (0x0004) [0x0000000000000000]              
+	int                                                GameLength;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
+	DWORD                                              bHeadshotsOnly : 1;                               		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              SpawnRateMultiplier;                              		// 0x000C (0x0004) [0x0000000000000000]              
+	float                                              GlobalDamageTickRate;                             		// 0x0010 (0x0004) [0x0000000000000000]              
+	float                                              GlobalDamageTickAmount;                           		// 0x0014 (0x0004) [0x0000000000000000]              
+	float                                              GlobalAmmoCostScale;                              		// 0x0018 (0x0004) [0x0000000000000000]              
+	class UKFGFxObject_TraderItems*                    SpawnWeaponList;                                  		// 0x001C (0x0008) [0x0000000000000000]              
+	class UKFGFxObject_TraderItems*                    TraderWeaponList;                                 		// 0x0024 (0x0008) [0x0000000000000000]              
+	DWORD                                              bDisableGrenades : 1;                             		// 0x002C (0x0004) [0x0000000000000000] [0x00000001] 
+	TArray< struct FSpawnReplacement >                 SpawnReplacementList;                             		// 0x0030 (0x0010) [0x0000000000000000]              
+	DWORD                                              bAllowSpawnReplacementDuringBossWave : 1;         		// 0x0040 (0x0004) [0x0000000000000000] [0x00000001] 
+	TArray< struct FSpawnReplacement >                 BossSpawnReplacementList;                         		// 0x0044 (0x0010) [0x0000000000000000]              
+	TArray< struct FStatAdjustments >                  ZedsToAdjust;                                     		// 0x0054 (0x0010) [0x0000000000000000]              
+	DWORD                                              bDisableTraders : 1;                              		// 0x0064 (0x0004) [0x0000000000000000] [0x00000001] 
+	unsigned char                                      PickupResetTime;                                  		// 0x0068 (0x0001) [0x0000000000000000]              
+	float                                              OverrideItemPickupModifier;                       		// 0x006C (0x0004) [0x0000000000000000]              
+	float                                              OverrideAmmoPickupModifier;                       		// 0x0070 (0x0004) [0x0000000000000000]              
+	TArray< float >                                    WaveItemPickupModifiers;                          		// 0x0074 (0x0010) [0x0000000000000000]              
+	TArray< float >                                    WaveAmmoPickupModifiers;                          		// 0x0084 (0x0010) [0x0000000000000000]              
+	DWORD                                              bUseOverrideItemRespawnTime : 1;                  		// 0x0094 (0x0004) [0x0000000000000000] [0x00000001] 
+	struct FNumPlayerMods                              OverrideItemRespawnTime;                          		// 0x0098 (0x001C) [0x0000000000000000]              
+	DWORD                                              bUseOverrideAmmoRespawnTime : 1;                  		// 0x00B4 (0x0004) [0x0000000000000000] [0x00000001] 
+	struct FNumPlayerMods                              OverrideAmmoRespawnTime;                          		// 0x00B8 (0x001C) [0x0000000000000000]              
+	DWORD                                              bPermanentZedTime : 1;                            		// 0x00D4 (0x0004) [0x0000000000000000] [0x00000001] 
+	int                                                PermanentZedTimeCutoff;                           		// 0x00D8 (0x0004) [0x0000000000000000]              
+	float                                              PermanentZedResetTime;                            		// 0x00DC (0x0004) [0x0000000000000000]              
+	float                                              OverrideZedTimeSlomoScale;                        		// 0x00E0 (0x0004) [0x0000000000000000]              
+	float                                              ZedTimeRadius;                                    		// 0x00E4 (0x0004) [0x0000000000000000]              
+	float                                              ZedTimeBossRadius;                                		// 0x00E8 (0x0004) [0x0000000000000000]              
+	float                                              ZedTimeHeight;                                    		// 0x00EC (0x0004) [0x0000000000000000]              
+	DWORD                                              bScaleOnHealth : 1;                               		// 0x00F0 (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              StartingDamageSizeScale;                          		// 0x00F4 (0x0004) [0x0000000000000000]              
+	float                                              DeadDamageSizeScale;                              		// 0x00F8 (0x0004) [0x0000000000000000]              
+	float                                              OverrideSpawnDerateTime;                          		// 0x00FC (0x0004) [0x0000000000000000]              
+	float                                              OverrideTeleportDerateTime;                       		// 0x0100 (0x0004) [0x0000000000000000]              
+	float                                              GlobalGravityZ;                                   		// 0x0104 (0x0004) [0x0000000000000000]              
+	DWORD                                              bUseBeefcakeRules : 1;                            		// 0x0108 (0x0004) [0x0000000000000000] [0x00000001] 
+	TArray< float >                                    WaveAICountScale;                                 		// 0x010C (0x0010) [0x0000000000000000]              
+	float                                              ZedSpawnHeadScale;                                		// 0x011C (0x0004) [0x0000000000000000]              
+	float                                              PlayerSpawnHeadScale;                             		// 0x0120 (0x0004) [0x0000000000000000]              
+	DWORD                                              bHumanSprintEnabled : 1;                          		// 0x0124 (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              OffPerkCostScale;                                 		// 0x0128 (0x0004) [0x0000000000000000]              
+	DWORD                                              bBackupMeleeSprintSpeed : 1;                      		// 0x012C (0x0004) [0x0000000000000000] [0x00000001] 
+	class UKFAIWaveInfo*                               AdditionalBossWaveInfo;                           		// 0x0130 (0x0008) [0x0000000000000000]              
+	float                                              AdditionalBossWaveFrequency;                      		// 0x0138 (0x0004) [0x0000000000000000]              
+	float                                              AdditionalBossWaveStartDelay;                     		// 0x013C (0x0004) [0x0000000000000000]              
+	struct FVector2D                                   AdditionalBossSpawnCount;                         		// 0x0140 (0x0008) [0x0000000000000000]              
+	DWORD                                              bContinuousAdditionalBossWave : 1;                		// 0x0148 (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              CrushScale;                                       		// 0x014C (0x0004) [0x0000000000000000]              
+	float                                              JumpDamageScale;                                  		// 0x0150 (0x0004) [0x0000000000000000]              
+	int                                                NumJumpsAllowed;                                  		// 0x0154 (0x0004) [0x0000000000000000]              
+	DWORD                                              bUseZedDamageInflation : 1;                       		// 0x0158 (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              ZeroHealthInflation;                              		// 0x015C (0x0004) [0x0000000000000000]              
+	float                                              GlobalDeflationRate;                              		// 0x0160 (0x0004) [0x0000000000000000]              
+	float                                              InflationDeathGravity;                            		// 0x0164 (0x0004) [0x0000000000000000]              
+	float                                              InflationExplosionTimer;                          		// 0x0168 (0x0004) [0x0000000000000000]              
+	DWORD                                              bDisableHeadless : 1;                             		// 0x016C (0x0004) [0x0000000000000000] [0x00000001] 
+	unsigned char                                      MaxPerkLevel;                                     		// 0x0170 (0x0001) [0x0000000000000000]              
+	int                                                MaxBoomsPerFrame;                                 		// 0x0174 (0x0004) [0x0000000000000000]              
+	int                                                WeeklyOutbreakId;                                 		// 0x0178 (0x0004) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFGameReplicationInfo.PreGameServerAdInfo
@@ -1477,27 +1642,37 @@ struct FPickupInfo
 };
 
 // ScriptStruct KFGame.KFMapInfo.WaveObjectivePair
-// 0x0010
+// 0x0014
 struct FWaveObjectivePair
 {
 	TArray< class UKFInterface_MapObjective* >         PossibleObjectives;                               		// 0x0000 (0x0010) [0x0000000000000000]              
+	DWORD                                              bUseEndlessSpawning : 1;                          		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // ScriptStruct KFGame.KFMapInfo.PresetWavePairs
-// 0x0180
+// 0x01E0
 struct FPresetWavePairs
 {
-	struct FWaveObjectivePair                          ShortObjectives[ 0x5 ];                           		// 0x0000 (0x0050) [0x0000000000000000]              
-	struct FWaveObjectivePair                          MediumObjectives[ 0x8 ];                          		// 0x0050 (0x0080) [0x0000000000000000]              
-	struct FWaveObjectivePair                          LongObjectives[ 0xB ];                            		// 0x00D0 (0x00B0) [0x0000000000000000]              
+	struct FWaveObjectivePair                          ShortObjectives[ 0x5 ];                           		// 0x0000 (0x0064) [0x0000000000000000]              
+	struct FWaveObjectivePair                          MediumObjectives[ 0x8 ];                          		// 0x0064 (0x00A0) [0x0000000000000000]              
+	struct FWaveObjectivePair                          LongObjectives[ 0xB ];                            		// 0x0104 (0x00DC) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFGFxDailyObjectivesContainer.ObjectiveProgress
+// 0x0008
+struct FObjectiveProgress
+{
+	DWORD                                              bComplete : 1;                                    		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+	int                                                NumericValue;                                     		// 0x0004 (0x0004) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFGFxSpecialEventObjectivesContainer.SSpecialEventObjectiveInfo
-// 0x0020
+// 0x0030
 struct FSSpecialEventObjectiveInfo
 {
 	struct FString                                     TitleString;                                      		// 0x0000 (0x0010) [0x0000000000000000]              
 	struct FString                                     DescriptionString;                                		// 0x0010 (0x0010) [0x0000000000000000]              
+	struct FString                                     TierEventRewardName;                              		// 0x0020 (0x0010) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFGFxControlsContainer_ControllerPresets.KeyBinding
@@ -1507,14 +1682,6 @@ struct FKeyBinding
 	struct FString                                     Key;                                              		// 0x0000 (0x0010) [0x0000000000000000]              
 	struct FString                                     Command;                                          		// 0x0010 (0x0010) [0x0000000000000000]              
 	struct FString                                     HoldCommand;                                      		// 0x0020 (0x0010) [0x0000000000000000]              
-};
-
-// ScriptStruct KFGame.KFGFxDailyObjectivesContainer.ObjectiveProgress
-// 0x0008
-struct FObjectiveProgress
-{
-	DWORD                                              bComplete : 1;                                    		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
-	int                                                numericValue;                                     		// 0x0004 (0x0004) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFGFxGearContainer_PerksSelection.PerkData
@@ -1626,6 +1793,16 @@ struct FStoreItem
 	struct FString                                     ItemName;                                         		// 0x0024 (0x0010) [0x0000000000000000]              
 	float                                              ItemPrice;                                        		// 0x0034 (0x0004) [0x0000000000000000]              
 	struct FName                                       ItemType;                                         		// 0x0038 (0x0008) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFLocalMessage_Priority.SDelayedPriorityMessage
+// 0x0025
+struct FSDelayedPriorityMessage
+{
+	struct FString                                     InPrimaryMessageString;                           		// 0x0000 (0x0010) [0x0000000000000000]              
+	struct FString                                     InSecondaryMessageString;                         		// 0x0010 (0x0010) [0x0000000000000000]              
+	int                                                Lifetime;                                         		// 0x0020 (0x0004) [0x0000000000000000]              
+	unsigned char                                      MessageType;                                      		// 0x0024 (0x0001) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFGFxMoviePlayer_Manager.DelayedPopup
@@ -1983,17 +2160,26 @@ struct FSharedContent
 };
 
 // ScriptStruct KFGame.KFGFxWidget_BaseParty.SMemberSlot
-// 0x003C
+// 0x004C
 struct FSMemberSlot
 {
 	DWORD                                              bIsReady : 1;                                     		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 	DWORD                                              bIsLeader : 1;                                    		// 0x0000 (0x0004) [0x0000000000000000] [0x00000002] 
 	struct FString                                     PerkLevel;                                        		// 0x0004 (0x0010) [0x0000000000000000]              
-	class UClass*                                      PerkClass;                                        		// 0x0014 (0x0008) [0x0000000000000000]              
-	class UTexture2D*                                  Avatar;                                           		// 0x001C (0x0008) [0x0000000000000000]              
-	struct FUniqueNetId                                PlayerUID;                                        		// 0x0024 (0x0008) [0x0000000000000000]              
-	class UGFxObject*                                  MemberSlotObject;                                 		// 0x002C (0x0008) [0x0000000000000000]              
-	class APlayerReplicationInfo*                      PRI;                                              		// 0x0034 (0x0008) [0x0000000000000000]              
+	struct FString                                     PrestigeLevel;                                    		// 0x0014 (0x0010) [0x0000000000000000]              
+	class UClass*                                      PerkClass;                                        		// 0x0024 (0x0008) [0x0000000000000000]              
+	class UTexture2D*                                  Avatar;                                           		// 0x002C (0x0008) [0x0000000000000000]              
+	struct FUniqueNetId                                PlayerUID;                                        		// 0x0034 (0x0008) [0x0000000000000000]              
+	class UGFxObject*                                  MemberSlotObject;                                 		// 0x003C (0x0008) [0x0000000000000000]              
+	class APlayerReplicationInfo*                      PRI;                                              		// 0x0044 (0x0008) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFGFxWidget_BossHealthBar.SCompressedArmorInfo
+// 0x000C
+struct FSCompressedArmorInfo
+{
+	float                                              Percentage;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
+	class UTexture2D*                                  IconTexture;                                      		// 0x0004 (0x0008) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFGoreJointInfo.BloodJetSettings
@@ -2082,13 +2268,25 @@ struct FDismembermentEffect
 };
 
 // ScriptStruct KFGame.KFGoreManager.PersistentSplatInfo
-// 0x0020
+// 0x0024
 struct FPersistentSplatInfo
 {
 	struct FVector                                     Location;                                         		// 0x0000 (0x000C) [0x0000000000000000]              
 	struct FVector                                     Normal;                                           		// 0x000C (0x000C) [0x0000000000000000]              
 	float                                              Scale;                                            		// 0x0018 (0x0004) [0x0000000000000000]              
 	DWORD                                              bRandomize : 1;                                   		// 0x001C (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              TraceLength;                                      		// 0x0020 (0x0004) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFHeadShotEffectList.HeadshotEffect
+// 0x0034
+struct FHeadshotEffect
+{
+	int                                                Id;                                               		// 0x0000 (0x0004) [0x0000000000000000]              
+	struct FString                                     ItemName;                                         		// 0x0004 (0x0010) [0x0000000000000000]              
+	class UParticleSystem*                             EffectPS;                                         		// 0x0014 (0x0008) [0x0000000000000000]              
+	struct FString                                     IconPath;                                         		// 0x001C (0x0010) [0x0000000000000000]              
+	class UAkEvent*                                    HeadshotSoundEffect;                              		// 0x002C (0x0008) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFInventoryCatalog.ItemCatalogEntry
@@ -2102,12 +2300,35 @@ struct FItemCatalogEntry
 };
 
 // ScriptStruct KFGame.KFInventoryManager.TransactionItem
-// 0x0020
+// 0x0028
 struct FTransactionItem
 {
 	struct FString                                     DLOString;                                        		// 0x0000 (0x0010) [0x0000000000000000]              
 	struct FName                                       ClassName;                                        		// 0x0010 (0x0008) [0x0000000000000000]              
 	int                                                AddedAmmo[ 0x2 ];                                 		// 0x0018 (0x0008) [0x0000000000000000]              
+	int                                                AddedWeight;                                      		// 0x0020 (0x0004) [0x0000000000000000]              
+	int                                                WeaponUpgradeLevel;                               		// 0x0024 (0x0004) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFWeapon.WeaponUpgradeInfo
+// 0x0010
+struct FWeaponUpgradeInfo
+{
+	int                                                IncrementWeight;                                  		// 0x0000 (0x0004) [0x0000000000000000]              
+	float                                              IncrementDamage;                                  		// 0x0004 (0x0004) [0x0000000000000000]              
+	float                                              IncrementHeal;                                    		// 0x0008 (0x0004) [0x0000000000000000]              
+	float                                              IncrementHealFullRecharge;                        		// 0x000C (0x0004) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFLEDEffectsManager.S_LightingFrame
+// 0x0008
+struct FS_LightingFrame
+{
+	unsigned char                                      Red;                                              		// 0x0000 (0x0001) [0x0000000000000000]              
+	unsigned char                                      Green;                                            		// 0x0001 (0x0001) [0x0000000000000000]              
+	unsigned char                                      Blue;                                             		// 0x0002 (0x0001) [0x0000000000000000]              
+	unsigned char                                      Brightness;                                       		// 0x0003 (0x0001) [0x0000000000000000]              
+	float                                              Duration;                                         		// 0x0004 (0x0004) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFMapTravelData.sPersistentPlayerData
@@ -2164,6 +2385,19 @@ struct FMuzzleEffectInfo
 	class UKFParticleSystemComponent*                  PSC;                                              		// 0x002C (0x0008) [0x0000000000000000]              
 	class UKFExplosionLightComponent*                  LightComponent;                                   		// 0x0034 (0x0008) [0x0000000000000000]              
 	DWORD                                              bIsActive : 1;                                    		// 0x003C (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// ScriptStruct KFGame.KFOutbreakEvent.CachedOutbreakInfo
+// 0x001C
+struct FCachedOutbreakInfo
+{
+	class UKFGFxObject_TraderItems*                    TraderItems;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
+	float                                              GameAmmoCostScale;                                		// 0x0008 (0x0004) [0x0000000000000000]              
+	DWORD                                              bAllowGrenadePurchase : 1;                        		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bTradersEnabled : 1;                              		// 0x000C (0x0004) [0x0000000000000000] [0x00000002] 
+	unsigned char                                      MaxPerkLevel;                                     		// 0x0010 (0x0001) [0x0000000000000000]              
+	float                                              CachedWorldGravityZ;                              		// 0x0014 (0x0004) [0x0000000000000000]              
+	float                                              CachedGlobalGravityZ;                             		// 0x0018 (0x0004) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.KFPawn_Customization.sReplicatedMovementData
@@ -2363,16 +2597,6 @@ struct FTraderDialogCoolDownInfo
 	float                                              EndTime;                                          		// 0x0008 (0x0004) [0x0000000000000000]              
 };
 
-// ScriptStruct KFGame.KFTraderVoiceGroupBase.TraderDialogEventInfo
-// 0x0014
-struct FTraderDialogEventInfo
-{
-	int                                                EventID;                                          		// 0x0000 (0x0004) [0x0000000000000000]              
-	class UAkEvent*                                    AudioCue;                                         		// 0x0004 (0x0008) [0x0000000000000000]              
-	unsigned char                                      Priority;                                         		// 0x000C (0x0001) [0x0000000000000000]              
-	float                                              Cooldown;                                         		// 0x0010 (0x0004) [0x0000000000000000]              
-};
-
 // ScriptStruct KFGame.KFWeapon.WeaponFireSndInfo
 // 0x0010
 struct FWeaponFireSndInfo
@@ -2447,6 +2671,19 @@ struct AKFWeapAttach_SprayBase_FPilotLight
 	float                                              FlickerIntensity;                                 		// 0x0010 (0x0004) [0x0000000000000000]              
 	float                                              FlickerInterpSpeed;                               		// 0x0014 (0x0004) [0x0000000000000000]              
 	float                                              LastLightBrightness;                              		// 0x0018 (0x0004) [0x0000000000000000]              
+};
+
+// ScriptStruct KFGame.KFZedArmorInfo.ArmorZoneInfo
+// 0x0030
+struct FArmorZoneInfo
+{
+	struct FName                                       ArmorZoneName;                                    		// 0x0000 (0x0008) [0x0000000000000000]              
+	struct FName                                       SocketName;                                       		// 0x0008 (0x0008) [0x0000000000000000]              
+	int                                                ArmorHealth;                                      		// 0x0010 (0x0004) [0x0000000000000000]              
+	int                                                ArmorHealthMax;                                   		// 0x0014 (0x0004) [0x0000000000000000]              
+	class UParticleSystem*                             ExplosionTemplate;                                		// 0x0018 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    ExplosionSFXTemplate;                             		// 0x0020 (0x0008) [0x0000000000000000]              
+	class UTexture2D*                                  ZoneIcon;                                         		// 0x0028 (0x0008) [0x0000000000000000]              
 };
 
 // ScriptStruct KFGame.Path_AroundDestructibles.DestructiblesInfo

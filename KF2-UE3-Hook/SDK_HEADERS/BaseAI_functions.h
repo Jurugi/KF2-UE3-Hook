@@ -30,7 +30,7 @@ void ABaseAIController::DrawDebugTextToHud ( )
 	static UFunction* pFnDrawDebugTextToHud = NULL;
 
 	if ( ! pFnDrawDebugTextToHud )
-		pFnDrawDebugTextToHud = (UFunction*) UObject::GObjObjects()->Data[ 48514 ];
+		pFnDrawDebugTextToHud = (UFunction*) UObject::GObjObjects()->Data[ 48547 ];
 
 	ABaseAIController_execDrawDebugTextToHud_Parms DrawDebugTextToHud_Parms;
 
@@ -46,7 +46,7 @@ void ABaseAIController::DrawEnemyPerception ( )
 	static UFunction* pFnDrawEnemyPerception = NULL;
 
 	if ( ! pFnDrawEnemyPerception )
-		pFnDrawEnemyPerception = (UFunction*) UObject::GObjObjects()->Data[ 48512 ];
+		pFnDrawEnemyPerception = (UFunction*) UObject::GObjObjects()->Data[ 48545 ];
 
 	ABaseAIController_execDrawEnemyPerception_Parms DrawEnemyPerception_Parms;
 
@@ -66,7 +66,7 @@ void ABaseAIController::StopMovement ( )
 	static UFunction* pFnStopMovement = NULL;
 
 	if ( ! pFnStopMovement )
-		pFnStopMovement = (UFunction*) UObject::GObjObjects()->Data[ 48510 ];
+		pFnStopMovement = (UFunction*) UObject::GObjObjects()->Data[ 48543 ];
 
 	ABaseAIController_execStopMovement_Parms StopMovement_Parms;
 
@@ -82,7 +82,7 @@ void ABaseAIController::NotifyKilled ( )
 	static UFunction* pFnNotifyKilled = NULL;
 
 	if ( ! pFnNotifyKilled )
-		pFnNotifyKilled = (UFunction*) UObject::GObjObjects()->Data[ 48505 ];
+		pFnNotifyKilled = (UFunction*) UObject::GObjObjects()->Data[ 48538 ];
 
 	ABaseAIController_execNotifyKilled_Parms NotifyKilled_Parms;
 
@@ -98,7 +98,7 @@ void ABaseAIController::SelectTarget ( )
 	static UFunction* pFnSelectTarget = NULL;
 
 	if ( ! pFnSelectTarget )
-		pFnSelectTarget = (UFunction*) UObject::GObjObjects()->Data[ 48503 ];
+		pFnSelectTarget = (UFunction*) UObject::GObjObjects()->Data[ 48536 ];
 
 	ABaseAIController_execSelectTarget_Parms SelectTarget_Parms;
 
@@ -118,7 +118,7 @@ void ABaseAIController::SelectEnemy ( )
 	static UFunction* pFnSelectEnemy = NULL;
 
 	if ( ! pFnSelectEnemy )
-		pFnSelectEnemy = (UFunction*) UObject::GObjObjects()->Data[ 48501 ];
+		pFnSelectEnemy = (UFunction*) UObject::GObjObjects()->Data[ 48534 ];
 
 	ABaseAIController_execSelectEnemy_Parms SelectEnemy_Parms;
 
@@ -138,7 +138,7 @@ void ABaseAIController::eventSetEnemy ( )
 	static UFunction* pFnSetEnemy = NULL;
 
 	if ( ! pFnSetEnemy )
-		pFnSetEnemy = (UFunction*) UObject::GObjObjects()->Data[ 48498 ];
+		pFnSetEnemy = (UFunction*) UObject::GObjObjects()->Data[ 48531 ];
 
 	ABaseAIController_eventSetEnemy_Parms SetEnemy_Parms;
 
@@ -158,7 +158,7 @@ void ABaseAIController::SelectTargetInternal ( )
 	static UFunction* pFnSelectTargetInternal = NULL;
 
 	if ( ! pFnSelectTargetInternal )
-		pFnSelectTargetInternal = (UFunction*) UObject::GObjObjects()->Data[ 48495 ];
+		pFnSelectTargetInternal = (UFunction*) UObject::GObjObjects()->Data[ 48528 ];
 
 	ABaseAIController_execSelectTargetInternal_Parms SelectTargetInternal_Parms;
 
@@ -178,7 +178,7 @@ void ABaseAIController::UpdateEnemyPerception ( )
 	static UFunction* pFnUpdateEnemyPerception = NULL;
 
 	if ( ! pFnUpdateEnemyPerception )
-		pFnUpdateEnemyPerception = (UFunction*) UObject::GObjObjects()->Data[ 48493 ];
+		pFnUpdateEnemyPerception = (UFunction*) UObject::GObjObjects()->Data[ 48526 ];
 
 	ABaseAIController_execUpdateEnemyPerception_Parms UpdateEnemyPerception_Parms;
 
@@ -198,7 +198,7 @@ void ABaseAIController::IsFriendly ( )
 	static UFunction* pFnIsFriendly = NULL;
 
 	if ( ! pFnIsFriendly )
-		pFnIsFriendly = (UFunction*) UObject::GObjObjects()->Data[ 48490 ];
+		pFnIsFriendly = (UFunction*) UObject::GObjObjects()->Data[ 48523 ];
 
 	ABaseAIController_execIsFriendly_Parms IsFriendly_Parms;
 
@@ -218,7 +218,7 @@ void ABaseAIController::IsFriendlyPawn ( )
 	static UFunction* pFnIsFriendlyPawn = NULL;
 
 	if ( ! pFnIsFriendlyPawn )
-		pFnIsFriendlyPawn = (UFunction*) UObject::GObjObjects()->Data[ 48487 ];
+		pFnIsFriendlyPawn = (UFunction*) UObject::GObjObjects()->Data[ 48520 ];
 
 	ABaseAIController_execIsFriendlyPawn_Parms IsFriendlyPawn_Parms;
 
@@ -238,7 +238,7 @@ void ABaseAIController::RemoveAllEnemies ( )
 	static UFunction* pFnRemoveAllEnemies = NULL;
 
 	if ( ! pFnRemoveAllEnemies )
-		pFnRemoveAllEnemies = (UFunction*) UObject::GObjObjects()->Data[ 48486 ];
+		pFnRemoveAllEnemies = (UFunction*) UObject::GObjObjects()->Data[ 48519 ];
 
 	ABaseAIController_execRemoveAllEnemies_Parms RemoveAllEnemies_Parms;
 
@@ -258,7 +258,7 @@ void ABaseAIController::RemoveEnemy ( )
 	static UFunction* pFnRemoveEnemy = NULL;
 
 	if ( ! pFnRemoveEnemy )
-		pFnRemoveEnemy = (UFunction*) UObject::GObjObjects()->Data[ 48484 ];
+		pFnRemoveEnemy = (UFunction*) UObject::GObjObjects()->Data[ 48517 ];
 
 	ABaseAIController_execRemoveEnemy_Parms RemoveEnemy_Parms;
 
@@ -278,7 +278,7 @@ void ABaseAIController::BroadcastEnemyKnowledge ( )
 	static UFunction* pFnBroadcastEnemyKnowledge = NULL;
 
 	if ( ! pFnBroadcastEnemyKnowledge )
-		pFnBroadcastEnemyKnowledge = (UFunction*) UObject::GObjObjects()->Data[ 48480 ];
+		pFnBroadcastEnemyKnowledge = (UFunction*) UObject::GObjObjects()->Data[ 48513 ];
 
 	ABaseAIController_execBroadcastEnemyKnowledge_Parms BroadcastEnemyKnowledge_Parms;
 
@@ -298,7 +298,7 @@ void ABaseAIController::GetTimeSince ( )
 	static UFunction* pFnGetTimeSince = NULL;
 
 	if ( ! pFnGetTimeSince )
-		pFnGetTimeSince = (UFunction*) UObject::GObjObjects()->Data[ 48477 ];
+		pFnGetTimeSince = (UFunction*) UObject::GObjObjects()->Data[ 48510 ];
 
 	ABaseAIController_execGetTimeSince_Parms GetTimeSince_Parms;
 
@@ -314,7 +314,7 @@ void ABaseAIController::GetAiPlugInHistory ( )
 	static UFunction* pFnGetAiPlugInHistory = NULL;
 
 	if ( ! pFnGetAiPlugInHistory )
-		pFnGetAiPlugInHistory = (UFunction*) UObject::GObjObjects()->Data[ 48475 ];
+		pFnGetAiPlugInHistory = (UFunction*) UObject::GObjObjects()->Data[ 48508 ];
 
 	ABaseAIController_execGetAiPlugInHistory_Parms GetAiPlugInHistory_Parms;
 
@@ -330,7 +330,7 @@ void ABaseAIController::Cleanup ( )
 	static UFunction* pFnCleanup = NULL;
 
 	if ( ! pFnCleanup )
-		pFnCleanup = (UFunction*) UObject::GObjObjects()->Data[ 48473 ];
+		pFnCleanup = (UFunction*) UObject::GObjObjects()->Data[ 48506 ];
 
 	ABaseAIController_execCleanup_Parms Cleanup_Parms;
 
@@ -350,7 +350,7 @@ void ABaseAIController::UpdateEnemyAngle ( )
 	static UFunction* pFnUpdateEnemyAngle = NULL;
 
 	if ( ! pFnUpdateEnemyAngle )
-		pFnUpdateEnemyAngle = (UFunction*) UObject::GObjObjects()->Data[ 48471 ];
+		pFnUpdateEnemyAngle = (UFunction*) UObject::GObjObjects()->Data[ 48504 ];
 
 	ABaseAIController_execUpdateEnemyAngle_Parms UpdateEnemyAngle_Parms;
 
@@ -370,7 +370,7 @@ void ABaseAIController::UpdateEnemyRange ( )
 	static UFunction* pFnUpdateEnemyRange = NULL;
 
 	if ( ! pFnUpdateEnemyRange )
-		pFnUpdateEnemyRange = (UFunction*) UObject::GObjObjects()->Data[ 48469 ];
+		pFnUpdateEnemyRange = (UFunction*) UObject::GObjObjects()->Data[ 48502 ];
 
 	ABaseAIController_execUpdateEnemyRange_Parms UpdateEnemyRange_Parms;
 
@@ -390,7 +390,7 @@ void ABaseAIController::PawnDied ( )
 	static UFunction* pFnPawnDied = NULL;
 
 	if ( ! pFnPawnDied )
-		pFnPawnDied = (UFunction*) UObject::GObjObjects()->Data[ 48467 ];
+		pFnPawnDied = (UFunction*) UObject::GObjObjects()->Data[ 48500 ];
 
 	ABaseAIController_execPawnDied_Parms PawnDied_Parms;
 
@@ -406,7 +406,7 @@ void ABaseAIController::eventPossess ( )
 	static UFunction* pFnPossess = NULL;
 
 	if ( ! pFnPossess )
-		pFnPossess = (UFunction*) UObject::GObjObjects()->Data[ 48464 ];
+		pFnPossess = (UFunction*) UObject::GObjObjects()->Data[ 48497 ];
 
 	ABaseAIController_eventPossess_Parms Possess_Parms;
 
@@ -422,7 +422,7 @@ void ABaseAIController::eventInitializeAIClass ( )
 	static UFunction* pFnInitializeAIClass = NULL;
 
 	if ( ! pFnInitializeAIClass )
-		pFnInitializeAIClass = (UFunction*) UObject::GObjObjects()->Data[ 48463 ];
+		pFnInitializeAIClass = (UFunction*) UObject::GObjObjects()->Data[ 48496 ];
 
 	ABaseAIController_eventInitializeAIClass_Parms InitializeAIClass_Parms;
 
@@ -438,7 +438,7 @@ void ABaseAIPawn::DrawCrumbs ( )
 	static UFunction* pFnDrawCrumbs = NULL;
 
 	if ( ! pFnDrawCrumbs )
-		pFnDrawCrumbs = (UFunction*) UObject::GObjObjects()->Data[ 48546 ];
+		pFnDrawCrumbs = (UFunction*) UObject::GObjObjects()->Data[ 48579 ];
 
 	ABaseAIPawn_execDrawCrumbs_Parms DrawCrumbs_Parms;
 
@@ -458,7 +458,7 @@ void ABaseAIPawn::RemoveAttacker ( )
 	static UFunction* pFnRemoveAttacker = NULL;
 
 	if ( ! pFnRemoveAttacker )
-		pFnRemoveAttacker = (UFunction*) UObject::GObjObjects()->Data[ 48544 ];
+		pFnRemoveAttacker = (UFunction*) UObject::GObjObjects()->Data[ 48577 ];
 
 	ABaseAIPawn_execRemoveAttacker_Parms RemoveAttacker_Parms;
 
@@ -478,7 +478,7 @@ void ABaseAIPawn::GetAttackerCount ( )
 	static UFunction* pFnGetAttackerCount = NULL;
 
 	if ( ! pFnGetAttackerCount )
-		pFnGetAttackerCount = (UFunction*) UObject::GObjObjects()->Data[ 48541 ];
+		pFnGetAttackerCount = (UFunction*) UObject::GObjObjects()->Data[ 48574 ];
 
 	ABaseAIPawn_execGetAttackerCount_Parms GetAttackerCount_Parms;
 
@@ -498,7 +498,7 @@ void ABaseAIPawn::NotifyTeamChanged ( )
 	static UFunction* pFnNotifyTeamChanged = NULL;
 
 	if ( ! pFnNotifyTeamChanged )
-		pFnNotifyTeamChanged = (UFunction*) UObject::GObjObjects()->Data[ 48540 ];
+		pFnNotifyTeamChanged = (UFunction*) UObject::GObjObjects()->Data[ 48573 ];
 
 	ABaseAIPawn_execNotifyTeamChanged_Parms NotifyTeamChanged_Parms;
 
@@ -514,7 +514,7 @@ void ABaseAIPawn::UnPossessed ( )
 	static UFunction* pFnUnPossessed = NULL;
 
 	if ( ! pFnUnPossessed )
-		pFnUnPossessed = (UFunction*) UObject::GObjObjects()->Data[ 48539 ];
+		pFnUnPossessed = (UFunction*) UObject::GObjObjects()->Data[ 48572 ];
 
 	ABaseAIPawn_execUnPossessed_Parms UnPossessed_Parms;
 
@@ -530,7 +530,7 @@ void ABaseAIPawn::PossessedBy ( )
 	static UFunction* pFnPossessedBy = NULL;
 
 	if ( ! pFnPossessedBy )
-		pFnPossessedBy = (UFunction*) UObject::GObjObjects()->Data[ 48536 ];
+		pFnPossessedBy = (UFunction*) UObject::GObjObjects()->Data[ 48569 ];
 
 	ABaseAIPawn_execPossessedBy_Parms PossessedBy_Parms;
 
@@ -546,7 +546,7 @@ void ABaseAIPawn::Died ( )
 	static UFunction* pFnDied = NULL;
 
 	if ( ! pFnDied )
-		pFnDied = (UFunction*) UObject::GObjObjects()->Data[ 48531 ];
+		pFnDied = (UFunction*) UObject::GObjObjects()->Data[ 48564 ];
 
 	ABaseAIPawn_execDied_Parms Died_Parms;
 
@@ -562,7 +562,7 @@ void ABaseAISquad::UpdateEnemySelection ( )
 	static UFunction* pFnUpdateEnemySelection = NULL;
 
 	if ( ! pFnUpdateEnemySelection )
-		pFnUpdateEnemySelection = (UFunction*) UObject::GObjObjects()->Data[ 48591 ];
+		pFnUpdateEnemySelection = (UFunction*) UObject::GObjObjects()->Data[ 48624 ];
 
 	ABaseAISquad_execUpdateEnemySelection_Parms UpdateEnemySelection_Parms;
 
@@ -582,7 +582,7 @@ void ABaseAISquad::GetSquadCenterPawn ( )
 	static UFunction* pFnGetSquadCenterPawn = NULL;
 
 	if ( ! pFnGetSquadCenterPawn )
-		pFnGetSquadCenterPawn = (UFunction*) UObject::GObjObjects()->Data[ 48589 ];
+		pFnGetSquadCenterPawn = (UFunction*) UObject::GObjObjects()->Data[ 48622 ];
 
 	ABaseAISquad_execGetSquadCenterPawn_Parms GetSquadCenterPawn_Parms;
 
@@ -602,7 +602,7 @@ void ABaseAISquad::GetSquadMembers ( )
 	static UFunction* pFnGetSquadMembers = NULL;
 
 	if ( ! pFnGetSquadMembers )
-		pFnGetSquadMembers = (UFunction*) UObject::GObjObjects()->Data[ 48585 ];
+		pFnGetSquadMembers = (UFunction*) UObject::GObjObjects()->Data[ 48618 ];
 
 	ABaseAISquad_execGetSquadMembers_Parms GetSquadMembers_Parms;
 
@@ -622,7 +622,7 @@ void ABaseAISquad::GetSquadMemberCount ( )
 	static UFunction* pFnGetSquadMemberCount = NULL;
 
 	if ( ! pFnGetSquadMemberCount )
-		pFnGetSquadMemberCount = (UFunction*) UObject::GObjObjects()->Data[ 48583 ];
+		pFnGetSquadMemberCount = (UFunction*) UObject::GObjObjects()->Data[ 48616 ];
 
 	ABaseAISquad_execGetSquadMemberCount_Parms GetSquadMemberCount_Parms;
 
@@ -642,7 +642,7 @@ void ABaseAISquad::UpdateLeader ( )
 	static UFunction* pFnUpdateLeader = NULL;
 
 	if ( ! pFnUpdateLeader )
-		pFnUpdateLeader = (UFunction*) UObject::GObjObjects()->Data[ 48581 ];
+		pFnUpdateLeader = (UFunction*) UObject::GObjObjects()->Data[ 48614 ];
 
 	ABaseAISquad_execUpdateLeader_Parms UpdateLeader_Parms;
 
@@ -662,7 +662,7 @@ void ABaseAISquad::EnemyPerceivedBy ( )
 	static UFunction* pFnEnemyPerceivedBy = NULL;
 
 	if ( ! pFnEnemyPerceivedBy )
-		pFnEnemyPerceivedBy = (UFunction*) UObject::GObjObjects()->Data[ 48577 ];
+		pFnEnemyPerceivedBy = (UFunction*) UObject::GObjObjects()->Data[ 48610 ];
 
 	ABaseAISquad_execEnemyPerceivedBy_Parms EnemyPerceivedBy_Parms;
 
@@ -682,7 +682,7 @@ void ABaseAISquad::NotifyKilled ( )
 	static UFunction* pFnNotifyKilled = NULL;
 
 	if ( ! pFnNotifyKilled )
-		pFnNotifyKilled = (UFunction*) UObject::GObjObjects()->Data[ 48571 ];
+		pFnNotifyKilled = (UFunction*) UObject::GObjObjects()->Data[ 48604 ];
 
 	ABaseAISquad_execNotifyKilled_Parms NotifyKilled_Parms;
 
@@ -702,7 +702,7 @@ void ABaseAISquad::eventDestroyed ( )
 	static UFunction* pFnDestroyed = NULL;
 
 	if ( ! pFnDestroyed )
-		pFnDestroyed = (UFunction*) UObject::GObjObjects()->Data[ 48570 ];
+		pFnDestroyed = (UFunction*) UObject::GObjObjects()->Data[ 48603 ];
 
 	ABaseAISquad_eventDestroyed_Parms Destroyed_Parms;
 
@@ -718,7 +718,7 @@ void ABaseAISquad::eventPostBeginPlay ( )
 	static UFunction* pFnPostBeginPlay = NULL;
 
 	if ( ! pFnPostBeginPlay )
-		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 48569 ];
+		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 48602 ];
 
 	ABaseAISquad_eventPostBeginPlay_Parms PostBeginPlay_Parms;
 
@@ -734,7 +734,7 @@ void UBaseAISubsystem::NotifyKilled ( )
 	static UFunction* pFnNotifyKilled = NULL;
 
 	if ( ! pFnNotifyKilled )
-		pFnNotifyKilled = (UFunction*) UObject::GObjObjects()->Data[ 48617 ];
+		pFnNotifyKilled = (UFunction*) UObject::GObjObjects()->Data[ 48650 ];
 
 	UBaseAISubsystem_execNotifyKilled_Parms NotifyKilled_Parms;
 
@@ -754,7 +754,7 @@ void UBaseAISubsystem::GetEnemyTeamsSize ( )
 	static UFunction* pFnGetEnemyTeamsSize = NULL;
 
 	if ( ! pFnGetEnemyTeamsSize )
-		pFnGetEnemyTeamsSize = (UFunction*) UObject::GObjObjects()->Data[ 48614 ];
+		pFnGetEnemyTeamsSize = (UFunction*) UObject::GObjObjects()->Data[ 48647 ];
 
 	UBaseAISubsystem_execGetEnemyTeamsSize_Parms GetEnemyTeamsSize_Parms;
 
@@ -774,7 +774,7 @@ void UBaseAISubsystem::GetTeamSize ( )
 	static UFunction* pFnGetTeamSize = NULL;
 
 	if ( ! pFnGetTeamSize )
-		pFnGetTeamSize = (UFunction*) UObject::GObjObjects()->Data[ 48611 ];
+		pFnGetTeamSize = (UFunction*) UObject::GObjObjects()->Data[ 48644 ];
 
 	UBaseAISubsystem_execGetTeamSize_Parms GetTeamSize_Parms;
 
@@ -794,7 +794,7 @@ void UBaseAISubsystem::DecreaseTeamSize ( )
 	static UFunction* pFnDecreaseTeamSize = NULL;
 
 	if ( ! pFnDecreaseTeamSize )
-		pFnDecreaseTeamSize = (UFunction*) UObject::GObjObjects()->Data[ 48548 ];
+		pFnDecreaseTeamSize = (UFunction*) UObject::GObjObjects()->Data[ 48581 ];
 
 	UBaseAISubsystem_execDecreaseTeamSize_Parms DecreaseTeamSize_Parms;
 
@@ -814,7 +814,7 @@ void UBaseAISubsystem::IncreaseTeamSize ( )
 	static UFunction* pFnIncreaseTeamSize = NULL;
 
 	if ( ! pFnIncreaseTeamSize )
-		pFnIncreaseTeamSize = (UFunction*) UObject::GObjObjects()->Data[ 48608 ];
+		pFnIncreaseTeamSize = (UFunction*) UObject::GObjObjects()->Data[ 48641 ];
 
 	UBaseAISubsystem_execIncreaseTeamSize_Parms IncreaseTeamSize_Parms;
 
@@ -834,7 +834,7 @@ void UBaseAISubsystem::UnRegisterSquad ( )
 	static UFunction* pFnUnRegisterSquad = NULL;
 
 	if ( ! pFnUnRegisterSquad )
-		pFnUnRegisterSquad = (UFunction*) UObject::GObjObjects()->Data[ 48593 ];
+		pFnUnRegisterSquad = (UFunction*) UObject::GObjObjects()->Data[ 48626 ];
 
 	UBaseAISubsystem_execUnRegisterSquad_Parms UnRegisterSquad_Parms;
 
@@ -854,7 +854,7 @@ void UBaseAISubsystem::RegisterSquad ( )
 	static UFunction* pFnRegisterSquad = NULL;
 
 	if ( ! pFnRegisterSquad )
-		pFnRegisterSquad = (UFunction*) UObject::GObjObjects()->Data[ 48594 ];
+		pFnRegisterSquad = (UFunction*) UObject::GObjObjects()->Data[ 48627 ];
 
 	UBaseAISubsystem_execRegisterSquad_Parms RegisterSquad_Parms;
 
@@ -874,7 +874,7 @@ void UBaseAISubsystem::GetAIDebugTool ( )
 	static UFunction* pFnGetAIDebugTool = NULL;
 
 	if ( ! pFnGetAIDebugTool )
-		pFnGetAIDebugTool = (UFunction*) UObject::GObjObjects()->Data[ 48604 ];
+		pFnGetAIDebugTool = (UFunction*) UObject::GObjObjects()->Data[ 48637 ];
 
 	UBaseAISubsystem_execGetAIDebugTool_Parms GetAIDebugTool_Parms;
 
@@ -894,7 +894,7 @@ void UBaseAISubsystem::GetInstance ( )
 	static UFunction* pFnGetInstance = NULL;
 
 	if ( ! pFnGetInstance )
-		pFnGetInstance = (UFunction*) UObject::GObjObjects()->Data[ 48602 ];
+		pFnGetInstance = (UFunction*) UObject::GObjObjects()->Data[ 48635 ];
 
 	UBaseAISubsystem_execGetInstance_Parms GetInstance_Parms;
 
@@ -914,7 +914,7 @@ void ULatentActionObserver::OnLatentFinished ( )
 	static UFunction* pFnOnLatentFinished = NULL;
 
 	if ( ! pFnOnLatentFinished )
-		pFnOnLatentFinished = (UFunction*) UObject::GObjObjects()->Data[ 48623 ];
+		pFnOnLatentFinished = (UFunction*) UObject::GObjObjects()->Data[ 48656 ];
 
 	ULatentActionObserver_execOnLatentFinished_Parms OnLatentFinished_Parms;
 
@@ -934,7 +934,7 @@ void UBaseAiPlugInHistory::DrawDebugToHud ( )
 	static UFunction* pFnDrawDebugToHud = NULL;
 
 	if ( ! pFnDrawDebugToHud )
-		pFnDrawDebugToHud = (UFunction*) UObject::GObjObjects()->Data[ 48556 ];
+		pFnDrawDebugToHud = (UFunction*) UObject::GObjObjects()->Data[ 48589 ];
 
 	UBaseAiPlugInHistory_execDrawDebugToHud_Parms DrawDebugToHud_Parms;
 
@@ -950,7 +950,7 @@ void UBaseAiPlugInHistory::eventSetup ( )
 	static UFunction* pFnSetup = NULL;
 
 	if ( ! pFnSetup )
-		pFnSetup = (UFunction*) UObject::GObjObjects()->Data[ 48553 ];
+		pFnSetup = (UFunction*) UObject::GObjObjects()->Data[ 48586 ];
 
 	UBaseAiPlugInHistory_eventSetup_Parms Setup_Parms;
 
@@ -966,7 +966,7 @@ void UPluginBase::eventGetDebugVerboseText ( )
 	static UFunction* pFnGetDebugVerboseText = NULL;
 
 	if ( ! pFnGetDebugVerboseText )
-		pFnGetDebugVerboseText = (UFunction*) UObject::GObjObjects()->Data[ 48152 ];
+		pFnGetDebugVerboseText = (UFunction*) UObject::GObjObjects()->Data[ 48185 ];
 
 	UPluginBase_eventGetDebugVerboseText_Parms GetDebugVerboseText_Parms;
 
@@ -982,7 +982,7 @@ void UPluginBase::UpdateHistoryString ( )
 	static UFunction* pFnUpdateHistoryString = NULL;
 
 	if ( ! pFnUpdateHistoryString )
-		pFnUpdateHistoryString = (UFunction*) UObject::GObjObjects()->Data[ 48150 ];
+		pFnUpdateHistoryString = (UFunction*) UObject::GObjObjects()->Data[ 48183 ];
 
 	UPluginBase_execUpdateHistoryString_Parms UpdateHistoryString_Parms;
 
@@ -998,7 +998,7 @@ void UPluginBase::UpdateCommandHistory ( )
 	static UFunction* pFnUpdateCommandHistory = NULL;
 
 	if ( ! pFnUpdateCommandHistory )
-		pFnUpdateCommandHistory = (UFunction*) UObject::GObjObjects()->Data[ 48148 ];
+		pFnUpdateCommandHistory = (UFunction*) UObject::GObjObjects()->Data[ 48181 ];
 
 	UPluginBase_execUpdateCommandHistory_Parms UpdateCommandHistory_Parms;
 
@@ -1014,7 +1014,7 @@ void UPluginBase::eventDrawDebug ( )
 	static UFunction* pFnDrawDebug = NULL;
 
 	if ( ! pFnDrawDebug )
-		pFnDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 48145 ];
+		pFnDrawDebug = (UFunction*) UObject::GObjObjects()->Data[ 48178 ];
 
 	UPluginBase_eventDrawDebug_Parms DrawDebug_Parms;
 
@@ -1030,7 +1030,7 @@ void UPluginBase::eventScriptInitialize ( )
 	static UFunction* pFnScriptInitialize = NULL;
 
 	if ( ! pFnScriptInitialize )
-		pFnScriptInitialize = (UFunction*) UObject::GObjObjects()->Data[ 48144 ];
+		pFnScriptInitialize = (UFunction*) UObject::GObjObjects()->Data[ 48177 ];
 
 	UPluginBase_eventScriptInitialize_Parms ScriptInitialize_Parms;
 
@@ -1046,7 +1046,7 @@ void UPluginBase::DrawDebugToHud ( )
 	static UFunction* pFnDrawDebugToHud = NULL;
 
 	if ( ! pFnDrawDebugToHud )
-		pFnDrawDebugToHud = (UFunction*) UObject::GObjObjects()->Data[ 48141 ];
+		pFnDrawDebugToHud = (UFunction*) UObject::GObjObjects()->Data[ 48174 ];
 
 	UPluginBase_execDrawDebugToHud_Parms DrawDebugToHud_Parms;
 
@@ -1062,7 +1062,7 @@ void UPluginBase::EnablePlugin ( )
 	static UFunction* pFnEnablePlugin = NULL;
 
 	if ( ! pFnEnablePlugin )
-		pFnEnablePlugin = (UFunction*) UObject::GObjObjects()->Data[ 48140 ];
+		pFnEnablePlugin = (UFunction*) UObject::GObjObjects()->Data[ 48173 ];
 
 	UPluginBase_execEnablePlugin_Parms EnablePlugin_Parms;
 
@@ -1082,7 +1082,7 @@ void UPluginBase::DisablePlugin ( )
 	static UFunction* pFnDisablePlugin = NULL;
 
 	if ( ! pFnDisablePlugin )
-		pFnDisablePlugin = (UFunction*) UObject::GObjObjects()->Data[ 48139 ];
+		pFnDisablePlugin = (UFunction*) UObject::GObjObjects()->Data[ 48172 ];
 
 	UPluginBase_execDisablePlugin_Parms DisablePlugin_Parms;
 
@@ -1102,7 +1102,7 @@ void UAIPlugin::eventScriptSetUp ( )
 	static UFunction* pFnScriptSetUp = NULL;
 
 	if ( ! pFnScriptSetUp )
-		pFnScriptSetUp = (UFunction*) UObject::GObjObjects()->Data[ 48171 ];
+		pFnScriptSetUp = (UFunction*) UObject::GObjObjects()->Data[ 48204 ];
 
 	UAIPlugin_eventScriptSetUp_Parms ScriptSetUp_Parms;
 
@@ -1118,7 +1118,7 @@ void UAITickablePlugin::NotifyNpcInGrannyMode ( )
 	static UFunction* pFnNotifyNpcInGrannyMode = NULL;
 
 	if ( ! pFnNotifyNpcInGrannyMode )
-		pFnNotifyNpcInGrannyMode = (UFunction*) UObject::GObjObjects()->Data[ 48189 ];
+		pFnNotifyNpcInGrannyMode = (UFunction*) UObject::GObjObjects()->Data[ 48222 ];
 
 	UAITickablePlugin_execNotifyNpcInGrannyMode_Parms NotifyNpcInGrannyMode_Parms;
 
@@ -1134,7 +1134,7 @@ void UAITickablePlugin::NotifyNpcTerminallyStuck ( )
 	static UFunction* pFnNotifyNpcTerminallyStuck = NULL;
 
 	if ( ! pFnNotifyNpcTerminallyStuck )
-		pFnNotifyNpcTerminallyStuck = (UFunction*) UObject::GObjObjects()->Data[ 48187 ];
+		pFnNotifyNpcTerminallyStuck = (UFunction*) UObject::GObjObjects()->Data[ 48220 ];
 
 	UAITickablePlugin_execNotifyNpcTerminallyStuck_Parms NotifyNpcTerminallyStuck_Parms;
 
@@ -1150,7 +1150,7 @@ void UAITickablePlugin::eventScriptTick ( )
 	static UFunction* pFnScriptTick = NULL;
 
 	if ( ! pFnScriptTick )
-		pFnScriptTick = (UFunction*) UObject::GObjObjects()->Data[ 48185 ];
+		pFnScriptTick = (UFunction*) UObject::GObjObjects()->Data[ 48218 ];
 
 	UAITickablePlugin_eventScriptTick_Parms ScriptTick_Parms;
 
@@ -1166,7 +1166,7 @@ void UAITickablePlugin::Sleep ( )
 	static UFunction* pFnSleep = NULL;
 
 	if ( ! pFnSleep )
-		pFnSleep = (UFunction*) UObject::GObjObjects()->Data[ 48183 ];
+		pFnSleep = (UFunction*) UObject::GObjObjects()->Data[ 48216 ];
 
 	UAITickablePlugin_execSleep_Parms Sleep_Parms;
 
@@ -1186,7 +1186,7 @@ void UAIPluginLeap::NotifyLanded ( )
 	static UFunction* pFnNotifyLanded = NULL;
 
 	if ( ! pFnNotifyLanded )
-		pFnNotifyLanded = (UFunction*) UObject::GObjObjects()->Data[ 48267 ];
+		pFnNotifyLanded = (UFunction*) UObject::GObjObjects()->Data[ 48300 ];
 
 	UAIPluginLeap_execNotifyLanded_Parms NotifyLanded_Parms;
 
@@ -1202,7 +1202,7 @@ void UAIPluginLeap::GetJumpVelForUsingJumpDownNavPointPathObject ( )
 	static UFunction* pFnGetJumpVelForUsingJumpDownNavPointPathObject = NULL;
 
 	if ( ! pFnGetJumpVelForUsingJumpDownNavPointPathObject )
-		pFnGetJumpVelForUsingJumpDownNavPointPathObject = (UFunction*) UObject::GObjObjects()->Data[ 48248 ];
+		pFnGetJumpVelForUsingJumpDownNavPointPathObject = (UFunction*) UObject::GObjObjects()->Data[ 48281 ];
 
 	UAIPluginLeap_execGetJumpVelForUsingJumpDownNavPointPathObject_Parms GetJumpVelForUsingJumpDownNavPointPathObject_Parms;
 
@@ -1218,7 +1218,7 @@ void UAIPluginLeap::GetJumpVelForDropEdge ( )
 	static UFunction* pFnGetJumpVelForDropEdge = NULL;
 
 	if ( ! pFnGetJumpVelForDropEdge )
-		pFnGetJumpVelForDropEdge = (UFunction*) UObject::GObjObjects()->Data[ 48245 ];
+		pFnGetJumpVelForDropEdge = (UFunction*) UObject::GObjObjects()->Data[ 48278 ];
 
 	UAIPluginLeap_execGetJumpVelForDropEdge_Parms GetJumpVelForDropEdge_Parms;
 
@@ -1234,7 +1234,7 @@ void UAIPluginLeap::TurnMeOn ( )
 	static UFunction* pFnTurnMeOn = NULL;
 
 	if ( ! pFnTurnMeOn )
-		pFnTurnMeOn = (UFunction*) UObject::GObjObjects()->Data[ 48244 ];
+		pFnTurnMeOn = (UFunction*) UObject::GObjObjects()->Data[ 48277 ];
 
 	UAIPluginLeap_execTurnMeOn_Parms TurnMeOn_Parms;
 
@@ -1250,7 +1250,7 @@ void UAIPluginLeap::HasPercentOfZDiffBeenCovered ( )
 	static UFunction* pFnHasPercentOfZDiffBeenCovered = NULL;
 
 	if ( ! pFnHasPercentOfZDiffBeenCovered )
-		pFnHasPercentOfZDiffBeenCovered = (UFunction*) UObject::GObjObjects()->Data[ 48242 ];
+		pFnHasPercentOfZDiffBeenCovered = (UFunction*) UObject::GObjObjects()->Data[ 48275 ];
 
 	UAIPluginLeap_execHasPercentOfZDiffBeenCovered_Parms HasPercentOfZDiffBeenCovered_Parms;
 
@@ -1266,7 +1266,7 @@ void UAIPluginLeap::TestForTimeToTurnCollisionBackOn ( )
 	static UFunction* pFnTestForTimeToTurnCollisionBackOn = NULL;
 
 	if ( ! pFnTestForTimeToTurnCollisionBackOn )
-		pFnTestForTimeToTurnCollisionBackOn = (UFunction*) UObject::GObjObjects()->Data[ 48240 ];
+		pFnTestForTimeToTurnCollisionBackOn = (UFunction*) UObject::GObjObjects()->Data[ 48273 ];
 
 	UAIPluginLeap_execTestForTimeToTurnCollisionBackOn_Parms TestForTimeToTurnCollisionBackOn_Parms;
 
@@ -1282,7 +1282,7 @@ void UAIPluginLeap::AbortMove ( )
 	static UFunction* pFnAbortMove = NULL;
 
 	if ( ! pFnAbortMove )
-		pFnAbortMove = (UFunction*) UObject::GObjObjects()->Data[ 48233 ];
+		pFnAbortMove = (UFunction*) UObject::GObjObjects()->Data[ 48266 ];
 
 	UAIPluginLeap_execAbortMove_Parms AbortMove_Parms;
 
@@ -1302,7 +1302,7 @@ void UAIPluginLeap::Failure ( )
 	static UFunction* pFnFailure = NULL;
 
 	if ( ! pFnFailure )
-		pFnFailure = (UFunction*) UObject::GObjObjects()->Data[ 48232 ];
+		pFnFailure = (UFunction*) UObject::GObjObjects()->Data[ 48265 ];
 
 	UAIPluginLeap_execFailure_Parms Failure_Parms;
 
@@ -1322,7 +1322,7 @@ void UAIPluginLeap::Success ( )
 	static UFunction* pFnSuccess = NULL;
 
 	if ( ! pFnSuccess )
-		pFnSuccess = (UFunction*) UObject::GObjObjects()->Data[ 48231 ];
+		pFnSuccess = (UFunction*) UObject::GObjObjects()->Data[ 48264 ];
 
 	UAIPluginLeap_execSuccess_Parms Success_Parms;
 
@@ -1342,7 +1342,7 @@ void UAIPluginLeap::eventScriptCleanUp ( )
 	static UFunction* pFnScriptCleanUp = NULL;
 
 	if ( ! pFnScriptCleanUp )
-		pFnScriptCleanUp = (UFunction*) UObject::GObjObjects()->Data[ 48230 ];
+		pFnScriptCleanUp = (UFunction*) UObject::GObjObjects()->Data[ 48263 ];
 
 	UAIPluginLeap_eventScriptCleanUp_Parms ScriptCleanUp_Parms;
 
@@ -1358,7 +1358,7 @@ void UAIPluginLeap::eventScriptCommonMovePreparation ( )
 	static UFunction* pFnScriptCommonMovePreparation = NULL;
 
 	if ( ! pFnScriptCommonMovePreparation )
-		pFnScriptCommonMovePreparation = (UFunction*) UObject::GObjObjects()->Data[ 48227 ];
+		pFnScriptCommonMovePreparation = (UFunction*) UObject::GObjObjects()->Data[ 48260 ];
 
 	UAIPluginLeap_eventScriptCommonMovePreparation_Parms ScriptCommonMovePreparation_Parms;
 
@@ -1374,7 +1374,7 @@ void UAIPluginLeap::eventGetDumpString ( )
 	static UFunction* pFnGetDumpString = NULL;
 
 	if ( ! pFnGetDumpString )
-		pFnGetDumpString = (UFunction*) UObject::GObjObjects()->Data[ 48225 ];
+		pFnGetDumpString = (UFunction*) UObject::GObjObjects()->Data[ 48258 ];
 
 	UAIPluginLeap_eventGetDumpString_Parms GetDumpString_Parms;
 
@@ -1390,7 +1390,7 @@ void UAIPluginLeap::Leap ( )
 	static UFunction* pFnLeap = NULL;
 
 	if ( ! pFnLeap )
-		pFnLeap = (UFunction*) UObject::GObjObjects()->Data[ 48222 ];
+		pFnLeap = (UFunction*) UObject::GObjObjects()->Data[ 48255 ];
 
 	UAIPluginLeap_execLeap_Parms Leap_Parms;
 
@@ -1406,7 +1406,7 @@ void UAIPluginMovement::MoveUnreachable ( )
 	static UFunction* pFnMoveUnreachable = NULL;
 
 	if ( ! pFnMoveUnreachable )
-		pFnMoveUnreachable = (UFunction*) UObject::GObjObjects()->Data[ 48349 ];
+		pFnMoveUnreachable = (UFunction*) UObject::GObjObjects()->Data[ 48382 ];
 
 	UAIPluginMovement_execMoveUnreachable_Parms MoveUnreachable_Parms;
 
@@ -1422,7 +1422,7 @@ void UAIPluginMovement::StopMovement ( )
 	static UFunction* pFnStopMovement = NULL;
 
 	if ( ! pFnStopMovement )
-		pFnStopMovement = (UFunction*) UObject::GObjObjects()->Data[ 48348 ];
+		pFnStopMovement = (UFunction*) UObject::GObjObjects()->Data[ 48381 ];
 
 	UAIPluginMovement_execStopMovement_Parms StopMovement_Parms;
 
@@ -1438,7 +1438,7 @@ void UAIPluginMovement::GetDestinationType ( )
 	static UFunction* pFnGetDestinationType = NULL;
 
 	if ( ! pFnGetDestinationType )
-		pFnGetDestinationType = (UFunction*) UObject::GObjObjects()->Data[ 48346 ];
+		pFnGetDestinationType = (UFunction*) UObject::GObjObjects()->Data[ 48379 ];
 
 	UAIPluginMovement_execGetDestinationType_Parms GetDestinationType_Parms;
 
@@ -1454,7 +1454,7 @@ void UAIPluginMovement::GetDestination ( )
 	static UFunction* pFnGetDestination = NULL;
 
 	if ( ! pFnGetDestination )
-		pFnGetDestination = (UFunction*) UObject::GObjObjects()->Data[ 48343 ];
+		pFnGetDestination = (UFunction*) UObject::GObjObjects()->Data[ 48376 ];
 
 	UAIPluginMovement_execGetDestination_Parms GetDestination_Parms;
 
@@ -1474,7 +1474,7 @@ void UAIPluginMovement::RePath ( )
 	static UFunction* pFnRePath = NULL;
 
 	if ( ! pFnRePath )
-		pFnRePath = (UFunction*) UObject::GObjObjects()->Data[ 48341 ];
+		pFnRePath = (UFunction*) UObject::GObjObjects()->Data[ 48374 ];
 
 	UAIPluginMovement_execRePath_Parms RePath_Parms;
 
@@ -1494,7 +1494,7 @@ void UAIPluginMovement::Failure ( )
 	static UFunction* pFnFailure = NULL;
 
 	if ( ! pFnFailure )
-		pFnFailure = (UFunction*) UObject::GObjObjects()->Data[ 48340 ];
+		pFnFailure = (UFunction*) UObject::GObjObjects()->Data[ 48373 ];
 
 	UAIPluginMovement_execFailure_Parms Failure_Parms;
 
@@ -1514,7 +1514,7 @@ void UAIPluginMovement::Success ( )
 	static UFunction* pFnSuccess = NULL;
 
 	if ( ! pFnSuccess )
-		pFnSuccess = (UFunction*) UObject::GObjObjects()->Data[ 48339 ];
+		pFnSuccess = (UFunction*) UObject::GObjObjects()->Data[ 48372 ];
 
 	UAIPluginMovement_execSuccess_Parms Success_Parms;
 
@@ -1534,7 +1534,7 @@ void UAIPluginMovement::SetMovementLock ( )
 	static UFunction* pFnSetMovementLock = NULL;
 
 	if ( ! pFnSetMovementLock )
-		pFnSetMovementLock = (UFunction*) UObject::GObjObjects()->Data[ 48335 ];
+		pFnSetMovementLock = (UFunction*) UObject::GObjObjects()->Data[ 48368 ];
 
 	UAIPluginMovement_execSetMovementLock_Parms SetMovementLock_Parms;
 
@@ -1554,7 +1554,7 @@ void UAIPluginMovement::AbortMove ( )
 	static UFunction* pFnAbortMove = NULL;
 
 	if ( ! pFnAbortMove )
-		pFnAbortMove = (UFunction*) UObject::GObjObjects()->Data[ 48332 ];
+		pFnAbortMove = (UFunction*) UObject::GObjObjects()->Data[ 48365 ];
 
 	UAIPluginMovement_execAbortMove_Parms AbortMove_Parms;
 
@@ -1574,7 +1574,7 @@ void UAIPluginMovement::FollowPlugInsPath ( )
 	static UFunction* pFnFollowPlugInsPath = NULL;
 
 	if ( ! pFnFollowPlugInsPath )
-		pFnFollowPlugInsPath = (UFunction*) UObject::GObjObjects()->Data[ 48324 ];
+		pFnFollowPlugInsPath = (UFunction*) UObject::GObjObjects()->Data[ 48357 ];
 
 	UAIPluginMovement_execFollowPlugInsPath_Parms FollowPlugInsPath_Parms;
 
@@ -1594,7 +1594,7 @@ void UAIPluginMovement::MoveToActorRequest ( )
 	static UFunction* pFnMoveToActorRequest = NULL;
 
 	if ( ! pFnMoveToActorRequest )
-		pFnMoveToActorRequest = (UFunction*) UObject::GObjObjects()->Data[ 48312 ];
+		pFnMoveToActorRequest = (UFunction*) UObject::GObjObjects()->Data[ 48345 ];
 
 	UAIPluginMovement_execMoveToActorRequest_Parms MoveToActorRequest_Parms;
 
@@ -1614,7 +1614,7 @@ void UAIPluginMovement::MoveToPointRequest ( )
 	static UFunction* pFnMoveToPointRequest = NULL;
 
 	if ( ! pFnMoveToPointRequest )
-		pFnMoveToPointRequest = (UFunction*) UObject::GObjObjects()->Data[ 48303 ];
+		pFnMoveToPointRequest = (UFunction*) UObject::GObjObjects()->Data[ 48336 ];
 
 	UAIPluginMovement_execMoveToPointRequest_Parms MoveToPointRequest_Parms;
 
@@ -1634,7 +1634,7 @@ void UAIPluginMovement::MoveToRequest ( )
 	static UFunction* pFnMoveToRequest = NULL;
 
 	if ( ! pFnMoveToRequest )
-		pFnMoveToRequest = (UFunction*) UObject::GObjObjects()->Data[ 48300 ];
+		pFnMoveToRequest = (UFunction*) UObject::GObjObjects()->Data[ 48333 ];
 
 	UAIPluginMovement_execMoveToRequest_Parms MoveToRequest_Parms;
 
@@ -1654,7 +1654,7 @@ void UAIPluginStuckFix::MoveUnreachable ( )
 	static UFunction* pFnMoveUnreachable = NULL;
 
 	if ( ! pFnMoveUnreachable )
-		pFnMoveUnreachable = (UFunction*) UObject::GObjObjects()->Data[ 48420 ];
+		pFnMoveUnreachable = (UFunction*) UObject::GObjObjects()->Data[ 48453 ];
 
 	UAIPluginStuckFix_execMoveUnreachable_Parms MoveUnreachable_Parms;
 
@@ -1670,7 +1670,7 @@ void UAIPluginStuckFix::StopMovement ( )
 	static UFunction* pFnStopMovement = NULL;
 
 	if ( ! pFnStopMovement )
-		pFnStopMovement = (UFunction*) UObject::GObjObjects()->Data[ 48419 ];
+		pFnStopMovement = (UFunction*) UObject::GObjObjects()->Data[ 48452 ];
 
 	UAIPluginStuckFix_execStopMovement_Parms StopMovement_Parms;
 
@@ -1686,7 +1686,7 @@ void UAIPluginStuckFix::GetDestinationType ( )
 	static UFunction* pFnGetDestinationType = NULL;
 
 	if ( ! pFnGetDestinationType )
-		pFnGetDestinationType = (UFunction*) UObject::GObjObjects()->Data[ 48417 ];
+		pFnGetDestinationType = (UFunction*) UObject::GObjObjects()->Data[ 48450 ];
 
 	UAIPluginStuckFix_execGetDestinationType_Parms GetDestinationType_Parms;
 
@@ -1702,7 +1702,7 @@ void UAIPluginStuckFix::GetDestination ( )
 	static UFunction* pFnGetDestination = NULL;
 
 	if ( ! pFnGetDestination )
-		pFnGetDestination = (UFunction*) UObject::GObjObjects()->Data[ 48414 ];
+		pFnGetDestination = (UFunction*) UObject::GObjObjects()->Data[ 48447 ];
 
 	UAIPluginStuckFix_execGetDestination_Parms GetDestination_Parms;
 
@@ -1722,7 +1722,7 @@ void UAIPluginStuckFix::Failure ( )
 	static UFunction* pFnFailure = NULL;
 
 	if ( ! pFnFailure )
-		pFnFailure = (UFunction*) UObject::GObjObjects()->Data[ 48413 ];
+		pFnFailure = (UFunction*) UObject::GObjObjects()->Data[ 48446 ];
 
 	UAIPluginStuckFix_execFailure_Parms Failure_Parms;
 
@@ -1738,7 +1738,7 @@ void UAIPluginStuckFix::Success ( )
 	static UFunction* pFnSuccess = NULL;
 
 	if ( ! pFnSuccess )
-		pFnSuccess = (UFunction*) UObject::GObjObjects()->Data[ 48412 ];
+		pFnSuccess = (UFunction*) UObject::GObjObjects()->Data[ 48445 ];
 
 	UAIPluginStuckFix_execSuccess_Parms Success_Parms;
 
@@ -1754,7 +1754,7 @@ void UAIPluginStuckFix::SetMovementLock ( )
 	static UFunction* pFnSetMovementLock = NULL;
 
 	if ( ! pFnSetMovementLock )
-		pFnSetMovementLock = (UFunction*) UObject::GObjObjects()->Data[ 48408 ];
+		pFnSetMovementLock = (UFunction*) UObject::GObjObjects()->Data[ 48441 ];
 
 	UAIPluginStuckFix_execSetMovementLock_Parms SetMovementLock_Parms;
 
@@ -1770,7 +1770,7 @@ void UAIPluginStuckFix::eventAbortMove ( )
 	static UFunction* pFnAbortMove = NULL;
 
 	if ( ! pFnAbortMove )
-		pFnAbortMove = (UFunction*) UObject::GObjObjects()->Data[ 48405 ];
+		pFnAbortMove = (UFunction*) UObject::GObjObjects()->Data[ 48438 ];
 
 	UAIPluginStuckFix_eventAbortMove_Parms AbortMove_Parms;
 
@@ -1786,7 +1786,7 @@ void UAIPluginStuckFix::StuckFixToActorRequest ( )
 	static UFunction* pFnStuckFixToActorRequest = NULL;
 
 	if ( ! pFnStuckFixToActorRequest )
-		pFnStuckFixToActorRequest = (UFunction*) UObject::GObjObjects()->Data[ 48393 ];
+		pFnStuckFixToActorRequest = (UFunction*) UObject::GObjObjects()->Data[ 48426 ];
 
 	UAIPluginStuckFix_execStuckFixToActorRequest_Parms StuckFixToActorRequest_Parms;
 
@@ -1802,7 +1802,7 @@ void UAIPluginStuckFix::StuckFixToPointRequest ( )
 	static UFunction* pFnStuckFixToPointRequest = NULL;
 
 	if ( ! pFnStuckFixToPointRequest )
-		pFnStuckFixToPointRequest = (UFunction*) UObject::GObjObjects()->Data[ 48384 ];
+		pFnStuckFixToPointRequest = (UFunction*) UObject::GObjObjects()->Data[ 48417 ];
 
 	UAIPluginStuckFix_execStuckFixToPointRequest_Parms StuckFixToPointRequest_Parms;
 
@@ -1818,7 +1818,7 @@ void UPluginSquad::EnemyPerceived ( )
 	static UFunction* pFnEnemyPerceived = NULL;
 
 	if ( ! pFnEnemyPerceived )
-		pFnEnemyPerceived = (UFunction*) UObject::GObjObjects()->Data[ 48674 ];
+		pFnEnemyPerceived = (UFunction*) UObject::GObjObjects()->Data[ 48707 ];
 
 	UPluginSquad_execEnemyPerceived_Parms EnemyPerceived_Parms;
 
@@ -1838,7 +1838,7 @@ void UPlayerInputRecorder::StopReplay ( )
 	static UFunction* pFnStopReplay = NULL;
 
 	if ( ! pFnStopReplay )
-		pFnStopReplay = (UFunction*) UObject::GObjObjects()->Data[ 48670 ];
+		pFnStopReplay = (UFunction*) UObject::GObjObjects()->Data[ 48703 ];
 
 	UPlayerInputRecorder_execStopReplay_Parms StopReplay_Parms;
 
@@ -1858,7 +1858,7 @@ void UPlayerInputRecorder::Replay ( )
 	static UFunction* pFnReplay = NULL;
 
 	if ( ! pFnReplay )
-		pFnReplay = (UFunction*) UObject::GObjObjects()->Data[ 48668 ];
+		pFnReplay = (UFunction*) UObject::GObjObjects()->Data[ 48701 ];
 
 	UPlayerInputRecorder_execReplay_Parms Replay_Parms;
 
@@ -1878,7 +1878,7 @@ void UPlayerInputRecorder::StopRecording ( )
 	static UFunction* pFnStopRecording = NULL;
 
 	if ( ! pFnStopRecording )
-		pFnStopRecording = (UFunction*) UObject::GObjObjects()->Data[ 48667 ];
+		pFnStopRecording = (UFunction*) UObject::GObjObjects()->Data[ 48700 ];
 
 	UPlayerInputRecorder_execStopRecording_Parms StopRecording_Parms;
 
@@ -1898,7 +1898,7 @@ void UPlayerInputRecorder::StartRecording ( )
 	static UFunction* pFnStartRecording = NULL;
 
 	if ( ! pFnStartRecording )
-		pFnStartRecording = (UFunction*) UObject::GObjObjects()->Data[ 48665 ];
+		pFnStartRecording = (UFunction*) UObject::GObjObjects()->Data[ 48698 ];
 
 	UPlayerInputRecorder_execStartRecording_Parms StartRecording_Parms;
 
@@ -1918,7 +1918,7 @@ void UAIDebugTool::DumpNativeCallStack ( )
 	static UFunction* pFnDumpNativeCallStack = NULL;
 
 	if ( ! pFnDumpNativeCallStack )
-		pFnDumpNativeCallStack = (UFunction*) UObject::GObjObjects()->Data[ 48109 ];
+		pFnDumpNativeCallStack = (UFunction*) UObject::GObjObjects()->Data[ 48142 ];
 
 	UAIDebugTool_execDumpNativeCallStack_Parms DumpNativeCallStack_Parms;
 
@@ -1938,7 +1938,7 @@ void UAIDebugTool::GetActorEntryLocation ( )
 	static UFunction* pFnGetActorEntryLocation = NULL;
 
 	if ( ! pFnGetActorEntryLocation )
-		pFnGetActorEntryLocation = (UFunction*) UObject::GObjObjects()->Data[ 48105 ];
+		pFnGetActorEntryLocation = (UFunction*) UObject::GObjObjects()->Data[ 48138 ];
 
 	UAIDebugTool_execGetActorEntryLocation_Parms GetActorEntryLocation_Parms;
 
@@ -1958,7 +1958,7 @@ void UAIDebugTool::AddBTLogEntry ( )
 	static UFunction* pFnAddBTLogEntry = NULL;
 
 	if ( ! pFnAddBTLogEntry )
-		pFnAddBTLogEntry = (UFunction*) UObject::GObjObjects()->Data[ 48103 ];
+		pFnAddBTLogEntry = (UFunction*) UObject::GObjObjects()->Data[ 48136 ];
 
 	UAIDebugTool_execAddBTLogEntry_Parms AddBTLogEntry_Parms;
 
@@ -1978,7 +1978,7 @@ void UAIDebugTool::FlushETQHistory ( )
 	static UFunction* pFnFlushETQHistory = NULL;
 
 	if ( ! pFnFlushETQHistory )
-		pFnFlushETQHistory = (UFunction*) UObject::GObjObjects()->Data[ 48102 ];
+		pFnFlushETQHistory = (UFunction*) UObject::GObjObjects()->Data[ 48135 ];
 
 	UAIDebugTool_execFlushETQHistory_Parms FlushETQHistory_Parms;
 
@@ -1998,7 +1998,7 @@ void UAIDebugTool::AddETQLog ( )
 	static UFunction* pFnAddETQLog = NULL;
 
 	if ( ! pFnAddETQLog )
-		pFnAddETQLog = (UFunction*) UObject::GObjObjects()->Data[ 48098 ];
+		pFnAddETQLog = (UFunction*) UObject::GObjObjects()->Data[ 48131 ];
 
 	UAIDebugTool_execAddETQLog_Parms AddETQLog_Parms;
 
@@ -2018,7 +2018,7 @@ void UAIDebugTool::FlushUnreachableActors ( )
 	static UFunction* pFnFlushUnreachableActors = NULL;
 
 	if ( ! pFnFlushUnreachableActors )
-		pFnFlushUnreachableActors = (UFunction*) UObject::GObjObjects()->Data[ 48097 ];
+		pFnFlushUnreachableActors = (UFunction*) UObject::GObjObjects()->Data[ 48130 ];
 
 	UAIDebugTool_execFlushUnreachableActors_Parms FlushUnreachableActors_Parms;
 
@@ -2038,7 +2038,7 @@ void UAIDebugTool::LogUnreachableActor ( )
 	static UFunction* pFnLogUnreachableActor = NULL;
 
 	if ( ! pFnLogUnreachableActor )
-		pFnLogUnreachableActor = (UFunction*) UObject::GObjObjects()->Data[ 48095 ];
+		pFnLogUnreachableActor = (UFunction*) UObject::GObjObjects()->Data[ 48128 ];
 
 	UAIDebugTool_execLogUnreachableActor_Parms LogUnreachableActor_Parms;
 
@@ -2058,7 +2058,7 @@ void UAIDebugTool::ClearHistoryColor ( )
 	static UFunction* pFnClearHistoryColor = NULL;
 
 	if ( ! pFnClearHistoryColor )
-		pFnClearHistoryColor = (UFunction*) UObject::GObjObjects()->Data[ 48094 ];
+		pFnClearHistoryColor = (UFunction*) UObject::GObjObjects()->Data[ 48127 ];
 
 	UAIDebugTool_execClearHistoryColor_Parms ClearHistoryColor_Parms;
 
@@ -2078,7 +2078,7 @@ void UAIDebugTool::ColorHistory ( )
 	static UFunction* pFnColorHistory = NULL;
 
 	if ( ! pFnColorHistory )
-		pFnColorHistory = (UFunction*) UObject::GObjObjects()->Data[ 48092 ];
+		pFnColorHistory = (UFunction*) UObject::GObjObjects()->Data[ 48125 ];
 
 	UAIDebugTool_execColorHistory_Parms ColorHistory_Parms;
 
@@ -2098,7 +2098,7 @@ void UAIDebugTool::ClearHistoryFilter ( )
 	static UFunction* pFnClearHistoryFilter = NULL;
 
 	if ( ! pFnClearHistoryFilter )
-		pFnClearHistoryFilter = (UFunction*) UObject::GObjObjects()->Data[ 48091 ];
+		pFnClearHistoryFilter = (UFunction*) UObject::GObjObjects()->Data[ 48124 ];
 
 	UAIDebugTool_execClearHistoryFilter_Parms ClearHistoryFilter_Parms;
 
@@ -2118,7 +2118,7 @@ void UAIDebugTool::SetHistoryFilter ( )
 	static UFunction* pFnSetHistoryFilter = NULL;
 
 	if ( ! pFnSetHistoryFilter )
-		pFnSetHistoryFilter = (UFunction*) UObject::GObjObjects()->Data[ 48088 ];
+		pFnSetHistoryFilter = (UFunction*) UObject::GObjObjects()->Data[ 48121 ];
 
 	UAIDebugTool_execSetHistoryFilter_Parms SetHistoryFilter_Parms;
 
@@ -2138,7 +2138,7 @@ void UAIDebugTool::ToggleLogDrawingMode ( )
 	static UFunction* pFnToggleLogDrawingMode = NULL;
 
 	if ( ! pFnToggleLogDrawingMode )
-		pFnToggleLogDrawingMode = (UFunction*) UObject::GObjObjects()->Data[ 48086 ];
+		pFnToggleLogDrawingMode = (UFunction*) UObject::GObjObjects()->Data[ 48119 ];
 
 	UAIDebugTool_execToggleLogDrawingMode_Parms ToggleLogDrawingMode_Parms;
 
@@ -2158,7 +2158,7 @@ void UAIDebugTool::DisplayNextEntry ( )
 	static UFunction* pFnDisplayNextEntry = NULL;
 
 	if ( ! pFnDisplayNextEntry )
-		pFnDisplayNextEntry = (UFunction*) UObject::GObjObjects()->Data[ 48083 ];
+		pFnDisplayNextEntry = (UFunction*) UObject::GObjObjects()->Data[ 48116 ];
 
 	UAIDebugTool_execDisplayNextEntry_Parms DisplayNextEntry_Parms;
 
@@ -2178,7 +2178,7 @@ void UAIDebugTool::SetContext ( )
 	static UFunction* pFnSetContext = NULL;
 
 	if ( ! pFnSetContext )
-		pFnSetContext = (UFunction*) UObject::GObjObjects()->Data[ 48081 ];
+		pFnSetContext = (UFunction*) UObject::GObjObjects()->Data[ 48114 ];
 
 	UAIDebugTool_execSetContext_Parms SetContext_Parms;
 
@@ -2198,7 +2198,7 @@ void UAIDebugTool::LogSpaceLine ( )
 	static UFunction* pFnLogSpaceLine = NULL;
 
 	if ( ! pFnLogSpaceLine )
-		pFnLogSpaceLine = (UFunction*) UObject::GObjObjects()->Data[ 48074 ];
+		pFnLogSpaceLine = (UFunction*) UObject::GObjObjects()->Data[ 48107 ];
 
 	UAIDebugTool_execLogSpaceLine_Parms LogSpaceLine_Parms;
 
@@ -2218,7 +2218,7 @@ void UAIDebugTool::Log ( )
 	static UFunction* pFnLog = NULL;
 
 	if ( ! pFnLog )
-		pFnLog = (UFunction*) UObject::GObjObjects()->Data[ 48070 ];
+		pFnLog = (UFunction*) UObject::GObjObjects()->Data[ 48103 ];
 
 	UAIDebugTool_execLog_Parms Log_Parms;
 
@@ -2238,7 +2238,7 @@ void UAIDebugTool::SetDebugTarget ( )
 	static UFunction* pFnSetDebugTarget = NULL;
 
 	if ( ! pFnSetDebugTarget )
-		pFnSetDebugTarget = (UFunction*) UObject::GObjObjects()->Data[ 48068 ];
+		pFnSetDebugTarget = (UFunction*) UObject::GObjObjects()->Data[ 48101 ];
 
 	UAIDebugTool_execSetDebugTarget_Parms SetDebugTarget_Parms;
 
@@ -2258,7 +2258,7 @@ void UAIDebugTool::FlushLogs ( )
 	static UFunction* pFnFlushLogs = NULL;
 
 	if ( ! pFnFlushLogs )
-		pFnFlushLogs = (UFunction*) UObject::GObjObjects()->Data[ 48065 ];
+		pFnFlushLogs = (UFunction*) UObject::GObjObjects()->Data[ 48098 ];
 
 	UAIDebugTool_execFlushLogs_Parms FlushLogs_Parms;
 
@@ -2278,7 +2278,7 @@ void UAIDebugTool::LoadLogFile ( )
 	static UFunction* pFnLoadLogFile = NULL;
 
 	if ( ! pFnLoadLogFile )
-		pFnLoadLogFile = (UFunction*) UObject::GObjObjects()->Data[ 48061 ];
+		pFnLoadLogFile = (UFunction*) UObject::GObjObjects()->Data[ 48094 ];
 
 	UAIDebugTool_execLoadLogFile_Parms LoadLogFile_Parms;
 
@@ -2298,7 +2298,7 @@ void UAIDebugTool::DrawLog ( )
 	static UFunction* pFnDrawLog = NULL;
 
 	if ( ! pFnDrawLog )
-		pFnDrawLog = (UFunction*) UObject::GObjObjects()->Data[ 48058 ];
+		pFnDrawLog = (UFunction*) UObject::GObjObjects()->Data[ 48091 ];
 
 	UAIDebugTool_execDrawLog_Parms DrawLog_Parms;
 
@@ -2318,7 +2318,7 @@ void UPlugInOwnerInterface::GetTimeSince ( )
 	static UFunction* pFnGetTimeSince = NULL;
 
 	if ( ! pFnGetTimeSince )
-		pFnGetTimeSince = (UFunction*) UObject::GObjObjects()->Data[ 48165 ];
+		pFnGetTimeSince = (UFunction*) UObject::GObjObjects()->Data[ 48198 ];
 
 	UPlugInOwnerInterface_execGetTimeSince_Parms GetTimeSince_Parms;
 
@@ -2334,7 +2334,7 @@ void UPlugInOwnerInterface::GetAiPlugInHistory ( )
 	static UFunction* pFnGetAiPlugInHistory = NULL;
 
 	if ( ! pFnGetAiPlugInHistory )
-		pFnGetAiPlugInHistory = (UFunction*) UObject::GObjObjects()->Data[ 48155 ];
+		pFnGetAiPlugInHistory = (UFunction*) UObject::GObjObjects()->Data[ 48188 ];
 
 	UPlugInOwnerInterface_execGetAiPlugInHistory_Parms GetAiPlugInHistory_Parms;
 
@@ -2350,7 +2350,7 @@ void UNavigationPath::DrawPath ( )
 	static UFunction* pFnDrawPath = NULL;
 
 	if ( ! pFnDrawPath )
-		pFnDrawPath = (UFunction*) UObject::GObjObjects()->Data[ 48658 ];
+		pFnDrawPath = (UFunction*) UObject::GObjObjects()->Data[ 48691 ];
 
 	UNavigationPath_execDrawPath_Parms DrawPath_Parms;
 
@@ -2366,7 +2366,7 @@ void UNavigationPath::WorldToLocal ( )
 	static UFunction* pFnWorldToLocal = NULL;
 
 	if ( ! pFnWorldToLocal )
-		pFnWorldToLocal = (UFunction*) UObject::GObjObjects()->Data[ 48655 ];
+		pFnWorldToLocal = (UFunction*) UObject::GObjObjects()->Data[ 48688 ];
 
 	UNavigationPath_execWorldToLocal_Parms WorldToLocal_Parms;
 
@@ -2382,7 +2382,7 @@ void UNavigationPath::SetRoute ( )
 	static UFunction* pFnSetRoute = NULL;
 
 	if ( ! pFnSetRoute )
-		pFnSetRoute = (UFunction*) UObject::GObjObjects()->Data[ 48652 ];
+		pFnSetRoute = (UFunction*) UObject::GObjObjects()->Data[ 48685 ];
 
 	UNavigationPath_execSetRoute_Parms SetRoute_Parms;
 
@@ -2398,7 +2398,7 @@ void UNavigationPath::GetElementPos ( )
 	static UFunction* pFnGetElementPos = NULL;
 
 	if ( ! pFnGetElementPos )
-		pFnGetElementPos = (UFunction*) UObject::GObjObjects()->Data[ 48649 ];
+		pFnGetElementPos = (UFunction*) UObject::GObjObjects()->Data[ 48682 ];
 
 	UNavigationPath_execGetElementPos_Parms GetElementPos_Parms;
 

@@ -3381,6 +3381,13 @@ struct UEngine_execIsEditor_Parms
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
+// Function Engine.GameEngine.WasLaunchedOnPartialInstall
+// [0x00022401] ( FUNC_Final | FUNC_Native )
+struct UGameEngine_execWasLaunchedOnPartialInstall_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
 // Function Engine.GameEngine.GetChunkInstallProgress
 // [0x00022401] ( FUNC_Final | FUNC_Native )
 struct UGameEngine_execGetChunkInstallProgress_Parms
@@ -6098,6 +6105,13 @@ struct AGameInfo_execRequiresPassword_Parms
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
+// Function Engine.GameInfo.GetModifiedGameDifficulty
+// [0x00020002] 
+struct AGameInfo_execGetModifiedGameDifficulty_Parms
+{
+	// unsigned char                                   ReturnValue;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+};
+
 // Function Engine.GameInfo.ProcessClientTravel
 // [0x00420002] 
 struct AGameInfo_execProcessClientTravel_Parms
@@ -6123,6 +6137,13 @@ struct AGameInfo_execProcessServerTravel_Parms
 	// struct FString                                  EncodedPlayerName;                                		// 0x0030 (0x0010) [0x0000000000000000]              
 	// struct FGuid                                    NextMapGuid;                                      		// 0x0040 (0x0010) [0x0000000000000000]              
 	// int                                             OptionStart;                                      		// 0x0050 (0x0004) [0x0000000000000000]              
+};
+
+// Function Engine.GameInfo.GetShouldShowLength
+// [0x00022002] 
+struct AGameInfo_execGetShouldShowLength_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function Engine.GameInfo.CheckNextMap
@@ -7097,7 +7118,7 @@ struct AWeapon_execServerStartFire_Parms
 // [0x00020102] 
 struct AWeapon_execStartFire_Parms
 {
-	unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
 };
 
 // Function Engine.Weapon.ClientWeaponSet
@@ -9927,11 +9948,11 @@ struct UCanvas_execDrawTextureLine_Parms
 // [0x00020401] ( FUNC_Final | FUNC_Native )
 struct UCanvas_execDraw2DLine_Parms
 {
-	float                                           X1;                                               		// 0x0000 (0x0004) [0x0000000000000000]              
-	float                                           Y1;                                               		// 0x0004 (0x0004) [0x0000000000000000]              
-	float                                           X2;                                               		// 0x0008 (0x0004) [0x0000000000000000]              
-	float                                           Y2;                                               		// 0x000C (0x0004) [0x0000000000000000]              
-	struct FColor                                   LineColor;                                        		// 0x0010 (0x0004) [0x0000000000000000]              
+	// float                                           X1;                                               		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           Y1;                                               		// 0x0004 (0x0004) [0x0000000000000000]              
+	// float                                           X2;                                               		// 0x0008 (0x0004) [0x0000000000000000]              
+	// float                                           Y2;                                               		// 0x000C (0x0004) [0x0000000000000000]              
+	// struct FColor                                   LineColor;                                        		// 0x0010 (0x0004) [0x0000000000000000]              
 };
 
 // Function Engine.Canvas.SetDrawColorStruct
@@ -9952,29 +9973,29 @@ struct UCanvas_execEnableStencilTest_Parms
 // [0x00024401] ( FUNC_Final | FUNC_Native )
 struct UCanvas_execSetDrawColor_Parms
 {
-	unsigned char                                   R;                                                		// 0x0000 (0x0001) [0x0000000000000000]              
-	unsigned char                                   G;                                                		// 0x0001 (0x0001) [0x0000000000000000]              
-	unsigned char                                   B;                                                		// 0x0002 (0x0001) [0x0000000000000000]              
-	unsigned char                                   A;                                                		// 0x0003 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   R;                                                		// 0x0000 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   G;                                                		// 0x0001 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   B;                                                		// 0x0002 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   A;                                                		// 0x0003 (0x0001) [0x0000000000000000]              
 };
 
 // Function Engine.Canvas.DrawBox
 // [0x00020103] ( FUNC_Final )
 struct UCanvas_execDrawBox_Parms
 {
-	float                                           Width;                                            		// 0x0000 (0x0004) [0x0000000000000000]              
-	float                                           Height;                                           		// 0x0004 (0x0004) [0x0000000000000000]              
-	int                                             X;                                                		// 0x0008 (0x0004) [0x0000000000000000]              
-	int                                             Y;                                                		// 0x000C (0x0004) [0x0000000000000000]              
+	// float                                           Width;                                            		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           Height;                                           		// 0x0004 (0x0004) [0x0000000000000000]              
+	// int                                             X;                                                		// 0x0008 (0x0004) [0x0000000000000000]              
+	// int                                             Y;                                                		// 0x000C (0x0004) [0x0000000000000000]              
 };
 
 // Function Engine.Canvas.DrawRect
 // [0x00024003] ( FUNC_Final )
 struct UCanvas_execDrawRect_Parms
 {
-	float                                           RectX;                                            		// 0x0000 (0x0004) [0x0000000000000000]              
-	float                                           RectY;                                            		// 0x0004 (0x0004) [0x0000000000000000]              
-	class UTexture*                                 Tex;                                              		// 0x0008 (0x0008) [0x0000000000000000]              
+	// float                                           RectX;                                            		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           RectY;                                            		// 0x0004 (0x0004) [0x0000000000000000]              
+	// class UTexture*                                 Tex;                                              		// 0x0008 (0x0008) [0x0000000000000000]              
 };
 
 // Function Engine.Canvas.DrawIcon
@@ -10068,9 +10089,9 @@ struct UCanvas_execSetOrigin_Parms
 // [0x00024401] ( FUNC_Final | FUNC_Native )
 struct UCanvas_execSetPos_Parms
 {
-	float                                           PosX;                                             		// 0x0000 (0x0004) [0x0000000000000000]              
-	float                                           PosY;                                             		// 0x0004 (0x0004) [0x0000000000000000]              
-	float                                           PosZ;                                             		// 0x0008 (0x0004) [0x0000000000000000]              
+	// float                                           PosX;                                             		// 0x0000 (0x0004) [0x0000000000000000]              
+	// float                                           PosY;                                             		// 0x0004 (0x0004) [0x0000000000000000]              
+	// float                                           PosZ;                                             		// 0x0008 (0x0004) [0x0000000000000000]              
 };
 
 // Function Engine.Canvas.GetDefaultCanvasFont
@@ -10132,11 +10153,11 @@ struct UCanvas_execDrawText_Parms
 // [0x00424401] ( FUNC_Final | FUNC_Native )
 struct UCanvas_execTextSize_Parms
 {
-	struct FString                                  String;                                           		// 0x0000 (0x0010) [0x0000000000000000]              
-	float                                           XL;                                               		// 0x0010 (0x0004) [0x0000000000000000]              
-	float                                           YL;                                               		// 0x0014 (0x0004) [0x0000000000000000]              
-	float                                           XScale;                                           		// 0x0018 (0x0004) [0x0000000000000000]              
-	float                                           YScale;                                           		// 0x001C (0x0004) [0x0000000000000000]              
+	// struct FString                                  String;                                           		// 0x0000 (0x0010) [0x0000000000000000]              
+	// float                                           XL;                                               		// 0x0010 (0x0004) [0x0000000000000000]              
+	// float                                           YL;                                               		// 0x0014 (0x0004) [0x0000000000000000]              
+	// float                                           XScale;                                           		// 0x0018 (0x0004) [0x0000000000000000]              
+	// float                                           YScale;                                           		// 0x001C (0x0004) [0x0000000000000000]              
 };
 
 // Function Engine.Canvas.StrLen
@@ -13816,6 +13837,12 @@ struct APlayerController_eventDestroyed_Parms
 	// class ULocalPlayer*                             LPlayer;                                          		// 0x0004 (0x0008) [0x0000000000000000]              
 	// class UMaterialEffect*                          Effect;                                           		// 0x000C (0x0008) [0x0000000000000000]              
 	// class UMaterialInstanceConstant*                MIC;                                              		// 0x0014 (0x0008) [0x0000000000000000]              
+};
+
+// Function Engine.PlayerController.Exit
+// [0x00020800] ( FUNC_Event )
+struct APlayerController_eventExit_Parms
+{
 };
 
 // Function Engine.PlayerController.CleanupPawn
@@ -20145,6 +20172,27 @@ struct UOnlineSubsystem_execIsExchangeable_Parms
 	// int                                             ReturnValue;                                      		// 0x0014 (0x0004) [0x0000000000000000]              
 };
 
+// Function Engine.OnlineSubsystem.CanCheckFreeTrialState
+// [0x00020400] ( FUNC_Native )
+struct UOnlineSubsystem_execCanCheckFreeTrialState_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function Engine.OnlineSubsystem.IsFreeTrialPeriodActive
+// [0x00020400] ( FUNC_Native )
+struct UOnlineSubsystem_execIsFreeTrialPeriodActive_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function Engine.OnlineSubsystem.IsGameOwned
+// [0x00020400] ( FUNC_Native )
+struct UOnlineSubsystem_execIsGameOwned_Parms
+{
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
 // Function Engine.OnlineSubsystem.OpenGameStorePage
 // [0x00020400] ( FUNC_Native )
 struct UOnlineSubsystem_execOpenGameStorePage_Parms
@@ -20187,6 +20235,13 @@ struct UPlatformInterfaceBase_execAddDelegate_Parms
 {
 	// int                                             DelegateType;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
 	// struct FScriptDelegate                          InDelegate;                                       		// 0x0004 (0x0010) [0x0000000000000000]              
+};
+
+// Function Engine.PlatformInterfaceBase.GetDiscordRPCIntegration
+// [0x00022400] ( FUNC_Native )
+struct UPlatformInterfaceBase_execGetDiscordRPCIntegration_Parms
+{
+	// class UDiscordRPCIntegration*                   ReturnValue;                                      		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
 // Function Engine.PlatformInterfaceBase.GetRazerIntegration
@@ -22902,7 +22957,7 @@ struct UInteraction_execInit_Parms
 // [0x00020800] ( FUNC_Event )
 struct UInteraction_eventPostRender_Parms
 {
-	class UCanvas*                                  Canvas;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
+	// class UCanvas*                                  Canvas;                                           		// 0x0000 (0x0008) [0x0000000000000000]              
 };
 
 // Function Engine.Interaction.Tick
@@ -28587,14 +28642,14 @@ struct APawn_execGetWeaponFiringMode_Parms
 // [0x00020102] 
 struct APawn_execStopFire_Parms
 {
-	unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
 };
 
 // Function Engine.Pawn.StartFire
 // [0x00020102] 
 struct APawn_execStartFire_Parms
 {
-	unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   FireModeNum;                                      		// 0x0000 (0x0001) [0x0000000000000000]              
 };
 
 // Function Engine.Pawn.StopFiring
@@ -31866,6 +31921,12 @@ struct UConsole_execInputChar_Parms
 	// int                                             ControllerId;                                     		// 0x0000 (0x0004) [0x0000000000000000]              
 	// struct FString                                  Unicode;                                          		// 0x0004 (0x0010) [0x0000000000000000]              
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0014 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// Function Engine.Console.AttempDisconnect
+// [0x00020000] 
+struct UConsole_execAttempDisconnect_Parms
+{
 };
 
 // Function Engine.Console.InputKey
@@ -36104,9 +36165,9 @@ struct UAlienFXLEDInterface_eventLEDSetFlashingRBG_Parms
 	// DWORD                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
-// Function Engine.AlienFXLEDInterface.TickAlienFX
+// Function Engine.AlienFXLEDInterface.UpdateAlienFX
 // [0x00020400] ( FUNC_Native )
-struct UAlienFXLEDInterface_execTickAlienFX_Parms
+struct UAlienFXLEDInterface_execUpdateAlienFX_Parms
 {
 };
 
@@ -36125,12 +36186,13 @@ struct UAlienFXLEDInterface_eventLedRestoreLighting_Parms
 };
 
 // Function Engine.AlienFXLEDInterface.SetColor
-// [0x00020C00] ( FUNC_Event | FUNC_Native )
+// [0x00024C00] ( FUNC_Event | FUNC_Native )
 struct UAlienFXLEDInterface_eventSetColor_Parms
 {
 	// unsigned char                                   RedPercent;                                       		// 0x0000 (0x0001) [0x0000000000000000]              
 	// unsigned char                                   GreenPercent;                                     		// 0x0001 (0x0001) [0x0000000000000000]              
 	// unsigned char                                   BluePercent;                                      		// 0x0002 (0x0001) [0x0000000000000000]              
+	// unsigned char                                   Brightness;                                       		// 0x0003 (0x0001) [0x0000000000000000]              
 	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
@@ -36667,6 +36729,59 @@ struct UCloudStorageBase_eventInit_Parms
 {
 };
 
+// Function Engine.DiscordRPCIntegration.CreateGamePresence
+// [0x00020500] ( FUNC_Native )
+struct UDiscordRPCIntegration_execCreateGamePresence_Parms
+{
+	// struct FString                                  PresenceString;                                   		// 0x0000 (0x0010) [0x0000000000000000]              
+	// struct FString                                  DetailsString;                                    		// 0x0010 (0x0010) [0x0000000000000000]              
+	// struct FString                                  MapName;                                          		// 0x0020 (0x0010) [0x0000000000000000]              
+	// int                                             CurrentPlayers;                                   		// 0x0030 (0x0004) [0x0000000000000000]              
+	// int                                             MaxPlayers;                                       		// 0x0034 (0x0004) [0x0000000000000000]              
+};
+
+// Function Engine.DiscordRPCIntegration.CreateMenuPresence
+// [0x00020500] ( FUNC_Native )
+struct UDiscordRPCIntegration_execCreateMenuPresence_Parms
+{
+	// struct FString                                  PresenceString;                                   		// 0x0000 (0x0010) [0x0000000000000000]              
+	// struct FQWord                                   LobbyId;                                          		// 0x0010 (0x0008) [0x0000000000000000]              
+	// int                                             CurrentPlayers;                                   		// 0x0018 (0x0004) [0x0000000000000000]              
+	// int                                             MaxPlayers;                                       		// 0x001C (0x0004) [0x0000000000000000]              
+};
+
+// Function Engine.DiscordRPCIntegration.TickDiscord
+// [0x00020400] ( FUNC_Native )
+struct UDiscordRPCIntegration_execTickDiscord_Parms
+{
+};
+
+// Function Engine.DiscordRPCIntegration.ShutDown
+// [0x00020400] ( FUNC_Native )
+struct UDiscordRPCIntegration_execShutDown_Parms
+{
+};
+
+// Function Engine.DiscordRPCIntegration.Init
+// [0x00020C00] ( FUNC_Event | FUNC_Native )
+struct UDiscordRPCIntegration_eventInit_Parms
+{
+};
+
+// Function Engine.DiscordRPCIntegration.InternalJoinLobby
+// [0x00020400] ( FUNC_Native )
+struct UDiscordRPCIntegration_execInternalJoinLobby_Parms
+{
+	// struct FQWord                                   LobbyId;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
+// Function Engine.DiscordRPCIntegration.JoinLobby
+// [0x00120000] 
+struct UDiscordRPCIntegration_execJoinLobby_Parms
+{
+	// struct FQWord                                   LobbyId;                                          		// 0x0000 (0x0008) [0x0000000000000000]              
+};
+
 // Function Engine.FacebookIntegration.Disconnect
 // [0x00020C00] ( FUNC_Event | FUNC_Native )
 struct UFacebookIntegration_eventDisconnect_Parms
@@ -36803,19 +36918,28 @@ struct ULogitechLEDInterface_eventLEDSetFlashingRBG_Parms
 };
 
 // Function Engine.LogitechLEDInterface.SetColor
-// [0x00020C00] ( FUNC_Event | FUNC_Native )
+// [0x00024C00] ( FUNC_Event | FUNC_Native )
 struct ULogitechLEDInterface_eventSetColor_Parms
 {
 	// int                                             RedPercent;                                       		// 0x0000 (0x0004) [0x0000000000000000]              
 	// int                                             GreenPercent;                                     		// 0x0004 (0x0004) [0x0000000000000000]              
 	// int                                             BluePercent;                                      		// 0x0008 (0x0004) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x000C (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           Brightness;                                       		// 0x000C (0x0004) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function Engine.LogitechLEDInterface.Init
 // [0x00020C00] ( FUNC_Event | FUNC_Native )
 struct ULogitechLEDInterface_eventInit_Parms
 {
+};
+
+// Function Engine.MixerIntegration.ForceMixerScene
+// [0x00022400] ( FUNC_Native )
+struct UMixerIntegration_execForceMixerScene_Parms
+{
+	// struct FString                                  VersionNumber;                                    		// 0x0000 (0x0010) [0x0000000000000000]              
+	// struct FString                                  ShareCode;                                        		// 0x0010 (0x0010) [0x0000000000000000]              
 };
 
 // Function Engine.MixerIntegration.MoveUserToGroup
@@ -36960,13 +37084,14 @@ struct URazerLEDInterface_eventLEDSetFlashingRBG_Parms
 };
 
 // Function Engine.RazerLEDInterface.SetColor
-// [0x00020C00] ( FUNC_Event | FUNC_Native )
+// [0x00024C00] ( FUNC_Event | FUNC_Native )
 struct URazerLEDInterface_eventSetColor_Parms
 {
 	// unsigned char                                   RedPercent;                                       		// 0x0000 (0x0001) [0x0000000000000000]              
 	// unsigned char                                   GreenPercent;                                     		// 0x0001 (0x0001) [0x0000000000000000]              
 	// unsigned char                                   BluePercent;                                      		// 0x0002 (0x0001) [0x0000000000000000]              
-	// DWORD                                           ReturnValue : 1;                                  		// 0x0004 (0x0004) [0x0000000000000000] [0x00000001] 
+	// float                                           Brightness;                                       		// 0x0004 (0x0004) [0x0000000000000000]              
+	// DWORD                                           ReturnValue : 1;                                  		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
 };
 
 // Function Engine.RazerLEDInterface.Init

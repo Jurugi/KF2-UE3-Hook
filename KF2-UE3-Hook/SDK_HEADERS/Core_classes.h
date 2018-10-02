@@ -202,7 +202,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 2 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Object" );
 
 		return pClassPointer;
 	};
@@ -364,7 +364,7 @@ public:
 	void RInterpTo ( );
 	void RTransform ( );
 	void RLerp ( );
-	void Normalize ( FRotator Rot, FRotator &Out );
+	void Normalize(FRotator Rot, FRotator &Out);
 	void OrthoRotation ( );
 	void RotRand ( );
 	void GetRotatorAxis ( );
@@ -398,14 +398,14 @@ public:
 	void VSizeSq2D ( );
 	void VSizeSq ( );
 	void VSize2D ( );
-	void VSize ( FVector In, float &Out );
+	void VSize(FVector In, float &Out);
 	void SubtractEqual_VectorVector ( );
 	void AddEqual_VectorVector ( );
 	void DivideEqual_VectorFloat ( );
 	void MultiplyEqual_VectorVector ( );
 	void MultiplyEqual_VectorFloat ( );
 	void Cross_VectorVector ( );
-	void Dot_VectorVector ( FVector A, FVector B, float &Out );
+	void Dot_VectorVector(FVector A, FVector B, float &Out);
 	void NotEqual_VectorVector ( );
 	void EqualEqual_VectorVector ( );
 	void GreaterGreater_VectorRotator ( );
@@ -512,74 +512,262 @@ public:
 	void Not_PreBool ( );
 
 	// Virtual Functions
-	virtual void VirtualFunction00 ( );																			
-	virtual void VirtualFunction01 ( );																			
-	virtual void VirtualFunction02 ( );																			
-	virtual void VirtualFunction03 ( );																			
-	virtual void VirtualFunction04 ( );																			
-	virtual void VirtualFunction05 ( );																			
-	virtual void VirtualFunction06 ( );																			
-	virtual void VirtualFunction07 ( );																			
-	virtual void VirtualFunction08 ( );																			
-	virtual void VirtualFunction09 ( );																			
-	virtual void VirtualFunction10 ( );																			
-	virtual void VirtualFunction11 ( );																			
-	virtual void VirtualFunction12 ( );																			
-	virtual void VirtualFunction13 ( );																			
-	virtual void VirtualFunction14 ( );																			
-	virtual void VirtualFunction15 ( );																			
-	virtual void VirtualFunction16 ( );																			
-	virtual void VirtualFunction17 ( );																			
-	virtual void VirtualFunction18 ( );																			
-	virtual void VirtualFunction19 ( );																			
-	virtual void VirtualFunction20 ( );																			
-	virtual void VirtualFunction21 ( );																			
-	virtual void VirtualFunction22 ( );																			
-	virtual void VirtualFunction23 ( );																			
-	virtual void VirtualFunction24 ( );																			
-	virtual void VirtualFunction25 ( );																			
-	virtual void VirtualFunction26 ( );																			
-	virtual void VirtualFunction27 ( );																			
-	virtual void VirtualFunction28 ( );																			
-	virtual void VirtualFunction29 ( );																			
-	virtual void VirtualFunction30 ( );																			
-	virtual void VirtualFunction31 ( );																			
-	virtual void VirtualFunction32 ( );																			
-	virtual void VirtualFunction33 ( );																			
-	virtual void VirtualFunction34 ( );																			
-	virtual void VirtualFunction35 ( );																			
-	virtual void VirtualFunction36 ( );																			
-	virtual void VirtualFunction37 ( );																			
-	virtual void VirtualFunction38 ( );																			
-	virtual void VirtualFunction39 ( );																			
-	virtual void VirtualFunction40 ( );																			
-	virtual void VirtualFunction41 ( );																			
-	virtual void VirtualFunction42 ( );																			
-	virtual void VirtualFunction43 ( );																			
-	virtual void VirtualFunction44 ( );																			
-	virtual void VirtualFunction45 ( );																			
-	virtual void VirtualFunction46 ( );																			
-	virtual void VirtualFunction47 ( );																			
-	virtual void VirtualFunction48 ( );																			
-	virtual void VirtualFunction49 ( );																			
-	virtual void VirtualFunction50 ( );																			
-	virtual void VirtualFunction51 ( );																			
-	virtual void VirtualFunction52 ( );																			
-	virtual void VirtualFunction53 ( );																			
-	virtual void VirtualFunction54 ( );																			
-	virtual void VirtualFunction55 ( );																			
-	virtual void VirtualFunction56 ( );																			
-	virtual void VirtualFunction57 ( );																			
-	virtual void VirtualFunction58 ( );																			
-	virtual void VirtualFunction59 ( );																			
-	virtual void VirtualFunction60 ( );																			
-	virtual void VirtualFunction61 ( );																			
-	virtual void VirtualFunction62 ( );																			
-	virtual void VirtualFunction63 ( );																			
-	virtual void VirtualFunction64 ( );																			
-	virtual void VirtualFunction65 ( );																		
-	virtual void VirtualFunction66 ( );																			
-	virtual void ProcessEvent(class UFunction* pFunction, void* pParms, void* pResult = NULL);                  // 67
+	virtual void VirtualFunction00 ( );																			// 0x7FF652A680D0 (0x00)
+	virtual void VirtualFunction01 ( );																			// 0x521E6D9000007FF6 (0x04)
+	virtual void VirtualFunction02 ( );																			// 0x7FF6521E6D90 (0x08)
+	virtual void VirtualFunction03 ( );																			// 0x521DC9E000007FF6 (0x0C)
+	virtual void VirtualFunction04 ( );																			// 0x7FF6521DC9E0 (0x10)
+	virtual void VirtualFunction05 ( );																			// 0x52A680D000007FF6 (0x14)
+	virtual void VirtualFunction06 ( );																			// 0x7FF652A680D0 (0x18)
+	virtual void VirtualFunction07 ( );																			// 0x5269284000007FF6 (0x1C)
+	virtual void VirtualFunction08 ( );																			// 0x7FF652692840 (0x20)
+	virtual void VirtualFunction09 ( );																			// 0x5269284000007FF6 (0x24)
+	virtual void VirtualFunction10 ( );																			// 0x7FF652692840 (0x28)
+	virtual void VirtualFunction11 ( );																			// 0x5224107000007FF6 (0x2C)
+	virtual void VirtualFunction12 ( );																			// 0x7FF652241070 (0x30)
+	virtual void VirtualFunction13 ( );																			// 0x5224705000007FF6 (0x34)
+	virtual void VirtualFunction14 ( );																			// 0x7FF652247050 (0x38)
+	virtual void VirtualFunction15 ( );																			// 0x521EB8B000007FF6 (0x3C)
+	virtual void VirtualFunction16 ( );																			// 0x7FF6521EB8B0 (0x40)
+	virtual void VirtualFunction17 ( );																			// 0x522361A000007FF6 (0x44)
+	virtual void VirtualFunction18 ( );																			// 0x7FF6522361A0 (0x48)
+	virtual void VirtualFunction19 ( );																			// 0x52A680D000007FF6 (0x4C)
+	virtual void VirtualFunction20 ( );																			// 0x7FF652A680D0 (0x50)
+	virtual void VirtualFunction21 ( );																			// 0x52248BE000007FF6 (0x54)
+	virtual void VirtualFunction22 ( );																			// 0x7FF652248BE0 (0x58)
+	virtual void VirtualFunction23 ( );																			// 0x521E304000007FF6 (0x5C)
+	virtual void VirtualFunction24 ( );																			// 0x7FF6521E3040 (0x60)
+	virtual void VirtualFunction25 ( );																			// 0x521EEF8000007FF6 (0x64)
+	virtual void VirtualFunction26 ( );																			// 0x7FF6521EEF80 (0x68)
+	virtual void VirtualFunction27 ( );																			// 0x521B7F0000007FF6 (0x6C)
+	virtual void VirtualFunction28 ( );																			// 0x7FF6521B7F00 (0x70)
+	virtual void VirtualFunction29 ( );																			// 0x5269284000007FF6 (0x74)
+	virtual void VirtualFunction30 ( );																			// 0x7FF652692840 (0x78)
+	virtual void VirtualFunction31 ( );																			// 0x522424F000007FF6 (0x7C)
+	virtual void VirtualFunction32 ( );																			// 0x7FF6522424F0 (0x80)
+	virtual void VirtualFunction33 ( );																			// 0x522425C000007FF6 (0x84)
+	virtual void VirtualFunction34 ( );																			// 0x7FF6522425C0 (0x88)
+	virtual void VirtualFunction35 ( );																			// 0x5224237000007FF6 (0x8C)
+	virtual void VirtualFunction36 ( );																			// 0x7FF652242370 (0x90)
+	virtual void VirtualFunction37 ( );																			// 0x5224228000007FF6 (0x94)
+	virtual void VirtualFunction38 ( );																			// 0x7FF652242280 (0x98)
+	virtual void VirtualFunction39 ( );																			// 0x5223630000007FF6 (0x9C)
+	virtual void VirtualFunction40 ( );																			// 0x7FF652236300 (0xA0)
+	virtual void VirtualFunction41 ( );																			// 0x522425D000007FF6 (0xA4)
+	virtual void VirtualFunction42 ( );																			// 0x7FF6522425D0 (0xA8)
+	virtual void VirtualFunction43 ( );																			// 0x522424B000007FF6 (0xAC)
+	virtual void VirtualFunction44 ( );																			// 0x7FF6522424B0 (0xB0)
+	virtual void VirtualFunction45 ( );																			// 0x5269284000007FF6 (0xB4)
+	virtual void VirtualFunction46 ( );																			// 0x7FF652692840 (0xB8)
+	virtual void VirtualFunction47 ( );																			// 0x5269284000007FF6 (0xBC)
+	virtual void VirtualFunction48 ( );																			// 0x7FF652692840 (0xC0)
+	virtual void VirtualFunction49 ( );																			// 0x5269284000007FF6 (0xC4)
+	virtual void VirtualFunction50 ( );																			// 0x7FF652692840 (0xC8)
+	virtual void VirtualFunction51 ( );																			// 0x5225937000007FF6 (0xCC)
+	virtual void VirtualFunction52 ( );																			// 0x7FF652259370 (0xD0)
+	virtual void VirtualFunction53 ( );																			// 0x522425D000007FF6 (0xD4)
+	virtual void VirtualFunction54 ( );																			// 0x7FF6522425D0 (0xD8)
+	virtual void VirtualFunction55 ( );																			// 0x522424B000007FF6 (0xDC)
+	virtual void VirtualFunction56 ( );																			// 0x7FF6522424B0 (0xE0)
+	virtual void VirtualFunction57 ( );																			// 0x522425D000007FF6 (0xE4)
+	virtual void VirtualFunction58 ( );																			// 0x7FF6522425D0 (0xE8)
+	virtual void VirtualFunction59 ( );																			// 0x522424B000007FF6 (0xEC)
+	virtual void VirtualFunction60 ( );																			// 0x7FF6522424B0 (0xF0)
+	virtual void VirtualFunction61 ( );																			// 0x5223AAA000007FF6 (0xF4)
+	virtual void VirtualFunction62 ( );																			// 0x7FF65223AAA0 (0xF8)
+	virtual void VirtualFunction63 ( );																			// 0x52246E2000007FF6 (0xFC)
+	virtual void VirtualFunction64 ( );																			// 0x7FF652246E20 (0x100)
+	virtual void VirtualFunction65 ( );																			// 0x5223F25000007FF6 (0x104)
+	virtual void VirtualFunction66 ( );																			// 0x7FF65223F250 (0x108)
+	virtual void ProcessEvent(class UFunction* pFunction, void* pParms, void* pResult = NULL);																		// 0x2A18EF9000007FF7 (0x10C)
+	virtual void VirtualFunction68 ( );																			// 0x7FF652692840 (0x110)
+	virtual void VirtualFunction69 ( );																			// 0x521ECC7000007FF6 (0x114)
+	virtual void VirtualFunction70 ( );																			// 0x7FF6521ECC70 (0x118)
+	virtual void VirtualFunction71 ( );																			// 0x5223DDC000007FF6 (0x11C)
+	virtual void VirtualFunction72 ( );																			// 0x7FF65223DDC0 (0x120)
+	virtual void VirtualFunction73 ( );																			// 0x5217827000007FF6 (0x124)
+	virtual void VirtualFunction74 ( );																			// 0x7FF652178270 (0x128)
+	virtual void VirtualFunction75 ( );																			// 0x521782C000007FF6 (0x12C)
+	virtual void VirtualFunction76 ( );																			// 0x7FF6521782C0 (0x130)
+	virtual void VirtualFunction77 ( );																			// 0x5217829000007FF6 (0x134)
+	virtual void VirtualFunction78 ( );																			// 0x7FF652178290 (0x138)
+	virtual void VirtualFunction79 ( );																			// 0x528EBAB000007FF6 (0x13C)
+	virtual void VirtualFunction80 ( );																			// 0x7FF6528EBAB0 (0x140)
+	virtual void VirtualFunction81 ( );																			// 0x521755F000007FF6 (0x144)
+	virtual void VirtualFunction82 ( );																			// 0x7FF6521755F0 (0x148)
+	virtual void VirtualFunction83 ( );																			// 0x528EBAB000007FF6 (0x14C)
+	virtual void VirtualFunction84 ( );																			// 0x7FF6528EBAB0 (0x150)
+	virtual void VirtualFunction85 ( );																			// 0x5269284000007FF6 (0x154)
+	virtual void VirtualFunction86 ( );																			// 0x7FF652692840 (0x158)
+	virtual void VirtualFunction87 ( );																			// 0x5269284000007FF6 (0x15C)
+	virtual void VirtualFunction88 ( );																			// 0x7FF652692840 (0x160)
+	virtual void VirtualFunction89 ( );																			// 0x5269284000007FF6 (0x164)
+	virtual void VirtualFunction90 ( );																			// 0x7FF652692840 (0x168)
+	virtual void VirtualFunction91 ( );																			// 0x528EBAB000007FF6 (0x16C)
+	virtual void VirtualFunction92 ( );																			// 0x7FF6528EBAB0 (0x170)
+	virtual void VirtualFunction93 ( );																			// 0x52810CC000007FF6 (0x174)
+	virtual void VirtualFunction94 ( );																			// 0x7FF652810CC0 (0x178)
+	virtual void VirtualFunction95 ( );																			// 0x5281106000007FF6 (0x17C)
+	virtual void VirtualFunction96 ( );																			// 0x7FF652811060 (0x180)
+	virtual void VirtualFunction97 ( );																			// 0x521EE01000007FF6 (0x184)
+	virtual void VirtualFunction98 ( );																			// 0x7FF6521EE010 (0x188)
+	virtual void VirtualFunction99 ( );																			// 0x521E2DE000007FF6 (0x18C)
+	virtual void VirtualFunction100 ( );																			// 0x7FF6521E2DE0 (0x190)
+	virtual void VirtualFunction101 ( );																			// 0x5269284000007FF6 (0x194)
+	virtual void VirtualFunction102 ( );																			// 0x7FF652692840 (0x198)
+	virtual void VirtualFunction103 ( );																			// 0x5269284000007FF6 (0x19C)
+	virtual void VirtualFunction104 ( );																			// 0x7FF652692840 (0x1A0)
+	virtual void VirtualFunction105 ( );																			// 0x521F6BA000007FF6 (0x1A4)
+	virtual void VirtualFunction106 ( );																			// 0x7FF6521F6BA0 (0x1A8)
+	virtual void VirtualFunction107 ( );																			// 0x521E45B000007FF6 (0x1AC)
+	virtual void VirtualFunction108 ( );																			// 0x7FF6521E45B0 (0x1B0)
+	virtual void VirtualFunction109 ( );																			// 0x5223AFF000007FF6 (0x1B4)
+	virtual void VirtualFunction110 ( );																			// 0x7FF65223AFF0 (0x1B8)
+	virtual void VirtualFunction111 ( );																			// 0x528EBAB000007FF6 (0x1BC)
+	virtual void VirtualFunction112 ( );																			// 0x7FF6528EBAB0 (0x1C0)
+	virtual void VirtualFunction113 ( );																			// 0x5223DAE000007FF6 (0x1C4)
+	virtual void VirtualFunction114 ( );																			// 0x7FF65223DAE0 (0x1C8)
+	virtual void VirtualFunction115 ( );																			// 0x52240FD000007FF6 (0x1CC)
+	virtual void VirtualFunction116 ( );																			// 0x7FF652240FD0 (0x1D0)
+	virtual void VirtualFunction117 ( );																			// 0x521B0CF000007FF6 (0x1D4)
+	virtual void VirtualFunction118 ( );																			// 0x7FF6521B0CF0 (0x1D8)
+	virtual void VirtualFunction119 ( );																			// 0x52258FC000007FF6 (0x1DC)
+	virtual void VirtualFunction120 ( );																			// 0x7FF652258FC0 (0x1E0)
+	virtual void VirtualFunction121 ( );																			// 0x528EBAB000007FF6 (0x1E4)
+	virtual void VirtualFunction122 ( );																			// 0x7FF6528EBAB0 (0x1E8)
+	virtual void VirtualFunction123 ( );																			// 0x5217562000007FF6 (0x1EC)
+	virtual void VirtualFunction124 ( );																			// 0x7FF652175620 (0x1F0)
+	virtual void VirtualFunction125 ( );																			// 0x52177EF000007FF6 (0x1F4)
+	virtual void VirtualFunction126 ( );																			// 0x7FF652177EF0 (0x1F8)
+	virtual void VirtualFunction127 ( );																			// 0x5223D95000007FF6 (0x1FC)
+	virtual void VirtualFunction128 ( );																			// 0x7FF65223D950 (0x200)
+	virtual void VirtualFunction129 ( );																			// 0x522487A000007FF6 (0x204)
+	virtual void VirtualFunction130 ( );																			// 0x7FF6522487A0 (0x208)
+	virtual void VirtualFunction131 ( );																			// 0x521DE4A000007FF6 (0x20C)
+	virtual void VirtualFunction132 ( );																			// 0x7FF6521DE4A0 (0x210)
+	virtual void VirtualFunction133 ( );																			// 0x521EBD9000007FF6 (0x214)
+	virtual void VirtualFunction134 ( );																			// 0x7FF6521EBD90 (0x218)
+	virtual void VirtualFunction135 ( );																			// 0x521EBCE000007FF6 (0x21C)
+	virtual void VirtualFunction136 ( );																			// 0x7FF6521EBCE0 (0x220)
+	virtual void VirtualFunction137 ( );																			// 0x5269284000007FF6 (0x224)
+	virtual void VirtualFunction138 ( );																			// 0x7FF652692840 (0x228)
+	virtual void VirtualFunction139 ( );																			// 0x528EBAB000007FF6 (0x22C)
+	virtual void VirtualFunction140 ( );																			// 0x7FF6528EBAB0 (0x230)
+	virtual void VirtualFunction141 ( );																			// 0x5223D5C000007FF6 (0x234)
+	virtual void VirtualFunction142 ( );																			// 0x7FF65223D5C0 (0x238)
+	virtual void VirtualFunction143 ( );																			// 0x521E67D000007FF6 (0x23C)
+	virtual void VirtualFunction144 ( );																			// 0x7FF6521E67D0 (0x240)
+	virtual void VirtualFunction145 ( );																			// 0x521E696000007FF6 (0x244)
+	virtual void VirtualFunction146 ( );																			// 0x7FF6521E6960 (0x248)
+	virtual void VirtualFunction147 ( );																			// 0x522470D000007FF6 (0x24C)
+	virtual void VirtualFunction148 ( );																			// 0x7FF6522470D0 (0x250)
+	virtual void VirtualFunction149 ( );																			// 0x528EBAB000007FF6 (0x254)
+	virtual void VirtualFunction150 ( );																			// 0x7FF6528EBAB0 (0x258)
+	virtual void VirtualFunction151 ( );																			// 0x521DDA3000007FF6 (0x25C)
+	virtual void VirtualFunction152 ( );																			// 0x7FF6521DDA30 (0x260)
+	virtual void VirtualFunction153 ( );																			// 0x52A680D000007FF6 (0x264)
+	virtual void VirtualFunction154 ( );																			// 0x7FF652A680D0 (0x268)
+	virtual void VirtualFunction155 ( );																			// 0x521DF34000007FF6 (0x26C)
+	virtual void VirtualFunction156 ( );																			// 0x7FF6521DF340 (0x270)
+	virtual void VirtualFunction157 ( );																			// 0x5315E2D000007FF6 (0x274)
+	virtual void VirtualFunction158 ( );																			// 0x7FF65315E2D0 (0x278)
+	virtual void VirtualFunction159 ( );																			// 0x521E8C8000007FF6 (0x27C)
+	virtual void VirtualFunction160 ( );																			// 0x7FF6521E8C80 (0x280)
+	virtual void VirtualFunction161 ( );																			// 0x521F044000007FF6 (0x284)
+	virtual void VirtualFunction162 ( );																			// 0x7FF6521F0440 (0x288)
+	virtual void VirtualFunction163 ( );																			// 0x521F0FC000007FF6 (0x28C)
+	virtual void VirtualFunction164 ( );																			// 0x7FF6521F0FC0 (0x290)
+	virtual void VirtualFunction165 ( );																			// 0x521EC3C000007FF6 (0x294)
+	virtual void VirtualFunction166 ( );																			// 0x7FF6521EC3C0 (0x298)
+	virtual void VirtualFunction167 ( );																			// 0x521E590000007FF6 (0x29C)
+	virtual void VirtualFunction168 ( );																			// 0x7FF6521E5900 (0x2A0)
+	virtual void VirtualFunction169 ( );																			// 0x00007FF6 (0x2A4)
+	virtual void VirtualFunction170 ( );																			// 0x00000000 (0x2A8)
+	virtual void VirtualFunction171 ( );																			// 0x4F005500000000 (0x2AC)
+	virtual void VirtualFunction172 ( );																			// 0x6A0062004F0055 (0x2B0)
+	virtual void VirtualFunction173 ( );																			// 0x630065006A0062 (0x2B4)
+	virtual void VirtualFunction174 ( );																			// 0x3A007400630065 (0x2B8)
+	virtual void VirtualFunction175 ( );																			// 0x47003A003A0074 (0x2BC)
+	virtual void VirtualFunction176 ( );																			// 0x7400650047003A (0x2C0)
+	virtual void VirtualFunction177 ( );																			// 0x6F004300740065 (0x2C4)
+	virtual void VirtualFunction178 ( );																			// 0x66006E006F0043 (0x2C8)
+	virtual void VirtualFunction179 ( );																			// 0x6700690066006E (0x2CC)
+	virtual void VirtualFunction180 ( );																			// 0x61004E00670069 (0x2D0)
+	virtual void VirtualFunction181 ( );																			// 0x65006D0061004E (0x2D4)
+	virtual void VirtualFunction182 ( );																			// 0x2900280065006D (0x2D8)
+	virtual void VirtualFunction183 ( );																			// 0x63002000290028 (0x2DC)
+	virtual void VirtualFunction184 ( );																			// 0x6C006100630020 (0x2E0)
+	virtual void VirtualFunction185 ( );																			// 0x65006C006C0061 (0x2E4)
+	virtual void VirtualFunction186 ( );																			// 0x2000640065006C (0x2E8)
+	virtual void VirtualFunction187 ( );																			// 0x6E006F00200064 (0x2EC)
+	virtual void VirtualFunction188 ( );																			// 0x630020006E006F (0x2F0)
+	virtual void VirtualFunction189 ( );																			// 0x61006C00630020 (0x2F4)
+	virtual void VirtualFunction190 ( );																			// 0x7300730061006C (0x2F8)
+	virtual void VirtualFunction191 ( );																			// 0x77002000730073 (0x2FC)
+	virtual void VirtualFunction192 ( );																			// 0x74006900770020 (0x300)
+	virtual void VirtualFunction193 ( );																			// 0x20006800740069 (0x304)
+	virtual void VirtualFunction194 ( );																			// 0x6F006300200068 (0x308)
+	virtual void VirtualFunction195 ( );																			// 0x66006E006F0063 (0x30C)
+	virtual void VirtualFunction196 ( );																			// 0x6700690066006E (0x310)
+	virtual void VirtualFunction197 ( );																			// 0x6E002000670069 (0x314)
+	virtual void VirtualFunction198 ( );																			// 0x6D0061006E0020 (0x318)
+	virtual void VirtualFunction199 ( );																			// 0x200065006D0061 (0x31C)
+	virtual void VirtualFunction200 ( );																			// 0x4E002700200065 (0x320)
+	virtual void VirtualFunction201 ( );																			// 0x6E006F004E0027 (0x324)
+	virtual void VirtualFunction202 ( );																			// 0x270065006E006F (0x328)
+	virtual void VirtualFunction203 ( );																			// 0x20002E00270065 (0x32C)
+	virtual void VirtualFunction204 ( );																			// 0x6C00430020002E (0x330)
+	virtual void VirtualFunction205 ( );																			// 0x730061006C0043 (0x334)
+	virtual void VirtualFunction206 ( );																			// 0x20007300730061 (0x338)
+	virtual void VirtualFunction207 ( );																			// 0x6C006600200073 (0x33C)
+	virtual void VirtualFunction208 ( );																			// 0x670061006C0066 (0x340)
+	virtual void VirtualFunction209 ( );																			// 0x20007300670061 (0x344)
+	virtual void VirtualFunction210 ( );																			// 0x20003D00200073 (0x348)
+	virtual void VirtualFunction211 ( );																			// 0x6400250020003D (0x34C)
+	virtual void VirtualFunction212 ( );																			// 0x00640025 (0x350)
+	virtual void VirtualFunction213 ( );																			// 0x69002E00000000 (0x354)
+	virtual void VirtualFunction214 ( );																			// 0x69006E0069002E (0x358)
+	virtual void VirtualFunction215 ( );																			// 0x0069006E (0x35C)
+	virtual void VirtualFunction216 ( );																			// 0x00000000 (0x360)
+	virtual void VirtualFunction217 ( );																			// 0x65004400000000 (0x364)
+	virtual void VirtualFunction218 ( );																			// 0x61006600650044 (0x368)
+	virtual void VirtualFunction219 ( );																			// 0x6C007500610066 (0x36C)
+	virtual void VirtualFunction220 ( );																			// 0x74006C0075 (0x370)
+	virtual void VirtualFunction221 ( );																			// 0x00000074 (0x374)
+	virtual void VirtualFunction222 ( );																			// 0x00000000 (0x378)
+	virtual void VirtualFunction223 ( );																			// 0x52A680D000000000 (0x37C)
+	virtual void VirtualFunction224 ( );																			// 0x7FF652A680D0 (0x380)
+	virtual void VirtualFunction225 ( );																			// 0x521E6DE000007FF6 (0x384)
+	virtual void VirtualFunction226 ( );																			// 0x7FF6521E6DE0 (0x388)
+	virtual void VirtualFunction227 ( );																			// 0x521DCA2000007FF6 (0x38C)
+	virtual void VirtualFunction228 ( );																			// 0x7FF6521DCA20 (0x390)
+	virtual void VirtualFunction229 ( );																			// 0x52A680D000007FF6 (0x394)
+	virtual void VirtualFunction230 ( );																			// 0x7FF652A680D0 (0x398)
+	virtual void VirtualFunction231 ( );																			// 0x5269284000007FF6 (0x39C)
+	virtual void VirtualFunction232 ( );																			// 0x7FF652692840 (0x3A0)
+	virtual void VirtualFunction233 ( );																			// 0x5269284000007FF6 (0x3A4)
+	virtual void VirtualFunction234 ( );																			// 0x7FF652692840 (0x3A8)
+	virtual void VirtualFunction235 ( );																			// 0x5224107000007FF6 (0x3AC)
+	virtual void VirtualFunction236 ( );																			// 0x7FF652241070 (0x3B0)
+	virtual void VirtualFunction237 ( );																			// 0x5224705000007FF6 (0x3B4)
+	virtual void VirtualFunction238 ( );																			// 0x7FF652247050 (0x3B8)
+	virtual void VirtualFunction239 ( );																			// 0x521EB8F000007FF6 (0x3BC)
+	virtual void VirtualFunction240 ( );																			// 0x7FF6521EB8F0 (0x3C0)
+	virtual void VirtualFunction241 ( );																			// 0x522361A000007FF6 (0x3C4)
+	virtual void VirtualFunction242 ( );																			// 0x7FF6522361A0 (0x3C8)
+	virtual void VirtualFunction243 ( );																			// 0x52A680D000007FF6 (0x3CC)
+	virtual void VirtualFunction244 ( );																			// 0x7FF652A680D0 (0x3D0)
+	virtual void VirtualFunction245 ( );																			// 0x52248BE000007FF6 (0x3D4)
+	virtual void VirtualFunction246 ( );																			// 0x7FF652248BE0 (0x3D8)
+	virtual void VirtualFunction247 ( );																			// 0x5223A4D000007FF6 (0x3DC)
+	virtual void VirtualFunction248 ( );																			// 0x7FF65223A4D0 (0x3E0)
+	virtual void VirtualFunction249 ( );																			// 0x521EF1D000007FF6 (0x3E4)
+	virtual void VirtualFunction250 ( );																			// 0x7FF6521EF1D0 (0x3E8)
+	virtual void VirtualFunction251 ( );																			// 0x521B7F0000007FF6 (0x3EC)
+	virtual void VirtualFunction252 ( );																			// 0x7FF6521B7F00 (0x3F0)
+	virtual void VirtualFunction253 ( );																			// 0x5269284000007FF6 (0x3F4)
+	virtual void VirtualFunction254 ( );																			// 0x7FF652692840 (0x3F8)
+	virtual void VirtualFunction255 ( );																			// 0x522424F000007FF6 (0x3FC)
 };
 
 UClass* UObject::pClassPointer = NULL;
@@ -598,7 +786,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 1 ];
+			pClassPointer = UObject::FindClass ( "Class Core.TextBuffer" );
 
 		return pClassPointer;
 	};
@@ -621,7 +809,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 6 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Subsystem" );
 
 		return pClassPointer;
 	};
@@ -662,7 +850,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 5 ];
+			pClassPointer = UObject::FindClass ( "Class Core.System" );
 
 		return pClassPointer;
 	};
@@ -685,7 +873,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 38 ];
+			pClassPointer = UObject::FindClass ( "Class Core.PackageMap" );
 
 		return pClassPointer;
 	};
@@ -708,7 +896,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 40 ];
+			pClassPointer = UObject::FindClass ( "Class Core.ObjectSerializer" );
 
 		return pClassPointer;
 	};
@@ -731,7 +919,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 42 ];
+			pClassPointer = UObject::FindClass ( "Class Core.ObjectRedirector" );
 
 		return pClassPointer;
 	};
@@ -754,7 +942,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 44 ];
+			pClassPointer = UObject::FindClass ( "Class Core.MetaData" );
 
 		return pClassPointer;
 	};
@@ -777,7 +965,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 47 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Linker" );
 
 		return pClassPointer;
 	};
@@ -800,7 +988,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 46 ];
+			pClassPointer = UObject::FindClass ( "Class Core.LinkerSave" );
 
 		return pClassPointer;
 	};
@@ -823,7 +1011,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 50 ];
+			pClassPointer = UObject::FindClass ( "Class Core.LinkerLoad" );
 
 		return pClassPointer;
 	};
@@ -845,7 +1033,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 52 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Interface" );
 
 		return pClassPointer;
 	};
@@ -868,7 +1056,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 56 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Field" );
 
 		return pClassPointer;
 	};
@@ -895,7 +1083,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 55 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Struct" );
 
 		return pClassPointer;
 	};
@@ -918,7 +1106,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 54 ];
+			pClassPointer = UObject::FindClass ( "Class Core.ScriptStruct" );
 
 		return pClassPointer;
 	};
@@ -949,7 +1137,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 60 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Function" );
 
 		return pClassPointer;
 	};
@@ -972,7 +1160,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 63 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Property" );
 
 		return pClassPointer;
 	};
@@ -995,7 +1183,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 62 ];
+			pClassPointer = UObject::FindClass ( "Class Core.StructProperty" );
 
 		return pClassPointer;
 	};
@@ -1017,7 +1205,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 66 ];
+			pClassPointer = UObject::FindClass ( "Class Core.StrProperty" );
 
 		return pClassPointer;
 	};
@@ -1040,7 +1228,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 69 ];
+			pClassPointer = UObject::FindClass ( "Class Core.ObjectProperty" );
 
 		return pClassPointer;
 	};
@@ -1062,7 +1250,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 68 ];
+			pClassPointer = UObject::FindClass ( "Class Core.ComponentProperty" );
 
 		return pClassPointer;
 	};
@@ -1085,7 +1273,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 72 ];
+			pClassPointer = UObject::FindClass ( "Class Core.ClassProperty" );
 
 		return pClassPointer;
 	};
@@ -1107,7 +1295,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 74 ];
+			pClassPointer = UObject::FindClass ( "Class Core.NameProperty" );
 
 		return pClassPointer;
 	};
@@ -1130,7 +1318,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 76 ];
+			pClassPointer = UObject::FindClass ( "Class Core.MapProperty" );
 
 		return pClassPointer;
 	};
@@ -1152,7 +1340,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 78 ];
+			pClassPointer = UObject::FindClass ( "Class Core.IntProperty" );
 
 		return pClassPointer;
 	};
@@ -1175,7 +1363,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 80 ];
+			pClassPointer = UObject::FindClass ( "Class Core.InterfaceProperty" );
 
 		return pClassPointer;
 	};
@@ -1197,7 +1385,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 82 ];
+			pClassPointer = UObject::FindClass ( "Class Core.FloatProperty" );
 
 		return pClassPointer;
 	};
@@ -1220,7 +1408,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 84 ];
+			pClassPointer = UObject::FindClass ( "Class Core.DelegateProperty" );
 
 		return pClassPointer;
 	};
@@ -1243,7 +1431,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 86 ];
+			pClassPointer = UObject::FindClass ( "Class Core.ByteProperty" );
 
 		return pClassPointer;
 	};
@@ -1266,7 +1454,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 88 ];
+			pClassPointer = UObject::FindClass ( "Class Core.BoolProperty" );
 
 		return pClassPointer;
 	};
@@ -1289,7 +1477,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 90 ];
+			pClassPointer = UObject::FindClass ( "Class Core.ArrayProperty" );
 
 		return pClassPointer;
 	};
@@ -1312,7 +1500,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 92 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Enum" );
 
 		return pClassPointer;
 	};
@@ -1335,7 +1523,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 94 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Const" );
 
 		return pClassPointer;
 	};
@@ -1367,7 +1555,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 97 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Factory" );
 
 		return pClassPointer;
 	};
@@ -1389,7 +1577,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 96 ];
+			pClassPointer = UObject::FindClass ( "Class Core.TextBufferFactory" );
 
 		return pClassPointer;
 	};
@@ -1415,7 +1603,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 100 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Exporter" );
 
 		return pClassPointer;
 	};
@@ -1439,7 +1627,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 107 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Component" );
 
 		return pClassPointer;
 	};
@@ -1464,7 +1652,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 106 ];
+			pClassPointer = UObject::FindClass ( "Class Core.DistributionVector" );
 
 		return pClassPointer;
 	};
@@ -1490,7 +1678,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110 ];
+			pClassPointer = UObject::FindClass ( "Class Core.DistributionFloat" );
 
 		return pClassPointer;
 	};
@@ -1523,7 +1711,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Commandlet" );
 
 		return pClassPointer;
 	};
@@ -1546,7 +1734,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112 ];
+			pClassPointer = UObject::FindClass ( "Class Core.HelpCommandlet" );
 
 		return pClassPointer;
 	};
@@ -1570,7 +1758,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 116 ];
+			pClassPointer = UObject::FindClass ( "Class Core.State" );
 
 		return pClassPointer;
 	};
@@ -1593,7 +1781,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 118 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Package" );
 
 		return pClassPointer;
 	};
@@ -1616,7 +1804,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120 ];
+			pClassPointer = UObject::FindClass ( "Class Core.Class" );
 
 		return pClassPointer;
 	};

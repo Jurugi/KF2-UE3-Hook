@@ -12,7 +12,7 @@
 */
 
 #ifdef _MSC_VER
-	#pragma pack ( push, 0x4 )
+#pragma pack ( push, 0x4 )
 #endif
 
 /*
@@ -2758,5 +2758,5 @@ struct UCommandlet_eventMain_Parms
 
 
 #ifdef _MSC_VER
-	#pragma pack ( pop )
+#pragma pack ( pop )
 #endif

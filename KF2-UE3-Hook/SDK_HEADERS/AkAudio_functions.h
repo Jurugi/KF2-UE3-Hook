@@ -30,7 +30,7 @@ void UAkComponent::IsPlaying ( )
 	static UFunction* pFnIsPlaying = NULL;
 
 	if ( ! pFnIsPlaying )
-		pFnIsPlaying = (UFunction*) UObject::GObjObjects()->Data[ 47973 ];
+		pFnIsPlaying = (UFunction*) UObject::GObjObjects()->Data[ 48006 ];
 
 	UAkComponent_execIsPlaying_Parms IsPlaying_Parms;
 
@@ -50,7 +50,7 @@ void UAkComponent::SetRTPCValue ( )
 	static UFunction* pFnSetRTPCValue = NULL;
 
 	if ( ! pFnSetRTPCValue )
-		pFnSetRTPCValue = (UFunction*) UObject::GObjObjects()->Data[ 47970 ];
+		pFnSetRTPCValue = (UFunction*) UObject::GObjObjects()->Data[ 48003 ];
 
 	UAkComponent_execSetRTPCValue_Parms SetRTPCValue_Parms;
 
@@ -70,7 +70,7 @@ void UAkComponent::PlayEvent ( )
 	static UFunction* pFnPlayEvent = NULL;
 
 	if ( ! pFnPlayEvent )
-		pFnPlayEvent = (UFunction*) UObject::GObjObjects()->Data[ 47965 ];
+		pFnPlayEvent = (UFunction*) UObject::GObjObjects()->Data[ 47998 ];
 
 	UAkComponent_execPlayEvent_Parms PlayEvent_Parms;
 
@@ -90,7 +90,7 @@ void UAkComponent::StopEvents ( )
 	static UFunction* pFnStopEvents = NULL;
 
 	if ( ! pFnStopEvents )
-		pFnStopEvents = (UFunction*) UObject::GObjObjects()->Data[ 47964 ];
+		pFnStopEvents = (UFunction*) UObject::GObjObjects()->Data[ 47997 ];
 
 	UAkComponent_execStopEvents_Parms StopEvents_Parms;
 

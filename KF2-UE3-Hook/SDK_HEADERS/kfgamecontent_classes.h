@@ -22,23 +22,39 @@
 */
 
 #define CONST_MaxPhases                                          4
-#define CONST_ObjectiveChance                                    0.5f
 #define CONST_MAX_ACTIVE_PUKE_MINES                              30
+#define CONST_BOSS_WAVE                                          5
 #define CONST_FriendlyZedInfoShowDistanceSQ                      562000
+#define CONST_ChestBombZoneIndex                                 3
 #define CONST_BackpackZoneIndex                                  3
 #define CONST_MINMINEFLOORZ                                      0.8f
 #define CONST_EquipGunsAnim                                      'Equip_Gun'
 #define CONST_PutAwayGunsAnim                                    'PutAway_Gun'
 #define CONST_DAMAGE_COUNT_PER_SCREAM                            4
-#define CONST_SecondaryReloadAnim                                'Reload_Secondary'
-#define CONST_CH_SecondaryReloadAnim                             'Reload_Secondary_CH'
-#define CONST_SecondaryReloadEliteAnim                           'Reload_Secondary_Elite'
-#define CONST_CH_SecondaryReloadEliteAnim                        'Reload_Secondary_Elite_CH'
 #define CONST_SecondaryFireAnim                                  'Shoot_Secondary'
 #define CONST_SecondaryFireIronAnim                              'Shoot_Secondary_Iron'
+#define CONST_SecondaryReloadAnim                                'Reload_Secondary'
 #define CONST_SecondaryReloadAnim_Elite                          'Reload_Secondary_Elite'
 #define CONST_ShootDartAnim                                      'Shoot_Dart'
 #define CONST_ShootDartIronAnim                                  'Shoot_Iron_Dart'
+#define CONST_ShootAnim_L                                        'HardFire_L'
+#define CONST_ShootAnim_R                                        'HardFire_R'
+#define CONST_ShootAnim_F                                        'HardFire_F'
+#define CONST_ShootAnim_B                                        'HardFire_B'
+#define CONST_IdleNoGasAnim                                      'Idle_NoGas'
+#define CONST_BlockLoopNoGasAnim                                 'Brace_loop_NoGas'
+#define CONST_ReloadLowAmmoAnim                                  'Reload_Empty_Half'
+#define CONST_ReloadLowAmmoEliteAnim                             'Reload_Empty_Half_Elite'
+#define CONST_MAX_LOCKED_TARGETS                                 6
+#define CONST_DETONATE_FIREMODE                                  5
+#define CONST_ThrowAnim                                          'C4_Throw'
+#define CONST_CrouchThrowAnim                                    'C4_Throw_CH'
+#define CONST_DetonateAnim                                       'Shoot'
+#define CONST_CrouchDetonateAnim                                 'CH_Shoot'
+#define CONST_WeaponShoot                                        'Shoot'
+#define CONST_CH_SecondaryReloadAnim                             'Reload_Secondary_CH'
+#define CONST_SecondaryReloadEliteAnim                           'Reload_Secondary_Elite'
+#define CONST_CH_SecondaryReloadEliteAnim                        'Reload_Secondary_Elite_CH'
 #define CONST_PulverizerShoot_F                                  'Atk_F_Shoot'
 #define CONST_PulverizerShoot_B                                  'Atk_B_Shoot'
 #define CONST_PulverizerShoot_L                                  'Atk_L_Shoot'
@@ -47,21 +63,6 @@
 #define CONST_CH_PulverizerShoot_B                               'Atk_B_Shoot_CH'
 #define CONST_CH_PulverizerShoot_L                               'Atk_L_Shoot_CH'
 #define CONST_CH_PulverizerShoot_R                               'Atk_R_Shoot_CH'
-#define CONST_ShootAnim_L                                        'HardFire_L'
-#define CONST_ShootAnim_R                                        'HardFire_R'
-#define CONST_ShootAnim_F                                        'HardFire_F'
-#define CONST_ShootAnim_B                                        'HardFire_B'
-#define CONST_WeaponShoot                                        'Shoot'
-#define CONST_IdleNoGasAnim                                      'Idle_NoGas'
-#define CONST_BlockLoopNoGasAnim                                 'Brace_loop_NoGas'
-#define CONST_ReloadLowAmmoAnim                                  'Reload_Empty_Half'
-#define CONST_ReloadLowAmmoEliteAnim                             'Reload_Empty_Half_Elite'
-#define CONST_MAX_LOCKED_TARGETS                                 6
-#define CONST_ThrowAnim                                          'C4_Throw'
-#define CONST_CrouchThrowAnim                                    'C4_Throw_CH'
-#define CONST_DetonateAnim                                       'Shoot'
-#define CONST_CrouchDetonateAnim                                 'CH_Shoot'
-#define CONST_DETONATE_FIREMODE                                  5
 
 /*
 # ========================================================================================= #
@@ -76,26 +77,6 @@
 	WEC_TeamWipedOut                                   = 1,
 	WEC_GameWon                                        = 2,
 	WEC_MAX                                            = 3
-};*/
-
-// Enum kfgamecontent.KFGameInfo_WeeklySurvival.BeefcakeType
-/*enum BeefcakeType
-{
-	EBT_Damage                                         = 0,
-	EBT_Rally                                          = 1,
-	EBT_Scream                                         = 2,
-	EBT_StalkerPoison                                  = 3,
-	EBT_MAX                                            = 4
-};*/
-
-// Enum kfgamecontent.KFGameInfo_WeeklySurvival.PickupResetTime
-/*enum PickupResetTime
-{
-	PRS_Wave                                           = 0,
-	PRS_Trader                                         = 1,
-	PRS_WaveAndTrader                                  = 2,
-	PRS_Never                                          = 3,
-	PRS_MAX                                            = 4
 };*/
 
 // Enum kfgamecontent.KFMG_BloatDunk.eBloatGameState
@@ -148,7 +129,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110573 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_Base_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -158,64 +139,64 @@ public:
 UClass* UAICommand_Base_Patriarch::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedPatriarch
-// 0x0110 (0x0BD4 - 0x0AC4)
+// 0x0110 (0x0BD8 - 0x0AC8)
 class AKFAIController_ZedPatriarch : public AKFAIController_ZedBoss
 {
 public:
-	class AKFPawn_ZedPatriarch*                        MyPatPawn;                                        		// 0x0AC4 (0x0008) [0x0000000000000000]              
-	DWORD                                              bCanEvaluateAttacks : 1;                          		// 0x0ACC (0x0004) [0x0000000000000000] [0x00000001] 
-	DWORD                                              bDoingChargeAttack : 1;                           		// 0x0ACC (0x0004) [0x0000000000000000] [0x00000002] 
-	DWORD                                              bWantsToCharge : 1;                               		// 0x0ACC (0x0004) [0x0000000000000000] [0x00000004] 
-	DWORD                                              bHadMinigunAttack : 1;                            		// 0x0ACC (0x0004) [0x0000000000000000] [0x00000008] 
-	DWORD                                              bSprintUntilAttack : 1;                           		// 0x0ACC (0x0004) [0x0000000000000000] [0x00000010] 
-	DWORD                                              bRaging : 1;                                      		// 0x0ACC (0x0004) [0x0000000000000000] [0x00000020] 
-	DWORD                                              bRagedThisPhase : 1;                              		// 0x0ACC (0x0004) [0x0000000000000000] [0x00000040] 
-	DWORD                                              bWantsToFlee : 1;                                 		// 0x0ACC (0x0004) [0x0000000000000000] [0x00000080] 
-	DWORD                                              bFleeing : 1;                                     		// 0x0ACC (0x0004) [0x0000000000000000] [0x00000100] 
-	DWORD                                              bFleeInterrupted : 1;                             		// 0x0ACC (0x0004) [0x0000000000000000] [0x00000200] 
-	float                                              LostSightSprintDelay;                             		// 0x0AD0 (0x0004) [0x0000000000000000]              
-	float                                              AggroFalloffWaitTime;                             		// 0x0AD4 (0x0004) [0x0000000000000000]              
-	float                                              AggroFalloffPerSecond;                            		// 0x0AD8 (0x0004) [0x0000000000000000]              
-	float                                              VisibleAggroDmgThreshold;                         		// 0x0ADC (0x0004) [0x0000000000000000]              
-	float                                              HiddenAggroDmgThreshold;                          		// 0x0AE0 (0x0004) [0x0000000000000000]              
-	TArray< struct FPatriarch_TrackedEnemyInfo >       RecentlySeenEnemyList;                            		// 0x0AE4 (0x0010) [0x0000000000000000]              
-	TArray< struct FPatriarch_TrackedEnemyInfo >       HiddenEnemies;                                    		// 0x0AF4 (0x0010) [0x0000000000000000]              
-	TArray< class AKFPawn* >                           LastMinigunEnemies;                               		// 0x0B04 (0x0010) [0x0000000000000000]              
-	float                                              MinMinigunRangeSQ;                                		// 0x0B14 (0x0004) [0x0000000000000000]              
-	float                                              MaxMinigunRangeSQ;                                		// 0x0B18 (0x0004) [0x0000000000000000]              
-	float                                              MaxFanFireRangeSQ;                                		// 0x0B1C (0x0004) [0x0000000000000000]              
-	TArray< class AKFPawn* >                           LastChargedPlayers;                               		// 0x0B20 (0x0010) [0x0000000000000000]              
-	float                                              MinChargeRangeSQ;                                 		// 0x0B30 (0x0004) [0x0000000000000000]              
-	float                                              LastChargeAttackTime;                             		// 0x0B34 (0x0004) [0x0000000000000000]              
-	class APawn*                                       CachedChargeTarget;                               		// 0x0B38 (0x0008) [0x0000000000000000]              
-	TArray< class AKFPawn* >                           LastGrabbedPlayers;                               		// 0x0B40 (0x0010) [0x0000000000000000]              
-	float                                              LastGrabAttackTime;                               		// 0x0B50 (0x0004) [0x0000000000000000]              
-	float                                              MinTentacleRangeSQ;                               		// 0x0B54 (0x0004) [0x0000000000000000]              
-	TArray< class AKFPawn* >                           LastMissileEnemies;                               		// 0x0B58 (0x0010) [0x0000000000000000]              
-	float                                              LastMissileAttackTime;                            		// 0x0B68 (0x0004) [0x0000000000000000]              
-	float                                              MinMissileRangeSQ;                                		// 0x0B6C (0x0004) [0x0000000000000000]              
-	float                                              MaxMissileRangeSQ;                                		// 0x0B70 (0x0004) [0x0000000000000000]              
-	float                                              LastMortarAttackTime;                             		// 0x0B74 (0x0004) [0x0000000000000000]              
-	float                                              LastSuccessfulAttackTime;                         		// 0x0B78 (0x0004) [0x0000000000000000]              
-	float                                              RecentSeenEnemyListUpdateInterval;                		// 0x0B7C (0x0004) [0x0000000000000000]              
-	float                                              LastRecentSeenEnemyListUpdateTime;                		// 0x0B80 (0x0004) [0x0000000000000000]              
-	float                                              LastAttackMoveFinishTime;                         		// 0x0B84 (0x0004) [0x0000000000000000]              
-	float                                              NextAttackCheckTime;                              		// 0x0B88 (0x0004) [0x0000000000000000]              
-	float                                              LastSprintTime;                                   		// 0x0B8C (0x0004) [0x0000000000000000]              
-	float                                              LastRetargetTime;                                 		// 0x0B90 (0x0004) [0x0000000000000000]              
-	float                                              RetargetWaitTime;                                 		// 0x0B94 (0x0004) [0x0000000000000000]              
-	int                                                MaxRageAttacks;                                   		// 0x0B98 (0x0004) [0x0000000000000000]              
-	int                                                RageAttackCount;                                  		// 0x0B9C (0x0004) [0x0000000000000000]              
-	float                                              MaxRageRangeSQ;                                   		// 0x0BA0 (0x0004) [0x0000000000000000]              
-	float                                              RageTimeOut;                                      		// 0x0BA4 (0x0004) [0x0000000000000000]              
-	TArray< class AKFPawn* >                           RageAttackedTargets;                              		// 0x0BA8 (0x0010) [0x0000000000000000]              
-	int                                                HumanBumpDamage;                                  		// 0x0BB8 (0x0004) [0x0000000000000000]              
-	int                                                HumanBumpMomentum;                                		// 0x0BBC (0x0004) [0x0000000000000000]              
-	float                                              FleeHealthThreshold;                              		// 0x0BC0 (0x0004) [0x0000000000000000]              
-	float                                              MaxFleeDuration;                                  		// 0x0BC4 (0x0004) [0x0000000000000000]              
-	float                                              MaxFleeDistance;                                  		// 0x0BC8 (0x0004) [0x0000000000000000]              
-	float                                              FleeStartTime;                                    		// 0x0BCC (0x0004) [0x0000000000000000]              
-	float                                              TotalFleeTime;                                    		// 0x0BD0 (0x0004) [0x0000000000000000]              
+	class AKFPawn_ZedPatriarch*                        MyPatPawn;                                        		// 0x0AC8 (0x0008) [0x0000000000000000]              
+	DWORD                                              bCanEvaluateAttacks : 1;                          		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bDoingChargeAttack : 1;                           		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000002] 
+	DWORD                                              bWantsToCharge : 1;                               		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000004] 
+	DWORD                                              bHadMinigunAttack : 1;                            		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000008] 
+	DWORD                                              bSprintUntilAttack : 1;                           		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000010] 
+	DWORD                                              bRaging : 1;                                      		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000020] 
+	DWORD                                              bRagedThisPhase : 1;                              		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000040] 
+	DWORD                                              bWantsToFlee : 1;                                 		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000080] 
+	DWORD                                              bFleeing : 1;                                     		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000100] 
+	DWORD                                              bFleeInterrupted : 1;                             		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000200] 
+	float                                              LostSightSprintDelay;                             		// 0x0AD4 (0x0004) [0x0000000000000000]              
+	float                                              AggroFalloffWaitTime;                             		// 0x0AD8 (0x0004) [0x0000000000000000]              
+	float                                              AggroFalloffPerSecond;                            		// 0x0ADC (0x0004) [0x0000000000000000]              
+	float                                              VisibleAggroDmgThreshold;                         		// 0x0AE0 (0x0004) [0x0000000000000000]              
+	float                                              HiddenAggroDmgThreshold;                          		// 0x0AE4 (0x0004) [0x0000000000000000]              
+	TArray< struct FPatriarch_TrackedEnemyInfo >       RecentlySeenEnemyList;                            		// 0x0AE8 (0x0010) [0x0000000000000000]              
+	TArray< struct FPatriarch_TrackedEnemyInfo >       HiddenEnemies;                                    		// 0x0AF8 (0x0010) [0x0000000000000000]              
+	TArray< class AKFPawn* >                           LastMinigunEnemies;                               		// 0x0B08 (0x0010) [0x0000000000000000]              
+	float                                              MinMinigunRangeSQ;                                		// 0x0B18 (0x0004) [0x0000000000000000]              
+	float                                              MaxMinigunRangeSQ;                                		// 0x0B1C (0x0004) [0x0000000000000000]              
+	float                                              MaxFanFireRangeSQ;                                		// 0x0B20 (0x0004) [0x0000000000000000]              
+	TArray< class AKFPawn* >                           LastChargedPlayers;                               		// 0x0B24 (0x0010) [0x0000000000000000]              
+	float                                              MinChargeRangeSQ;                                 		// 0x0B34 (0x0004) [0x0000000000000000]              
+	float                                              LastChargeAttackTime;                             		// 0x0B38 (0x0004) [0x0000000000000000]              
+	class APawn*                                       CachedChargeTarget;                               		// 0x0B3C (0x0008) [0x0000000000000000]              
+	TArray< class AKFPawn* >                           LastGrabbedPlayers;                               		// 0x0B44 (0x0010) [0x0000000000000000]              
+	float                                              LastGrabAttackTime;                               		// 0x0B54 (0x0004) [0x0000000000000000]              
+	float                                              MinTentacleRangeSQ;                               		// 0x0B58 (0x0004) [0x0000000000000000]              
+	TArray< class AKFPawn* >                           LastMissileEnemies;                               		// 0x0B5C (0x0010) [0x0000000000000000]              
+	float                                              LastMissileAttackTime;                            		// 0x0B6C (0x0004) [0x0000000000000000]              
+	float                                              MinMissileRangeSQ;                                		// 0x0B70 (0x0004) [0x0000000000000000]              
+	float                                              MaxMissileRangeSQ;                                		// 0x0B74 (0x0004) [0x0000000000000000]              
+	float                                              LastMortarAttackTime;                             		// 0x0B78 (0x0004) [0x0000000000000000]              
+	float                                              LastSuccessfulAttackTime;                         		// 0x0B7C (0x0004) [0x0000000000000000]              
+	float                                              RecentSeenEnemyListUpdateInterval;                		// 0x0B80 (0x0004) [0x0000000000000000]              
+	float                                              LastRecentSeenEnemyListUpdateTime;                		// 0x0B84 (0x0004) [0x0000000000000000]              
+	float                                              LastAttackMoveFinishTime;                         		// 0x0B88 (0x0004) [0x0000000000000000]              
+	float                                              NextAttackCheckTime;                              		// 0x0B8C (0x0004) [0x0000000000000000]              
+	float                                              LastSprintTime;                                   		// 0x0B90 (0x0004) [0x0000000000000000]              
+	float                                              LastRetargetTime;                                 		// 0x0B94 (0x0004) [0x0000000000000000]              
+	float                                              RetargetWaitTime;                                 		// 0x0B98 (0x0004) [0x0000000000000000]              
+	int                                                MaxRageAttacks;                                   		// 0x0B9C (0x0004) [0x0000000000000000]              
+	int                                                RageAttackCount;                                  		// 0x0BA0 (0x0004) [0x0000000000000000]              
+	float                                              MaxRageRangeSQ;                                   		// 0x0BA4 (0x0004) [0x0000000000000000]              
+	float                                              RageTimeOut;                                      		// 0x0BA8 (0x0004) [0x0000000000000000]              
+	TArray< class AKFPawn* >                           RageAttackedTargets;                              		// 0x0BAC (0x0010) [0x0000000000000000]              
+	int                                                HumanBumpDamage;                                  		// 0x0BBC (0x0004) [0x0000000000000000]              
+	int                                                HumanBumpMomentum;                                		// 0x0BC0 (0x0004) [0x0000000000000000]              
+	float                                              FleeHealthThreshold;                              		// 0x0BC4 (0x0004) [0x0000000000000000]              
+	float                                              MaxFleeDuration;                                  		// 0x0BC8 (0x0004) [0x0000000000000000]              
+	float                                              MaxFleeDistance;                                  		// 0x0BCC (0x0004) [0x0000000000000000]              
+	float                                              FleeStartTime;                                    		// 0x0BD0 (0x0004) [0x0000000000000000]              
+	float                                              TotalFleeTime;                                    		// 0x0BD4 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -224,7 +205,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110579 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedPatriarch" );
 
 		return pClassPointer;
 	};
@@ -281,6 +262,510 @@ public:
 
 UClass* AKFAIController_ZedPatriarch::pClassPointer = NULL;
 
+// Class kfgamecontent.AICommand_BloatKing_Gorge
+// 0x0000 (0x00F4 - 0x00F4)
+class UAICommand_BloatKing_Gorge : public UAICommand_SpecialMove
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_BloatKing_Gorge" );
+
+		return pClassPointer;
+	};
+
+	void Popped ( );
+	void Pushed ( );
+	void StartGorge ( );
+};
+
+UClass* UAICommand_BloatKing_Gorge::pClassPointer = NULL;
+
+// Class kfgamecontent.KFAIController_ZedBloat
+// 0x0000 (0x0AC4 - 0x0AC4)
+class AKFAIController_ZedBloat : public AKFAIController_Monster
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedBloat" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFAIController_ZedBloat::pClassPointer = NULL;
+
+// Class kfgamecontent.KFAIController_ZedBloatKing
+// 0x007C (0x0B40 - 0x0AC4)
+class AKFAIController_ZedBloatKing : public AKFAIController_ZedBloat
+{
+public:
+	class AKFPawn_ZedBloatKing*                        BloatPawn;                                        		// 0x0AC4 (0x0008) [0x0000000000000000]              
+	float                                              LostSightSprintDelay;                             		// 0x0ACC (0x0004) [0x0000000000000000]              
+	float                                              MinionSpawnTimer[ 0x4 ];                          		// 0x0AD0 (0x0010) [0x0000000000000000]              
+	struct FVector2D                                   NumMinionsToSpawn[ 0x4 ];                         		// 0x0AE0 (0x0020) [0x0000000000000000]              
+	class UKFAIWaveInfo*                               ContinuousSpawnWaveInfos[ 0x4 ];                  		// 0x0B00 (0x0020) [0x0000000000000000]              
+	float                                              ArmorEnrageTimer;                                 		// 0x0B20 (0x0004) [0x0000000000000000]              
+	float                                              NextSpecialMoveCheck;                             		// 0x0B24 (0x0004) [0x0000000000000000]              
+	float                                              NextGorgeAttackCheck;                             		// 0x0B28 (0x0004) [0x0000000000000000]              
+	float                                              NextHumanGorgeAttackCheck;                        		// 0x0B2C (0x0004) [0x0000000000000000]              
+	float                                              LastRetargetTime;                                 		// 0x0B30 (0x0004) [0x0000000000000000]              
+	struct FVector2D                                   RetargetWaitTimeRange;                            		// 0x0B34 (0x0008) [0x0000000000000000]              
+	float                                              ActualRetargetWaitTime;                           		// 0x0B3C (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedBloatKing" );
+
+		return pClassPointer;
+	};
+
+	void EnterZedVictoryState ( );
+	void PawnDied ( );
+	void EndArmorEnrage ( );
+	void StartArmorEnrage ( );
+	void SetEnrageTimer ( );
+	void GetNumMinionsToSpawn ( );
+	void GetWaveInfo ( );
+	void StopBossWave ( );
+	void PauseBossWave ( );
+	void SpawnMinions ( );
+	void StartMinionWaves ( );
+	void ShouldSprint ( );
+	void EvaluateSprinting ( );
+	void eventChangeEnemy ( );
+	void NotifySpecialMoveEnded ( );
+	void eventSeePlayer ( );
+	void CanDoGorgeAttack ( );
+	void TriggerGorge ( );
+	void EvaluateSpecialMoves ( );
+	void AmIAllowedToSuicideWhenStuck ( );
+	void Tick ( );
+	void eventPossess ( );
+};
+
+UClass* AKFAIController_ZedBloatKing::pClassPointer = NULL;
+
+// Class kfgamecontent.AICommand_BloatKingSubspawn_Explode
+// 0x0000 (0x00F4 - 0x00F4)
+class UAICommand_BloatKingSubspawn_Explode : public UAICommand_SpecialMove
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_BloatKingSubspawn_Explode" );
+
+		return pClassPointer;
+	};
+
+	void Popped ( );
+	void Pushed ( );
+	void StartExplode ( );
+};
+
+UClass* UAICommand_BloatKingSubspawn_Explode::pClassPointer = NULL;
+
+// Class kfgamecontent.KFAIController_ZedBloatKingSubspawn
+// 0x000C (0x0AD0 - 0x0AC4)
+class AKFAIController_ZedBloatKingSubspawn : public AKFAIController_Monster
+{
+public:
+	float                                              ExplosionRadiusSq;                                		// 0x0AC4 (0x0004) [0x0000000000000000]              
+	class AKFPawn_ZedBloatKingSubspawn*                PoopPawn;                                         		// 0x0AC8 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedBloatKingSubspawn" );
+
+		return pClassPointer;
+	};
+
+	void CheckMeleeTargetExplosion ( );
+	void CanDoStrike ( );
+	void Tick ( );
+	void eventPossess ( );
+};
+
+UClass* AKFAIController_ZedBloatKingSubspawn::pClassPointer = NULL;
+
+// Class kfgamecontent.AICommand_RangedAttack
+// 0x0018 (0x010C - 0x00F4)
+class UAICommand_RangedAttack : public UAICommand_SpecialMove
+{
+public:
+	struct FVector                                     LastKnownEnemyLocation;                           		// 0x00F4 (0x000C) [0x0000000000000000]              
+	float                                              LastEnemyLocationCheckTime;                       		// 0x0100 (0x0004) [0x0000000000000000]              
+	class UClass*                                      SpecialMoveClass;                                 		// 0x0104 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_RangedAttack" );
+
+		return pClassPointer;
+	};
+
+	void eventHandleAICommandSpecialAction ( );
+	void Popped ( );
+	void Pushed ( );
+};
+
+UClass* UAICommand_RangedAttack::pClassPointer = NULL;
+
+// Class kfgamecontent.AICommand_DAR_EMPAttack
+// 0x0000 (0x010C - 0x010C)
+class UAICommand_DAR_EMPAttack : public UAICommand_RangedAttack
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_DAR_EMPAttack" );
+
+		return pClassPointer;
+	};
+
+	void Popped ( );
+	void Pushed ( );
+	void EMPAttack ( );
+};
+
+UClass* UAICommand_DAR_EMPAttack::pClassPointer = NULL;
+
+// Class kfgamecontent.KFAIController_Ranged
+// 0x0004 (0x0AC8 - 0x0AC4)
+class AKFAIController_Ranged : public AKFAIController_Monster
+{
+public:
+	DWORD                                              bDebugAimError : 1;                               		// 0x0AC4 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bCanLeadTarget : 1;                               		// 0x0AC4 (0x0004) [0x0000000000000000] [0x00000002] 
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_Ranged" );
+
+		return pClassPointer;
+	};
+
+	void DebugAimError ( );
+};
+
+UClass* AKFAIController_Ranged::pClassPointer = NULL;
+
+// Class kfgamecontent.KFAIController_ZedDAR
+// 0x004C (0x0B14 - 0x0AC8)
+class AKFAIController_ZedDAR : public AKFAIController_Ranged
+{
+public:
+	float                                              MinRangeAttackDist;                               		// 0x0AC8 (0x0004) [0x0000000000000000]              
+	float                                              MaxRangeAttackDist;                               		// 0x0ACC (0x0004) [0x0000000000000000]              
+	float                                              LastRangeAttackTime;                              		// 0x0AD0 (0x0004) [0x0000000000000000]              
+	float                                              TimeBetweenRangeAttacks;                          		// 0x0AD4 (0x0004) [0x0000000000000000]              
+	float                                              BaseTimeBetweenRangeAttacks;                      		// 0x0AD8 (0x0004) [0x0000000000000000]              
+	float                                              TimeBetweenRangeAttackVariance;                   		// 0x0ADC (0x0004) [0x0000000000000000]              
+	float                                              CheckSpecialMoveTime;                             		// 0x0AE0 (0x0004) [0x0000000000000000]              
+	float                                              LastCheckSpecialMoveTime;                         		// 0x0AE4 (0x0004) [0x0000000000000000]              
+	struct FName                                       FiringSocketName;                                 		// 0x0AE8 (0x0008) [0x0000000000000000]              
+	float                                              RangeAttackIntervalNormal;                        		// 0x0AF0 (0x0004) [0x0000000000000000]              
+	float                                              RangeAttackIntervalHard;                          		// 0x0AF4 (0x0004) [0x0000000000000000]              
+	float                                              RangeAttackIntervalSuicidal;                      		// 0x0AF8 (0x0004) [0x0000000000000000]              
+	float                                              RangeAttackIntervalHellOnEarth;                   		// 0x0AFC (0x0004) [0x0000000000000000]              
+	float                                              HeadLossAttackTimeDebuff;                         		// 0x0B00 (0x0004) [0x0000000000000000]              
+	float                                              HeadLossAccuracyDebuffPct;                        		// 0x0B04 (0x0004) [0x0000000000000000]              
+	float                                              AimError;                                         		// 0x0B08 (0x0004) [0x0000000000000000]              
+	DWORD                                              bAllowedToSprint : 1;                             		// 0x0B0C (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bCanEvade : 1;                                    		// 0x0B0C (0x0004) [0x0000000000000000] [0x00000002] 
+	int                                                ArmorLossStumblePower;                            		// 0x0B10 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedDAR" );
+
+		return pClassPointer;
+	};
+
+	void OnArmorLoss ( );
+	void CanEvade ( );
+	void ShouldSprint ( );
+	void GetStartFireLocation ( );
+	void FireRangedAttack ( );
+	void StartRangedAttack ( );
+	void eventSetEnemy ( );
+	void Tick ( );
+	void CanDoRangedAttack ( );
+	void GetAttackIntervalByDifficulty ( );
+	void eventPostBeginPlay ( );
+};
+
+UClass* AKFAIController_ZedDAR::pClassPointer = NULL;
+
+// Class kfgamecontent.KFAIController_ZedDAR_EMP
+// 0x0008 (0x0B1C - 0x0B14)
+class AKFAIController_ZedDAR_EMP : public AKFAIController_ZedDAR
+{
+public:
+	struct FName                                       EMPSocketName;                                    		// 0x0B14 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedDAR_EMP" );
+
+		return pClassPointer;
+	};
+
+	void StartRangedAttack ( );
+};
+
+UClass* AKFAIController_ZedDAR_EMP::pClassPointer = NULL;
+
+// Class kfgamecontent.KFSM_DAR_EMPAttack
+// 0x0088 (0x0204 - 0x017C)
+class UKFSM_DAR_EMPAttack : public UKFSM_RangedAttack
+{
+public:
+	class UParticleSystem*                             EMPPSCTemplate;                                   		// 0x017C (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    EMPPSC;                                           		// 0x0184 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             EMPHitPSCTemplate;                                		// 0x018C (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    EMPHitPSC;                                        		// 0x0194 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    EMPStartSFX;                                      		// 0x019C (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    EMPEndSFX;                                        		// 0x01A4 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    EMPHitSFX;                                        		// 0x01AC (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    EMPHitStopSFX;                                    		// 0x01B4 (0x0008) [0x0000000000000000]              
+	class UCameraShake*                                EMPHitShake;                                      		// 0x01BC (0x0008) [0x0000000000000000]              
+	struct FName                                       EMPSocketName;                                    		// 0x01C4 (0x0008) [0x0000000000000000]              
+	class UClass*                                      EMPDamageType;                                    		// 0x01CC (0x0008) [0x0000000000000000]              
+	float                                              MaxEMPLength;                                     		// 0x01D4 (0x0004) [0x0000000000000000]              
+	struct FVector                                     EMPExtent;                                        		// 0x01D8 (0x000C) [0x0000000000000000]              
+	int                                                EMPDamage;                                        		// 0x01E4 (0x0004) [0x0000000000000000]              
+	TArray< struct FEMPBlastHitInfo >                  Victims;                                          		// 0x01E8 (0x0010) [0x0000000000000000]              
+	float                                              ApplyDamageDelay;                                 		// 0x01F8 (0x0004) [0x0000000000000000]              
+	DWORD                                              bDrawDebugEMP : 1;                                		// 0x01FC (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              GrappleTime;                                      		// 0x0200 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_DAR_EMPAttack" );
+
+		return pClassPointer;
+	};
+
+	void DeactivateHitPSC ( );
+	void DeactivatePSC ( );
+	void ReleaseVictims ( );
+	void ApplyDamage ( );
+	void GetEnemyByTrace ( );
+	void SetEMPEndPoint ( );
+	void WithinRange ( );
+	void IsValidTarget ( );
+	void DisableEMP ( );
+	void ToggleEMP ( );
+	void SpecialMoveEnded ( );
+	void SpecialMoveStarted ( );
+};
+
+UClass* UKFSM_DAR_EMPAttack::pClassPointer = NULL;
+
+// Class kfgamecontent.AICommand_DAR_LaserAttack
+// 0x0000 (0x010C - 0x010C)
+class UAICommand_DAR_LaserAttack : public UAICommand_RangedAttack
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_DAR_LaserAttack" );
+
+		return pClassPointer;
+	};
+
+	void Popped ( );
+	void Pushed ( );
+	void LaserAttack ( );
+};
+
+UClass* UAICommand_DAR_LaserAttack::pClassPointer = NULL;
+
+// Class kfgamecontent.KFAIController_ZedDAR_Laser
+// 0x0000 (0x0B14 - 0x0B14)
+class AKFAIController_ZedDAR_Laser : public AKFAIController_ZedDAR
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedDAR_Laser" );
+
+		return pClassPointer;
+	};
+
+	void GetStartFireLocation ( );
+	void StartRangedAttack ( );
+};
+
+UClass* AKFAIController_ZedDAR_Laser::pClassPointer = NULL;
+
+// Class kfgamecontent.KFSM_DAR_LaserAttack
+// 0x0000 (0x017C - 0x017C)
+class UKFSM_DAR_LaserAttack : public UKFSM_RangedAttack
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_DAR_LaserAttack" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFSM_DAR_LaserAttack::pClassPointer = NULL;
+
+// Class kfgamecontent.AICommand_DAR_RocketAttack
+// 0x0000 (0x010C - 0x010C)
+class UAICommand_DAR_RocketAttack : public UAICommand_RangedAttack
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_DAR_RocketAttack" );
+
+		return pClassPointer;
+	};
+
+	void Popped ( );
+	void Pushed ( );
+	void RocketAttack ( );
+};
+
+UClass* UAICommand_DAR_RocketAttack::pClassPointer = NULL;
+
+// Class kfgamecontent.KFAIController_ZedDAR_Rocket
+// 0x0000 (0x0B14 - 0x0B14)
+class AKFAIController_ZedDAR_Rocket : public AKFAIController_ZedDAR
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedDAR_Rocket" );
+
+		return pClassPointer;
+	};
+
+	void GetStartFireLocation ( );
+	void StartRangedAttack ( );
+};
+
+UClass* AKFAIController_ZedDAR_Rocket::pClassPointer = NULL;
+
+// Class kfgamecontent.KFSM_DAR_RocketAttack
+// 0x0000 (0x017C - 0x017C)
+class UKFSM_DAR_RocketAttack : public UKFSM_RangedAttack
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_DAR_RocketAttack" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFSM_DAR_RocketAttack::pClassPointer = NULL;
+
 // Class kfgamecontent.AICommand_FleshpoundKing_ChestBeamAttack
 // 0x0000 (0x00F4 - 0x00F4)
 class UAICommand_FleshpoundKing_ChestBeamAttack : public UAICommand_SpecialMove
@@ -294,7 +779,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110584 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_FleshpoundKing_ChestBeamAttack" );
 
 		return pClassPointer;
 	};
@@ -307,19 +792,19 @@ public:
 UClass* UAICommand_FleshpoundKing_ChestBeamAttack::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedFleshpoundKing
-// 0x0038 (0x0B48 - 0x0B10)
+// 0x0038 (0x0B4C - 0x0B14)
 class AKFAIController_ZedFleshpoundKing : public AKFAIController_ZedFleshpound
 {
 public:
-	class AKFPawn_ZedFleshpoundKing*                   MyPawn;                                           		// 0x0B10 (0x0008) [0x0000000000000000]              
-	float                                              NextBeamCheckTime;                                		// 0x0B18 (0x0004) [0x0000000000000000]              
-	float                                              LastBeamTickTime;                                 		// 0x0B1C (0x0004) [0x0000000000000000]              
-	struct FVector2D                                   BeamAttackWaitTimeRange;                          		// 0x0B20 (0x0008) [0x0000000000000000]              
-	float                                              MinChestBeamTargetAngle;                          		// 0x0B28 (0x0004) [0x0000000000000000]              
-	float                                              MaxChestBeamHeightOffset;                         		// 0x0B2C (0x0004) [0x0000000000000000]              
-	int                                                CurrentPhase;                                     		// 0x0B30 (0x0004) [0x0000000000000000]              
-	float                                              PhaseThresholds[ 0x4 ];                           		// 0x0B34 (0x0010) [0x0000000000000000]              
-	int                                                ChestBeamMinPhase;                                		// 0x0B44 (0x0004) [0x0000000000000000]              
+	class AKFPawn_ZedFleshpoundKing*                   MyPawn;                                           		// 0x0B14 (0x0008) [0x0000000000000000]              
+	float                                              NextBeamCheckTime;                                		// 0x0B1C (0x0004) [0x0000000000000000]              
+	float                                              LastBeamTickTime;                                 		// 0x0B20 (0x0004) [0x0000000000000000]              
+	struct FVector2D                                   BeamAttackWaitTimeRange;                          		// 0x0B24 (0x0008) [0x0000000000000000]              
+	float                                              MinChestBeamTargetAngle;                          		// 0x0B2C (0x0004) [0x0000000000000000]              
+	float                                              MaxChestBeamHeightOffset;                         		// 0x0B30 (0x0004) [0x0000000000000000]              
+	int                                                CurrentPhase;                                     		// 0x0B34 (0x0004) [0x0000000000000000]              
+	float                                              PhaseThresholds[ 0x4 ];                           		// 0x0B38 (0x0010) [0x0000000000000000]              
+	int                                                ChestBeamMinPhase;                                		// 0x0B48 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -328,7 +813,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110596 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedFleshpoundKing" );
 
 		return pClassPointer;
 	};
@@ -344,17 +829,18 @@ public:
 	void CheckForBeamAttack ( );
 	void eventTick ( );
 	void eventSeePlayer ( );
+	void AmIAllowedToSuicideWhenStuck ( );
 	void eventPossess ( );
 };
 
 UClass* AKFAIController_ZedFleshpoundKing::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_FleshpoundKing
-// 0x0010 (0x0290 - 0x0280)
+// 0x0010 (0x02A4 - 0x0294)
 class UKFDifficulty_FleshpoundKing : public UKFMonsterDifficultyInfo
 {
 public:
-	TArray< float >                                    ChestBeamCooldowns;                               		// 0x0280 (0x0010) [0x0000000000000000]              
+	TArray< float >                                    ChestBeamCooldowns;                               		// 0x0294 (0x0010) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -363,7 +849,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110598 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_FleshpoundKing" );
 
 		return pClassPointer;
 	};
@@ -386,7 +872,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110602 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_Husk_Suicide" );
 
 		return pClassPointer;
 	};
@@ -402,41 +888,39 @@ public:
 UClass* UAICommand_Husk_Suicide::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedHusk
-// 0x007C (0x0B3C - 0x0AC0)
-class AKFAIController_ZedHusk : public AKFAIController_Monster
+// 0x007C (0x0B44 - 0x0AC8)
+class AKFAIController_ZedHusk : public AKFAIController_Ranged
 {
 public:
-	DWORD                                              bBaseCommandInitialized : 1;                      		// 0x0AC0 (0x0004) [0x0000000000000000] [0x00000001] 
-	DWORD                                              bCanUseFlameThrower : 1;                          		// 0x0AC0 (0x0004) [0x0000000000000000] [0x00000002] 
-	DWORD                                              bDebugAimError : 1;                               		// 0x0AC0 (0x0004) [0x0000000000000000] [0x00000004] 
-	DWORD                                              bCanLeadTarget : 1;                               		// 0x0AC0 (0x0004) [0x0000000000000000] [0x00000008] 
-	float                                              MinDistanceToSuicide;                             		// 0x0AC4 (0x0004) [0x0000000000000000]              
-	float                                              RequiredHealthPercentForSuicide;                  		// 0x0AC8 (0x0004) [0x0000000000000000]              
-	struct FVector                                     LastEnemySeenPosition;                            		// 0x0ACC (0x000C) [0x0000000000000000]              
-	float                                              LastFireBallTime;                                 		// 0x0AD8 (0x0004) [0x0000000000000000]              
-	float                                              LastFlameThrowerTime;                             		// 0x0ADC (0x0004) [0x0000000000000000]              
-	float                                              BaseTimeBetweenFireBalls;                         		// 0x0AE0 (0x0004) [0x0000000000000000]              
-	float                                              TimeBetweenFireBalls;                             		// 0x0AE4 (0x0004) [0x0000000000000000]              
-	float                                              TimeBetweenFlameThrower;                          		// 0x0AE8 (0x0004) [0x0000000000000000]              
-	float                                              FireballRandomizedValue;                          		// 0x0AEC (0x0004) [0x0000000000000000]              
-	int                                                MaxDistanceForFlameThrower;                       		// 0x0AF0 (0x0004) [0x0000000000000000]              
-	int                                                MinDistanceForFireBall;                           		// 0x0AF4 (0x0004) [0x0000000000000000]              
-	int                                                MaxDistanceForFireBall;                           		// 0x0AF8 (0x0004) [0x0000000000000000]              
-	float                                              LastCheckSpecialMoveTime;                         		// 0x0AFC (0x0004) [0x0000000000000000]              
-	float                                              CheckSpecialMoveTime;                             		// 0x0B00 (0x0004) [0x0000000000000000]              
-	struct FName                                       FireballSocketName;                               		// 0x0B04 (0x0008) [0x0000000000000000]              
-	float                                              FireballAimError;                                 		// 0x0B0C (0x0004) [0x0000000000000000]              
-	float                                              FireballLeadTargetAimError;                       		// 0x0B10 (0x0004) [0x0000000000000000]              
-	float                                              FireballSpeed;                                    		// 0x0B14 (0x0004) [0x0000000000000000]              
-	float                                              SplashAimChanceNormal;                            		// 0x0B18 (0x0004) [0x0000000000000000]              
-	float                                              SplashAimChanceHard;                              		// 0x0B1C (0x0004) [0x0000000000000000]              
-	float                                              SplashAimChanceSuicidal;                          		// 0x0B20 (0x0004) [0x0000000000000000]              
-	float                                              SplashAimChanceHellOnEarth;                       		// 0x0B24 (0x0004) [0x0000000000000000]              
-	float                                              FireballFireIntervalNormal;                       		// 0x0B28 (0x0004) [0x0000000000000000]              
-	float                                              FireballFireIntervalHard;                         		// 0x0B2C (0x0004) [0x0000000000000000]              
-	float                                              FireballFireIntervalSuicidal;                     		// 0x0B30 (0x0004) [0x0000000000000000]              
-	float                                              FireballFireIntervalHellOnEarth;                  		// 0x0B34 (0x0004) [0x0000000000000000]              
-	float                                              LowIntensityAttackScaleOfFireballInterval;        		// 0x0B38 (0x0004) [0x0000000000000000]              
+	DWORD                                              bBaseCommandInitialized : 1;                      		// 0x0AC8 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bCanUseFlameThrower : 1;                          		// 0x0AC8 (0x0004) [0x0000000000000000] [0x00000002] 
+	float                                              MinDistanceToSuicide;                             		// 0x0ACC (0x0004) [0x0000000000000000]              
+	float                                              RequiredHealthPercentForSuicide;                  		// 0x0AD0 (0x0004) [0x0000000000000000]              
+	struct FVector                                     LastEnemySeenPosition;                            		// 0x0AD4 (0x000C) [0x0000000000000000]              
+	float                                              LastFireBallTime;                                 		// 0x0AE0 (0x0004) [0x0000000000000000]              
+	float                                              LastFlameThrowerTime;                             		// 0x0AE4 (0x0004) [0x0000000000000000]              
+	float                                              BaseTimeBetweenFireBalls;                         		// 0x0AE8 (0x0004) [0x0000000000000000]              
+	float                                              TimeBetweenFireBalls;                             		// 0x0AEC (0x0004) [0x0000000000000000]              
+	float                                              TimeBetweenFlameThrower;                          		// 0x0AF0 (0x0004) [0x0000000000000000]              
+	float                                              FireballRandomizedValue;                          		// 0x0AF4 (0x0004) [0x0000000000000000]              
+	int                                                MaxDistanceForFlameThrower;                       		// 0x0AF8 (0x0004) [0x0000000000000000]              
+	int                                                MinDistanceForFireBall;                           		// 0x0AFC (0x0004) [0x0000000000000000]              
+	int                                                MaxDistanceForFireBall;                           		// 0x0B00 (0x0004) [0x0000000000000000]              
+	float                                              LastCheckSpecialMoveTime;                         		// 0x0B04 (0x0004) [0x0000000000000000]              
+	float                                              CheckSpecialMoveTime;                             		// 0x0B08 (0x0004) [0x0000000000000000]              
+	struct FName                                       FireballSocketName;                               		// 0x0B0C (0x0008) [0x0000000000000000]              
+	float                                              FireballAimError;                                 		// 0x0B14 (0x0004) [0x0000000000000000]              
+	float                                              FireballLeadTargetAimError;                       		// 0x0B18 (0x0004) [0x0000000000000000]              
+	float                                              FireballSpeed;                                    		// 0x0B1C (0x0004) [0x0000000000000000]              
+	float                                              SplashAimChanceNormal;                            		// 0x0B20 (0x0004) [0x0000000000000000]              
+	float                                              SplashAimChanceHard;                              		// 0x0B24 (0x0004) [0x0000000000000000]              
+	float                                              SplashAimChanceSuicidal;                          		// 0x0B28 (0x0004) [0x0000000000000000]              
+	float                                              SplashAimChanceHellOnEarth;                       		// 0x0B2C (0x0004) [0x0000000000000000]              
+	float                                              FireballFireIntervalNormal;                       		// 0x0B30 (0x0004) [0x0000000000000000]              
+	float                                              FireballFireIntervalHard;                         		// 0x0B34 (0x0004) [0x0000000000000000]              
+	float                                              FireballFireIntervalSuicidal;                     		// 0x0B38 (0x0004) [0x0000000000000000]              
+	float                                              FireballFireIntervalHellOnEarth;                  		// 0x0B3C (0x0004) [0x0000000000000000]              
+	float                                              LowIntensityAttackScaleOfFireballInterval;        		// 0x0B40 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -445,12 +929,11 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110622 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedHusk" );
 
 		return pClassPointer;
 	};
 
-	void DebugAimError ( );
 	void ShootFireball ( );
 	void DoStrike ( );
 	void ShouldSprint ( );
@@ -461,19 +944,15 @@ public:
 	void IsSuicidal ( );
 	void Tick ( );
 	void eventPostBeginPlay ( );
-	void eventPossess ( );
-	void IsNearDoor ( );
 };
 
 UClass* AKFAIController_ZedHusk::pClassPointer = NULL;
 
 // Class kfgamecontent.AICommand_HuskFireBallAttack
-// 0x0010 (0x0104 - 0x00F4)
-class UAICommand_HuskFireBallAttack : public UAICommand_SpecialMove
+// 0x0000 (0x010C - 0x010C)
+class UAICommand_HuskFireBallAttack : public UAICommand_RangedAttack
 {
 public:
-	struct FVector                                     LastKnownEnemyLocation;                           		// 0x00F4 (0x000C) [0x0000000000000000]              
-	float                                              LastEnemyLocationCheckTime;                       		// 0x0100 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -482,12 +961,11 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110624 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_HuskFireBallAttack" );
 
 		return pClassPointer;
 	};
 
-	void eventHandleAICommandSpecialAction ( );
 	void Popped ( );
 	void Pushed ( );
 	void FireBallAttack ( );
@@ -496,13 +974,10 @@ public:
 UClass* UAICommand_HuskFireBallAttack::pClassPointer = NULL;
 
 // Class kfgamecontent.KFSM_Husk_FireBallAttack
-// 0x002C (0x017C - 0x0150)
-class UKFSM_Husk_FireBallAttack : public UKFSM_PlaySingleAnim
+// 0x0000 (0x017C - 0x017C)
+class UKFSM_Husk_FireBallAttack : public UKFSM_RangedAttack
 {
 public:
-	TArray< struct FName >                             AnimNames;                                        		// 0x0150 (0x0010) [0x0000000000000000]              
-	TArray< struct FVector >                           FireOffsets;                                      		// 0x0160 (0x0010) [0x0000000000000000]              
-	struct FVector                                     FireOffset;                                       		// 0x0170 (0x000C) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -511,7 +986,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110641 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Husk_FireBallAttack" );
 
 		return pClassPointer;
 	};
@@ -519,11 +994,6 @@ public:
 	void CanOverrideMoveWith ( );
 	void SpecialMoveEnded ( );
 	void NotifyFireballFired ( );
-	void PlayAnimation ( );
-	void SpecialMoveStarted ( );
-	void GetFireOffset ( );
-	void InternalCanDoSpecialMove ( );
-	void PackFlagsBase ( );
 };
 
 UClass* UKFSM_Husk_FireBallAttack::pClassPointer = NULL;
@@ -541,7 +1011,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110646 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_HuskFlameThrowerAttack" );
 
 		return pClassPointer;
 	};
@@ -566,7 +1036,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110662 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_Patriarch_Grab" );
 
 		return pClassPointer;
 	};
@@ -579,99 +1049,99 @@ public:
 UClass* UAICommand_Patriarch_Grab::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedPatriarch
-// 0x02C8 (0x1138 - 0x0E70)
+// 0x02C8 (0x11D0 - 0x0F08)
 class AKFPawn_ZedPatriarch : public AKFPawn_MonsterBoss
 {
 public:
-	class UAkEvent*                                    AmbientBreathingEvent;                            		// 0x0E70 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    LowHealthAmbientBreathingEvent;                   		// 0x0E78 (0x0008) [0x0000000000000000]              
-	class UAkComponent*                                CloakedAkComponent;                               		// 0x0E80 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    CloakedLoop;                                      		// 0x0E88 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    CloakedLoopEnd;                                   		// 0x0E90 (0x0008) [0x0000000000000000]              
-	class UMaterialInstanceConstant*                   BodyMaterial;                                     		// 0x0E98 (0x0008) [0x0000000000000000]              
-	class UMaterialInstanceConstant*                   BodyAltMaterial;                                  		// 0x0EA0 (0x0008) [0x0000000000000000]              
-	class UMaterialInstanceConstant*                   SpottedMaterial;                                  		// 0x0EA8 (0x0008) [0x0000000000000000]              
-	class UMaterialInstanceConstant*                   CloakedBodyMaterial;                              		// 0x0EB0 (0x0008) [0x0000000000000000]              
-	class UMaterialInstanceConstant*                   CloakedBodyAltMaterial;                           		// 0x0EB8 (0x0008) [0x0000000000000000]              
-	class UKFSkelControl_SpinBone*                     BarrelSpinSkelCtrl;                               		// 0x0EC0 (0x0008) [0x0000000000000000]              
-	class USkelControlLookAt*                          GunTrackingSkelCtrl;                              		// 0x0EC8 (0x0008) [0x0000000000000000]              
-	TArray< class UStaticMeshComponent* >              HealingSyringeMeshes;                             		// 0x0ED0 (0x0010) [0x0000000000000000]              
-	TArray< class UMaterialInstanceConstant* >         HealingSyringeMICs;                               		// 0x0EE0 (0x0010) [0x0000000000000000]              
-	int                                                CurrentSyringeMeshNum;                            		// 0x0EF0 (0x0004) [0x0000000000000000]              
-	int                                                ActiveSyringe;                                    		// 0x0EF4 (0x0004) [0x0000000000000000]              
-	float                                              SyringeInjectTimeDuration;                        		// 0x0EF8 (0x0004) [0x0000000000000000]              
-	float                                              SyringeInjectTimeRemaining;                       		// 0x0EFC (0x0004) [0x0000000000000000]              
-	struct FLinearColor                                MechColors[ 0x4 ];                                		// 0x0F00 (0x0040) [0x0000000000000000]              
-	struct FLinearColor                                DeadMechColor;                                    		// 0x0F40 (0x0010) [0x0000000000000000]              
-	struct FLinearColor                                BoilColors[ 0x4 ];                                		// 0x0F50 (0x0040) [0x0000000000000000]              
-	struct FLinearColor                                DeadBoilColor;                                    		// 0x0F90 (0x0010) [0x0000000000000000]              
-	DWORD                                              bPulseBoils : 1;                                  		// 0x0FA0 (0x0004) [0x0000000000000000] [0x00000001] 
-	DWORD                                              bSprayingFire : 1;                                		// 0x0FA0 (0x0004) [0x0000000000000000] [0x00000002] 
-	DWORD                                              bSpinBarrels : 1;                                 		// 0x0FA0 (0x0004) [0x0000000000000000] [0x00000004] 
-	DWORD                                              bUseServerSideGunTracking : 1;                    		// 0x0FA0 (0x0004) [0x0000000000000000] [0x00000008] 
-	DWORD                                              bGunTracking : 1;                                 		// 0x0FA0 (0x0004) [0x0000000000000000] [0x00000010] 
-	DWORD                                              bInFleeAndHealMode : 1;                           		// 0x0FA0 (0x0004) [0x00000000006A0000] [0x00000020] ( CPF_EditConst | CPF_Component | CPF_NeedCtorLink )
-	DWORD                                              bHealedThisPhase : 1;                             		// 0x0FA0 (0x0004) [0x0000000000000000] [0x00000040] 
-	float                                              BoilPulseRate;                                    		// 0x0FA4 (0x0004) [0x0000000000000000]              
-	float                                              BoilPulseAccum;                                   		// 0x0FA8 (0x0004) [0x0000000000000000]              
-	float                                              BoilLightBrightness[ 0x4 ];                       		// 0x0FAC (0x0010) [0x0000000000000000]              
-	struct FName                                       BoilLightSocketName;                              		// 0x0FBC (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BoilLightComponent;                               		// 0x0FC4 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             CloakFX;                                          		// 0x0FCC (0x0008) [0x0000000000000000]              
-	struct FName                                       CloakFXSocketName;                                		// 0x0FD4 (0x0008) [0x0000000000000000]              
-	float                                              CloakShimmerAmount;                               		// 0x0FDC (0x0004) [0x0000000000000000]              
-	float                                              LastCloakShimmerTime;                             		// 0x0FE0 (0x0004) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_LeftHip;                 		// 0x0FE4 (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_LeftKnee;                		// 0x0FEC (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_LeftFoot;                		// 0x0FF4 (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_LeftArm;                 		// 0x0FFC (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_Weapon;                  		// 0x1004 (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_LowerSpike;              		// 0x100C (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_UpperSpike;              		// 0x1014 (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_BackSpike;               		// 0x101C (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_LeftHip;                          		// 0x1024 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_LeftKnee;                         		// 0x102C (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_LeftFoot;                         		// 0x1034 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_LeftArm;                          		// 0x103C (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_Weapon;                           		// 0x1044 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_LowerSpike;                       		// 0x104C (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_UpperSpike;                       		// 0x1054 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_BackSpike;                        		// 0x105C (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Sparks_LowDmg;                     		// 0x1064 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Sparks_MidDmg;                     		// 0x106C (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Sparks_HighDmg;                    		// 0x1074 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Tentacle_LowDmg;                   		// 0x107C (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Tentacle_MidDmg;                   		// 0x1084 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Tentacle_HighDmg;                  		// 0x108C (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Smoke_HighDmg;                     		// 0x1094 (0x0008) [0x0000000000000000]              
-	float                                              TickDialogInterval;                               		// 0x109C (0x0004) [0x0000000000000000]              
-	float                                              FootstepCameraShakePitchAmplitude;                		// 0x10A0 (0x0004) [0x0000000000000000]              
-	float                                              FootstepCameraShakeRollAmplitude;                 		// 0x10A4 (0x0004) [0x0000000000000000]              
-	int                                                LastFXBattlePhase;                                		// 0x10A8 (0x0004) [0x0000000000000000]              
-	TArray< struct FPatriarchBattlePhaseInfo >         BattlePhases;                                     		// 0x10AC (0x0010) [0x0000000000000000]              
-	float                                              SprintCooldownTime;                               		// 0x10BC (0x0004) [0x0000000000000000]              
-	float                                              TentacleGrabCooldownTime;                         		// 0x10C0 (0x0004) [0x0000000000000000]              
-	float                                              MissileAttackCooldownTime;                        		// 0x10C4 (0x0004) [0x0000000000000000]              
-	float                                              MortarAttackCooldownTime;                         		// 0x10C8 (0x0004) [0x0000000000000000]              
-	float                                              ChargeAttackCooldownTime;                         		// 0x10CC (0x0004) [0x0000000000000000]              
-	float                                              MinigunAttackCooldownTime;                        		// 0x10D0 (0x0004) [0x0000000000000000]              
-	int                                                MaxRageAttacks;                                   		// 0x10D4 (0x0004) [0x0000000000000000]              
-	int                                                TentacleDamage;                                   		// 0x10D8 (0x0004) [0x0000000000000000]              
-	class UClass*                                      TentacleDamageType;                               		// 0x10DC (0x0008) [0x0000000000000000]              
-	class UClass*                                      HeavyBumpDamageType;                              		// 0x10E4 (0x0008) [0x0000000000000000]              
-	float                                              BarrelSpinSpeed;                                  		// 0x10EC (0x0004) [0x0000000000000000]              
-	class AActor*                                      GunTarget;                                        		// 0x10F0 (0x0008) [0x00000000006B0000]              ( CPF_Travel | CPF_EditConst | CPF_Component | CPF_NeedCtorLink )
-	class UClass*                                      MissileProjectileClass;                           		// 0x10F8 (0x0008) [0x0000000000000000]              
-	class UClass*                                      MortarProjectileClass;                            		// 0x1100 (0x0008) [0x0000000000000000]              
-	TArray< struct FPatriarch_MortarTarget >           MortarTargets;                                    		// 0x1108 (0x0010) [0x0000000000000000]              
-	float                                              MinMortarRangeSQ;                                 		// 0x1118 (0x0004) [0x0000000000000000]              
-	float                                              MaxMortarRangeSQ;                                 		// 0x111C (0x0004) [0x0000000000000000]              
-	float                                              FleeSprintSpeedModifier;                          		// 0x1120 (0x0004) [0x0000000000000000]              
-	float                                              CloakPercent;                                     		// 0x1124 (0x0004) [0x0000000000000000]              
-	float                                              CloakSpeed;                                       		// 0x1128 (0x0004) [0x0000000000000000]              
-	float                                              DeCloakSpeed;                                     		// 0x112C (0x0004) [0x0000000000000000]              
-	int                                                NumFleeAndHealEnemyBumps;                         		// 0x1130 (0x0004) [0x0000000000000000]              
-	float                                              LastFleeAndHealEnemyBumpTime;                     		// 0x1134 (0x0004) [0x0000000000000000]              
+	class UAkEvent*                                    AmbientBreathingEvent;                            		// 0x0F08 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    LowHealthAmbientBreathingEvent;                   		// 0x0F10 (0x0008) [0x0000000000000000]              
+	class UAkComponent*                                CloakedAkComponent;                               		// 0x0F18 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    CloakedLoop;                                      		// 0x0F20 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    CloakedLoopEnd;                                   		// 0x0F28 (0x0008) [0x0000000000000000]              
+	class UMaterialInstanceConstant*                   BodyMaterial;                                     		// 0x0F30 (0x0008) [0x0000000000000000]              
+	class UMaterialInstanceConstant*                   BodyAltMaterial;                                  		// 0x0F38 (0x0008) [0x0000000000000000]              
+	class UMaterialInstanceConstant*                   SpottedMaterial;                                  		// 0x0F40 (0x0008) [0x0000000000000000]              
+	class UMaterialInstanceConstant*                   CloakedBodyMaterial;                              		// 0x0F48 (0x0008) [0x0000000000000000]              
+	class UMaterialInstanceConstant*                   CloakedBodyAltMaterial;                           		// 0x0F50 (0x0008) [0x0000000000000000]              
+	class UKFSkelControl_SpinBone*                     BarrelSpinSkelCtrl;                               		// 0x0F58 (0x0008) [0x0000000000000000]              
+	class USkelControlLookAt*                          GunTrackingSkelCtrl;                              		// 0x0F60 (0x0008) [0x0000000000000000]              
+	TArray< class UStaticMeshComponent* >              HealingSyringeMeshes;                             		// 0x0F68 (0x0010) [0x0000000000000000]              
+	TArray< class UMaterialInstanceConstant* >         HealingSyringeMICs;                               		// 0x0F78 (0x0010) [0x0000000000000000]              
+	int                                                CurrentSyringeMeshNum;                            		// 0x0F88 (0x0004) [0x0000000000000000]              
+	int                                                ActiveSyringe;                                    		// 0x0F8C (0x0004) [0x0000000000000000]              
+	float                                              SyringeInjectTimeDuration;                        		// 0x0F90 (0x0004) [0x0000000000000000]              
+	float                                              SyringeInjectTimeRemaining;                       		// 0x0F94 (0x0004) [0x0000000000000000]              
+	struct FLinearColor                                MechColors[ 0x4 ];                                		// 0x0F98 (0x0040) [0x0000000000000000]              
+	struct FLinearColor                                DeadMechColor;                                    		// 0x0FD8 (0x0010) [0x0000000000000000]              
+	struct FLinearColor                                BoilColors[ 0x4 ];                                		// 0x0FE8 (0x0040) [0x0000000000000000]              
+	struct FLinearColor                                DeadBoilColor;                                    		// 0x1028 (0x0010) [0x0000000000000000]              
+	DWORD                                              bPulseBoils : 1;                                  		// 0x1038 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bSprayingFire : 1;                                		// 0x1038 (0x0004) [0x0000000000000000] [0x00000002] 
+	DWORD                                              bSpinBarrels : 1;                                 		// 0x1038 (0x0004) [0x0000000000000000] [0x00000004] 
+	DWORD                                              bUseServerSideGunTracking : 1;                    		// 0x1038 (0x0004) [0x0000000000000000] [0x00000008] 
+	DWORD                                              bGunTracking : 1;                                 		// 0x1038 (0x0004) [0x0000000000000000] [0x00000010] 
+	DWORD                                              bInFleeAndHealMode : 1;                           		// 0x1038 (0x0004) [0x00000000006F0000] [0x00000020] ( CPF_Travel | CPF_EditConst | CPF_GlobalConfig | CPF_Component | CPF_NeedCtorLink )
+	DWORD                                              bHealedThisPhase : 1;                             		// 0x1038 (0x0004) [0x0000000000000000] [0x00000040] 
+	float                                              BoilPulseRate;                                    		// 0x103C (0x0004) [0x0000000000000000]              
+	float                                              BoilPulseAccum;                                   		// 0x1040 (0x0004) [0x0000000000000000]              
+	float                                              BoilLightBrightness[ 0x4 ];                       		// 0x1044 (0x0010) [0x0000000000000000]              
+	struct FName                                       BoilLightSocketName;                              		// 0x1054 (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BoilLightComponent;                               		// 0x105C (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             CloakFX;                                          		// 0x1064 (0x0008) [0x0000000000000000]              
+	struct FName                                       CloakFXSocketName;                                		// 0x106C (0x0008) [0x0000000000000000]              
+	float                                              CloakShimmerAmount;                               		// 0x1074 (0x0004) [0x0000000000000000]              
+	float                                              LastCloakShimmerTime;                             		// 0x1078 (0x0004) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_LeftHip;                 		// 0x107C (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_LeftKnee;                		// 0x1084 (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_LeftFoot;                		// 0x108C (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_LeftArm;                 		// 0x1094 (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_Weapon;                  		// 0x109C (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_LowerSpike;              		// 0x10A4 (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_UpperSpike;              		// 0x10AC (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_BackSpike;               		// 0x10B4 (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_LeftHip;                          		// 0x10BC (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_LeftKnee;                         		// 0x10C4 (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_LeftFoot;                         		// 0x10CC (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_LeftArm;                          		// 0x10D4 (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_Weapon;                           		// 0x10DC (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_LowerSpike;                       		// 0x10E4 (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_UpperSpike;                       		// 0x10EC (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_BackSpike;                        		// 0x10F4 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Sparks_LowDmg;                     		// 0x10FC (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Sparks_MidDmg;                     		// 0x1104 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Sparks_HighDmg;                    		// 0x110C (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Tentacle_LowDmg;                   		// 0x1114 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Tentacle_MidDmg;                   		// 0x111C (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Tentacle_HighDmg;                  		// 0x1124 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Smoke_HighDmg;                     		// 0x112C (0x0008) [0x0000000000000000]              
+	float                                              TickDialogInterval;                               		// 0x1134 (0x0004) [0x0000000000000000]              
+	float                                              FootstepCameraShakePitchAmplitude;                		// 0x1138 (0x0004) [0x0000000000000000]              
+	float                                              FootstepCameraShakeRollAmplitude;                 		// 0x113C (0x0004) [0x0000000000000000]              
+	int                                                LastFXBattlePhase;                                		// 0x1140 (0x0004) [0x0000000000000000]              
+	TArray< struct FPatriarchBattlePhaseInfo >         BattlePhases;                                     		// 0x1144 (0x0010) [0x0000000000000000]              
+	float                                              SprintCooldownTime;                               		// 0x1154 (0x0004) [0x0000000000000000]              
+	float                                              TentacleGrabCooldownTime;                         		// 0x1158 (0x0004) [0x0000000000000000]              
+	float                                              MissileAttackCooldownTime;                        		// 0x115C (0x0004) [0x0000000000000000]              
+	float                                              MortarAttackCooldownTime;                         		// 0x1160 (0x0004) [0x0000000000000000]              
+	float                                              ChargeAttackCooldownTime;                         		// 0x1164 (0x0004) [0x0000000000000000]              
+	float                                              MinigunAttackCooldownTime;                        		// 0x1168 (0x0004) [0x0000000000000000]              
+	int                                                MaxRageAttacks;                                   		// 0x116C (0x0004) [0x0000000000000000]              
+	int                                                TentacleDamage;                                   		// 0x1170 (0x0004) [0x0000000000000000]              
+	class UClass*                                      TentacleDamageType;                               		// 0x1174 (0x0008) [0x0000000000000000]              
+	class UClass*                                      HeavyBumpDamageType;                              		// 0x117C (0x0008) [0x0000000000000000]              
+	float                                              BarrelSpinSpeed;                                  		// 0x1184 (0x0004) [0x0000000000000000]              
+	class AActor*                                      GunTarget;                                        		// 0x1188 (0x0008) [0x0000000000700000]              ( CPF_NeedCtorLink )
+	class UClass*                                      MissileProjectileClass;                           		// 0x1190 (0x0008) [0x0000000000000000]              
+	class UClass*                                      MortarProjectileClass;                            		// 0x1198 (0x0008) [0x0000000000000000]              
+	TArray< struct FPatriarch_MortarTarget >           MortarTargets;                                    		// 0x11A0 (0x0010) [0x0000000000000000]              
+	float                                              MinMortarRangeSQ;                                 		// 0x11B0 (0x0004) [0x0000000000000000]              
+	float                                              MaxMortarRangeSQ;                                 		// 0x11B4 (0x0004) [0x0000000000000000]              
+	float                                              FleeSprintSpeedModifier;                          		// 0x11B8 (0x0004) [0x0000000000000000]              
+	float                                              CloakPercent;                                     		// 0x11BC (0x0004) [0x0000000000000000]              
+	float                                              CloakSpeed;                                       		// 0x11C0 (0x0004) [0x0000000000000000]              
+	float                                              DeCloakSpeed;                                     		// 0x11C4 (0x0004) [0x0000000000000000]              
+	int                                                NumFleeAndHealEnemyBumps;                         		// 0x11C8 (0x0004) [0x0000000000000000]              
+	float                                              LastFleeAndHealEnemyBumpTime;                     		// 0x11CC (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -680,7 +1150,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110676 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedPatriarch" );
 
 		return pClassPointer;
 	};
@@ -776,7 +1246,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110680 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_Patriarch_MinigunBarrage" );
 
 		return pClassPointer;
 	};
@@ -816,7 +1286,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110710 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Patriarch_MinigunBarrage" );
 
 		return pClassPointer;
 	};
@@ -851,7 +1321,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110715 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_Patriarch_MissileAttack" );
 
 		return pClassPointer;
 	};
@@ -877,7 +1347,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110732 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_Patriarch_MortarAttack" );
 
 		return pClassPointer;
 	};
@@ -904,7 +1374,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110750 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.AICommand_Siren_Scream" );
 
 		return pClassPointer;
 	};
@@ -918,13 +1388,13 @@ public:
 UClass* UAICommand_Siren_Scream::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedSiren
-// 0x000C (0x0ACC - 0x0AC0)
+// 0x000C (0x0AD0 - 0x0AC4)
 class AKFAIController_ZedSiren : public AKFAIController_Monster
 {
 public:
-	float                                              ScreamDelayTime;                                  		// 0x0AC0 (0x0004) [0x0000000000000000]              
-	float                                              ScreamCooldown;                                   		// 0x0AC4 (0x0004) [0x0000000000000000]              
-	float                                              LastScreamTime;                                   		// 0x0AC8 (0x0004) [0x0000000000000000]              
+	float                                              ScreamDelayTime;                                  		// 0x0AC4 (0x0004) [0x0000000000000000]              
+	float                                              ScreamCooldown;                                   		// 0x0AC8 (0x0004) [0x0000000000000000]              
+	float                                              LastScreamTime;                                   		// 0x0ACC (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -933,7 +1403,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110772 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedSiren" );
 
 		return pClassPointer;
 	};
@@ -952,6 +1422,36 @@ public:
 
 UClass* AKFAIController_ZedSiren::pClassPointer = NULL;
 
+// Class kfgamecontent.KFActor_DestructibleTracker
+// 0x0028 (0x026C - 0x0244)
+class AKFActor_DestructibleTracker : public AActor
+{
+public:
+	TArray< class AKFDestructibleActor* >              ActorList;                                        		// 0x0244 (0x0010) [0x0000000000000000]              
+	TArray< class AKFDestructibleActor* >              CurrentActorList;                                 		// 0x0254 (0x0010) [0x0000000000000000]              
+	unsigned char                                      EventIndex;                                       		// 0x0264 (0x0001) [0x0000000000000000]              
+	int                                                ObjectiveIndex;                                   		// 0x0268 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFActor_DestructibleTracker" );
+
+		return pClassPointer;
+	};
+
+	void OnDestroyed ( );
+	void eventDestroyed ( );
+	void SetupActorDelegates ( );
+	void eventSetInitialState ( );
+};
+
+UClass* AKFActor_DestructibleTracker::pClassPointer = NULL;
+
 // Class kfgamecontent.KFAffliction_Fire_Patriarch
 // 0x0000 (0x00CC - 0x00CC)
 class UKFAffliction_Fire_Patriarch : public UKFAffliction_Fire
@@ -965,7 +1465,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110777 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAffliction_Fire_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -976,12 +1476,12 @@ public:
 UClass* UKFAffliction_Fire_Patriarch::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_HansFriendlyTest
-// 0x0008 (0x0BEC - 0x0BE4)
+// 0x0008 (0x0BF0 - 0x0BE8)
 class AKFAIController_HansFriendlyTest : public AKFAIController_Hans
 {
 public:
-	float                                              EnemyVisionCheckInterval;                         		// 0x0BE4 (0x0004) [0x0000000000000000]              
-	float                                              LastEnemyVisionCheckTime;                         		// 0x0BE8 (0x0004) [0x0000000000000000]              
+	float                                              EnemyVisionCheckInterval;                         		// 0x0BE8 (0x0004) [0x0000000000000000]              
+	float                                              LastEnemyVisionCheckTime;                         		// 0x0BEC (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -990,7 +1490,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110781 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_HansFriendlyTest" );
 
 		return pClassPointer;
 	};
@@ -1004,24 +1504,24 @@ public:
 UClass* AKFAIController_HansFriendlyTest::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedHusk
-// 0x004C (0x0DF0 - 0x0DA4)
+// 0x004C (0x0E88 - 0x0E3C)
 class AKFPawn_ZedHusk : public AKFPawn_Monster
 {
 public:
-	class UClass*                                      FireballClass;                                    		// 0x0DA4 (0x0008) [0x0000000000000000]              
-	struct FsHuskFireballSettings                      FireballSettings;                                 		// 0x0DAC (0x0008) [0x0000000000000000]              
-	struct FVector                                     PlayerFireOffset;                                 		// 0x0DB4 (0x000C) [0x0000000000000000]              
-	class UKFGameExplosion*                            ExplosionTemplate;                                		// 0x0DC0 (0x0008) [0x0000000000000000]              
-	DWORD                                              bHasExploded : 1;                                 		// 0x0DC8 (0x0004) [0x0000000000000000] [0x00000001] 
-	DWORD                                              bHasSuicideExploded : 1;                          		// 0x0DC8 (0x0004) [0x0000000000000000] [0x00000002] 
-	DWORD                                              bUseFireballLightRadius : 1;                      		// 0x0DC8 (0x0004) [0x0000000000000000] [0x00000004] 
-	class UPointLightComponent*                        ChestLightComponent;                              		// 0x0DCC (0x0008) [0x0000000000000000]              
-	struct FName                                       ChestLightSocketName;                             		// 0x0DD4 (0x0008) [0x0000000000000000]              
-	float                                              FireballChargeLightRadius;                        		// 0x0DDC (0x0004) [0x0000000000000000]              
-	float                                              AmbientLightRadiusInterpSpeed;                    		// 0x0DE0 (0x0004) [0x0000000000000000]              
-	float                                              FireballLightRadiusInterpSpeed;                   		// 0x0DE4 (0x0004) [0x0000000000000000]              
-	float                                              FireballLightMinBrightness;                       		// 0x0DE8 (0x0004) [0x0000000000000000]              
-	float                                              FireballLightMaxBrightness;                       		// 0x0DEC (0x0004) [0x0000000000000000]              
+	class UClass*                                      FireballClass;                                    		// 0x0E3C (0x0008) [0x0000000000000000]              
+	struct FsHuskFireballSettings                      FireballSettings;                                 		// 0x0E44 (0x0008) [0x0000000000000000]              
+	struct FVector                                     PlayerFireOffset;                                 		// 0x0E4C (0x000C) [0x0000000000000000]              
+	class UKFGameExplosion*                            ExplosionTemplate;                                		// 0x0E58 (0x0008) [0x0000000000000000]              
+	DWORD                                              bHasExploded : 1;                                 		// 0x0E60 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bHasSuicideExploded : 1;                          		// 0x0E60 (0x0004) [0x0000000000000000] [0x00000002] 
+	DWORD                                              bUseFireballLightRadius : 1;                      		// 0x0E60 (0x0004) [0x0000000000000000] [0x00000004] 
+	class UPointLightComponent*                        ChestLightComponent;                              		// 0x0E64 (0x0008) [0x0000000000000000]              
+	struct FName                                       ChestLightSocketName;                             		// 0x0E6C (0x0008) [0x0000000000000000]              
+	float                                              FireballChargeLightRadius;                        		// 0x0E74 (0x0004) [0x0000000000000000]              
+	float                                              AmbientLightRadiusInterpSpeed;                    		// 0x0E78 (0x0004) [0x0000000000000000]              
+	float                                              FireballLightRadiusInterpSpeed;                   		// 0x0E7C (0x0004) [0x0000000000000000]              
+	float                                              FireballLightMinBrightness;                       		// 0x0E80 (0x0004) [0x0000000000000000]              
+	float                                              FireballLightMaxBrightness;                       		// 0x0E84 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -1030,7 +1530,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110876 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedHusk" );
 
 		return pClassPointer;
 	};
@@ -1064,15 +1564,15 @@ public:
 UClass* AKFPawn_ZedHusk::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Husk_Fireball
-// 0x001C (0x03B8 - 0x039C)
+// 0x001C (0x03BC - 0x03A0)
 class AKFProj_Husk_Fireball : public AKFProjectile
 {
 public:
-	float                                              BurnDuration;                                     		// 0x039C (0x0004) [0x0000000000000000]              
-	float                                              BurnDamageInterval;                               		// 0x03A0 (0x0004) [0x0000000000000000]              
-	class UClass*                                      GroundFireExplosionActorClass;                    		// 0x03A4 (0x0008) [0x0000000000000000]              
-	DWORD                                              bSpawnGroundFire : 1;                             		// 0x03AC (0x0004) [0x00000000001E0000] [0x00000001] ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
-	class UKFGameExplosion*                            GroundFireExplosionTemplate;                      		// 0x03B0 (0x0008) [0x0000000000000000]              
+	float                                              BurnDuration;                                     		// 0x03A0 (0x0004) [0x0000000000000000]              
+	float                                              BurnDamageInterval;                               		// 0x03A4 (0x0004) [0x0000000000000000]              
+	class UClass*                                      GroundFireExplosionActorClass;                    		// 0x03A8 (0x0008) [0x0000000000000000]              
+	DWORD                                              bSpawnGroundFire : 1;                             		// 0x03B0 (0x0004) [0x00000000001E0000] [0x00000001] ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
+	class UKFGameExplosion*                            GroundFireExplosionTemplate;                      		// 0x03B4 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -1081,19 +1581,20 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110880 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Husk_Fireball" );
 
 		return pClassPointer;
 	};
 
 	void TriggerExplosion ( );
 	void PrepareExplosionTemplate ( );
+	void ProcessTouch ( );
 };
 
 UClass* AKFProj_Husk_Fireball::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_HuskFriendlyTest
-// 0x0000 (0x0B3C - 0x0B3C)
+// 0x0000 (0x0B44 - 0x0B44)
 class AKFAIController_HuskFriendlyTest : public AKFAIController_ZedHusk
 {
 public:
@@ -1105,7 +1606,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110884 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_HuskFriendlyTest" );
 
 		return pClassPointer;
 	};
@@ -1118,11 +1619,22 @@ public:
 
 UClass* AKFAIController_HuskFriendlyTest::pClassPointer = NULL;
 
-// Class kfgamecontent.KFAIController_ZedBloat
-// 0x0000 (0x0AC0 - 0x0AC0)
-class AKFAIController_ZedBloat : public AKFAIController_Monster
+// Class kfgamecontent.KFPawn_ZedBloat
+// 0x004C (0x0E88 - 0x0E3C)
+class AKFPawn_ZedBloat : public AKFPawn_Monster
 {
 public:
+	struct FName                                       PukeSocketName;                                   		// 0x0E3C (0x0008) [0x0000000000000000]              
+	float                                              VomitRange;                                       		// 0x0E44 (0x0004) [0x0000000000000000]              
+	int                                                VomitDamage;                                      		// 0x0E48 (0x0004) [0x0000000000000000]              
+	float                                              ExplodeRange;                                     		// 0x0E4C (0x0004) [0x0000000000000000]              
+	DWORD                                              bHasExploded : 1;                                 		// 0x0E50 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bWasDismembered : 1;                              		// 0x0E50 (0x0004) [0x0000000000000000] [0x00000002] 
+	class UClass*                                      PukeMineProjectileClass;                          		// 0x0E54 (0x0008) [0x0000000000000000]              
+	TArray< struct FRotator >                          DeathPukeMineRotations;                           		// 0x0E5C (0x0010) [0x0000000000000000]              
+	unsigned char                                      NumPukeMinesToSpawnOnDeath;                       		// 0x0E6C (0x0001) [0x0000000000000000]              
+	struct FVector                                     OldLocation;                                      		// 0x0E70 (0x000C) [0x0000000000000000]              
+	struct FRotator                                    OldRotation;                                      		// 0x0E7C (0x000C) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -1131,17 +1643,208 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110895 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedBloat" );
 
 		return pClassPointer;
 	};
 
+	void GetTraderAdviceID ( );
+	void SpawnPukeMinesOnDeath ( );
+	void SpawnPukeMine ( );
+	void DealExplosionDamage ( );
+	void HitExplosiveBone ( );
+	void TakeHitZoneDamage ( );
+	void Died ( );
+	void HasInjuredHitZones ( );
+	void CanInjureHitZone ( );
+	void CanPukeOnTarget ( );
+	void DealPukeDamage ( );
+	void Puke ( );
+	void ANIMNOTIFY_PukeAttack ( );
+	void PostBeginPlay ( );
 };
 
-UClass* AKFAIController_ZedBloat::pClassPointer = NULL;
+UClass* AKFPawn_ZedBloat::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedBloatKing
+// 0x013C (0x0FC4 - 0x0E88)
+class AKFPawn_ZedBloatKing : public AKFPawn_ZedBloat
+{
+public:
+	TArray< struct FString >                           BossCaptionStrings;                               		// 0x0E88 (0x0010) [0x0000000000000000]              
+	DWORD                                              bUseAnimatedCamera : 1;                           		// 0x0E98 (0x0004) [0x0000000000000000] [0x00000001] 
+	struct FVector                                     AnimatedBossCameraOffset;                         		// 0x0E9C (0x000C) [0x0000000000000000]              
+	class AKFPawn*                                     PullVictims[ 0xB ];                               		// 0x0EA8 (0x0058) [0x00000000006E0000]              ( CPF_EditConst | CPF_GlobalConfig | CPF_Component | CPF_NeedCtorLink )
+	class UKFGameExplosion*                            FartExplosionTemplate;                            		// 0x0F00 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             FartFXTemplate;                                   		// 0x0F08 (0x0008) [0x0000000000000000]              
+	struct FName                                       FartFXSocket;                                     		// 0x0F10 (0x0008) [0x0000000000000000]              
+	unsigned char                                      FartFXNotify;                                     		// 0x0F18 (0x0001) [0x0000000000790000]              ( CPF_Travel | CPF_Component | CPF_NeedCtorLink )
+	unsigned char                                      PoopMonsterFXNotify;                              		// 0x0F19 (0x0001) [0x00000000007A0000]              ( CPF_EditConst | CPF_Component | CPF_NeedCtorLink )
+	struct FVector2D                                   BaseFartAttackTimer;                              		// 0x0F1C (0x0008) [0x0000000000000000]              
+	struct FVector2D                                   VarianceFartAttackTimer;                          		// 0x0F24 (0x0008) [0x0000000000000000]              
+	struct FVector2D                                   RageFartAttackTimer;                              		// 0x0F2C (0x0008) [0x0000000000000000]              
+	struct FVector2D                                   RageVarianceFartAttackTimer;                      		// 0x0F34 (0x0008) [0x0000000000000000]              
+	TArray< struct FVector2D >                         DifficultyFartAttackTimers;                       		// 0x0F3C (0x0010) [0x0000000000000000]              
+	TArray< struct FVector2D >                         DifficultyVarianceFartTimers;                     		// 0x0F4C (0x0010) [0x0000000000000000]              
+	TArray< struct FVector2D >                         DifficultyRageFartTimers;                         		// 0x0F5C (0x0010) [0x0000000000000000]              
+	TArray< struct FVector2D >                         DifficultyVarianceRageFartTimers;                 		// 0x0F6C (0x0010) [0x0000000000000000]              
+	class AKFTrigger_BloatKingGorge*                   GorgeTrigger;                                     		// 0x0F7C (0x0008) [0x0000000000000000]              
+	float                                              PoopMonsterOffset;                                		// 0x0F84 (0x0004) [0x0000000000000000]              
+	class UParticleSystem*                             PoopMonsterFXTemplate;                            		// 0x0F88 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    PoopMonsterSFXTemplate;                           		// 0x0F90 (0x0008) [0x0000000000000000]              
+	struct FName                                       PoopMonsterFXSocket;                              		// 0x0F98 (0x0008) [0x0000000000000000]              
+	float                                              PoopMonsterSpawnDelay;                            		// 0x0FA0 (0x0004) [0x0000000000000000]              
+	int                                                CurrentDelayedSpawns;                             		// 0x0FA4 (0x0004) [0x0000000000000000]              
+	float                                              RageSprintSpeedMultiplier;                        		// 0x0FA8 (0x0004) [0x0000000000000000]              
+	TArray< float >                                    EnrageHealthThresholds;                           		// 0x0FAC (0x0010) [0x0000000000000000]              
+	float                                              FootstepCameraShakePitchAmplitude;                		// 0x0FBC (0x0004) [0x0000000000000000]              
+	float                                              FootstepCameraShakeRollAmplitude;                 		// 0x0FC0 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedBloatKing" );
+
+		return pClassPointer;
+	};
+
+	void ApplyHeadChunkGore ( );
+	void PlayHeadAsplode ( );
+	void PlayDismemberment ( );
+	void CauseHeadTrauma ( );
+	void PlayPoopSpawnFX ( );
+	void SpawnPoopMonster ( );
+	void AllowNextPoopMonster ( );
+	void RemoveGorgeVictim ( );
+	void AddGorgeVictim ( );
+	void PlayFartSpawnFX ( );
+	void TimerFartAttack ( );
+	void ClearFartTimer ( );
+	void SetFartAttackTimer ( );
+	void ANIMNOTIFY_PukeMineAttack ( );
+	void eventPlayFootStepSound ( );
+	void AdjustMovementSpeed ( );
+	void SetEnraged ( );
+	void eventIsEnraged ( );
+	void ShouldPlaySpecialMeleeAnims ( );
+	void eventCanDoSpecialMove ( );
+	void ZedExplodeArmor ( );
+	void GetHitZoneSkinTypeEffects ( );
+	void PlayHit ( );
+	void GetHitZoneIndex ( );
+	void eventTakeDamage ( );
+	void CanObliterateDoors ( );
+	void PlayBossMusic ( );
+	void PossessedBy ( );
+	void GetNumMinionsToSpawn ( );
+	void GetWaveInfo ( );
+	void OnZedDied ( );
+	void GetBossCameraOffset ( );
+	void GetBossCameraSocket ( );
+	void UseAnimatedBossCamera ( );
+	void SetAnimatedBossCamera ( );
+	void GetHealthPercent ( );
+	void eventIsABoss ( );
+	void GetRandomBossCaption ( );
+	void GetMonsterPawn ( );
+	void eventReplicatedEvent ( );
+};
+
+UClass* AKFPawn_ZedBloatKing::pClassPointer = NULL;
+
+// Class kfgamecontent.KFSM_BloatKing_Gorge
+// 0x009C (0x01EC - 0x0150)
+class UKFSM_BloatKing_Gorge : public UKFSM_PlaySingleAnim
+{
+public:
+	class AKFPawn_ZedBloatKing*                        BloatPawn;                                        		// 0x0150 (0x0008) [0x0000000000000000]              
+	float                                              GorgeAttackRangeSq;                               		// 0x0158 (0x0004) [0x0000000000000000]              
+	float                                              GorgeHumanAttackRangeSq;                          		// 0x015C (0x0004) [0x0000000000000000]              
+	float                                              GorgeMinAttackAngle;                              		// 0x0160 (0x0004) [0x0000000000000000]              
+	struct FVector2D                                   GorgeAttackCooldown[ 0x4 ];                       		// 0x0164 (0x0020) [0x0000000000000000]              
+	float                                              GorgeAttackCheckDelay;                            		// 0x0184 (0x0004) [0x0000000000000000]              
+	float                                              GorgePullDelay;                                   		// 0x0188 (0x0004) [0x0000000000000000]              
+	TArray< class AKFPawn* >                           PullList;                                         		// 0x018C (0x0010) [0x0000000000000000]              
+	TArray< class AKFPawn* >                           PulledList;                                       		// 0x019C (0x0010) [0x0000000000000000]              
+	unsigned char                                      FollowerSpecialMove;                              		// 0x01AC (0x0001) [0x0000000000000000]              
+	unsigned char                                      ZedFollowerSpecialMove;                           		// 0x01AD (0x0001) [0x0000000000000000]              
+	float                                              GorgePullRate;                                    		// 0x01B0 (0x0004) [0x0000000000000000]              
+	float                                              GorgeReleaseOffset;                               		// 0x01B4 (0x0004) [0x0000000000000000]              
+	float                                              GorgeBaseDamage[ 0x4 ];                           		// 0x01B8 (0x0010) [0x0000000000000000]              
+	DWORD                                              bPullActive : 1;                                  		// 0x01C8 (0x0004) [0x0000000000000000] [0x00000001] 
+	TArray< class AKFPawn* >                           GorgeHitList;                                     		// 0x01CC (0x0010) [0x0000000000000000]              
+	TArray< class AKFPawn* >                           DeferredRemovalList;                              		// 0x01DC (0x0010) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_BloatKing_Gorge" );
+
+		return pClassPointer;
+	};
+
+	void StopPullingPawn ( );
+	void StartPullingPawn ( );
+	void RemoveVictim ( );
+	void AddNewVictim ( );
+	void UpdateVictims ( );
+	void IsValidPullClass ( );
+	void FindNewVictims ( );
+	void Tick ( );
+	void TimeOut ( );
+	void PlayAnimation ( );
+	void SpecialMoveEnded ( );
+	void StartGorgePull ( );
+	void SpecialMoveStarted ( );
+	void GetGorgeCooldown ( );
+};
+
+UClass* UKFSM_BloatKing_Gorge::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedBloatKingSubspawn
+// 0x000C (0x0E48 - 0x0E3C)
+class AKFPawn_ZedBloatKingSubspawn : public AKFPawn_Monster
+{
+public:
+	class UKFGameExplosion*                            DeathExplosionTemplate;                           		// 0x0E3C (0x0008) [0x0000000000000000]              
+	DWORD                                              bPlayedExplosion : 1;                             		// 0x0E44 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bDelayedExplosion : 1;                            		// 0x0E44 (0x0004) [0x0000000000000000] [0x00000002] 
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedBloatKingSubspawn" );
+
+		return pClassPointer;
+	};
+
+	void ApplyHeadChunkGore ( );
+	void PlayHeadAsplode ( );
+	void CauseHeadTrauma ( );
+	void Explode ( );
+	void PlayDying ( );
+	void DelayExplode ( );
+	void eventTick ( );
+	void Died ( );
+	void eventCanDoSpecialMove ( );
+};
+
+UClass* AKFPawn_ZedBloatKingSubspawn::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedClot_Alpha
-// 0x0000 (0x0AC0 - 0x0AC0)
+// 0x0000 (0x0AC4 - 0x0AC4)
 class AKFAIController_ZedClot_Alpha : public AKFAIController_ZedClot
 {
 public:
@@ -1153,7 +1856,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110897 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedClot_Alpha" );
 
 		return pClassPointer;
 	};
@@ -1163,13 +1866,14 @@ public:
 UClass* AKFAIController_ZedClot_Alpha::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedClot_AlphaKing
-// 0x000C (0x0ACC - 0x0AC0)
+// 0x0010 (0x0AD4 - 0x0AC4)
 class AKFAIController_ZedClot_AlphaKing : public AKFAIController_ZedClot_Alpha
 {
 public:
-	unsigned char                                      MinAIRequiredForRally;                            		// 0x0AC0 (0x0001) [0x0000000000000000]              
-	float                                              RallyChance;                                      		// 0x0AC4 (0x0004) [0x0000000000000000]              
-	float                                              RallyCooldown;                                    		// 0x0AC8 (0x0004) [0x0000000000000000]              
+	unsigned char                                      MinAIRequiredForRally;                            		// 0x0AC4 (0x0001) [0x0000000000000000]              
+	float                                              RallyChance;                                      		// 0x0AC8 (0x0004) [0x0000000000000000]              
+	float                                              RallyCooldown;                                    		// 0x0ACC (0x0004) [0x0000000000000000]              
+	DWORD                                              bAllowedToSprint : 1;                             		// 0x0AD0 (0x0004) [0x0000000000000000] [0x00000001] 
 
 private:
 	static UClass* pClassPointer;
@@ -1178,11 +1882,16 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110899 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedClot_AlphaKing" );
 
 		return pClassPointer;
 	};
 
+	void StartArmorLoss ( );
+	void ShouldSprint ( );
+	void SetCanSprintWhenDamaged ( );
+	void SetSprintingDisabled ( );
+	void SetCanSprint ( );
 	void Timer_CheckForRally ( );
 	void eventSeePlayer ( );
 	void InitRallySettings ( );
@@ -1212,7 +1921,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110911 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_AlphaRally" );
 
 		return pClassPointer;
 	};
@@ -1227,11 +1936,10 @@ public:
 UClass* UKFSM_AlphaRally::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_ClotAlpha
-// 0x0010 (0x0290 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_ClotAlpha : public UKFMonsterDifficultyInfo
 {
 public:
-	TArray< float >                                    ChanceToSpawnAsSpecial;                           		// 0x0280 (0x0010) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -1240,22 +1948,21 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110916 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_ClotAlpha" );
 
 		return pClassPointer;
 	};
 
-	void GetSpecialAlphaChance ( );
 };
 
 UClass* UKFDifficulty_ClotAlpha::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_ClotAlphaKing
-// 0x0010 (0x02A0 - 0x0290)
+// 0x0010 (0x02A4 - 0x0294)
 class UKFDifficulty_ClotAlphaKing : public UKFDifficulty_ClotAlpha
 {
 public:
-	TArray< struct FsRallyTriggerInfo >                RallyTriggerSettings;                             		// 0x0290 (0x0010) [0x0000000000000000]              
+	TArray< struct FsRallyTriggerInfo >                RallyTriggerSettings;                             		// 0x0294 (0x0010) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -1264,7 +1971,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110915 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_ClotAlphaKing" );
 
 		return pClassPointer;
 	};
@@ -1274,7 +1981,7 @@ public:
 UClass* UKFDifficulty_ClotAlphaKing::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedClot_Cyst
-// 0x0000 (0x0AC0 - 0x0AC0)
+// 0x0000 (0x0AC4 - 0x0AC4)
 class AKFAIController_ZedClot_Cyst : public AKFAIController_ZedClot
 {
 public:
@@ -1286,7 +1993,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110922 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedClot_Cyst" );
 
 		return pClassPointer;
 	};
@@ -1296,7 +2003,7 @@ public:
 UClass* AKFAIController_ZedClot_Cyst::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedClot_Slasher
-// 0x0000 (0x0AC0 - 0x0AC0)
+// 0x0000 (0x0AC4 - 0x0AC4)
 class AKFAIController_ZedClot_Slasher : public AKFAIController_ZedClot
 {
 public:
@@ -1308,7 +2015,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110924 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedClot_Slasher" );
 
 		return pClassPointer;
 	};
@@ -1318,7 +2025,7 @@ public:
 UClass* AKFAIController_ZedClot_Slasher::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedCrawlerKing
-// 0x0000 (0x0B08 - 0x0B08)
+// 0x0000 (0x0B0C - 0x0B0C)
 class AKFAIController_ZedCrawlerKing : public AKFAIController_ZedCrawler
 {
 public:
@@ -1330,7 +2037,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110926 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedCrawlerKing" );
 
 		return pClassPointer;
 	};
@@ -1339,24 +2046,18 @@ public:
 
 UClass* AKFAIController_ZedCrawlerKing::pClassPointer = NULL;
 
-// Class kfgamecontent.KFPawn_ZedFleshpound
-// 0x0078 (0x0E1C - 0x0DA4)
-class AKFPawn_ZedFleshpound : public AKFPawn_Monster
+// Class kfgamecontent.KFPawn_ZedDAR
+// 0x0034 (0x0E70 - 0x0E3C)
+class AKFPawn_ZedDAR : public AKFPawn_Monster
 {
 public:
-	class UAkComponent*                                RageAkComponent;                                  		// 0x0DA4 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    RageLoopSound;                                    		// 0x0DAC (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    RageStopSound;                                    		// 0x0DB4 (0x0008) [0x0000000000000000]              
-	struct FLinearColor                                DefaultGlowColor;                                 		// 0x0DBC (0x0010) [0x0000000000000000]              
-	struct FLinearColor                                EnragedGlowColor;                                 		// 0x0DCC (0x0010) [0x0000000000000000]              
-	struct FLinearColor                                DeadGlowColor;                                    		// 0x0DDC (0x0010) [0x0000000000000000]              
-	class UClass*                                      RageBumpDamageType;                               		// 0x0DEC (0x0008) [0x0000000000000000]              
-	struct FName                                       BattlePhaseLightFrontSocketName;                  		// 0x0DF4 (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BattlePhaseLightTemplateYellow;                   		// 0x0DFC (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BattlePhaseLightTemplateRed;                      		// 0x0E04 (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BattlePhaseLightFront;                            		// 0x0E0C (0x0008) [0x0000000000000000]              
-	float                                              FootstepCameraShakePitchAmplitude;                		// 0x0E14 (0x0004) [0x0000000000000000]              
-	float                                              FootstepCameraShakeRollAmplitude;                 		// 0x0E18 (0x0004) [0x0000000000000000]              
+	class AKFAIController_ZedDAR*                      MyDARController;                                  		// 0x0E3C (0x0008) [0x0000000000000000]              
+	class UClass*                                      RangedProjectileClass;                            		// 0x0E44 (0x0008) [0x0000000000000000]              
+	struct FName                                       FiringSocketLName;                                		// 0x0E4C (0x0008) [0x0000000000000000]              
+	struct FName                                       FiringSocketRName;                                		// 0x0E54 (0x0008) [0x0000000000000000]              
+	struct FName                                       FiringSocketName;                                 		// 0x0E5C (0x0008) [0x0000000000000000]              
+	DWORD                                              bHasExploded : 1;                                 		// 0x0E64 (0x0004) [0x0000000000000000] [0x00000001] 
+	class UKFGameExplosion*                            ExplosionTemplate;                                		// 0x0E68 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -1365,7 +2066,60 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110980 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedDAR" );
+
+		return pClassPointer;
+	};
+
+	void ShouldAllowHeadBoneToBreak ( );
+	void OnExploded ( );
+	void WeeklyShouldExplodeOnDeath ( );
+	void TriggerExplosion ( );
+	void HitZoneInjured ( );
+	void CanInjureHitZone ( );
+	void PlayDeadHitEffects ( );
+	void NotifySpecialMoveEnded ( );
+	void SetSprinting ( );
+	void ZedExplodeArmor ( );
+	void CauseHeadTrauma ( );
+	void GetHitZoneSkinTypeEffects ( );
+	void GetHitZoneIndex ( );
+	void PlayHit ( );
+	void OnStackingAfflictionChanged ( );
+	void StartRangedAttack ( );
+	void PossessedBy ( );
+};
+
+UClass* AKFPawn_ZedDAR::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedFleshpound
+// 0x007C (0x0EB8 - 0x0E3C)
+class AKFPawn_ZedFleshpound : public AKFPawn_Monster
+{
+public:
+	class UAkComponent*                                RageAkComponent;                                  		// 0x0E3C (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    RageLoopSound;                                    		// 0x0E44 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    RageStopSound;                                    		// 0x0E4C (0x0008) [0x0000000000000000]              
+	DWORD                                              bPlayingRageSound : 1;                            		// 0x0E54 (0x0004) [0x0000000000000000] [0x00000001] 
+	struct FLinearColor                                DefaultGlowColor;                                 		// 0x0E58 (0x0010) [0x0000000000000000]              
+	struct FLinearColor                                EnragedGlowColor;                                 		// 0x0E68 (0x0010) [0x0000000000000000]              
+	struct FLinearColor                                DeadGlowColor;                                    		// 0x0E78 (0x0010) [0x0000000000000000]              
+	class UClass*                                      RageBumpDamageType;                               		// 0x0E88 (0x0008) [0x0000000000000000]              
+	struct FName                                       BattlePhaseLightFrontSocketName;                  		// 0x0E90 (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BattlePhaseLightTemplateYellow;                   		// 0x0E98 (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BattlePhaseLightTemplateRed;                      		// 0x0EA0 (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BattlePhaseLightFront;                            		// 0x0EA8 (0x0008) [0x0000000000000000]              
+	float                                              FootstepCameraShakePitchAmplitude;                		// 0x0EB0 (0x0004) [0x0000000000000000]              
+	float                                              FootstepCameraShakeRollAmplitude;                 		// 0x0EB4 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedFleshpound" );
 
 		return pClassPointer;
 	};
@@ -1393,47 +2147,46 @@ public:
 	void OnStackingAfflictionChanged ( );
 	void eventReplicatedEvent ( );
 	void eventPreBeginPlay ( );
-	void eventGetAIPawnClassToSpawn ( );
 };
 
 UClass* AKFPawn_ZedFleshpound::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedFleshpoundKing
-// 0x014C (0x0F68 - 0x0E1C)
+// 0x014C (0x1004 - 0x0EB8)
 class AKFPawn_ZedFleshpoundKing : public AKFPawn_ZedFleshpound
 {
 public:
-	class UKFGameExplosion*                            RagePoundExplosionTemplate;                       		// 0x0E1C (0x0008) [0x0000000000000000]              
-	class UKFGameExplosion*                            RagePoundFinalExplosionTemplate;                  		// 0x0E24 (0x0008) [0x0000000000000000]              
-	struct FLinearColor                                BeamAttackGlowColor;                              		// 0x0E2C (0x0010) [0x0000000000000000]              
-	class UPointLightComponent*                        BattlePhaseLightTemplateBlue;                     		// 0x0E3C (0x0008) [0x0000000000000000]              
-	int                                                CurrentPhase;                                     		// 0x0E44 (0x0004) [0x0000000000690000]              ( CPF_Travel | CPF_Component | CPF_NeedCtorLink )
-	int                                                RageExplosionMinPhase;                            		// 0x0E48 (0x0004) [0x0000000000000000]              
-	struct FBossMinionWaveInfo                         SummonWaves[ 0x4 ];                               		// 0x0E4C (0x0080) [0x0000000000000000]              
-	struct FVector2D                                   NumMinionsToSpawn;                                		// 0x0ECC (0x0008) [0x0000000000000000]              
-	class UAkComponent*                                BeamHitAC;                                        		// 0x0ED4 (0x0008) [0x0000000000000000]              
-	float                                              ShieldHealth;                                     		// 0x0EDC (0x0004) [0x0000000000000000]              
-	float                                              ShieldHealthMax;                                  		// 0x0EE0 (0x0004) [0x0000000000000000]              
-	TArray< float >                                    ShieldHealthMaxDefaults;                          		// 0x0EE4 (0x0010) [0x0000000000000000]              
-	float                                              ShieldHealthScale;                                		// 0x0EF4 (0x0004) [0x0000000000000000]              
-	unsigned char                                      ShieldHealthPctByte;                              		// 0x0EF8 (0x0001) [0x00000000006A0000]              ( CPF_EditConst | CPF_Component | CPF_NeedCtorLink )
-	float                                              LastShieldHealthPct;                              		// 0x0EFC (0x0004) [0x0000000000000000]              
-	class UParticleSystem*                             InvulnerableShieldFX;                             		// 0x0F00 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    InvulnerableShieldPSC;                            		// 0x0F08 (0x0008) [0x0000000000000000]              
-	struct FName                                       ShieldSocketName;                                 		// 0x0F10 (0x0008) [0x0000000000000000]              
-	class UKFSkinTypeEffects*                          ShieldImpactEffects;                              		// 0x0F18 (0x0008) [0x0000000000000000]              
-	class UKFGameExplosion*                            ShieldShatterExplosionTemplate;                   		// 0x0F20 (0x0008) [0x0000000000000000]              
-	struct FColor                                      ShieldColorGreen;                                 		// 0x0F28 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldCoreColorGreen;                             		// 0x0F2C (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldColorYellow;                                		// 0x0F30 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldCoreColorYellow;                            		// 0x0F34 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldColorOrange;                                		// 0x0F38 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldCoreColorOrange;                            		// 0x0F3C (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldColorRed;                                   		// 0x0F40 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldCoreColorRed;                               		// 0x0F44 (0x0004) [0x0000000000000000]              
-	TArray< struct FString >                           BossCaptionStrings;                               		// 0x0F48 (0x0010) [0x0000000000000000]              
-	DWORD                                              bUseAnimatedCamera : 1;                           		// 0x0F58 (0x0004) [0x0000000000000000] [0x00000001] 
-	struct FVector                                     AnimatedBossCameraOffset;                         		// 0x0F5C (0x000C) [0x0000000000000000]              
+	class UKFGameExplosion*                            RagePoundExplosionTemplate;                       		// 0x0EB8 (0x0008) [0x0000000000000000]              
+	class UKFGameExplosion*                            RagePoundFinalExplosionTemplate;                  		// 0x0EC0 (0x0008) [0x0000000000000000]              
+	struct FLinearColor                                BeamAttackGlowColor;                              		// 0x0EC8 (0x0010) [0x0000000000000000]              
+	class UPointLightComponent*                        BattlePhaseLightTemplateBlue;                     		// 0x0ED8 (0x0008) [0x0000000000000000]              
+	int                                                CurrentPhase;                                     		// 0x0EE0 (0x0004) [0x00000000006E0000]              ( CPF_EditConst | CPF_GlobalConfig | CPF_Component | CPF_NeedCtorLink )
+	int                                                RageExplosionMinPhase;                            		// 0x0EE4 (0x0004) [0x0000000000000000]              
+	struct FBossMinionWaveInfo                         SummonWaves[ 0x4 ];                               		// 0x0EE8 (0x0080) [0x0000000000000000]              
+	struct FVector2D                                   NumMinionsToSpawn;                                		// 0x0F68 (0x0008) [0x0000000000000000]              
+	class UAkComponent*                                BeamHitAC;                                        		// 0x0F70 (0x0008) [0x0000000000000000]              
+	float                                              ShieldHealth;                                     		// 0x0F78 (0x0004) [0x0000000000000000]              
+	float                                              ShieldHealthMax;                                  		// 0x0F7C (0x0004) [0x0000000000000000]              
+	TArray< float >                                    ShieldHealthMaxDefaults;                          		// 0x0F80 (0x0010) [0x0000000000000000]              
+	float                                              ShieldHealthScale;                                		// 0x0F90 (0x0004) [0x0000000000000000]              
+	unsigned char                                      ShieldHealthPctByte;                              		// 0x0F94 (0x0001) [0x00000000006F0000]              ( CPF_Travel | CPF_EditConst | CPF_GlobalConfig | CPF_Component | CPF_NeedCtorLink )
+	float                                              LastShieldHealthPct;                              		// 0x0F98 (0x0004) [0x0000000000000000]              
+	class UParticleSystem*                             InvulnerableShieldFX;                             		// 0x0F9C (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    InvulnerableShieldPSC;                            		// 0x0FA4 (0x0008) [0x0000000000000000]              
+	struct FName                                       ShieldSocketName;                                 		// 0x0FAC (0x0008) [0x0000000000000000]              
+	class UKFSkinTypeEffects*                          ShieldImpactEffects;                              		// 0x0FB4 (0x0008) [0x0000000000000000]              
+	class UKFGameExplosion*                            ShieldShatterExplosionTemplate;                   		// 0x0FBC (0x0008) [0x0000000000000000]              
+	struct FColor                                      ShieldColorGreen;                                 		// 0x0FC4 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldCoreColorGreen;                             		// 0x0FC8 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldColorYellow;                                		// 0x0FCC (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldCoreColorYellow;                            		// 0x0FD0 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldColorOrange;                                		// 0x0FD4 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldCoreColorOrange;                            		// 0x0FD8 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldColorRed;                                   		// 0x0FDC (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldCoreColorRed;                               		// 0x0FE0 (0x0004) [0x0000000000000000]              
+	TArray< struct FString >                           BossCaptionStrings;                               		// 0x0FE4 (0x0010) [0x0000000000000000]              
+	DWORD                                              bUseAnimatedCamera : 1;                           		// 0x0FF4 (0x0004) [0x0000000000000000] [0x00000001] 
+	struct FVector                                     AnimatedBossCameraOffset;                         		// 0x0FF8 (0x000C) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -1442,7 +2195,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110979 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedFleshpoundKing" );
 
 		return pClassPointer;
 	};
@@ -1455,8 +2208,10 @@ public:
 	void ActivateShieldFX ( );
 	void ActivateShield ( );
 	void SetShieldScale ( );
+	void HandleAfflictionsOnHit ( );
 	void AdjustDamage ( );
 	void TriggerRagePoundExplosion ( );
+	void StopBossWave ( );
 	void PauseBossWave ( );
 	void SpawnSubWave ( );
 	void ANIMNOTIFY_RagePoundRightFinal ( );
@@ -1521,7 +2276,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110982 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_FleshpoundKing_ChestBeam" );
 
 		return pClassPointer;
 	};
@@ -1540,11 +2295,11 @@ public:
 UClass* UKFSM_FleshpoundKing_ChestBeam::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedGorefast
-// 0x0004 (0x0AC4 - 0x0AC0)
+// 0x0004 (0x0AC8 - 0x0AC4)
 class AKFAIController_ZedGorefast : public AKFAIController_Monster
 {
 public:
-	DWORD                                              bExecutedSprint : 1;                              		// 0x0AC0 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bExecutedSprint : 1;                              		// 0x0AC4 (0x0004) [0x0000000000000000] [0x00000001] 
 
 private:
 	static UClass* pClassPointer;
@@ -1553,7 +2308,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110985 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedGorefast" );
 
 		return pClassPointer;
 	};
@@ -1568,7 +2323,7 @@ public:
 UClass* AKFAIController_ZedGorefast::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedGorefastDualBlade
-// 0x0000 (0x0AC4 - 0x0AC4)
+// 0x0000 (0x0AC8 - 0x0AC8)
 class AKFAIController_ZedGorefastDualBlade : public AKFAIController_ZedGorefast
 {
 public:
@@ -1580,7 +2335,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 110998 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedGorefastDualBlade" );
 
 		return pClassPointer;
 	};
@@ -1605,7 +2360,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111278 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Patriarch_Heal" );
 
 		return pClassPointer;
 	};
@@ -1631,7 +2386,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111285 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Patriarch_Taunt" );
 
 		return pClassPointer;
 	};
@@ -1642,7 +2397,7 @@ public:
 UClass* UKFSM_Patriarch_Taunt::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedScrake
-// 0x0000 (0x0AC0 - 0x0AC0)
+// 0x0000 (0x0AC4 - 0x0AC4)
 class AKFAIController_ZedScrake : public AKFAIController_Monster
 {
 public:
@@ -1654,7 +2409,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111294 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedScrake" );
 
 		return pClassPointer;
 	};
@@ -1670,7 +2425,7 @@ public:
 UClass* AKFAIController_ZedScrake::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAIController_ZedStalker
-// 0x0000 (0x0AC0 - 0x0AC0)
+// 0x0000 (0x0AC4 - 0x0AC4)
 class AKFAIController_ZedStalker : public AKFAIController_Monster
 {
 public:
@@ -1682,7 +2437,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111332 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAIController_ZedStalker" );
 
 		return pClassPointer;
 	};
@@ -1690,6 +2445,240 @@ public:
 };
 
 UClass* AKFAIController_ZedStalker::pClassPointer = NULL;
+
+// Class kfgamecontent.KFAISpawnManager_Endless
+// 0x0010 (0x01DC - 0x01CC)
+class UKFAISpawnManager_Endless : public UKFAISpawnManager
+{
+public:
+	TArray< struct FMacroDifficultyWaveInfo >          DifficultyWaves;                                  		// 0x01CC (0x0010) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAISpawnManager_Endless" );
+
+		return pClassPointer;
+	};
+
+	void OnBossDied ( );
+	void OnDifficultyUpdated ( );
+	void GetWaveSettings ( );
+	void GetAvailableSquads ( );
+	void SetupNextWave ( );
+};
+
+UClass* UKFAISpawnManager_Endless::pClassPointer = NULL;
+
+// Class kfgamecontent.KFGameInfo_Survival
+// 0x002C (0x079C - 0x0770)
+class AKFGameInfo_Survival : public AKFGameInfo
+{
+public:
+	int                                                TimeBetweenWaves;                                 		// 0x0770 (0x0004) [0x0000000000000000]              
+	float                                              EndCinematicDelay;                                		// 0x0774 (0x0004) [0x0000000000000000]              
+	float                                              AARDisplayDelay;                                  		// 0x0778 (0x0004) [0x0000000000000000]              
+	TArray< struct FAARAward >                         TeamAwardList;                                    		// 0x077C (0x0010) [0x0000000000000000]              
+	unsigned char                                      WaveMax;                                          		// 0x078C (0x0001) [0x0000000000000000]              
+	int                                                WaveNum;                                          		// 0x0790 (0x0004) [0x0000000000000000]              
+	DWORD                                              bHumanDeathsLastWave : 1;                         		// 0x0794 (0x0004) [0x0000000000000000] [0x00000001] 
+	int                                                ObjectiveSpawnDelay;                              		// 0x0798 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameInfo_Survival" );
+
+		return pClassPointer;
+	};
+
+	void DebugKillZeds ( );
+	void TryRestartGame ( );
+	void UpdateCurrentMapVoteTime ( );
+	void ProcessAwards ( );
+	void GetEndOfMatchTime ( );
+	void ShowPostGameMenu ( );
+	void SetZedsToVictoryState ( );
+	void SetWonGameCamera ( );
+	void GetNextMap ( );
+	void EndOfMatch ( );
+	void RestartGame ( );
+	void NotifyTraderOpened ( );
+	void OpenTrader ( );
+	void DoTraderTimeCleanup ( );
+	void SkipTrader ( );
+	void CloseTraderTimer ( );
+	void LogWaveEndAnalyticsFor ( );
+	void Timer_FinalizeEndOfWaveStats ( );
+	void WaveEnded ( );
+	void ObjectiveFailed ( );
+	void CheckWaveEnd ( );
+	void WaveStarted ( );
+	void DetermineNextTraderIndex ( );
+	void SetupNextTrader ( );
+	void ResetPickups ( );
+	void ResetAllPickups ( );
+	void GetWaveStartMessage ( );
+	void IsMapObjectiveEnabled ( );
+	void StartWave ( );
+	void IsWaveActive ( );
+	void WinMatch ( );
+	void SetWave ( );
+	void EndCurrentWave ( );
+	void ToggleSpawning ( );
+	void FindCollectibles ( );
+	void AllowWaveCheats ( );
+	void CalculateLateJoinerStartingDosh ( );
+	void GetAdjustedDeathPenalty ( );
+	void CalculateMinimumRespawnDosh ( );
+	void RewardSurvivingPlayers ( );
+	void UpdateWaveEndDialogInfo ( );
+	void IsMultiplayerGame ( );
+	void eventTimer ( );
+	void CanSpectate ( );
+	void OnServerTitleDataRead ( );
+	void UpdateGameSettings ( );
+	void BossDied ( );
+	void ReduceDamage ( );
+	void Killed ( );
+	void RestartPlayer ( );
+	void PlayerCanRestart ( );
+	void IsPlayerReady ( );
+	void GetGameIntensityForMusic ( );
+	void PlayWaveStartDialog ( );
+	void StartMatch ( );
+	void InitSpawnManager ( );
+	void eventPostBeginPlay ( );
+	void eventPreBeginPlay ( );
+	void ShouldPlayActionMusicTrack ( );
+	void ShouldPlayMusicAtStart ( );
+};
+
+UClass* AKFGameInfo_Survival::pClassPointer = NULL;
+
+// Class kfgamecontent.KFGameInfo_Endless
+// 0x002C (0x07C8 - 0x079C)
+class AKFGameInfo_Endless : public AKFGameInfo_Survival
+{
+public:
+	DWORD                                              bIsInHoePlus : 1;                                 		// 0x079C (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bUseSpecialWave : 1;                              		// 0x079C (0x0004) [0x0000000000000000] [0x00000002] 
+	class UKFGameDifficulty_Endless*                   EndlessDifficulty;                                		// 0x07A0 (0x0008) [0x0000000000000000]              
+	int                                                CurrentFrameBooms;                                		// 0x07A8 (0x0004) [0x0000000000000000]              
+	TArray< unsigned char >                            SpecialWaveTypes;                                 		// 0x07AC (0x0010) [0x0000000000000000]              
+	unsigned char                                      SpecialWaveType;                                  		// 0x07BC (0x0001) [0x0000000000000000]              
+	int                                                SpecialWaveStart;                                 		// 0x07C0 (0x0004) [0x0000000000000000]              
+	int                                                OutbreakWaveStart;                                		// 0x07C4 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameInfo_Endless" );
+
+		return pClassPointer;
+	};
+
+	void SetMonsterDefaults ( );
+	void HasCustomTraderVoiceGroup ( );
+	void GetTotalWaveCountScale ( );
+	void CalculateMinimumRespawnDosh ( );
+	void SetWave ( );
+	void ShouldOverrideDoshOnKill ( );
+	void DoDeathExplosion ( );
+	void Tick ( );
+	void EndOutbreakRound ( );
+	void StartOutbreakRound ( );
+	void ReduceDamage ( );
+	void RestartPlayer ( );
+	void GetGameInfoSpawnRateMod ( );
+	void StartHoePlus ( );
+	void GetFullyUpgradedAIType ( );
+	void GetUpgradedAIType ( );
+	void ShouldFullyUpgradeAIType ( );
+	void ShouldUpgradeAIType ( );
+	void GetAISpawnType ( );
+	void IncrementDifficulty ( );
+	void SetBossIndex ( );
+	void BossDied ( );
+	void HellOnEarthPlusRoundIncrement ( );
+	void WaveEnded ( );
+	void TrySetNextWaveSpecial ( );
+	void PlayWaveStartDialog ( );
+	void GetWaveStartMessage ( );
+	void WaveStarted ( );
+	void GetShouldShowLength ( );
+	void ResetDifficulty ( );
+	void InitSpawnManager ( );
+	void eventPostBeginPlay ( );
+	void eventInitGame ( );
+};
+
+UClass* AKFGameInfo_Endless::pClassPointer = NULL;
+
+// Class kfgamecontent.KFGameDifficulty_Endless
+// 0x0148 (0x039C - 0x0254)
+class UKFGameDifficulty_Endless : public UKFGameDifficultyInfo
+{
+public:
+	struct FDifficultyScaling                          CurrentDifficultyScaling;                         		// 0x0254 (0x0138) [0x0000000000000000]              
+	TArray< struct FDifficultyScaling >                DifficultyScalings;                               		// 0x038C (0x0010) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameDifficulty_Endless" );
+
+		return pClassPointer;
+	};
+
+	void ShouldSpawnEnraged ( );
+	void GetCurrentDifficultyIndex ( );
+	void GetCharSprintWhenDamagedChanceByDifficulty ( );
+	void GetCharSprintChanceByDifficulty ( );
+	void GetCharHeadHealthModDifficulty ( );
+	void GetCharHealthModDifficulty ( );
+	void GetAIHealthModifier ( );
+	void GetAIDamageModifier ( );
+	void GetSpecialWaveSpawnRateMod ( );
+	void GetSpecialWaveScale ( );
+	void GetSpecialWaveModifiers ( );
+	void GetSpecialWaveType ( );
+	void GetSpeicalWavePctChance ( );
+	void GetOutbreakPctChance ( );
+	void GetZedsOverride ( );
+	void GetZedsToAdjust ( );
+	void ShouldStartHoePlus ( );
+	void SetZedFullUpgradeToBase ( );
+	void SetZedUpgradeToBase ( );
+	void IncreaseZedFullUpgradePct ( );
+	void IncreaseZedUpgradePct ( );
+	void GetZedFullUpgradePctChance ( );
+	void GetZedUpgradePctChance ( );
+	void SetDifficultyScaling ( );
+	void SetDifficultySettings ( );
+	void IncrementDifficulty ( );
+	void AdjustZedStats ( );
+	void AdjustDifficulties ( );
+	void IncrementHoePlus ( );
+};
+
+UClass* UKFGameDifficulty_Endless::pClassPointer = NULL;
 
 // Class kfgamecontent.KFAISpawnManager_Tutorial
 // 0x0000 (0x01CC - 0x01CC)
@@ -1704,7 +2693,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111334 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAISpawnManager_Tutorial" );
 
 		return pClassPointer;
 	};
@@ -1746,7 +2735,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111338 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFAISpawnManager_Versus" );
 
 		return pClassPointer;
 	};
@@ -1781,14 +2770,14 @@ public:
 UClass* UKFAISpawnManager_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPlayerControllerVersus
-// 0x0025 (0x0DF5 - 0x0DD0)
+// 0x0025 (0x0E01 - 0x0DDC)
 class AKFPlayerControllerVersus : public AKFPlayerController
 {
 public:
-	struct FString                                     BossName;                                         		// 0x0DD0 (0x0010) [0x0000000000000000]              
-	TArray< DWORD >                                    HasSpawnedZeds;                                   		// 0x0DE0 (0x0010) [0x0000000000000000]              
-	int                                                ZedXPAmount;                                      		// 0x0DF0 (0x0004) [0x00000000001D0000]              ( CPF_Travel | CPF_GlobalConfig | CPF_Component )
-	unsigned char                                      ZedXPLevel;                                       		// 0x0DF4 (0x0001) [0x00000000001E0000]              ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
+	struct FString                                     BossName;                                         		// 0x0DDC (0x0010) [0x0000000000000000]              
+	TArray< DWORD >                                    HasSpawnedZeds;                                   		// 0x0DEC (0x0010) [0x0000000000000000]              
+	int                                                ZedXPAmount;                                      		// 0x0DFC (0x0004) [0x00000000001D0000]              ( CPF_Travel | CPF_GlobalConfig | CPF_Component )
+	unsigned char                                      ZedXPLevel;                                       		// 0x0E00 (0x0001) [0x00000000001E0000]              ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
 
 private:
 	static UClass* pClassPointer;
@@ -1797,11 +2786,15 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111507 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPlayerControllerVersus" );
 
 		return pClassPointer;
 	};
 
+	void GetPawnBasedMixerScene ( );
+	void MixerStartupComplete ( );
+	void GivePawn ( );
+	void ClientMatchStarted ( );
 	void eventSetHaveUpdatePerk ( );
 	void eventInitInputSystem ( );
 	void ClientReset ( );
@@ -1824,112 +2817,27 @@ public:
 
 UClass* AKFPlayerControllerVersus::pClassPointer = NULL;
 
-// Class kfgamecontent.KFGameInfo_Survival
-// 0x0034 (0x0758 - 0x0724)
-class AKFGameInfo_Survival : public AKFGameInfo
-{
-public:
-	int                                                TimeBetweenWaves;                                 		// 0x0724 (0x0004) [0x0000000000000000]              
-	float                                              EndCinematicDelay;                                		// 0x0728 (0x0004) [0x0000000000000000]              
-	float                                              AARDisplayDelay;                                  		// 0x072C (0x0004) [0x0000000000000000]              
-	TArray< struct FAARAward >                         TeamAwardList;                                    		// 0x0730 (0x0010) [0x0000000000000000]              
-	unsigned char                                      WaveMax;                                          		// 0x0740 (0x0001) [0x0000000000000000]              
-	int                                                WaveNum;                                          		// 0x0744 (0x0004) [0x0000000000000000]              
-	DWORD                                              bHumanDeathsLastWave : 1;                         		// 0x0748 (0x0004) [0x0000000000000000] [0x00000001] 
-	DWORD                                              bObjectivePlayed : 1;                             		// 0x0748 (0x0004) [0x0000000000000000] [0x00000002] 
-	DWORD                                              bLogCheckObjective : 1;                           		// 0x0748 (0x0004) [0x0000000000000000] [0x00000004] 
-	int                                                PlayedObjectives;                                 		// 0x074C (0x0004) [0x0000000000000000]              
-	float                                              ObjectiveCheckIntervall;                          		// 0x0750 (0x0004) [0x0000000000000000]              
-	float                                              MinAIAlivePercReqForObjStart;                     		// 0x0754 (0x0004) [0x0000000000000000]              
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111509 ];
-
-		return pClassPointer;
-	};
-
-	void DebugKillZeds ( );
-	void TryRestartGame ( );
-	void UpdateCurrentMapVoteTime ( );
-	void ProcessAwards ( );
-	void GetEndOfMatchTime ( );
-	void ShowPostGameMenu ( );
-	void SetZedsToVictoryState ( );
-	void SetWonGameCamera ( );
-	void GetNextMap ( );
-	void EndOfMatch ( );
-	void NotifyTraderOpened ( );
-	void OpenTrader ( );
-	void DoTraderTimeCleanup ( );
-	void CloseTraderTimer ( );
-	void LogWaveEndAnalyticsFor ( );
-	void Timer_FinalizeEndOfWaveStats ( );
-	void WaveEnded ( );
-	void CheckWaveEnd ( );
-	void WaveStarted ( );
-	void DetermineNextTraderIndex ( );
-	void SetupNextTrader ( );
-	void ResetPickups ( );
-	void ResetAllPickups ( );
-	void StartWave ( );
-	void IsWaveActive ( );
-	void WinMatch ( );
-	void SetWave ( );
-	void EndCurrentWave ( );
-	void ToggleSpawning ( );
-	void AllowWaveCheats ( );
-	void GetAdjustedDeathPenalty ( );
-	void RewardSurvivingPlayers ( );
-	void UpdateWaveEndDialogInfo ( );
-	void IsMultiplayerGame ( );
-	void eventTimer ( );
-	void CanSpectate ( );
-	void UpdateGameSettings ( );
-	void BossDied ( );
-	void ReduceDamage ( );
-	void Killed ( );
-	void RestartPlayer ( );
-	void PlayerCanRestart ( );
-	void IsPlayerReady ( );
-	void GetGameIntensityForMusic ( );
-	void PlayWaveStartDialog ( );
-	void StartMatch ( );
-	void InitSpawnManager ( );
-	void eventPostBeginPlay ( );
-	void eventPreBeginPlay ( );
-	void ShouldPlayActionMusicTrack ( );
-	void ShouldPlayMusicAtStart ( );
-};
-
-UClass* AKFGameInfo_Survival::pClassPointer = NULL;
-
 // Class kfgamecontent.KFGameInfo_VersusSurvival
-// 0x0060 (0x07B8 - 0x0758)
+// 0x0060 (0x07FC - 0x079C)
 class AKFGameInfo_VersusSurvival : public AKFGameInfo_Survival
 {
 public:
-	float                                              ANTI_GRIEF_DELAY;                                 		// 0x0758 (0x0004) [0x0000000000000000]              
-	float                                              ANTI_GRIEF_INTERVAL;                              		// 0x075C (0x0004) [0x0000000000000000]              
-	float                                              ANTI_GRIEF_DAMAGE_PERCENTAGE;                     		// 0x0760 (0x0004) [0x0000000000000000]              
-	TArray< class UClass* >                            PlayerZedClasses;                                 		// 0x0764 (0x0010) [0x0000000000000000]              
-	TArray< class UClass* >                            PlayerBossClassList;                              		// 0x0774 (0x0010) [0x0000000000000000]              
-	class AKFGameReplicationInfoVersus*                MyKFGRIV;                                         		// 0x0784 (0x0008) [0x0000000000000000]              
-	class UClass*                                      AntiGriefDamageTypeClass;                         		// 0x078C (0x0008) [0x0000000000000000]              
-	DWORD                                              bTeamBalanceEnabled : 1;                          		// 0x0794 (0x0004) [0x0000000000000000] [0x00000001] 
-	float                                              ScoreRadius;                                      		// 0x0798 (0x0004) [0x0000000000000000]              
-	int                                                TimeUntilNextRound;                               		// 0x079C (0x0004) [0x0000000000000000]              
-	float                                              RoundEndCinematicDelay;                           		// 0x07A0 (0x0004) [0x0000000000000000]              
-	float                                              PostRoundWaitTime;                                		// 0x07A4 (0x0004) [0x0000000000000000]              
-	int                                                WaveBonus;                                        		// 0x07A8 (0x0004) [0x0000000000000000]              
-	int                                                BossDamageDone;                                   		// 0x07AC (0x0004) [0x0000000000000000]              
-	int                                                BossSurvivorDamageTaken;                          		// 0x07B0 (0x0004) [0x0000000000000000]              
-	float                                              PercentOfZedsKilledBeforeWipe;                    		// 0x07B4 (0x0004) [0x0000000000000000]              
+	float                                              ANTI_GRIEF_DELAY;                                 		// 0x079C (0x0004) [0x0000000000000000]              
+	float                                              ANTI_GRIEF_INTERVAL;                              		// 0x07A0 (0x0004) [0x0000000000000000]              
+	float                                              ANTI_GRIEF_DAMAGE_PERCENTAGE;                     		// 0x07A4 (0x0004) [0x0000000000000000]              
+	TArray< class UClass* >                            PlayerZedClasses;                                 		// 0x07A8 (0x0010) [0x0000000000000000]              
+	TArray< class UClass* >                            PlayerBossClassList;                              		// 0x07B8 (0x0010) [0x0000000000000000]              
+	class AKFGameReplicationInfoVersus*                MyKFGRIV;                                         		// 0x07C8 (0x0008) [0x0000000000000000]              
+	class UClass*                                      AntiGriefDamageTypeClass;                         		// 0x07D0 (0x0008) [0x0000000000000000]              
+	DWORD                                              bTeamBalanceEnabled : 1;                          		// 0x07D8 (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              ScoreRadius;                                      		// 0x07DC (0x0004) [0x0000000000000000]              
+	int                                                TimeUntilNextRound;                               		// 0x07E0 (0x0004) [0x0000000000000000]              
+	float                                              RoundEndCinematicDelay;                           		// 0x07E4 (0x0004) [0x0000000000000000]              
+	float                                              PostRoundWaitTime;                                		// 0x07E8 (0x0004) [0x0000000000000000]              
+	int                                                WaveBonus;                                        		// 0x07EC (0x0004) [0x0000000000000000]              
+	int                                                BossDamageDone;                                   		// 0x07F0 (0x0004) [0x0000000000000000]              
+	int                                                BossSurvivorDamageTaken;                          		// 0x07F4 (0x0004) [0x0000000000000000]              
+	float                                              PercentOfZedsKilledBeforeWipe;                    		// 0x07F8 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -1938,11 +2846,12 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111508 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameInfo_VersusSurvival" );
 
 		return pClassPointer;
 	};
 
+	void IsMapObjectiveEnabled ( );
 	void GetEndOfMatchTime ( );
 	void ShowPostGameMenu ( );
 	void TryRestartGame ( );
@@ -2016,7 +2925,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111516 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_PlayerZedTakeover" );
 
 		return pClassPointer;
 	};
@@ -2026,21 +2935,21 @@ public:
 UClass* UKFDT_Explosive_PlayerZedTakeover::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedScrake
-// 0x0044 (0x0DE8 - 0x0DA4)
+// 0x0044 (0x0E80 - 0x0E3C)
 class AKFPawn_ZedScrake : public AKFPawn_Monster
 {
 public:
-	class UAkComponent*                                ChainsawIdleAkComponent;                          		// 0x0DA4 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    PlayChainsawIdleAkEvent;                          		// 0x0DAC (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    StopChainsawIdleAkEvent;                          		// 0x0DB4 (0x0008) [0x0000000000000000]              
-	struct FName                                       ExhaustSocketName;                                		// 0x0DBC (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             ExhaustTemplate;                                  		// 0x0DC4 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    ExhaustPSC;                                       		// 0x0DCC (0x0008) [0x0000000000000000]              
-	float                                              RageHealthThresholdNormal;                        		// 0x0DD4 (0x0004) [0x0000000000000000]              
-	float                                              RageHealthThresholdHard;                          		// 0x0DD8 (0x0004) [0x0000000000000000]              
-	float                                              RageHealthThresholdSuicidal;                      		// 0x0DDC (0x0004) [0x0000000000000000]              
-	float                                              RageHealthThresholdHellOnEarth;                   		// 0x0DE0 (0x0004) [0x0000000000000000]              
-	float                                              RageHealthThreshold;                              		// 0x0DE4 (0x0004) [0x0000000000000000]              
+	class UAkComponent*                                ChainsawIdleAkComponent;                          		// 0x0E3C (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    PlayChainsawIdleAkEvent;                          		// 0x0E44 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    StopChainsawIdleAkEvent;                          		// 0x0E4C (0x0008) [0x0000000000000000]              
+	struct FName                                       ExhaustSocketName;                                		// 0x0E54 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ExhaustTemplate;                                  		// 0x0E5C (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    ExhaustPSC;                                       		// 0x0E64 (0x0008) [0x0000000000000000]              
+	float                                              RageHealthThresholdNormal;                        		// 0x0E6C (0x0004) [0x0000000000000000]              
+	float                                              RageHealthThresholdHard;                          		// 0x0E70 (0x0004) [0x0000000000000000]              
+	float                                              RageHealthThresholdSuicidal;                      		// 0x0E74 (0x0004) [0x0000000000000000]              
+	float                                              RageHealthThresholdHellOnEarth;                   		// 0x0E78 (0x0004) [0x0000000000000000]              
+	float                                              RageHealthThreshold;                              		// 0x0E7C (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -2049,7 +2958,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111519 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedScrake" );
 
 		return pClassPointer;
 	};
@@ -2063,7 +2972,6 @@ public:
 	void eventNotifyGoreMeshActive ( );
 	void CauseHeadTrauma ( );
 	void CanBlock ( );
-	void SetEnraged ( );
 	void eventTakeDamage ( );
 	void CreateExhaustFx ( );
 	void PossessedBy ( );
@@ -2073,12 +2981,17 @@ public:
 
 UClass* AKFPawn_ZedScrake::pClassPointer = NULL;
 
-// Class kfgamecontent.KFCollectibleActor
-// 0x0004 (0x037C - 0x0378)
-class AKFCollectibleActor : public AKFDestructibleActor
+// Class kfgamecontent.KFBloodRainVolume
+// 0x0034 (0x02B4 - 0x0280)
+class AKFBloodRainVolume : public AVolume
 {
 public:
-	DWORD                                              bFound : 1;                                       		// 0x0378 (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              Frequency;                                        		// 0x0280 (0x0004) [0x0000000000000000]              
+	int                                                SplatsPerInterval;                                		// 0x0284 (0x0004) [0x0000000000000000]              
+	float                                              Scale;                                            		// 0x0288 (0x0004) [0x0000000000000000]              
+	float                                              TraceLength;                                      		// 0x028C (0x0004) [0x0000000000000000]              
+	struct FBox                                        AABB;                                             		// 0x0290 (0x001C) [0x0000000000000000]              
+	class AKFGoreManager*                              GoreMan;                                          		// 0x02AC (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -2087,7 +3000,34 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111531 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFBloodRainVolume" );
+
+		return pClassPointer;
+	};
+
+	void Timer_SetActive ( );
+	void SetActive ( );
+	void AddSplatter ( );
+	void eventPostBeginPlay ( );
+};
+
+UClass* AKFBloodRainVolume::pClassPointer = NULL;
+
+// Class kfgamecontent.KFCollectibleActor
+// 0x0004 (0x038C - 0x0388)
+class AKFCollectibleActor : public AKFDestructibleActor
+{
+public:
+	DWORD                                              bFound : 1;                                       		// 0x0388 (0x0004) [0x0000000000000000] [0x00000001] 
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFCollectibleActor" );
 
 		return pClassPointer;
 	};
@@ -2100,13 +3040,13 @@ public:
 UClass* AKFCollectibleActor::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_Bloat
-// 0x0012 (0x0292 - 0x0280)
+// 0x0012 (0x02A6 - 0x0294)
 class UKFDifficulty_Bloat : public UKFMonsterDifficultyInfo
 {
 public:
-	TArray< unsigned char >                            PukeMinesToSpawnOnDeathByDifficulty;              		// 0x0280 (0x0010) [0x0000000000000000]              
-	unsigned char                                      PukeMinesToSpawnOnDeath_Versus;                   		// 0x0290 (0x0001) [0x0000000000000000]              
-	unsigned char                                      PukeMinesToSpawnOnDeath_Player_Versus;            		// 0x0291 (0x0001) [0x0000000000000000]              
+	TArray< unsigned char >                            PukeMinesToSpawnOnDeathByDifficulty;              		// 0x0294 (0x0010) [0x0000000000000000]              
+	unsigned char                                      PukeMinesToSpawnOnDeath_Versus;                   		// 0x02A4 (0x0001) [0x0000000000000000]              
+	unsigned char                                      PukeMinesToSpawnOnDeath_Player_Versus;            		// 0x02A5 (0x0001) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -2115,7 +3055,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111546 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_Bloat" );
 
 		return pClassPointer;
 	};
@@ -2125,22 +3065,11 @@ public:
 
 UClass* UKFDifficulty_Bloat::pClassPointer = NULL;
 
-// Class kfgamecontent.KFPawn_ZedBloat
-// 0x004C (0x0DF0 - 0x0DA4)
-class AKFPawn_ZedBloat : public AKFPawn_Monster
+// Class kfgamecontent.KFDifficulty_BloatKing
+// 0x0002 (0x02A8 - 0x02A6)
+class UKFDifficulty_BloatKing : public UKFDifficulty_Bloat
 {
 public:
-	struct FName                                       PukeSocketName;                                   		// 0x0DA4 (0x0008) [0x0000000000000000]              
-	float                                              VomitRange;                                       		// 0x0DAC (0x0004) [0x0000000000000000]              
-	int                                                VomitDamage;                                      		// 0x0DB0 (0x0004) [0x0000000000000000]              
-	float                                              ExplodeRange;                                     		// 0x0DB4 (0x0004) [0x0000000000000000]              
-	DWORD                                              bHasExploded : 1;                                 		// 0x0DB8 (0x0004) [0x0000000000000000] [0x00000001] 
-	DWORD                                              bWasDismembered : 1;                              		// 0x0DB8 (0x0004) [0x0000000000000000] [0x00000002] 
-	class UClass*                                      PukeMineProjectileClass;                          		// 0x0DBC (0x0008) [0x0000000000000000]              
-	TArray< struct FRotator >                          DeathPukeMineRotations;                           		// 0x0DC4 (0x0010) [0x0000000000000000]              
-	unsigned char                                      NumPukeMinesToSpawnOnDeath;                       		// 0x0DD4 (0x0001) [0x0000000000000000]              
-	struct FVector                                     OldLocation;                                      		// 0x0DD8 (0x000C) [0x0000000000000000]              
-	struct FRotator                                    OldRotation;                                      		// 0x0DE4 (0x000C) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -2149,31 +3078,39 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111555 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_BloatKing" );
 
 		return pClassPointer;
 	};
 
-	void GetTraderAdviceID ( );
-	void SpawnPukeMinesOnDeath ( );
-	void SpawnPukeMine ( );
-	void DealExplosionDamage ( );
-	void HitExplosiveBone ( );
-	void TakeHitZoneDamage ( );
-	void Died ( );
-	void HasInjuredHitZones ( );
-	void CanInjureHitZone ( );
-	void CanPukeOnTarget ( );
-	void DealPukeDamage ( );
-	void Puke ( );
-	void ANIMNOTIFY_PukeAttack ( );
-	void PostBeginPlay ( );
 };
 
-UClass* AKFPawn_ZedBloat::pClassPointer = NULL;
+UClass* UKFDifficulty_BloatKing::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDifficulty_BloatKingSubspawn
+// 0x0000 (0x0294 - 0x0294)
+class UKFDifficulty_BloatKingSubspawn : public UKFMonsterDifficultyInfo
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_BloatKingSubspawn" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDifficulty_BloatKingSubspawn::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_ClotCyst
-// 0x0000 (0x0280 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_ClotCyst : public UKFMonsterDifficultyInfo
 {
 public:
@@ -2185,7 +3122,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111567 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_ClotCyst" );
 
 		return pClassPointer;
 	};
@@ -2195,7 +3132,7 @@ public:
 UClass* UKFDifficulty_ClotCyst::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_ClotSlasher
-// 0x0000 (0x0280 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_ClotSlasher : public UKFMonsterDifficultyInfo
 {
 public:
@@ -2207,7 +3144,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111569 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_ClotSlasher" );
 
 		return pClassPointer;
 	};
@@ -2217,11 +3154,10 @@ public:
 UClass* UKFDifficulty_ClotSlasher::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_Crawler
-// 0x0010 (0x0290 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_Crawler : public UKFMonsterDifficultyInfo
 {
 public:
-	TArray< float >                                    ChanceToSpawnAsSpecial;                           		// 0x0280 (0x0010) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -2230,18 +3166,17 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111571 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_Crawler" );
 
 		return pClassPointer;
 	};
 
-	void GetSpecialCrawlerChance ( );
 };
 
 UClass* UKFDifficulty_Crawler::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_CrawlerKing
-// 0x0000 (0x0290 - 0x0290)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_CrawlerKing : public UKFDifficulty_Crawler
 {
 public:
@@ -2253,7 +3188,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111578 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_CrawlerKing" );
 
 		return pClassPointer;
 	};
@@ -2262,12 +3197,11 @@ public:
 
 UClass* UKFDifficulty_CrawlerKing::pClassPointer = NULL;
 
-// Class kfgamecontent.KFDifficulty_Fleshpound
-// 0x0010 (0x0290 - 0x0280)
-class UKFDifficulty_Fleshpound : public UKFMonsterDifficultyInfo
+// Class kfgamecontent.KFDifficulty_DAR
+// 0x0000 (0x0294 - 0x0294)
+class UKFDifficulty_DAR : public UKFMonsterDifficultyInfo
 {
 public:
-	TArray< float >                                    ChanceToSpawnAsSpecial;                           		// 0x0280 (0x0010) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -2276,18 +3210,105 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111580 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_DAR" );
 
 		return pClassPointer;
 	};
 
-	void GetSpecialFleshpoundChance ( );
+};
+
+UClass* UKFDifficulty_DAR::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDifficulty_DAR_EMP
+// 0x0000 (0x0294 - 0x0294)
+class UKFDifficulty_DAR_EMP : public UKFDifficulty_DAR
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_DAR_EMP" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDifficulty_DAR_EMP::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDifficulty_DAR_Laser
+// 0x0000 (0x0294 - 0x0294)
+class UKFDifficulty_DAR_Laser : public UKFDifficulty_DAR
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_DAR_Laser" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDifficulty_DAR_Laser::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDifficulty_DAR_Rocket
+// 0x0000 (0x0294 - 0x0294)
+class UKFDifficulty_DAR_Rocket : public UKFDifficulty_DAR
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_DAR_Rocket" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDifficulty_DAR_Rocket::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDifficulty_Fleshpound
+// 0x0000 (0x0294 - 0x0294)
+class UKFDifficulty_Fleshpound : public UKFMonsterDifficultyInfo
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_Fleshpound" );
+
+		return pClassPointer;
+	};
+
 };
 
 UClass* UKFDifficulty_Fleshpound::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_FleshpoundMini
-// 0x0000 (0x0280 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_FleshpoundMini : public UKFMonsterDifficultyInfo
 {
 public:
@@ -2299,7 +3320,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111591 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_FleshpoundMini" );
 
 		return pClassPointer;
 	};
@@ -2309,11 +3330,10 @@ public:
 UClass* UKFDifficulty_FleshpoundMini::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_Gorefast
-// 0x0010 (0x0290 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_Gorefast : public UKFMonsterDifficultyInfo
 {
 public:
-	TArray< float >                                    ChanceToSpawnAsSpecial;                           		// 0x0280 (0x0010) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -2322,18 +3342,17 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111593 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_Gorefast" );
 
 		return pClassPointer;
 	};
 
-	void GetSpecialGorefastChance ( );
 };
 
 UClass* UKFDifficulty_Gorefast::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_GorefastDualBlade
-// 0x0000 (0x0290 - 0x0290)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_GorefastDualBlade : public UKFDifficulty_Gorefast
 {
 public:
@@ -2345,7 +3364,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111600 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_GorefastDualBlade" );
 
 		return pClassPointer;
 	};
@@ -2355,7 +3374,7 @@ public:
 UClass* UKFDifficulty_GorefastDualBlade::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_Hans
-// 0x0000 (0x0280 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_Hans : public UKFMonsterDifficultyInfo
 {
 public:
@@ -2367,7 +3386,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111602 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_Hans" );
 
 		return pClassPointer;
 	};
@@ -2377,12 +3396,12 @@ public:
 UClass* UKFDifficulty_Hans::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_Husk
-// 0x0018 (0x0298 - 0x0280)
+// 0x0018 (0x02AC - 0x0294)
 class UKFDifficulty_Husk : public UKFMonsterDifficultyInfo
 {
 public:
-	TArray< struct FsHuskFireballSettings >            FireballSettings;                                 		// 0x0280 (0x0010) [0x0000000000000000]              
-	struct FsHuskFireballSettings                      FireballSettings_Versus;                          		// 0x0290 (0x0008) [0x0000000000000000]              
+	TArray< struct FsHuskFireballSettings >            FireballSettings;                                 		// 0x0294 (0x0010) [0x0000000000000000]              
+	struct FsHuskFireballSettings                      FireballSettings_Versus;                          		// 0x02A4 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -2391,7 +3410,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111604 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_Husk" );
 
 		return pClassPointer;
 	};
@@ -2402,7 +3421,7 @@ public:
 UClass* UKFDifficulty_Husk::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_Patriarch
-// 0x0000 (0x0280 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_Patriarch : public UKFMonsterDifficultyInfo
 {
 public:
@@ -2414,7 +3433,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111614 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -2424,7 +3443,7 @@ public:
 UClass* UKFDifficulty_Patriarch::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_Scrake
-// 0x0000 (0x0280 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_Scrake : public UKFMonsterDifficultyInfo
 {
 public:
@@ -2436,7 +3455,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111616 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_Scrake" );
 
 		return pClassPointer;
 	};
@@ -2446,7 +3465,7 @@ public:
 UClass* UKFDifficulty_Scrake::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_Siren
-// 0x0000 (0x0280 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_Siren : public UKFMonsterDifficultyInfo
 {
 public:
@@ -2458,7 +3477,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111618 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_Siren" );
 
 		return pClassPointer;
 	};
@@ -2468,7 +3487,7 @@ public:
 UClass* UKFDifficulty_Siren::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDifficulty_Stalker
-// 0x0000 (0x0280 - 0x0280)
+// 0x0000 (0x0294 - 0x0294)
 class UKFDifficulty_Stalker : public UKFMonsterDifficultyInfo
 {
 public:
@@ -2480,7 +3499,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111620 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDifficulty_Stalker" );
 
 		return pClassPointer;
 	};
@@ -2502,7 +3521,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111622 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Handgun" );
 
 		return pClassPointer;
 	};
@@ -2524,7 +3543,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111624 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_9mm" );
 
 		return pClassPointer;
 	};
@@ -2546,7 +3565,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111626 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Shotgun" );
 
 		return pClassPointer;
 	};
@@ -2568,7 +3587,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111628 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_AA12Shotgun" );
 
 		return pClassPointer;
 	};
@@ -2577,6 +3596,29 @@ public:
 };
 
 UClass* UKFDT_Ballistic_AA12Shotgun::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Ballistic_AF2011
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Ballistic_AF2011 : public UKFDT_Ballistic_Handgun
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_AF2011" );
+
+		return pClassPointer;
+	};
+
+	void CanDismemberHitZone ( );
+};
+
+UClass* UKFDT_Ballistic_AF2011::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Ballistic_AssaultRifle
 // 0x0000 (0x0164 - 0x0164)
@@ -2591,7 +3633,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111633 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_AssaultRifle" );
 
 		return pClassPointer;
 	};
@@ -2613,7 +3655,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111635 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_AK12" );
 
 		return pClassPointer;
 	};
@@ -2636,7 +3678,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111640 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_AR15" );
 
 		return pClassPointer;
 	};
@@ -2658,7 +3700,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111642 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Assault_Medic" );
 
 		return pClassPointer;
 	};
@@ -2683,7 +3725,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111657 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Bullpup" );
 
 		return pClassPointer;
 	};
@@ -2705,7 +3747,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111659 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Rifle" );
 
 		return pClassPointer;
 	};
@@ -2727,7 +3769,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111661 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_CenterfireMB464" );
 
 		return pClassPointer;
 	};
@@ -2750,7 +3792,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111666 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Colt1911" );
 
 		return pClassPointer;
 	};
@@ -2772,7 +3814,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111668 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_DBShotgun" );
 
 		return pClassPointer;
 	};
@@ -2795,7 +3837,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111673 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Deagle" );
 
 		return pClassPointer;
 	};
@@ -2819,7 +3861,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111678 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_DragonsBreath" );
 
 		return pClassPointer;
 	};
@@ -2844,7 +3886,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111694 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_DragonsBreathDoT" );
 
 		return pClassPointer;
 	};
@@ -2855,6 +3897,52 @@ public:
 };
 
 UClass* UKFDT_Fire_DragonsBreathDoT::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Ballistic_ElephantGun
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Ballistic_ElephantGun : public UKFDT_Ballistic_Shotgun
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_ElephantGun" );
+
+		return pClassPointer;
+	};
+
+	void CanDismemberHitZone ( );
+};
+
+UClass* UKFDT_Ballistic_ElephantGun::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Ballistic_FNFal
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Ballistic_FNFal : public UKFDT_Ballistic_Rifle
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_FNFal" );
+
+		return pClassPointer;
+	};
+
+	void CanDismemberHitZone ( );
+};
+
+UClass* UKFDT_Ballistic_FNFal::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Ballistic_HansAK12
 // 0x0000 (0x0164 - 0x0164)
@@ -2869,7 +3957,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111695 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_HansAK12" );
 
 		return pClassPointer;
 	};
@@ -2893,7 +3981,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111699 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Hemogoblin" );
 
 		return pClassPointer;
 	};
@@ -2928,7 +4016,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111728 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapActor_Hemogoblin_Tube" );
 
 		return pClassPointer;
 	};
@@ -2940,6 +4028,50 @@ public:
 };
 
 UClass* AKFWeapActor_Hemogoblin_Tube::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Ballistic_Submachinegun
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Ballistic_Submachinegun : public UKFDT_Ballistic
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Submachinegun" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Ballistic_Submachinegun::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Ballistic_HK_UMP
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Ballistic_HK_UMP : public UKFDT_Ballistic_Submachinegun
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_HK_UMP" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Ballistic_HK_UMP::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Ballistic_HX25Impact
 // 0x0000 (0x0164 - 0x0164)
@@ -2954,7 +4086,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111729 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_HX25Impact" );
 
 		return pClassPointer;
 	};
@@ -2976,7 +4108,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111731 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_HX25SubmunitionImpact" );
 
 		return pClassPointer;
 	};
@@ -2999,7 +4131,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111736 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_HZ12" );
 
 		return pClassPointer;
 	};
@@ -3008,28 +4140,6 @@ public:
 };
 
 UClass* UKFDT_Ballistic_HZ12::pClassPointer = NULL;
-
-// Class kfgamecontent.KFDT_Ballistic_Submachinegun
-// 0x0000 (0x0164 - 0x0164)
-class UKFDT_Ballistic_Submachinegun : public UKFDT_Ballistic
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111741 ];
-
-		return pClassPointer;
-	};
-
-};
-
-UClass* UKFDT_Ballistic_Submachinegun::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Ballistic_Kriss
 // 0x0000 (0x0164 - 0x0164)
@@ -3044,7 +4154,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111743 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Kriss" );
 
 		return pClassPointer;
 	};
@@ -3066,7 +4176,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111745 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_M14EBR" );
 
 		return pClassPointer;
 	};
@@ -3089,7 +4199,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111750 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_M16M203" );
 
 		return pClassPointer;
 	};
@@ -3111,7 +4221,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111752 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_M203Impact" );
 
 		return pClassPointer;
 	};
@@ -3133,7 +4243,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111754 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_M4Shotgun" );
 
 		return pClassPointer;
 	};
@@ -3156,7 +4266,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111759 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_M79Impact" );
 
 		return pClassPointer;
 	};
@@ -3164,6 +4274,29 @@ public:
 };
 
 UClass* UKFDT_Ballistic_M79Impact::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Ballistic_M99
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Ballistic_M99 : public UKFDT_Ballistic_Rifle
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_M99" );
+
+		return pClassPointer;
+	};
+
+	void CanDismemberHitZone ( );
+};
+
+UClass* UKFDT_Ballistic_M99::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Ballistic_MB500
 // 0x0000 (0x0164 - 0x0164)
@@ -3178,7 +4311,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111761 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_MB500" );
 
 		return pClassPointer;
 	};
@@ -3187,6 +4320,74 @@ public:
 };
 
 UClass* UKFDT_Ballistic_MB500::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Ballistic_MedicRifleGrenadeLauncher
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Ballistic_MedicRifleGrenadeLauncher : public UKFDT_Ballistic_Shell
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_MedicRifleGrenadeLauncher" );
+
+		return pClassPointer;
+	};
+
+	void ApplySecondaryDamage ( );
+};
+
+UClass* UKFDT_Ballistic_MedicRifleGrenadeLauncher::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Ballistic_MedicRifleGrenadeLauncherImpact
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Ballistic_MedicRifleGrenadeLauncherImpact : public UKFDT_Ballistic_Shell
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_MedicRifleGrenadeLauncherImpact" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Ballistic_MedicRifleGrenadeLauncherImpact::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Ballistic_MKB42
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Ballistic_MKB42 : public UKFDT_Ballistic_AssaultRifle
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_MKB42" );
+
+		return pClassPointer;
+	};
+
+	void CanDismemberHitZone ( );
+};
+
+UClass* UKFDT_Ballistic_MKB42::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Ballistic_MP5RAS
 // 0x0000 (0x0164 - 0x0164)
@@ -3201,7 +4402,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111766 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_MP5RAS" );
 
 		return pClassPointer;
 	};
@@ -3223,7 +4424,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111768 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_MP7" );
 
 		return pClassPointer;
 	};
@@ -3245,7 +4446,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111770 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_NailShotgun" );
 
 		return pClassPointer;
 	};
@@ -3256,7 +4457,7 @@ public:
 UClass* UKFDT_Ballistic_NailShotgun::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Nail_Nailgun
-// 0x0000 (0x03BC - 0x03BC)
+// 0x0000 (0x03C0 - 0x03C0)
 class AKFProj_Nail_Nailgun : public AKFProj_PinningBullet
 {
 public:
@@ -3268,7 +4469,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111773 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Nail_Nailgun" );
 
 		return pClassPointer;
 	};
@@ -3294,7 +4495,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111775 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_P90" );
 
 		return pClassPointer;
 	};
@@ -3316,7 +4517,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111777 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_PatMinigun" );
 
 		return pClassPointer;
 	};
@@ -3339,7 +4540,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111781 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Pistol_Medic" );
 
 		return pClassPointer;
 	};
@@ -3362,7 +4563,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111788 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_RailGun" );
 
 		return pClassPointer;
 	};
@@ -3386,7 +4587,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111799 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Rem1858" );
 
 		return pClassPointer;
 	};
@@ -3408,7 +4609,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111801 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Rem1858_Dual" );
 
 		return pClassPointer;
 	};
@@ -3430,7 +4631,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111803 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_RPG7Impact" );
 
 		return pClassPointer;
 	};
@@ -3452,7 +4653,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111805 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_SCAR" );
 
 		return pClassPointer;
 	};
@@ -3475,7 +4676,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111810 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Seeker6Impact" );
 
 		return pClassPointer;
 	};
@@ -3497,7 +4698,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111812 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Shotgun_Medic" );
 
 		return pClassPointer;
 	};
@@ -3521,7 +4722,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111822 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_SMG_Medic" );
 
 		return pClassPointer;
 	};
@@ -3544,7 +4745,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111829 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Stoner63A" );
 
 		return pClassPointer;
 	};
@@ -3566,7 +4767,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111831 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_SW500" );
 
 		return pClassPointer;
 	};
@@ -3589,7 +4790,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111836 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_SW500_Dual" );
 
 		return pClassPointer;
 	};
@@ -3611,7 +4812,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111838 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Ballistic_Winchester" );
 
 		return pClassPointer;
 	};
@@ -3620,6 +4821,73 @@ public:
 };
 
 UClass* UKFDT_Ballistic_Winchester::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_SwingMinigame
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_SwingMinigame : public UKFDamageType
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_SwingMinigame" );
+
+		return pClassPointer;
+	};
+
+	void PlayImpactHitEffects ( );
+};
+
+UClass* UKFDT_SwingMinigame::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_BellTrap
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_BellTrap : public UKFDT_SwingMinigame
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_BellTrap" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_BellTrap::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_BloatKingSubspawn_Death
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_BloatKingSubspawn_Death : public UKFDT_Explosive
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_BloatKingSubspawn_Death" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_BloatKingSubspawn_Death::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_BloatPuke
 // 0x0000 (0x0164 - 0x0164)
@@ -3634,7 +4902,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111843 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_BloatPuke" );
 
 		return pClassPointer;
 	};
@@ -3656,7 +4924,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111845 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_RifleButt" );
 
 		return pClassPointer;
 	};
@@ -3678,7 +4946,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111847 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_9mm" );
 
 		return pClassPointer;
 	};
@@ -3700,7 +4968,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111849 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_AA12Shotgun" );
 
 		return pClassPointer;
 	};
@@ -3708,6 +4976,28 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_AA12Shotgun::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_AF2011
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_AF2011 : public UKFDT_Bludgeon_RifleButt
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_AF2011" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_AF2011::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Bludgeon_AK12
 // 0x0000 (0x0164 - 0x0164)
@@ -3722,7 +5012,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111851 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_AK12" );
 
 		return pClassPointer;
 	};
@@ -3744,7 +5034,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111853 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_AR15" );
 
 		return pClassPointer;
 	};
@@ -3766,7 +5056,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111855 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Assault_Medic" );
 
 		return pClassPointer;
 	};
@@ -3774,6 +5064,53 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_Assault_Medic::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_BloatKing
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_BloatKing : public UKFDT_Bludgeon
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_BloatKing" );
+
+		return pClassPointer;
+	};
+
+	void GetKillerDialogID ( );
+};
+
+UClass* UKFDT_Bludgeon_BloatKing::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_BloatKingGorge
+// 0x0008 (0x016C - 0x0164)
+class UKFDT_Bludgeon_BloatKingGorge : public UKFDT_Bludgeon
+{
+public:
+	class UAkEvent*                                    GorgeBiteSound;                                   		// 0x0164 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_BloatKingGorge" );
+
+		return pClassPointer;
+	};
+
+	void PlayImpactHitEffects ( );
+};
+
+UClass* UKFDT_Bludgeon_BloatKingGorge::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Bludgeon_Bullpup
 // 0x0000 (0x0164 - 0x0164)
@@ -3788,7 +5125,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111857 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Bullpup" );
 
 		return pClassPointer;
 	};
@@ -3810,7 +5147,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111859 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_C4" );
 
 		return pClassPointer;
 	};
@@ -3832,7 +5169,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111861 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_CaulkBurn" );
 
 		return pClassPointer;
 	};
@@ -3854,7 +5191,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111863 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_CenterfireMB464" );
 
 		return pClassPointer;
 	};
@@ -3862,6 +5199,72 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_CenterfireMB464::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_ChainBat
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_ChainBat : public UKFDT_Bludgeon
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_ChainBat" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_ChainBat::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_ChainBatBash
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_ChainBatBash : public UKFDT_Bludgeon_ChainBat
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_ChainBatBash" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_ChainBatBash::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_ChainBatHeavy
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_ChainBatHeavy : public UKFDT_Bludgeon_ChainBat
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_ChainBatHeavy" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_ChainBatHeavy::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Bludgeon_Colt1911
 // 0x0000 (0x0164 - 0x0164)
@@ -3876,7 +5279,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111865 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Colt1911" );
 
 		return pClassPointer;
 	};
@@ -3898,7 +5301,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111867 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Crossbow" );
 
 		return pClassPointer;
 	};
@@ -3920,7 +5323,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111869 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Crovel" );
 
 		return pClassPointer;
 	};
@@ -3942,7 +5345,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111871 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_CrovelBash" );
 
 		return pClassPointer;
 	};
@@ -3964,7 +5367,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111873 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_DBShotgun" );
 
 		return pClassPointer;
 	};
@@ -3986,7 +5389,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111875 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Deagle" );
 
 		return pClassPointer;
 	};
@@ -4008,7 +5411,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111877 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_DragonsBreath" );
 
 		return pClassPointer;
 	};
@@ -4016,6 +5419,28 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_DragonsBreath::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_ElephantGun
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_ElephantGun : public UKFDT_Bludgeon_RifleButt
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_ElephantGun" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_ElephantGun::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Bludgeon_Flamethrower
 // 0x0000 (0x0164 - 0x0164)
@@ -4030,7 +5455,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111879 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Flamethrower" );
 
 		return pClassPointer;
 	};
@@ -4052,7 +5477,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111881 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_FlareGun" );
 
 		return pClassPointer;
 	};
@@ -4074,7 +5499,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111883 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Fleshpound" );
 
 		return pClassPointer;
 	};
@@ -4096,7 +5521,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111885 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Fleshpound_AOE" );
 
 		return pClassPointer;
 	};
@@ -4104,6 +5529,50 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_Fleshpound_AOE::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_FNFal
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_FNFal : public UKFDT_Bludgeon_RifleButt
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_FNFal" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_FNFal::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_Freezethrower
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_Freezethrower : public UKFDT_Bludgeon_RifleButt
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Freezethrower" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_Freezethrower::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Bludgeon_Healer
 // 0x0000 (0x0164 - 0x0164)
@@ -4118,7 +5587,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111887 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Healer" );
 
 		return pClassPointer;
 	};
@@ -4140,7 +5609,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111889 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Hemogoblin" );
 
 		return pClassPointer;
 	};
@@ -4148,6 +5617,50 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_Hemogoblin::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_HK_UMP
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_HK_UMP : public UKFDT_Bludgeon_RifleButt
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_HK_UMP" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_HK_UMP::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_HuskCannon
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_HuskCannon : public UKFDT_Bludgeon_RifleButt
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_HuskCannon" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_HuskCannon::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Bludgeon_HX25
 // 0x0000 (0x0164 - 0x0164)
@@ -4162,7 +5675,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111891 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_HX25" );
 
 		return pClassPointer;
 	};
@@ -4184,7 +5697,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111893 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_HZ12" );
 
 		return pClassPointer;
 	};
@@ -4206,7 +5719,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111895 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Kriss" );
 
 		return pClassPointer;
 	};
@@ -4228,7 +5741,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111897 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_M14EBR" );
 
 		return pClassPointer;
 	};
@@ -4250,7 +5763,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111899 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_M16M203" );
 
 		return pClassPointer;
 	};
@@ -4272,7 +5785,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111901 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_M4Shotgun" );
 
 		return pClassPointer;
 	};
@@ -4294,7 +5807,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111903 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_M79" );
 
 		return pClassPointer;
 	};
@@ -4302,6 +5815,50 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_M79::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_M99
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_M99 : public UKFDT_Bludgeon_RifleButt
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_M99" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_M99::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_Mac10
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_Mac10 : public UKFDT_Bludgeon_RifleButt
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Mac10" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_Mac10::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Bludgeon_MaceAndShield
 // 0x0000 (0x0164 - 0x0164)
@@ -4316,7 +5873,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111905 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MaceAndShield" );
 
 		return pClassPointer;
 	};
@@ -4338,7 +5895,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111907 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MaceAndShield_Bash" );
 
 		return pClassPointer;
 	};
@@ -4360,7 +5917,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111909 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MaceAndShield_MaceHeavy" );
 
 		return pClassPointer;
 	};
@@ -4382,7 +5939,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111911 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MaceAndShield_ShieldHeavy" );
 
 		return pClassPointer;
 	};
@@ -4404,7 +5961,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111913 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MaceAndShield_ShieldLight" );
 
 		return pClassPointer;
 	};
@@ -4426,7 +5983,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111915 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MB500" );
 
 		return pClassPointer;
 	};
@@ -4434,6 +5991,28 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_MB500::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_MedicRifleGrenadeLauncher
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_MedicRifleGrenadeLauncher : public UKFDT_Bludgeon_RifleButt
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MedicRifleGrenadeLauncher" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_MedicRifleGrenadeLauncher::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Bludgeon_MicrowaveGun
 // 0x0000 (0x0164 - 0x0164)
@@ -4448,7 +6027,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111917 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MicrowaveGun" );
 
 		return pClassPointer;
 	};
@@ -4456,6 +6035,28 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_MicrowaveGun::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_MKB42
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_MKB42 : public UKFDT_Bludgeon_RifleButt
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MKB42" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_MKB42::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Bludgeon_MP5RAS
 // 0x0000 (0x0164 - 0x0164)
@@ -4470,7 +6071,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111919 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MP5RAS" );
 
 		return pClassPointer;
 	};
@@ -4492,7 +6093,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111921 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_MP7" );
 
 		return pClassPointer;
 	};
@@ -4514,7 +6115,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111923 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_NailShotgun" );
 
 		return pClassPointer;
 	};
@@ -4536,7 +6137,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111925 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_P90" );
 
 		return pClassPointer;
 	};
@@ -4558,7 +6159,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111927 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -4581,7 +6182,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111931 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_PatriarchKick" );
 
 		return pClassPointer;
 	};
@@ -4604,7 +6205,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111936 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_PatriarchMetal" );
 
 		return pClassPointer;
 	};
@@ -4627,7 +6228,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111940 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Pistol_Medic" );
 
 		return pClassPointer;
 	};
@@ -4635,6 +6236,72 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_Pistol_Medic::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_PowerGloves
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_PowerGloves : public UKFDT_Bludgeon
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_PowerGloves" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_PowerGloves::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_PowerGlovesBash
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_PowerGlovesBash : public UKFDT_Bludgeon_PowerGloves
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_PowerGlovesBash" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_PowerGlovesBash::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Bludgeon_PowerGlovesHeavy
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Bludgeon_PowerGlovesHeavy : public UKFDT_Bludgeon
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_PowerGlovesHeavy" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Bludgeon_PowerGlovesHeavy::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Bludgeon_Pulverizer
 // 0x0000 (0x0164 - 0x0164)
@@ -4649,7 +6316,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111942 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Pulverizer" );
 
 		return pClassPointer;
 	};
@@ -4671,7 +6338,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111944 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_PulverizerBash" );
 
 		return pClassPointer;
 	};
@@ -4693,7 +6360,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111946 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_PulverizerHeavy" );
 
 		return pClassPointer;
 	};
@@ -4715,7 +6382,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111948 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_RailGun" );
 
 		return pClassPointer;
 	};
@@ -4737,7 +6404,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111950 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Rem1858" );
 
 		return pClassPointer;
 	};
@@ -4759,7 +6426,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111952 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_RPG7" );
 
 		return pClassPointer;
 	};
@@ -4781,7 +6448,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111954 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_SCAR" );
 
 		return pClassPointer;
 	};
@@ -4803,7 +6470,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111956 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Seeker6" );
 
 		return pClassPointer;
 	};
@@ -4825,7 +6492,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111958 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Shotgun_Medic" );
 
 		return pClassPointer;
 	};
@@ -4847,7 +6514,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111960 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_SMG_Medic" );
 
 		return pClassPointer;
 	};
@@ -4869,7 +6536,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111962 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Stoner63A" );
 
 		return pClassPointer;
 	};
@@ -4891,7 +6558,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111964 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_SW500" );
 
 		return pClassPointer;
 	};
@@ -4913,7 +6580,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111966 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Welder" );
 
 		return pClassPointer;
 	};
@@ -4935,7 +6602,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111968 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_Winchester" );
 
 		return pClassPointer;
 	};
@@ -4957,7 +6624,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111970 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Bludgeon_ZedJump" );
 
 		return pClassPointer;
 	};
@@ -4965,6 +6632,28 @@ public:
 };
 
 UClass* UKFDT_Bludgeon_ZedJump::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_DAR_EMPBlast
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_DAR_EMPBlast : public UKFDamageType
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_DAR_EMPBlast" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_DAR_EMPBlast::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Dart_Healing
 // 0x0000 (0x0164 - 0x0164)
@@ -4979,7 +6668,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111972 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Dart_Healing" );
 
 		return pClassPointer;
 	};
@@ -5001,7 +6690,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111974 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Dart_Toxic" );
 
 		return pClassPointer;
 	};
@@ -5023,7 +6712,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111976 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_EMP_EMPGrenade" );
 
 		return pClassPointer;
 	};
@@ -5031,6 +6720,72 @@ public:
 };
 
 UClass* UKFDT_EMP_EMPGrenade::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_EMPTrap
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_EMPTrap : public UKFDamageType
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_EMPTrap" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_EMPTrap::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_EvilDAR_Laser
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_EvilDAR_Laser : public UKFDT_Ballistic
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_EvilDAR_Laser" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_EvilDAR_Laser::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_EvilDAR_Rocket
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_EvilDAR_Rocket : public UKFDT_Explosive
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_EvilDAR_Rocket" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_EvilDAR_Rocket::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Explosive_C4
 // 0x0000 (0x0164 - 0x0164)
@@ -5045,7 +6800,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111978 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_C4" );
 
 		return pClassPointer;
 	};
@@ -5067,7 +6822,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111980 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_CrawlerSuicide" );
 
 		return pClassPointer;
 	};
@@ -5090,7 +6845,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111985 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_DynamiteGrenade" );
 
 		return pClassPointer;
 	};
@@ -5112,7 +6867,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111987 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_FlashBangGrenade" );
 
 		return pClassPointer;
 	};
@@ -5134,7 +6889,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111989 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_FleshpoundKingRage_Heavy" );
 
 		return pClassPointer;
 	};
@@ -5156,7 +6911,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111991 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_FleshpoundKingRage_Light" );
 
 		return pClassPointer;
 	};
@@ -5178,7 +6933,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111993 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_FragGrenade" );
 
 		return pClassPointer;
 	};
@@ -5200,7 +6955,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111995 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_HEGrenade" );
 
 		return pClassPointer;
 	};
@@ -5222,7 +6977,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 111997 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_HansHEGrenade" );
 
 		return pClassPointer;
 	};
@@ -5231,6 +6986,30 @@ public:
 };
 
 UClass* UKFDT_Explosive_HansHEGrenade::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Explosive_HuskCannon
+// 0x0008 (0x016C - 0x0164)
+class UKFDT_Explosive_HuskCannon : public UKFDT_Explosive
+{
+public:
+	class UClass*                                      BurnDamageType;                                   		// 0x0164 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_HuskCannon" );
+
+		return pClassPointer;
+	};
+
+	void ApplySecondaryDamage ( );
+};
+
+UClass* UKFDT_Explosive_HuskCannon::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Explosive_HuskSuicide
 // 0x0000 (0x0164 - 0x0164)
@@ -5245,7 +7024,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112001 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_HuskSuicide" );
 
 		return pClassPointer;
 	};
@@ -5268,7 +7047,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112006 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_HX25" );
 
 		return pClassPointer;
 	};
@@ -5290,7 +7069,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112008 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_M16M203" );
 
 		return pClassPointer;
 	};
@@ -5312,7 +7091,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112010 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_M79" );
 
 		return pClassPointer;
 	};
@@ -5334,7 +7113,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112012 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_NailBombGrenade" );
 
 		return pClassPointer;
 	};
@@ -5356,7 +7135,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112014 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_PatMissile" );
 
 		return pClassPointer;
 	};
@@ -5379,7 +7158,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112018 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_PatMortar" );
 
 		return pClassPointer;
 	};
@@ -5402,7 +7181,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112023 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_Pulverizer" );
 
 		return pClassPointer;
 	};
@@ -5424,7 +7203,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112025 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_RPG7" );
 
 		return pClassPointer;
 	};
@@ -5446,7 +7225,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112027 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_RPG7BackBlast" );
 
 		return pClassPointer;
 	};
@@ -5468,7 +7247,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112029 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Explosive_Seeker6" );
 
 		return pClassPointer;
 	};
@@ -5490,7 +7269,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112031 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_CaulkBurn" );
 
 		return pClassPointer;
 	};
@@ -5515,7 +7294,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112046 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_Environment" );
 
 		return pClassPointer;
 	};
@@ -5523,6 +7302,28 @@ public:
 };
 
 UClass* UKFDT_Fire_Environment::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Fire_EnvironmentTrap
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Fire_EnvironmentTrap : public UKFDT_Fire
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_EnvironmentTrap" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Fire_EnvironmentTrap::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Fire_FlameThrower
 // 0x0000 (0x0164 - 0x0164)
@@ -5537,7 +7338,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112048 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_FlameThrower" );
 
 		return pClassPointer;
 	};
@@ -5563,7 +7364,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112056 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_FlareGun" );
 
 		return pClassPointer;
 	};
@@ -5586,7 +7387,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112063 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_FlareGunDoT" );
 
 		return pClassPointer;
 	};
@@ -5611,7 +7412,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112064 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_FlareGun_Dual" );
 
 		return pClassPointer;
 	};
@@ -5633,7 +7434,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112073 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_Ground_CaulkNBurn" );
 
 		return pClassPointer;
 	};
@@ -5655,7 +7456,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112075 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_Ground_FlameThrower" );
 
 		return pClassPointer;
 	};
@@ -5677,7 +7478,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112077 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_Ground_MicrowaveGun" );
 
 		return pClassPointer;
 	};
@@ -5699,7 +7500,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112079 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_HuskFireball" );
 
 		return pClassPointer;
 	};
@@ -5721,7 +7522,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112081 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_HuskFlamethrower" );
 
 		return pClassPointer;
 	};
@@ -5729,6 +7530,32 @@ public:
 };
 
 UClass* UKFDT_Fire_HuskFlamethrower::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Fire_Mac10
+// 0x0008 (0x016C - 0x0164)
+class UKFDT_Fire_Mac10 : public UKFDT_Ballistic_Submachinegun
+{
+public:
+	class UClass*                                      BurnDamageType;                                   		// 0x0164 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_Mac10" );
+
+		return pClassPointer;
+	};
+
+	void ApplySecondaryDamage ( );
+	void PlayImpactHitEffects ( );
+	void CanDismemberHitZone ( );
+};
+
+UClass* UKFDT_Fire_Mac10::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Fire_MolotovGrenade
 // 0x0000 (0x0164 - 0x0164)
@@ -5743,7 +7570,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112083 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_MolotovGrenade" );
 
 		return pClassPointer;
 	};
@@ -5765,7 +7592,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112085 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Fire_ZedGround" );
 
 		return pClassPointer;
 	};
@@ -5773,6 +7600,28 @@ public:
 };
 
 UClass* UKFDT_Fire_ZedGround::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_FireTrap
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_FireTrap : public UKFDT_Fire
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_FireTrap" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_FireTrap::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_FleshpoundKing_ChestBeam
 // 0x0000 (0x0164 - 0x0164)
@@ -5787,7 +7636,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112087 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_FleshpoundKing_ChestBeam" );
 
 		return pClassPointer;
 	};
@@ -5809,7 +7658,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112089 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Freeze_FreezeGrenade" );
 
 		return pClassPointer;
 	};
@@ -5818,6 +7667,73 @@ public:
 };
 
 UClass* UKFDT_Freeze_FreezeGrenade::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Freeze_FreezeThrower
+// 0x0000 (0x0174 - 0x0174)
+class UKFDT_Freeze_FreezeThrower : public UKFDT_Freeze
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Freeze_FreezeThrower" );
+
+		return pClassPointer;
+	};
+
+	void PlayImpactHitEffects ( );
+};
+
+UClass* UKFDT_Freeze_FreezeThrower::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Freeze_FreezeThrower_IceShards
+// 0x0000 (0x0174 - 0x0174)
+class UKFDT_Freeze_FreezeThrower_IceShards : public UKFDT_Freeze
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Freeze_FreezeThrower_IceShards" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Freeze_FreezeThrower_IceShards::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Freeze_Ground_FreezeThrower
+// 0x0000 (0x0174 - 0x0174)
+class UKFDT_Freeze_Ground_FreezeThrower : public UKFDT_Freeze_Ground
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Freeze_Ground_FreezeThrower" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Freeze_Ground_FreezeThrower::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Healing_MedicGrenade
 // 0x0000 (0x0164 - 0x0164)
@@ -5832,7 +7748,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112099 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Healing_MedicGrenade" );
 
 		return pClassPointer;
 	};
@@ -5854,7 +7770,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112101 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_HeavyZedBump" );
 
 		return pClassPointer;
 	};
@@ -5862,6 +7778,53 @@ public:
 };
 
 UClass* UKFDT_HeavyZedBump::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Krampus_ChipperPit
+// 0x0008 (0x016C - 0x0164)
+class UKFDT_Krampus_ChipperPit : public UKFDT_Bludgeon
+{
+public:
+	unsigned char                                      SeasonIndex;                                      		// 0x0164 (0x0001) [0x0000000000000000]              
+	int                                                ObjectiveIndex;                                   		// 0x0168 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Krampus_ChipperPit" );
+
+		return pClassPointer;
+	};
+
+	void ApplyKillResults ( );
+};
+
+UClass* UKFDT_Krampus_ChipperPit::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_MediumZedBump
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_MediumZedBump : public UKFDT_HeavyZedBump
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_MediumZedBump" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_MediumZedBump::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Microwave
 // 0x0000 (0x0164 - 0x0164)
@@ -5876,7 +7839,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112103 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Microwave" );
 
 		return pClassPointer;
 	};
@@ -5898,7 +7861,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112105 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Microwave_Beam" );
 
 		return pClassPointer;
 	};
@@ -5921,7 +7884,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112111 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Microwave_Blast" );
 
 		return pClassPointer;
 	};
@@ -5943,7 +7906,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112113 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Piercing_Crossbow" );
 
 		return pClassPointer;
 	};
@@ -5965,7 +7928,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112115 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Piercing_KatanaStab" );
 
 		return pClassPointer;
 	};
@@ -5987,7 +7950,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112117 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Piercing_KnifeStab" );
 
 		return pClassPointer;
 	};
@@ -6009,7 +7972,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112119 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Piercing_KnifeStab_Berserker" );
 
 		return pClassPointer;
 	};
@@ -6031,7 +7994,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112121 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Piercing_KnifeStab_FieldMedic" );
 
 		return pClassPointer;
 	};
@@ -6040,6 +8003,28 @@ public:
 };
 
 UClass* UKFDT_Piercing_KnifeStab_FieldMedic::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Piercing_KnifeStab_Survivalist
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Piercing_KnifeStab_Survivalist : public UKFDT_Piercing_KnifeStab
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Piercing_KnifeStab_Survivalist" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Piercing_KnifeStab_Survivalist::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Piercing_KnifeStab_SWAT
 // 0x0000 (0x0164 - 0x0164)
@@ -6054,7 +8039,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112128 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Piercing_KnifeStab_SWAT" );
 
 		return pClassPointer;
 	};
@@ -6076,7 +8061,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112130 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Piercing_NadeFragment" );
 
 		return pClassPointer;
 	};
@@ -6099,7 +8084,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112135 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Piercing_NailFragment" );
 
 		return pClassPointer;
 	};
@@ -6122,7 +8107,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112140 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Piercing_ZweihanderStab" );
 
 		return pClassPointer;
 	};
@@ -6130,6 +8115,28 @@ public:
 };
 
 UClass* UKFDT_Piercing_ZweihanderStab::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_PiercingTrap
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_PiercingTrap : public UKFDT_Piercing
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_PiercingTrap" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_PiercingTrap::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Slashing_Crovel
 // 0x0000 (0x0164 - 0x0164)
@@ -6144,7 +8151,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112142 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Crovel" );
 
 		return pClassPointer;
 	};
@@ -6166,7 +8173,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112144 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Eviscerator" );
 
 		return pClassPointer;
 	};
@@ -6191,7 +8198,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112165 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_EvisceratorProj" );
 
 		return pClassPointer;
 	};
@@ -6216,7 +8223,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112188 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Gorefast" );
 
 		return pClassPointer;
 	};
@@ -6238,7 +8245,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112190 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Gorefast_AOE" );
 
 		return pClassPointer;
 	};
@@ -6260,7 +8267,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112192 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Hans" );
 
 		return pClassPointer;
 	};
@@ -6282,7 +8289,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112194 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Katana" );
 
 		return pClassPointer;
 	};
@@ -6307,7 +8314,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112215 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_KatanaHeavy" );
 
 		return pClassPointer;
 	};
@@ -6330,7 +8337,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112220 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Knife" );
 
 		return pClassPointer;
 	};
@@ -6355,7 +8362,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112241 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Knife_Berserker" );
 
 		return pClassPointer;
 	};
@@ -6377,7 +8384,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112243 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Knife_Medic" );
 
 		return pClassPointer;
 	};
@@ -6386,6 +8393,28 @@ public:
 };
 
 UClass* UKFDT_Slashing_Knife_Medic::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Slashing_Knife_Survivalist
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Slashing_Knife_Survivalist : public UKFDT_Slashing_Knife
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Knife_Survivalist" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Slashing_Knife_Survivalist::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Slashing_Knife_SWAT
 // 0x0000 (0x0164 - 0x0164)
@@ -6400,7 +8429,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112250 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Knife_SWAT" );
 
 		return pClassPointer;
 	};
@@ -6422,7 +8451,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112252 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_KnifeHeavy" );
 
 		return pClassPointer;
 	};
@@ -6445,7 +8474,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112257 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_KnifeHeavy_Berserker" );
 
 		return pClassPointer;
 	};
@@ -6467,7 +8496,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112259 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_KnifeHeavy_Medic" );
 
 		return pClassPointer;
 	};
@@ -6476,6 +8505,28 @@ public:
 };
 
 UClass* UKFDT_Slashing_KnifeHeavy_Medic::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Slashing_KnifeHeavy_Survivalist
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Slashing_KnifeHeavy_Survivalist : public UKFDT_Slashing_KnifeHeavy
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_KnifeHeavy_Survivalist" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Slashing_KnifeHeavy_Survivalist::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Slashing_KnifeHeavy_SWAT
 // 0x0000 (0x0164 - 0x0164)
@@ -6490,7 +8541,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112266 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_KnifeHeavy_SWAT" );
 
 		return pClassPointer;
 	};
@@ -6512,7 +8563,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112268 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -6535,7 +8586,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112272 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_PatTentacle" );
 
 		return pClassPointer;
 	};
@@ -6544,6 +8595,28 @@ public:
 };
 
 UClass* UKFDT_Slashing_PatTentacle::pClassPointer = NULL;
+
+// Class kfgamecontent.KFDT_Slashing_PowerGloves
+// 0x0000 (0x0164 - 0x0164)
+class UKFDT_Slashing_PowerGloves : public UKFDT_Slashing
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_PowerGloves" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFDT_Slashing_PowerGloves::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Slashing_Scrake
 // 0x0000 (0x0164 - 0x0164)
@@ -6558,7 +8631,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112276 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Scrake" );
 
 		return pClassPointer;
 	};
@@ -6580,7 +8653,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112278 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Scrake_AOE" );
 
 		return pClassPointer;
 	};
@@ -6602,7 +8675,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112280 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_ZedWeak" );
 
 		return pClassPointer;
 	};
@@ -6624,7 +8697,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112282 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_Zweihander" );
 
 		return pClassPointer;
 	};
@@ -6649,7 +8722,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112303 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Slashing_ZweihanderHeavy" );
 
 		return pClassPointer;
 	};
@@ -6672,7 +8745,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112308 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Sonic_VortexScream" );
 
 		return pClassPointer;
 	};
@@ -6681,9 +8754,9 @@ public:
 
 UClass* UKFDT_Sonic_VortexScream::pClassPointer = NULL;
 
-// Class kfgamecontent.KFDT_SwingMinigame
+// Class kfgamecontent.KFDT_Toxic_BloatKingFart
 // 0x0000 (0x0164 - 0x0164)
-class UKFDT_SwingMinigame : public UKFDamageType
+class UKFDT_Toxic_BloatKingFart : public UKFDT_Toxic
 {
 public:
 
@@ -6694,15 +8767,14 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112310 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Toxic_BloatKingFart" );
 
 		return pClassPointer;
 	};
 
-	void PlayImpactHitEffects ( );
 };
 
-UClass* UKFDT_SwingMinigame::pClassPointer = NULL;
+UClass* UKFDT_Toxic_BloatKingFart::pClassPointer = NULL;
 
 // Class kfgamecontent.KFDT_Toxic_BloatPukeMine
 // 0x0000 (0x0164 - 0x0164)
@@ -6717,7 +8789,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112322 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Toxic_BloatPukeMine" );
 
 		return pClassPointer;
 	};
@@ -6739,7 +8811,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112324 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Toxic_HansGrenade" );
 
 		return pClassPointer;
 	};
@@ -6762,7 +8834,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112328 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDT_Toxic_PlayerCrawlerSuicide" );
 
 		return pClassPointer;
 	};
@@ -6786,7 +8858,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112330 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPhysicsVolume" );
 
 		return pClassPointer;
 	};
@@ -6812,7 +8884,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112348 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFDynamicPhysicsVolume" );
 
 		return pClassPointer;
 	};
@@ -6822,8 +8894,118 @@ public:
 
 UClass* AKFDynamicPhysicsVolume::pClassPointer = NULL;
 
+// Class kfgamecontent.KFEmit_ObjectivePath
+// 0x0000 (0x0290 - 0x0290)
+class AKFEmit_ObjectivePath : public AKFEmit_ScriptedPath
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFEmit_ObjectivePath" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFEmit_ObjectivePath::pClassPointer = NULL;
+
+// Class kfgamecontent.KFEmit_ObjectivePath_ActivateTrigger
+// 0x0000 (0x0290 - 0x0290)
+class AKFEmit_ObjectivePath_ActivateTrigger : public AKFEmit_ObjectivePath
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFEmit_ObjectivePath_ActivateTrigger" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFEmit_ObjectivePath_ActivateTrigger::pClassPointer = NULL;
+
+// Class kfgamecontent.KFEmit_ObjectivePath_Weld
+// 0x0000 (0x0290 - 0x0290)
+class AKFEmit_ObjectivePath_Weld : public AKFEmit_ObjectivePath
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFEmit_ObjectivePath_Weld" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFEmit_ObjectivePath_Weld::pClassPointer = NULL;
+
+// Class kfgamecontent.KFExplosion_BloatKingFart
+// 0x0000 (0x0348 - 0x0348)
+class AKFExplosion_BloatKingFart : public AKFExplosionActorLingering
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_BloatKingFart" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFExplosion_BloatKingFart::pClassPointer = NULL;
+
+// Class kfgamecontent.KFExplosion_BloatKingSubspawn
+// 0x0000 (0x0348 - 0x0348)
+class AKFExplosion_BloatKingSubspawn : public AKFExplosionActorLingering
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_BloatKingSubspawn" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFExplosion_BloatKingSubspawn::pClassPointer = NULL;
+
 // Class kfgamecontent.KFExplosion_GroundFire
-// 0x0000 (0x0344 - 0x0344)
+// 0x0000 (0x0348 - 0x0348)
 class AKFExplosion_GroundFire : public AKFExplosionActorLingering
 {
 public:
@@ -6835,7 +9017,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112353 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_GroundFire" );
 
 		return pClassPointer;
 	};
@@ -6845,8 +9027,31 @@ public:
 
 UClass* AKFExplosion_GroundFire::pClassPointer = NULL;
 
+// Class kfgamecontent.KFExplosion_GroundIce
+// 0x0000 (0x0348 - 0x0348)
+class AKFExplosion_GroundIce : public AKFExplosionActorLingering
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_GroundIce" );
+
+		return pClassPointer;
+	};
+
+	void SpawnExplosionParticleSystem ( );
+};
+
+UClass* AKFExplosion_GroundIce::pClassPointer = NULL;
+
 // Class kfgamecontent.KFExplosion_HansNerveGasGrenade
-// 0x0000 (0x0344 - 0x0344)
+// 0x0000 (0x0348 - 0x0348)
 class AKFExplosion_HansNerveGasGrenade : public AKFExplosionActorLingering
 {
 public:
@@ -6858,7 +9063,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112359 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_HansNerveGasGrenade" );
 
 		return pClassPointer;
 	};
@@ -6883,7 +9088,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112361 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_HansSmokeGrenade" );
 
 		return pClassPointer;
 	};
@@ -6897,12 +9102,12 @@ public:
 UClass* AKFExplosion_HansSmokeGrenade::pClassPointer = NULL;
 
 // Class kfgamecontent.KFExplosion_HuskFireballGroundFire
-// 0x0010 (0x0354 - 0x0344)
+// 0x0010 (0x0358 - 0x0348)
 class AKFExplosion_HuskFireballGroundFire : public AKFExplosionActorLingering
 {
 public:
-	class UParticleSystem*                             LoopingParticleEffectCeiling;                     		// 0x0344 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             LoopingParticleEffectWall;                        		// 0x034C (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             LoopingParticleEffectCeiling;                     		// 0x0348 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             LoopingParticleEffectWall;                        		// 0x0350 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -6911,7 +9116,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112380 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_HuskFireballGroundFire" );
 
 		return pClassPointer;
 	};
@@ -6920,16 +9125,13 @@ public:
 
 UClass* AKFExplosion_HuskFireballGroundFire::pClassPointer = NULL;
 
-// Class kfgamecontent.KFExplosion_MedicGrenade
-// 0x0024 (0x0368 - 0x0344)
-class AKFExplosion_MedicGrenade : public AKFExplosionActorLingering
+// Class kfgamecontent.KFExplosion_HuskCannonFireballGroundFire
+// 0x0018 (0x0370 - 0x0358)
+class AKFExplosion_HuskCannonFireballGroundFire : public AKFExplosion_HuskFireballGroundFire
 {
 public:
-	class UClass*                                      HealingDamageType;                                		// 0x0344 (0x0008) [0x0000000000000000]              
-	float                                              HealingAmount;                                    		// 0x034C (0x0004) [0x0000000000000000]              
-	class UAkEvent*                                    SmokeLoopStartEvent;                              		// 0x0350 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    SmokeLoopStopEvent;                               		// 0x0358 (0x0008) [0x0000000000000000]              
-	class AKFPerk*                                     CachedInstigatorPerk;                             		// 0x0360 (0x0008) [0x0000000000000000]              
+	struct FCachedExplosionInfo                        CachedExplosion;                                  		// 0x0358 (0x0014) [0x0000000000000000]              
+	float                                              ExplosionDelay;                                   		// 0x036C (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -6938,7 +9140,36 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112389 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_HuskCannonFireballGroundFire" );
+
+		return pClassPointer;
+	};
+
+	void Timer_DelayExplosion ( );
+	void Explode ( );
+};
+
+UClass* AKFExplosion_HuskCannonFireballGroundFire::pClassPointer = NULL;
+
+// Class kfgamecontent.KFExplosion_MedicGrenade
+// 0x0024 (0x036C - 0x0348)
+class AKFExplosion_MedicGrenade : public AKFExplosionActorLingering
+{
+public:
+	class UClass*                                      HealingDamageType;                                		// 0x0348 (0x0008) [0x0000000000000000]              
+	float                                              HealingAmount;                                    		// 0x0350 (0x0004) [0x0000000000000000]              
+	class UAkEvent*                                    SmokeLoopStartEvent;                              		// 0x0354 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SmokeLoopStopEvent;                               		// 0x035C (0x0008) [0x0000000000000000]              
+	class AKFPerk*                                     CachedInstigatorPerk;                             		// 0x0364 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_MedicGrenade" );
 
 		return pClassPointer;
 	};
@@ -6951,11 +9182,11 @@ public:
 UClass* AKFExplosion_MedicGrenade::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_MedicGrenade
-// 0x0013 (0x03DC - 0x03C9)
+// 0x0013 (0x03E0 - 0x03CD)
 class AKFProj_MedicGrenade : public AKFProj_Grenade
 {
 public:
-	TArray< class AKFPawn* >                           HealedPawns;                                      		// 0x03CC (0x0010) [0x0000000000000000]              
+	TArray< class AKFPawn* >                           HealedPawns;                                      		// 0x03D0 (0x0010) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -6964,7 +9195,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112408 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_MedicGrenade" );
 
 		return pClassPointer;
 	};
@@ -6977,13 +9208,11 @@ public:
 
 UClass* AKFProj_MedicGrenade::pClassPointer = NULL;
 
-// Class kfgamecontent.KFExplosion_Molotov
-// 0x0010 (0x0354 - 0x0344)
-class AKFExplosion_Molotov : public AKFExplosionActorLingering
+// Class kfgamecontent.KFExplosion_MedicGrenadeMini
+// 0x0000 (0x036C - 0x036C)
+class AKFExplosion_MedicGrenadeMini : public AKFExplosion_MedicGrenade
 {
 public:
-	class UParticleSystem*                             LoopingParticleEffectCeiling;                     		// 0x0344 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             LoopingParticleEffectWall;                        		// 0x034C (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -6992,7 +9221,31 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112411 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_MedicGrenadeMini" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFExplosion_MedicGrenadeMini::pClassPointer = NULL;
+
+// Class kfgamecontent.KFExplosion_Molotov
+// 0x0010 (0x0358 - 0x0348)
+class AKFExplosion_Molotov : public AKFExplosionActorLingering
+{
+public:
+	class UParticleSystem*                             LoopingParticleEffectCeiling;                     		// 0x0348 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             LoopingParticleEffectWall;                        		// 0x0350 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_Molotov" );
 
 		return pClassPointer;
 	};
@@ -7014,7 +9267,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112415 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_PlayerBloatPukeMine" );
 
 		return pClassPointer;
 	};
@@ -7025,7 +9278,7 @@ public:
 UClass* AKFExplosion_PlayerBloatPukeMine::pClassPointer = NULL;
 
 // Class kfgamecontent.KFExplosion_PlayerCrawlerSuicide
-// 0x0000 (0x0344 - 0x0344)
+// 0x0000 (0x0348 - 0x0348)
 class AKFExplosion_PlayerCrawlerSuicide : public AKFExplosionActorLingering
 {
 public:
@@ -7037,7 +9290,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112420 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_PlayerCrawlerSuicide" );
 
 		return pClassPointer;
 	};
@@ -7059,7 +9312,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112422 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosion_SirenScream" );
 
 		return pClassPointer;
 	};
@@ -7069,6 +9322,30 @@ public:
 };
 
 UClass* AKFExplosion_SirenScream::pClassPointer = NULL;
+
+// Class kfgamecontent.KFExplosionActor_HuskCannon
+// 0x0004 (0x031C - 0x0318)
+class AKFExplosionActor_HuskCannon : public AKFExplosionActor
+{
+public:
+	float                                              DamageScale;                                      		// 0x0318 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosionActor_HuskCannon" );
+
+		return pClassPointer;
+	};
+
+	void GetDamageFor ( );
+};
+
+UClass* AKFExplosionActor_HuskCannon::pClassPointer = NULL;
 
 // Class kfgamecontent.KFExplosionActorC4
 // 0x0000 (0x0318 - 0x0318)
@@ -7083,7 +9360,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112430 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFExplosionActorC4" );
 
 		return pClassPointer;
 	};
@@ -7108,7 +9385,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112435 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameConductorVersus" );
 
 		return pClassPointer;
 	};
@@ -7133,7 +9410,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112442 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameContentRoot" );
 
 		return pClassPointer;
 	};
@@ -7142,525 +9419,75 @@ public:
 
 UClass* UKFGameContentRoot::pClassPointer = NULL;
 
-// Class kfgamecontent.KFGameDifficulty_Survival
-// 0x0000 (0x0204 - 0x0204)
-class UKFGameDifficulty_Survival : public UKFGameDifficultyInfo
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112446 ];
-
-		return pClassPointer;
-	};
-
-};
-
-UClass* UKFGameDifficulty_Survival::pClassPointer = NULL;
-
-// Class kfgamecontent.KFGameDifficulty_Survival_Console
-// 0x0000 (0x0204 - 0x0204)
-class UKFGameDifficulty_Survival_Console : public UKFGameDifficulty_Survival
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112448 ];
-
-		return pClassPointer;
-	};
-
-};
-
-UClass* UKFGameDifficulty_Survival_Console::pClassPointer = NULL;
-
-// Class kfgamecontent.KFGameDifficulty_Versus
-// 0x0000 (0x0204 - 0x0204)
-class UKFGameDifficulty_Versus : public UKFGameDifficultyInfo
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112450 ];
-
-		return pClassPointer;
-	};
-
-};
-
-UClass* UKFGameDifficulty_Versus::pClassPointer = NULL;
-
-// Class kfgamecontent.KFGameDifficulty_Versus_Console
-// 0x0000 (0x0204 - 0x0204)
-class UKFGameDifficulty_Versus_Console : public UKFGameDifficulty_Versus
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112452 ];
-
-		return pClassPointer;
-	};
-
-};
-
-UClass* UKFGameDifficulty_Versus_Console::pClassPointer = NULL;
-
-// Class kfgamecontent.KFProj_BloatPukeMine
-// 0x0070 (0x040C - 0x039C)
-class AKFProj_BloatPukeMine : public AKFProjectile
-{
-public:
-	class UParticleSystem*                             GroundFXTemplate;                                 		// 0x039C (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BurstFXTemplate;                                  		// 0x03A4 (0x0008) [0x0000000000000000]              
-	unsigned char                                      TeamNum;                                          		// 0x03AC (0x0001) [0x0000000000000000]              
-	int                                                Health;                                           		// 0x03B0 (0x0004) [0x0000000000000000]              
-	float                                              DampenFactor;                                     		// 0x03B4 (0x0004) [0x0000000000000000]              
-	float                                              DampenFactorParallel;                             		// 0x03B8 (0x0004) [0x0000000000000000]              
-	float                                              SpawnCollisionOffsetAmt;                          		// 0x03BC (0x0004) [0x0000000000000000]              
-	struct FVector                                     LandedFXOffset;                                   		// 0x03C0 (0x000C) [0x0000000000000000]              
-	float                                              ExplodeTriggerRadius;                             		// 0x03CC (0x0004) [0x0000000000000000]              
-	float                                              ExplodeTriggerHeight;                             		// 0x03D0 (0x0004) [0x0000000000000000]              
-	class UAkEvent*                                    BounceAkEvent;                                    		// 0x03D4 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    ImpactAkEvent;                                    		// 0x03DC (0x0008) [0x0000000000000000]              
-	class UMaterialInterface*                          ImpactDecalMaterial;                              		// 0x03E4 (0x0008) [0x0000000000000000]              
-	float                                              ImpactDecalWidth;                                 		// 0x03EC (0x0004) [0x0000000000000000]              
-	float                                              ImpactDecalHeight;                                		// 0x03F0 (0x0004) [0x0000000000000000]              
-	float                                              ImpactDecalThickness;                             		// 0x03F4 (0x0004) [0x0000000000000000]              
-	float                                              FuseDuration;                                     		// 0x03F8 (0x0004) [0x0000000000000000]              
-	DWORD                                              bClientExplode : 1;                               		// 0x03FC (0x0004) [0x00000000001E0000] [0x00000001] ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
-	DWORD                                              bFadingOut : 1;                                   		// 0x03FC (0x0004) [0x0000000000000000] [0x00000002] 
-	float                                              FadeOutTime;                                      		// 0x0400 (0x0004) [0x0000000000000000]              
-	int                                                MaxBounces;                                       		// 0x0404 (0x0004) [0x0000000000000000]              
-	int                                                NumBounces;                                       		// 0x0408 (0x0004) [0x0000000000000000]              
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112662 ];
-
-		return pClassPointer;
-	};
-
-	void OnInstigatorControllerLeft ( );
-	void eventDestroyed ( );
-	void SpawnBurstEffect ( );
-	void FadeOut ( );
-	void eventTornOff ( );
-	void eventTick ( );
-	void TriggerExplosion ( );
-	void Timer_Explode ( );
-	void Detonate ( );
-	void eventTakeDamage ( );
-	void eventTouch ( );
-	void ValidTouch ( );
-	void SpawnImpactDecal ( );
-	void PlayImpactSound ( );
-	void SwapToGroundFX ( );
-	void Stick ( );
-	void Bounce ( );
-	void eventBump ( );
-	void CanStick ( );
-	void eventHitWall ( );
-	void Explode ( );
-	void StopSimulating ( );
-	void ShutDown ( );
-	void eventPostBeginPlay ( );
-	void eventReplicatedEvent ( );
-};
-
-UClass* AKFProj_BloatPukeMine::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPickupFactory_Ammo
-// 0x0008 (0x03B8 - 0x03B0)
-class AKFPickupFactory_Ammo : public AKFPickupFactory
-{
-public:
-	class UAkEvent*                                    AmmoPickupSound;                                  		// 0x03B0 (0x0008) [0x0000000000000000]              
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112663 ];
-
-		return pClassPointer;
-	};
-
-	void CurrentPickupIsAmmo ( );
-	void PickedUpBy ( );
-	void GiveTo ( );
-	void eventSetInitialState ( );
-	void InitializePickup ( );
-};
-
-UClass* AKFPickupFactory_Ammo::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedClot
-// 0x0000 (0x0DA4 - 0x0DA4)
-class AKFPawn_ZedClot : public AKFPawn_Monster
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112666 ];
-
-		return pClassPointer;
-	};
-
-	void GetSpotterDialogID ( );
-	void eventPostInitAnimTree ( );
-};
-
-UClass* AKFPawn_ZedClot::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedClot_Cyst
-// 0x0000 (0x0DA4 - 0x0DA4)
-class AKFPawn_ZedClot_Cyst : public AKFPawn_ZedClot
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112665 ];
-
-		return pClassPointer;
-	};
-
-	void GetTraderAdviceID ( );
-};
-
-UClass* AKFPawn_ZedClot_Cyst::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedClot_Slasher
-// 0x0000 (0x0DA4 - 0x0DA4)
-class AKFPawn_ZedClot_Slasher : public AKFPawn_ZedClot
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112667 ];
-
-		return pClassPointer;
-	};
-
-	void GetTraderAdviceID ( );
-};
-
-UClass* AKFPawn_ZedClot_Slasher::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedClot_Alpha
-// 0x0000 (0x0DA4 - 0x0DA4)
-class AKFPawn_ZedClot_Alpha : public AKFPawn_ZedClot
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112668 ];
-
-		return pClassPointer;
-	};
-
-	void GetTraderAdviceID ( );
-	void eventGetAIPawnClassToSpawn ( );
-};
-
-UClass* AKFPawn_ZedClot_Alpha::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedCrawler
-// 0x0018 (0x0DBC - 0x0DA4)
-class AKFPawn_ZedCrawler : public AKFPawn_Monster
-{
-public:
-	class AActor*                                      LastBumpLevelActor;                               		// 0x0DA4 (0x0008) [0x0000000000000000]              
-	float                                              LastBumpLevelTime;                                		// 0x0DAC (0x0004) [0x0000000000000000]              
-	class UKFGameExplosion*                            DeathExplosionTemplate;                           		// 0x0DB0 (0x0008) [0x0000000000000000]              
-	float                                              LowGoreExplosionImpulse;                          		// 0x0DB8 (0x0004) [0x0000000000000000]              
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112669 ];
-
-		return pClassPointer;
-	};
-
-	void GetSpotterDialogID ( );
-	void Tick ( );
-	void DrawDebugRotation ( );
-	void GetOverheadDebugText ( );
-	void eventSpiderBumpLevel ( );
-	void SpecialMoveTo_Leap ( );
-	void eventPossessedBy ( );
-	void eventGetAIPawnClassToSpawn ( );
-};
-
-UClass* AKFPawn_ZedCrawler::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedGorefast
-// 0x0000 (0x0DA4 - 0x0DA4)
-class AKFPawn_ZedGorefast : public AKFPawn_Monster
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112670 ];
-
-		return pClassPointer;
-	};
-
-	void GetTraderAdviceID ( );
-	void eventGetAIPawnClassToSpawn ( );
-};
-
-UClass* AKFPawn_ZedGorefast::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedStalker
-// 0x0034 (0x0DD8 - 0x0DA4)
-class AKFPawn_ZedStalker : public AKFPawn_Monster
-{
-public:
-	class UMaterialInstanceConstant*                   SpottedMaterial;                                  		// 0x0DA4 (0x0008) [0x0000000000000000]              
-	class UAkComponent*                                CloakedAkComponent;                               		// 0x0DAC (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    CloakedLoop;                                      		// 0x0DB4 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    CloakedLoopEnd;                                   		// 0x0DBC (0x0008) [0x0000000000000000]              
-	float                                              CloakPercent;                                     		// 0x0DC4 (0x0004) [0x0000000000000000]              
-	class AKFPlayerController*                         ViewerPlayer;                                     		// 0x0DC8 (0x0008) [0x0000000000000000]              
-	float                                              CloakSpeed;                                       		// 0x0DD0 (0x0004) [0x0000000000000000]              
-	float                                              DeCloakSpeed;                                     		// 0x0DD4 (0x0004) [0x0000000000000000]              
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112671 ];
-
-		return pClassPointer;
-	};
-
-	void GetTraderAdviceID ( );
-	void GetSpotterDialogID ( );
-	void GetKillerDialogID ( );
-	void IsStalkerPawn ( );
-	void ReCloakTimer ( );
-	void PlayHeadAsplode ( );
-	void PlayHit ( );
-	void OnStackingAfflictionChanged ( );
-	void CauseHeadTrauma ( );
-	void PlayDying ( );
-	void Rally ( );
-	void CallOutCloakingExpired ( );
-	void CallOutCloaking ( );
-	void eventUpdateSpottedStatus ( );
-	void GetMinCloakPct ( );
-	void eventTick ( );
-	void PlayStealthSoundLoopEnd ( );
-	void PlayStealthSoundLoop ( );
-	void TerminateEffectsOnDeath ( );
-	void eventNotifyGoreMeshActive ( );
-	void UpdateGameplayMICParams ( );
-	void ClientCloakingStateUpdated ( );
-	void SetCloaked ( );
-	void eventReplicatedEvent ( );
-	void eventPostBeginPlay ( );
-};
-
-UClass* AKFPawn_ZedStalker::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedFleshpoundMini
-// 0x0000 (0x0E1C - 0x0E1C)
-class AKFPawn_ZedFleshpoundMini : public AKFPawn_ZedFleshpound
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112672 ];
-
-		return pClassPointer;
-	};
-
-};
-
-UClass* AKFPawn_ZedFleshpoundMini::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedSiren
-// 0x0024 (0x0DC8 - 0x0DA4)
-class AKFPawn_ZedSiren : public AKFPawn_Monster
-{
-public:
-	class UPointLightComponent*                        NeckLightComponent;                               		// 0x0DA4 (0x0008) [0x0000000000000000]              
-	struct FName                                       NeckLightSocketName;                              		// 0x0DAC (0x0008) [0x0000000000000000]              
-	float                                              ScreamLightFlickerRate;                           		// 0x0DB4 (0x0004) [0x0000000000000000]              
-	float                                              ScreamLightRadius;                                		// 0x0DB8 (0x0004) [0x0000000000000000]              
-	float                                              ScreamLightFalloffExponent;                       		// 0x0DBC (0x0004) [0x0000000000000000]              
-	float                                              MinFlickerBrightness;                             		// 0x0DC0 (0x0004) [0x0000000000000000]              
-	float                                              MaxFlickerBrightness;                             		// 0x0DC4 (0x0004) [0x0000000000000000]              
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112673 ];
-
-		return pClassPointer;
-	};
-
-	void GetTraderAdviceID ( );
-	void GetSpotterDialogID ( );
-	void GetKillerDialogID ( );
-	void TerminateEffectsOnDeath ( );
-	void EnableScreamFlicker ( );
-	void ANIMNOTIFY_SirenScream ( );
-	void SetCharacterArch ( );
-};
-
-UClass* AKFPawn_ZedSiren::pClassPointer = NULL;
-
 // Class kfgamecontent.KFPawn_ZedHans
-// 0x0220 (0x1140 - 0x0F20)
+// 0x0220 (0x1250 - 0x1030)
 class AKFPawn_ZedHans : public AKFPawn_ZedHansBase
 {
 public:
-	class UAnimSet*                                    MeleeAnimSet;                                     		// 0x0F20 (0x0008) [0x0000000000000000]              
-	class UAnimSet*                                    GunsAnimSet;                                      		// 0x0F28 (0x0008) [0x0000000000000000]              
-	class USkelControlSingleBone*                      RightHolsterSkelCtrl;                             		// 0x0F30 (0x0008) [0x0000000000000000]              
-	class USkelControlSingleBone*                      LeftHolsterSkelCtrl;                              		// 0x0F38 (0x0008) [0x0000000000000000]              
-	class UKFGameExplosion*                            NerveGasExplosiveBlastTemplate;                   		// 0x0F40 (0x0008) [0x0000000000000000]              
-	class UKFGameExplosion*                            NerveGasAttackTemplate;                           		// 0x0F48 (0x0008) [0x0000000000000000]              
-	class UClass*                                      HeavyBumpDamageType;                              		// 0x0F50 (0x0008) [0x0000000000000000]              
-	struct FProjectileTossInfo                         CachedGoodGrenadeToss;                            		// 0x0F58 (0x0030) [0x0000000000000000]              
-	class UAkEvent*                                    AmbientBreathingEvent;                            		// 0x0F88 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    LowHealthAmbientBreathingEvent;                   		// 0x0F90 (0x0008) [0x0000000000000000]              
-	float                                              TickDialogInterval;                               		// 0x0F98 (0x0004) [0x0000000000000000]              
-	class UParticleSystem*                             BackPackSmokeEffectTemplate;                      		// 0x0F9C (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BackPackSmokePSC;                                 		// 0x0FA4 (0x0008) [0x0000000000000000]              
-	struct FName                                       BattlePhaseLightFrontSocketName;                  		// 0x0FAC (0x0008) [0x0000000000000000]              
-	struct FName                                       BattlePhaseLightBackSocketName;                   		// 0x0FB4 (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BattlePhaseLightTemplateGreen;                    		// 0x0FBC (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BattlePhaseLightTemplateYellow;                   		// 0x0FC4 (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BattlePhaseLightTemplateRed;                      		// 0x0FCC (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BattlePhaseLightTemplateBlinking;                 		// 0x0FD4 (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BattlePhaseLightFront;                            		// 0x0FDC (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BattlePhaseLightBack;                             		// 0x0FE4 (0x0008) [0x0000000000000000]              
-	struct FLinearColor                                BattlePhaseGlowColorParamGreen;                   		// 0x0FEC (0x0010) [0x0000000000000000]              
-	struct FLinearColor                                BattlePhaseGlowColorParamYellow;                  		// 0x0FFC (0x0010) [0x0000000000000000]              
-	struct FLinearColor                                BattlePhaseGlowColorParamRed;                     		// 0x100C (0x0010) [0x0000000000000000]              
-	struct FLinearColor                                BattlePhaseGlowColorParamBlinking;                		// 0x101C (0x0010) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_LegR;                    		// 0x102C (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_LegL;                    		// 0x1034 (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_ArmR;                    		// 0x103C (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_ArmL;                    		// 0x1044 (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_Chest;                   		// 0x104C (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_TorsoR;                  		// 0x1054 (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_TorsoL;                  		// 0x105C (0x0008) [0x0000000000000000]              
-	struct FName                                       BattleDamageFXSocketName_Back;                    		// 0x1064 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_LegR;                             		// 0x106C (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_LegL;                             		// 0x1074 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_ArmR;                             		// 0x107C (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_ArmL;                             		// 0x1084 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_Chest;                            		// 0x108C (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_TorsoR;                           		// 0x1094 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_TorsoL;                           		// 0x109C (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BattleDamagePSC_Back;                             		// 0x10A4 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Sparks_Low;                        		// 0x10AC (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Sparks_Mid;                        		// 0x10B4 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Sparks_High;                       		// 0x10BC (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Sparks_Chest_Mid;                  		// 0x10C4 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Sparks_Chest_High;                 		// 0x10CC (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Sparks_Back_Mid;                   		// 0x10D4 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Sparks_Back_High;                  		// 0x10DC (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Blood_Mid;                         		// 0x10E4 (0x0008) [0x0000000000000000]              
-	class UParticleSystem*                             BattleDamageFX_Blood_High;                        		// 0x10EC (0x0008) [0x0000000000000000]              
-	float                                              LastShieldHealthPct;                              		// 0x10F4 (0x0004) [0x0000000000000000]              
-	class UParticleSystem*                             InvulnerableShieldFX;                             		// 0x10F8 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    InvulnerableShieldPSC;                            		// 0x1100 (0x0008) [0x0000000000000000]              
-	struct FName                                       ShieldSocketName;                                 		// 0x1108 (0x0008) [0x0000000000000000]              
-	class UKFSkinTypeEffects*                          ShieldImpactEffects;                              		// 0x1110 (0x0008) [0x0000000000000000]              
-	class UKFGameExplosion*                            ShieldShatterExplosionTemplate;                   		// 0x1118 (0x0008) [0x0000000000000000]              
-	struct FColor                                      ShieldColorGreen;                                 		// 0x1120 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldCoreColorGreen;                             		// 0x1124 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldColorYellow;                                		// 0x1128 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldCoreColorYellow;                            		// 0x112C (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldColorOrange;                                		// 0x1130 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldCoreColorOrange;                            		// 0x1134 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldColorRed;                                   		// 0x1138 (0x0004) [0x0000000000000000]              
-	struct FColor                                      ShieldCoreColorRed;                               		// 0x113C (0x0004) [0x0000000000000000]              
+	class UAnimSet*                                    MeleeAnimSet;                                     		// 0x1030 (0x0008) [0x0000000000000000]              
+	class UAnimSet*                                    GunsAnimSet;                                      		// 0x1038 (0x0008) [0x0000000000000000]              
+	class USkelControlSingleBone*                      RightHolsterSkelCtrl;                             		// 0x1040 (0x0008) [0x0000000000000000]              
+	class USkelControlSingleBone*                      LeftHolsterSkelCtrl;                              		// 0x1048 (0x0008) [0x0000000000000000]              
+	class UKFGameExplosion*                            NerveGasExplosiveBlastTemplate;                   		// 0x1050 (0x0008) [0x0000000000000000]              
+	class UKFGameExplosion*                            NerveGasAttackTemplate;                           		// 0x1058 (0x0008) [0x0000000000000000]              
+	class UClass*                                      HeavyBumpDamageType;                              		// 0x1060 (0x0008) [0x0000000000000000]              
+	struct FProjectileTossInfo                         CachedGoodGrenadeToss;                            		// 0x1068 (0x0030) [0x0000000000000000]              
+	class UAkEvent*                                    AmbientBreathingEvent;                            		// 0x1098 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    LowHealthAmbientBreathingEvent;                   		// 0x10A0 (0x0008) [0x0000000000000000]              
+	float                                              TickDialogInterval;                               		// 0x10A8 (0x0004) [0x0000000000000000]              
+	class UParticleSystem*                             BackPackSmokeEffectTemplate;                      		// 0x10AC (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BackPackSmokePSC;                                 		// 0x10B4 (0x0008) [0x0000000000000000]              
+	struct FName                                       BattlePhaseLightFrontSocketName;                  		// 0x10BC (0x0008) [0x0000000000000000]              
+	struct FName                                       BattlePhaseLightBackSocketName;                   		// 0x10C4 (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BattlePhaseLightTemplateGreen;                    		// 0x10CC (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BattlePhaseLightTemplateYellow;                   		// 0x10D4 (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BattlePhaseLightTemplateRed;                      		// 0x10DC (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BattlePhaseLightTemplateBlinking;                 		// 0x10E4 (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BattlePhaseLightFront;                            		// 0x10EC (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BattlePhaseLightBack;                             		// 0x10F4 (0x0008) [0x0000000000000000]              
+	struct FLinearColor                                BattlePhaseGlowColorParamGreen;                   		// 0x10FC (0x0010) [0x0000000000000000]              
+	struct FLinearColor                                BattlePhaseGlowColorParamYellow;                  		// 0x110C (0x0010) [0x0000000000000000]              
+	struct FLinearColor                                BattlePhaseGlowColorParamRed;                     		// 0x111C (0x0010) [0x0000000000000000]              
+	struct FLinearColor                                BattlePhaseGlowColorParamBlinking;                		// 0x112C (0x0010) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_LegR;                    		// 0x113C (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_LegL;                    		// 0x1144 (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_ArmR;                    		// 0x114C (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_ArmL;                    		// 0x1154 (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_Chest;                   		// 0x115C (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_TorsoR;                  		// 0x1164 (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_TorsoL;                  		// 0x116C (0x0008) [0x0000000000000000]              
+	struct FName                                       BattleDamageFXSocketName_Back;                    		// 0x1174 (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_LegR;                             		// 0x117C (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_LegL;                             		// 0x1184 (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_ArmR;                             		// 0x118C (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_ArmL;                             		// 0x1194 (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_Chest;                            		// 0x119C (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_TorsoR;                           		// 0x11A4 (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_TorsoL;                           		// 0x11AC (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BattleDamagePSC_Back;                             		// 0x11B4 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Sparks_Low;                        		// 0x11BC (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Sparks_Mid;                        		// 0x11C4 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Sparks_High;                       		// 0x11CC (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Sparks_Chest_Mid;                  		// 0x11D4 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Sparks_Chest_High;                 		// 0x11DC (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Sparks_Back_Mid;                   		// 0x11E4 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Sparks_Back_High;                  		// 0x11EC (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Blood_Mid;                         		// 0x11F4 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BattleDamageFX_Blood_High;                        		// 0x11FC (0x0008) [0x0000000000000000]              
+	float                                              LastShieldHealthPct;                              		// 0x1204 (0x0004) [0x0000000000000000]              
+	class UParticleSystem*                             InvulnerableShieldFX;                             		// 0x1208 (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    InvulnerableShieldPSC;                            		// 0x1210 (0x0008) [0x0000000000000000]              
+	struct FName                                       ShieldSocketName;                                 		// 0x1218 (0x0008) [0x0000000000000000]              
+	class UKFSkinTypeEffects*                          ShieldImpactEffects;                              		// 0x1220 (0x0008) [0x0000000000000000]              
+	class UKFGameExplosion*                            ShieldShatterExplosionTemplate;                   		// 0x1228 (0x0008) [0x0000000000000000]              
+	struct FColor                                      ShieldColorGreen;                                 		// 0x1230 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldCoreColorGreen;                             		// 0x1234 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldColorYellow;                                		// 0x1238 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldCoreColorYellow;                            		// 0x123C (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldColorOrange;                                		// 0x1240 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldCoreColorOrange;                            		// 0x1244 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldColorRed;                                   		// 0x1248 (0x0004) [0x0000000000000000]              
+	struct FColor                                      ShieldCoreColorRed;                               		// 0x124C (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -7669,7 +9496,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112674 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedHans" );
 
 		return pClassPointer;
 	};
@@ -7720,8 +9547,565 @@ public:
 
 UClass* AKFPawn_ZedHans::pClassPointer = NULL;
 
+// Class kfgamecontent.KFPawn_ZedFleshpoundMini
+// 0x0000 (0x0EB8 - 0x0EB8)
+class AKFPawn_ZedFleshpoundMini : public AKFPawn_ZedFleshpound
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedFleshpoundMini" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFPawn_ZedFleshpoundMini::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedClot
+// 0x0000 (0x0E3C - 0x0E3C)
+class AKFPawn_ZedClot : public AKFPawn_Monster
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedClot" );
+
+		return pClassPointer;
+	};
+
+	void GetSpotterDialogID ( );
+	void eventPostInitAnimTree ( );
+};
+
+UClass* AKFPawn_ZedClot::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedClot_Cyst
+// 0x0000 (0x0E3C - 0x0E3C)
+class AKFPawn_ZedClot_Cyst : public AKFPawn_ZedClot
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedClot_Cyst" );
+
+		return pClassPointer;
+	};
+
+	void GetTraderAdviceID ( );
+};
+
+UClass* AKFPawn_ZedClot_Cyst::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedClot_Alpha
+// 0x0000 (0x0E3C - 0x0E3C)
+class AKFPawn_ZedClot_Alpha : public AKFPawn_ZedClot
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedClot_Alpha" );
+
+		return pClassPointer;
+	};
+
+	void GetTraderAdviceID ( );
+};
+
+UClass* AKFPawn_ZedClot_Alpha::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedClot_AlphaKing
+// 0x0014 (0x0E50 - 0x0E3C)
+class AKFPawn_ZedClot_AlphaKing : public AKFPawn_ZedClot_Alpha
+{
+public:
+	float                                              SelfRallyDealtDamageModifier;                     		// 0x0E3C (0x0004) [0x0000000000000000]              
+	float                                              SelfRallyTakenDamageModifier;                     		// 0x0E40 (0x0004) [0x0000000000000000]              
+	DWORD                                              bWasSelfRally : 1;                                		// 0x0E44 (0x0004) [0x0000000000000000] [0x00000001] 
+	class UAkEvent*                                    EnragedSoundEvent;                                		// 0x0E48 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedClot_AlphaKing" );
+
+		return pClassPointer;
+	};
+
+	void SetSprinting ( );
+	void SetEnraged ( );
+	void ZedExplodeArmor ( );
+	void GetHitZoneSkinTypeEffects ( );
+	void GetHitZoneIndex ( );
+	void PlayHit ( );
+	void GetRallyBoostResistance ( );
+	void GetRallyBoostDamage ( );
+	void Rally ( );
+	void eventPossessedBy ( );
+	void eventPostBeginPlay ( );
+};
+
+UClass* AKFPawn_ZedClot_AlphaKing::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedClot_Slasher
+// 0x0000 (0x0E3C - 0x0E3C)
+class AKFPawn_ZedClot_Slasher : public AKFPawn_ZedClot
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedClot_Slasher" );
+
+		return pClassPointer;
+	};
+
+	void GetTraderAdviceID ( );
+};
+
+UClass* AKFPawn_ZedClot_Slasher::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedSiren
+// 0x0024 (0x0E60 - 0x0E3C)
+class AKFPawn_ZedSiren : public AKFPawn_Monster
+{
+public:
+	class UPointLightComponent*                        NeckLightComponent;                               		// 0x0E3C (0x0008) [0x0000000000000000]              
+	struct FName                                       NeckLightSocketName;                              		// 0x0E44 (0x0008) [0x0000000000000000]              
+	float                                              ScreamLightFlickerRate;                           		// 0x0E4C (0x0004) [0x0000000000000000]              
+	float                                              ScreamLightRadius;                                		// 0x0E50 (0x0004) [0x0000000000000000]              
+	float                                              ScreamLightFalloffExponent;                       		// 0x0E54 (0x0004) [0x0000000000000000]              
+	float                                              MinFlickerBrightness;                             		// 0x0E58 (0x0004) [0x0000000000000000]              
+	float                                              MaxFlickerBrightness;                             		// 0x0E5C (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedSiren" );
+
+		return pClassPointer;
+	};
+
+	void GetTraderAdviceID ( );
+	void GetSpotterDialogID ( );
+	void GetKillerDialogID ( );
+	void TerminateEffectsOnDeath ( );
+	void EnableScreamFlicker ( );
+	void ANIMNOTIFY_SirenScream ( );
+	void SetCharacterArch ( );
+};
+
+UClass* AKFPawn_ZedSiren::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedStalker
+// 0x0034 (0x0E70 - 0x0E3C)
+class AKFPawn_ZedStalker : public AKFPawn_Monster
+{
+public:
+	class UMaterialInstanceConstant*                   SpottedMaterial;                                  		// 0x0E3C (0x0008) [0x0000000000000000]              
+	class UAkComponent*                                CloakedAkComponent;                               		// 0x0E44 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    CloakedLoop;                                      		// 0x0E4C (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    CloakedLoopEnd;                                   		// 0x0E54 (0x0008) [0x0000000000000000]              
+	float                                              CloakPercent;                                     		// 0x0E5C (0x0004) [0x0000000000000000]              
+	class AKFPlayerController*                         ViewerPlayer;                                     		// 0x0E60 (0x0008) [0x0000000000000000]              
+	float                                              CloakSpeed;                                       		// 0x0E68 (0x0004) [0x0000000000000000]              
+	float                                              DeCloakSpeed;                                     		// 0x0E6C (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedStalker" );
+
+		return pClassPointer;
+	};
+
+	void GetTraderAdviceID ( );
+	void GetSpotterDialogID ( );
+	void GetKillerDialogID ( );
+	void IsStalkerPawn ( );
+	void ReCloakTimer ( );
+	void PlayHeadAsplode ( );
+	void PlayHit ( );
+	void OnStackingAfflictionChanged ( );
+	void CauseHeadTrauma ( );
+	void PlayDying ( );
+	void Rally ( );
+	void CallOutCloakingExpired ( );
+	void CallOutCloaking ( );
+	void eventUpdateSpottedStatus ( );
+	void GetMinCloakPct ( );
+	void eventTick ( );
+	void PlayStealthSoundLoopEnd ( );
+	void PlayStealthSoundLoop ( );
+	void TerminateEffectsOnDeath ( );
+	void eventNotifyGoreMeshActive ( );
+	void UpdateGameplayMICParams ( );
+	void ClientCloakingStateUpdated ( );
+	void SetCloaked ( );
+	void eventReplicatedEvent ( );
+	void eventPostBeginPlay ( );
+};
+
+UClass* AKFPawn_ZedStalker::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedCrawler
+// 0x0018 (0x0E54 - 0x0E3C)
+class AKFPawn_ZedCrawler : public AKFPawn_Monster
+{
+public:
+	class AActor*                                      LastBumpLevelActor;                               		// 0x0E3C (0x0008) [0x0000000000000000]              
+	float                                              LastBumpLevelTime;                                		// 0x0E44 (0x0004) [0x0000000000000000]              
+	class UKFGameExplosion*                            DeathExplosionTemplate;                           		// 0x0E48 (0x0008) [0x0000000000000000]              
+	float                                              LowGoreExplosionImpulse;                          		// 0x0E50 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedCrawler" );
+
+		return pClassPointer;
+	};
+
+	void GetSpotterDialogID ( );
+	void Tick ( );
+	void DrawDebugRotation ( );
+	void GetOverheadDebugText ( );
+	void eventSpiderBumpLevel ( );
+	void SpecialMoveTo_Leap ( );
+	void eventPossessedBy ( );
+};
+
+UClass* AKFPawn_ZedCrawler::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedCrawlerKing
+// 0x0004 (0x0E58 - 0x0E54)
+class AKFPawn_ZedCrawlerKing : public AKFPawn_ZedCrawler
+{
+public:
+	DWORD                                              bShouldExplode : 1;                               		// 0x0E54 (0x0004) [0x00000000006E0000] [0x00000001] ( CPF_EditConst | CPF_GlobalConfig | CPF_Component | CPF_NeedCtorLink )
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedCrawlerKing" );
+
+		return pClassPointer;
+	};
+
+	void Timer_CheckForExplode ( );
+	void CancelExplosion ( );
+	void PlayDying ( );
+	void Died ( );
+	void PlayHeadAsplode ( );
+	void CauseHeadTrauma ( );
+};
+
+UClass* AKFPawn_ZedCrawlerKing::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedGorefast
+// 0x0000 (0x0E3C - 0x0E3C)
+class AKFPawn_ZedGorefast : public AKFPawn_Monster
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedGorefast" );
+
+		return pClassPointer;
+	};
+
+	void GetTraderAdviceID ( );
+};
+
+UClass* AKFPawn_ZedGorefast::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedGorefastDualBlade
+// 0x0000 (0x0E3C - 0x0E3C)
+class AKFPawn_ZedGorefastDualBlade : public AKFPawn_ZedGorefast
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedGorefastDualBlade" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFPawn_ZedGorefastDualBlade::pClassPointer = NULL;
+
+// Class kfgamecontent.KFGameDifficulty_Endless_Console
+// 0x0000 (0x039C - 0x039C)
+class UKFGameDifficulty_Endless_Console : public UKFGameDifficulty_Endless
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameDifficulty_Endless_Console" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFGameDifficulty_Endless_Console::pClassPointer = NULL;
+
+// Class kfgamecontent.KFGameDifficulty_Survival
+// 0x0000 (0x0254 - 0x0254)
+class UKFGameDifficulty_Survival : public UKFGameDifficultyInfo
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameDifficulty_Survival" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFGameDifficulty_Survival::pClassPointer = NULL;
+
+// Class kfgamecontent.KFGameDifficulty_Survival_Console
+// 0x0000 (0x0254 - 0x0254)
+class UKFGameDifficulty_Survival_Console : public UKFGameDifficulty_Survival
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameDifficulty_Survival_Console" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFGameDifficulty_Survival_Console::pClassPointer = NULL;
+
+// Class kfgamecontent.KFGameDifficulty_Versus
+// 0x0000 (0x0254 - 0x0254)
+class UKFGameDifficulty_Versus : public UKFGameDifficultyInfo
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameDifficulty_Versus" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFGameDifficulty_Versus::pClassPointer = NULL;
+
+// Class kfgamecontent.KFGameDifficulty_Versus_Console
+// 0x0000 (0x0254 - 0x0254)
+class UKFGameDifficulty_Versus_Console : public UKFGameDifficulty_Versus
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameDifficulty_Versus_Console" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFGameDifficulty_Versus_Console::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_BloatPukeMine
+// 0x0070 (0x0410 - 0x03A0)
+class AKFProj_BloatPukeMine : public AKFProjectile
+{
+public:
+	class UParticleSystem*                             GroundFXTemplate;                                 		// 0x03A0 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             BurstFXTemplate;                                  		// 0x03A8 (0x0008) [0x0000000000000000]              
+	unsigned char                                      TeamNum;                                          		// 0x03B0 (0x0001) [0x0000000000000000]              
+	int                                                Health;                                           		// 0x03B4 (0x0004) [0x0000000000000000]              
+	float                                              DampenFactor;                                     		// 0x03B8 (0x0004) [0x0000000000000000]              
+	float                                              DampenFactorParallel;                             		// 0x03BC (0x0004) [0x0000000000000000]              
+	float                                              SpawnCollisionOffsetAmt;                          		// 0x03C0 (0x0004) [0x0000000000000000]              
+	struct FVector                                     LandedFXOffset;                                   		// 0x03C4 (0x000C) [0x0000000000000000]              
+	float                                              ExplodeTriggerRadius;                             		// 0x03D0 (0x0004) [0x0000000000000000]              
+	float                                              ExplodeTriggerHeight;                             		// 0x03D4 (0x0004) [0x0000000000000000]              
+	class UAkEvent*                                    BounceAkEvent;                                    		// 0x03D8 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    ImpactAkEvent;                                    		// 0x03E0 (0x0008) [0x0000000000000000]              
+	class UMaterialInterface*                          ImpactDecalMaterial;                              		// 0x03E8 (0x0008) [0x0000000000000000]              
+	float                                              ImpactDecalWidth;                                 		// 0x03F0 (0x0004) [0x0000000000000000]              
+	float                                              ImpactDecalHeight;                                		// 0x03F4 (0x0004) [0x0000000000000000]              
+	float                                              ImpactDecalThickness;                             		// 0x03F8 (0x0004) [0x0000000000000000]              
+	float                                              FuseDuration;                                     		// 0x03FC (0x0004) [0x0000000000000000]              
+	DWORD                                              bClientExplode : 1;                               		// 0x0400 (0x0004) [0x00000000001E0000] [0x00000001] ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
+	DWORD                                              bFadingOut : 1;                                   		// 0x0400 (0x0004) [0x0000000000000000] [0x00000002] 
+	float                                              FadeOutTime;                                      		// 0x0404 (0x0004) [0x0000000000000000]              
+	int                                                MaxBounces;                                       		// 0x0408 (0x0004) [0x0000000000000000]              
+	int                                                NumBounces;                                       		// 0x040C (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_BloatPukeMine" );
+
+		return pClassPointer;
+	};
+
+	void OnInstigatorControllerLeft ( );
+	void eventDestroyed ( );
+	void SpawnBurstEffect ( );
+	void FadeOut ( );
+	void eventTornOff ( );
+	void eventTick ( );
+	void TriggerExplosion ( );
+	void Timer_Explode ( );
+	void Detonate ( );
+	void eventTakeDamage ( );
+	void eventTouch ( );
+	void ValidTouch ( );
+	void SpawnImpactDecal ( );
+	void PlayImpactSound ( );
+	void SwapToGroundFX ( );
+	void Stick ( );
+	void Bounce ( );
+	void eventBump ( );
+	void CanStick ( );
+	void eventHitWall ( );
+	void Explode ( );
+	void StopSimulating ( );
+	void ShutDown ( );
+	void eventPostBeginPlay ( );
+	void eventReplicatedEvent ( );
+};
+
+UClass* AKFProj_BloatPukeMine::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPickupFactory_Ammo
+// 0x0008 (0x03B8 - 0x03B0)
+class AKFPickupFactory_Ammo : public AKFPickupFactory
+{
+public:
+	class UAkEvent*                                    AmmoPickupSound;                                  		// 0x03B0 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPickupFactory_Ammo" );
+
+		return pClassPointer;
+	};
+
+	void CurrentPickupIsAmmo ( );
+	void PickedUpBy ( );
+	void GiveTo ( );
+	void eventSetInitialState ( );
+	void InitializePickup ( );
+};
+
+UClass* AKFPickupFactory_Ammo::pClassPointer = NULL;
+
 // Class kfgamecontent.KFTraderVoiceGroup_Default
-// 0x0000 (0x1154 - 0x1154)
+// 0x0000 (0x22C0 - 0x22C0)
 class UKFTraderVoiceGroup_Default : public UKFTraderVoiceGroupBase
 {
 public:
@@ -7733,7 +10117,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112675 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFTraderVoiceGroup_Default" );
 
 		return pClassPointer;
 	};
@@ -7741,6 +10125,84 @@ public:
 };
 
 UClass* UKFTraderVoiceGroup_Default::pClassPointer = NULL;
+
+// Class kfgamecontent.KFGameReplicationInfo_Endless
+// 0x0008 (0x1268 - 0x1260)
+class AKFGameReplicationInfo_Endless : public AKFGameReplicationInfo
+{
+public:
+	int                                                CurrentWeeklyMode;                                		// 0x1260 (0x0004) [0x0000000001280000]              ( CPF_Component )
+	int                                                CurrentSpecialMode;                               		// 0x1264 (0x0004) [0x0000000001290000]              ( CPF_Travel | CPF_Component )
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameReplicationInfo_Endless" );
+
+		return pClassPointer;
+	};
+
+	void WaveStarted ( );
+	void IsWeeklyWave ( );
+	void IsSpecialWave ( );
+	void IsBossWaveNext ( );
+	void IsBossWave ( );
+	void IsFinalWave ( );
+};
+
+UClass* AKFGameReplicationInfo_Endless::pClassPointer = NULL;
+
+// Class kfgamecontent.KFTraderVoiceGroup_Patriarch
+// 0x0000 (0x22C0 - 0x22C0)
+class UKFTraderVoiceGroup_Patriarch : public UKFTraderVoiceGroupBase
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFTraderVoiceGroup_Patriarch" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFTraderVoiceGroup_Patriarch::pClassPointer = NULL;
+
+// Class kfgamecontent.KFOutbreakEvent_Endless
+// 0x0000 (0x0218 - 0x0218)
+class UKFOutbreakEvent_Endless : public UKFOutbreakEvent
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFOutbreakEvent_Endless" );
+
+		return pClassPointer;
+	};
+
+	void GetOutbreakId ( );
+	void AdjustScoreDamage ( );
+	void AdjustMonsterDefaults ( );
+	void OnScoreKill ( );
+};
+
+UClass* UKFOutbreakEvent_Endless::pClassPointer = NULL;
 
 // Class kfgamecontent.KFTutorialSectionInfo
 // 0x0044 (0x00A4 - 0x0060)
@@ -7761,7 +10223,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112676 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFTutorialSectionInfo" );
 
 		return pClassPointer;
 	};
@@ -7773,38 +10235,38 @@ public:
 UClass* UKFTutorialSectionInfo::pClassPointer = NULL;
 
 // Class kfgamecontent.KFGameInfo_Tutorial
-// 0x0094 (0x07EC - 0x0758)
+// 0x0094 (0x0830 - 0x079C)
 class AKFGameInfo_Tutorial : public AKFGameInfo_Survival
 {
 public:
-	class UClass*                                      MoviePlayerTutorialClass;                         		// 0x0758 (0x0008) [0x0000000000000000]              
-	class UKFGFxMoviePlayer_Tutorial*                  MyGFXTutorial;                                    		// 0x0760 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      LobbyStartInfo;                                   		// 0x0768 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      StartMatchInfo;                                   		// 0x0770 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      Wave1EndInfo;                                     		// 0x0778 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      TraderCloseInfo;                                  		// 0x0780 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      VictoryInfo;                                      		// 0x0788 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      HealSelfInfo;                                     		// 0x0790 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      ZedTimeInfo;                                      		// 0x0798 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      MeleeTutorial;                                    		// 0x07A0 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      TraderMenuTutorial;                               		// 0x07A8 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      PerkMenuTutorial;                                 		// 0x07B0 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      GearMenuTutorial;                                 		// 0x07B8 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      InventoryMenuTutorial;                            		// 0x07C0 (0x0008) [0x0000000000000000]              
-	class UKFTutorialSectionInfo*                      StoreMenuTutorial;                                		// 0x07C8 (0x0008) [0x0000000000000000]              
-	DWORD                                              bShowedHealSelf : 1;                              		// 0x07D0 (0x0004) [0x0000000000000000] [0x00000001] 
-	DWORD                                              bShowedZedTime : 1;                               		// 0x07D0 (0x0004) [0x0000000000000000] [0x00000002] 
-	DWORD                                              bShowedTraderTutorial : 1;                        		// 0x07D0 (0x0004) [0x0000000000000000] [0x00000004] 
-	DWORD                                              bShowedMeleeTutorial : 1;                         		// 0x07D0 (0x0004) [0x0000000000000000] [0x00000008] 
-	DWORD                                              bShowedPerkMenuTutorial : 1;                      		// 0x07D0 (0x0004) [0x0000000000000000] [0x00000010] 
-	DWORD                                              bShowedGearMenuTutorial : 1;                      		// 0x07D0 (0x0004) [0x0000000000000000] [0x00000020] 
-	DWORD                                              bShowedInventoryMenuTutorial : 1;                 		// 0x07D0 (0x0004) [0x0000000000000000] [0x00000040] 
-	DWORD                                              bShowedStoreMenuTutorial : 1;                     		// 0x07D0 (0x0004) [0x0000000000000000] [0x00000080] 
-	DWORD                                              bShowedTraderCloseInfo : 1;                       		// 0x07D0 (0x0004) [0x0000000000000000] [0x00000100] 
-	int                                                TimeAfterTrading;                                 		// 0x07D4 (0x0004) [0x0000000000000000]              
-	int                                                StartingDosh;                                     		// 0x07D8 (0x0004) [0x0000000000000000]              
-	class AKFPlayerController*                         MyPC;                                             		// 0x07DC (0x0008) [0x0000000000000000]              
-	class AWeapon*                                     CurrentWeapon;                                    		// 0x07E4 (0x0008) [0x0000000000000000]              
+	class UClass*                                      MoviePlayerTutorialClass;                         		// 0x079C (0x0008) [0x0000000000000000]              
+	class UKFGFxMoviePlayer_Tutorial*                  MyGFXTutorial;                                    		// 0x07A4 (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      LobbyStartInfo;                                   		// 0x07AC (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      StartMatchInfo;                                   		// 0x07B4 (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      Wave1EndInfo;                                     		// 0x07BC (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      TraderCloseInfo;                                  		// 0x07C4 (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      VictoryInfo;                                      		// 0x07CC (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      HealSelfInfo;                                     		// 0x07D4 (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      ZedTimeInfo;                                      		// 0x07DC (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      MeleeTutorial;                                    		// 0x07E4 (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      TraderMenuTutorial;                               		// 0x07EC (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      PerkMenuTutorial;                                 		// 0x07F4 (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      GearMenuTutorial;                                 		// 0x07FC (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      InventoryMenuTutorial;                            		// 0x0804 (0x0008) [0x0000000000000000]              
+	class UKFTutorialSectionInfo*                      StoreMenuTutorial;                                		// 0x080C (0x0008) [0x0000000000000000]              
+	DWORD                                              bShowedHealSelf : 1;                              		// 0x0814 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bShowedZedTime : 1;                               		// 0x0814 (0x0004) [0x0000000000000000] [0x00000002] 
+	DWORD                                              bShowedTraderTutorial : 1;                        		// 0x0814 (0x0004) [0x0000000000000000] [0x00000004] 
+	DWORD                                              bShowedMeleeTutorial : 1;                         		// 0x0814 (0x0004) [0x0000000000000000] [0x00000008] 
+	DWORD                                              bShowedPerkMenuTutorial : 1;                      		// 0x0814 (0x0004) [0x0000000000000000] [0x00000010] 
+	DWORD                                              bShowedGearMenuTutorial : 1;                      		// 0x0814 (0x0004) [0x0000000000000000] [0x00000020] 
+	DWORD                                              bShowedInventoryMenuTutorial : 1;                 		// 0x0814 (0x0004) [0x0000000000000000] [0x00000040] 
+	DWORD                                              bShowedStoreMenuTutorial : 1;                     		// 0x0814 (0x0004) [0x0000000000000000] [0x00000080] 
+	DWORD                                              bShowedTraderCloseInfo : 1;                       		// 0x0814 (0x0004) [0x0000000000000000] [0x00000100] 
+	int                                                TimeAfterTrading;                                 		// 0x0818 (0x0004) [0x0000000000000000]              
+	int                                                StartingDosh;                                     		// 0x081C (0x0004) [0x0000000000000000]              
+	class AKFPlayerController*                         MyPC;                                             		// 0x0820 (0x0008) [0x0000000000000000]              
+	class AWeapon*                                     CurrentWeapon;                                    		// 0x0828 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -7813,11 +10275,12 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112711 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameInfo_Tutorial" );
 
 		return pClassPointer;
 	};
 
+	void IsMapObjectiveEnabled ( );
 	void OnTraderMenuClosed ( );
 	void CheckPlayerAction ( );
 	void Tick ( );
@@ -7864,7 +10327,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112803 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGFxMoviePlayer_Tutorial" );
 
 		return pClassPointer;
 	};
@@ -7882,7 +10345,7 @@ public:
 UClass* UKFGFxMoviePlayer_Tutorial::pClassPointer = NULL;
 
 // Class kfgamecontent.KFGFxMoviePlayer_Manager_Tutorial
-// 0x0000 (0x03F8 - 0x03F8)
+// 0x0000 (0x0420 - 0x0420)
 class UKFGFxMoviePlayer_Manager_Tutorial : public UKFGFxMoviePlayer_Manager
 {
 public:
@@ -7894,7 +10357,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 112822 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGFxMoviePlayer_Manager_Tutorial" );
 
 		return pClassPointer;
 	};
@@ -7905,16 +10368,16 @@ public:
 UClass* UKFGFxMoviePlayer_Manager_Tutorial::pClassPointer = NULL;
 
 // Class kfgamecontent.KFGameReplicationInfoVersus
-// 0x0018 (0x1250 - 0x1238)
+// 0x0018 (0x1278 - 0x1260)
 class AKFGameReplicationInfoVersus : public AKFGameReplicationInfo
 {
 public:
-	DWORD                                              bTeamBalanceEnabled : 1;                          		// 0x1238 (0x0004) [0x0000000001200000] [0x00000001] 
-	unsigned char                                      TeamBalanceDelta;                                 		// 0x123C (0x0001) [0x0000000000000000]              
-	unsigned char                                      CurrentRound;                                     		// 0x123D (0x0001) [0x000000000121000A]              ( CPF_Const | CPF_ExportObject | CPF_Travel )
-	unsigned char                                      TimeUntilNextSpawn;                               		// 0x123E (0x0001) [0x0000000000000000]              
-	float                                              TimeToLockSwitchTeam;                             		// 0x1240 (0x0004) [0x0000000000000000]              
-	struct FsPlayerZedSpawnWaitTimeData                PlayerZedSpawnWaitTimeData;                       		// 0x1244 (0x000C) [0x000000000122000A]              ( CPF_Const | CPF_ExportObject | CPF_EditConst )
+	DWORD                                              bTeamBalanceEnabled : 1;                          		// 0x1260 (0x0004) [0x0000000001280000] [0x00000001] ( CPF_Component )
+	unsigned char                                      TeamBalanceDelta;                                 		// 0x1264 (0x0001) [0x0000000000000000]              
+	unsigned char                                      CurrentRound;                                     		// 0x1265 (0x0001) [0x000000000129000A]              ( CPF_Const | CPF_ExportObject | CPF_Travel | CPF_Component )
+	unsigned char                                      TimeUntilNextSpawn;                               		// 0x1266 (0x0001) [0x0000000000000000]              
+	float                                              TimeToLockSwitchTeam;                             		// 0x1268 (0x0004) [0x0000000000000000]              
+	struct FsPlayerZedSpawnWaitTimeData                PlayerZedSpawnWaitTimeData;                       		// 0x126C (0x000C) [0x00000000012A000A]              ( CPF_Const | CPF_ExportObject | CPF_EditConst | CPF_Component )
 
 private:
 	static UClass* pClassPointer;
@@ -7923,7 +10386,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113055 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameReplicationInfoVersus" );
 
 		return pClassPointer;
 	};
@@ -7956,7 +10419,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113057 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFTeamInfo_Zeds" );
 
 		return pClassPointer;
 	};
@@ -7967,12 +10430,12 @@ public:
 UClass* AKFTeamInfo_Zeds::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedClot_Slasher_Versus
-// 0x0008 (0x0DAC - 0x0DA4)
+// 0x0008 (0x0E44 - 0x0E3C)
 class AKFPawn_ZedClot_Slasher_Versus : public AKFPawn_ZedClot_Slasher
 {
 public:
-	float                                              MegaJumpZ;                                        		// 0x0DA4 (0x0004) [0x0000000000000000]              
-	float                                              MegaJumpForwardScale;                             		// 0x0DA8 (0x0004) [0x0000000000000000]              
+	float                                              MegaJumpZ;                                        		// 0x0E3C (0x0004) [0x0000000000000000]              
+	float                                              MegaJumpForwardScale;                             		// 0x0E40 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -7981,7 +10444,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113061 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedClot_Slasher_Versus" );
 
 		return pClassPointer;
 	};
@@ -7994,7 +10457,7 @@ public:
 UClass* AKFPawn_ZedClot_Slasher_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedClot_Alpha_Versus
-// 0x0000 (0x0DA4 - 0x0DA4)
+// 0x0000 (0x0E3C - 0x0E3C)
 class AKFPawn_ZedClot_Alpha_Versus : public AKFPawn_ZedClot_Alpha
 {
 public:
@@ -8006,7 +10469,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113062 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedClot_Alpha_Versus" );
 
 		return pClassPointer;
 	};
@@ -8016,11 +10479,11 @@ public:
 UClass* AKFPawn_ZedClot_Alpha_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedCrawler_Versus
-// 0x0008 (0x0DC4 - 0x0DBC)
+// 0x0008 (0x0E5C - 0x0E54)
 class AKFPawn_ZedCrawler_Versus : public AKFPawn_ZedCrawler
 {
 public:
-	class AController*                                 OldController;                                    		// 0x0DBC (0x0008) [0x0000000000000000]              
+	class AController*                                 OldController;                                    		// 0x0E54 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -8029,7 +10492,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113063 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedCrawler_Versus" );
 
 		return pClassPointer;
 	};
@@ -8040,7 +10503,7 @@ public:
 UClass* AKFPawn_ZedCrawler_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedGorefast_Versus
-// 0x0000 (0x0DA4 - 0x0DA4)
+// 0x0000 (0x0E3C - 0x0E3C)
 class AKFPawn_ZedGorefast_Versus : public AKFPawn_ZedGorefast
 {
 public:
@@ -8052,7 +10515,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113064 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedGorefast_Versus" );
 
 		return pClassPointer;
 	};
@@ -8062,7 +10525,7 @@ public:
 UClass* AKFPawn_ZedGorefast_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedStalker_Versus
-// 0x0000 (0x0DD8 - 0x0DD8)
+// 0x0000 (0x0E70 - 0x0E70)
 class AKFPawn_ZedStalker_Versus : public AKFPawn_ZedStalker
 {
 public:
@@ -8074,7 +10537,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113065 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedStalker_Versus" );
 
 		return pClassPointer;
 	};
@@ -8086,15 +10549,15 @@ public:
 UClass* AKFPawn_ZedStalker_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedScrake_Versus
-// 0x0018 (0x0E00 - 0x0DE8)
+// 0x0018 (0x0E98 - 0x0E80)
 class AKFPawn_ZedScrake_Versus : public AKFPawn_ZedScrake
 {
 public:
-	float                                              RageSprintSpeed;                                  		// 0x0DE8 (0x0004) [0x0000000000000000]              
-	class UClass*                                      RageBumpDamageType;                               		// 0x0DEC (0x0008) [0x0000000000000000]              
-	int                                                RageBumpDamage;                                   		// 0x0DF4 (0x0004) [0x0000000000000000]              
-	float                                              RageBumpRadius;                                   		// 0x0DF8 (0x0004) [0x0000000000000000]              
-	float                                              RageBumpMomentum;                                 		// 0x0DFC (0x0004) [0x0000000000000000]              
+	float                                              RageSprintSpeed;                                  		// 0x0E80 (0x0004) [0x0000000000000000]              
+	class UClass*                                      RageBumpDamageType;                               		// 0x0E84 (0x0008) [0x0000000000000000]              
+	int                                                RageBumpDamage;                                   		// 0x0E8C (0x0004) [0x0000000000000000]              
+	float                                              RageBumpRadius;                                   		// 0x0E90 (0x0004) [0x0000000000000000]              
+	float                                              RageBumpMomentum;                                 		// 0x0E94 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -8103,7 +10566,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113066 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedScrake_Versus" );
 
 		return pClassPointer;
 	};
@@ -8117,14 +10580,14 @@ public:
 UClass* AKFPawn_ZedScrake_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedFleshPound_Versus
-// 0x0010 (0x0E2C - 0x0E1C)
+// 0x0010 (0x0EC8 - 0x0EB8)
 class AKFPawn_ZedFleshPound_Versus : public AKFPawn_ZedFleshpound
 {
 public:
-	float                                              RageSprintSpeed;                                  		// 0x0E1C (0x0004) [0x0000000000000000]              
-	int                                                RageBumpDamage;                                   		// 0x0E20 (0x0004) [0x0000000000000000]              
-	float                                              RageBumpRadius;                                   		// 0x0E24 (0x0004) [0x0000000000000000]              
-	float                                              RageBumpMomentum;                                 		// 0x0E28 (0x0004) [0x0000000000000000]              
+	float                                              RageSprintSpeed;                                  		// 0x0EB8 (0x0004) [0x0000000000000000]              
+	int                                                RageBumpDamage;                                   		// 0x0EBC (0x0004) [0x0000000000000000]              
+	float                                              RageBumpRadius;                                   		// 0x0EC0 (0x0004) [0x0000000000000000]              
+	float                                              RageBumpMomentum;                                 		// 0x0EC4 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -8133,7 +10596,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113067 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedFleshPound_Versus" );
 
 		return pClassPointer;
 	};
@@ -8150,7 +10613,7 @@ public:
 UClass* AKFPawn_ZedFleshPound_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedBloat_Versus
-// 0x0000 (0x0DF0 - 0x0DF0)
+// 0x0000 (0x0E88 - 0x0E88)
 class AKFPawn_ZedBloat_Versus : public AKFPawn_ZedBloat
 {
 public:
@@ -8162,7 +10625,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113068 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedBloat_Versus" );
 
 		return pClassPointer;
 	};
@@ -8173,7 +10636,7 @@ public:
 UClass* AKFPawn_ZedBloat_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedSiren_Versus
-// 0x0000 (0x0DC8 - 0x0DC8)
+// 0x0000 (0x0E60 - 0x0E60)
 class AKFPawn_ZedSiren_Versus : public AKFPawn_ZedSiren
 {
 public:
@@ -8185,7 +10648,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113069 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedSiren_Versus" );
 
 		return pClassPointer;
 	};
@@ -8196,15 +10659,15 @@ public:
 UClass* AKFPawn_ZedSiren_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedHusk_Versus
-// 0x0018 (0x0E08 - 0x0DF0)
+// 0x0018 (0x0EA0 - 0x0E88)
 class AKFPawn_ZedHusk_Versus : public AKFPawn_ZedHusk
 {
 public:
-	float                                              FireballSpeed;                                    		// 0x0DF0 (0x0004) [0x0000000000000000]              
-	struct FVector2D                                   FireballStrengthRange;                            		// 0x0DF4 (0x0008) [0x0000000000000000]              
-	float                                              FireballStrengthPerSecond;                        		// 0x0DFC (0x0004) [0x0000000000000000]              
-	float                                              FireballStrengthRadiusMultiplier;                 		// 0x0E00 (0x0004) [0x0000000000000000]              
-	float                                              FireballStrength;                                 		// 0x0E04 (0x0004) [0x0000000000000000]              
+	float                                              FireballSpeed;                                    		// 0x0E88 (0x0004) [0x0000000000000000]              
+	struct FVector2D                                   FireballStrengthRange;                            		// 0x0E8C (0x0008) [0x0000000000000000]              
+	float                                              FireballStrengthPerSecond;                        		// 0x0E94 (0x0004) [0x0000000000000000]              
+	float                                              FireballStrengthRadiusMultiplier;                 		// 0x0E98 (0x0004) [0x0000000000000000]              
+	float                                              FireballStrength;                                 		// 0x0E9C (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -8213,7 +10676,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113070 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedHusk_Versus" );
 
 		return pClassPointer;
 	};
@@ -8231,24 +10694,24 @@ public:
 UClass* AKFPawn_ZedHusk_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedPatriarch_Versus
-// 0x0058 (0x1190 - 0x1138)
+// 0x0058 (0x1228 - 0x11D0)
 class AKFPawn_ZedPatriarch_Versus : public AKFPawn_ZedPatriarch
 {
 public:
-	class AKFPlayerController*                         MyKFPC;                                           		// 0x1138 (0x0008) [0x00000000006C0000]              ( CPF_GlobalConfig | CPF_Component | CPF_NeedCtorLink )
-	class AKFPlayerController*                         ViewerPlayer;                                     		// 0x1140 (0x0008) [0x0000000000000000]              
-	float                                              LowHealthThreshold;                               		// 0x1148 (0x0004) [0x0000000000000000]              
-	DWORD                                              bWarnedLowHealthThisPhase : 1;                    		// 0x114C (0x0004) [0x0000000000000000] [0x00000001] 
-	DWORD                                              bIsQuickHealMessageShowing : 1;                   		// 0x114C (0x0004) [0x0000000000000000] [0x00000002] 
-	DWORD                                              bAutoHealed : 1;                                  		// 0x114C (0x0004) [0x0000000000000000] [0x00000004] 
-	DWORD                                              bSummonedThisPhase : 1;                           		// 0x114C (0x0004) [0x0000000000000000] [0x00000008] 
-	float                                              HealThreshold;                                    		// 0x1150 (0x0004) [0x0000000000000000]              
-	float                                              AutoHealThreshold;                                		// 0x1154 (0x0004) [0x0000000000000000]              
-	float                                              SummonChildrenDuration;                           		// 0x1158 (0x0004) [0x0000000000000000]              
-	unsigned char                                      CloakCharges;                                     		// 0x115C (0x0001) [0x00000000006D0019]              ( CPF_Edit | CPF_ExportObject | CPF_OptionalParm | CPF_Travel | CPF_GlobalConfig | CPF_Component | CPF_NeedCtorLink )
-	struct FString                                     LowHealthMsg;                                     		// 0x1160 (0x0010) [0x0000000000000000]              
-	struct FString                                     NoHealsRemainingMsg;                              		// 0x1170 (0x0010) [0x0000000000000000]              
-	struct FString                                     NoMortarTargetsMsg;                               		// 0x1180 (0x0010) [0x0000000000000000]              
+	class AKFPlayerController*                         MyKFPC;                                           		// 0x11D0 (0x0008) [0x0000000000710000]              ( CPF_Travel | CPF_NeedCtorLink )
+	class AKFPlayerController*                         ViewerPlayer;                                     		// 0x11D8 (0x0008) [0x0000000000000000]              
+	float                                              LowHealthThreshold;                               		// 0x11E0 (0x0004) [0x0000000000000000]              
+	DWORD                                              bWarnedLowHealthThisPhase : 1;                    		// 0x11E4 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bIsQuickHealMessageShowing : 1;                   		// 0x11E4 (0x0004) [0x0000000000000000] [0x00000002] 
+	DWORD                                              bAutoHealed : 1;                                  		// 0x11E4 (0x0004) [0x0000000000000000] [0x00000004] 
+	DWORD                                              bSummonedThisPhase : 1;                           		// 0x11E4 (0x0004) [0x0000000000000000] [0x00000008] 
+	float                                              HealThreshold;                                    		// 0x11E8 (0x0004) [0x0000000000000000]              
+	float                                              AutoHealThreshold;                                		// 0x11EC (0x0004) [0x0000000000000000]              
+	float                                              SummonChildrenDuration;                           		// 0x11F0 (0x0004) [0x0000000000000000]              
+	unsigned char                                      CloakCharges;                                     		// 0x11F4 (0x0001) [0x0000000000720019]              ( CPF_Edit | CPF_ExportObject | CPF_OptionalParm | CPF_EditConst | CPF_NeedCtorLink )
+	struct FString                                     LowHealthMsg;                                     		// 0x11F8 (0x0010) [0x0000000000000000]              
+	struct FString                                     NoHealsRemainingMsg;                              		// 0x1208 (0x0010) [0x0000000000000000]              
+	struct FString                                     NoMortarTargetsMsg;                               		// 0x1218 (0x0010) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -8257,7 +10720,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113071 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedPatriarch_Versus" );
 
 		return pClassPointer;
 	};
@@ -8294,7 +10757,7 @@ public:
 UClass* AKFPawn_ZedPatriarch_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_Human_Versus
-// 0x0000 (0x0C80 - 0x0C80)
+// 0x0000 (0x0CC0 - 0x0CC0)
 class AKFPawn_Human_Versus : public AKFPawn_Human
 {
 public:
@@ -8306,7 +10769,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113072 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_Human_Versus" );
 
 		return pClassPointer;
 	};
@@ -8319,22 +10782,22 @@ public:
 UClass* AKFPawn_Human_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFGFXHudWrapper_Versus
-// 0x0064 (0x06F4 - 0x0690)
+// 0x0064 (0x0718 - 0x06B4)
 class AKFGFXHudWrapper_Versus : public AKFGFxHudWrapper
 {
 public:
-	class AKFGameReplicationInfoVersus*                MyKFGRIV;                                         		// 0x0690 (0x0008) [0x0000000000000000]              
-	class UClass*                                      HumanHUDClass;                                    		// 0x0698 (0x0008) [0x0000000000000000]              
-	class UClass*                                      ZedHUDClass;                                      		// 0x06A0 (0x0008) [0x0000000000000000]              
-	float                                              ZedPlayerHudLocX;                                 		// 0x06A8 (0x0004) [0x0000000000000000]              
-	float                                              ZedPlayerHudLocY;                                 		// 0x06AC (0x0004) [0x0000000000000000]              
-	int                                                HumanStatusBarLengthMax;                          		// 0x06B0 (0x0004) [0x0000000000000000]              
-	class UTexture2D*                                  BossIconTexture;                                  		// 0x06B4 (0x0008) [0x0000000000000000]              
-	struct FColor                                      BossIconColor;                                    		// 0x06BC (0x0004) [0x0000000000000000]              
-	struct FString                                     WaitingToSpawnString;                             		// 0x06C0 (0x0010) [0x0000000000000000]              
-	struct FString                                     ZedTakeOverActiveString;                          		// 0x06D0 (0x0010) [0x0000000000000000]              
-	struct FString                                     PerkSwitchAllowedString;                          		// 0x06E0 (0x0010) [0x0000000000000000]              
-	int                                                LastTeamIndex;                                    		// 0x06F0 (0x0004) [0x0000000000000000]              
+	class AKFGameReplicationInfoVersus*                MyKFGRIV;                                         		// 0x06B4 (0x0008) [0x0000000000000000]              
+	class UClass*                                      HumanHUDClass;                                    		// 0x06BC (0x0008) [0x0000000000000000]              
+	class UClass*                                      ZedHUDClass;                                      		// 0x06C4 (0x0008) [0x0000000000000000]              
+	float                                              ZedPlayerHudLocX;                                 		// 0x06CC (0x0004) [0x0000000000000000]              
+	float                                              ZedPlayerHudLocY;                                 		// 0x06D0 (0x0004) [0x0000000000000000]              
+	int                                                HumanStatusBarLengthMax;                          		// 0x06D4 (0x0004) [0x0000000000000000]              
+	class UTexture2D*                                  BossIconTexture;                                  		// 0x06D8 (0x0008) [0x0000000000000000]              
+	struct FColor                                      BossIconColor;                                    		// 0x06E0 (0x0004) [0x0000000000000000]              
+	struct FString                                     WaitingToSpawnString;                             		// 0x06E4 (0x0010) [0x0000000000000000]              
+	struct FString                                     ZedTakeOverActiveString;                          		// 0x06F4 (0x0010) [0x0000000000000000]              
+	struct FString                                     PerkSwitchAllowedString;                          		// 0x0704 (0x0010) [0x0000000000000000]              
+	int                                                LastTeamIndex;                                    		// 0x0714 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -8343,7 +10806,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113073 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGFXHudWrapper_Versus" );
 
 		return pClassPointer;
 	};
@@ -8362,15 +10825,12 @@ public:
 UClass* AKFGFXHudWrapper_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFGameInfo_WeeklySurvival
-// 0x01A0 (0x08F8 - 0x0758)
+// 0x0008 (0x07A4 - 0x079C)
 class AKFGameInfo_WeeklySurvival : public AKFGameInfo_Survival
 {
 public:
-	TArray< struct FWeeklyOverrides >                  SetEvents;                                        		// 0x0758 (0x0010) [0x0000000000000000]              
-	TArray< struct FWeeklyOverrides >                  TestEvents;                                       		// 0x0768 (0x0010) [0x0000000000000000]              
-	struct FWeeklyOverrides                            ActiveEvent;                                      		// 0x0778 (0x0178) [0x0000000000000000]              
-	int                                                ActiveEventIdx;                                   		// 0x08F0 (0x0004) [0x0000000000000000]              
-	int                                                CurrentFrameBooms;                                		// 0x08F4 (0x0004) [0x0000000000000000]              
+	int                                                CurrentFrameBooms;                                		// 0x079C (0x0004) [0x0000000000000000]              
+	int                                                ActiveEventIdx;                                   		// 0x07A0 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -8379,28 +10839,15 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113074 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGameInfo_WeeklySurvival" );
 
 		return pClassPointer;
 	};
 
-	void ApplyGlobalDamage ( );
-	void ReduceDamage ( );
-	void AdjustForBeefcakeRules ( );
-	void AdjustPawnScale ( );
 	void DoDeathExplosion ( );
-	void NotifyIgnoredScream ( );
-	void NotifyRally ( );
-	void ScoreKill ( );
-	void PassiveHeal ( );
-	void ScoreHeal ( );
-	void ScoreDamage ( );
 	void RestartPlayer ( );
 	void AdjustStartingGrenadeCount ( );
 	void AllowPrimaryWeapon ( );
-	void GetGameInfoSpawnRateMod ( );
-	void SetMonsterDefaults ( );
-	void GetBossAISpawnType ( );
 	void GetAISpawnType ( );
 	void ResetPickups ( );
 	void ResetAllPickups ( );
@@ -8412,24 +10859,25 @@ public:
 	void SpawnBossWave ( );
 	void BossCameraZedTimeRecheck ( );
 	void StartWave ( );
-	void GetTotalWaveCountScale ( );
-	void ModifyGroundSpeed ( );
 	void EndOfMatch ( );
 	void ClearZedTimePCTimers ( );
 	void WaveEnded ( );
 	void TickZedTime ( );
 	void Tick ( );
+	void SetBossIndex ( );
 	void eventPostLogin ( );
 	void CreateDifficultyInfo ( );
 	void StartMatch ( );
 	void ResetPermanentZed ( );
 	void SetPermanentZedTime ( );
-	void SetWorldInfoOverrides ( );
 	void SetSpawnPointOverrides ( );
 	void SetZedTimeOverrides ( );
 	void SetPickupItemList ( );
-	void SetGameLength ( );
-	void SetGameDifficulty ( );
+	void SetModifiedGameLength ( );
+	void UsesModifiedLength ( );
+	void SetModifiedGameDifficulty ( );
+	void UsesModifiedDifficulty ( );
+	void CreateOutbreakEvent ( );
 	void eventPreBeginPlay ( );
 	void eventInitGame ( );
 	void GametypeChecksWaveLength ( );
@@ -8439,68 +10887,9 @@ public:
 
 UClass* AKFGameInfo_WeeklySurvival::pClassPointer = NULL;
 
-// Class kfgamecontent.KFPawn_ZedClot_AlphaKing
-// 0x000C (0x0DB0 - 0x0DA4)
-class AKFPawn_ZedClot_AlphaKing : public AKFPawn_ZedClot_Alpha
-{
-public:
-	float                                              SelfRallyDealtDamageModifier;                     		// 0x0DA4 (0x0004) [0x0000000000000000]              
-	float                                              SelfRallyTakenDamageModifier;                     		// 0x0DA8 (0x0004) [0x0000000000000000]              
-	DWORD                                              bWasSelfRally : 1;                                		// 0x0DAC (0x0004) [0x0000000000000000] [0x00000001] 
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113338 ];
-
-		return pClassPointer;
-	};
-
-	void GetRallyBoostResistance ( );
-	void GetRallyBoostDamage ( );
-	void Rally ( );
-	void eventPossessedBy ( );
-	void eventPostBeginPlay ( );
-};
-
-UClass* AKFPawn_ZedClot_AlphaKing::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedCrawlerKing
-// 0x0004 (0x0DC0 - 0x0DBC)
-class AKFPawn_ZedCrawlerKing : public AKFPawn_ZedCrawler
-{
-public:
-	DWORD                                              bShouldExplode : 1;                               		// 0x0DBC (0x0004) [0x0000000000690000] [0x00000001] ( CPF_Travel | CPF_Component | CPF_NeedCtorLink )
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113340 ];
-
-		return pClassPointer;
-	};
-
-	void Timer_CheckForExplode ( );
-	void CancelExplosion ( );
-	void PlayDying ( );
-	void Died ( );
-	void PlayHeadAsplode ( );
-	void CauseHeadTrauma ( );
-};
-
-UClass* AKFPawn_ZedCrawlerKing::pClassPointer = NULL;
-
-// Class kfgamecontent.KFPawn_ZedGorefastDualBlade
-// 0x0000 (0x0DA4 - 0x0DA4)
-class AKFPawn_ZedGorefastDualBlade : public AKFPawn_ZedGorefast
+// Class kfgamecontent.KFOutbreakEvent_Weekly
+// 0x0000 (0x0218 - 0x0218)
+class UKFOutbreakEvent_Weekly : public UKFOutbreakEvent
 {
 public:
 
@@ -8511,14 +10900,17 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113341 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFOutbreakEvent_Weekly" );
 
 		return pClassPointer;
 	};
 
+	void GetOutbreakId ( );
+	void AdjustScoreDamage ( );
+	void OnScoreKill ( );
 };
 
-UClass* AKFPawn_ZedGorefastDualBlade::pClassPointer = NULL;
+UClass* UKFOutbreakEvent_Weekly::pClassPointer = NULL;
 
 // Class kfgamecontent.KFGFxHUD_PlayerStatusVersus
 // 0x0008 (0x00EC - 0x00E4)
@@ -8534,7 +10926,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113378 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGFxHUD_PlayerStatusVersus" );
 
 		return pClassPointer;
 	};
@@ -8553,12 +10945,12 @@ public:
 UClass* UKFGFxHUD_PlayerStatusVersus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFGFxMoviePlayer_HUD_Versus
-// 0x0010 (0x0318 - 0x0308)
+// 0x0010 (0x033C - 0x032C)
 class UKFGFxMoviePlayer_HUD_Versus : public UKFGFxMoviePlayer_HUD
 {
 public:
-	class UKFGFxHUD_PlayerMoveList*                    MoveListContainer;                                		// 0x0308 (0x0008) [0x0000000000000000]              
-	class UKFGFxHud_PlayerRosterWidget*                PlayerRoster;                                     		// 0x0310 (0x0008) [0x0000000000000000]              
+	class UKFGFxHUD_PlayerMoveList*                    MoveListContainer;                                		// 0x032C (0x0008) [0x0000000000000000]              
+	class UKFGFxHud_PlayerRosterWidget*                PlayerRoster;                                     		// 0x0334 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -8567,7 +10959,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113471 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGFxMoviePlayer_HUD_Versus" );
 
 		return pClassPointer;
 	};
@@ -8601,7 +10993,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113522 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGFxTutorialContainer" );
 
 		return pClassPointer;
 	};
@@ -8628,7 +11020,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113560 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Arm" );
 
 		return pClassPointer;
 	};
@@ -8650,7 +11042,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113564 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Chest" );
 
 		return pClassPointer;
 	};
@@ -8672,7 +11064,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113566 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Foot" );
 
 		return pClassPointer;
 	};
@@ -8694,7 +11086,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113568 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_ForeArm" );
 
 		return pClassPointer;
 	};
@@ -8716,7 +11108,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113570 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Hand" );
 
 		return pClassPointer;
 	};
@@ -8738,7 +11130,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113572 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Head" );
 
 		return pClassPointer;
 	};
@@ -8760,7 +11152,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113578 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Hips" );
 
 		return pClassPointer;
 	};
@@ -8782,7 +11174,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113580 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Leg" );
 
 		return pClassPointer;
 	};
@@ -8804,7 +11196,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113582 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Neck" );
 
 		return pClassPointer;
 	};
@@ -8826,7 +11218,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113584 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Shoulder" );
 
 		return pClassPointer;
 	};
@@ -8848,7 +11240,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113587 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Spine1" );
 
 		return pClassPointer;
 	};
@@ -8870,7 +11262,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113590 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFGoreJoint_Thigh" );
 
 		return pClassPointer;
 	};
@@ -8892,7 +11284,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113592 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFInventory_Armor" );
 
 		return pClassPointer;
 	};
@@ -8916,7 +11308,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113595 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFInventory_Money" );
 
 		return pClassPointer;
 	};
@@ -8926,6 +11318,334 @@ public:
 };
 
 UClass* AKFInventory_Money::pClassPointer = NULL;
+
+// Class kfgamecontent.KFMapObjective_AreaDefense
+// 0x020C (0x048C - 0x0280)
+class AKFMapObjective_AreaDefense : public AVolume
+{
+public:
+	struct FString                                     LocalizationKey;                                  		// 0x0280 (0x0010) [0x0000000000000000]              
+	struct FString                                     DescriptionLocKey;                                		// 0x0290 (0x0010) [0x0000000000000000]              
+	struct FString                                     RequirementsLocKey;                               		// 0x02A0 (0x0010) [0x0000000000000000]              
+	class AKFReplicatedShowPathActor*                  TrailActor;                                       		// 0x02B0 (0x0008) [0x0000000000000000]              
+	TArray< class AKFPawn_Human* >                     TouchingHumans;                                   		// 0x02B8 (0x0010) [0x0000000000000000]              
+	TArray< class AKFPawn_Monster* >                   TouchingZeds;                                     		// 0x02C8 (0x0010) [0x0000000000000000]              
+	int                                                PlayerThresholds[ 0x6 ];                          		// 0x02D8 (0x0018) [0x0000000000000000]              
+	int                                                ZedThresholds[ 0x6 ];                             		// 0x02F0 (0x0018) [0x0000000000000000]              
+	class UTexture2D*                                  ObjectiveIcon;                                    		// 0x0308 (0x0008) [0x0000000000000000]              
+	DWORD                                              bActive : 1;                                      		// 0x0310 (0x0004) [0x0000000000150000] [0x00000001] ( CPF_Travel | CPF_GlobalConfig )
+	DWORD                                              bDangerState : 1;                                 		// 0x0310 (0x0004) [0x000000000016000A] [0x00000002] ( CPF_Const | CPF_ExportObject | CPF_EditConst | CPF_GlobalConfig )
+	DWORD                                              bUseTrailToVolume : 1;                            		// 0x0310 (0x0004) [0x0000000000000000] [0x00000004] 
+	TArray< class AEmitter* >                          ZoneBoundariesEmitter;                            		// 0x0314 (0x0010) [0x0000000000000000]              
+	TArray< class ADynamicSMActor* >                   ZoneBoundaryMeshes;                               		// 0x0324 (0x0010) [0x0000000000000000]              
+	TArray< class ASplineLoftActor* >                  ZoneBoundarySplines;                              		// 0x0334 (0x0010) [0x0000000000000000]              
+	struct FName                                       ZoneDangerMaterialParamName;                      		// 0x0344 (0x0008) [0x0000000000000000]              
+	struct FDoshHoldMaxReward                          MaxRewards[ 0x3 ];                                		// 0x034C (0x0084) [0x0000000000000000]              
+	struct FDoshHoldMaxReward                          XPRewards[ 0x3 ];                                 		// 0x03D0 (0x0084) [0x0000000000000000]              
+	float                                              CurrentRewardAmount;                              		// 0x0454 (0x0004) [0x000000000017000A]              ( CPF_Const | CPF_ExportObject | CPF_Travel | CPF_EditConst | CPF_GlobalConfig )
+	unsigned char                                      EventSeason;                                      		// 0x0458 (0x0001) [0x0000000000000000]              
+	int                                                EventIndex;                                       		// 0x045C (0x0004) [0x0000000000000000]              
+	TArray< class UClass* >                            GameModeBlacklist;                                		// 0x0460 (0x0010) [0x0000000000000000]              
+	TArray< float >                                    PerPlayerSpawnRateMod;                            		// 0x0470 (0x0010) [0x0000000000000000]              
+	float                                              JustWinThreshold;                                 		// 0x0480 (0x0004) [0x0000000000000000]              
+	float                                              StandardWinThreshold;                             		// 0x0484 (0x0004) [0x0000000000000000]              
+	float                                              GoodWinThreshold;                                 		// 0x0488 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMapObjective_AreaDefense" );
+
+		return pClassPointer;
+	};
+
+	void GetActorCount ( );
+	void GetLocalizedRequirements ( );
+	void UsesMultipleActors ( );
+	void GetLocalizedDescription ( );
+	void GetLocalizedName ( );
+	void GetIcon ( );
+	void GetIconLocation ( );
+	void ShouldDrawIcon ( );
+	void GetMaxXPReward ( );
+	void GetXPReward ( );
+	void GetMaxVoshReward ( );
+	void GetVoshReward ( );
+	void GetMaxDoshReward ( );
+	void GetDoshReward ( );
+	void HasFailedObjective ( );
+	void GetSpawnRateMod ( );
+	void GetPlayersInObjective ( );
+	void IsBonus ( );
+	void GetActivationPctChance ( );
+	void GetProgress ( );
+	void UsesProgress ( );
+	void IsCurrentGameModeBlacklisted ( );
+	void CanActivateObjective ( );
+	void IsActive ( );
+	void GrantReward ( );
+	void DeactivateObjective ( );
+	void SetTrailActorType ( );
+	void ActivateObjective ( );
+	void IsValidZed ( );
+	void UpdateMeshArrayState ( );
+	void eventUnTouch ( );
+	void eventTouch ( );
+	void eventPostBeginPlay ( );
+	void eventReplicatedEvent ( );
+};
+
+UClass* AKFMapObjective_AreaDefense::pClassPointer = NULL;
+
+// Class kfgamecontent.KFReplicatedShowPathObjective
+// 0x0001 (0x0261 - 0x0260)
+class AKFReplicatedShowPathObjective : public AKFReplicatedShowPathActor
+{
+public:
+	unsigned char                                      CurrentObjectiveType;                             		// 0x0260 (0x0001) [0x0000000000190000]              ( CPF_Travel | CPF_Component )
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFReplicatedShowPathObjective" );
+
+		return pClassPointer;
+	};
+
+	void GetPathClass ( );
+	void SetObjeciveType ( );
+};
+
+UClass* AKFReplicatedShowPathObjective::pClassPointer = NULL;
+
+// Class kfgamecontent.KFMapObjective_ActivateTrigger
+// 0x0084 (0x0510 - 0x048C)
+class AKFMapObjective_ActivateTrigger : public AKFMapObjective_AreaDefense
+{
+public:
+	int                                                TriggerPulls;                                     		// 0x048C (0x0004) [0x0000000000180000]              ( CPF_Component )
+	int                                                TriggerPullsRequiredForPlayerCount[ 0x6 ];        		// 0x0490 (0x0018) [0x0000000000000000]              
+	int                                                TriggerPullsRequired;                             		// 0x04A8 (0x0004) [0x0000000000190000]              ( CPF_Travel | CPF_Component )
+	class AKFTrigger_ObjectiveLever*                   ObjectiveLever;                                   		// 0x04AC (0x0008) [0x0000000000000000]              
+	float                                              ActivationDelay;                                  		// 0x04B4 (0x0004) [0x0000000000000000]              
+	class UAkEvent*                                    ActivationSoundEvent;                             		// 0x04B8 (0x0008) [0x0000000000000000]              
+	TArray< class UAkEvent* >                          TriggerReadySoundEvents;                          		// 0x04C0 (0x0010) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent100pct;                          		// 0x04D0 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent85pct;                           		// 0x04D8 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent50pct;                           		// 0x04E0 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent25pct;                           		// 0x04E8 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    FailureSoundEvent;                                		// 0x04F0 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    TooManyZedsSoundEvent;                            		// 0x04F8 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    TooFewPlayersSoundEvent;                          		// 0x0500 (0x0008) [0x0000000000000000]              
+	float                                              RemindPlayersTime;                                		// 0x0508 (0x0004) [0x0000000000000000]              
+	DWORD                                              bRemindPlayers : 1;                               		// 0x050C (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bObjectiveLeverActiveBefore : 1;                  		// 0x050C (0x0004) [0x0000000000000000] [0x00000002] 
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMapObjective_ActivateTrigger" );
+
+		return pClassPointer;
+	};
+
+	void GetActorCount ( );
+	void UsesMultipleActors ( );
+	void HasFailedObjective ( );
+	void GetLocalizedRequirements ( );
+	void GetProgress ( );
+	void CheckTriggerActivation ( );
+	void OnTriggerReactivated ( );
+	void OnTriggerActivated ( );
+	void Timer_AllowRemindPlayers ( );
+	void Timer_CheckObjective ( );
+	void eventUnTouch ( );
+	void eventTouch ( );
+	void ActivateTrigger ( );
+	void PlayDeactivationDialog ( );
+	void DeactivateObjective ( );
+	void SetTrailActorType ( );
+	void ActivateObjective ( );
+	void eventReplicatedEvent ( );
+};
+
+UClass* AKFMapObjective_ActivateTrigger::pClassPointer = NULL;
+
+// Class kfgamecontent.KFTrigger_ObjectiveLever
+// 0x000C (0x02A0 - 0x0294)
+class AKFTrigger_ObjectiveLever : public AKFTrigger_MinigameButton
+{
+public:
+	DWORD                                              bFathersBlessing : 1;                             		// 0x0294 (0x0004) [0x0000000000000000] [0x00000001] 
+	class AKFMapObjective_ActivateTrigger*             OwningObjective;                                  		// 0x0298 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFTrigger_ObjectiveLever" );
+
+		return pClassPointer;
+	};
+
+	void AllowReactivation ( );
+	void ActivateGame ( );
+	void ReadyToActivate ( );
+};
+
+UClass* AKFTrigger_ObjectiveLever::pClassPointer = NULL;
+
+// Class kfgamecontent.KFMapObjective_DoshHold
+// 0x00F8 (0x0584 - 0x048C)
+class AKFMapObjective_DoshHold : public AKFMapObjective_AreaDefense
+{
+public:
+	float                                              PenaltyStartupTimer;                              		// 0x048C (0x0004) [0x0000000000000000]              
+	float                                              DoshPenaltyCheckTimer;                            		// 0x0490 (0x0004) [0x0000000000000000]              
+	int                                                NoHumansPenalty;                                  		// 0x0494 (0x0004) [0x0000000000000000]              
+	int                                                ZedsPenalty;                                      		// 0x0498 (0x0004) [0x0000000000000000]              
+	struct FWaveLengthPctChances                       ActivatePctChances[ 0x3 ];                        		// 0x049C (0x0084) [0x0000000000000000]              
+	class UAkEvent*                                    ActivationSoundEventOverride;                     		// 0x0520 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent100pctOverride;                  		// 0x0528 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent85pctOverride;                   		// 0x0530 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent50pctOverride;                   		// 0x0538 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent25pctOverride;                   		// 0x0540 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    FailureSoundEventOverride;                        		// 0x0548 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    WaveProgressSoundEvent25pct;                      		// 0x0550 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    WaveProgressSoundEvent50pct;                      		// 0x0558 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    WaveProgressSoundEvent75pct;                      		// 0x0560 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    WaveProgressSoundEvent90pct;                      		// 0x0568 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    RemindPlayersSoundEvent;                          		// 0x0570 (0x0008) [0x0000000000000000]              
+	float                                              RemindPlayersTime;                                		// 0x0578 (0x0004) [0x0000000000000000]              
+	float                                              PrevWaveProgress;                                 		// 0x057C (0x0004) [0x0000000000000000]              
+	DWORD                                              bRemindPlayers : 1;                               		// 0x0580 (0x0004) [0x0000000000000000] [0x00000001] 
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMapObjective_DoshHold" );
+
+		return pClassPointer;
+	};
+
+	void HasFailedObjective ( );
+	void GetLocalizedRequirements ( );
+	void GetActivationPctChance ( );
+	void GetProgress ( );
+	void PlayDeactivationDialog ( );
+	void DeactivateObjective ( );
+	void Timer_CheckWaveProgress ( );
+	void ActivateObjective ( );
+	void ActivationVO ( );
+	void StartPenaltyCheck ( );
+	void Timer_AllowRemindPlayers ( );
+	void CheckBonusState ( );
+	void eventTouch ( );
+};
+
+UClass* AKFMapObjective_DoshHold::pClassPointer = NULL;
+
+// Class kfgamecontent.KFMapObjective_RepairActors
+// 0x00F0 (0x0334 - 0x0244)
+class AKFMapObjective_RepairActors : public AActor
+{
+public:
+	struct FString                                     LocalizationKey;                                  		// 0x0244 (0x0010) [0x0000000000000000]              
+	struct FString                                     DescriptionLocKey;                                		// 0x0254 (0x0010) [0x0000000000000000]              
+	DWORD                                              bIsActive : 1;                                    		// 0x0264 (0x0004) [0x000000000015000A] [0x00000001] ( CPF_Const | CPF_ExportObject | CPF_Travel | CPF_GlobalConfig )
+	DWORD                                              bUseTrailToObjective : 1;                         		// 0x0264 (0x0004) [0x0000000000000000] [0x00000002] 
+	int                                                ActivationsRequiredForPlayerCount[ 0x6 ];         		// 0x0268 (0x0018) [0x0000000000000000]              
+	float                                              ActivationDelay;                                  		// 0x0280 (0x0004) [0x0000000000000000]              
+	class UAkEvent*                                    ActivationSoundEvent;                             		// 0x0284 (0x0008) [0x0000000000000000]              
+	int                                                ActivationsRequired;                              		// 0x028C (0x0004) [0x000000000016000A]              ( CPF_Const | CPF_ExportObject | CPF_EditConst | CPF_GlobalConfig )
+	int                                                ActorsRepaired;                                   		// 0x0290 (0x0004) [0x000000000017000A]              ( CPF_Const | CPF_ExportObject | CPF_Travel | CPF_EditConst | CPF_GlobalConfig )
+	TArray< class AKFRepairableActor* >                RepairableActors;                                 		// 0x0294 (0x0010) [0x0000000000000000]              
+	TArray< class AKFRepairableActor* >                UnusedRepairableActors;                           		// 0x02A4 (0x0010) [0x0000000000000000]              
+	class AKFRepairableActor*                          LastRepairedActor;                                		// 0x02B4 (0x0008) [0x0000000000000000]              
+	class AKFRepairableActor*                          CurrentActorToRepair;                             		// 0x02BC (0x0008) [0x000000000018000A]              ( CPF_Const | CPF_ExportObject | CPF_Component )
+	class AKFReplicatedShowPathActor*                  TrailActor;                                       		// 0x02C4 (0x0008) [0x0000000000000000]              
+	unsigned char                                      EventSeason;                                      		// 0x02CC (0x0001) [0x0000000000000000]              
+	int                                                EventIndex;                                       		// 0x02D0 (0x0004) [0x0000000000000000]              
+	TArray< class UClass* >                            GameModeBlacklist;                                		// 0x02D4 (0x0010) [0x0000000000000000]              
+	TArray< float >                                    PerPlayerSpawnRateMod;                            		// 0x02E4 (0x0010) [0x0000000000000000]              
+	float                                              TimeUntilNextActivation;                          		// 0x02F4 (0x0004) [0x0000000000000000]              
+	class UTexture2D*                                  ObjectiveIcon;                                    		// 0x02F8 (0x0008) [0x0000000000190000]              ( CPF_Travel | CPF_Component )
+	class UAkEvent*                                    SuccessSoundEvent100pct;                          		// 0x0300 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent85pct;                           		// 0x0308 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent50pct;                           		// 0x0310 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    SuccessSoundEvent25pct;                           		// 0x0318 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    FailureSoundEvent;                                		// 0x0320 (0x0008) [0x0000000000000000]              
+	float                                              JustWinThreshold;                                 		// 0x0328 (0x0004) [0x0000000000000000]              
+	float                                              StandardWinThreshold;                             		// 0x032C (0x0004) [0x0000000000000000]              
+	float                                              GoodWinThreshold;                                 		// 0x0330 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMapObjective_RepairActors" );
+
+		return pClassPointer;
+	};
+
+	void GetActorCount ( );
+	void UsesMultipleActors ( );
+	void GetLivingPlayerCount ( );
+	void HasFailedObjective ( );
+	void GetSpawnRateMod ( );
+	void GetMaxXPReward ( );
+	void GetXPReward ( );
+	void GetMaxVoshReward ( );
+	void GetVoshReward ( );
+	void GetMaxDoshReward ( );
+	void GetDoshReward ( );
+	void GetIcon ( );
+	void GetIconLocation ( );
+	void ShouldDrawIcon ( );
+	void GetLocalizedName ( );
+	void GetLocalizedRequirements ( );
+	void GetLocalizedDescription ( );
+	void GetActivationPctChance ( );
+	void GetTotalProgress ( );
+	void GetProgress ( );
+	void UsesProgress ( );
+	void IsCurrentGameModeBlacklisted ( );
+	void CanActivateObjective ( );
+	void IsBonus ( );
+	void IsActive ( );
+	void OnActorRepaired ( );
+	void ChooseNextActorToRepair ( );
+	void UpdateTrailActor ( );
+	void ActivateNextRepairableActor ( );
+	void PlayDeactivationDialog ( );
+	void DeactivateObjective ( );
+	void ActivateObjective ( );
+	void eventReplicatedEvent ( );
+};
+
+UClass* AKFMapObjective_RepairActors::pClassPointer = NULL;
 
 // Class kfgamecontent.KFMG_TargetGame
 // 0x0034 (0x0278 - 0x0244)
@@ -8947,7 +11667,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113610 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMG_TargetGame" );
 
 		return pClassPointer;
 	};
@@ -8980,7 +11700,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113643 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSeqEvent_MinigameEndCondition" );
 
 		return pClassPointer;
 	};
@@ -9017,7 +11737,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113644 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMGA_Target" );
 
 		return pClassPointer;
 	};
@@ -9069,7 +11789,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113646 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMG_BloatDunk" );
 
 		return pClassPointer;
 	};
@@ -9116,7 +11836,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113708 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMGA_TargetGame" );
 
 		return pClassPointer;
 	};
@@ -9150,7 +11870,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113714 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMG_RiggedTargetGame" );
 
 		return pClassPointer;
 	};
@@ -9188,7 +11908,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113776 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMG_MultilevelTargetGame" );
 
 		return pClassPointer;
 	};
@@ -9223,7 +11943,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113800 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMG_SwingRide" );
 
 		return pClassPointer;
 	};
@@ -9274,7 +11994,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113849 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMGA_AnimatedTrap" );
 
 		return pClassPointer;
 	};
@@ -9316,7 +12036,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 113959 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMGA_DoshTossPit" );
 
 		return pClassPointer;
 	};
@@ -9360,7 +12080,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114007 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMGA_Rollercoaster" );
 
 		return pClassPointer;
 	};
@@ -9393,7 +12113,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114042 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMGA_Target_BloatDunk" );
 
 		return pClassPointer;
 	};
@@ -9419,7 +12139,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114076 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMGVolume_DoshToss" );
 
 		return pClassPointer;
 	};
@@ -9449,11 +12169,13 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114084 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFvolume_RagdollThrow" );
 
 		return pClassPointer;
 	};
 
+	void IsActorExcluded ( );
+	void CausePainTo ( );
 	void eventTouch ( );
 };
 
@@ -9472,7 +12194,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114109 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFMGVolume_SwingHit" );
 
 		return pClassPointer;
 	};
@@ -9480,6 +12202,81 @@ public:
 };
 
 UClass* AKFMGVolume_SwingHit::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedDAR_EMP
+// 0x0000 (0x0E70 - 0x0E70)
+class AKFPawn_ZedDAR_EMP : public AKFPawn_ZedDAR
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedDAR_EMP" );
+
+		return pClassPointer;
+	};
+
+	void OnZedDied ( );
+	void eventGetWeaponStartTraceLocation ( );
+	void ToggleEMPBurst ( );
+	void ANIMNOTIFY_EMPEnd ( );
+	void ANIMNOTIFY_EMPStart ( );
+};
+
+UClass* AKFPawn_ZedDAR_EMP::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedDAR_Laser
+// 0x0000 (0x0E70 - 0x0E70)
+class AKFPawn_ZedDAR_Laser : public AKFPawn_ZedDAR
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedDAR_Laser" );
+
+		return pClassPointer;
+	};
+
+	void ANIMNOTIFY_FireLaser_R ( );
+	void ANIMNOTIFY_FireLaser_L ( );
+};
+
+UClass* AKFPawn_ZedDAR_Laser::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedDAR_Rocket
+// 0x0000 (0x0E70 - 0x0E70)
+class AKFPawn_ZedDAR_Rocket : public AKFPawn_ZedDAR
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedDAR_Rocket" );
+
+		return pClassPointer;
+	};
+
+	void ANIMNOTIFY_FireRocket_R ( );
+	void ANIMNOTIFY_FireRocket_L ( );
+};
+
+UClass* AKFPawn_ZedDAR_Rocket::pClassPointer = NULL;
 
 // Class kfgamecontent.KFSM_Evade_Fear
 // 0x0000 (0x0160 - 0x0160)
@@ -9494,7 +12291,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114220 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Evade_Fear" );
 
 		return pClassPointer;
 	};
@@ -9502,6 +12299,148 @@ public:
 };
 
 UClass* UKFSM_Evade_Fear::pClassPointer = NULL;
+
+// Class kfgamecontent.KFTrigger_BloatKingGorge
+// 0x0008 (0x025C - 0x0254)
+class AKFTrigger_BloatKingGorge : public ATrigger
+{
+public:
+	class AKFPawn_ZedBloatKing*                        Bloat;                                            		// 0x0254 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFTrigger_BloatKingGorge" );
+
+		return pClassPointer;
+	};
+
+	void eventTouch ( );
+	void eventBaseChange ( );
+};
+
+UClass* AKFTrigger_BloatKingGorge::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_BloatKingPukeMine
+// 0x0000 (0x0410 - 0x0410)
+class AKFProj_BloatKingPukeMine : public AKFProj_BloatPukeMine
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_BloatKingPukeMine" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_BloatKingPukeMine::pClassPointer = NULL;
+
+// Class kfgamecontent.KFZedArmorInfo_BloatKing
+// 0x0008 (0x008C - 0x0084)
+class UKFZedArmorInfo_BloatKing : public UKFZedArmorInfo
+{
+public:
+	class AKFPlayerController*                         KFPC;                                             		// 0x0084 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFZedArmorInfo_BloatKing" );
+
+		return pClassPointer;
+	};
+
+	void UpdateArmorPieces ( );
+	void UpdateArmorUI ( );
+	void ExplodeArmor ( );
+	void GetKFPC ( );
+};
+
+UClass* UKFZedArmorInfo_BloatKing::pClassPointer = NULL;
+
+// Class kfgamecontent.KFSM_GorgeVictim
+// 0x0000 (0x0150 - 0x0150)
+class UKFSM_GorgeVictim : public UKFSM_PlaySingleAnim
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_GorgeVictim" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFSM_GorgeVictim::pClassPointer = NULL;
+
+// Class kfgamecontent.KFZedArmorInfo_ClotKing
+// 0x0000 (0x0084 - 0x0084)
+class UKFZedArmorInfo_ClotKing : public UKFZedArmorInfo
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFZedArmorInfo_ClotKing" );
+
+		return pClassPointer;
+	};
+
+	void UpdateArmorPieces ( );
+	void ExplodeArmor ( );
+};
+
+UClass* UKFZedArmorInfo_ClotKing::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedClot_AlphaKing_Versus
+// 0x0000 (0x0E50 - 0x0E50)
+class AKFPawn_ZedClot_AlphaKing_Versus : public AKFPawn_ZedClot_AlphaKing
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedClot_AlphaKing_Versus" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFPawn_ZedClot_AlphaKing_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFSM_Emerge_Crawler
 // 0x0001 (0x017D - 0x017C)
@@ -9517,7 +12456,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114459 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Emerge_Crawler" );
 
 		return pClassPointer;
 	};
@@ -9545,7 +12484,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114465 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerCrawler_Suicide" );
 
 		return pClassPointer;
 	};
@@ -9574,7 +12513,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114467 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPlayerCamera_Versus" );
 
 		return pClassPointer;
 	};
@@ -9586,8 +12525,77 @@ public:
 
 UClass* AKFPlayerCamera_Versus::pClassPointer = NULL;
 
+// Class kfgamecontent.KFZedArmorInfo_EvilDAR
+// 0x0000 (0x0084 - 0x0084)
+class UKFZedArmorInfo_EvilDAR : public UKFZedArmorInfo
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFZedArmorInfo_EvilDAR" );
+
+		return pClassPointer;
+	};
+
+	void UpdateArmorPieces ( );
+	void ExplodeArmor ( );
+	void AdjustBoneDamage ( );
+};
+
+UClass* UKFZedArmorInfo_EvilDAR::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_EvilDAR_Laser
+// 0x0000 (0x03A0 - 0x03A0)
+class AKFProj_EvilDAR_Laser : public AKFProjectile
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_EvilDAR_Laser" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_EvilDAR_Laser::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_EvilDAR_Rocket
+// 0x0000 (0x03A0 - 0x03A0)
+class AKFProj_EvilDAR_Rocket : public AKFProjectile
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_EvilDAR_Rocket" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_EvilDAR_Rocket::pClassPointer = NULL;
+
 // Class kfgamecontent.KFPawn_ZedFleshpound_Mixer
-// 0x0000 (0x0E1C - 0x0E1C)
+// 0x0000 (0x0EB8 - 0x0EB8)
 class AKFPawn_ZedFleshpound_Mixer : public AKFPawn_ZedFleshpound
 {
 public:
@@ -9599,7 +12607,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114614 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedFleshpound_Mixer" );
 
 		return pClassPointer;
 	};
@@ -9610,7 +12618,7 @@ public:
 UClass* AKFPawn_ZedFleshpound_Mixer::pClassPointer = NULL;
 
 // Class kfgamecontent.KFSkinTypeEffects_HansShield
-// 0x0000 (0x0258 - 0x0258)
+// 0x0000 (0x0320 - 0x0320)
 class UKFSkinTypeEffects_HansShield : public UKFSkinTypeEffects
 {
 public:
@@ -9622,7 +12630,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 114674 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSkinTypeEffects_HansShield" );
 
 		return pClassPointer;
 	};
@@ -9632,8 +12640,31 @@ public:
 
 UClass* UKFSkinTypeEffects_HansShield::pClassPointer = NULL;
 
+// Class kfgamecontent.KFPawn_ZedFleshpoundMini_Mixer
+// 0x0000 (0x0EB8 - 0x0EB8)
+class AKFPawn_ZedFleshpoundMini_Mixer : public AKFPawn_ZedFleshpoundMini
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedFleshpoundMini_Mixer" );
+
+		return pClassPointer;
+	};
+
+	void eventUsePlayerControlledZedSkin ( );
+};
+
+UClass* AKFPawn_ZedFleshpoundMini_Mixer::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_HansHEGrenade
-// 0x0003 (0x03CC - 0x03C9)
+// 0x0003 (0x03D0 - 0x03CD)
 class AKFProj_HansHEGrenade : public AKFProj_Grenade
 {
 public:
@@ -9645,7 +12676,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115155 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HansHEGrenade" );
 
 		return pClassPointer;
 	};
@@ -9656,8 +12687,30 @@ public:
 
 UClass* AKFProj_HansHEGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_HansHEGrenade_Halloween
+// 0x0000 (0x03D0 - 0x03D0)
+class AKFProj_HansHEGrenade_Halloween : public AKFProj_HansHEGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HansHEGrenade_Halloween" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_HansHEGrenade_Halloween::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_HansNerveGasGrenade
-// 0x0003 (0x03CC - 0x03C9)
+// 0x0003 (0x03D0 - 0x03CD)
 class AKFProj_HansNerveGasGrenade : public AKFProj_Grenade
 {
 public:
@@ -9669,7 +12722,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115156 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HansNerveGasGrenade" );
 
 		return pClassPointer;
 	};
@@ -9683,8 +12736,30 @@ public:
 
 UClass* AKFProj_HansNerveGasGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_HansNerveGasGrenade_Halloween
+// 0x0000 (0x03D0 - 0x03D0)
+class AKFProj_HansNerveGasGrenade_Halloween : public AKFProj_HansNerveGasGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HansNerveGasGrenade_Halloween" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_HansNerveGasGrenade_Halloween::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_HansSmokeGrenade
-// 0x0003 (0x03CC - 0x03C9)
+// 0x0003 (0x03D0 - 0x03CD)
 class AKFProj_HansSmokeGrenade : public AKFProj_Grenade
 {
 public:
@@ -9696,7 +12771,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115157 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HansSmokeGrenade" );
 
 		return pClassPointer;
 	};
@@ -9709,8 +12784,30 @@ public:
 
 UClass* AKFProj_HansSmokeGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_HansSmokeGrenade_Halloween
+// 0x0000 (0x03D0 - 0x03D0)
+class AKFProj_HansSmokeGrenade_Halloween : public AKFProj_HansSmokeGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HansSmokeGrenade_Halloween" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_HansSmokeGrenade_Halloween::pClassPointer = NULL;
+
 // Class kfgamecontent.KFWeap_AssaultRifle_DualMKb42_Hans
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_AssaultRifle_DualMKb42_Hans : public AKFWeap_RifleBase
 {
 public:
@@ -9722,7 +12819,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115173 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_DualMKb42_Hans" );
 
 		return pClassPointer;
 	};
@@ -9767,7 +12864,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115182 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_GrappleAttack_Hans" );
 
 		return pClassPointer;
 	};
@@ -9802,7 +12899,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115183 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Hans_WeaponSwitch" );
 
 		return pClassPointer;
 	};
@@ -9826,7 +12923,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115184 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Hans_ThrowGrenade" );
 
 		return pClassPointer;
 	};
@@ -9851,7 +12948,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115186 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Hans_GrenadeBarrage" );
 
 		return pClassPointer;
 	};
@@ -9874,7 +12971,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115185 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Hans_GrenadeHalfBarrage" );
 
 		return pClassPointer;
 	};
@@ -9885,7 +12982,7 @@ public:
 UClass* UKFSM_Hans_GrenadeHalfBarrage::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedHans_Versus
-// 0x0000 (0x1140 - 0x1140)
+// 0x0000 (0x1250 - 0x1250)
 class AKFPawn_ZedHans_Versus : public AKFPawn_ZedHans
 {
 public:
@@ -9897,7 +12994,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115187 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedHans_Versus" );
 
 		return pClassPointer;
 	};
@@ -9915,7 +13012,7 @@ public:
 UClass* AKFPawn_ZedHans_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedHansFriendlyTest
-// 0x0000 (0x1140 - 0x1140)
+// 0x0000 (0x1250 - 0x1250)
 class AKFPawn_ZedHansFriendlyTest : public AKFPawn_ZedHans
 {
 public:
@@ -9927,7 +13024,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115225 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedHansFriendlyTest" );
 
 		return pClassPointer;
 	};
@@ -9938,7 +13035,7 @@ public:
 UClass* AKFPawn_ZedHansFriendlyTest::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_AssaultRifle_DualMKb42_HansFriendlyTest
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_AssaultRifle_DualMKb42_HansFriendlyTest : public AKFWeap_AssaultRifle_DualMKb42_Hans
 {
 public:
@@ -9950,7 +13047,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115254 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_DualMKb42_HansFriendlyTest" );
 
 		return pClassPointer;
 	};
@@ -9978,7 +13075,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115360 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Husk_FlameThrowerAttack" );
 
 		return pClassPointer;
 	};
@@ -10008,7 +13105,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115377 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Husk_Suicide" );
 
 		return pClassPointer;
 	};
@@ -10023,7 +13120,7 @@ public:
 UClass* UKFSM_Husk_Suicide::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Husk_Fireball_Versus
-// 0x0000 (0x03B8 - 0x03B8)
+// 0x0000 (0x03BC - 0x03BC)
 class AKFProj_Husk_Fireball_Versus : public AKFProj_Husk_Fireball
 {
 public:
@@ -10035,7 +13132,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115409 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Husk_Fireball_Versus" );
 
 		return pClassPointer;
 	};
@@ -10065,7 +13162,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115410 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerHusk_FireBallAttack" );
 
 		return pClassPointer;
 	};
@@ -10086,7 +13183,7 @@ public:
 UClass* UKFSM_PlayerHusk_FireBallAttack::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawn_ZedHuskFriendlyTest
-// 0x0000 (0x0DF0 - 0x0DF0)
+// 0x0000 (0x0E88 - 0x0E88)
 class AKFPawn_ZedHuskFriendlyTest : public AKFPawn_ZedHusk
 {
 public:
@@ -10098,7 +13195,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115439 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedHuskFriendlyTest" );
 
 		return pClassPointer;
 	};
@@ -10110,27 +13207,27 @@ public:
 UClass* AKFPawn_ZedHuskFriendlyTest::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Missile_Patriarch
-// 0x0064 (0x0400 - 0x039C)
+// 0x0064 (0x0404 - 0x03A0)
 class AKFProj_Missile_Patriarch : public AKFProjectile
 {
 public:
-	class AKFProj_Missile_Patriarch*                   Flock[ 0x2 ];                                     		// 0x039C (0x0010) [0x0000000000000000]              
-	float                                              InitialSpeed;                                     		// 0x03AC (0x0004) [0x00000000001E0000]              ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
-	float                                              FlockRadius;                                      		// 0x03B0 (0x0004) [0x0000000000000000]              
-	float                                              FlockStiffness;                                   		// 0x03B4 (0x0004) [0x0000000000000000]              
-	float                                              FlockMaxForce;                                    		// 0x03B8 (0x0004) [0x0000000000000000]              
-	float                                              FlockCurlForce;                                   		// 0x03BC (0x0004) [0x00000000001F0000]              ( CPF_Travel | CPF_EditConst | CPF_GlobalConfig | CPF_Component )
-	unsigned char                                      bCurl;                                            		// 0x03C0 (0x0001) [0x0000000000200000]              
-	float                                              VelocityScale;                                    		// 0x03C4 (0x0004) [0x0000000000210000]              ( CPF_Travel )
-	struct FVector                                     Dir;                                              		// 0x03C8 (0x000C) [0x0000000000000000]              
-	DWORD                                              bWobble : 1;                                      		// 0x03D4 (0x0004) [0x0000000000000000] [0x00000001] 
-	float                                              WobbleForce;                                      		// 0x03D8 (0x0004) [0x0000000000000000]              
-	float                                              SeekDelay;                                        		// 0x03DC (0x0004) [0x0000000000220000]              ( CPF_EditConst )
-	float                                              SeekForce;                                        		// 0x03E0 (0x0004) [0x0000000000230000]              ( CPF_Travel | CPF_EditConst )
-	float                                              GravForce;                                        		// 0x03E4 (0x0004) [0x0000000000240000]              ( CPF_GlobalConfig )
-	float                                              DistToApplyGravitySQ;                             		// 0x03E8 (0x0004) [0x0000000000250000]              ( CPF_Travel | CPF_GlobalConfig )
-	struct FVector                                     TargetImpactLoc;                                  		// 0x03EC (0x000C) [0x0000000000260000]              ( CPF_EditConst | CPF_GlobalConfig )
-	class UPointLightComponent*                        FlightLight;                                      		// 0x03F8 (0x0008) [0x0000000000000000]              
+	class AKFProj_Missile_Patriarch*                   Flock[ 0x2 ];                                     		// 0x03A0 (0x0010) [0x0000000000000000]              
+	float                                              InitialSpeed;                                     		// 0x03B0 (0x0004) [0x00000000001E0000]              ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
+	float                                              FlockRadius;                                      		// 0x03B4 (0x0004) [0x0000000000000000]              
+	float                                              FlockStiffness;                                   		// 0x03B8 (0x0004) [0x0000000000000000]              
+	float                                              FlockMaxForce;                                    		// 0x03BC (0x0004) [0x0000000000000000]              
+	float                                              FlockCurlForce;                                   		// 0x03C0 (0x0004) [0x00000000001F0000]              ( CPF_Travel | CPF_EditConst | CPF_GlobalConfig | CPF_Component )
+	unsigned char                                      bCurl;                                            		// 0x03C4 (0x0001) [0x0000000000200000]              
+	float                                              VelocityScale;                                    		// 0x03C8 (0x0004) [0x0000000000210000]              ( CPF_Travel )
+	struct FVector                                     Dir;                                              		// 0x03CC (0x000C) [0x0000000000000000]              
+	DWORD                                              bWobble : 1;                                      		// 0x03D8 (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              WobbleForce;                                      		// 0x03DC (0x0004) [0x0000000000000000]              
+	float                                              SeekDelay;                                        		// 0x03E0 (0x0004) [0x0000000000220000]              ( CPF_EditConst )
+	float                                              SeekForce;                                        		// 0x03E4 (0x0004) [0x0000000000230000]              ( CPF_Travel | CPF_EditConst )
+	float                                              GravForce;                                        		// 0x03E8 (0x0004) [0x0000000000240000]              ( CPF_GlobalConfig )
+	float                                              DistToApplyGravitySQ;                             		// 0x03EC (0x0004) [0x0000000000250000]              ( CPF_Travel | CPF_GlobalConfig )
+	struct FVector                                     TargetImpactLoc;                                  		// 0x03F0 (0x000C) [0x0000000000260000]              ( CPF_EditConst | CPF_GlobalConfig )
+	class UPointLightComponent*                        FlightLight;                                      		// 0x03FC (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -10139,7 +13236,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115763 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Missile_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -10159,7 +13256,7 @@ public:
 UClass* AKFProj_Missile_Patriarch::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Mortar_Patriarch
-// 0x0000 (0x0400 - 0x0400)
+// 0x0000 (0x0404 - 0x0404)
 class AKFProj_Mortar_Patriarch : public AKFProj_Missile_Patriarch
 {
 public:
@@ -10171,7 +13268,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115801 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Mortar_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -10182,7 +13279,7 @@ public:
 UClass* AKFProj_Mortar_Patriarch::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Minigun_Patriarch
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_Minigun_Patriarch : public AKFWeap_RifleBase
 {
 public:
@@ -10194,7 +13291,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115820 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Minigun_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -10236,7 +13333,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115827 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Patriarch_MissileAttack" );
 
 		return pClassPointer;
 	};
@@ -10274,7 +13371,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115826 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Patriarch_MortarAttack" );
 
 		return pClassPointer;
 	};
@@ -10292,7 +13389,7 @@ public:
 UClass* UKFSM_Patriarch_MortarAttack::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Missile_Patriarch_Versus
-// 0x0000 (0x0400 - 0x0400)
+// 0x0000 (0x0404 - 0x0404)
 class AKFProj_Missile_Patriarch_Versus : public AKFProj_Missile_Patriarch
 {
 public:
@@ -10304,7 +13401,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115934 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Missile_Patriarch_Versus" );
 
 		return pClassPointer;
 	};
@@ -10314,11 +13411,11 @@ public:
 UClass* AKFProj_Missile_Patriarch_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Minigun_Patriarch_Versus
-// 0x0008 (0x08C8 - 0x08C0)
+// 0x0008 (0x0960 - 0x0958)
 class AKFWeap_Minigun_Patriarch_Versus : public AKFWeap_Minigun_Patriarch
 {
 public:
-	class AKFPawn_ZedPatriarch_Versus*                 MyPatPawn;                                        		// 0x08C0 (0x0008) [0x0000000000000000]              
+	class AKFPawn_ZedPatriarch_Versus*                 MyPatPawn;                                        		// 0x0958 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -10327,7 +13424,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 115946 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Minigun_Patriarch_Versus" );
 
 		return pClassPointer;
 	};
@@ -10337,6 +13434,29 @@ public:
 };
 
 UClass* AKFWeap_Minigun_Patriarch_Versus::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawn_ZedScrake_Mixer
+// 0x0000 (0x0E80 - 0x0E80)
+class AKFPawn_ZedScrake_Mixer : public AKFPawn_ZedScrake
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawn_ZedScrake_Mixer" );
+
+		return pClassPointer;
+	};
+
+	void eventUsePlayerControlledZedSkin ( );
+};
+
+UClass* AKFPawn_ZedScrake_Mixer::pClassPointer = NULL;
 
 // Class kfgamecontent.KFSM_Siren_Scream
 // 0x0048 (0x0198 - 0x0150)
@@ -10365,7 +13485,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 116075 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_Siren_Scream" );
 
 		return pClassPointer;
 	};
@@ -10398,7 +13518,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 116227 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Alberts" );
 
 		return pClassPointer;
 	};
@@ -10420,7 +13540,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 116229 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroupEventData_Player" );
 
 		return pClassPointer;
 	};
@@ -10442,7 +13562,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 116458 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Ana" );
 
 		return pClassPointer;
 	};
@@ -10464,7 +13584,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 116688 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Banner" );
 
 		return pClassPointer;
 	};
@@ -10486,7 +13606,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 116918 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Briar" );
 
 		return pClassPointer;
 	};
@@ -10508,7 +13628,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 117148 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Briar_Classic" );
 
 		return pClassPointer;
 	};
@@ -10530,7 +13650,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 117378 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Coleman" );
 
 		return pClassPointer;
 	};
@@ -10538,6 +13658,28 @@ public:
 };
 
 UClass* UKFPawnVoiceGroup_Coleman::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawnVoiceGroup_DAR
+// 0x0000 (0x0088 - 0x0088)
+class UKFPawnVoiceGroup_DAR : public UKFPawnVoiceGroup
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_DAR" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFPawnVoiceGroup_DAR::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawnVoiceGroup_DJSkully
 // 0x0000 (0x0088 - 0x0088)
@@ -10552,7 +13694,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 117608 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_DJSkully" );
 
 		return pClassPointer;
 	};
@@ -10574,7 +13716,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 117838 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Hans" );
 
 		return pClassPointer;
 	};
@@ -10596,7 +13738,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 117840 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroupEventData_Hans" );
 
 		return pClassPointer;
 	};
@@ -10618,7 +13760,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 117874 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Jaeger" );
 
 		return pClassPointer;
 	};
@@ -10640,7 +13782,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 118104 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Masterson" );
 
 		return pClassPointer;
 	};
@@ -10662,7 +13804,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 118334 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Masterson_Classic" );
 
 		return pClassPointer;
 	};
@@ -10684,7 +13826,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 118564 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_MrFoster" );
 
 		return pClassPointer;
 	};
@@ -10692,6 +13834,28 @@ public:
 };
 
 UClass* UKFPawnVoiceGroup_MrFoster::pClassPointer = NULL;
+
+// Class kfgamecontent.KFPawnVoiceGroup_Mrs_Foster
+// 0x0000 (0x0088 - 0x0088)
+class UKFPawnVoiceGroup_Mrs_Foster : public UKFPawnVoiceGroup
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Mrs_Foster" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFPawnVoiceGroup_Mrs_Foster::pClassPointer = NULL;
 
 // Class kfgamecontent.KFPawnVoiceGroup_Patriarch
 // 0x0000 (0x0088 - 0x0088)
@@ -10706,7 +13870,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 118794 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -10728,7 +13892,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 118796 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroupEventData_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -10750,7 +13914,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 118831 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Rae" );
 
 		return pClassPointer;
 	};
@@ -10772,7 +13936,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119061 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Strasser" );
 
 		return pClassPointer;
 	};
@@ -10794,7 +13958,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119291 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPawnVoiceGroup_Tanaka" );
 
 		return pClassPointer;
 	};
@@ -10816,7 +13980,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119539 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPickupFactory_ItemDefault" );
 
 		return pClassPointer;
 	};
@@ -10826,7 +13990,7 @@ public:
 UClass* AKFPickupFactory_ItemDefault::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_AssaultRifle_AR15
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_AssaultRifle_AR15 : public AKFWeap_RifleBase
 {
 public:
@@ -10838,7 +14002,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119543 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_AR15" );
 
 		return pClassPointer;
 	};
@@ -10848,7 +14012,7 @@ public:
 UClass* AKFWeap_AssaultRifle_AR15::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Shotgun_MB500
-// 0x0000 (0x08D0 - 0x08D0)
+// 0x0000 (0x0968 - 0x0968)
 class AKFWeap_Shotgun_MB500 : public AKFWeap_ShotgunBase
 {
 public:
@@ -10860,7 +14024,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119544 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Shotgun_MB500" );
 
 		return pClassPointer;
 	};
@@ -10870,7 +14034,7 @@ public:
 UClass* AKFWeap_Shotgun_MB500::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Blunt_Crovel
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Blunt_Crovel : public AKFWeap_MeleeBase
 {
 public:
@@ -10882,7 +14046,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119545 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Blunt_Crovel" );
 
 		return pClassPointer;
 	};
@@ -10892,7 +14056,7 @@ public:
 UClass* AKFWeap_Blunt_Crovel::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Pistol_9mm
-// 0x0000 (0x0914 - 0x0914)
+// 0x0000 (0x09AC - 0x09AC)
 class AKFWeap_Pistol_9mm : public AKFWeap_PistolBase
 {
 public:
@@ -10904,7 +14068,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119546 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_9mm" );
 
 		return pClassPointer;
 	};
@@ -10914,7 +14078,7 @@ public:
 UClass* AKFWeap_Pistol_9mm::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Revolver_Rem1858
-// 0x0000 (0x0914 - 0x0914)
+// 0x0000 (0x09AC - 0x09AC)
 class AKFWeap_Revolver_Rem1858 : public AKFWeap_PistolBase
 {
 public:
@@ -10926,7 +14090,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119547 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Revolver_Rem1858" );
 
 		return pClassPointer;
 	};
@@ -10936,7 +14100,7 @@ public:
 UClass* AKFWeap_Revolver_Rem1858::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Rifle_Winchester1894
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_Rifle_Winchester1894 : public AKFWeap_RifleBase
 {
 public:
@@ -10948,7 +14112,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119548 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Rifle_Winchester1894" );
 
 		return pClassPointer;
 	};
@@ -10958,46 +14122,47 @@ public:
 UClass* AKFWeap_Rifle_Winchester1894::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_MedicBase
-// 0x00C4 (0x0984 - 0x08C0)
+// 0x00C4 (0x0A1C - 0x0958)
 class AKFWeap_MedicBase : public AKFWeapon
 {
 public:
-	class UClass*                                      HealingDartDamageType;                            		// 0x08C0 (0x0008) [0x0000000000000000]              
-	int                                                HealAmount;                                       		// 0x08C8 (0x0004) [0x0000000000000000]              
-	float                                              HealFullRechargeSeconds;                          		// 0x08CC (0x0004) [0x0000000000000000]              
-	float                                              HealingIncrement;                                 		// 0x08D0 (0x0004) [0x0000000000000000]              
-	float                                              HealRechargePerSecond;                            		// 0x08D4 (0x0004) [0x0000000000000000]              
-	class UAkEvent*                                    HealImpactSoundPlayEvent;                         		// 0x08D8 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    HurtImpactSoundPlayEvent;                         		// 0x08E0 (0x0008) [0x0000000000000000]              
-	struct FWeaponFireSndInfo                          DartFireSnd;                                      		// 0x08E8 (0x0010) [0x0000000000000000]              
-	float                                              HealDartShotWeakZedGrabCooldown;                  		// 0x08F8 (0x0004) [0x0000000000000000]              
-	int                                                DartMaxRecoilPitch;                               		// 0x08FC (0x0004) [0x0000000000000000]              
-	int                                                DartMinRecoilPitch;                               		// 0x0900 (0x0004) [0x0000000000000000]              
-	int                                                DartMaxRecoilYaw;                                 		// 0x0904 (0x0004) [0x0000000000000000]              
-	int                                                DartMinRecoilYaw;                                 		// 0x0908 (0x0004) [0x0000000000000000]              
-	class UForceFeedbackWaveform*                      HealingDartWaveForm;                              		// 0x090C (0x0008) [0x0000000000000000]              
-	unsigned char                                      HealingDartAmmo;                                  		// 0x0914 (0x0001) [0x0000000000200000]              
-	unsigned char                                      StoredPrimaryAmmo;                                		// 0x0915 (0x0001) [0x0000000000000000]              
-	unsigned char                                      StoredSecondaryAmmo;                              		// 0x0916 (0x0001) [0x0000000000000000]              
-	float                                              LockCheckTime;                                    		// 0x0918 (0x0004) [0x0000000000000000]              
-	float                                              LockRange;                                        		// 0x091C (0x0004) [0x0000000000000000]              
-	float                                              LockAcquireTime;                                  		// 0x0920 (0x0004) [0x0000000000000000]              
-	float                                              LockTolerance;                                    		// 0x0924 (0x0004) [0x0000000000000000]              
-	DWORD                                              bLockedOnTarget : 1;                              		// 0x0928 (0x0004) [0x0000000000210000] [0x00000001] ( CPF_Travel )
-	DWORD                                              bTargetLockingActive : 1;                         		// 0x0928 (0x0004) [0x0000000000000000] [0x00000002] 
-	class AActor*                                      LockedTarget;                                     		// 0x092C (0x0008) [0x0000000000220000]              ( CPF_EditConst )
-	class AActor*                                      PendingLockedTarget;                              		// 0x0934 (0x0008) [0x0000000000230000]              ( CPF_Travel | CPF_EditConst )
-	float                                              LockAim;                                          		// 0x093C (0x0004) [0x0000000000000000]              
-	class UAkBaseSoundObject*                          LockAcquiredSoundFirstPerson;                     		// 0x0940 (0x0008) [0x0000000000000000]              
-	class UAkBaseSoundObject*                          LockTargetingStopEvent;                           		// 0x0948 (0x0008) [0x0000000000000000]              
-	class UAkBaseSoundObject*                          LockTargetingStopEventFirstPerson;                		// 0x0950 (0x0008) [0x0000000000000000]              
-	class UAkBaseSoundObject*                          LockLostSoundFirstPerson;                         		// 0x0958 (0x0008) [0x0000000000000000]              
-	class UAkBaseSoundObject*                          LockTargetingSoundFirstPerson;                    		// 0x0960 (0x0008) [0x0000000000000000]              
-	float                                              PendingLockAcquireTimeLeft;                       		// 0x0968 (0x0004) [0x0000000000000000]              
-	float                                              PendingLockTimeout;                               		// 0x096C (0x0004) [0x0000000000000000]              
-	float                                              LockedOnTimeout;                                  		// 0x0970 (0x0004) [0x0000000000000000]              
-	class UClass*                                      OpticsUIClass;                                    		// 0x0974 (0x0008) [0x0000000000000000]              
-	class UKFGFxWorld_MedicOptics*                     OpticsUI;                                         		// 0x097C (0x0008) [0x0000000000000000]              
+	class UClass*                                      HealingDartDamageType;                            		// 0x0958 (0x0008) [0x0000000000000000]              
+	int                                                HealAmount;                                       		// 0x0960 (0x0004) [0x0000000000000000]              
+	float                                              HealFullRechargeSeconds;                          		// 0x0964 (0x0004) [0x0000000000000000]              
+	float                                              HealingIncrement;                                 		// 0x0968 (0x0004) [0x0000000000000000]              
+	float                                              HealRechargePerSecond;                            		// 0x096C (0x0004) [0x0000000000000000]              
+	class UAkEvent*                                    HealImpactSoundPlayEvent;                         		// 0x0970 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    HurtImpactSoundPlayEvent;                         		// 0x0978 (0x0008) [0x0000000000000000]              
+	struct FWeaponFireSndInfo                          DartFireSnd;                                      		// 0x0980 (0x0010) [0x0000000000000000]              
+	float                                              HealDartShotWeakZedGrabCooldown;                  		// 0x0990 (0x0004) [0x0000000000000000]              
+	int                                                DartMaxRecoilPitch;                               		// 0x0994 (0x0004) [0x0000000000000000]              
+	int                                                DartMinRecoilPitch;                               		// 0x0998 (0x0004) [0x0000000000000000]              
+	int                                                DartMaxRecoilYaw;                                 		// 0x099C (0x0004) [0x0000000000000000]              
+	int                                                DartMinRecoilYaw;                                 		// 0x09A0 (0x0004) [0x0000000000000000]              
+	class UForceFeedbackWaveform*                      HealingDartWaveForm;                              		// 0x09A4 (0x0008) [0x0000000000000000]              
+	unsigned char                                      HealingDartAmmo;                                  		// 0x09AC (0x0001) [0x0000000000210020]              ( CPF_Net | CPF_Travel )
+	unsigned char                                      StoredPrimaryAmmo;                                		// 0x09AD (0x0001) [0x0000000000000000]              
+	unsigned char                                      StoredSecondaryAmmo;                              		// 0x09AE (0x0001) [0x0000000000000000]              
+	float                                              LockCheckTime;                                    		// 0x09B0 (0x0004) [0x0000000000000000]              
+	float                                              LockRange;                                        		// 0x09B4 (0x0004) [0x0000000000000000]              
+	float                                              LockAcquireTime;                                  		// 0x09B8 (0x0004) [0x0000000000000000]              
+	float                                              LockTolerance;                                    		// 0x09BC (0x0004) [0x0000000000000000]              
+	DWORD                                              bLockedOnTarget : 1;                              		// 0x09C0 (0x0004) [0x0000000000220000] [0x00000001] ( CPF_EditConst )
+	DWORD                                              bTargetLockingActive : 1;                         		// 0x09C0 (0x0004) [0x0000000000000000] [0x00000002] 
+	DWORD                                              bRechargeHealAmmo : 1;                            		// 0x09C0 (0x0004) [0x0000000000000000] [0x00000004] 
+	class AActor*                                      LockedTarget;                                     		// 0x09C4 (0x0008) [0x0000000000230000]              ( CPF_Travel | CPF_EditConst )
+	class AActor*                                      PendingLockedTarget;                              		// 0x09CC (0x0008) [0x0000000000240000]              ( CPF_GlobalConfig )
+	float                                              LockAim;                                          		// 0x09D4 (0x0004) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          LockAcquiredSoundFirstPerson;                     		// 0x09D8 (0x0008) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          LockTargetingStopEvent;                           		// 0x09E0 (0x0008) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          LockTargetingStopEventFirstPerson;                		// 0x09E8 (0x0008) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          LockLostSoundFirstPerson;                         		// 0x09F0 (0x0008) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          LockTargetingSoundFirstPerson;                    		// 0x09F8 (0x0008) [0x0000000000000000]              
+	float                                              PendingLockAcquireTimeLeft;                       		// 0x0A00 (0x0004) [0x0000000000000000]              
+	float                                              PendingLockTimeout;                               		// 0x0A04 (0x0004) [0x0000000000000000]              
+	float                                              LockedOnTimeout;                                  		// 0x0A08 (0x0004) [0x0000000000000000]              
+	class UClass*                                      OpticsUIClass;                                    		// 0x0A0C (0x0008) [0x0000000000000000]              
+	class UKFGFxWorld_MedicOptics*                     OpticsUI;                                         		// 0x0A14 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -11006,7 +14171,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119550 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_MedicBase" );
 
 		return pClassPointer;
 	};
@@ -11043,7 +14208,7 @@ public:
 UClass* AKFWeap_MedicBase::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Pistol_Medic
-// 0x0000 (0x0984 - 0x0984)
+// 0x0000 (0x0A1C - 0x0A1C)
 class AKFWeap_Pistol_Medic : public AKFWeap_MedicBase
 {
 public:
@@ -11055,7 +14220,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119549 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_Medic" );
 
 		return pClassPointer;
 	};
@@ -11066,7 +14231,7 @@ public:
 UClass* AKFWeap_Pistol_Medic::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_SMG_MP7
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_SMG_MP7 : public AKFWeap_SMGBase
 {
 public:
@@ -11078,7 +14243,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119551 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_SMG_MP7" );
 
 		return pClassPointer;
 	};
@@ -11100,7 +14265,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119552 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPlayerCamera_Patriarch" );
 
 		return pClassPointer;
 	};
@@ -11134,7 +14299,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119565 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPlayerZedSuicideCamera" );
 
 		return pClassPointer;
 	};
@@ -11177,7 +14342,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119566 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFPlayerZedWaitingCamera" );
 
 		return pClassPointer;
 	};
@@ -11205,7 +14370,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119568 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFThirdPersonCamera_Versus" );
 
 		return pClassPointer;
 	};
@@ -11215,7 +14380,7 @@ public:
 UClass* UKFThirdPersonCamera_Versus::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Blade_Eviscerator
-// 0x0000 (0x0444 - 0x0444)
+// 0x0000 (0x0448 - 0x0448)
 class AKFProj_Blade_Eviscerator : public AKFProj_RicochetStickBullet
 {
 public:
@@ -11227,7 +14392,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119690 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Blade_Eviscerator" );
 
 		return pClassPointer;
 	};
@@ -11239,7 +14404,7 @@ public:
 UClass* AKFProj_Blade_Eviscerator::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bolt_Crossbow
-// 0x0000 (0x0444 - 0x0444)
+// 0x0000 (0x0448 - 0x0448)
 class AKFProj_Bolt_Crossbow : public AKFProj_RicochetStickBullet
 {
 public:
@@ -11251,7 +14416,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119827 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bolt_Crossbow" );
 
 		return pClassPointer;
 	};
@@ -11262,7 +14427,7 @@ public:
 UClass* AKFProj_Bolt_Crossbow::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bullet_AssaultRifle
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_AssaultRifle : public AKFProj_Bullet
 {
 public:
@@ -11274,7 +14439,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119842 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_AssaultRifle" );
 
 		return pClassPointer;
 	};
@@ -11284,8 +14449,62 @@ public:
 UClass* AKFProj_Bullet_AssaultRifle::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bullet_DragonsBreath
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0010 (0x03B4 - 0x03A4)
 class AKFProj_Bullet_DragonsBreath : public AKFProj_Bullet
+{
+public:
+	struct FVector                                     LastHitNormal;                                    		// 0x03A4 (0x000C) [0x0000000000000000]              
+	float                                              GroundFireChance;                                 		// 0x03B0 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_DragonsBreath" );
+
+		return pClassPointer;
+	};
+
+	void StopSimulating ( );
+	void TriggerExplosion ( );
+	void ProcessTouch ( );
+};
+
+UClass* AKFProj_Bullet_DragonsBreath::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_MolotovSplash
+// 0x0004 (0x03A4 - 0x03A0)
+class AKFProj_MolotovSplash : public AKFProjectile
+{
+public:
+	float                                              MaxTimeFlarotov;                                  		// 0x03A0 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_MolotovSplash" );
+
+		return pClassPointer;
+	};
+
+	void PrepareExplosionTemplate ( );
+	void PrepareExplosionActor ( );
+	void ProcessTouch ( );
+	void eventHitWall ( );
+};
+
+UClass* AKFProj_MolotovSplash::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_FlareGunSplash
+// 0x0000 (0x03A4 - 0x03A4)
+class AKFProj_FlareGunSplash : public AKFProj_MolotovSplash
 {
 public:
 
@@ -11296,17 +14515,39 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119850 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FlareGunSplash" );
 
 		return pClassPointer;
 	};
 
 };
 
-UClass* AKFProj_Bullet_DragonsBreath::pClassPointer = NULL;
+UClass* AKFProj_FlareGunSplash::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_DragonsBreathSplash
+// 0x0000 (0x03A4 - 0x03A4)
+class AKFProj_DragonsBreathSplash : public AKFProj_FlareGunSplash
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_DragonsBreathSplash" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_DragonsBreathSplash::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bullet_Hemogoblin
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_Hemogoblin : public AKFProj_Bullet
 {
 public:
@@ -11318,7 +14559,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119867 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_Hemogoblin" );
 
 		return pClassPointer;
 	};
@@ -11327,8 +14568,30 @@ public:
 
 UClass* AKFProj_Bullet_Hemogoblin::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_Bullet_IncendiaryBullet
+// 0x0000 (0x03A4 - 0x03A4)
+class AKFProj_Bullet_IncendiaryBullet : public AKFProj_Bullet_AssaultRifle
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_IncendiaryBullet" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_Bullet_IncendiaryBullet::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_Bullet_M14EBR
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_M14EBR : public AKFProj_Bullet
 {
 public:
@@ -11340,7 +14603,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119877 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_M14EBR" );
 
 		return pClassPointer;
 	};
@@ -11349,12 +14612,11 @@ public:
 
 UClass* AKFProj_Bullet_M14EBR::pClassPointer = NULL;
 
-// Class kfgamecontent.KFProj_Bullet_Pellet
-// 0x0008 (0x03A8 - 0x03A0)
-class AKFProj_Bullet_Pellet : public AKFProj_Bullet
+// Class kfgamecontent.KFProj_Bullet_M99
+// 0x0000 (0x03A4 - 0x03A4)
+class AKFProj_Bullet_M99 : public AKFProj_Bullet
 {
 public:
-	class AKFWeapon*                                   OwnerWeapon;                                      		// 0x03A0 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -11363,7 +14625,52 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119881 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_M99" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_Bullet_M99::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_Bullet_Mac10
+// 0x0000 (0x03A4 - 0x03A4)
+class AKFProj_Bullet_Mac10 : public AKFProj_Bullet_AssaultRifle
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_Mac10" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_Bullet_Mac10::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_Bullet_Pellet
+// 0x0008 (0x03AC - 0x03A4)
+class AKFProj_Bullet_Pellet : public AKFProj_Bullet
+{
+public:
+	class AKFWeapon*                                   OwnerWeapon;                                      		// 0x03A4 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_Pellet" );
 
 		return pClassPointer;
 	};
@@ -11375,7 +14682,7 @@ public:
 UClass* AKFProj_Bullet_Pellet::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bullet_Pistol50AE
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_Pistol50AE : public AKFProj_Bullet
 {
 public:
@@ -11387,7 +14694,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119894 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_Pistol50AE" );
 
 		return pClassPointer;
 	};
@@ -11397,7 +14704,7 @@ public:
 UClass* AKFProj_Bullet_Pistol50AE::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bullet_Pistol9mm
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_Pistol9mm : public AKFProj_Bullet
 {
 public:
@@ -11409,7 +14716,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119901 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_Pistol9mm" );
 
 		return pClassPointer;
 	};
@@ -11418,8 +14725,30 @@ public:
 
 UClass* AKFProj_Bullet_Pistol9mm::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_Bullet_PistolAF2011
+// 0x0000 (0x03A4 - 0x03A4)
+class AKFProj_Bullet_PistolAF2011 : public AKFProj_Bullet
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_PistolAF2011" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_Bullet_PistolAF2011::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_Bullet_PistolColt1911
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_PistolColt1911 : public AKFProj_Bullet
 {
 public:
@@ -11431,7 +14760,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119905 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_PistolColt1911" );
 
 		return pClassPointer;
 	};
@@ -11441,7 +14770,7 @@ public:
 UClass* AKFProj_Bullet_PistolColt1911::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bullet_PistolDeagle
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_PistolDeagle : public AKFProj_Bullet
 {
 public:
@@ -11453,7 +14782,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119909 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_PistolDeagle" );
 
 		return pClassPointer;
 	};
@@ -11463,7 +14792,7 @@ public:
 UClass* AKFProj_Bullet_PistolDeagle::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bullet_RailGun
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_RailGun : public AKFProj_Bullet
 {
 public:
@@ -11475,7 +14804,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119913 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_RailGun" );
 
 		return pClassPointer;
 	};
@@ -11485,7 +14814,7 @@ public:
 UClass* AKFProj_Bullet_RailGun::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bullet_RevolverRem1858
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_RevolverRem1858 : public AKFProj_Bullet
 {
 public:
@@ -11497,7 +14826,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119920 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_RevolverRem1858" );
 
 		return pClassPointer;
 	};
@@ -11507,7 +14836,7 @@ public:
 UClass* AKFProj_Bullet_RevolverRem1858::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bullet_RevolverSW500
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_RevolverSW500 : public AKFProj_Bullet
 {
 public:
@@ -11519,7 +14848,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119924 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_RevolverSW500" );
 
 		return pClassPointer;
 	};
@@ -11529,7 +14858,7 @@ public:
 UClass* AKFProj_Bullet_RevolverSW500::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Bullet_Winchester1894
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_Bullet_Winchester1894 : public AKFProj_Bullet
 {
 public:
@@ -11541,7 +14870,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119928 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Bullet_Winchester1894" );
 
 		return pClassPointer;
 	};
@@ -11551,11 +14880,11 @@ public:
 UClass* AKFProj_Bullet_Winchester1894::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_GroundFire
-// 0x0004 (0x03A0 - 0x039C)
+// 0x0004 (0x03A4 - 0x03A0)
 class AKFProj_GroundFire : public AKFProjectile
 {
 public:
-	float                                              DamageInterval;                                   		// 0x039C (0x0004) [0x0000000000000000]              
+	float                                              DamageInterval;                                   		// 0x03A0 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -11564,7 +14893,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119932 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_GroundFire" );
 
 		return pClassPointer;
 	};
@@ -11580,7 +14909,7 @@ public:
 UClass* AKFProj_GroundFire::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_CaulkNBurn_GroundFire
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_CaulkNBurn_GroundFire : public AKFProj_GroundFire
 {
 public:
@@ -11592,7 +14921,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119959 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_CaulkNBurn_GroundFire" );
 
 		return pClassPointer;
 	};
@@ -11602,13 +14931,13 @@ public:
 UClass* AKFProj_CaulkNBurn_GroundFire::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_DynamiteGrenade
-// 0x0017 (0x03E0 - 0x03C9)
+// 0x0017 (0x03E4 - 0x03CD)
 class AKFProj_DynamiteGrenade : public AKFProj_Grenade
 {
 public:
-	DWORD                                              bExplodeOnContact : 1;                            		// 0x03CC (0x0004) [0x0000000000000000] [0x00000001] 
-	class UAkEvent*                                    FuseEvent;                                        		// 0x03D0 (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        FuseLight;                                        		// 0x03D8 (0x0008) [0x0000000000000000]              
+	DWORD                                              bExplodeOnContact : 1;                            		// 0x03D0 (0x0004) [0x0000000000000000] [0x00000001] 
+	class UAkEvent*                                    FuseEvent;                                        		// 0x03D4 (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        FuseLight;                                        		// 0x03DC (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -11617,7 +14946,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119965 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_DynamiteGrenade" );
 
 		return pClassPointer;
 	};
@@ -11631,8 +14960,30 @@ public:
 
 UClass* AKFProj_DynamiteGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_DynamiteGrenade_Mini
+// 0x0000 (0x03E4 - 0x03E4)
+class AKFProj_DynamiteGrenade_Mini : public AKFProj_DynamiteGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_DynamiteGrenade_Mini" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_DynamiteGrenade_Mini::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_EMPGrenade
-// 0x0003 (0x03CC - 0x03C9)
+// 0x0003 (0x03D0 - 0x03CD)
 class AKFProj_EMPGrenade : public AKFProj_Grenade
 {
 public:
@@ -11644,7 +14995,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 119993 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_EMPGrenade" );
 
 		return pClassPointer;
 	};
@@ -11655,8 +15006,31 @@ public:
 
 UClass* AKFProj_EMPGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_EMPGrenade_Mini
+// 0x0000 (0x03D0 - 0x03D0)
+class AKFProj_EMPGrenade_Mini : public AKFProj_EMPGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_EMPGrenade_Mini" );
+
+		return pClassPointer;
+	};
+
+	void ProcessTouch ( );
+};
+
+UClass* AKFProj_EMPGrenade_Mini::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_Explosive_HX25
-// 0x0000 (0x03C8 - 0x03C8)
+// 0x0000 (0x03E4 - 0x03E4)
 class AKFProj_Explosive_HX25 : public AKFProj_BallisticExplosive
 {
 public:
@@ -11668,7 +15042,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120004 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Explosive_HX25" );
 
 		return pClassPointer;
 	};
@@ -11678,7 +15052,7 @@ public:
 UClass* AKFProj_Explosive_HX25::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_FlameThrower_GroundFire
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_FlameThrower_GroundFire : public AKFProj_GroundFire
 {
 public:
@@ -11690,7 +15064,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120018 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FlameThrower_GroundFire" );
 
 		return pClassPointer;
 	};
@@ -11700,13 +15074,13 @@ public:
 UClass* AKFProj_FlameThrower_GroundFire::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_FlareGun
-// 0x0014 (0x03B4 - 0x03A0)
+// 0x0014 (0x03B8 - 0x03A4)
 class AKFProj_FlareGun : public AKFProj_Bullet
 {
 public:
-	float                                              FlameDisperalDelay;                               		// 0x03A0 (0x0004) [0x0000000000000000]              
-	struct FVector                                     LastHitNormal;                                    		// 0x03A4 (0x000C) [0x0000000000000000]              
-	float                                              ResidualFlameChance;                              		// 0x03B0 (0x0004) [0x0000000000000000]              
+	float                                              FlameDisperalDelay;                               		// 0x03A4 (0x0004) [0x0000000000000000]              
+	struct FVector                                     LastHitNormal;                                    		// 0x03A8 (0x000C) [0x0000000000000000]              
+	float                                              ResidualFlameChance;                              		// 0x03B4 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -11715,7 +15089,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120024 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FlareGun" );
 
 		return pClassPointer;
 	};
@@ -11730,57 +15104,8 @@ public:
 
 UClass* AKFProj_FlareGun::pClassPointer = NULL;
 
-// Class kfgamecontent.KFProj_MolotovSplash
-// 0x0004 (0x03A0 - 0x039C)
-class AKFProj_MolotovSplash : public AKFProjectile
-{
-public:
-	float                                              MaxTimeFlarotov;                                  		// 0x039C (0x0004) [0x0000000000000000]              
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120042 ];
-
-		return pClassPointer;
-	};
-
-	void PrepareExplosionTemplate ( );
-	void PrepareExplosionActor ( );
-	void ProcessTouch ( );
-	void eventHitWall ( );
-};
-
-UClass* AKFProj_MolotovSplash::pClassPointer = NULL;
-
-// Class kfgamecontent.KFProj_FlareGunSplash
-// 0x0000 (0x03A0 - 0x03A0)
-class AKFProj_FlareGunSplash : public AKFProj_MolotovSplash
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120041 ];
-
-		return pClassPointer;
-	};
-
-};
-
-UClass* AKFProj_FlareGunSplash::pClassPointer = NULL;
-
 // Class kfgamecontent.KFProj_FlashBangGrenade
-// 0x0003 (0x03CC - 0x03C9)
+// 0x0003 (0x03D0 - 0x03CD)
 class AKFProj_FlashBangGrenade : public AKFProj_Grenade
 {
 public:
@@ -11792,7 +15117,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120082 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FlashBangGrenade" );
 
 		return pClassPointer;
 	};
@@ -11803,8 +15128,31 @@ public:
 
 UClass* AKFProj_FlashBangGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_FlashBangGrenade_Mini
+// 0x0000 (0x03D0 - 0x03D0)
+class AKFProj_FlashBangGrenade_Mini : public AKFProj_FlashBangGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FlashBangGrenade_Mini" );
+
+		return pClassPointer;
+	};
+
+	void ProcessTouch ( );
+};
+
+UClass* AKFProj_FlashBangGrenade_Mini::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_FragGrenade
-// 0x0003 (0x03CC - 0x03C9)
+// 0x0003 (0x03D0 - 0x03CD)
 class AKFProj_FragGrenade : public AKFProj_Grenade
 {
 public:
@@ -11816,7 +15164,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120093 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FragGrenade" );
 
 		return pClassPointer;
 	};
@@ -11825,8 +15173,31 @@ public:
 
 UClass* AKFProj_FragGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_FragGrenade_Mini
+// 0x0000 (0x03D0 - 0x03D0)
+class AKFProj_FragGrenade_Mini : public AKFProj_FragGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FragGrenade_Mini" );
+
+		return pClassPointer;
+	};
+
+	void ProcessTouch ( );
+};
+
+UClass* AKFProj_FragGrenade_Mini::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_FreezeGrenade
-// 0x0003 (0x03CC - 0x03C9)
+// 0x0003 (0x03D0 - 0x03CD)
 class AKFProj_FreezeGrenade : public AKFProj_Grenade
 {
 public:
@@ -11838,7 +15209,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120102 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FreezeGrenade" );
 
 		return pClassPointer;
 	};
@@ -11849,8 +15220,104 @@ public:
 
 UClass* AKFProj_FreezeGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_FreezeGrenade_Mini
+// 0x0000 (0x03D0 - 0x03D0)
+class AKFProj_FreezeGrenade_Mini : public AKFProj_FreezeGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FreezeGrenade_Mini" );
+
+		return pClassPointer;
+	};
+
+	void ProcessTouch ( );
+};
+
+UClass* AKFProj_FreezeGrenade_Mini::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_GroundIce
+// 0x0004 (0x03A4 - 0x03A0)
+class AKFProj_GroundIce : public AKFProjectile
+{
+public:
+	float                                              DamageInterval;                                   		// 0x03A0 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_GroundIce" );
+
+		return pClassPointer;
+	};
+
+	void PrepareExplosionTemplate ( );
+	void PrepareExplosionActor ( );
+	void eventTouch ( );
+	void PostBeginPlay ( );
+	void eventReplicatedEvent ( );
+	void WarnAI ( );
+};
+
+UClass* AKFProj_GroundIce::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_FreezeThrower_GroundIce
+// 0x0000 (0x03A4 - 0x03A4)
+class AKFProj_FreezeThrower_GroundIce : public AKFProj_GroundIce
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FreezeThrower_GroundIce" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_FreezeThrower_GroundIce::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_FreezeThrower_IceShards
+// 0x0000 (0x03AC - 0x03AC)
+class AKFProj_FreezeThrower_IceShards : public AKFProj_Bullet_Pellet
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_FreezeThrower_IceShards" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_FreezeThrower_IceShards::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_GrenadeShard
-// 0x0000 (0x03B0 - 0x03B0)
+// 0x0000 (0x03B4 - 0x03B4)
 class AKFProj_GrenadeShard : public AKFProj_RicochetBullet
 {
 public:
@@ -11862,7 +15329,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120113 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_GrenadeShard" );
 
 		return pClassPointer;
 	};
@@ -11875,15 +15342,15 @@ public:
 UClass* AKFProj_GrenadeShard::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_HealingDart
-// 0x0028 (0x03C8 - 0x03A0)
+// 0x0028 (0x03CC - 0x03A4)
 class AKFProj_HealingDart : public AKFProj_Bullet
 {
 public:
-	class AActor*                                      SeekTarget;                                       		// 0x03A0 (0x0008) [0x00000000001E0000]              ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
-	struct FVector                                     InitialDir;                                       		// 0x03A8 (0x000C) [0x00000000001F0000]              ( CPF_Travel | CPF_EditConst | CPF_GlobalConfig | CPF_Component )
-	float                                              TrackingStrength;                                 		// 0x03B4 (0x0004) [0x0000000000000000]              
-	struct FVector                                     SeekOffset;                                       		// 0x03B8 (0x000C) [0x0000000000000000]              
-	DWORD                                              bSeekInitialized : 1;                             		// 0x03C4 (0x0004) [0x0000000000000000] [0x00000001] 
+	class AActor*                                      SeekTarget;                                       		// 0x03A4 (0x0008) [0x00000000001E0000]              ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
+	struct FVector                                     InitialDir;                                       		// 0x03AC (0x000C) [0x00000000001F0000]              ( CPF_Travel | CPF_EditConst | CPF_GlobalConfig | CPF_Component )
+	float                                              TrackingStrength;                                 		// 0x03B8 (0x0004) [0x0000000000000000]              
+	struct FVector                                     SeekOffset;                                       		// 0x03BC (0x000C) [0x0000000000000000]              
+	DWORD                                              bSeekInitialized : 1;                             		// 0x03C8 (0x0004) [0x0000000000000000] [0x00000001] 
 
 private:
 	static UClass* pClassPointer;
@@ -11892,7 +15359,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120161 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HealingDart" );
 
 		return pClassPointer;
 	};
@@ -11905,7 +15372,7 @@ public:
 UClass* AKFProj_HealingDart::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_HEGrenade
-// 0x0003 (0x03CC - 0x03C9)
+// 0x0003 (0x03D0 - 0x03CD)
 class AKFProj_HEGrenade : public AKFProj_Grenade
 {
 public:
@@ -11917,7 +15384,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120186 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HEGrenade" );
 
 		return pClassPointer;
 	};
@@ -11926,8 +15393,31 @@ public:
 
 UClass* AKFProj_HEGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_HEGrenade_Mini
+// 0x0000 (0x03D0 - 0x03D0)
+class AKFProj_HEGrenade_Mini : public AKFProj_HEGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HEGrenade_Mini" );
+
+		return pClassPointer;
+	};
+
+	void ProcessTouch ( );
+};
+
+UClass* AKFProj_HEGrenade_Mini::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_HighExplosive_M16M203
-// 0x0000 (0x03C8 - 0x03C8)
+// 0x0000 (0x03E4 - 0x03E4)
 class AKFProj_HighExplosive_M16M203 : public AKFProj_BallisticExplosive
 {
 public:
@@ -11939,7 +15429,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120194 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HighExplosive_M16M203" );
 
 		return pClassPointer;
 	};
@@ -11949,7 +15439,7 @@ public:
 UClass* AKFProj_HighExplosive_M16M203::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_HighExplosive_M79
-// 0x0000 (0x03C8 - 0x03C8)
+// 0x0000 (0x03E4 - 0x03E4)
 class AKFProj_HighExplosive_M79 : public AKFProj_BallisticExplosive
 {
 public:
@@ -11961,7 +15451,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120208 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HighExplosive_M79" );
 
 		return pClassPointer;
 	};
@@ -11970,8 +15460,115 @@ public:
 
 UClass* AKFProj_HighExplosive_M79::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_HuskCannon_Fireball
+// 0x0094 (0x0478 - 0x03E4)
+class AKFProj_HuskCannon_Fireball : public AKFProj_BallisticExplosive
+{
+public:
+	float                                              DamageScale;                                      		// 0x03E4 (0x0004) [0x0000000000000000]              
+	float                                              AOEScale;                                         		// 0x03E8 (0x0004) [0x0000000000000000]              
+	float                                              IncapScale;                                       		// 0x03EC (0x0004) [0x0000000000000000]              
+	int                                                ChargeLevel;                                      		// 0x03F0 (0x0004) [0x0000000000200000]              
+	class UParticleSystem*                             ExplosionEffectL1;                                		// 0x03F4 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ExplosionEffectL2;                                		// 0x03FC (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ExplosionEffectL3;                                		// 0x0404 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ProjFlightTemplateL1;                             		// 0x040C (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ProjFlightTemplateL2;                             		// 0x0414 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ProjFlightTemplateL3;                             		// 0x041C (0x0008) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          ExplosionSoundL1;                                 		// 0x0424 (0x0008) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          ExplosionSoundL2;                                 		// 0x042C (0x0008) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          ExplosionSoundL3;                                 		// 0x0434 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ConcussiveForceEffectL1;                          		// 0x043C (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ConcussiveForceEffectL2;                          		// 0x0444 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ConcussiveForceEffectL3;                          		// 0x044C (0x0008) [0x0000000000000000]              
+	class UClass*                                      GroundFireExplosionActorClass;                    		// 0x0454 (0x0008) [0x0000000000000000]              
+	class UKFGameExplosion*                            GroundFireExplosionTemplate;                      		// 0x045C (0x0008) [0x0000000000000000]              
+	float                                              BurnDuration;                                     		// 0x0464 (0x0004) [0x0000000000000000]              
+	float                                              BurnDamageInterval;                               		// 0x0468 (0x0004) [0x0000000000000000]              
+	DWORD                                              bSpawnGroundFire : 1;                             		// 0x046C (0x0004) [0x0000000000210000] [0x00000001] ( CPF_Travel )
+	DWORD                                              bAltGroundFire : 1;                               		// 0x046C (0x0004) [0x0000000000000000] [0x00000002] 
+	class UKFImpactEffectInfo*                         AltGroundFire;                                    		// 0x0470 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HuskCannon_Fireball" );
+
+		return pClassPointer;
+	};
+
+	void SpawnFlightEffects ( );
+	void GetIncapMod ( );
+	void SetExplosionActorClass ( );
+	void PrepareExplosionTemplate ( );
+	void ProcessTouch ( );
+	void TriggerExplosion ( );
+	void PrepareExplosionActor ( );
+	void PostBeginPlay ( );
+	void eventReplicatedEvent ( );
+};
+
+UClass* AKFProj_HuskCannon_Fireball::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeap_HuskCannon
+// 0x0070 (0x09C8 - 0x0958)
+class AKFWeap_HuskCannon : public AKFWeapon
+{
+public:
+	float                                              MaxChargeTime;                                    		// 0x0958 (0x0004) [0x0000000000000000]              
+	float                                              ValueIncreaseTime;                                		// 0x095C (0x0004) [0x0000000000000000]              
+	float                                              DmgIncreasePerCharge;                             		// 0x0960 (0x0004) [0x0000000000000000]              
+	float                                              AOEIncreasePerCharge;                             		// 0x0964 (0x0004) [0x0000000000000000]              
+	float                                              IncapIncreasePerCharge;                           		// 0x0968 (0x0004) [0x0000000000000000]              
+	int                                                AmmoIncreasePerCharge;                            		// 0x096C (0x0004) [0x0000000000000000]              
+	float                                              ChargeTime;                                       		// 0x0970 (0x0004) [0x0000000000000000]              
+	float                                              ConsumeAmmoTime;                                  		// 0x0974 (0x0004) [0x0000000000000000]              
+	float                                              MaxChargeLevel;                                   		// 0x0978 (0x0004) [0x0000000000000000]              
+	class UParticleSystem*                             ChargingEffect;                                   		// 0x097C (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ChargedEffect;                                    		// 0x0984 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             MuzzleFlashEffectL1;                              		// 0x098C (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             MuzzleFlashEffectL2;                              		// 0x0994 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             MuzzleFlashEffectL3;                              		// 0x099C (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    ChargingPSC;                                      		// 0x09A4 (0x0008) [0x0000000000000000]              
+	DWORD                                              bIsFullyCharged : 1;                              		// 0x09AC (0x0004) [0x0000000000000000] [0x00000001] 
+	struct FWeaponFireSndInfo                          FullyChargedSound;                                		// 0x09B0 (0x0010) [0x0000000000000000]              
+	float                                              SelfDamageReductionValue;                         		// 0x09C0 (0x0004) [0x0000000000000000]              
+	float                                              FullChargedTimerInterval;                         		// 0x09C4 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_HuskCannon" );
+
+		return pClassPointer;
+	};
+
+	void AdjustDamage ( );
+	void GetChargeFXLevel ( );
+	void GetChargeLevel ( );
+	void CauseMuzzleFlash ( );
+	void SpawnProjectile ( );
+	void Timer_StopFireEffects ( );
+	void FireAmmunition ( );
+	void OnStartFire ( );
+	void StartFire ( );
+	void ConsumeAmmo ( );
+	void CalculateTraderWeaponStatDamage ( );
+	void eventGetTraderFilter ( );
+};
+
+UClass* AKFWeap_HuskCannon::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_HuskGroundFire
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_HuskGroundFire : public AKFProj_GroundFire
 {
 public:
@@ -11983,7 +15580,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120253 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_HuskGroundFire" );
 
 		return pClassPointer;
 	};
@@ -11992,8 +15589,55 @@ public:
 
 UClass* AKFProj_HuskGroundFire::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_Mac10Splash
+// 0x0000 (0x03A4 - 0x03A4)
+class AKFProj_Mac10Splash : public AKFProj_FlareGunSplash
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Mac10Splash" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFProj_Mac10Splash::pClassPointer = NULL;
+
+// Class kfgamecontent.KFProj_MedicGrenade_Mini
+// 0x0000 (0x03E0 - 0x03E0)
+class AKFProj_MedicGrenade_Mini : public AKFProj_MedicGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_MedicGrenade_Mini" );
+
+		return pClassPointer;
+	};
+
+	void ProcessTouch ( );
+	void Bounce ( );
+	void eventHitWall ( );
+};
+
+UClass* AKFProj_MedicGrenade_Mini::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_MicrowaveGun_GroundFire
-// 0x0000 (0x03A0 - 0x03A0)
+// 0x0000 (0x03A4 - 0x03A4)
 class AKFProj_MicrowaveGun_GroundFire : public AKFProj_GroundFire
 {
 public:
@@ -12005,7 +15649,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120270 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_MicrowaveGun_GroundFire" );
 
 		return pClassPointer;
 	};
@@ -12015,7 +15659,7 @@ public:
 UClass* AKFProj_MicrowaveGun_GroundFire::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_MicrowaveImpact
-// 0x0000 (0x039C - 0x039C)
+// 0x0000 (0x03A0 - 0x03A0)
 class AKFProj_MicrowaveImpact : public AKFProjectile
 {
 public:
@@ -12027,7 +15671,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120276 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_MicrowaveImpact" );
 
 		return pClassPointer;
 	};
@@ -12059,7 +15703,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120360 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_MolotovFlare" );
 
 		return pClassPointer;
 	};
@@ -12071,13 +15715,13 @@ public:
 UClass* AKFProj_MolotovFlare::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_MolotovGrenade
-// 0x0017 (0x03E0 - 0x03C9)
+// 0x0017 (0x03E4 - 0x03CD)
 class AKFProj_MolotovGrenade : public AKFProj_Grenade
 {
 public:
-	class UClass*                                      ResidualFlameProjClass;                           		// 0x03CC (0x0008) [0x0000000000000000]              
-	int                                                NumResidualFlames;                                		// 0x03D4 (0x0004) [0x0000000000000000]              
-	class UAkEvent*                                    ThrowAkEvent;                                     		// 0x03D8 (0x0008) [0x0000000000000000]              
+	class UClass*                                      ResidualFlameProjClass;                           		// 0x03D0 (0x0008) [0x0000000000000000]              
+	int                                                NumResidualFlames;                                		// 0x03D8 (0x0004) [0x0000000000000000]              
+	class UAkEvent*                                    ThrowAkEvent;                                     		// 0x03DC (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -12086,7 +15730,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120376 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_MolotovGrenade" );
 
 		return pClassPointer;
 	};
@@ -12100,8 +15744,31 @@ public:
 
 UClass* AKFProj_MolotovGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_MolotovGrenade_Mini
+// 0x0000 (0x03E4 - 0x03E4)
+class AKFProj_MolotovGrenade_Mini : public AKFProj_MolotovGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_MolotovGrenade_Mini" );
+
+		return pClassPointer;
+	};
+
+	void eventHitWall ( );
+};
+
+UClass* AKFProj_MolotovGrenade_Mini::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_NailBombGrenade
-// 0x0003 (0x03CC - 0x03C9)
+// 0x0003 (0x03D0 - 0x03CD)
 class AKFProj_NailBombGrenade : public AKFProj_Grenade
 {
 public:
@@ -12113,7 +15780,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120457 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_NailBombGrenade" );
 
 		return pClassPointer;
 	};
@@ -12122,8 +15789,31 @@ public:
 
 UClass* AKFProj_NailBombGrenade::pClassPointer = NULL;
 
+// Class kfgamecontent.KFProj_NailBombGrenade_Mini
+// 0x0000 (0x03D0 - 0x03D0)
+class AKFProj_NailBombGrenade_Mini : public AKFProj_NailBombGrenade
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_NailBombGrenade_Mini" );
+
+		return pClassPointer;
+	};
+
+	void ProcessTouch ( );
+};
+
+UClass* AKFProj_NailBombGrenade_Mini::pClassPointer = NULL;
+
 // Class kfgamecontent.KFProj_NailShard
-// 0x0000 (0x03BC - 0x03BC)
+// 0x0000 (0x03C0 - 0x03C0)
 class AKFProj_NailShard : public AKFProj_Nail_Nailgun
 {
 public:
@@ -12135,7 +15825,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120471 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_NailShard" );
 
 		return pClassPointer;
 	};
@@ -12145,7 +15835,7 @@ public:
 UClass* AKFProj_NailShard::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Rocket_RPG7
-// 0x0000 (0x03C8 - 0x03C8)
+// 0x0000 (0x03E4 - 0x03E4)
 class AKFProj_Rocket_RPG7 : public AKFProj_BallisticExplosive
 {
 public:
@@ -12157,7 +15847,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120477 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Rocket_RPG7" );
 
 		return pClassPointer;
 	};
@@ -12167,12 +15857,12 @@ public:
 UClass* AKFProj_Rocket_RPG7::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Rocket_Seeker6
-// 0x000C (0x03D4 - 0x03C8)
+// 0x000C (0x03F0 - 0x03E4)
 class AKFProj_Rocket_Seeker6 : public AKFProj_BallisticExplosive
 {
 public:
-	class AKFPawn*                                     LockedTarget;                                     		// 0x03C8 (0x0008) [0x0000000000200000]              
-	float                                              SeekStrength;                                     		// 0x03D0 (0x0004) [0x0000000000000000]              
+	class AKFPawn*                                     LockedTarget;                                     		// 0x03E4 (0x0008) [0x0000000000200000]              
+	float                                              SeekStrength;                                     		// 0x03EC (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -12181,7 +15871,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120494 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Rocket_Seeker6" );
 
 		return pClassPointer;
 	};
@@ -12193,25 +15883,25 @@ public:
 UClass* AKFProj_Rocket_Seeker6::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_RocketLauncher_Seeker6
-// 0x006C (0x0930 - 0x08C4)
+// 0x006C (0x09C8 - 0x095C)
 class AKFWeap_RocketLauncher_Seeker6 : public AKFWeap_GrenadeLauncher_Base
 {
 public:
-	TArray< class APawn* >                             LockedTargets;                                    		// 0x08C4 (0x0010) [0x0000000000000000]              
-	float                                              BurstFireRecoilModifier;                          		// 0x08D4 (0x0004) [0x0000000000000000]              
-	float                                              LastTargetLockTime;                               		// 0x08D8 (0x0004) [0x0000000000000000]              
-	float                                              LastTargetValidationCheckTime;                    		// 0x08DC (0x0004) [0x0000000000000000]              
-	float                                              TimeBetweenLockOns;                               		// 0x08E0 (0x0004) [0x0000000000000000]              
-	float                                              TargetValidationCheckInterval;                    		// 0x08E4 (0x0004) [0x0000000000000000]              
-	float                                              MinTargetDistFromCrosshairSQ;                     		// 0x08E8 (0x0004) [0x0000000000000000]              
-	float                                              MaxLockMaintainFOVDotThreshold;                   		// 0x08EC (0x0004) [0x0000000000000000]              
-	class UAkBaseSoundObject*                          LockAcquiredSoundFirstPerson;                     		// 0x08F0 (0x0008) [0x0000000000000000]              
-	class UAkBaseSoundObject*                          LockLostSoundFirstPerson;                         		// 0x08F8 (0x0008) [0x0000000000000000]              
-	class UTexture2D*                                  LockedOnIcon;                                     		// 0x0900 (0x0008) [0x0000000000000000]              
-	struct FLinearColor                                LockedIconColor;                                  		// 0x0908 (0x0010) [0x0000000000000000]              
-	class UAkComponent*                                IronsightsComponent;                              		// 0x0918 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    IronsightsZoomInSound;                            		// 0x0920 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    IronsightsZoomOutSound;                           		// 0x0928 (0x0008) [0x0000000000000000]              
+	TArray< class APawn* >                             LockedTargets;                                    		// 0x095C (0x0010) [0x0000000000000000]              
+	float                                              BurstFireRecoilModifier;                          		// 0x096C (0x0004) [0x0000000000000000]              
+	float                                              LastTargetLockTime;                               		// 0x0970 (0x0004) [0x0000000000000000]              
+	float                                              LastTargetValidationCheckTime;                    		// 0x0974 (0x0004) [0x0000000000000000]              
+	float                                              TimeBetweenLockOns;                               		// 0x0978 (0x0004) [0x0000000000000000]              
+	float                                              TargetValidationCheckInterval;                    		// 0x097C (0x0004) [0x0000000000000000]              
+	float                                              MinTargetDistFromCrosshairSQ;                     		// 0x0980 (0x0004) [0x0000000000000000]              
+	float                                              MaxLockMaintainFOVDotThreshold;                   		// 0x0984 (0x0004) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          LockAcquiredSoundFirstPerson;                     		// 0x0988 (0x0008) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          LockLostSoundFirstPerson;                         		// 0x0990 (0x0008) [0x0000000000000000]              
+	class UTexture2D*                                  LockedOnIcon;                                     		// 0x0998 (0x0008) [0x0000000000000000]              
+	struct FLinearColor                                LockedIconColor;                                  		// 0x09A0 (0x0010) [0x0000000000000000]              
+	class UAkComponent*                                IronsightsComponent;                              		// 0x09B0 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    IronsightsZoomInSound;                            		// 0x09B8 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    IronsightsZoomOutSound;                           		// 0x09C0 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -12220,7 +15910,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120503 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_RocketLauncher_Seeker6" );
 
 		return pClassPointer;
 	};
@@ -12236,6 +15926,7 @@ public:
 	void ServerSyncLockedTargets ( );
 	void ValidateTargets ( );
 	void FindTargets ( );
+	void CanLockOnTo ( );
 	void eventTick ( );
 	void AltFireMode ( );
 };
@@ -12243,30 +15934,31 @@ public:
 UClass* AKFWeap_RocketLauncher_Seeker6::pClassPointer = NULL;
 
 // Class kfgamecontent.KFProj_Thrown_C4
-// 0x00A8 (0x0444 - 0x039C)
+// 0x00AC (0x044C - 0x03A0)
 class AKFProj_Thrown_C4 : public AKFProjectile
 {
 public:
-	class AActor*                                      StuckToActor;                                     		// 0x039C (0x0008) [0x00000000001E0000]              ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
-	int                                                StuckToBoneIdx;                                   		// 0x03A4 (0x0004) [0x00000000001F0000]              ( CPF_Travel | CPF_EditConst | CPF_GlobalConfig | CPF_Component )
-	struct FVector                                     StuckToLocation;                                  		// 0x03A8 (0x000C) [0x0000000000200000]              
-	struct FRotator                                    StuckToRotation;                                  		// 0x03B4 (0x000C) [0x0000000000210000]              ( CPF_Travel )
-	class AActor*                                      PrevStuckToActor;                                 		// 0x03C0 (0x0008) [0x0000000000000000]              
-	class UKFImpactEffectInfo*                         ImpactEffectInfo;                                 		// 0x03C8 (0x0008) [0x0000000000000000]              
-	struct FVector                                     LandedTranslationOffset;                          		// 0x03D0 (0x000C) [0x0000000000000000]              
-	class UAkEvent*                                    StickAkEvent;                                     		// 0x03DC (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    ProximityAlertAkEvent;                            		// 0x03E4 (0x0008) [0x0000000000000000]              
-	float                                              ProximityAlertInterval;                           		// 0x03EC (0x0004) [0x0000000000000000]              
-	float                                              ProximityAlertIntervalClose;                      		// 0x03F0 (0x0004) [0x0000000000000000]              
-	float                                              ProximityAlertTimer;                              		// 0x03F4 (0x0004) [0x0000000000000000]              
-	class UStaticMeshComponent*                        ChargeMesh;                                       		// 0x03F8 (0x0008) [0x0000000000000000]              
-	class UMaterialInstanceConstant*                   ChargeMIC;                                        		// 0x0400 (0x0008) [0x0000000000000000]              
-	class UPointLightComponent*                        BlinkLightComp;                                   		// 0x0408 (0x0008) [0x0000000000000000]              
-	struct FLinearColor                                BlinkColorOn;                                     		// 0x0410 (0x0010) [0x0000000000000000]              
-	struct FLinearColor                                BlinkColorOff;                                    		// 0x0420 (0x0010) [0x0000000000000000]              
-	float                                              BlinkTime;                                        		// 0x0430 (0x0004) [0x0000000000000000]              
-	class UParticleSystem*                             BlinkFX;                                          		// 0x0434 (0x0008) [0x0000000000000000]              
-	class UParticleSystemComponent*                    BlinkPSC;                                         		// 0x043C (0x0008) [0x0000000000000000]              
+	class AActor*                                      StuckToActor;                                     		// 0x03A0 (0x0008) [0x00000000001E0000]              ( CPF_EditConst | CPF_GlobalConfig | CPF_Component )
+	int                                                StuckToBoneIdx;                                   		// 0x03A8 (0x0004) [0x00000000001F0000]              ( CPF_Travel | CPF_EditConst | CPF_GlobalConfig | CPF_Component )
+	struct FVector                                     StuckToLocation;                                  		// 0x03AC (0x000C) [0x0000000000200000]              
+	struct FRotator                                    StuckToRotation;                                  		// 0x03B8 (0x000C) [0x0000000000210000]              ( CPF_Travel )
+	class AActor*                                      PrevStuckToActor;                                 		// 0x03C4 (0x0008) [0x0000000000000000]              
+	class UKFImpactEffectInfo*                         ImpactEffectInfo;                                 		// 0x03CC (0x0008) [0x0000000000000000]              
+	struct FVector                                     LandedTranslationOffset;                          		// 0x03D4 (0x000C) [0x0000000000000000]              
+	class UAkEvent*                                    StickAkEvent;                                     		// 0x03E0 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    ProximityAlertAkEvent;                            		// 0x03E8 (0x0008) [0x0000000000000000]              
+	float                                              ProximityAlertInterval;                           		// 0x03F0 (0x0004) [0x0000000000000000]              
+	float                                              ProximityAlertIntervalClose;                      		// 0x03F4 (0x0004) [0x0000000000000000]              
+	float                                              ProximityAlertTimer;                              		// 0x03F8 (0x0004) [0x0000000000000000]              
+	class UStaticMeshComponent*                        ChargeMesh;                                       		// 0x03FC (0x0008) [0x0000000000000000]              
+	class UMaterialInstanceConstant*                   ChargeMIC;                                        		// 0x0404 (0x0008) [0x0000000000000000]              
+	class UPointLightComponent*                        BlinkLightComp;                                   		// 0x040C (0x0008) [0x0000000000000000]              
+	struct FLinearColor                                BlinkColorOn;                                     		// 0x0414 (0x0010) [0x0000000000000000]              
+	struct FLinearColor                                BlinkColorOff;                                    		// 0x0424 (0x0010) [0x0000000000000000]              
+	float                                              BlinkTime;                                        		// 0x0434 (0x0004) [0x0000000000000000]              
+	class UParticleSystem*                             BlinkFX;                                          		// 0x0438 (0x0008) [0x0000000000000000]              
+	class UParticleSystemComponent*                    BlinkPSC;                                         		// 0x0440 (0x0008) [0x0000000000000000]              
+	int                                                WeaponSkinId;                                     		// 0x0448 (0x0004) [0x000000000022001B]              ( CPF_Edit | CPF_Const | CPF_ExportObject | CPF_OptionalParm | CPF_EditConst )
 
 private:
 	static UClass* pClassPointer;
@@ -12275,11 +15967,12 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120523 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFProj_Thrown_C4" );
 
 		return pClassPointer;
 	};
 
+	void SetWeaponSkin ( );
 	void OnInstigatorControllerLeft ( );
 	void eventDestroyed ( );
 	void Timer_Explode ( );
@@ -12313,20 +16006,20 @@ public:
 UClass* AKFProj_Thrown_C4::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Thrown_C4
-// 0x004C (0x0950 - 0x0904)
+// 0x004C (0x09E8 - 0x099C)
 class AKFWeap_Thrown_C4 : public AKFWeap_ThrownBase
 {
 public:
-	struct FName                                       DetonateAnim;                                     		// 0x0904 (0x0008) [0x0000000000000000]              
-	struct FName                                       DetonateLastAnim;                                 		// 0x090C (0x0008) [0x0000000000000000]              
-	TArray< class AKFProj_Thrown_C4* >                 DeployedCharges;                                  		// 0x0914 (0x0010) [0x0000000000000000]              
-	class UClass*                                      ScreenUIClass;                                    		// 0x0924 (0x0008) [0x0000000000000000]              
-	class UKFGFxWorld_C4Screen*                        ScreenUI;                                         		// 0x092C (0x0008) [0x0000000000000000]              
-	float                                              TimeSinceLastUpdate;                              		// 0x0934 (0x0004) [0x0000000000000000]              
-	float                                              UpdateInterval;                                   		// 0x0938 (0x0004) [0x0000000000000000]              
-	class UAkEvent*                                    DetonateAkEvent;                                  		// 0x093C (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    DryFireAkEvent;                                   		// 0x0944 (0x0008) [0x0000000000000000]              
-	int                                                NumDeployedCharges;                               		// 0x094C (0x0004) [0x0000000000200000]              
+	struct FName                                       DetonateAnim;                                     		// 0x099C (0x0008) [0x0000000000000000]              
+	struct FName                                       DetonateLastAnim;                                 		// 0x09A4 (0x0008) [0x0000000000000000]              
+	TArray< class AKFProj_Thrown_C4* >                 DeployedCharges;                                  		// 0x09AC (0x0010) [0x0000000000000000]              
+	class UClass*                                      ScreenUIClass;                                    		// 0x09BC (0x0008) [0x0000000000000000]              
+	class UKFGFxWorld_C4Screen*                        ScreenUI;                                         		// 0x09C4 (0x0008) [0x0000000000000000]              
+	float                                              TimeSinceLastUpdate;                              		// 0x09CC (0x0004) [0x0000000000000000]              
+	float                                              UpdateInterval;                                   		// 0x09D0 (0x0004) [0x0000000000000000]              
+	class UAkEvent*                                    DetonateAkEvent;                                  		// 0x09D4 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    DryFireAkEvent;                                   		// 0x09DC (0x0008) [0x0000000000000000]              
+	int                                                NumDeployedCharges;                               		// 0x09E4 (0x0004) [0x0000000000210000]              ( CPF_Travel )
 
 private:
 	static UClass* pClassPointer;
@@ -12335,7 +16028,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120650 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Thrown_C4" );
 
 		return pClassPointer;
 	};
@@ -12362,6 +16055,29 @@ public:
 
 UClass* AKFWeap_Thrown_C4::pClassPointer = NULL;
 
+// Class kfgamecontent.KFSeqAct_BloodRain
+// 0x0000 (0x0150 - 0x0150)
+class UKFSeqAct_BloodRain : public USequenceAction
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSeqAct_BloodRain" );
+
+		return pClassPointer;
+	};
+
+	void eventActivated ( );
+};
+
+UClass* UKFSeqAct_BloodRain::pClassPointer = NULL;
+
 // Class kfgamecontent.KFSeqAct_MinigameActivateGenerator
 // 0x0008 (0x0158 - 0x0150)
 class UKFSeqAct_MinigameActivateGenerator : public USequenceAction
@@ -12376,7 +16092,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120668 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSeqAct_MinigameActivateGenerator" );
 
 		return pClassPointer;
 	};
@@ -12414,7 +16130,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120671 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFTrigger_MinigameGenerator" );
 
 		return pClassPointer;
 	};
@@ -12455,7 +16171,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120687 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSeqEvent_MinigameGeneratorStateChanged" );
 
 		return pClassPointer;
 	};
@@ -12465,14 +16181,11 @@ public:
 
 UClass* UKFSeqEvent_MinigameGeneratorStateChanged::pClassPointer = NULL;
 
-// Class kfgamecontent.SprayActor_Flame
-// 0x0028 (0x060C - 0x05E4)
-class ASprayActor_Flame : public AKFSprayActor
+// Class kfgamecontent.KFSM_BloatKing_Enrage
+// 0x0000 (0x0150 - 0x0150)
+class UKFSM_BloatKing_Enrage : public UKFSM_PlaySingleAnim
 {
 public:
-	TArray< class UKFParticleSystemComponent* >        BoneChainComponents;                              		// 0x05E4 (0x0010) [0x0000000000000000]              
-	TArray< class UKFParticleSystemComponent* >        BoneChainComponents_1stP;                         		// 0x05F4 (0x0010) [0x0000000000000000]              
-	class UAnimSet*                                    AltSprayAnimSet;                                  		// 0x0604 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -12481,7 +16194,59 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 120904 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_BloatKing_Enrage" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFSM_BloatKing_Enrage::pClassPointer = NULL;
+
+// Class kfgamecontent.KFSM_BloatKingSubspawn_Explode
+// 0x0008 (0x0158 - 0x0150)
+class UKFSM_BloatKingSubspawn_Explode : public UKFSM_PlaySingleAnim
+{
+public:
+	float                                              AnimLength;                                       		// 0x0150 (0x0004) [0x0000000000000000]              
+	float                                              AnimTicked;                                       		// 0x0154 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_BloatKingSubspawn_Explode" );
+
+		return pClassPointer;
+	};
+
+	void SpecialMoveEnded ( );
+	void SpecialMoveStarted ( );
+	void Tick ( );
+};
+
+UClass* UKFSM_BloatKingSubspawn_Explode::pClassPointer = NULL;
+
+// Class kfgamecontent.SprayActor_Flame
+// 0x0028 (0x0610 - 0x05E8)
+class ASprayActor_Flame : public AKFSprayActor
+{
+public:
+	TArray< class UKFParticleSystemComponent* >        BoneChainComponents;                              		// 0x05E8 (0x0010) [0x0000000000000000]              
+	TArray< class UKFParticleSystemComponent* >        BoneChainComponents_1stP;                         		// 0x05F8 (0x0010) [0x0000000000000000]              
+	class UAnimSet*                                    AltSprayAnimSet;                                  		// 0x0608 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.SprayActor_Flame" );
 
 		return pClassPointer;
 	};
@@ -12508,7 +16273,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121189 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerAlpha_Grab" );
 
 		return pClassPointer;
 	};
@@ -12533,7 +16298,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121199 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerAlpha_Melee" );
 
 		return pClassPointer;
 	};
@@ -12555,7 +16320,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121201 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerAlpha_Rally" );
 
 		return pClassPointer;
 	};
@@ -12580,7 +16345,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121208 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerZedBlockBase" );
 
 		return pClassPointer;
 	};
@@ -12607,7 +16372,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121220 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerBloat_Block" );
 
 		return pClassPointer;
 	};
@@ -12629,7 +16394,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121222 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerBloat_Melee" );
 
 		return pClassPointer;
 	};
@@ -12651,7 +16416,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121224 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerBloat_Melee2" );
 
 		return pClassPointer;
 	};
@@ -12673,7 +16438,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121226 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerBloat_PukeMineAttack" );
 
 		return pClassPointer;
 	};
@@ -12696,7 +16461,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121230 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerCrawler_Melee" );
 
 		return pClassPointer;
 	};
@@ -12718,7 +16483,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121232 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerCrawler_Melee2" );
 
 		return pClassPointer;
 	};
@@ -12740,7 +16505,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121248 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerFleshpound_Block" );
 
 		return pClassPointer;
 	};
@@ -12762,7 +16527,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121250 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerFleshpound_Melee" );
 
 		return pClassPointer;
 	};
@@ -12785,7 +16550,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121257 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerFleshpound_Melee2" );
 
 		return pClassPointer;
 	};
@@ -12807,7 +16572,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121259 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerFleshpound_Rage" );
 
 		return pClassPointer;
 	};
@@ -12832,7 +16597,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121273 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerGorefast_Block" );
 
 		return pClassPointer;
 	};
@@ -12854,7 +16619,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121275 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerGorefast_Melee" );
 
 		return pClassPointer;
 	};
@@ -12876,7 +16641,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121277 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerGorefast_Melee2" );
 
 		return pClassPointer;
 	};
@@ -12898,7 +16663,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121279 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerGorefast_Melee3" );
 
 		return pClassPointer;
 	};
@@ -12921,7 +16686,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121311 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerHusk_FlameThrowerAttack" );
 
 		return pClassPointer;
 	};
@@ -12948,7 +16713,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121323 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerHusk_Melee" );
 
 		return pClassPointer;
 	};
@@ -12970,7 +16735,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121325 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerHusk_Suicide" );
 
 		return pClassPointer;
 	};
@@ -12995,7 +16760,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121331 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerPatriarch_Heal" );
 
 		return pClassPointer;
 	};
@@ -13021,7 +16786,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121340 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerPatriarch_Melee" );
 
 		return pClassPointer;
 	};
@@ -13044,7 +16809,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121342 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerPatriarch_MinigunBarrage" );
 
 		return pClassPointer;
 	};
@@ -13074,7 +16839,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121357 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerPatriarch_MissileAttack" );
 
 		return pClassPointer;
 	};
@@ -13096,7 +16861,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121359 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerPatriarch_MortarAttack" );
 
 		return pClassPointer;
 	};
@@ -13120,7 +16885,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121364 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerPatriarch_TentacleGrab" );
 
 		return pClassPointer;
 	};
@@ -13147,7 +16912,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121389 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerScrake_Block" );
 
 		return pClassPointer;
 	};
@@ -13169,7 +16934,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121391 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerScrake_Melee" );
 
 		return pClassPointer;
 	};
@@ -13192,7 +16957,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121397 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerScrake_Melee2" );
 
 		return pClassPointer;
 	};
@@ -13214,7 +16979,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121399 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerScrake_Melee3" );
 
 		return pClassPointer;
 	};
@@ -13236,7 +17001,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121401 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerSiren_Melee" );
 
 		return pClassPointer;
 	};
@@ -13259,7 +17024,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121438 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFTrigger_SirenProjectileShield" );
 
 		return pClassPointer;
 	};
@@ -13284,7 +17049,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121445 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerSiren_NormalScream" );
 
 		return pClassPointer;
 	};
@@ -13328,7 +17093,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121453 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerSiren_VortexScream" );
 
 		return pClassPointer;
 	};
@@ -13370,7 +17135,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121527 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerSiren_VortexVictim" );
 
 		return pClassPointer;
 	};
@@ -13395,7 +17160,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121541 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerSlasher_Melee" );
 
 		return pClassPointer;
 	};
@@ -13417,7 +17182,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121543 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerSlasher_Melee2" );
 
 		return pClassPointer;
 	};
@@ -13440,7 +17205,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121545 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerSlasher_Roll" );
 
 		return pClassPointer;
 	};
@@ -13466,7 +17231,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121558 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerStalker_Melee" );
 
 		return pClassPointer;
 	};
@@ -13488,7 +17253,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121560 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerStalker_Melee2" );
 
 		return pClassPointer;
 	};
@@ -13510,7 +17275,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121562 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFSM_PlayerStalker_Roll" );
 
 		return pClassPointer;
 	};
@@ -13523,8 +17288,8 @@ public:
 UClass* UKFSM_PlayerStalker_Roll::pClassPointer = NULL;
 
 // Class kfgamecontent.KFStaticMeshActor_TrackLocalPC
-// 0x0000 (0x02B0 - 0x02B0)
-class AKFStaticMeshActor_TrackLocalPC : public AStaticMeshActor
+// 0x0000 (0x0294 - 0x0294)
+class AKFStaticMeshActor_TrackLocalPC : public ADynamicSMActor
 {
 public:
 
@@ -13535,7 +17300,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121573 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFStaticMeshActor_TrackLocalPC" );
 
 		return pClassPointer;
 	};
@@ -13544,6 +17309,50 @@ public:
 };
 
 UClass* AKFStaticMeshActor_TrackLocalPC::pClassPointer = NULL;
+
+// Class kfgamecontent.KFTraderVoiceGroup_Hans
+// 0x0000 (0x22C0 - 0x22C0)
+class UKFTraderVoiceGroup_Hans : public UKFTraderVoiceGroupBase
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFTraderVoiceGroup_Hans" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFTraderVoiceGroup_Hans::pClassPointer = NULL;
+
+// Class kfgamecontent.KFTraderVoiceGroup_Lockheart
+// 0x0000 (0x22C0 - 0x22C0)
+class UKFTraderVoiceGroup_Lockheart : public UKFTraderVoiceGroupBase
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFTraderVoiceGroup_Lockheart" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFTraderVoiceGroup_Lockheart::pClassPointer = NULL;
 
 // Class kfgamecontent.KFVolume_CameraFade
 // 0x000C (0x028C - 0x0280)
@@ -13561,7 +17370,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121853 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFVolume_CameraFade" );
 
 		return pClassPointer;
 	};
@@ -13585,7 +17394,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121866 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFVolume_DamageAdjust" );
 
 		return pClassPointer;
 	};
@@ -13609,7 +17418,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121879 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFVolume_DisableZedJump" );
 
 		return pClassPointer;
 	};
@@ -13621,19 +17430,19 @@ public:
 UClass* AKFVolume_DisableZedJump::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_AssaultRifle_AK12
-// 0x004C (0x090C - 0x08C0)
+// 0x004C (0x09A4 - 0x0958)
 class AKFWeap_AssaultRifle_AK12 : public AKFWeap_RifleBase
 {
 public:
-	float                                              BurstFireRecoilRate;                              		// 0x08C0 (0x0004) [0x0000000000000000]              
-	float                                              BurstFireRecoilModifier;                          		// 0x08C4 (0x0004) [0x0000000000000000]              
-	struct FName                                       BurstFire2RdAnim;                                 		// 0x08C8 (0x0008) [0x0000000000000000]              
-	struct FName                                       BurstFire3RdAnim;                                 		// 0x08D0 (0x0008) [0x0000000000000000]              
-	struct FName                                       BurstFire2RdSightedAnim;                          		// 0x08D8 (0x0008) [0x0000000000000000]              
-	struct FName                                       BurstFire3RdSightedAnim;                          		// 0x08E0 (0x0008) [0x0000000000000000]              
-	struct FWeaponFireSndInfo                          WeaponFire2RdSnd;                                 		// 0x08E8 (0x0010) [0x0000000000000000]              
-	struct FWeaponFireSndInfo                          WeaponFire3RdSnd;                                 		// 0x08F8 (0x0010) [0x0000000000000000]              
-	DWORD                                              bBurstPlayedFireEffects : 1;                      		// 0x0908 (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              BurstFireRecoilRate;                              		// 0x0958 (0x0004) [0x0000000000000000]              
+	float                                              BurstFireRecoilModifier;                          		// 0x095C (0x0004) [0x0000000000000000]              
+	struct FName                                       BurstFire2RdAnim;                                 		// 0x0960 (0x0008) [0x0000000000000000]              
+	struct FName                                       BurstFire3RdAnim;                                 		// 0x0968 (0x0008) [0x0000000000000000]              
+	struct FName                                       BurstFire2RdSightedAnim;                          		// 0x0970 (0x0008) [0x0000000000000000]              
+	struct FName                                       BurstFire3RdSightedAnim;                          		// 0x0978 (0x0008) [0x0000000000000000]              
+	struct FWeaponFireSndInfo                          WeaponFire2RdSnd;                                 		// 0x0980 (0x0010) [0x0000000000000000]              
+	struct FWeaponFireSndInfo                          WeaponFire3RdSnd;                                 		// 0x0990 (0x0010) [0x0000000000000000]              
+	DWORD                                              bBurstPlayedFireEffects : 1;                      		// 0x09A0 (0x0004) [0x0000000000000000] [0x00000001] 
 
 private:
 	static UClass* pClassPointer;
@@ -13642,7 +17451,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121889 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_AK12" );
 
 		return pClassPointer;
 	};
@@ -13652,7 +17461,7 @@ public:
 UClass* AKFWeap_AssaultRifle_AK12::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_AssaultRifle_Bullpup
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_AssaultRifle_Bullpup : public AKFWeap_RifleBase
 {
 public:
@@ -13664,7 +17473,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121952 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_Bullpup" );
 
 		return pClassPointer;
 	};
@@ -13673,9 +17482,9 @@ public:
 
 UClass* AKFWeap_AssaultRifle_Bullpup::pClassPointer = NULL;
 
-// Class kfgamecontent.KFWeapAttach_MultiAmmo
-// 0x0000 (0x03E8 - 0x03E8)
-class AKFWeapAttach_MultiAmmo : public AKFWeaponAttachment
+// Class kfgamecontent.KFWeap_AssaultRifle_FNFal
+// 0x0000 (0x0990 - 0x0990)
+class AKFWeap_AssaultRifle_FNFal : public AKFWeap_ScopedBase
 {
 public:
 
@@ -13686,24 +17495,22 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 121996 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_FNFal" );
 
 		return pClassPointer;
 	};
 
-	void PlayReloadMagazineAnim ( );
-	void CauseMuzzleFlash ( );
 };
 
-UClass* AKFWeapAttach_MultiAmmo::pClassPointer = NULL;
+UClass* AKFWeap_AssaultRifle_FNFal::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_AssaultRifle_M16M203
-// 0x0010 (0x08D0 - 0x08C0)
+// 0x0010 (0x0968 - 0x0958)
 class AKFWeap_AssaultRifle_M16M203 : public AKFWeap_RifleBase
 {
 public:
-	struct FVector                                     SecondaryFireOffset;                              		// 0x08C0 (0x000C) [0x0000000000000000]              
-	int                                                ServerTotalAltAmmo;                               		// 0x08CC (0x0004) [0x0000000000000000]              
+	struct FVector                                     SecondaryFireOffset;                              		// 0x0958 (0x000C) [0x0000000000000000]              
+	int                                                ServerTotalAltAmmo;                               		// 0x0964 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -13712,7 +17519,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122010 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_M16M203" );
 
 		return pClassPointer;
 	};
@@ -13738,7 +17545,7 @@ public:
 UClass* AKFWeap_AssaultRifle_M16M203::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_AssaultRifle_Medic
-// 0x0000 (0x0984 - 0x0984)
+// 0x0000 (0x0A1C - 0x0A1C)
 class AKFWeap_AssaultRifle_Medic : public AKFWeap_MedicBase
 {
 public:
@@ -13750,7 +17557,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122260 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_Medic" );
 
 		return pClassPointer;
 	};
@@ -13760,8 +17567,78 @@ public:
 
 UClass* AKFWeap_AssaultRifle_Medic::pClassPointer = NULL;
 
+// Class kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher
+// 0x000C (0x0A28 - 0x0A1C)
+class AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher : public AKFWeap_AssaultRifle_Medic
+{
+public:
+	struct FVector                                     SecondaryFireOffset;                              		// 0x0A1C (0x000C) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_MedicRifleGrenadeLauncher" );
+
+		return pClassPointer;
+	};
+
+	void UpdateOpticsUI ( );
+	void TryToAltReload ( );
+	void CanAltAutoReload ( );
+	void CanOverrideMagReload ( );
+	void ServerSetAltAmmoCount ( );
+	void ServerSendToAltReload ( );
+	void SendToAltReload ( );
+	void ShouldAutoReload ( );
+	void CauseMuzzleFlash ( );
+	void SetOriginalValuesFromPickup ( );
+	void ClientGiveSecondaryAmmo ( );
+	void AddSecondaryAmmo ( );
+	void InitializeAmmo ( );
+	void AltFireMode ( );
+	void eventGetAltTraderFilter ( );
+	void GetSecondaryAmmoForHUD ( );
+};
+
+UClass* AKFWeap_AssaultRifle_MedicRifleGrenadeLauncher::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeap_AssaultRifle_MKB42
+// 0x004C (0x09A4 - 0x0958)
+class AKFWeap_AssaultRifle_MKB42 : public AKFWeap_RifleBase
+{
+public:
+	float                                              BurstFireRecoilRate;                              		// 0x0958 (0x0004) [0x0000000000000000]              
+	float                                              BurstFireRecoilModifier;                          		// 0x095C (0x0004) [0x0000000000000000]              
+	struct FName                                       BurstFire2RdAnim;                                 		// 0x0960 (0x0008) [0x0000000000000000]              
+	struct FName                                       BurstFire3RdAnim;                                 		// 0x0968 (0x0008) [0x0000000000000000]              
+	struct FName                                       BurstFire2RdSightedAnim;                          		// 0x0970 (0x0008) [0x0000000000000000]              
+	struct FName                                       BurstFire3RdSightedAnim;                          		// 0x0978 (0x0008) [0x0000000000000000]              
+	struct FWeaponFireSndInfo                          WeaponFire2RdSnd;                                 		// 0x0980 (0x0010) [0x0000000000000000]              
+	struct FWeaponFireSndInfo                          WeaponFire3RdSnd;                                 		// 0x0990 (0x0010) [0x0000000000000000]              
+	DWORD                                              bBurstPlayedFireEffects : 1;                      		// 0x09A0 (0x0004) [0x0000000000000000] [0x00000001] 
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_MKB42" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFWeap_AssaultRifle_MKB42::pClassPointer = NULL;
+
 // Class kfgamecontent.KFWeap_AssaultRifle_SCAR
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_AssaultRifle_SCAR : public AKFWeap_RifleBase
 {
 public:
@@ -13773,7 +17650,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122283 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssaultRifle_SCAR" );
 
 		return pClassPointer;
 	};
@@ -13783,7 +17660,7 @@ public:
 UClass* AKFWeap_AssaultRifle_SCAR::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_AssetDummy
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_AssetDummy : public AKFWeapon
 {
 public:
@@ -13795,7 +17672,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122302 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_AssetDummy" );
 
 		return pClassPointer;
 	};
@@ -13805,16 +17682,14 @@ public:
 UClass* AKFWeap_AssetDummy::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Beam_Microwave
-// 0x0032 (0x095C - 0x092A)
+// 0x0022 (0x09E4 - 0x09C2)
 class AKFWeap_Beam_Microwave : public AKFWeap_FlameBase
 {
 public:
-	struct FName                                       FireHeavyAnim;                                    		// 0x092C (0x0008) [0x0000000000000000]              
-	struct FName                                       FireLastHeavyAnim;                                		// 0x0934 (0x0008) [0x0000000000000000]              
-	struct FName                                       FireLastHeavySightedAnim;                         		// 0x093C (0x0008) [0x0000000000000000]              
-	struct FName                                       FireLoopEndLastAnim;                              		// 0x0944 (0x0008) [0x0000000000000000]              
-	struct FName                                       FireLoopEndLastSightedAnim;                       		// 0x094C (0x0008) [0x0000000000000000]              
-	class UGameExplosion*                              ExplosionTemplate;                                		// 0x0954 (0x0008) [0x0000000000000000]              
+	struct FName                                       FireHeavyAnim;                                    		// 0x09C4 (0x0008) [0x0000000000000000]              
+	struct FName                                       FireLastHeavyAnim;                                		// 0x09CC (0x0008) [0x0000000000000000]              
+	struct FName                                       FireLastHeavySightedAnim;                         		// 0x09D4 (0x0008) [0x0000000000000000]              
+	class UGameExplosion*                              ExplosionTemplate;                                		// 0x09DC (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -13823,7 +17698,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122307 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Beam_Microwave" );
 
 		return pClassPointer;
 	};
@@ -13832,15 +17707,14 @@ public:
 	void ShouldAutoReload ( );
 	void CustomFire ( );
 	void AltFireMode ( );
-	void GetLoopEndFireAnim ( );
 	void GetWeaponFireAnim ( );
 };
 
 UClass* AKFWeap_Beam_Microwave::pClassPointer = NULL;
 
-// Class kfgamecontent.KFWeapAttach_MaceAndShield
-// 0x0000 (0x0420 - 0x0420)
-class AKFWeapAttach_MaceAndShield : public AKFWeapAttach_DualBase
+// Class kfgamecontent.KFWeap_Blunt_ChainBat
+// 0x0000 (0x09F0 - 0x09F0)
+class AKFWeap_Blunt_ChainBat : public AKFWeap_MeleeBase
 {
 public:
 
@@ -13851,30 +17725,28 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122369 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Blunt_ChainBat" );
 
 		return pClassPointer;
 	};
 
-	void PlayWeaponMeshAnim ( );
-	void PlayWeaponFireAnim ( );
 };
 
-UClass* AKFWeapAttach_MaceAndShield::pClassPointer = NULL;
+UClass* AKFWeap_Blunt_ChainBat::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Blunt_MaceAndShield
-// 0x0048 (0x09A0 - 0x0958)
+// 0x0048 (0x0A38 - 0x09F0)
 class AKFWeap_Blunt_MaceAndShield : public AKFWeap_MeleeBase
 {
 public:
-	float                                              MaxMaceHitRange;                                  		// 0x0958 (0x0004) [0x0000000000000000]              
-	float                                              MaxShieldHitRange;                                		// 0x095C (0x0004) [0x0000000000000000]              
-	TArray< struct FMeleeHitboxInfo >                  MaceHitboxChain;                                  		// 0x0960 (0x0010) [0x0000000000000000]              
-	TArray< struct FMeleeHitboxInfo >                  ShieldHitboxChain;                                		// 0x0970 (0x0010) [0x0000000000000000]              
-	class UClass*                                      MaceLightDamageType;                              		// 0x0980 (0x0008) [0x0000000000000000]              
-	class UClass*                                      ShieldLightDamageType;                            		// 0x0988 (0x0008) [0x0000000000000000]              
-	class UClass*                                      MaceHeavyDamageType;                              		// 0x0990 (0x0008) [0x0000000000000000]              
-	class UClass*                                      ShieldHeavyDamageType;                            		// 0x0998 (0x0008) [0x0000000000000000]              
+	float                                              MaxMaceHitRange;                                  		// 0x09F0 (0x0004) [0x0000000000000000]              
+	float                                              MaxShieldHitRange;                                		// 0x09F4 (0x0004) [0x0000000000000000]              
+	TArray< struct FMeleeHitboxInfo >                  MaceHitboxChain;                                  		// 0x09F8 (0x0010) [0x0000000000000000]              
+	TArray< struct FMeleeHitboxInfo >                  ShieldHitboxChain;                                		// 0x0A08 (0x0010) [0x0000000000000000]              
+	class UClass*                                      MaceLightDamageType;                              		// 0x0A18 (0x0008) [0x0000000000000000]              
+	class UClass*                                      ShieldLightDamageType;                            		// 0x0A20 (0x0008) [0x0000000000000000]              
+	class UClass*                                      MaceHeavyDamageType;                              		// 0x0A28 (0x0008) [0x0000000000000000]              
+	class UClass*                                      ShieldHeavyDamageType;                            		// 0x0A30 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -13883,7 +17755,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122378 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Blunt_MaceAndShield" );
 
 		return pClassPointer;
 	};
@@ -13894,12 +17766,11 @@ public:
 
 UClass* AKFWeap_Blunt_MaceAndShield::pClassPointer = NULL;
 
-// Class kfgamecontent.KFWeapAttach_Pulverizer
-// 0x0001 (0x03E9 - 0x03E8)
-class AKFWeapAttach_Pulverizer : public AKFWeaponAttachment
+// Class kfgamecontent.KFWeap_Blunt_PowerGloves
+// 0x0000 (0x09F0 - 0x09F0)
+class AKFWeap_Blunt_PowerGloves : public AKFWeap_MeleeBase
 {
 public:
-	unsigned char                                      NextPulverizerShootType;                          		// 0x03E8 (0x0001) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -13908,28 +17779,30 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122416 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Blunt_PowerGloves" );
 
 		return pClassPointer;
 	};
 
-	void UpdateThirdPersonWeaponAction ( );
-	void PlayPulverizerShoot ( );
-	void ThirdPersonFireEffects ( );
 };
 
-UClass* AKFWeapAttach_Pulverizer::pClassPointer = NULL;
+UClass* AKFWeap_Blunt_PowerGloves::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Blunt_Pulverizer
-// 0x0018 (0x0970 - 0x0958)
+// 0x0030 (0x0A20 - 0x09F0)
 class AKFWeap_Blunt_Pulverizer : public AKFWeap_MeleeBase
 {
 public:
-	class UGameExplosion*                              ExplosionTemplate;                                		// 0x0958 (0x0008) [0x0000000000000000]              
-	class AActor*                                      BlastAttachee;                                    		// 0x0960 (0x0008) [0x0000000000000000]              
-	float                                              BlastSpawnOffset;                                 		// 0x0968 (0x0004) [0x0000000000000000]              
-	DWORD                                              bPulverizerFireReleased : 1;                      		// 0x096C (0x0004) [0x0000000000000000] [0x00000001] 
-	DWORD                                              bFriendlyFireEnabled : 1;                         		// 0x096C (0x0004) [0x0000000000200000] [0x00000002] 
+	DWORD                                              bWasTimeDilated : 1;                              		// 0x09F0 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bAltExploEffects : 1;                             		// 0x09F0 (0x0004) [0x0000000000000000] [0x00000002] 
+	DWORD                                              bPulverizerFireReleased : 1;                      		// 0x09F0 (0x0004) [0x0000000000000000] [0x00000004] 
+	DWORD                                              bFriendlyFireEnabled : 1;                         		// 0x09F0 (0x0004) [0x0000000000210000] [0x00000008] ( CPF_Travel )
+	class UClass*                                      ExplosionActorClass;                              		// 0x09F4 (0x0008) [0x0000000000000000]              
+	class UKFGameExplosion*                            ExplosionTemplate;                                		// 0x09FC (0x0008) [0x0000000000000000]              
+	class UKFImpactEffectInfo*                         AltExploEffects;                                  		// 0x0A04 (0x0008) [0x0000000000000000]              
+	class AActor*                                      BlastAttachee;                                    		// 0x0A0C (0x0008) [0x0000000000000000]              
+	float                                              BlastSpawnOffset;                                 		// 0x0A14 (0x0004) [0x0000000000000000]              
+	class UClass*                                      NukeExplosionActorClass;                          		// 0x0A18 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -13938,7 +17811,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122439 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Blunt_Pulverizer" );
 
 		return pClassPointer;
 	};
@@ -13950,6 +17823,8 @@ public:
 	void ServerBeginPulverizerFire ( );
 	void GetWeaponFireAnim ( );
 	void GetPulverizerAim ( );
+	void SetExplosionActorClass ( );
+	void PrepareExplosionTemplate ( );
 	void CustomFire ( );
 	void CanOverrideMagReload ( );
 	void eventPreBeginPlay ( );
@@ -13958,7 +17833,7 @@ public:
 UClass* AKFWeap_Blunt_Pulverizer::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Bow_Crossbow
-// 0x0000 (0x08F8 - 0x08F8)
+// 0x0000 (0x0990 - 0x0990)
 class AKFWeap_Bow_Crossbow : public AKFWeap_ScopedBase
 {
 public:
@@ -13970,7 +17845,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122499 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Bow_Crossbow" );
 
 		return pClassPointer;
 	};
@@ -13983,7 +17858,7 @@ public:
 UClass* AKFWeap_Bow_Crossbow::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Edged_Katana
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Edged_Katana : public AKFWeap_MeleeBase
 {
 public:
@@ -13995,7 +17870,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122526 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Edged_Katana" );
 
 		return pClassPointer;
 	};
@@ -14005,7 +17880,7 @@ public:
 UClass* AKFWeap_Edged_Katana::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Edged_Knife
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Edged_Knife : public AKFWeap_MeleeBase
 {
 public:
@@ -14017,7 +17892,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122536 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Edged_Knife" );
 
 		return pClassPointer;
 	};
@@ -14028,7 +17903,7 @@ public:
 UClass* AKFWeap_Edged_Knife::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Edged_Zweihander
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Edged_Zweihander : public AKFWeap_MeleeBase
 {
 public:
@@ -14040,7 +17915,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122547 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Edged_Zweihander" );
 
 		return pClassPointer;
 	};
@@ -14049,40 +17924,15 @@ public:
 
 UClass* AKFWeap_Edged_Zweihander::pClassPointer = NULL;
 
-// Class kfgamecontent.KFWeapAttach_Eviscerator
-// 0x0008 (0x03F0 - 0x03E8)
-class AKFWeapAttach_Eviscerator : public AKFWeaponAttachment
-{
-public:
-	class UAnimTree*                                   CustomAnimTree;                                   		// 0x03E8 (0x0008) [0x0000000000000000]              
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122558 ];
-
-		return pClassPointer;
-	};
-
-	void ThirdPersonFireEffects ( );
-	void eventPreBeginPlay ( );
-};
-
-UClass* AKFWeapAttach_Eviscerator::pClassPointer = NULL;
-
 // Class kfgamecontent.KFWeap_Eviscerator
-// 0x001C (0x0974 - 0x0958)
+// 0x001C (0x0A0C - 0x09F0)
 class AKFWeap_Eviscerator : public AKFWeap_MeleeBase
 {
 public:
-	class UAnimNodeAdditiveBlending*                   AdditiveBlendNode;                                		// 0x0958 (0x0008) [0x0000000000000000]              
-	class UAnimNodeBlendPerBone*                       OutOfBladesBlendNode;                             		// 0x0960 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    IdleMotorSound;                                   		// 0x0968 (0x0008) [0x0000000000000000]              
-	float                                              BlockInterruptFiringTime;                         		// 0x0970 (0x0004) [0x0000000000000000]              
+	class UAnimNodeAdditiveBlending*                   AdditiveBlendNode;                                		// 0x09F0 (0x0008) [0x0000000000000000]              
+	class UAnimNodeBlendPerBone*                       OutOfBladesBlendNode;                             		// 0x09F8 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    IdleMotorSound;                                   		// 0x0A00 (0x0008) [0x0000000000000000]              
+	float                                              BlockInterruptFiringTime;                         		// 0x0A08 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -14091,7 +17941,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122571 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Eviscerator" );
 
 		return pClassPointer;
 	};
@@ -14115,41 +17965,13 @@ public:
 
 UClass* AKFWeap_Eviscerator::pClassPointer = NULL;
 
-// Class kfgamecontent.KFWeapAttach_Flamethrower
-// 0x0040 (0x04A0 - 0x0460)
-class AKFWeapAttach_Flamethrower : public AKFWeapAttach_SprayBase
-{
-public:
-	class UKFParticleSystemComponent*                  PSC_SpineLights[ 0x4 ];                           		// 0x0460 (0x0020) [0x0000000000000000]              
-	struct FName                                       SpineLightSocketNames[ 0x4 ];                     		// 0x0480 (0x0020) [0x0000000000000000]              
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122652 ];
-
-		return pClassPointer;
-	};
-
-	void TurnOffFireSpray ( );
-	void TurnOnFireSpray ( );
-	void TurnOffPilot ( );
-	void TurnOnPilot ( );
-};
-
-UClass* AKFWeapAttach_Flamethrower::pClassPointer = NULL;
-
 // Class kfgamecontent.KFWeap_Flame_CaulkBurn
-// 0x0012 (0x093C - 0x092A)
+// 0x0012 (0x09D4 - 0x09C2)
 class AKFWeap_Flame_CaulkBurn : public AKFWeap_FlameBase
 {
 public:
-	class UKFParticleSystemComponent*                  PSC_PilotLight2;                                  		// 0x092C (0x0008) [0x0000000000000000]              
-	struct FName                                       PilotLight2SocketName;                            		// 0x0934 (0x0008) [0x0000000000000000]              
+	class UKFParticleSystemComponent*                  PSC_PilotLight2;                                  		// 0x09C4 (0x0008) [0x0000000000000000]              
+	struct FName                                       PilotLight2SocketName;                            		// 0x09CC (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -14158,7 +17980,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122676 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Flame_CaulkBurn" );
 
 		return pClassPointer;
 	};
@@ -14171,12 +17993,12 @@ public:
 UClass* AKFWeap_Flame_CaulkBurn::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Flame_Flamethrower
-// 0x0042 (0x096C - 0x092A)
+// 0x0042 (0x0A04 - 0x09C2)
 class AKFWeap_Flame_Flamethrower : public AKFWeap_FlameBase
 {
 public:
-	class UKFParticleSystemComponent*                  PSC_SpineLights[ 0x4 ];                           		// 0x092C (0x0020) [0x0000000000000000]              
-	struct FName                                       SpineLightSocketNames[ 0x4 ];                     		// 0x094C (0x0020) [0x0000000000000000]              
+	class UKFParticleSystemComponent*                  PSC_SpineLights[ 0x4 ];                           		// 0x09C4 (0x0020) [0x0000000000000000]              
+	struct FName                                       SpineLightSocketNames[ 0x4 ];                     		// 0x09E4 (0x0020) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -14185,7 +18007,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122709 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Flame_Flamethrower" );
 
 		return pClassPointer;
 	};
@@ -14200,13 +18022,13 @@ public:
 UClass* AKFWeap_Flame_Flamethrower::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_GrenadeLauncher_HX25
-// 0x0024 (0x08E8 - 0x08C4)
+// 0x0024 (0x0980 - 0x095C)
 class AKFWeap_GrenadeLauncher_HX25 : public AKFWeap_GrenadeLauncher_Base
 {
 public:
-	TArray< unsigned char >                            NumPellets;                                       		// 0x08C4 (0x0010) [0x0000000000000000]              
-	TArray< struct FVector2D >                         PelletSpread;                                     		// 0x08D4 (0x0010) [0x0000000000000000]              
-	float                                              LastSubmunitionFireTime;                          		// 0x08E4 (0x0004) [0x0000000000000000]              
+	TArray< unsigned char >                            NumPellets;                                       		// 0x095C (0x0010) [0x0000000000000000]              
+	TArray< struct FVector2D >                         PelletSpread;                                     		// 0x096C (0x0010) [0x0000000000000000]              
+	float                                              LastSubmunitionFireTime;                          		// 0x097C (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -14215,7 +18037,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122744 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_GrenadeLauncher_HX25" );
 
 		return pClassPointer;
 	};
@@ -14232,7 +18054,7 @@ public:
 UClass* AKFWeap_GrenadeLauncher_HX25::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_GrenadeLauncher_M79
-// 0x0000 (0x08C4 - 0x08C4)
+// 0x0000 (0x095C - 0x095C)
 class AKFWeap_GrenadeLauncher_M79 : public AKFWeap_GrenadeLauncher_Base
 {
 public:
@@ -14244,7 +18066,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122795 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_GrenadeLauncher_M79" );
 
 		return pClassPointer;
 	};
@@ -14254,7 +18076,7 @@ public:
 UClass* AKFWeap_GrenadeLauncher_M79::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Healer_Syringe
-// 0x0000 (0x0918 - 0x0918)
+// 0x0000 (0x09B0 - 0x09B0)
 class AKFWeap_Healer_Syringe : public AKFWeap_HealerBase
 {
 public:
@@ -14266,7 +18088,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122805 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Healer_Syringe" );
 
 		return pClassPointer;
 	};
@@ -14276,8 +18098,49 @@ public:
 
 UClass* AKFWeap_Healer_Syringe::pClassPointer = NULL;
 
+// Class kfgamecontent.KFWeap_Ice_FreezeThrower
+// 0x0046 (0x0A08 - 0x09C2)
+class AKFWeap_Ice_FreezeThrower : public AKFWeap_FlameBase
+{
+public:
+	struct FName                                       FireHeavyAnim;                                    		// 0x09C4 (0x0008) [0x0000000000000000]              
+	struct FName                                       FireLastHeavyAnim;                                		// 0x09CC (0x0008) [0x0000000000000000]              
+	struct FName                                       FireLastHeavySightedAnim;                         		// 0x09D4 (0x0008) [0x0000000000000000]              
+	class UGameExplosion*                              ExplosionTemplate;                                		// 0x09DC (0x0008) [0x0000000000000000]              
+	TArray< unsigned char >                            NumPellets;                                       		// 0x09E4 (0x0010) [0x0000000000000000]              
+	TArray< struct FVector2D >                         PelletSpread;                                     		// 0x09F4 (0x0010) [0x0000000000000000]              
+	float                                              AltFireRecoilScale;                               		// 0x0A04 (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Ice_FreezeThrower" );
+
+		return pClassPointer;
+	};
+
+	void eventGetTraderFilter ( );
+	void SetPilotDynamicLightEnabled ( );
+	void IsHeavyWeapon ( );
+	void ModifyRecoil ( );
+	void HandleWeaponShotTaken ( );
+	void ShouldAutoReload ( );
+	void AddMultiShotSpread ( );
+	void AddSpread ( );
+	void GetNumProjectilesToFire ( );
+	void SpawnProjectile ( );
+	void AltFireMode ( );
+	void GetWeaponFireAnim ( );
+};
+
+UClass* AKFWeap_Ice_FreezeThrower::pClassPointer = NULL;
+
 // Class kfgamecontent.KFWeap_Knife_Berserker
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Knife_Berserker : public AKFWeap_Edged_Knife
 {
 public:
@@ -14289,7 +18152,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122824 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Knife_Berserker" );
 
 		return pClassPointer;
 	};
@@ -14299,7 +18162,7 @@ public:
 UClass* AKFWeap_Knife_Berserker::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Knife_Commando
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Knife_Commando : public AKFWeap_Edged_Knife
 {
 public:
@@ -14311,7 +18174,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122833 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Knife_Commando" );
 
 		return pClassPointer;
 	};
@@ -14321,7 +18184,7 @@ public:
 UClass* AKFWeap_Knife_Commando::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Knife_Demolitionist
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Knife_Demolitionist : public AKFWeap_Edged_Knife
 {
 public:
@@ -14333,7 +18196,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122838 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Knife_Demolitionist" );
 
 		return pClassPointer;
 	};
@@ -14343,7 +18206,7 @@ public:
 UClass* AKFWeap_Knife_Demolitionist::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Knife_FieldMedic
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Knife_FieldMedic : public AKFWeap_Edged_Knife
 {
 public:
@@ -14355,7 +18218,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122849 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Knife_FieldMedic" );
 
 		return pClassPointer;
 	};
@@ -14365,7 +18228,7 @@ public:
 UClass* AKFWeap_Knife_FieldMedic::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Knife_Firebug
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Knife_Firebug : public AKFWeap_Edged_Knife
 {
 public:
@@ -14377,7 +18240,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122858 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Knife_Firebug" );
 
 		return pClassPointer;
 	};
@@ -14387,7 +18250,7 @@ public:
 UClass* AKFWeap_Knife_Firebug::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Knife_Gunslinger
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Knife_Gunslinger : public AKFWeap_Edged_Knife
 {
 public:
@@ -14399,7 +18262,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122869 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Knife_Gunslinger" );
 
 		return pClassPointer;
 	};
@@ -14409,7 +18272,7 @@ public:
 UClass* AKFWeap_Knife_Gunslinger::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Knife_Sharpshooter
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Knife_Sharpshooter : public AKFWeap_Edged_Knife
 {
 public:
@@ -14421,7 +18284,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122880 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Knife_Sharpshooter" );
 
 		return pClassPointer;
 	};
@@ -14431,7 +18294,7 @@ public:
 UClass* AKFWeap_Knife_Sharpshooter::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Knife_Support
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Knife_Support : public AKFWeap_Edged_Knife
 {
 public:
@@ -14443,7 +18306,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122891 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Knife_Support" );
 
 		return pClassPointer;
 	};
@@ -14452,8 +18315,30 @@ public:
 
 UClass* AKFWeap_Knife_Support::pClassPointer = NULL;
 
+// Class kfgamecontent.KFWeap_Knife_Survivalist
+// 0x0000 (0x09F0 - 0x09F0)
+class AKFWeap_Knife_Survivalist : public AKFWeap_Edged_Knife
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Knife_Survivalist" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFWeap_Knife_Survivalist::pClassPointer = NULL;
+
 // Class kfgamecontent.KFWeap_Knife_SWAT
-// 0x0000 (0x0958 - 0x0958)
+// 0x0000 (0x09F0 - 0x09F0)
 class AKFWeap_Knife_SWAT : public AKFWeap_Edged_Knife
 {
 public:
@@ -14465,7 +18350,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122900 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Knife_SWAT" );
 
 		return pClassPointer;
 	};
@@ -14475,14 +18360,14 @@ public:
 UClass* AKFWeap_Knife_SWAT::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_LMG_Stoner63A
-// 0x001C (0x08DC - 0x08C0)
+// 0x001C (0x0974 - 0x0958)
 class AKFWeap_LMG_Stoner63A : public AKFWeap_RifleBase
 {
 public:
-	struct FString                                     AmmoBeltBulletBonePrefix;                         		// 0x08C0 (0x0010) [0x0000000000000000]              
-	int                                                NumAmmoBeltBullets;                               		// 0x08D0 (0x0004) [0x0000000000000000]              
-	int                                                LastAmmoCount;                                    		// 0x08D4 (0x0004) [0x0000000000000000]              
-	DWORD                                              bAmmoBeltInitialized : 1;                         		// 0x08D8 (0x0004) [0x0000000000000000] [0x00000001] 
+	struct FString                                     AmmoBeltBulletBonePrefix;                         		// 0x0958 (0x0010) [0x0000000000000000]              
+	int                                                NumAmmoBeltBullets;                               		// 0x0968 (0x0004) [0x0000000000000000]              
+	int                                                LastAmmoCount;                                    		// 0x096C (0x0004) [0x0000000000000000]              
+	DWORD                                              bAmmoBeltInitialized : 1;                         		// 0x0970 (0x0004) [0x0000000000000000] [0x00000001] 
 
 private:
 	static UClass* pClassPointer;
@@ -14491,7 +18376,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 122911 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_LMG_Stoner63A" );
 
 		return pClassPointer;
 	};
@@ -14509,7 +18394,7 @@ public:
 UClass* AKFWeap_LMG_Stoner63A::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Pistol_Dual9mm
-// 0x0000 (0x09F4 - 0x09F4)
+// 0x0000 (0x0A8C - 0x0A8C)
 class AKFWeap_Pistol_Dual9mm : public AKFWeap_DualBase
 {
 public:
@@ -14521,7 +18406,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123001 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_Dual9mm" );
 
 		return pClassPointer;
 	};
@@ -14530,8 +18415,56 @@ public:
 
 UClass* AKFWeap_Pistol_Dual9mm::pClassPointer = NULL;
 
+// Class kfgamecontent.KFWeap_Pistol_AF2011
+// 0x000C (0x09B8 - 0x09AC)
+class AKFWeap_Pistol_AF2011 : public AKFWeap_PistolBase
+{
+public:
+	struct FVector                                     BarrelOffset;                                     		// 0x09AC (0x000C) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_AF2011" );
+
+		return pClassPointer;
+	};
+
+	void SpawnProjectile ( );
+};
+
+UClass* AKFWeap_Pistol_AF2011::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeap_Pistol_DualAF2011
+// 0x000C (0x0A98 - 0x0A8C)
+class AKFWeap_Pistol_DualAF2011 : public AKFWeap_DualBase
+{
+public:
+	struct FVector                                     BarrelOffset;                                     		// 0x0A8C (0x000C) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_DualAF2011" );
+
+		return pClassPointer;
+	};
+
+	void SpawnProjectile ( );
+};
+
+UClass* AKFWeap_Pistol_DualAF2011::pClassPointer = NULL;
+
 // Class kfgamecontent.KFWeap_Pistol_Colt1911
-// 0x0000 (0x0914 - 0x0914)
+// 0x0000 (0x09AC - 0x09AC)
 class AKFWeap_Pistol_Colt1911 : public AKFWeap_PistolBase
 {
 public:
@@ -14543,7 +18476,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123012 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_Colt1911" );
 
 		return pClassPointer;
 	};
@@ -14553,7 +18486,7 @@ public:
 UClass* AKFWeap_Pistol_Colt1911::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Pistol_DualColt1911
-// 0x0000 (0x09F4 - 0x09F4)
+// 0x0000 (0x0A8C - 0x0A8C)
 class AKFWeap_Pistol_DualColt1911 : public AKFWeap_DualBase
 {
 public:
@@ -14565,7 +18498,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123019 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_DualColt1911" );
 
 		return pClassPointer;
 	};
@@ -14575,7 +18508,7 @@ public:
 UClass* AKFWeap_Pistol_DualColt1911::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Pistol_Deagle
-// 0x0000 (0x0914 - 0x0914)
+// 0x0000 (0x09AC - 0x09AC)
 class AKFWeap_Pistol_Deagle : public AKFWeap_PistolBase
 {
 public:
@@ -14587,7 +18520,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123030 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_Deagle" );
 
 		return pClassPointer;
 	};
@@ -14597,7 +18530,7 @@ public:
 UClass* AKFWeap_Pistol_Deagle::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Pistol_DualDeagle
-// 0x0000 (0x09F4 - 0x09F4)
+// 0x0000 (0x0A8C - 0x0A8C)
 class AKFWeap_Pistol_DualDeagle : public AKFWeap_DualBase
 {
 public:
@@ -14609,7 +18542,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123037 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_DualDeagle" );
 
 		return pClassPointer;
 	};
@@ -14619,7 +18552,7 @@ public:
 UClass* AKFWeap_Pistol_DualDeagle::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Pistol_DualFlare
-// 0x0000 (0x09F4 - 0x09F4)
+// 0x0000 (0x0A8C - 0x0A8C)
 class AKFWeap_Pistol_DualFlare : public AKFWeap_DualBase
 {
 public:
@@ -14631,7 +18564,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123081 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_DualFlare" );
 
 		return pClassPointer;
 	};
@@ -14642,7 +18575,7 @@ public:
 UClass* AKFWeap_Pistol_DualFlare::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Pistol_Flare
-// 0x0000 (0x0914 - 0x0914)
+// 0x0000 (0x09AC - 0x09AC)
 class AKFWeap_Pistol_Flare : public AKFWeap_PistolBase
 {
 public:
@@ -14654,7 +18587,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123087 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_Flare" );
 
 		return pClassPointer;
 	};
@@ -14665,7 +18598,7 @@ public:
 UClass* AKFWeap_Pistol_Flare::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Pistol_Dummy
-// 0x0000 (0x0914 - 0x0914)
+// 0x0000 (0x09AC - 0x09AC)
 class AKFWeap_Pistol_Dummy : public AKFWeap_Pistol_9mm
 {
 public:
@@ -14677,7 +18610,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123105 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Pistol_Dummy" );
 
 		return pClassPointer;
 	};
@@ -14687,7 +18620,7 @@ public:
 UClass* AKFWeap_Pistol_Dummy::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Random
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_Random : public AKFWeapon
 {
 public:
@@ -14699,7 +18632,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123136 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Random" );
 
 		return pClassPointer;
 	};
@@ -14709,7 +18642,7 @@ public:
 UClass* AKFWeap_Random::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Revolver_DualRem1858
-// 0x0000 (0x09F4 - 0x09F4)
+// 0x0000 (0x0A8C - 0x0A8C)
 class AKFWeap_Revolver_DualRem1858 : public AKFWeap_DualBase
 {
 public:
@@ -14721,7 +18654,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123141 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Revolver_DualRem1858" );
 
 		return pClassPointer;
 	};
@@ -14731,7 +18664,7 @@ public:
 UClass* AKFWeap_Revolver_DualRem1858::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Revolver_DualSW500
-// 0x0000 (0x09F4 - 0x09F4)
+// 0x0000 (0x0A8C - 0x0A8C)
 class AKFWeap_Revolver_DualSW500 : public AKFWeap_DualBase
 {
 public:
@@ -14743,7 +18676,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123174 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Revolver_DualSW500" );
 
 		return pClassPointer;
 	};
@@ -14753,7 +18686,7 @@ public:
 UClass* AKFWeap_Revolver_DualSW500::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Revolver_SW500
-// 0x0000 (0x0914 - 0x0914)
+// 0x0000 (0x09AC - 0x09AC)
 class AKFWeap_Revolver_SW500 : public AKFWeap_PistolBase
 {
 public:
@@ -14765,7 +18698,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123188 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Revolver_SW500" );
 
 		return pClassPointer;
 	};
@@ -14775,7 +18708,7 @@ public:
 UClass* AKFWeap_Revolver_SW500::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Rifle_CenterfireMB464
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_Rifle_CenterfireMB464 : public AKFWeap_RifleBase
 {
 public:
@@ -14787,7 +18720,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123239 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Rifle_CenterfireMB464" );
 
 		return pClassPointer;
 	};
@@ -14797,7 +18730,7 @@ public:
 UClass* AKFWeap_Rifle_CenterfireMB464::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Rifle_Hemogoblin
-// 0x0000 (0x0984 - 0x0984)
+// 0x0000 (0x0A1C - 0x0A1C)
 class AKFWeap_Rifle_Hemogoblin : public AKFWeap_MedicBase
 {
 public:
@@ -14809,7 +18742,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123256 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Rifle_Hemogoblin" );
 
 		return pClassPointer;
 	};
@@ -14821,7 +18754,7 @@ public:
 UClass* AKFWeap_Rifle_Hemogoblin::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Rifle_M14EBR
-// 0x0000 (0x08F8 - 0x08F8)
+// 0x0000 (0x0990 - 0x0990)
 class AKFWeap_Rifle_M14EBR : public AKFWeap_ScopedBase
 {
 public:
@@ -14833,7 +18766,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123284 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Rifle_M14EBR" );
 
 		return pClassPointer;
 	};
@@ -14842,13 +18775,11 @@ public:
 
 UClass* AKFWeap_Rifle_M14EBR::pClassPointer = NULL;
 
-// Class kfgamecontent.KFWeapAttach_Railgun
-// 0x0010 (0x03F8 - 0x03E8)
-class AKFWeapAttach_Railgun : public AKFWeaponAttachment
+// Class kfgamecontent.KFWeap_Rifle_M99
+// 0x0000 (0x0990 - 0x0990)
+class AKFWeap_Rifle_M99 : public AKFWeap_ScopedBase
 {
 public:
-	class UAkEvent*                                    AmbientSoundPlayEvent;                            		// 0x03E8 (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    AmbientSoundStopEvent;                            		// 0x03F0 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -14857,60 +18788,53 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123302 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Rifle_M99" );
 
 		return pClassPointer;
 	};
 
-	void SpawnTracer ( );
-	void Destroyed ( );
-	void DetachFrom ( );
-	void AttachTo ( );
-	void StopAmbientSound ( );
-	void StartAmbientSound ( );
 };
 
-UClass* AKFWeapAttach_Railgun::pClassPointer = NULL;
+UClass* AKFWeap_Rifle_M99::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Rifle_RailGun
-// 0x00EC (0x09E4 - 0x08F8)
+// 0x00E8 (0x0A78 - 0x0990)
 class AKFWeap_Rifle_RailGun : public AKFWeap_ScopedBase
 {
 public:
-	float                                              ForceReloadTime;                                  		// 0x08F8 (0x0004) [0x0000000000000000]              
-	class UScriptedTexture*                            CanvasTexture;                                    		// 0x08FC (0x0008) [0x0000000000000000]              
-	int                                                CurrentCanvasTextureSize;                         		// 0x0904 (0x0004) [0x0000000000000000]              
-	class UTexture2D*                                  LockedHitZoneIcon;                                		// 0x0908 (0x0008) [0x0000000000000000]              
-	class UTexture2D*                                  DefaultHitZoneIcon;                               		// 0x0910 (0x0008) [0x0000000000000000]              
-	struct FLinearColor                                RedIconColor;                                     		// 0x0918 (0x0010) [0x0000000000000000]              
-	struct FLinearColor                                YellowIconColor;                                  		// 0x0928 (0x0010) [0x0000000000000000]              
-	struct FLinearColor                                BlueIconColor;                                    		// 0x0938 (0x0010) [0x0000000000000000]              
-	float                                              LockRange;                                        		// 0x0948 (0x0004) [0x0000000000000000]              
-	float                                              LockAcquireTime;                                  		// 0x094C (0x0004) [0x0000000000000000]              
-	float                                              LockAcquireTime_Large;                            		// 0x0950 (0x0004) [0x0000000000000000]              
-	float                                              LockAcquireTime_Boss;                             		// 0x0954 (0x0004) [0x0000000000000000]              
-	float                                              LockAcquireTime_Versus;                           		// 0x0958 (0x0004) [0x0000000000000000]              
-	float                                              LockTolerance;                                    		// 0x095C (0x0004) [0x0000000000000000]              
-	DWORD                                              bLockedOnTarget : 1;                              		// 0x0960 (0x0004) [0x0000000000000000] [0x00000001] 
-	class AKFPawn_Monster*                             LockedTarget;                                     		// 0x0964 (0x0008) [0x0000000000000000]              
-	int                                                LockedHitZone;                                    		// 0x096C (0x0004) [0x0000000000000000]              
-	class AKFPawn_Monster*                             PendingLockedTarget;                              		// 0x0970 (0x0008) [0x0000000000000000]              
-	int                                                PendingHitZone;                                   		// 0x0978 (0x0004) [0x0000000000000000]              
-	float                                              LockAim;                                          		// 0x097C (0x0004) [0x0000000000000000]              
-	float                                              MaxScopeScreenDot;                                		// 0x0980 (0x0004) [0x0000000000000000]              
-	float                                              LockTargetingSoundInterval;                       		// 0x0984 (0x0004) [0x0000000000000000]              
-	class UAkBaseSoundObject*                          LockAcquiredSoundFirstPerson;                     		// 0x0988 (0x0008) [0x0000000000000000]              
-	class UAkBaseSoundObject*                          LockLostSoundFirstPerson;                         		// 0x0990 (0x0008) [0x0000000000000000]              
-	class UAkBaseSoundObject*                          LockTargetingSoundFirstPerson;                    		// 0x0998 (0x0008) [0x0000000000000000]              
-	float                                              PendingLockAcquireTimeLeft;                       		// 0x09A0 (0x0004) [0x0000000000000000]              
-	float                                              PendingLockTimeout;                               		// 0x09A4 (0x0004) [0x0000000000000000]              
-	float                                              LockedOnTimeout;                                  		// 0x09A8 (0x0004) [0x0000000000000000]              
-	struct FVector                                     LockedAimLocation;                                		// 0x09AC (0x000C) [0x0000000000000000]              
-	TArray< struct FVector >                           TargetVulnerableLocations;                        		// 0x09B8 (0x0010) [0x0000000000000000]              
-	float                                              TargetLocationReplicationInterval;                		// 0x09C8 (0x0004) [0x0000000000000000]              
-	class UAkEvent*                                    AmbientSoundPlayEvent;                            		// 0x09CC (0x0008) [0x0000000000000000]              
-	class UAkEvent*                                    AmbientSoundStopEvent;                            		// 0x09D4 (0x0008) [0x0000000000000000]              
-	struct FName                                       AmbientSoundSocketName;                           		// 0x09DC (0x0008) [0x0000000000000000]              
+	class UScriptedTexture*                            CanvasTexture;                                    		// 0x0990 (0x0008) [0x0000000000000000]              
+	int                                                CurrentCanvasTextureSize;                         		// 0x0998 (0x0004) [0x0000000000000000]              
+	class UTexture2D*                                  LockedHitZoneIcon;                                		// 0x099C (0x0008) [0x0000000000000000]              
+	class UTexture2D*                                  DefaultHitZoneIcon;                               		// 0x09A4 (0x0008) [0x0000000000000000]              
+	struct FLinearColor                                RedIconColor;                                     		// 0x09AC (0x0010) [0x0000000000000000]              
+	struct FLinearColor                                YellowIconColor;                                  		// 0x09BC (0x0010) [0x0000000000000000]              
+	struct FLinearColor                                BlueIconColor;                                    		// 0x09CC (0x0010) [0x0000000000000000]              
+	float                                              LockRange;                                        		// 0x09DC (0x0004) [0x0000000000000000]              
+	float                                              LockAcquireTime;                                  		// 0x09E0 (0x0004) [0x0000000000000000]              
+	float                                              LockAcquireTime_Large;                            		// 0x09E4 (0x0004) [0x0000000000000000]              
+	float                                              LockAcquireTime_Boss;                             		// 0x09E8 (0x0004) [0x0000000000000000]              
+	float                                              LockAcquireTime_Versus;                           		// 0x09EC (0x0004) [0x0000000000000000]              
+	float                                              LockTolerance;                                    		// 0x09F0 (0x0004) [0x0000000000000000]              
+	DWORD                                              bLockedOnTarget : 1;                              		// 0x09F4 (0x0004) [0x0000000000000000] [0x00000001] 
+	class AKFPawn_Monster*                             LockedTarget;                                     		// 0x09F8 (0x0008) [0x0000000000000000]              
+	int                                                LockedHitZone;                                    		// 0x0A00 (0x0004) [0x0000000000000000]              
+	class AKFPawn_Monster*                             PendingLockedTarget;                              		// 0x0A04 (0x0008) [0x0000000000000000]              
+	int                                                PendingHitZone;                                   		// 0x0A0C (0x0004) [0x0000000000000000]              
+	float                                              LockAim;                                          		// 0x0A10 (0x0004) [0x0000000000000000]              
+	float                                              MaxScopeScreenDot;                                		// 0x0A14 (0x0004) [0x0000000000000000]              
+	float                                              LockTargetingSoundInterval;                       		// 0x0A18 (0x0004) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          LockAcquiredSoundFirstPerson;                     		// 0x0A1C (0x0008) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          LockLostSoundFirstPerson;                         		// 0x0A24 (0x0008) [0x0000000000000000]              
+	class UAkBaseSoundObject*                          LockTargetingSoundFirstPerson;                    		// 0x0A2C (0x0008) [0x0000000000000000]              
+	float                                              PendingLockAcquireTimeLeft;                       		// 0x0A34 (0x0004) [0x0000000000000000]              
+	float                                              PendingLockTimeout;                               		// 0x0A38 (0x0004) [0x0000000000000000]              
+	float                                              LockedOnTimeout;                                  		// 0x0A3C (0x0004) [0x0000000000000000]              
+	struct FVector                                     LockedAimLocation;                                		// 0x0A40 (0x000C) [0x0000000000000000]              
+	TArray< struct FVector >                           TargetVulnerableLocations;                        		// 0x0A4C (0x0010) [0x0000000000000000]              
+	float                                              TargetLocationReplicationInterval;                		// 0x0A5C (0x0004) [0x0000000000000000]              
+	class UAkEvent*                                    AmbientSoundPlayEvent;                            		// 0x0A60 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    AmbientSoundStopEvent;                            		// 0x0A68 (0x0008) [0x0000000000000000]              
+	struct FName                                       AmbientSoundSocketName;                           		// 0x0A70 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -14919,7 +18843,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123326 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Rifle_RailGun" );
 
 		return pClassPointer;
 	};
@@ -14942,7 +18866,7 @@ public:
 	void StartAmbientSound ( );
 	void GetReloadAnimName ( );
 	void ShouldPlayFireLast ( );
-	void PlayFireEffects ( );
+	void StartFire ( );
 	void ClientWeaponSet ( );
 	void InitFOV ( );
 };
@@ -14950,12 +18874,12 @@ public:
 UClass* AKFWeap_Rifle_RailGun::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_RocketLauncher_RPG7
-// 0x0014 (0x08D8 - 0x08C4)
+// 0x0014 (0x0970 - 0x095C)
 class AKFWeap_RocketLauncher_RPG7 : public AKFWeap_GrenadeLauncher_Base
 {
 public:
-	class UGameExplosion*                              ExplosionTemplate;                                		// 0x08C4 (0x0008) [0x0000000000000000]              
-	struct FVector                                     BackBlastOffset;                                  		// 0x08CC (0x000C) [0x0000000000000000]              
+	class UGameExplosion*                              ExplosionTemplate;                                		// 0x095C (0x0008) [0x0000000000000000]              
+	struct FVector                                     BackBlastOffset;                                  		// 0x0964 (0x000C) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -14964,7 +18888,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123514 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_RocketLauncher_RPG7" );
 
 		return pClassPointer;
 	};
@@ -14977,7 +18901,7 @@ public:
 UClass* AKFWeap_RocketLauncher_RPG7::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Shotgun_AA12
-// 0x0000 (0x08D0 - 0x08D0)
+// 0x0000 (0x0968 - 0x0968)
 class AKFWeap_Shotgun_AA12 : public AKFWeap_ShotgunBase
 {
 public:
@@ -14989,7 +18913,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123649 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Shotgun_AA12" );
 
 		return pClassPointer;
 	};
@@ -14999,15 +18923,14 @@ public:
 UClass* AKFWeap_Shotgun_AA12::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Shotgun_DoubleBarrel
-// 0x0018 (0x08E8 - 0x08D0)
+// 0x0014 (0x097C - 0x0968)
 class AKFWeap_Shotgun_DoubleBarrel : public AKFWeap_ShotgunBase
 {
 public:
-	float                                              DoubleFireRecoilModifier;                         		// 0x08D0 (0x0004) [0x0000000000000000]              
-	struct FName                                       FireDoubleAnim;                                   		// 0x08D4 (0x0008) [0x0000000000000000]              
-	float                                              ForceReloadTime;                                  		// 0x08DC (0x0004) [0x0000000000000000]              
-	float                                              DoubleBarrelKickMomentum;                         		// 0x08E0 (0x0004) [0x0000000000000000]              
-	float                                              FallingMomentumReduction;                         		// 0x08E4 (0x0004) [0x0000000000000000]              
+	float                                              DoubleFireRecoilModifier;                         		// 0x0968 (0x0004) [0x0000000000000000]              
+	struct FName                                       FireDoubleAnim;                                   		// 0x096C (0x0008) [0x0000000000000000]              
+	float                                              DoubleBarrelKickMomentum;                         		// 0x0974 (0x0004) [0x0000000000000000]              
+	float                                              FallingMomentumReduction;                         		// 0x0978 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -15016,13 +18939,12 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123665 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Shotgun_DoubleBarrel" );
 
 		return pClassPointer;
 	};
 
 	void CauseMuzzleFlash ( );
-	void PlayFireEffects ( );
 	void GetWeaponFireAnim ( );
 	void SendToFiringState ( );
 	void AltFireMode ( );
@@ -15031,7 +18953,7 @@ public:
 UClass* AKFWeap_Shotgun_DoubleBarrel::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Shotgun_DragonsBreath
-// 0x0000 (0x08D0 - 0x08D0)
+// 0x0000 (0x0968 - 0x0968)
 class AKFWeap_Shotgun_DragonsBreath : public AKFWeap_ShotgunBase
 {
 public:
@@ -15043,7 +18965,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123703 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Shotgun_DragonsBreath" );
 
 		return pClassPointer;
 	};
@@ -15053,13 +18975,15 @@ public:
 
 UClass* AKFWeap_Shotgun_DragonsBreath::pClassPointer = NULL;
 
-// Class kfgamecontent.KFWeap_Shotgun_HZ12
-// 0x0008 (0x08D8 - 0x08D0)
-class AKFWeap_Shotgun_HZ12 : public AKFWeap_ShotgunBase
+// Class kfgamecontent.KFWeap_Shotgun_ElephantGun
+// 0x0014 (0x097C - 0x0968)
+class AKFWeap_Shotgun_ElephantGun : public AKFWeap_ShotgunBase
 {
 public:
-	int                                                NumShotsFired;                                    		// 0x08D0 (0x0004) [0x0000000000000000]              
-	float                                              PumpFireInterval;                                 		// 0x08D4 (0x0004) [0x0000000000000000]              
+	float                                              QuadFireRecoilModifier;                           		// 0x0968 (0x0004) [0x0000000000000000]              
+	struct FName                                       FireQuadAnim;                                     		// 0x096C (0x0008) [0x0000000000000000]              
+	float                                              DoubleBarrelKickMomentum;                         		// 0x0974 (0x0004) [0x0000000000000000]              
+	float                                              FallingMomentumReduction;                         		// 0x0978 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -15068,7 +18992,35 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123720 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Shotgun_ElephantGun" );
+
+		return pClassPointer;
+	};
+
+	void BeginState ( );
+	void GetWeaponFireAnim ( );
+	void GetNumProjectilesToFire ( );
+	void AltFireMode ( );
+};
+
+UClass* AKFWeap_Shotgun_ElephantGun::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeap_Shotgun_HZ12
+// 0x0008 (0x0970 - 0x0968)
+class AKFWeap_Shotgun_HZ12 : public AKFWeap_ShotgunBase
+{
+public:
+	int                                                NumShotsFired;                                    		// 0x0968 (0x0004) [0x0000000000000000]              
+	float                                              PumpFireInterval;                                 		// 0x096C (0x0004) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Shotgun_HZ12" );
 
 		return pClassPointer;
 	};
@@ -15083,7 +19035,7 @@ public:
 UClass* AKFWeap_Shotgun_HZ12::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Shotgun_M4
-// 0x0000 (0x08D0 - 0x08D0)
+// 0x0000 (0x0968 - 0x0968)
 class AKFWeap_Shotgun_M4 : public AKFWeap_ShotgunBase
 {
 public:
@@ -15095,7 +19047,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123753 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Shotgun_M4" );
 
 		return pClassPointer;
 	};
@@ -15105,11 +19057,11 @@ public:
 UClass* AKFWeap_Shotgun_M4::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Shotgun_Medic
-// 0x0010 (0x0994 - 0x0984)
+// 0x0010 (0x0A2C - 0x0A1C)
 class AKFWeap_Shotgun_Medic : public AKFWeap_MedicBase
 {
 public:
-	TArray< unsigned char >                            NumPellets;                                       		// 0x0984 (0x0010) [0x0000000000000000]              
+	TArray< unsigned char >                            NumPellets;                                       		// 0x0A1C (0x0010) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -15118,7 +19070,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123778 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Shotgun_Medic" );
 
 		return pClassPointer;
 	};
@@ -15133,13 +19085,13 @@ public:
 UClass* AKFWeap_Shotgun_Medic::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_Shotgun_Nailgun
-// 0x001C (0x08EC - 0x08D0)
+// 0x001C (0x0984 - 0x0968)
 class AKFWeap_Shotgun_Nailgun : public AKFWeap_ShotgunBase
 {
 public:
-	TArray< struct FName >                             AltFireSightedAnims;                              		// 0x08D0 (0x0010) [0x0000000000000000]              
-	struct FName                                       AltFireAnim;                                      		// 0x08E0 (0x0008) [0x0000000000000000]              
-	float                                              AltFireRecoilModifier;                            		// 0x08E8 (0x0004) [0x0000000000000000]              
+	TArray< struct FName >                             AltFireSightedAnims;                              		// 0x0968 (0x0010) [0x0000000000000000]              
+	struct FName                                       AltFireAnim;                                      		// 0x0978 (0x0008) [0x0000000000000000]              
+	float                                              AltFireRecoilModifier;                            		// 0x0980 (0x0004) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -15148,7 +19100,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123815 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Shotgun_Nailgun" );
 
 		return pClassPointer;
 	};
@@ -15160,8 +19112,39 @@ public:
 
 UClass* AKFWeap_Shotgun_Nailgun::pClassPointer = NULL;
 
+// Class kfgamecontent.KFWeap_SMG_HK_UMP
+// 0x004C (0x09A4 - 0x0958)
+class AKFWeap_SMG_HK_UMP : public AKFWeap_SMGBase
+{
+public:
+	float                                              BurstFireRecoilRate;                              		// 0x0958 (0x0004) [0x0000000000000000]              
+	float                                              BurstFireRecoilModifier;                          		// 0x095C (0x0004) [0x0000000000000000]              
+	struct FName                                       BurstFire2RdAnim;                                 		// 0x0960 (0x0008) [0x0000000000000000]              
+	struct FName                                       BurstFire3RdAnim;                                 		// 0x0968 (0x0008) [0x0000000000000000]              
+	struct FName                                       BurstFire2RdSightedAnim;                          		// 0x0970 (0x0008) [0x0000000000000000]              
+	struct FName                                       BurstFire3RdSightedAnim;                          		// 0x0978 (0x0008) [0x0000000000000000]              
+	struct FWeaponFireSndInfo                          WeaponFire2RdSnd;                                 		// 0x0980 (0x0010) [0x0000000000000000]              
+	struct FWeaponFireSndInfo                          WeaponFire3RdSnd;                                 		// 0x0990 (0x0010) [0x0000000000000000]              
+	DWORD                                              bBurstPlayedFireEffects : 1;                      		// 0x09A0 (0x0004) [0x0000000000000000] [0x00000001] 
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_SMG_HK_UMP" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* AKFWeap_SMG_HK_UMP::pClassPointer = NULL;
+
 // Class kfgamecontent.KFWeap_SMG_Kriss
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_SMG_Kriss : public AKFWeap_SMGBase
 {
 public:
@@ -15173,7 +19156,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123848 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_SMG_Kriss" );
 
 		return pClassPointer;
 	};
@@ -15182,8 +19165,31 @@ public:
 
 UClass* AKFWeap_SMG_Kriss::pClassPointer = NULL;
 
+// Class kfgamecontent.KFWeap_SMG_Mac10
+// 0x0000 (0x0958 - 0x0958)
+class AKFWeap_SMG_Mac10 : public AKFWeap_SMGBase
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_SMG_Mac10" );
+
+		return pClassPointer;
+	};
+
+	void eventGetAltTraderFilter ( );
+};
+
+UClass* AKFWeap_SMG_Mac10::pClassPointer = NULL;
+
 // Class kfgamecontent.KFWeap_SMG_Medic
-// 0x0000 (0x0984 - 0x0984)
+// 0x0000 (0x0A1C - 0x0A1C)
 class AKFWeap_SMG_Medic : public AKFWeap_MedicBase
 {
 public:
@@ -15195,7 +19201,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123871 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_SMG_Medic" );
 
 		return pClassPointer;
 	};
@@ -15206,7 +19212,7 @@ public:
 UClass* AKFWeap_SMG_Medic::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_SMG_MP5RAS
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_SMG_MP5RAS : public AKFWeap_SMGBase
 {
 public:
@@ -15218,7 +19224,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123889 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_SMG_MP5RAS" );
 
 		return pClassPointer;
 	};
@@ -15228,7 +19234,7 @@ public:
 UClass* AKFWeap_SMG_MP5RAS::pClassPointer = NULL;
 
 // Class kfgamecontent.KFWeap_SMG_P90
-// 0x0000 (0x08C0 - 0x08C0)
+// 0x0000 (0x0958 - 0x0958)
 class AKFWeap_SMG_P90 : public AKFWeap_SMGBase
 {
 public:
@@ -15240,7 +19246,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123928 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_SMG_P90" );
 
 		return pClassPointer;
 	};
@@ -15249,49 +19255,25 @@ public:
 
 UClass* AKFWeap_SMG_P90::pClassPointer = NULL;
 
-// Class kfgamecontent.KFWeapAttach_Dual_C4
-// 0x0000 (0x0420 - 0x0420)
-class AKFWeapAttach_Dual_C4 : public AKFWeapAttach_DualBase
-{
-public:
-
-private:
-	static UClass* pClassPointer;
-
-public:
-	static UClass* StaticClass()
-	{
-		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 123948 ];
-
-		return pClassPointer;
-	};
-
-	void UnHide ( );
-	void ThirdPersonFireEffects ( );
-};
-
-UClass* AKFWeapAttach_Dual_C4::pClassPointer = NULL;
-
 // Class kfgamecontent.KFWeap_Welder
-// 0x0050 (0x0910 - 0x08C0)
+// 0x0050 (0x09A8 - 0x0958)
 class AKFWeap_Welder : public AKFWeapon
 {
 public:
-	DWORD                                              bAutoUnequip : 1;                                 		// 0x08C0 (0x0004) [0x0000000000000000] [0x00000001] 
-	float                                              WeldingRange;                                     		// 0x08C4 (0x0004) [0x0000000000000000]              
-	float                                              FastenRate;                                       		// 0x08C8 (0x0004) [0x0000000000000000]              
-	float                                              UnfastenRate;                                     		// 0x08CC (0x0004) [0x0000000000000000]              
-	float                                              RepairRate;                                       		// 0x08D0 (0x0004) [0x0000000000000000]              
-	float                                              ExtraWeldingRange;                                		// 0x08D4 (0x0004) [0x0000000000000000]              
-	float                                              AmmoRechargeRate;                                 		// 0x08D8 (0x0004) [0x0000000000000000]              
-	struct FName                                       IdleWeldAnim;                                     		// 0x08DC (0x0008) [0x0000000000000000]              
-	struct FName                                       WeldOpenAnim;                                     		// 0x08E4 (0x0008) [0x0000000000000000]              
-	struct FName                                       WeldCloseAnim;                                    		// 0x08EC (0x0008) [0x0000000000000000]              
-	class AKFDoorActor*                                WeldTarget;                                       		// 0x08F4 (0x0008) [0x0000000000000000]              
-	float                                              LastTraceHitTime;                                 		// 0x08FC (0x0004) [0x0000000000000000]              
-	class UClass*                                      ScreenUIClass;                                    		// 0x0900 (0x0008) [0x0000000000000000]              
-	class UKFGFxWorld_WelderScreen*                    ScreenUI;                                         		// 0x0908 (0x0008) [0x0000000000000000]              
+	DWORD                                              bAutoUnequip : 1;                                 		// 0x0958 (0x0004) [0x0000000000000000] [0x00000001] 
+	float                                              WeldingRange;                                     		// 0x095C (0x0004) [0x0000000000000000]              
+	float                                              FastenRate;                                       		// 0x0960 (0x0004) [0x0000000000000000]              
+	float                                              UnfastenRate;                                     		// 0x0964 (0x0004) [0x0000000000000000]              
+	float                                              RepairRate;                                       		// 0x0968 (0x0004) [0x0000000000000000]              
+	float                                              ExtraWeldingRange;                                		// 0x096C (0x0004) [0x0000000000000000]              
+	float                                              AmmoRechargeRate;                                 		// 0x0970 (0x0004) [0x0000000000000000]              
+	struct FName                                       IdleWeldAnim;                                     		// 0x0974 (0x0008) [0x0000000000000000]              
+	struct FName                                       WeldOpenAnim;                                     		// 0x097C (0x0008) [0x0000000000000000]              
+	struct FName                                       WeldCloseAnim;                                    		// 0x0984 (0x0008) [0x0000000000000000]              
+	class AKFWeldableComponent*                        WeldTarget;                                       		// 0x098C (0x0008) [0x0000000000000000]              
+	float                                              LastTraceHitTime;                                 		// 0x0994 (0x0004) [0x0000000000000000]              
+	class UClass*                                      ScreenUIClass;                                    		// 0x0998 (0x0008) [0x0000000000000000]              
+	class UKFGFxWorld_WelderScreen*                    ScreenUI;                                         		// 0x09A0 (0x0008) [0x0000000000000000]              
 
 private:
 	static UClass* pClassPointer;
@@ -15300,7 +19282,7 @@ public:
 	static UClass* StaticClass()
 	{
 		if ( ! pClassPointer )
-			pClassPointer = (UClass*) UObject::GObjObjects()->Data[ 124046 ];
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeap_Welder" );
 
 		return pClassPointer;
 	};
@@ -15309,7 +19291,7 @@ public:
 	void PlayReadyTransition ( );
 	void ServerSetWeldTarget ( );
 	void FindRepairableDoor ( );
-	void TraceDoorActors ( );
+	void TraceWeldables ( );
 	void TickWeldTarget ( );
 	void CheckDelayedStartFire ( );
 	void ClientRefire ( );
@@ -15333,6 +19315,294 @@ public:
 };
 
 UClass* AKFWeap_Welder::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapAttach_Dual_C4
+// 0x0000 (0x0420 - 0x0420)
+class AKFWeapAttach_Dual_C4 : public AKFWeapAttach_DualBase
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapAttach_Dual_C4" );
+
+		return pClassPointer;
+	};
+
+	void UnHide ( );
+	void ThirdPersonFireEffects ( );
+};
+
+UClass* AKFWeapAttach_Dual_C4::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapAttach_Eviscerator
+// 0x0008 (0x03F0 - 0x03E8)
+class AKFWeapAttach_Eviscerator : public AKFWeaponAttachment
+{
+public:
+	class UAnimTree*                                   CustomAnimTree;                                   		// 0x03E8 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapAttach_Eviscerator" );
+
+		return pClassPointer;
+	};
+
+	void ThirdPersonFireEffects ( );
+	void eventPreBeginPlay ( );
+};
+
+UClass* AKFWeapAttach_Eviscerator::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapAttach_Flamethrower
+// 0x0040 (0x04A0 - 0x0460)
+class AKFWeapAttach_Flamethrower : public AKFWeapAttach_SprayBase
+{
+public:
+	class UKFParticleSystemComponent*                  PSC_SpineLights[ 0x4 ];                           		// 0x0460 (0x0020) [0x0000000000000000]              
+	struct FName                                       SpineLightSocketNames[ 0x4 ];                     		// 0x0480 (0x0020) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapAttach_Flamethrower" );
+
+		return pClassPointer;
+	};
+
+	void TurnOffFireSpray ( );
+	void TurnOnFireSpray ( );
+	void TurnOffPilot ( );
+	void TurnOnPilot ( );
+};
+
+UClass* AKFWeapAttach_Flamethrower::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapAttach_HuskCannon
+// 0x003C (0x0424 - 0x03E8)
+class AKFWeapAttach_HuskCannon : public AKFWeaponAttachment
+{
+public:
+	class UParticleSystemComponent*                    ChargingPSC;                                      		// 0x03E8 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ChargingEffect;                                   		// 0x03F0 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             ChargedEffect;                                    		// 0x03F8 (0x0008) [0x0000000000000000]              
+	DWORD                                              bIsCharging : 1;                                  		// 0x0400 (0x0004) [0x0000000000000000] [0x00000001] 
+	DWORD                                              bIsFullyCharged : 1;                              		// 0x0400 (0x0004) [0x0000000000000000] [0x00000002] 
+	float                                              StartFireTime;                                    		// 0x0404 (0x0004) [0x0000000000000000]              
+	int                                                ChargeLevel;                                      		// 0x0408 (0x0004) [0x0000000000000000]              
+	class UParticleSystem*                             MuzzleFlashEffectL1;                              		// 0x040C (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             MuzzleFlashEffectL2;                              		// 0x0414 (0x0008) [0x0000000000000000]              
+	class UParticleSystem*                             MuzzleFlashEffectL3;                              		// 0x041C (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapAttach_HuskCannon" );
+
+		return pClassPointer;
+	};
+
+	void GetChargeFXLevel ( );
+	void CauseMuzzleFlash ( );
+	void ThirdPersonFireEffects ( );
+	void FirstPersonFireEffects ( );
+	void eventTick ( );
+	void StartFire ( );
+};
+
+UClass* AKFWeapAttach_HuskCannon::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapAttach_M99
+// 0x0000 (0x03E8 - 0x03E8)
+class AKFWeapAttach_M99 : public AKFWeaponAttachment
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapAttach_M99" );
+
+		return pClassPointer;
+	};
+
+	void SpawnTracer ( );
+};
+
+UClass* AKFWeapAttach_M99::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapAttach_MaceAndShield
+// 0x0000 (0x0420 - 0x0420)
+class AKFWeapAttach_MaceAndShield : public AKFWeapAttach_DualBase
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapAttach_MaceAndShield" );
+
+		return pClassPointer;
+	};
+
+	void PlayWeaponMeshAnim ( );
+	void PlayWeaponFireAnim ( );
+};
+
+UClass* AKFWeapAttach_MaceAndShield::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapAttach_MultiAmmo
+// 0x0000 (0x03E8 - 0x03E8)
+class AKFWeapAttach_MultiAmmo : public AKFWeaponAttachment
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapAttach_MultiAmmo" );
+
+		return pClassPointer;
+	};
+
+	void PlayReloadMagazineAnim ( );
+	void CauseMuzzleFlash ( );
+};
+
+UClass* AKFWeapAttach_MultiAmmo::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapAttach_PowerGloves
+// 0x0000 (0x0420 - 0x0420)
+class AKFWeapAttach_PowerGloves : public AKFWeapAttach_DualBase
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapAttach_PowerGloves" );
+
+		return pClassPointer;
+	};
+
+	void PlayWeaponMeshAnim ( );
+	void PlayWeaponFireAnim ( );
+};
+
+UClass* AKFWeapAttach_PowerGloves::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapAttach_Pulverizer
+// 0x0001 (0x03E9 - 0x03E8)
+class AKFWeapAttach_Pulverizer : public AKFWeaponAttachment
+{
+public:
+	unsigned char                                      NextPulverizerShootType;                          		// 0x03E8 (0x0001) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapAttach_Pulverizer" );
+
+		return pClassPointer;
+	};
+
+	void UpdateThirdPersonWeaponAction ( );
+	void PlayPulverizerShoot ( );
+	void ThirdPersonFireEffects ( );
+};
+
+UClass* AKFWeapAttach_Pulverizer::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapAttach_Railgun
+// 0x0010 (0x03F8 - 0x03E8)
+class AKFWeapAttach_Railgun : public AKFWeaponAttachment
+{
+public:
+	class UAkEvent*                                    AmbientSoundPlayEvent;                            		// 0x03E8 (0x0008) [0x0000000000000000]              
+	class UAkEvent*                                    AmbientSoundStopEvent;                            		// 0x03F0 (0x0008) [0x0000000000000000]              
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapAttach_Railgun" );
+
+		return pClassPointer;
+	};
+
+	void SpawnTracer ( );
+	void Destroyed ( );
+	void DetachFrom ( );
+	void AttachTo ( );
+	void StopAmbientSound ( );
+	void StartAmbientSound ( );
+};
+
+UClass* AKFWeapAttach_Railgun::pClassPointer = NULL;
+
+// Class kfgamecontent.KFWeapDef_Medic32
+// 0x0001 (0x00C4 - 0x00C3)
+class UKFWeapDef_Medic32 : public UKFWeaponDefinition
+{
+public:
+
+private:
+	static UClass* pClassPointer;
+
+public:
+	static UClass* StaticClass()
+	{
+		if ( ! pClassPointer )
+			pClassPointer = UObject::FindClass ( "Class kfgamecontent.KFWeapDef_Medic32" );
+
+		return pClassPointer;
+	};
+
+};
+
+UClass* UKFWeapDef_Medic32::pClassPointer = NULL;
 
 
 #ifdef _MSC_VER

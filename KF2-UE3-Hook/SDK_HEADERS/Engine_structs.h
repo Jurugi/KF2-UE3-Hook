@@ -21,23 +21,6 @@
 # ========================================================================================= #
 */
 
-// ScriptStruct Engine.StaticMesh.StaticMeshLODElement
-// 0x0014
-struct FStaticMeshLODElement
-{
-	class UMaterialInterface*                          Material;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
-	DWORD                                              bEnableShadowCasting : 1;                         		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
-	unsigned char                                      UnknownData00[ 0x4 ];                             		// 0x000C (0x0004) MISSED OFFSET
-	DWORD                                              bEnableCollision : 1;                             		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
-};
-
-// ScriptStruct Engine.StaticMesh.StaticMeshLODInfo
-// 0x0010
-struct FStaticMeshLODInfo
-{
-	TArray< struct FStaticMeshLODElement >             Elements;                                         		// 0x0000 (0x0010) [0x0000000000000000]              
-};
-
 // ScriptStruct Engine.Actor.RigidBodyState
 // 0x0039
 struct FRigidBodyState
@@ -299,6 +282,7 @@ struct FTextureGroupContainer
 	DWORD                                              TEXTUREGROUP_CosmeticNormalMap : 1;               		// 0x0004 (0x0004) [0x0000000000000000] [0x00000010] 
 	DWORD                                              TEXTUREGROUP_CosmeticSpecular : 1;                		// 0x0004 (0x0004) [0x0000000000000000] [0x00000020] 
 	DWORD                                              TEXTUREGROUP_UIWithMips : 1;                      		// 0x0004 (0x0004) [0x0000000000000000] [0x00000040] 
+	DWORD                                              TEXTUREGROUP_UIStreamable : 1;                    		// 0x0004 (0x0004) [0x0000000000000000] [0x00000080] 
 };
 
 // ScriptStruct Engine.Texture2D.Texture2DMipMap
@@ -5201,6 +5185,23 @@ struct FVehicleState
 	unsigned char                                      ServerRise;                                       		// 0x0043 (0x0001) [0x0000000000000000]              
 	DWORD                                              bServerHandbrake : 1;                             		// 0x0044 (0x0004) [0x0000000000000000] [0x00000001] 
 	int                                                ServerView;                                       		// 0x0048 (0x0004) [0x0000000000000000]              
+};
+
+// ScriptStruct Engine.StaticMesh.StaticMeshLODElement
+// 0x0014
+struct FStaticMeshLODElement
+{
+	class UMaterialInterface*                          Material;                                         		// 0x0000 (0x0008) [0x0000000000000000]              
+	DWORD                                              bEnableShadowCasting : 1;                         		// 0x0008 (0x0004) [0x0000000000000000] [0x00000001] 
+	unsigned char                                      UnknownData00[ 0x4 ];                             		// 0x000C (0x0004) MISSED OFFSET
+	DWORD                                              bEnableCollision : 1;                             		// 0x0010 (0x0004) [0x0000000000000000] [0x00000001] 
+};
+
+// ScriptStruct Engine.StaticMesh.StaticMeshLODInfo
+// 0x0010
+struct FStaticMeshLODInfo
+{
+	TArray< struct FStaticMeshLODElement >             Elements;                                         		// 0x0000 (0x0010) [0x0000000000000000]              
 };
 
 // ScriptStruct Engine.Terrain.TerrainHeight

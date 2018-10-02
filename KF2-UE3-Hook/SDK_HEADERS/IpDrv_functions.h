@@ -30,7 +30,7 @@ void AInternetLink::eventResolveFailed ( )
 	static UFunction* pFnResolveFailed = NULL;
 
 	if ( ! pFnResolveFailed )
-		pFnResolveFailed = (UFunction*) UObject::GObjObjects()->Data[ 38101 ];
+		pFnResolveFailed = (UFunction*) UObject::GObjObjects()->Data[ 38132 ];
 
 	AInternetLink_eventResolveFailed_Parms ResolveFailed_Parms;
 
@@ -46,7 +46,7 @@ void AInternetLink::eventResolved ( )
 	static UFunction* pFnResolved = NULL;
 
 	if ( ! pFnResolved )
-		pFnResolved = (UFunction*) UObject::GObjObjects()->Data[ 38099 ];
+		pFnResolved = (UFunction*) UObject::GObjObjects()->Data[ 38130 ];
 
 	AInternetLink_eventResolved_Parms Resolved_Parms;
 
@@ -62,7 +62,7 @@ void AInternetLink::GetLocalIP ( )
 	static UFunction* pFnGetLocalIP = NULL;
 
 	if ( ! pFnGetLocalIP )
-		pFnGetLocalIP = (UFunction*) UObject::GObjObjects()->Data[ 38097 ];
+		pFnGetLocalIP = (UFunction*) UObject::GObjObjects()->Data[ 38128 ];
 
 	AInternetLink_execGetLocalIP_Parms GetLocalIP_Parms;
 
@@ -82,7 +82,7 @@ void AInternetLink::StringToIpAddr ( )
 	static UFunction* pFnStringToIpAddr = NULL;
 
 	if ( ! pFnStringToIpAddr )
-		pFnStringToIpAddr = (UFunction*) UObject::GObjObjects()->Data[ 38093 ];
+		pFnStringToIpAddr = (UFunction*) UObject::GObjObjects()->Data[ 38124 ];
 
 	AInternetLink_execStringToIpAddr_Parms StringToIpAddr_Parms;
 
@@ -102,7 +102,7 @@ void AInternetLink::IpAddrToString ( )
 	static UFunction* pFnIpAddrToString = NULL;
 
 	if ( ! pFnIpAddrToString )
-		pFnIpAddrToString = (UFunction*) UObject::GObjObjects()->Data[ 38090 ];
+		pFnIpAddrToString = (UFunction*) UObject::GObjObjects()->Data[ 38121 ];
 
 	AInternetLink_execIpAddrToString_Parms IpAddrToString_Parms;
 
@@ -122,7 +122,7 @@ void AInternetLink::GetLastError ( )
 	static UFunction* pFnGetLastError = NULL;
 
 	if ( ! pFnGetLastError )
-		pFnGetLastError = (UFunction*) UObject::GObjObjects()->Data[ 38088 ];
+		pFnGetLastError = (UFunction*) UObject::GObjObjects()->Data[ 38119 ];
 
 	AInternetLink_execGetLastError_Parms GetLastError_Parms;
 
@@ -142,7 +142,7 @@ void AInternetLink::Resolve ( )
 	static UFunction* pFnResolve = NULL;
 
 	if ( ! pFnResolve )
-		pFnResolve = (UFunction*) UObject::GObjObjects()->Data[ 38086 ];
+		pFnResolve = (UFunction*) UObject::GObjObjects()->Data[ 38117 ];
 
 	AInternetLink_execResolve_Parms Resolve_Parms;
 
@@ -162,7 +162,7 @@ void AInternetLink::ParseURL ( )
 	static UFunction* pFnParseURL = NULL;
 
 	if ( ! pFnParseURL )
-		pFnParseURL = (UFunction*) UObject::GObjObjects()->Data[ 38079 ];
+		pFnParseURL = (UFunction*) UObject::GObjObjects()->Data[ 38110 ];
 
 	AInternetLink_execParseURL_Parms ParseURL_Parms;
 
@@ -182,7 +182,7 @@ void AInternetLink::IsDataPending ( )
 	static UFunction* pFnIsDataPending = NULL;
 
 	if ( ! pFnIsDataPending )
-		pFnIsDataPending = (UFunction*) UObject::GObjObjects()->Data[ 38077 ];
+		pFnIsDataPending = (UFunction*) UObject::GObjObjects()->Data[ 38108 ];
 
 	AInternetLink_execIsDataPending_Parms IsDataPending_Parms;
 
@@ -202,7 +202,7 @@ void ATcpLink::eventReceivedBinary ( )
 	static UFunction* pFnReceivedBinary = NULL;
 
 	if ( ! pFnReceivedBinary )
-		pFnReceivedBinary = (UFunction*) UObject::GObjObjects()->Data[ 41688 ];
+		pFnReceivedBinary = (UFunction*) UObject::GObjObjects()->Data[ 41719 ];
 
 	ATcpLink_eventReceivedBinary_Parms ReceivedBinary_Parms;
 
@@ -218,7 +218,7 @@ void ATcpLink::eventReceivedLine ( )
 	static UFunction* pFnReceivedLine = NULL;
 
 	if ( ! pFnReceivedLine )
-		pFnReceivedLine = (UFunction*) UObject::GObjObjects()->Data[ 41686 ];
+		pFnReceivedLine = (UFunction*) UObject::GObjObjects()->Data[ 41717 ];
 
 	ATcpLink_eventReceivedLine_Parms ReceivedLine_Parms;
 
@@ -234,7 +234,7 @@ void ATcpLink::eventReceivedText ( )
 	static UFunction* pFnReceivedText = NULL;
 
 	if ( ! pFnReceivedText )
-		pFnReceivedText = (UFunction*) UObject::GObjObjects()->Data[ 41684 ];
+		pFnReceivedText = (UFunction*) UObject::GObjObjects()->Data[ 41715 ];
 
 	ATcpLink_eventReceivedText_Parms ReceivedText_Parms;
 
@@ -250,7 +250,7 @@ void ATcpLink::eventClosed ( )
 	static UFunction* pFnClosed = NULL;
 
 	if ( ! pFnClosed )
-		pFnClosed = (UFunction*) UObject::GObjObjects()->Data[ 41683 ];
+		pFnClosed = (UFunction*) UObject::GObjObjects()->Data[ 41714 ];
 
 	ATcpLink_eventClosed_Parms Closed_Parms;
 
@@ -266,7 +266,7 @@ void ATcpLink::eventOpened ( )
 	static UFunction* pFnOpened = NULL;
 
 	if ( ! pFnOpened )
-		pFnOpened = (UFunction*) UObject::GObjObjects()->Data[ 41682 ];
+		pFnOpened = (UFunction*) UObject::GObjObjects()->Data[ 41713 ];
 
 	ATcpLink_eventOpened_Parms Opened_Parms;
 
@@ -282,7 +282,7 @@ void ATcpLink::eventAccepted ( )
 	static UFunction* pFnAccepted = NULL;
 
 	if ( ! pFnAccepted )
-		pFnAccepted = (UFunction*) UObject::GObjObjects()->Data[ 41681 ];
+		pFnAccepted = (UFunction*) UObject::GObjObjects()->Data[ 41712 ];
 
 	ATcpLink_eventAccepted_Parms Accepted_Parms;
 
@@ -298,7 +298,7 @@ void ATcpLink::ReadBinary ( )
 	static UFunction* pFnReadBinary = NULL;
 
 	if ( ! pFnReadBinary )
-		pFnReadBinary = (UFunction*) UObject::GObjObjects()->Data[ 41677 ];
+		pFnReadBinary = (UFunction*) UObject::GObjObjects()->Data[ 41708 ];
 
 	ATcpLink_execReadBinary_Parms ReadBinary_Parms;
 
@@ -318,7 +318,7 @@ void ATcpLink::ReadText ( )
 	static UFunction* pFnReadText = NULL;
 
 	if ( ! pFnReadText )
-		pFnReadText = (UFunction*) UObject::GObjObjects()->Data[ 41674 ];
+		pFnReadText = (UFunction*) UObject::GObjObjects()->Data[ 41705 ];
 
 	ATcpLink_execReadText_Parms ReadText_Parms;
 
@@ -338,7 +338,7 @@ void ATcpLink::SendBinary ( )
 	static UFunction* pFnSendBinary = NULL;
 
 	if ( ! pFnSendBinary )
-		pFnSendBinary = (UFunction*) UObject::GObjObjects()->Data[ 41670 ];
+		pFnSendBinary = (UFunction*) UObject::GObjObjects()->Data[ 41701 ];
 
 	ATcpLink_execSendBinary_Parms SendBinary_Parms;
 
@@ -358,7 +358,7 @@ void ATcpLink::SendText ( )
 	static UFunction* pFnSendText = NULL;
 
 	if ( ! pFnSendText )
-		pFnSendText = (UFunction*) UObject::GObjObjects()->Data[ 41667 ];
+		pFnSendText = (UFunction*) UObject::GObjObjects()->Data[ 41698 ];
 
 	ATcpLink_execSendText_Parms SendText_Parms;
 
@@ -378,7 +378,7 @@ void ATcpLink::IsConnected ( )
 	static UFunction* pFnIsConnected = NULL;
 
 	if ( ! pFnIsConnected )
-		pFnIsConnected = (UFunction*) UObject::GObjObjects()->Data[ 41665 ];
+		pFnIsConnected = (UFunction*) UObject::GObjObjects()->Data[ 41696 ];
 
 	ATcpLink_execIsConnected_Parms IsConnected_Parms;
 
@@ -398,7 +398,7 @@ void ATcpLink::Close ( )
 	static UFunction* pFnClose = NULL;
 
 	if ( ! pFnClose )
-		pFnClose = (UFunction*) UObject::GObjObjects()->Data[ 41663 ];
+		pFnClose = (UFunction*) UObject::GObjObjects()->Data[ 41694 ];
 
 	ATcpLink_execClose_Parms Close_Parms;
 
@@ -418,7 +418,7 @@ void ATcpLink::Open ( )
 	static UFunction* pFnOpen = NULL;
 
 	if ( ! pFnOpen )
-		pFnOpen = (UFunction*) UObject::GObjObjects()->Data[ 41660 ];
+		pFnOpen = (UFunction*) UObject::GObjObjects()->Data[ 41691 ];
 
 	ATcpLink_execOpen_Parms Open_Parms;
 
@@ -438,7 +438,7 @@ void ATcpLink::Listen ( )
 	static UFunction* pFnListen = NULL;
 
 	if ( ! pFnListen )
-		pFnListen = (UFunction*) UObject::GObjObjects()->Data[ 41658 ];
+		pFnListen = (UFunction*) UObject::GObjObjects()->Data[ 41689 ];
 
 	ATcpLink_execListen_Parms Listen_Parms;
 
@@ -458,7 +458,7 @@ void ATcpLink::BindPort ( )
 	static UFunction* pFnBindPort = NULL;
 
 	if ( ! pFnBindPort )
-		pFnBindPort = (UFunction*) UObject::GObjObjects()->Data[ 41654 ];
+		pFnBindPort = (UFunction*) UObject::GObjObjects()->Data[ 41685 ];
 
 	ATcpLink_execBindPort_Parms BindPort_Parms;
 
@@ -478,7 +478,7 @@ void UMcpServiceBase::GetUserAuthURL ( )
 	static UFunction* pFnGetUserAuthURL = NULL;
 
 	if ( ! pFnGetUserAuthURL )
-		pFnGetUserAuthURL = (UFunction*) UObject::GObjObjects()->Data[ 38110 ];
+		pFnGetUserAuthURL = (UFunction*) UObject::GObjObjects()->Data[ 38141 ];
 
 	UMcpServiceBase_execGetUserAuthURL_Parms GetUserAuthURL_Parms;
 
@@ -494,7 +494,7 @@ void UMcpServiceBase::GetAppAccessURL ( )
 	static UFunction* pFnGetAppAccessURL = NULL;
 
 	if ( ! pFnGetAppAccessURL )
-		pFnGetAppAccessURL = (UFunction*) UObject::GObjObjects()->Data[ 38108 ];
+		pFnGetAppAccessURL = (UFunction*) UObject::GObjObjects()->Data[ 38139 ];
 
 	UMcpServiceBase_execGetAppAccessURL_Parms GetAppAccessURL_Parms;
 
@@ -510,7 +510,7 @@ void UMcpServiceBase::GetBaseURL ( )
 	static UFunction* pFnGetBaseURL = NULL;
 
 	if ( ! pFnGetBaseURL )
-		pFnGetBaseURL = (UFunction*) UObject::GObjObjects()->Data[ 38106 ];
+		pFnGetBaseURL = (UFunction*) UObject::GObjObjects()->Data[ 38137 ];
 
 	UMcpServiceBase_execGetBaseURL_Parms GetBaseURL_Parms;
 
@@ -526,7 +526,7 @@ void UMcpServiceBase::eventInit ( )
 	static UFunction* pFnInit = NULL;
 
 	if ( ! pFnInit )
-		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 38104 ];
+		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 38135 ];
 
 	UMcpServiceBase_eventInit_Parms Init_Parms;
 
@@ -542,7 +542,7 @@ void UOnlineEventsInterfaceMcp::UploadMatchmakingStats ( )
 	static UFunction* pFnUploadMatchmakingStats = NULL;
 
 	if ( ! pFnUploadMatchmakingStats )
-		pFnUploadMatchmakingStats = (UFunction*) UObject::GObjObjects()->Data[ 40686 ];
+		pFnUploadMatchmakingStats = (UFunction*) UObject::GObjObjects()->Data[ 40717 ];
 
 	UOnlineEventsInterfaceMcp_execUploadMatchmakingStats_Parms UploadMatchmakingStats_Parms;
 
@@ -562,7 +562,7 @@ void UOnlineEventsInterfaceMcp::UpdatePlaylistPopulation ( )
 	static UFunction* pFnUpdatePlaylistPopulation = NULL;
 
 	if ( ! pFnUpdatePlaylistPopulation )
-		pFnUpdatePlaylistPopulation = (UFunction*) UObject::GObjObjects()->Data[ 40682 ];
+		pFnUpdatePlaylistPopulation = (UFunction*) UObject::GObjObjects()->Data[ 40713 ];
 
 	UOnlineEventsInterfaceMcp_execUpdatePlaylistPopulation_Parms UpdatePlaylistPopulation_Parms;
 
@@ -582,7 +582,7 @@ void UOnlineEventsInterfaceMcp::UploadGameplayEventsData ( )
 	static UFunction* pFnUploadGameplayEventsData = NULL;
 
 	if ( ! pFnUploadGameplayEventsData )
-		pFnUploadGameplayEventsData = (UFunction*) UObject::GObjObjects()->Data[ 40677 ];
+		pFnUploadGameplayEventsData = (UFunction*) UObject::GObjObjects()->Data[ 40708 ];
 
 	UOnlineEventsInterfaceMcp_execUploadGameplayEventsData_Parms UploadGameplayEventsData_Parms;
 
@@ -602,7 +602,7 @@ void UOnlineEventsInterfaceMcp::UploadPlayerData ( )
 	static UFunction* pFnUploadPlayerData = NULL;
 
 	if ( ! pFnUploadPlayerData )
-		pFnUploadPlayerData = (UFunction*) UObject::GObjObjects()->Data[ 40671 ];
+		pFnUploadPlayerData = (UFunction*) UObject::GObjObjects()->Data[ 40702 ];
 
 	UOnlineEventsInterfaceMcp_execUploadPlayerData_Parms UploadPlayerData_Parms;
 
@@ -622,7 +622,7 @@ void UOnlineNewsInterfaceMcp::GetNews ( )
 	static UFunction* pFnGetNews = NULL;
 
 	if ( ! pFnGetNews )
-		pFnGetNews = (UFunction*) UObject::GObjObjects()->Data[ 41266 ];
+		pFnGetNews = (UFunction*) UObject::GObjObjects()->Data[ 41297 ];
 
 	UOnlineNewsInterfaceMcp_execGetNews_Parms GetNews_Parms;
 
@@ -638,7 +638,7 @@ void UOnlineNewsInterfaceMcp::ClearReadNewsCompletedDelegate ( )
 	static UFunction* pFnClearReadNewsCompletedDelegate = NULL;
 
 	if ( ! pFnClearReadNewsCompletedDelegate )
-		pFnClearReadNewsCompletedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41263 ];
+		pFnClearReadNewsCompletedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41294 ];
 
 	UOnlineNewsInterfaceMcp_execClearReadNewsCompletedDelegate_Parms ClearReadNewsCompletedDelegate_Parms;
 
@@ -654,7 +654,7 @@ void UOnlineNewsInterfaceMcp::AddReadNewsCompletedDelegate ( )
 	static UFunction* pFnAddReadNewsCompletedDelegate = NULL;
 
 	if ( ! pFnAddReadNewsCompletedDelegate )
-		pFnAddReadNewsCompletedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41261 ];
+		pFnAddReadNewsCompletedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41292 ];
 
 	UOnlineNewsInterfaceMcp_execAddReadNewsCompletedDelegate_Parms AddReadNewsCompletedDelegate_Parms;
 
@@ -670,7 +670,7 @@ void UOnlineNewsInterfaceMcp::OnReadNewsCompleted ( )
 	static UFunction* pFnOnReadNewsCompleted = NULL;
 
 	if ( ! pFnOnReadNewsCompleted )
-		pFnOnReadNewsCompleted = (UFunction*) UObject::GObjObjects()->Data[ 41258 ];
+		pFnOnReadNewsCompleted = (UFunction*) UObject::GObjObjects()->Data[ 41289 ];
 
 	UOnlineNewsInterfaceMcp_execOnReadNewsCompleted_Parms OnReadNewsCompleted_Parms;
 
@@ -686,7 +686,7 @@ void UOnlineNewsInterfaceMcp::ReadNews ( )
 	static UFunction* pFnReadNews = NULL;
 
 	if ( ! pFnReadNews )
-		pFnReadNews = (UFunction*) UObject::GObjObjects()->Data[ 41254 ];
+		pFnReadNews = (UFunction*) UObject::GObjObjects()->Data[ 41285 ];
 
 	UOnlineNewsInterfaceMcp_execReadNews_Parms ReadNews_Parms;
 
@@ -706,7 +706,7 @@ void UOnlineTitleFileDownloadBase::GetUrlForFile ( )
 	static UFunction* pFnGetUrlForFile = NULL;
 
 	if ( ! pFnGetUrlForFile )
-		pFnGetUrlForFile = (UFunction*) UObject::GObjObjects()->Data[ 38332 ];
+		pFnGetUrlForFile = (UFunction*) UObject::GObjObjects()->Data[ 38363 ];
 
 	UOnlineTitleFileDownloadBase_execGetUrlForFile_Parms GetUrlForFile_Parms;
 
@@ -726,7 +726,7 @@ void UOnlineTitleFileDownloadBase::ClearRequestTitleFileListCompleteDelegate ( )
 	static UFunction* pFnClearRequestTitleFileListCompleteDelegate = NULL;
 
 	if ( ! pFnClearRequestTitleFileListCompleteDelegate )
-		pFnClearRequestTitleFileListCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 38329 ];
+		pFnClearRequestTitleFileListCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 38360 ];
 
 	UOnlineTitleFileDownloadBase_execClearRequestTitleFileListCompleteDelegate_Parms ClearRequestTitleFileListCompleteDelegate_Parms;
 
@@ -742,7 +742,7 @@ void UOnlineTitleFileDownloadBase::AddRequestTitleFileListCompleteDelegate ( )
 	static UFunction* pFnAddRequestTitleFileListCompleteDelegate = NULL;
 
 	if ( ! pFnAddRequestTitleFileListCompleteDelegate )
-		pFnAddRequestTitleFileListCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 38327 ];
+		pFnAddRequestTitleFileListCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 38358 ];
 
 	UOnlineTitleFileDownloadBase_execAddRequestTitleFileListCompleteDelegate_Parms AddRequestTitleFileListCompleteDelegate_Parms;
 
@@ -758,7 +758,7 @@ void UOnlineTitleFileDownloadBase::OnRequestTitleFileListComplete ( )
 	static UFunction* pFnOnRequestTitleFileListComplete = NULL;
 
 	if ( ! pFnOnRequestTitleFileListComplete )
-		pFnOnRequestTitleFileListComplete = (UFunction*) UObject::GObjObjects()->Data[ 38323 ];
+		pFnOnRequestTitleFileListComplete = (UFunction*) UObject::GObjObjects()->Data[ 38354 ];
 
 	UOnlineTitleFileDownloadBase_execOnRequestTitleFileListComplete_Parms OnRequestTitleFileListComplete_Parms;
 
@@ -774,7 +774,7 @@ void UOnlineTitleFileDownloadBase::RequestTitleFileList ( )
 	static UFunction* pFnRequestTitleFileList = NULL;
 
 	if ( ! pFnRequestTitleFileList )
-		pFnRequestTitleFileList = (UFunction*) UObject::GObjObjects()->Data[ 38321 ];
+		pFnRequestTitleFileList = (UFunction*) UObject::GObjObjects()->Data[ 38352 ];
 
 	UOnlineTitleFileDownloadBase_execRequestTitleFileList_Parms RequestTitleFileList_Parms;
 
@@ -790,7 +790,7 @@ void UOnlineTitleFileDownloadBase::ClearDownloadedFile ( )
 	static UFunction* pFnClearDownloadedFile = NULL;
 
 	if ( ! pFnClearDownloadedFile )
-		pFnClearDownloadedFile = (UFunction*) UObject::GObjObjects()->Data[ 38318 ];
+		pFnClearDownloadedFile = (UFunction*) UObject::GObjObjects()->Data[ 38349 ];
 
 	UOnlineTitleFileDownloadBase_execClearDownloadedFile_Parms ClearDownloadedFile_Parms;
 
@@ -806,7 +806,7 @@ void UOnlineTitleFileDownloadBase::ClearDownloadedFiles ( )
 	static UFunction* pFnClearDownloadedFiles = NULL;
 
 	if ( ! pFnClearDownloadedFiles )
-		pFnClearDownloadedFiles = (UFunction*) UObject::GObjObjects()->Data[ 38316 ];
+		pFnClearDownloadedFiles = (UFunction*) UObject::GObjObjects()->Data[ 38347 ];
 
 	UOnlineTitleFileDownloadBase_execClearDownloadedFiles_Parms ClearDownloadedFiles_Parms;
 
@@ -822,7 +822,7 @@ void UOnlineTitleFileDownloadBase::GetTitleFileState ( )
 	static UFunction* pFnGetTitleFileState = NULL;
 
 	if ( ! pFnGetTitleFileState )
-		pFnGetTitleFileState = (UFunction*) UObject::GObjObjects()->Data[ 38313 ];
+		pFnGetTitleFileState = (UFunction*) UObject::GObjObjects()->Data[ 38344 ];
 
 	UOnlineTitleFileDownloadBase_execGetTitleFileState_Parms GetTitleFileState_Parms;
 
@@ -838,7 +838,7 @@ void UOnlineTitleFileDownloadBase::GetTitleFileContents ( )
 	static UFunction* pFnGetTitleFileContents = NULL;
 
 	if ( ! pFnGetTitleFileContents )
-		pFnGetTitleFileContents = (UFunction*) UObject::GObjObjects()->Data[ 38308 ];
+		pFnGetTitleFileContents = (UFunction*) UObject::GObjObjects()->Data[ 38339 ];
 
 	UOnlineTitleFileDownloadBase_execGetTitleFileContents_Parms GetTitleFileContents_Parms;
 
@@ -854,7 +854,7 @@ void UOnlineTitleFileDownloadBase::ClearReadTitleFileCompleteDelegate ( )
 	static UFunction* pFnClearReadTitleFileCompleteDelegate = NULL;
 
 	if ( ! pFnClearReadTitleFileCompleteDelegate )
-		pFnClearReadTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 38305 ];
+		pFnClearReadTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 38336 ];
 
 	UOnlineTitleFileDownloadBase_execClearReadTitleFileCompleteDelegate_Parms ClearReadTitleFileCompleteDelegate_Parms;
 
@@ -870,7 +870,7 @@ void UOnlineTitleFileDownloadBase::AddReadTitleFileCompleteDelegate ( )
 	static UFunction* pFnAddReadTitleFileCompleteDelegate = NULL;
 
 	if ( ! pFnAddReadTitleFileCompleteDelegate )
-		pFnAddReadTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 38303 ];
+		pFnAddReadTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 38334 ];
 
 	UOnlineTitleFileDownloadBase_execAddReadTitleFileCompleteDelegate_Parms AddReadTitleFileCompleteDelegate_Parms;
 
@@ -886,7 +886,7 @@ void UOnlineTitleFileDownloadBase::ReadTitleFile ( )
 	static UFunction* pFnReadTitleFile = NULL;
 
 	if ( ! pFnReadTitleFile )
-		pFnReadTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 38299 ];
+		pFnReadTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 38330 ];
 
 	UOnlineTitleFileDownloadBase_execReadTitleFile_Parms ReadTitleFile_Parms;
 
@@ -902,7 +902,7 @@ void UOnlineTitleFileDownloadBase::OnReadTitleFileComplete ( )
 	static UFunction* pFnOnReadTitleFileComplete = NULL;
 
 	if ( ! pFnOnReadTitleFileComplete )
-		pFnOnReadTitleFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 38296 ];
+		pFnOnReadTitleFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 38327 ];
 
 	UOnlineTitleFileDownloadBase_execOnReadTitleFileComplete_Parms OnReadTitleFileComplete_Parms;
 
@@ -918,7 +918,7 @@ void UOnlineTitleFileDownloadMcp::ClearDownloadedFile ( )
 	static UFunction* pFnClearDownloadedFile = NULL;
 
 	if ( ! pFnClearDownloadedFile )
-		pFnClearDownloadedFile = (UFunction*) UObject::GObjObjects()->Data[ 41476 ];
+		pFnClearDownloadedFile = (UFunction*) UObject::GObjObjects()->Data[ 41507 ];
 
 	UOnlineTitleFileDownloadMcp_execClearDownloadedFile_Parms ClearDownloadedFile_Parms;
 
@@ -938,7 +938,7 @@ void UOnlineTitleFileDownloadMcp::ClearDownloadedFiles ( )
 	static UFunction* pFnClearDownloadedFiles = NULL;
 
 	if ( ! pFnClearDownloadedFiles )
-		pFnClearDownloadedFiles = (UFunction*) UObject::GObjObjects()->Data[ 41474 ];
+		pFnClearDownloadedFiles = (UFunction*) UObject::GObjObjects()->Data[ 41505 ];
 
 	UOnlineTitleFileDownloadMcp_execClearDownloadedFiles_Parms ClearDownloadedFiles_Parms;
 
@@ -958,7 +958,7 @@ void UOnlineTitleFileDownloadMcp::GetTitleFileState ( )
 	static UFunction* pFnGetTitleFileState = NULL;
 
 	if ( ! pFnGetTitleFileState )
-		pFnGetTitleFileState = (UFunction*) UObject::GObjObjects()->Data[ 41470 ];
+		pFnGetTitleFileState = (UFunction*) UObject::GObjObjects()->Data[ 41501 ];
 
 	UOnlineTitleFileDownloadMcp_execGetTitleFileState_Parms GetTitleFileState_Parms;
 
@@ -974,7 +974,7 @@ void UOnlineTitleFileDownloadMcp::GetTitleFileContents ( )
 	static UFunction* pFnGetTitleFileContents = NULL;
 
 	if ( ! pFnGetTitleFileContents )
-		pFnGetTitleFileContents = (UFunction*) UObject::GObjObjects()->Data[ 41465 ];
+		pFnGetTitleFileContents = (UFunction*) UObject::GObjObjects()->Data[ 41496 ];
 
 	UOnlineTitleFileDownloadMcp_execGetTitleFileContents_Parms GetTitleFileContents_Parms;
 
@@ -994,7 +994,7 @@ void UOnlineTitleFileDownloadMcp::ReadTitleFile ( )
 	static UFunction* pFnReadTitleFile = NULL;
 
 	if ( ! pFnReadTitleFile )
-		pFnReadTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 41461 ];
+		pFnReadTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 41492 ];
 
 	UOnlineTitleFileDownloadMcp_execReadTitleFile_Parms ReadTitleFile_Parms;
 
@@ -1014,7 +1014,7 @@ void UOnlineTitleFileDownloadWeb::GetUrlForFile ( )
 	static UFunction* pFnGetUrlForFile = NULL;
 
 	if ( ! pFnGetUrlForFile )
-		pFnGetUrlForFile = (UFunction*) UObject::GObjObjects()->Data[ 38392 ];
+		pFnGetUrlForFile = (UFunction*) UObject::GObjObjects()->Data[ 38423 ];
 
 	UOnlineTitleFileDownloadWeb_execGetUrlForFile_Parms GetUrlForFile_Parms;
 
@@ -1030,7 +1030,7 @@ void UOnlineTitleFileDownloadWeb::OnFileListReceived ( )
 	static UFunction* pFnOnFileListReceived = NULL;
 
 	if ( ! pFnOnFileListReceived )
-		pFnOnFileListReceived = (UFunction*) UObject::GObjObjects()->Data[ 38383 ];
+		pFnOnFileListReceived = (UFunction*) UObject::GObjObjects()->Data[ 38414 ];
 
 	UOnlineTitleFileDownloadWeb_execOnFileListReceived_Parms OnFileListReceived_Parms;
 
@@ -1046,7 +1046,7 @@ void UOnlineTitleFileDownloadWeb::RequestTitleFileList ( )
 	static UFunction* pFnRequestTitleFileList = NULL;
 
 	if ( ! pFnRequestTitleFileList )
-		pFnRequestTitleFileList = (UFunction*) UObject::GObjObjects()->Data[ 38379 ];
+		pFnRequestTitleFileList = (UFunction*) UObject::GObjObjects()->Data[ 38410 ];
 
 	UOnlineTitleFileDownloadWeb_execRequestTitleFileList_Parms RequestTitleFileList_Parms;
 
@@ -1062,7 +1062,7 @@ void UOnlineTitleFileDownloadWeb::ClearDownloadedFile ( )
 	static UFunction* pFnClearDownloadedFile = NULL;
 
 	if ( ! pFnClearDownloadedFile )
-		pFnClearDownloadedFile = (UFunction*) UObject::GObjObjects()->Data[ 38376 ];
+		pFnClearDownloadedFile = (UFunction*) UObject::GObjObjects()->Data[ 38407 ];
 
 	UOnlineTitleFileDownloadWeb_execClearDownloadedFile_Parms ClearDownloadedFile_Parms;
 
@@ -1082,7 +1082,7 @@ void UOnlineTitleFileDownloadWeb::ClearDownloadedFiles ( )
 	static UFunction* pFnClearDownloadedFiles = NULL;
 
 	if ( ! pFnClearDownloadedFiles )
-		pFnClearDownloadedFiles = (UFunction*) UObject::GObjObjects()->Data[ 38374 ];
+		pFnClearDownloadedFiles = (UFunction*) UObject::GObjObjects()->Data[ 38405 ];
 
 	UOnlineTitleFileDownloadWeb_execClearDownloadedFiles_Parms ClearDownloadedFiles_Parms;
 
@@ -1102,7 +1102,7 @@ void UOnlineTitleFileDownloadWeb::GetTitleFileState ( )
 	static UFunction* pFnGetTitleFileState = NULL;
 
 	if ( ! pFnGetTitleFileState )
-		pFnGetTitleFileState = (UFunction*) UObject::GObjObjects()->Data[ 38370 ];
+		pFnGetTitleFileState = (UFunction*) UObject::GObjObjects()->Data[ 38401 ];
 
 	UOnlineTitleFileDownloadWeb_execGetTitleFileState_Parms GetTitleFileState_Parms;
 
@@ -1118,7 +1118,7 @@ void UOnlineTitleFileDownloadWeb::GetTitleFileContents ( )
 	static UFunction* pFnGetTitleFileContents = NULL;
 
 	if ( ! pFnGetTitleFileContents )
-		pFnGetTitleFileContents = (UFunction*) UObject::GObjObjects()->Data[ 38365 ];
+		pFnGetTitleFileContents = (UFunction*) UObject::GObjObjects()->Data[ 38396 ];
 
 	UOnlineTitleFileDownloadWeb_execGetTitleFileContents_Parms GetTitleFileContents_Parms;
 
@@ -1138,7 +1138,7 @@ void UOnlineTitleFileDownloadWeb::TriggerDelegates ( )
 	static UFunction* pFnTriggerDelegates = NULL;
 
 	if ( ! pFnTriggerDelegates )
-		pFnTriggerDelegates = (UFunction*) UObject::GObjObjects()->Data[ 38362 ];
+		pFnTriggerDelegates = (UFunction*) UObject::GObjObjects()->Data[ 38393 ];
 
 	UOnlineTitleFileDownloadWeb_execTriggerDelegates_Parms TriggerDelegates_Parms;
 
@@ -1158,7 +1158,7 @@ void UOnlineTitleFileDownloadWeb::OnFileDownloadComplete ( )
 	static UFunction* pFnOnFileDownloadComplete = NULL;
 
 	if ( ! pFnOnFileDownloadComplete )
-		pFnOnFileDownloadComplete = (UFunction*) UObject::GObjObjects()->Data[ 38351 ];
+		pFnOnFileDownloadComplete = (UFunction*) UObject::GObjObjects()->Data[ 38382 ];
 
 	UOnlineTitleFileDownloadWeb_execOnFileDownloadComplete_Parms OnFileDownloadComplete_Parms;
 
@@ -1174,7 +1174,7 @@ void UOnlineTitleFileDownloadWeb::ReadTitleFile ( )
 	static UFunction* pFnReadTitleFile = NULL;
 
 	if ( ! pFnReadTitleFile )
-		pFnReadTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 38344 ];
+		pFnReadTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 38375 ];
 
 	UOnlineTitleFileDownloadWeb_execReadTitleFile_Parms ReadTitleFile_Parms;
 
@@ -1190,7 +1190,7 @@ void UOnlineTitleFileDownloadWeb::UncompressTitleFileContents ( )
 	static UFunction* pFnUncompressTitleFileContents = NULL;
 
 	if ( ! pFnUncompressTitleFileContents )
-		pFnUncompressTitleFileContents = (UFunction*) UObject::GObjObjects()->Data[ 38337 ];
+		pFnUncompressTitleFileContents = (UFunction*) UObject::GObjObjects()->Data[ 38368 ];
 
 	UOnlineTitleFileDownloadWeb_execUncompressTitleFileContents_Parms UncompressTitleFileContents_Parms;
 
@@ -1210,7 +1210,7 @@ void UTitleFileDownloadCache::DeleteTitleFile ( )
 	static UFunction* pFnDeleteTitleFile = NULL;
 
 	if ( ! pFnDeleteTitleFile )
-		pFnDeleteTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 41752 ];
+		pFnDeleteTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 41783 ];
 
 	UTitleFileDownloadCache_execDeleteTitleFile_Parms DeleteTitleFile_Parms;
 
@@ -1230,7 +1230,7 @@ void UTitleFileDownloadCache::DeleteTitleFiles ( )
 	static UFunction* pFnDeleteTitleFiles = NULL;
 
 	if ( ! pFnDeleteTitleFiles )
-		pFnDeleteTitleFiles = (UFunction*) UObject::GObjObjects()->Data[ 41749 ];
+		pFnDeleteTitleFiles = (UFunction*) UObject::GObjObjects()->Data[ 41780 ];
 
 	UTitleFileDownloadCache_execDeleteTitleFiles_Parms DeleteTitleFiles_Parms;
 
@@ -1250,7 +1250,7 @@ void UTitleFileDownloadCache::ClearCachedFile ( )
 	static UFunction* pFnClearCachedFile = NULL;
 
 	if ( ! pFnClearCachedFile )
-		pFnClearCachedFile = (UFunction*) UObject::GObjObjects()->Data[ 41746 ];
+		pFnClearCachedFile = (UFunction*) UObject::GObjObjects()->Data[ 41777 ];
 
 	UTitleFileDownloadCache_execClearCachedFile_Parms ClearCachedFile_Parms;
 
@@ -1270,7 +1270,7 @@ void UTitleFileDownloadCache::ClearCachedFiles ( )
 	static UFunction* pFnClearCachedFiles = NULL;
 
 	if ( ! pFnClearCachedFiles )
-		pFnClearCachedFiles = (UFunction*) UObject::GObjObjects()->Data[ 41744 ];
+		pFnClearCachedFiles = (UFunction*) UObject::GObjObjects()->Data[ 41775 ];
 
 	UTitleFileDownloadCache_execClearCachedFiles_Parms ClearCachedFiles_Parms;
 
@@ -1290,7 +1290,7 @@ void UTitleFileDownloadCache::GetTitleFileLogicalName ( )
 	static UFunction* pFnGetTitleFileLogicalName = NULL;
 
 	if ( ! pFnGetTitleFileLogicalName )
-		pFnGetTitleFileLogicalName = (UFunction*) UObject::GObjObjects()->Data[ 41741 ];
+		pFnGetTitleFileLogicalName = (UFunction*) UObject::GObjObjects()->Data[ 41772 ];
 
 	UTitleFileDownloadCache_execGetTitleFileLogicalName_Parms GetTitleFileLogicalName_Parms;
 
@@ -1310,7 +1310,7 @@ void UTitleFileDownloadCache::GetTitleFileHash ( )
 	static UFunction* pFnGetTitleFileHash = NULL;
 
 	if ( ! pFnGetTitleFileHash )
-		pFnGetTitleFileHash = (UFunction*) UObject::GObjObjects()->Data[ 41738 ];
+		pFnGetTitleFileHash = (UFunction*) UObject::GObjObjects()->Data[ 41769 ];
 
 	UTitleFileDownloadCache_execGetTitleFileHash_Parms GetTitleFileHash_Parms;
 
@@ -1330,7 +1330,7 @@ void UTitleFileDownloadCache::GetTitleFileState ( )
 	static UFunction* pFnGetTitleFileState = NULL;
 
 	if ( ! pFnGetTitleFileState )
-		pFnGetTitleFileState = (UFunction*) UObject::GObjObjects()->Data[ 41735 ];
+		pFnGetTitleFileState = (UFunction*) UObject::GObjObjects()->Data[ 41766 ];
 
 	UTitleFileDownloadCache_execGetTitleFileState_Parms GetTitleFileState_Parms;
 
@@ -1350,7 +1350,7 @@ void UTitleFileDownloadCache::GetTitleFileContents ( )
 	static UFunction* pFnGetTitleFileContents = NULL;
 
 	if ( ! pFnGetTitleFileContents )
-		pFnGetTitleFileContents = (UFunction*) UObject::GObjObjects()->Data[ 41730 ];
+		pFnGetTitleFileContents = (UFunction*) UObject::GObjObjects()->Data[ 41761 ];
 
 	UTitleFileDownloadCache_execGetTitleFileContents_Parms GetTitleFileContents_Parms;
 
@@ -1370,7 +1370,7 @@ void UTitleFileDownloadCache::ClearSaveTitleFileCompleteDelegate ( )
 	static UFunction* pFnClearSaveTitleFileCompleteDelegate = NULL;
 
 	if ( ! pFnClearSaveTitleFileCompleteDelegate )
-		pFnClearSaveTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41727 ];
+		pFnClearSaveTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41758 ];
 
 	UTitleFileDownloadCache_execClearSaveTitleFileCompleteDelegate_Parms ClearSaveTitleFileCompleteDelegate_Parms;
 
@@ -1386,7 +1386,7 @@ void UTitleFileDownloadCache::AddSaveTitleFileCompleteDelegate ( )
 	static UFunction* pFnAddSaveTitleFileCompleteDelegate = NULL;
 
 	if ( ! pFnAddSaveTitleFileCompleteDelegate )
-		pFnAddSaveTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41725 ];
+		pFnAddSaveTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41756 ];
 
 	UTitleFileDownloadCache_execAddSaveTitleFileCompleteDelegate_Parms AddSaveTitleFileCompleteDelegate_Parms;
 
@@ -1402,7 +1402,7 @@ void UTitleFileDownloadCache::OnSaveTitleFileComplete ( )
 	static UFunction* pFnOnSaveTitleFileComplete = NULL;
 
 	if ( ! pFnOnSaveTitleFileComplete )
-		pFnOnSaveTitleFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 41722 ];
+		pFnOnSaveTitleFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 41753 ];
 
 	UTitleFileDownloadCache_execOnSaveTitleFileComplete_Parms OnSaveTitleFileComplete_Parms;
 
@@ -1418,7 +1418,7 @@ void UTitleFileDownloadCache::SaveTitleFile ( )
 	static UFunction* pFnSaveTitleFile = NULL;
 
 	if ( ! pFnSaveTitleFile )
-		pFnSaveTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 41716 ];
+		pFnSaveTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 41747 ];
 
 	UTitleFileDownloadCache_execSaveTitleFile_Parms SaveTitleFile_Parms;
 
@@ -1438,7 +1438,7 @@ void UTitleFileDownloadCache::ClearLoadTitleFileCompleteDelegate ( )
 	static UFunction* pFnClearLoadTitleFileCompleteDelegate = NULL;
 
 	if ( ! pFnClearLoadTitleFileCompleteDelegate )
-		pFnClearLoadTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41713 ];
+		pFnClearLoadTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41744 ];
 
 	UTitleFileDownloadCache_execClearLoadTitleFileCompleteDelegate_Parms ClearLoadTitleFileCompleteDelegate_Parms;
 
@@ -1454,7 +1454,7 @@ void UTitleFileDownloadCache::AddLoadTitleFileCompleteDelegate ( )
 	static UFunction* pFnAddLoadTitleFileCompleteDelegate = NULL;
 
 	if ( ! pFnAddLoadTitleFileCompleteDelegate )
-		pFnAddLoadTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41711 ];
+		pFnAddLoadTitleFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41742 ];
 
 	UTitleFileDownloadCache_execAddLoadTitleFileCompleteDelegate_Parms AddLoadTitleFileCompleteDelegate_Parms;
 
@@ -1470,7 +1470,7 @@ void UTitleFileDownloadCache::OnLoadTitleFileComplete ( )
 	static UFunction* pFnOnLoadTitleFileComplete = NULL;
 
 	if ( ! pFnOnLoadTitleFileComplete )
-		pFnOnLoadTitleFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 41708 ];
+		pFnOnLoadTitleFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 41739 ];
 
 	UTitleFileDownloadCache_execOnLoadTitleFileComplete_Parms OnLoadTitleFileComplete_Parms;
 
@@ -1486,7 +1486,7 @@ void UTitleFileDownloadCache::LoadTitleFile ( )
 	static UFunction* pFnLoadTitleFile = NULL;
 
 	if ( ! pFnLoadTitleFile )
-		pFnLoadTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 41705 ];
+		pFnLoadTitleFile = (UFunction*) UObject::GObjObjects()->Data[ 41736 ];
 
 	UTitleFileDownloadCache_execLoadTitleFile_Parms LoadTitleFile_Parms;
 
@@ -1506,7 +1506,7 @@ void UMcpMessageBase::CacheMessageContents ( )
 	static UFunction* pFnCacheMessageContents = NULL;
 
 	if ( ! pFnCacheMessageContents )
-		pFnCacheMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39218 ];
+		pFnCacheMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39249 ];
 
 	UMcpMessageBase_execCacheMessageContents_Parms CacheMessageContents_Parms;
 
@@ -1522,7 +1522,7 @@ void UMcpMessageBase::CacheMessage ( )
 	static UFunction* pFnCacheMessage = NULL;
 
 	if ( ! pFnCacheMessage )
-		pFnCacheMessage = (UFunction*) UObject::GObjObjects()->Data[ 39216 ];
+		pFnCacheMessage = (UFunction*) UObject::GObjObjects()->Data[ 39247 ];
 
 	UMcpMessageBase_execCacheMessage_Parms CacheMessage_Parms;
 
@@ -1538,7 +1538,7 @@ void UMcpMessageBase::GetMessageContents ( )
 	static UFunction* pFnGetMessageContents = NULL;
 
 	if ( ! pFnGetMessageContents )
-		pFnGetMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39211 ];
+		pFnGetMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39242 ];
 
 	UMcpMessageBase_execGetMessageContents_Parms GetMessageContents_Parms;
 
@@ -1554,7 +1554,7 @@ void UMcpMessageBase::OnQueryMessageContentsComplete ( )
 	static UFunction* pFnOnQueryMessageContentsComplete = NULL;
 
 	if ( ! pFnOnQueryMessageContentsComplete )
-		pFnOnQueryMessageContentsComplete = (UFunction*) UObject::GObjObjects()->Data[ 39207 ];
+		pFnOnQueryMessageContentsComplete = (UFunction*) UObject::GObjObjects()->Data[ 39238 ];
 
 	UMcpMessageBase_execOnQueryMessageContentsComplete_Parms OnQueryMessageContentsComplete_Parms;
 
@@ -1570,7 +1570,7 @@ void UMcpMessageBase::QueryMessageContents ( )
 	static UFunction* pFnQueryMessageContents = NULL;
 
 	if ( ! pFnQueryMessageContents )
-		pFnQueryMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39205 ];
+		pFnQueryMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39236 ];
 
 	UMcpMessageBase_execQueryMessageContents_Parms QueryMessageContents_Parms;
 
@@ -1586,7 +1586,7 @@ void UMcpMessageBase::GetMessageList ( )
 	static UFunction* pFnGetMessageList = NULL;
 
 	if ( ! pFnGetMessageList )
-		pFnGetMessageList = (UFunction*) UObject::GObjObjects()->Data[ 39202 ];
+		pFnGetMessageList = (UFunction*) UObject::GObjObjects()->Data[ 39233 ];
 
 	UMcpMessageBase_execGetMessageList_Parms GetMessageList_Parms;
 
@@ -1602,7 +1602,7 @@ void UMcpMessageBase::OnQueryMessagesComplete ( )
 	static UFunction* pFnOnQueryMessagesComplete = NULL;
 
 	if ( ! pFnOnQueryMessagesComplete )
-		pFnOnQueryMessagesComplete = (UFunction*) UObject::GObjObjects()->Data[ 39198 ];
+		pFnOnQueryMessagesComplete = (UFunction*) UObject::GObjObjects()->Data[ 39229 ];
 
 	UMcpMessageBase_execOnQueryMessagesComplete_Parms OnQueryMessagesComplete_Parms;
 
@@ -1618,7 +1618,7 @@ void UMcpMessageBase::QueryMessages ( )
 	static UFunction* pFnQueryMessages = NULL;
 
 	if ( ! pFnQueryMessages )
-		pFnQueryMessages = (UFunction*) UObject::GObjObjects()->Data[ 39196 ];
+		pFnQueryMessages = (UFunction*) UObject::GObjObjects()->Data[ 39227 ];
 
 	UMcpMessageBase_execQueryMessages_Parms QueryMessages_Parms;
 
@@ -1634,7 +1634,7 @@ void UMcpMessageBase::OnDeleteMessageComplete ( )
 	static UFunction* pFnOnDeleteMessageComplete = NULL;
 
 	if ( ! pFnOnDeleteMessageComplete )
-		pFnOnDeleteMessageComplete = (UFunction*) UObject::GObjObjects()->Data[ 39192 ];
+		pFnOnDeleteMessageComplete = (UFunction*) UObject::GObjObjects()->Data[ 39223 ];
 
 	UMcpMessageBase_execOnDeleteMessageComplete_Parms OnDeleteMessageComplete_Parms;
 
@@ -1650,7 +1650,7 @@ void UMcpMessageBase::DeleteMessage ( )
 	static UFunction* pFnDeleteMessage = NULL;
 
 	if ( ! pFnDeleteMessage )
-		pFnDeleteMessage = (UFunction*) UObject::GObjObjects()->Data[ 39190 ];
+		pFnDeleteMessage = (UFunction*) UObject::GObjObjects()->Data[ 39221 ];
 
 	UMcpMessageBase_execDeleteMessage_Parms DeleteMessage_Parms;
 
@@ -1666,7 +1666,7 @@ void UMcpMessageBase::OnCreateMessageComplete ( )
 	static UFunction* pFnOnCreateMessageComplete = NULL;
 
 	if ( ! pFnOnCreateMessageComplete )
-		pFnOnCreateMessageComplete = (UFunction*) UObject::GObjObjects()->Data[ 39186 ];
+		pFnOnCreateMessageComplete = (UFunction*) UObject::GObjObjects()->Data[ 39217 ];
 
 	UMcpMessageBase_execOnCreateMessageComplete_Parms OnCreateMessageComplete_Parms;
 
@@ -1682,7 +1682,7 @@ void UMcpMessageBase::CreateMessage ( )
 	static UFunction* pFnCreateMessage = NULL;
 
 	if ( ! pFnCreateMessage )
-		pFnCreateMessage = (UFunction*) UObject::GObjObjects()->Data[ 39176 ];
+		pFnCreateMessage = (UFunction*) UObject::GObjObjects()->Data[ 39207 ];
 
 	UMcpMessageBase_execCreateMessage_Parms CreateMessage_Parms;
 
@@ -1698,7 +1698,7 @@ void UMcpMessageBase::CreateInstance ( )
 	static UFunction* pFnCreateInstance = NULL;
 
 	if ( ! pFnCreateInstance )
-		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 39172 ];
+		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 39203 ];
 
 	UMcpMessageBase_execCreateInstance_Parms CreateInstance_Parms;
 
@@ -1714,7 +1714,7 @@ void UMcpMessageManager::CacheMessageContents ( )
 	static UFunction* pFnCacheMessageContents = NULL;
 
 	if ( ! pFnCacheMessageContents )
-		pFnCacheMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39362 ];
+		pFnCacheMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39393 ];
 
 	UMcpMessageManager_execCacheMessageContents_Parms CacheMessageContents_Parms;
 
@@ -1730,7 +1730,7 @@ void UMcpMessageManager::GetMessageById ( )
 	static UFunction* pFnGetMessageById = NULL;
 
 	if ( ! pFnGetMessageById )
-		pFnGetMessageById = (UFunction*) UObject::GObjObjects()->Data[ 39355 ];
+		pFnGetMessageById = (UFunction*) UObject::GObjObjects()->Data[ 39386 ];
 
 	UMcpMessageManager_execGetMessageById_Parms GetMessageById_Parms;
 
@@ -1746,7 +1746,7 @@ void UMcpMessageManager::CacheMessage ( )
 	static UFunction* pFnCacheMessage = NULL;
 
 	if ( ! pFnCacheMessage )
-		pFnCacheMessage = (UFunction*) UObject::GObjObjects()->Data[ 39348 ];
+		pFnCacheMessage = (UFunction*) UObject::GObjObjects()->Data[ 39379 ];
 
 	UMcpMessageManager_execCacheMessage_Parms CacheMessage_Parms;
 
@@ -1762,7 +1762,7 @@ void UMcpMessageManager::GetMessageContents ( )
 	static UFunction* pFnGetMessageContents = NULL;
 
 	if ( ! pFnGetMessageContents )
-		pFnGetMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39341 ];
+		pFnGetMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39372 ];
 
 	UMcpMessageManager_execGetMessageContents_Parms GetMessageContents_Parms;
 
@@ -1778,7 +1778,7 @@ void UMcpMessageManager::OnQueryMessageContentsRequestComplete ( )
 	static UFunction* pFnOnQueryMessageContentsRequestComplete = NULL;
 
 	if ( ! pFnOnQueryMessageContentsRequestComplete )
-		pFnOnQueryMessageContentsRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39332 ];
+		pFnOnQueryMessageContentsRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39363 ];
 
 	UMcpMessageManager_execOnQueryMessageContentsRequestComplete_Parms OnQueryMessageContentsRequestComplete_Parms;
 
@@ -1794,7 +1794,7 @@ void UMcpMessageManager::QueryMessageContents ( )
 	static UFunction* pFnQueryMessageContents = NULL;
 
 	if ( ! pFnQueryMessageContents )
-		pFnQueryMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39328 ];
+		pFnQueryMessageContents = (UFunction*) UObject::GObjObjects()->Data[ 39359 ];
 
 	UMcpMessageManager_execQueryMessageContents_Parms QueryMessageContents_Parms;
 
@@ -1810,7 +1810,7 @@ void UMcpMessageManager::GetMessageList ( )
 	static UFunction* pFnGetMessageList = NULL;
 
 	if ( ! pFnGetMessageList )
-		pFnGetMessageList = (UFunction*) UObject::GObjObjects()->Data[ 39324 ];
+		pFnGetMessageList = (UFunction*) UObject::GObjObjects()->Data[ 39355 ];
 
 	UMcpMessageManager_execGetMessageList_Parms GetMessageList_Parms;
 
@@ -1826,7 +1826,7 @@ void UMcpMessageManager::OnQueryMessagesRequestComplete ( )
 	static UFunction* pFnOnQueryMessagesRequestComplete = NULL;
 
 	if ( ! pFnOnQueryMessagesRequestComplete )
-		pFnOnQueryMessagesRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39313 ];
+		pFnOnQueryMessagesRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39344 ];
 
 	UMcpMessageManager_execOnQueryMessagesRequestComplete_Parms OnQueryMessagesRequestComplete_Parms;
 
@@ -1842,7 +1842,7 @@ void UMcpMessageManager::QueryMessages ( )
 	static UFunction* pFnQueryMessages = NULL;
 
 	if ( ! pFnQueryMessages )
-		pFnQueryMessages = (UFunction*) UObject::GObjObjects()->Data[ 39309 ];
+		pFnQueryMessages = (UFunction*) UObject::GObjObjects()->Data[ 39340 ];
 
 	UMcpMessageManager_execQueryMessages_Parms QueryMessages_Parms;
 
@@ -1858,7 +1858,7 @@ void UMcpMessageManager::OnDeleteMessageRequestComplete ( )
 	static UFunction* pFnOnDeleteMessageRequestComplete = NULL;
 
 	if ( ! pFnOnDeleteMessageRequestComplete )
-		pFnOnDeleteMessageRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39302 ];
+		pFnOnDeleteMessageRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39333 ];
 
 	UMcpMessageManager_execOnDeleteMessageRequestComplete_Parms OnDeleteMessageRequestComplete_Parms;
 
@@ -1874,7 +1874,7 @@ void UMcpMessageManager::DeleteMessage ( )
 	static UFunction* pFnDeleteMessage = NULL;
 
 	if ( ! pFnDeleteMessage )
-		pFnDeleteMessage = (UFunction*) UObject::GObjObjects()->Data[ 39298 ];
+		pFnDeleteMessage = (UFunction*) UObject::GObjObjects()->Data[ 39329 ];
 
 	UMcpMessageManager_execDeleteMessage_Parms DeleteMessage_Parms;
 
@@ -1890,7 +1890,7 @@ void UMcpMessageManager::OnCreateMessageRequestComplete ( )
 	static UFunction* pFnOnCreateMessageRequestComplete = NULL;
 
 	if ( ! pFnOnCreateMessageRequestComplete )
-		pFnOnCreateMessageRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39291 ];
+		pFnOnCreateMessageRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39322 ];
 
 	UMcpMessageManager_execOnCreateMessageRequestComplete_Parms OnCreateMessageRequestComplete_Parms;
 
@@ -1906,7 +1906,7 @@ void UMcpMessageManager::CreateMessage ( )
 	static UFunction* pFnCreateMessage = NULL;
 
 	if ( ! pFnCreateMessage )
-		pFnCreateMessage = (UFunction*) UObject::GObjObjects()->Data[ 39276 ];
+		pFnCreateMessage = (UFunction*) UObject::GObjObjects()->Data[ 39307 ];
 
 	UMcpMessageManager_execCreateMessage_Parms CreateMessage_Parms;
 
@@ -1922,7 +1922,7 @@ void UMcpMessageManager::eventFinishedAsyncUncompression ( )
 	static UFunction* pFnFinishedAsyncUncompression = NULL;
 
 	if ( ! pFnFinishedAsyncUncompression )
-		pFnFinishedAsyncUncompression = (UFunction*) UObject::GObjObjects()->Data[ 39271 ];
+		pFnFinishedAsyncUncompression = (UFunction*) UObject::GObjObjects()->Data[ 39302 ];
 
 	UMcpMessageManager_eventFinishedAsyncUncompression_Parms FinishedAsyncUncompression_Parms;
 
@@ -1938,7 +1938,7 @@ void UMcpMessageManager::StartAsyncUncompression ( )
 	static UFunction* pFnStartAsyncUncompression = NULL;
 
 	if ( ! pFnStartAsyncUncompression )
-		pFnStartAsyncUncompression = (UFunction*) UObject::GObjObjects()->Data[ 39265 ];
+		pFnStartAsyncUncompression = (UFunction*) UObject::GObjObjects()->Data[ 39296 ];
 
 	UMcpMessageManager_execStartAsyncUncompression_Parms StartAsyncUncompression_Parms;
 
@@ -1958,7 +1958,7 @@ void UMcpMessageManager::StartAsyncCompression ( )
 	static UFunction* pFnStartAsyncCompression = NULL;
 
 	if ( ! pFnStartAsyncCompression )
-		pFnStartAsyncCompression = (UFunction*) UObject::GObjObjects()->Data[ 39259 ];
+		pFnStartAsyncCompression = (UFunction*) UObject::GObjObjects()->Data[ 39290 ];
 
 	UMcpMessageManager_execStartAsyncCompression_Parms StartAsyncCompression_Parms;
 
@@ -1978,7 +1978,7 @@ void UMcpUserCloudFileDownload::ClearAllDelegates ( )
 	static UFunction* pFnClearAllDelegates = NULL;
 
 	if ( ! pFnClearAllDelegates )
-		pFnClearAllDelegates = (UFunction*) UObject::GObjObjects()->Data[ 39597 ];
+		pFnClearAllDelegates = (UFunction*) UObject::GObjObjects()->Data[ 39628 ];
 
 	UMcpUserCloudFileDownload_execClearAllDelegates_Parms ClearAllDelegates_Parms;
 
@@ -1994,7 +1994,7 @@ void UMcpUserCloudFileDownload::ClearDeleteUserFileCompleteDelegate ( )
 	static UFunction* pFnClearDeleteUserFileCompleteDelegate = NULL;
 
 	if ( ! pFnClearDeleteUserFileCompleteDelegate )
-		pFnClearDeleteUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39594 ];
+		pFnClearDeleteUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39625 ];
 
 	UMcpUserCloudFileDownload_execClearDeleteUserFileCompleteDelegate_Parms ClearDeleteUserFileCompleteDelegate_Parms;
 
@@ -2010,7 +2010,7 @@ void UMcpUserCloudFileDownload::AddDeleteUserFileCompleteDelegate ( )
 	static UFunction* pFnAddDeleteUserFileCompleteDelegate = NULL;
 
 	if ( ! pFnAddDeleteUserFileCompleteDelegate )
-		pFnAddDeleteUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39592 ];
+		pFnAddDeleteUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39623 ];
 
 	UMcpUserCloudFileDownload_execAddDeleteUserFileCompleteDelegate_Parms AddDeleteUserFileCompleteDelegate_Parms;
 
@@ -2026,7 +2026,7 @@ void UMcpUserCloudFileDownload::CallDeleteUserFileCompleteDelegates ( )
 	static UFunction* pFnCallDeleteUserFileCompleteDelegates = NULL;
 
 	if ( ! pFnCallDeleteUserFileCompleteDelegates )
-		pFnCallDeleteUserFileCompleteDelegates = (UFunction*) UObject::GObjObjects()->Data[ 39586 ];
+		pFnCallDeleteUserFileCompleteDelegates = (UFunction*) UObject::GObjObjects()->Data[ 39617 ];
 
 	UMcpUserCloudFileDownload_execCallDeleteUserFileCompleteDelegates_Parms CallDeleteUserFileCompleteDelegates_Parms;
 
@@ -2042,7 +2042,7 @@ void UMcpUserCloudFileDownload::OnDeleteUserFileComplete ( )
 	static UFunction* pFnOnDeleteUserFileComplete = NULL;
 
 	if ( ! pFnOnDeleteUserFileComplete )
-		pFnOnDeleteUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39582 ];
+		pFnOnDeleteUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39613 ];
 
 	UMcpUserCloudFileDownload_execOnDeleteUserFileComplete_Parms OnDeleteUserFileComplete_Parms;
 
@@ -2058,7 +2058,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestDeleteUserFileComplete ( )
 	static UFunction* pFnOnHTTPRequestDeleteUserFileComplete = NULL;
 
 	if ( ! pFnOnHTTPRequestDeleteUserFileComplete )
-		pFnOnHTTPRequestDeleteUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39573 ];
+		pFnOnHTTPRequestDeleteUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39604 ];
 
 	UMcpUserCloudFileDownload_execOnHTTPRequestDeleteUserFileComplete_Parms OnHTTPRequestDeleteUserFileComplete_Parms;
 
@@ -2074,7 +2074,7 @@ void UMcpUserCloudFileDownload::DeleteUserFile ( )
 	static UFunction* pFnDeleteUserFile = NULL;
 
 	if ( ! pFnDeleteUserFile )
-		pFnDeleteUserFile = (UFunction*) UObject::GObjObjects()->Data[ 39563 ];
+		pFnDeleteUserFile = (UFunction*) UObject::GObjObjects()->Data[ 39594 ];
 
 	UMcpUserCloudFileDownload_execDeleteUserFile_Parms DeleteUserFile_Parms;
 
@@ -2090,7 +2090,7 @@ void UMcpUserCloudFileDownload::ClearWriteUserFileCompleteDelegate ( )
 	static UFunction* pFnClearWriteUserFileCompleteDelegate = NULL;
 
 	if ( ! pFnClearWriteUserFileCompleteDelegate )
-		pFnClearWriteUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39560 ];
+		pFnClearWriteUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39591 ];
 
 	UMcpUserCloudFileDownload_execClearWriteUserFileCompleteDelegate_Parms ClearWriteUserFileCompleteDelegate_Parms;
 
@@ -2106,7 +2106,7 @@ void UMcpUserCloudFileDownload::AddWriteUserFileCompleteDelegate ( )
 	static UFunction* pFnAddWriteUserFileCompleteDelegate = NULL;
 
 	if ( ! pFnAddWriteUserFileCompleteDelegate )
-		pFnAddWriteUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39558 ];
+		pFnAddWriteUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39589 ];
 
 	UMcpUserCloudFileDownload_execAddWriteUserFileCompleteDelegate_Parms AddWriteUserFileCompleteDelegate_Parms;
 
@@ -2122,7 +2122,7 @@ void UMcpUserCloudFileDownload::CallWriteUserFileCompleteDelegates ( )
 	static UFunction* pFnCallWriteUserFileCompleteDelegates = NULL;
 
 	if ( ! pFnCallWriteUserFileCompleteDelegates )
-		pFnCallWriteUserFileCompleteDelegates = (UFunction*) UObject::GObjObjects()->Data[ 39552 ];
+		pFnCallWriteUserFileCompleteDelegates = (UFunction*) UObject::GObjObjects()->Data[ 39583 ];
 
 	UMcpUserCloudFileDownload_execCallWriteUserFileCompleteDelegates_Parms CallWriteUserFileCompleteDelegates_Parms;
 
@@ -2138,7 +2138,7 @@ void UMcpUserCloudFileDownload::OnWriteUserFileComplete ( )
 	static UFunction* pFnOnWriteUserFileComplete = NULL;
 
 	if ( ! pFnOnWriteUserFileComplete )
-		pFnOnWriteUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39548 ];
+		pFnOnWriteUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39579 ];
 
 	UMcpUserCloudFileDownload_execOnWriteUserFileComplete_Parms OnWriteUserFileComplete_Parms;
 
@@ -2154,7 +2154,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestWriteUserFileComplete ( )
 	static UFunction* pFnOnHTTPRequestWriteUserFileComplete = NULL;
 
 	if ( ! pFnOnHTTPRequestWriteUserFileComplete )
-		pFnOnHTTPRequestWriteUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39539 ];
+		pFnOnHTTPRequestWriteUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39570 ];
 
 	UMcpUserCloudFileDownload_execOnHTTPRequestWriteUserFileComplete_Parms OnHTTPRequestWriteUserFileComplete_Parms;
 
@@ -2170,7 +2170,7 @@ void UMcpUserCloudFileDownload::GetUserFileIndexForRequest ( )
 	static UFunction* pFnGetUserFileIndexForRequest = NULL;
 
 	if ( ! pFnGetUserFileIndexForRequest )
-		pFnGetUserFileIndexForRequest = (UFunction*) UObject::GObjObjects()->Data[ 39535 ];
+		pFnGetUserFileIndexForRequest = (UFunction*) UObject::GObjObjects()->Data[ 39566 ];
 
 	UMcpUserCloudFileDownload_execGetUserFileIndexForRequest_Parms GetUserFileIndexForRequest_Parms;
 
@@ -2186,7 +2186,7 @@ void UMcpUserCloudFileDownload::WriteUserFile ( )
 	static UFunction* pFnWriteUserFile = NULL;
 
 	if ( ! pFnWriteUserFile )
-		pFnWriteUserFile = (UFunction*) UObject::GObjObjects()->Data[ 39525 ];
+		pFnWriteUserFile = (UFunction*) UObject::GObjObjects()->Data[ 39556 ];
 
 	UMcpUserCloudFileDownload_execWriteUserFile_Parms WriteUserFile_Parms;
 
@@ -2202,7 +2202,7 @@ void UMcpUserCloudFileDownload::ClearReadUserFileCompleteDelegate ( )
 	static UFunction* pFnClearReadUserFileCompleteDelegate = NULL;
 
 	if ( ! pFnClearReadUserFileCompleteDelegate )
-		pFnClearReadUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39522 ];
+		pFnClearReadUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39553 ];
 
 	UMcpUserCloudFileDownload_execClearReadUserFileCompleteDelegate_Parms ClearReadUserFileCompleteDelegate_Parms;
 
@@ -2218,7 +2218,7 @@ void UMcpUserCloudFileDownload::AddReadUserFileCompleteDelegate ( )
 	static UFunction* pFnAddReadUserFileCompleteDelegate = NULL;
 
 	if ( ! pFnAddReadUserFileCompleteDelegate )
-		pFnAddReadUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39520 ];
+		pFnAddReadUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39551 ];
 
 	UMcpUserCloudFileDownload_execAddReadUserFileCompleteDelegate_Parms AddReadUserFileCompleteDelegate_Parms;
 
@@ -2234,7 +2234,7 @@ void UMcpUserCloudFileDownload::CallReadUserFileCompleteDelegates ( )
 	static UFunction* pFnCallReadUserFileCompleteDelegates = NULL;
 
 	if ( ! pFnCallReadUserFileCompleteDelegates )
-		pFnCallReadUserFileCompleteDelegates = (UFunction*) UObject::GObjObjects()->Data[ 39514 ];
+		pFnCallReadUserFileCompleteDelegates = (UFunction*) UObject::GObjObjects()->Data[ 39545 ];
 
 	UMcpUserCloudFileDownload_execCallReadUserFileCompleteDelegates_Parms CallReadUserFileCompleteDelegates_Parms;
 
@@ -2250,7 +2250,7 @@ void UMcpUserCloudFileDownload::OnReadUserFileComplete ( )
 	static UFunction* pFnOnReadUserFileComplete = NULL;
 
 	if ( ! pFnOnReadUserFileComplete )
-		pFnOnReadUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39510 ];
+		pFnOnReadUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39541 ];
 
 	UMcpUserCloudFileDownload_execOnReadUserFileComplete_Parms OnReadUserFileComplete_Parms;
 
@@ -2266,7 +2266,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestReadUserFileComplete ( )
 	static UFunction* pFnOnHTTPRequestReadUserFileComplete = NULL;
 
 	if ( ! pFnOnHTTPRequestReadUserFileComplete )
-		pFnOnHTTPRequestReadUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39499 ];
+		pFnOnHTTPRequestReadUserFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 39530 ];
 
 	UMcpUserCloudFileDownload_execOnHTTPRequestReadUserFileComplete_Parms OnHTTPRequestReadUserFileComplete_Parms;
 
@@ -2282,7 +2282,7 @@ void UMcpUserCloudFileDownload::ReadUserFile ( )
 	static UFunction* pFnReadUserFile = NULL;
 
 	if ( ! pFnReadUserFile )
-		pFnReadUserFile = (UFunction*) UObject::GObjObjects()->Data[ 39491 ];
+		pFnReadUserFile = (UFunction*) UObject::GObjObjects()->Data[ 39522 ];
 
 	UMcpUserCloudFileDownload_execReadUserFile_Parms ReadUserFile_Parms;
 
@@ -2298,7 +2298,7 @@ void UMcpUserCloudFileDownload::GetUserFileList ( )
 	static UFunction* pFnGetUserFileList = NULL;
 
 	if ( ! pFnGetUserFileList )
-		pFnGetUserFileList = (UFunction*) UObject::GObjObjects()->Data[ 39485 ];
+		pFnGetUserFileList = (UFunction*) UObject::GObjObjects()->Data[ 39516 ];
 
 	UMcpUserCloudFileDownload_execGetUserFileList_Parms GetUserFileList_Parms;
 
@@ -2314,7 +2314,7 @@ void UMcpUserCloudFileDownload::ClearEnumerateUserFileCompleteDelegate ( )
 	static UFunction* pFnClearEnumerateUserFileCompleteDelegate = NULL;
 
 	if ( ! pFnClearEnumerateUserFileCompleteDelegate )
-		pFnClearEnumerateUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39482 ];
+		pFnClearEnumerateUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39513 ];
 
 	UMcpUserCloudFileDownload_execClearEnumerateUserFileCompleteDelegate_Parms ClearEnumerateUserFileCompleteDelegate_Parms;
 
@@ -2330,7 +2330,7 @@ void UMcpUserCloudFileDownload::AddEnumerateUserFileCompleteDelegate ( )
 	static UFunction* pFnAddEnumerateUserFileCompleteDelegate = NULL;
 
 	if ( ! pFnAddEnumerateUserFileCompleteDelegate )
-		pFnAddEnumerateUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39480 ];
+		pFnAddEnumerateUserFileCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 39511 ];
 
 	UMcpUserCloudFileDownload_execAddEnumerateUserFileCompleteDelegate_Parms AddEnumerateUserFileCompleteDelegate_Parms;
 
@@ -2346,7 +2346,7 @@ void UMcpUserCloudFileDownload::CallEnumerateUserFileCompleteDelegates ( )
 	static UFunction* pFnCallEnumerateUserFileCompleteDelegates = NULL;
 
 	if ( ! pFnCallEnumerateUserFileCompleteDelegates )
-		pFnCallEnumerateUserFileCompleteDelegates = (UFunction*) UObject::GObjObjects()->Data[ 39475 ];
+		pFnCallEnumerateUserFileCompleteDelegates = (UFunction*) UObject::GObjObjects()->Data[ 39506 ];
 
 	UMcpUserCloudFileDownload_execCallEnumerateUserFileCompleteDelegates_Parms CallEnumerateUserFileCompleteDelegates_Parms;
 
@@ -2362,7 +2362,7 @@ void UMcpUserCloudFileDownload::OnEnumerateUserFilesComplete ( )
 	static UFunction* pFnOnEnumerateUserFilesComplete = NULL;
 
 	if ( ! pFnOnEnumerateUserFilesComplete )
-		pFnOnEnumerateUserFilesComplete = (UFunction*) UObject::GObjObjects()->Data[ 39472 ];
+		pFnOnEnumerateUserFilesComplete = (UFunction*) UObject::GObjObjects()->Data[ 39503 ];
 
 	UMcpUserCloudFileDownload_execOnEnumerateUserFilesComplete_Parms OnEnumerateUserFilesComplete_Parms;
 
@@ -2378,7 +2378,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestEnumerateUserFilesComplete ( )
 	static UFunction* pFnOnHTTPRequestEnumerateUserFilesComplete = NULL;
 
 	if ( ! pFnOnHTTPRequestEnumerateUserFilesComplete )
-		pFnOnHTTPRequestEnumerateUserFilesComplete = (UFunction*) UObject::GObjObjects()->Data[ 39462 ];
+		pFnOnHTTPRequestEnumerateUserFilesComplete = (UFunction*) UObject::GObjObjects()->Data[ 39493 ];
 
 	UMcpUserCloudFileDownload_execOnHTTPRequestEnumerateUserFilesComplete_Parms OnHTTPRequestEnumerateUserFilesComplete_Parms;
 
@@ -2394,7 +2394,7 @@ void UMcpUserCloudFileDownload::EnumerateUserFiles ( )
 	static UFunction* pFnEnumerateUserFiles = NULL;
 
 	if ( ! pFnEnumerateUserFiles )
-		pFnEnumerateUserFiles = (UFunction*) UObject::GObjObjects()->Data[ 39457 ];
+		pFnEnumerateUserFiles = (UFunction*) UObject::GObjObjects()->Data[ 39488 ];
 
 	UMcpUserCloudFileDownload_execEnumerateUserFiles_Parms EnumerateUserFiles_Parms;
 
@@ -2410,7 +2410,7 @@ void UMcpUserCloudFileDownload::ClearFile ( )
 	static UFunction* pFnClearFile = NULL;
 
 	if ( ! pFnClearFile )
-		pFnClearFile = (UFunction*) UObject::GObjObjects()->Data[ 39450 ];
+		pFnClearFile = (UFunction*) UObject::GObjObjects()->Data[ 39481 ];
 
 	UMcpUserCloudFileDownload_execClearFile_Parms ClearFile_Parms;
 
@@ -2426,7 +2426,7 @@ void UMcpUserCloudFileDownload::ClearFiles ( )
 	static UFunction* pFnClearFiles = NULL;
 
 	if ( ! pFnClearFiles )
-		pFnClearFiles = (UFunction*) UObject::GObjObjects()->Data[ 39444 ];
+		pFnClearFiles = (UFunction*) UObject::GObjObjects()->Data[ 39475 ];
 
 	UMcpUserCloudFileDownload_execClearFiles_Parms ClearFiles_Parms;
 
@@ -2442,7 +2442,7 @@ void UMcpUserCloudFileDownload::GetFileContents ( )
 	static UFunction* pFnGetFileContents = NULL;
 
 	if ( ! pFnGetFileContents )
-		pFnGetFileContents = (UFunction*) UObject::GObjObjects()->Data[ 39435 ];
+		pFnGetFileContents = (UFunction*) UObject::GObjObjects()->Data[ 39466 ];
 
 	UMcpUserCloudFileDownload_execGetFileContents_Parms GetFileContents_Parms;
 
@@ -2458,7 +2458,7 @@ void UMeshBeacon::eventDestroyBeacon ( )
 	static UFunction* pFnDestroyBeacon = NULL;
 
 	if ( ! pFnDestroyBeacon )
-		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 40258 ];
+		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 40289 ];
 
 	UMeshBeacon_eventDestroyBeacon_Parms DestroyBeacon_Parms;
 
@@ -2478,7 +2478,7 @@ void UMeshBeaconClient::DebugRender ( )
 	static UFunction* pFnDebugRender = NULL;
 
 	if ( ! pFnDebugRender )
-		pFnDebugRender = (UFunction*) UObject::GObjObjects()->Data[ 40326 ];
+		pFnDebugRender = (UFunction*) UObject::GObjObjects()->Data[ 40357 ];
 
 	UMeshBeaconClient_execDebugRender_Parms DebugRender_Parms;
 
@@ -2494,7 +2494,7 @@ void UMeshBeaconClient::DumpInfo ( )
 	static UFunction* pFnDumpInfo = NULL;
 
 	if ( ! pFnDumpInfo )
-		pFnDumpInfo = (UFunction*) UObject::GObjObjects()->Data[ 40324 ];
+		pFnDumpInfo = (UFunction*) UObject::GObjObjects()->Data[ 40355 ];
 
 	UMeshBeaconClient_execDumpInfo_Parms DumpInfo_Parms;
 
@@ -2510,7 +2510,7 @@ void UMeshBeaconClient::SendHostNewGameSessionResponse ( )
 	static UFunction* pFnSendHostNewGameSessionResponse = NULL;
 
 	if ( ! pFnSendHostNewGameSessionResponse )
-		pFnSendHostNewGameSessionResponse = (UFunction*) UObject::GObjObjects()->Data[ 40318 ];
+		pFnSendHostNewGameSessionResponse = (UFunction*) UObject::GObjObjects()->Data[ 40349 ];
 
 	UMeshBeaconClient_execSendHostNewGameSessionResponse_Parms SendHostNewGameSessionResponse_Parms;
 
@@ -2530,7 +2530,7 @@ void UMeshBeaconClient::OnCreateNewSessionRequestReceived ( )
 	static UFunction* pFnOnCreateNewSessionRequestReceived = NULL;
 
 	if ( ! pFnOnCreateNewSessionRequestReceived )
-		pFnOnCreateNewSessionRequestReceived = (UFunction*) UObject::GObjObjects()->Data[ 40313 ];
+		pFnOnCreateNewSessionRequestReceived = (UFunction*) UObject::GObjObjects()->Data[ 40344 ];
 
 	UMeshBeaconClient_execOnCreateNewSessionRequestReceived_Parms OnCreateNewSessionRequestReceived_Parms;
 
@@ -2546,7 +2546,7 @@ void UMeshBeaconClient::OnTravelRequestReceived ( )
 	static UFunction* pFnOnTravelRequestReceived = NULL;
 
 	if ( ! pFnOnTravelRequestReceived )
-		pFnOnTravelRequestReceived = (UFunction*) UObject::GObjObjects()->Data[ 40309 ];
+		pFnOnTravelRequestReceived = (UFunction*) UObject::GObjObjects()->Data[ 40340 ];
 
 	UMeshBeaconClient_execOnTravelRequestReceived_Parms OnTravelRequestReceived_Parms;
 
@@ -2562,7 +2562,7 @@ void UMeshBeaconClient::OnReceivedBandwidthTestResults ( )
 	static UFunction* pFnOnReceivedBandwidthTestResults = NULL;
 
 	if ( ! pFnOnReceivedBandwidthTestResults )
-		pFnOnReceivedBandwidthTestResults = (UFunction*) UObject::GObjObjects()->Data[ 40305 ];
+		pFnOnReceivedBandwidthTestResults = (UFunction*) UObject::GObjObjects()->Data[ 40336 ];
 
 	UMeshBeaconClient_execOnReceivedBandwidthTestResults_Parms OnReceivedBandwidthTestResults_Parms;
 
@@ -2578,7 +2578,7 @@ void UMeshBeaconClient::OnReceivedBandwidthTestRequest ( )
 	static UFunction* pFnOnReceivedBandwidthTestRequest = NULL;
 
 	if ( ! pFnOnReceivedBandwidthTestRequest )
-		pFnOnReceivedBandwidthTestRequest = (UFunction*) UObject::GObjObjects()->Data[ 40303 ];
+		pFnOnReceivedBandwidthTestRequest = (UFunction*) UObject::GObjObjects()->Data[ 40334 ];
 
 	UMeshBeaconClient_execOnReceivedBandwidthTestRequest_Parms OnReceivedBandwidthTestRequest_Parms;
 
@@ -2594,7 +2594,7 @@ void UMeshBeaconClient::OnConnectionRequestResult ( )
 	static UFunction* pFnOnConnectionRequestResult = NULL;
 
 	if ( ! pFnOnConnectionRequestResult )
-		pFnOnConnectionRequestResult = (UFunction*) UObject::GObjObjects()->Data[ 40301 ];
+		pFnOnConnectionRequestResult = (UFunction*) UObject::GObjObjects()->Data[ 40332 ];
 
 	UMeshBeaconClient_execOnConnectionRequestResult_Parms OnConnectionRequestResult_Parms;
 
@@ -2610,7 +2610,7 @@ void UMeshBeaconClient::BeginBandwidthTest ( )
 	static UFunction* pFnBeginBandwidthTest = NULL;
 
 	if ( ! pFnBeginBandwidthTest )
-		pFnBeginBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40297 ];
+		pFnBeginBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40328 ];
 
 	UMeshBeaconClient_execBeginBandwidthTest_Parms BeginBandwidthTest_Parms;
 
@@ -2630,7 +2630,7 @@ void UMeshBeaconClient::RequestConnection ( )
 	static UFunction* pFnRequestConnection = NULL;
 
 	if ( ! pFnRequestConnection )
-		pFnRequestConnection = (UFunction*) UObject::GObjObjects()->Data[ 40292 ];
+		pFnRequestConnection = (UFunction*) UObject::GObjObjects()->Data[ 40323 ];
 
 	UMeshBeaconClient_execRequestConnection_Parms RequestConnection_Parms;
 
@@ -2650,7 +2650,7 @@ void UMeshBeaconClient::eventDestroyBeacon ( )
 	static UFunction* pFnDestroyBeacon = NULL;
 
 	if ( ! pFnDestroyBeacon )
-		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 40291 ];
+		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 40322 ];
 
 	UMeshBeaconClient_eventDestroyBeacon_Parms DestroyBeacon_Parms;
 
@@ -2670,7 +2670,7 @@ void UMeshBeaconHost::DebugRender ( )
 	static UFunction* pFnDebugRender = NULL;
 
 	if ( ! pFnDebugRender )
-		pFnDebugRender = (UFunction*) UObject::GObjObjects()->Data[ 40422 ];
+		pFnDebugRender = (UFunction*) UObject::GObjObjects()->Data[ 40453 ];
 
 	UMeshBeaconHost_execDebugRender_Parms DebugRender_Parms;
 
@@ -2686,7 +2686,7 @@ void UMeshBeaconHost::DumpConnections ( )
 	static UFunction* pFnDumpConnections = NULL;
 
 	if ( ! pFnDumpConnections )
-		pFnDumpConnections = (UFunction*) UObject::GObjObjects()->Data[ 40418 ];
+		pFnDumpConnections = (UFunction*) UObject::GObjObjects()->Data[ 40449 ];
 
 	UMeshBeaconHost_execDumpConnections_Parms DumpConnections_Parms;
 
@@ -2702,7 +2702,7 @@ void UMeshBeaconHost::OnReceivedClientCreateNewSessionResult ( )
 	static UFunction* pFnOnReceivedClientCreateNewSessionResult = NULL;
 
 	if ( ! pFnOnReceivedClientCreateNewSessionResult )
-		pFnOnReceivedClientCreateNewSessionResult = (UFunction*) UObject::GObjObjects()->Data[ 40413 ];
+		pFnOnReceivedClientCreateNewSessionResult = (UFunction*) UObject::GObjObjects()->Data[ 40444 ];
 
 	UMeshBeaconHost_execOnReceivedClientCreateNewSessionResult_Parms OnReceivedClientCreateNewSessionResult_Parms;
 
@@ -2718,7 +2718,7 @@ void UMeshBeaconHost::RequestClientCreateNewSession ( )
 	static UFunction* pFnRequestClientCreateNewSession = NULL;
 
 	if ( ! pFnRequestClientCreateNewSession )
-		pFnRequestClientCreateNewSession = (UFunction*) UObject::GObjObjects()->Data[ 40406 ];
+		pFnRequestClientCreateNewSession = (UFunction*) UObject::GObjObjects()->Data[ 40437 ];
 
 	UMeshBeaconHost_execRequestClientCreateNewSession_Parms RequestClientCreateNewSession_Parms;
 
@@ -2738,7 +2738,7 @@ void UMeshBeaconHost::TellClientsToTravel ( )
 	static UFunction* pFnTellClientsToTravel = NULL;
 
 	if ( ! pFnTellClientsToTravel )
-		pFnTellClientsToTravel = (UFunction*) UObject::GObjObjects()->Data[ 40402 ];
+		pFnTellClientsToTravel = (UFunction*) UObject::GObjObjects()->Data[ 40433 ];
 
 	UMeshBeaconHost_execTellClientsToTravel_Parms TellClientsToTravel_Parms;
 
@@ -2758,7 +2758,7 @@ void UMeshBeaconHost::OnAllPendingPlayersConnected ( )
 	static UFunction* pFnOnAllPendingPlayersConnected = NULL;
 
 	if ( ! pFnOnAllPendingPlayersConnected )
-		pFnOnAllPendingPlayersConnected = (UFunction*) UObject::GObjObjects()->Data[ 40401 ];
+		pFnOnAllPendingPlayersConnected = (UFunction*) UObject::GObjObjects()->Data[ 40432 ];
 
 	UMeshBeaconHost_execOnAllPendingPlayersConnected_Parms OnAllPendingPlayersConnected_Parms;
 
@@ -2774,7 +2774,7 @@ void UMeshBeaconHost::AllPlayersConnected ( )
 	static UFunction* pFnAllPlayersConnected = NULL;
 
 	if ( ! pFnAllPlayersConnected )
-		pFnAllPlayersConnected = (UFunction*) UObject::GObjObjects()->Data[ 40397 ];
+		pFnAllPlayersConnected = (UFunction*) UObject::GObjObjects()->Data[ 40428 ];
 
 	UMeshBeaconHost_execAllPlayersConnected_Parms AllPlayersConnected_Parms;
 
@@ -2794,7 +2794,7 @@ void UMeshBeaconHost::GetConnectionIndexForPlayer ( )
 	static UFunction* pFnGetConnectionIndexForPlayer = NULL;
 
 	if ( ! pFnGetConnectionIndexForPlayer )
-		pFnGetConnectionIndexForPlayer = (UFunction*) UObject::GObjObjects()->Data[ 40394 ];
+		pFnGetConnectionIndexForPlayer = (UFunction*) UObject::GObjObjects()->Data[ 40425 ];
 
 	UMeshBeaconHost_execGetConnectionIndexForPlayer_Parms GetConnectionIndexForPlayer_Parms;
 
@@ -2814,7 +2814,7 @@ void UMeshBeaconHost::SetPendingPlayerConnections ( )
 	static UFunction* pFnSetPendingPlayerConnections = NULL;
 
 	if ( ! pFnSetPendingPlayerConnections )
-		pFnSetPendingPlayerConnections = (UFunction*) UObject::GObjObjects()->Data[ 40391 ];
+		pFnSetPendingPlayerConnections = (UFunction*) UObject::GObjObjects()->Data[ 40422 ];
 
 	UMeshBeaconHost_execSetPendingPlayerConnections_Parms SetPendingPlayerConnections_Parms;
 
@@ -2830,7 +2830,7 @@ void UMeshBeaconHost::OnFinishedBandwidthTest ( )
 	static UFunction* pFnOnFinishedBandwidthTest = NULL;
 
 	if ( ! pFnOnFinishedBandwidthTest )
-		pFnOnFinishedBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40386 ];
+		pFnOnFinishedBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40417 ];
 
 	UMeshBeaconHost_execOnFinishedBandwidthTest_Parms OnFinishedBandwidthTest_Parms;
 
@@ -2846,7 +2846,7 @@ void UMeshBeaconHost::OnStartedBandwidthTest ( )
 	static UFunction* pFnOnStartedBandwidthTest = NULL;
 
 	if ( ! pFnOnStartedBandwidthTest )
-		pFnOnStartedBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40383 ];
+		pFnOnStartedBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40414 ];
 
 	UMeshBeaconHost_execOnStartedBandwidthTest_Parms OnStartedBandwidthTest_Parms;
 
@@ -2862,7 +2862,7 @@ void UMeshBeaconHost::OnReceivedClientConnectionRequest ( )
 	static UFunction* pFnOnReceivedClientConnectionRequest = NULL;
 
 	if ( ! pFnOnReceivedClientConnectionRequest )
-		pFnOnReceivedClientConnectionRequest = (UFunction*) UObject::GObjObjects()->Data[ 40381 ];
+		pFnOnReceivedClientConnectionRequest = (UFunction*) UObject::GObjObjects()->Data[ 40412 ];
 
 	UMeshBeaconHost_execOnReceivedClientConnectionRequest_Parms OnReceivedClientConnectionRequest_Parms;
 
@@ -2878,7 +2878,7 @@ void UMeshBeaconHost::AllowBandwidthTesting ( )
 	static UFunction* pFnAllowBandwidthTesting = NULL;
 
 	if ( ! pFnAllowBandwidthTesting )
-		pFnAllowBandwidthTesting = (UFunction*) UObject::GObjObjects()->Data[ 40379 ];
+		pFnAllowBandwidthTesting = (UFunction*) UObject::GObjObjects()->Data[ 40410 ];
 
 	UMeshBeaconHost_execAllowBandwidthTesting_Parms AllowBandwidthTesting_Parms;
 
@@ -2894,7 +2894,7 @@ void UMeshBeaconHost::CancelPendingBandwidthTests ( )
 	static UFunction* pFnCancelPendingBandwidthTests = NULL;
 
 	if ( ! pFnCancelPendingBandwidthTests )
-		pFnCancelPendingBandwidthTests = (UFunction*) UObject::GObjObjects()->Data[ 40378 ];
+		pFnCancelPendingBandwidthTests = (UFunction*) UObject::GObjObjects()->Data[ 40409 ];
 
 	UMeshBeaconHost_execCancelPendingBandwidthTests_Parms CancelPendingBandwidthTests_Parms;
 
@@ -2914,7 +2914,7 @@ void UMeshBeaconHost::HasPendingBandwidthTest ( )
 	static UFunction* pFnHasPendingBandwidthTest = NULL;
 
 	if ( ! pFnHasPendingBandwidthTest )
-		pFnHasPendingBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40376 ];
+		pFnHasPendingBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40407 ];
 
 	UMeshBeaconHost_execHasPendingBandwidthTest_Parms HasPendingBandwidthTest_Parms;
 
@@ -2934,7 +2934,7 @@ void UMeshBeaconHost::CancelInProgressBandwidthTests ( )
 	static UFunction* pFnCancelInProgressBandwidthTests = NULL;
 
 	if ( ! pFnCancelInProgressBandwidthTests )
-		pFnCancelInProgressBandwidthTests = (UFunction*) UObject::GObjObjects()->Data[ 40375 ];
+		pFnCancelInProgressBandwidthTests = (UFunction*) UObject::GObjObjects()->Data[ 40406 ];
 
 	UMeshBeaconHost_execCancelInProgressBandwidthTests_Parms CancelInProgressBandwidthTests_Parms;
 
@@ -2954,7 +2954,7 @@ void UMeshBeaconHost::HasInProgressBandwidthTest ( )
 	static UFunction* pFnHasInProgressBandwidthTest = NULL;
 
 	if ( ! pFnHasInProgressBandwidthTest )
-		pFnHasInProgressBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40373 ];
+		pFnHasInProgressBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40404 ];
 
 	UMeshBeaconHost_execHasInProgressBandwidthTest_Parms HasInProgressBandwidthTest_Parms;
 
@@ -2974,7 +2974,7 @@ void UMeshBeaconHost::RequestClientBandwidthTest ( )
 	static UFunction* pFnRequestClientBandwidthTest = NULL;
 
 	if ( ! pFnRequestClientBandwidthTest )
-		pFnRequestClientBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40368 ];
+		pFnRequestClientBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 40399 ];
 
 	UMeshBeaconHost_execRequestClientBandwidthTest_Parms RequestClientBandwidthTest_Parms;
 
@@ -2994,7 +2994,7 @@ void UMeshBeaconHost::eventDestroyBeacon ( )
 	static UFunction* pFnDestroyBeacon = NULL;
 
 	if ( ! pFnDestroyBeacon )
-		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 40367 ];
+		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 40398 ];
 
 	UMeshBeaconHost_eventDestroyBeacon_Parms DestroyBeacon_Parms;
 
@@ -3014,7 +3014,7 @@ void UMeshBeaconHost::InitHostBeacon ( )
 	static UFunction* pFnInitHostBeacon = NULL;
 
 	if ( ! pFnInitHostBeacon )
-		pFnInitHostBeacon = (UFunction*) UObject::GObjObjects()->Data[ 40364 ];
+		pFnInitHostBeacon = (UFunction*) UObject::GObjObjects()->Data[ 40395 ];
 
 	UMeshBeaconHost_execInitHostBeacon_Parms InitHostBeacon_Parms;
 
@@ -3034,7 +3034,7 @@ void UOnlineSubsystemCommonImpl::GetRegisteredPlayers ( )
 	static UFunction* pFnGetRegisteredPlayers = NULL;
 
 	if ( ! pFnGetRegisteredPlayers )
-		pFnGetRegisteredPlayers = (UFunction*) UObject::GObjObjects()->Data[ 41450 ];
+		pFnGetRegisteredPlayers = (UFunction*) UObject::GObjObjects()->Data[ 41481 ];
 
 	UOnlineSubsystemCommonImpl_execGetRegisteredPlayers_Parms GetRegisteredPlayers_Parms;
 
@@ -3050,7 +3050,7 @@ void UOnlineSubsystemCommonImpl::IsPlayerInSession ( )
 	static UFunction* pFnIsPlayerInSession = NULL;
 
 	if ( ! pFnIsPlayerInSession )
-		pFnIsPlayerInSession = (UFunction*) UObject::GObjObjects()->Data[ 41446 ];
+		pFnIsPlayerInSession = (UFunction*) UObject::GObjObjects()->Data[ 41477 ];
 
 	UOnlineSubsystemCommonImpl_execIsPlayerInSession_Parms IsPlayerInSession_Parms;
 
@@ -3070,7 +3070,7 @@ void UOnlineSubsystemCommonImpl::eventGetPlayerNicknameFromIndex ( )
 	static UFunction* pFnGetPlayerNicknameFromIndex = NULL;
 
 	if ( ! pFnGetPlayerNicknameFromIndex )
-		pFnGetPlayerNicknameFromIndex = (UFunction*) UObject::GObjObjects()->Data[ 41443 ];
+		pFnGetPlayerNicknameFromIndex = (UFunction*) UObject::GObjObjects()->Data[ 41474 ];
 
 	UOnlineSubsystemCommonImpl_eventGetPlayerNicknameFromIndex_Parms GetPlayerNicknameFromIndex_Parms;
 
@@ -3086,7 +3086,7 @@ void UOnlineAuthInterfaceImpl::GetServerAddr ( )
 	static UFunction* pFnGetServerAddr = NULL;
 
 	if ( ! pFnGetServerAddr )
-		pFnGetServerAddr = (UFunction*) UObject::GObjObjects()->Data[ 40654 ];
+		pFnGetServerAddr = (UFunction*) UObject::GObjObjects()->Data[ 40685 ];
 
 	UOnlineAuthInterfaceImpl_execGetServerAddr_Parms GetServerAddr_Parms;
 
@@ -3102,7 +3102,7 @@ void UOnlineAuthInterfaceImpl::GetServerUniqueId ( )
 	static UFunction* pFnGetServerUniqueId = NULL;
 
 	if ( ! pFnGetServerUniqueId )
-		pFnGetServerUniqueId = (UFunction*) UObject::GObjObjects()->Data[ 40651 ];
+		pFnGetServerUniqueId = (UFunction*) UObject::GObjObjects()->Data[ 40682 ];
 
 	UOnlineAuthInterfaceImpl_execGetServerUniqueId_Parms GetServerUniqueId_Parms;
 
@@ -3118,7 +3118,7 @@ void UOnlineAuthInterfaceImpl::FindLocalServerAuthSession ( )
 	static UFunction* pFnFindLocalServerAuthSession = NULL;
 
 	if ( ! pFnFindLocalServerAuthSession )
-		pFnFindLocalServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40647 ];
+		pFnFindLocalServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40678 ];
 
 	UOnlineAuthInterfaceImpl_execFindLocalServerAuthSession_Parms FindLocalServerAuthSession_Parms;
 
@@ -3138,7 +3138,7 @@ void UOnlineAuthInterfaceImpl::FindServerAuthSession ( )
 	static UFunction* pFnFindServerAuthSession = NULL;
 
 	if ( ! pFnFindServerAuthSession )
-		pFnFindServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40643 ];
+		pFnFindServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40674 ];
 
 	UOnlineAuthInterfaceImpl_execFindServerAuthSession_Parms FindServerAuthSession_Parms;
 
@@ -3158,7 +3158,7 @@ void UOnlineAuthInterfaceImpl::FindLocalClientAuthSession ( )
 	static UFunction* pFnFindLocalClientAuthSession = NULL;
 
 	if ( ! pFnFindLocalClientAuthSession )
-		pFnFindLocalClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40639 ];
+		pFnFindLocalClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40670 ];
 
 	UOnlineAuthInterfaceImpl_execFindLocalClientAuthSession_Parms FindLocalClientAuthSession_Parms;
 
@@ -3178,7 +3178,7 @@ void UOnlineAuthInterfaceImpl::FindClientAuthSession ( )
 	static UFunction* pFnFindClientAuthSession = NULL;
 
 	if ( ! pFnFindClientAuthSession )
-		pFnFindClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40635 ];
+		pFnFindClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40666 ];
 
 	UOnlineAuthInterfaceImpl_execFindClientAuthSession_Parms FindClientAuthSession_Parms;
 
@@ -3198,7 +3198,7 @@ void UOnlineAuthInterfaceImpl::AllLocalServerAuthSessions ( )
 	static UFunction* pFnAllLocalServerAuthSessions = NULL;
 
 	if ( ! pFnAllLocalServerAuthSessions )
-		pFnAllLocalServerAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40633 ];
+		pFnAllLocalServerAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40664 ];
 
 	UOnlineAuthInterfaceImpl_execAllLocalServerAuthSessions_Parms AllLocalServerAuthSessions_Parms;
 
@@ -3218,7 +3218,7 @@ void UOnlineAuthInterfaceImpl::AllServerAuthSessions ( )
 	static UFunction* pFnAllServerAuthSessions = NULL;
 
 	if ( ! pFnAllServerAuthSessions )
-		pFnAllServerAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40631 ];
+		pFnAllServerAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40662 ];
 
 	UOnlineAuthInterfaceImpl_execAllServerAuthSessions_Parms AllServerAuthSessions_Parms;
 
@@ -3238,7 +3238,7 @@ void UOnlineAuthInterfaceImpl::AllLocalClientAuthSessions ( )
 	static UFunction* pFnAllLocalClientAuthSessions = NULL;
 
 	if ( ! pFnAllLocalClientAuthSessions )
-		pFnAllLocalClientAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40629 ];
+		pFnAllLocalClientAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40660 ];
 
 	UOnlineAuthInterfaceImpl_execAllLocalClientAuthSessions_Parms AllLocalClientAuthSessions_Parms;
 
@@ -3258,7 +3258,7 @@ void UOnlineAuthInterfaceImpl::AllClientAuthSessions ( )
 	static UFunction* pFnAllClientAuthSessions = NULL;
 
 	if ( ! pFnAllClientAuthSessions )
-		pFnAllClientAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40627 ];
+		pFnAllClientAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40658 ];
 
 	UOnlineAuthInterfaceImpl_execAllClientAuthSessions_Parms AllClientAuthSessions_Parms;
 
@@ -3278,7 +3278,7 @@ void UOnlineAuthInterfaceImpl::EndAllRemoteServerAuthSessions ( )
 	static UFunction* pFnEndAllRemoteServerAuthSessions = NULL;
 
 	if ( ! pFnEndAllRemoteServerAuthSessions )
-		pFnEndAllRemoteServerAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40626 ];
+		pFnEndAllRemoteServerAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40657 ];
 
 	UOnlineAuthInterfaceImpl_execEndAllRemoteServerAuthSessions_Parms EndAllRemoteServerAuthSessions_Parms;
 
@@ -3298,7 +3298,7 @@ void UOnlineAuthInterfaceImpl::EndAllLocalServerAuthSessions ( )
 	static UFunction* pFnEndAllLocalServerAuthSessions = NULL;
 
 	if ( ! pFnEndAllLocalServerAuthSessions )
-		pFnEndAllLocalServerAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40625 ];
+		pFnEndAllLocalServerAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40656 ];
 
 	UOnlineAuthInterfaceImpl_execEndAllLocalServerAuthSessions_Parms EndAllLocalServerAuthSessions_Parms;
 
@@ -3318,7 +3318,7 @@ void UOnlineAuthInterfaceImpl::EndRemoteServerAuthSession ( )
 	static UFunction* pFnEndRemoteServerAuthSession = NULL;
 
 	if ( ! pFnEndRemoteServerAuthSession )
-		pFnEndRemoteServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40622 ];
+		pFnEndRemoteServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40653 ];
 
 	UOnlineAuthInterfaceImpl_execEndRemoteServerAuthSession_Parms EndRemoteServerAuthSession_Parms;
 
@@ -3338,7 +3338,7 @@ void UOnlineAuthInterfaceImpl::EndLocalServerAuthSession ( )
 	static UFunction* pFnEndLocalServerAuthSession = NULL;
 
 	if ( ! pFnEndLocalServerAuthSession )
-		pFnEndLocalServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40619 ];
+		pFnEndLocalServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40650 ];
 
 	UOnlineAuthInterfaceImpl_execEndLocalServerAuthSession_Parms EndLocalServerAuthSession_Parms;
 
@@ -3358,7 +3358,7 @@ void UOnlineAuthInterfaceImpl::VerifyServerAuthSession ( )
 	static UFunction* pFnVerifyServerAuthSession = NULL;
 
 	if ( ! pFnVerifyServerAuthSession )
-		pFnVerifyServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40614 ];
+		pFnVerifyServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40645 ];
 
 	UOnlineAuthInterfaceImpl_execVerifyServerAuthSession_Parms VerifyServerAuthSession_Parms;
 
@@ -3374,7 +3374,7 @@ void UOnlineAuthInterfaceImpl::CreateServerAuthSession ( )
 	static UFunction* pFnCreateServerAuthSession = NULL;
 
 	if ( ! pFnCreateServerAuthSession )
-		pFnCreateServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40608 ];
+		pFnCreateServerAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40639 ];
 
 	UOnlineAuthInterfaceImpl_execCreateServerAuthSession_Parms CreateServerAuthSession_Parms;
 
@@ -3390,7 +3390,7 @@ void UOnlineAuthInterfaceImpl::EndAllRemoteClientAuthSessions ( )
 	static UFunction* pFnEndAllRemoteClientAuthSessions = NULL;
 
 	if ( ! pFnEndAllRemoteClientAuthSessions )
-		pFnEndAllRemoteClientAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40607 ];
+		pFnEndAllRemoteClientAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40638 ];
 
 	UOnlineAuthInterfaceImpl_execEndAllRemoteClientAuthSessions_Parms EndAllRemoteClientAuthSessions_Parms;
 
@@ -3410,7 +3410,7 @@ void UOnlineAuthInterfaceImpl::EndAllLocalClientAuthSessions ( )
 	static UFunction* pFnEndAllLocalClientAuthSessions = NULL;
 
 	if ( ! pFnEndAllLocalClientAuthSessions )
-		pFnEndAllLocalClientAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40606 ];
+		pFnEndAllLocalClientAuthSessions = (UFunction*) UObject::GObjObjects()->Data[ 40637 ];
 
 	UOnlineAuthInterfaceImpl_execEndAllLocalClientAuthSessions_Parms EndAllLocalClientAuthSessions_Parms;
 
@@ -3430,7 +3430,7 @@ void UOnlineAuthInterfaceImpl::EndRemoteClientAuthSession ( )
 	static UFunction* pFnEndRemoteClientAuthSession = NULL;
 
 	if ( ! pFnEndRemoteClientAuthSession )
-		pFnEndRemoteClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40603 ];
+		pFnEndRemoteClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40634 ];
 
 	UOnlineAuthInterfaceImpl_execEndRemoteClientAuthSession_Parms EndRemoteClientAuthSession_Parms;
 
@@ -3450,7 +3450,7 @@ void UOnlineAuthInterfaceImpl::EndLocalClientAuthSession ( )
 	static UFunction* pFnEndLocalClientAuthSession = NULL;
 
 	if ( ! pFnEndLocalClientAuthSession )
-		pFnEndLocalClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40599 ];
+		pFnEndLocalClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40630 ];
 
 	UOnlineAuthInterfaceImpl_execEndLocalClientAuthSession_Parms EndLocalClientAuthSession_Parms;
 
@@ -3470,7 +3470,7 @@ void UOnlineAuthInterfaceImpl::VerifyClientAuthSession ( )
 	static UFunction* pFnVerifyClientAuthSession = NULL;
 
 	if ( ! pFnVerifyClientAuthSession )
-		pFnVerifyClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40593 ];
+		pFnVerifyClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40624 ];
 
 	UOnlineAuthInterfaceImpl_execVerifyClientAuthSession_Parms VerifyClientAuthSession_Parms;
 
@@ -3486,7 +3486,7 @@ void UOnlineAuthInterfaceImpl::CreateClientAuthSession ( )
 	static UFunction* pFnCreateClientAuthSession = NULL;
 
 	if ( ! pFnCreateClientAuthSession )
-		pFnCreateClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40586 ];
+		pFnCreateClientAuthSession = (UFunction*) UObject::GObjObjects()->Data[ 40617 ];
 
 	UOnlineAuthInterfaceImpl_execCreateClientAuthSession_Parms CreateClientAuthSession_Parms;
 
@@ -3502,7 +3502,7 @@ void UOnlineAuthInterfaceImpl::SendServerAuthRetryRequest ( )
 	static UFunction* pFnSendServerAuthRetryRequest = NULL;
 
 	if ( ! pFnSendServerAuthRetryRequest )
-		pFnSendServerAuthRetryRequest = (UFunction*) UObject::GObjObjects()->Data[ 40584 ];
+		pFnSendServerAuthRetryRequest = (UFunction*) UObject::GObjObjects()->Data[ 40615 ];
 
 	UOnlineAuthInterfaceImpl_execSendServerAuthRetryRequest_Parms SendServerAuthRetryRequest_Parms;
 
@@ -3522,7 +3522,7 @@ void UOnlineAuthInterfaceImpl::SendClientAuthEndSessionRequest ( )
 	static UFunction* pFnSendClientAuthEndSessionRequest = NULL;
 
 	if ( ! pFnSendClientAuthEndSessionRequest )
-		pFnSendClientAuthEndSessionRequest = (UFunction*) UObject::GObjObjects()->Data[ 40581 ];
+		pFnSendClientAuthEndSessionRequest = (UFunction*) UObject::GObjObjects()->Data[ 40612 ];
 
 	UOnlineAuthInterfaceImpl_execSendClientAuthEndSessionRequest_Parms SendClientAuthEndSessionRequest_Parms;
 
@@ -3542,7 +3542,7 @@ void UOnlineAuthInterfaceImpl::SendServerAuthResponse ( )
 	static UFunction* pFnSendServerAuthResponse = NULL;
 
 	if ( ! pFnSendServerAuthResponse )
-		pFnSendServerAuthResponse = (UFunction*) UObject::GObjObjects()->Data[ 40577 ];
+		pFnSendServerAuthResponse = (UFunction*) UObject::GObjObjects()->Data[ 40608 ];
 
 	UOnlineAuthInterfaceImpl_execSendServerAuthResponse_Parms SendServerAuthResponse_Parms;
 
@@ -3562,7 +3562,7 @@ void UOnlineAuthInterfaceImpl::SendClientAuthResponse ( )
 	static UFunction* pFnSendClientAuthResponse = NULL;
 
 	if ( ! pFnSendClientAuthResponse )
-		pFnSendClientAuthResponse = (UFunction*) UObject::GObjObjects()->Data[ 40574 ];
+		pFnSendClientAuthResponse = (UFunction*) UObject::GObjObjects()->Data[ 40605 ];
 
 	UOnlineAuthInterfaceImpl_execSendClientAuthResponse_Parms SendClientAuthResponse_Parms;
 
@@ -3582,7 +3582,7 @@ void UOnlineAuthInterfaceImpl::SendServerAuthRequest ( )
 	static UFunction* pFnSendServerAuthRequest = NULL;
 
 	if ( ! pFnSendServerAuthRequest )
-		pFnSendServerAuthRequest = (UFunction*) UObject::GObjObjects()->Data[ 40571 ];
+		pFnSendServerAuthRequest = (UFunction*) UObject::GObjObjects()->Data[ 40602 ];
 
 	UOnlineAuthInterfaceImpl_execSendServerAuthRequest_Parms SendServerAuthRequest_Parms;
 
@@ -3598,7 +3598,7 @@ void UOnlineAuthInterfaceImpl::SendClientAuthRequest ( )
 	static UFunction* pFnSendClientAuthRequest = NULL;
 
 	if ( ! pFnSendClientAuthRequest )
-		pFnSendClientAuthRequest = (UFunction*) UObject::GObjObjects()->Data[ 40567 ];
+		pFnSendClientAuthRequest = (UFunction*) UObject::GObjObjects()->Data[ 40598 ];
 
 	UOnlineAuthInterfaceImpl_execSendClientAuthRequest_Parms SendClientAuthRequest_Parms;
 
@@ -3614,7 +3614,7 @@ void UOnlineAuthInterfaceImpl::ClearServerConnectionCloseDelegate ( )
 	static UFunction* pFnClearServerConnectionCloseDelegate = NULL;
 
 	if ( ! pFnClearServerConnectionCloseDelegate )
-		pFnClearServerConnectionCloseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40564 ];
+		pFnClearServerConnectionCloseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40595 ];
 
 	UOnlineAuthInterfaceImpl_execClearServerConnectionCloseDelegate_Parms ClearServerConnectionCloseDelegate_Parms;
 
@@ -3630,7 +3630,7 @@ void UOnlineAuthInterfaceImpl::AddServerConnectionCloseDelegate ( )
 	static UFunction* pFnAddServerConnectionCloseDelegate = NULL;
 
 	if ( ! pFnAddServerConnectionCloseDelegate )
-		pFnAddServerConnectionCloseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40562 ];
+		pFnAddServerConnectionCloseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40593 ];
 
 	UOnlineAuthInterfaceImpl_execAddServerConnectionCloseDelegate_Parms AddServerConnectionCloseDelegate_Parms;
 
@@ -3646,7 +3646,7 @@ void UOnlineAuthInterfaceImpl::OnServerConnectionClose ( )
 	static UFunction* pFnOnServerConnectionClose = NULL;
 
 	if ( ! pFnOnServerConnectionClose )
-		pFnOnServerConnectionClose = (UFunction*) UObject::GObjObjects()->Data[ 40560 ];
+		pFnOnServerConnectionClose = (UFunction*) UObject::GObjObjects()->Data[ 40591 ];
 
 	UOnlineAuthInterfaceImpl_execOnServerConnectionClose_Parms OnServerConnectionClose_Parms;
 
@@ -3662,7 +3662,7 @@ void UOnlineAuthInterfaceImpl::ClearClientConnectionCloseDelegate ( )
 	static UFunction* pFnClearClientConnectionCloseDelegate = NULL;
 
 	if ( ! pFnClearClientConnectionCloseDelegate )
-		pFnClearClientConnectionCloseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40557 ];
+		pFnClearClientConnectionCloseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40588 ];
 
 	UOnlineAuthInterfaceImpl_execClearClientConnectionCloseDelegate_Parms ClearClientConnectionCloseDelegate_Parms;
 
@@ -3678,7 +3678,7 @@ void UOnlineAuthInterfaceImpl::AddClientConnectionCloseDelegate ( )
 	static UFunction* pFnAddClientConnectionCloseDelegate = NULL;
 
 	if ( ! pFnAddClientConnectionCloseDelegate )
-		pFnAddClientConnectionCloseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40555 ];
+		pFnAddClientConnectionCloseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40586 ];
 
 	UOnlineAuthInterfaceImpl_execAddClientConnectionCloseDelegate_Parms AddClientConnectionCloseDelegate_Parms;
 
@@ -3694,7 +3694,7 @@ void UOnlineAuthInterfaceImpl::OnClientConnectionClose ( )
 	static UFunction* pFnOnClientConnectionClose = NULL;
 
 	if ( ! pFnOnClientConnectionClose )
-		pFnOnClientConnectionClose = (UFunction*) UObject::GObjObjects()->Data[ 40553 ];
+		pFnOnClientConnectionClose = (UFunction*) UObject::GObjObjects()->Data[ 40584 ];
 
 	UOnlineAuthInterfaceImpl_execOnClientConnectionClose_Parms OnClientConnectionClose_Parms;
 
@@ -3710,7 +3710,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthRetryRequestDelegate ( )
 	static UFunction* pFnClearServerAuthRetryRequestDelegate = NULL;
 
 	if ( ! pFnClearServerAuthRetryRequestDelegate )
-		pFnClearServerAuthRetryRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40550 ];
+		pFnClearServerAuthRetryRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40581 ];
 
 	UOnlineAuthInterfaceImpl_execClearServerAuthRetryRequestDelegate_Parms ClearServerAuthRetryRequestDelegate_Parms;
 
@@ -3726,7 +3726,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthRetryRequestDelegate ( )
 	static UFunction* pFnAddServerAuthRetryRequestDelegate = NULL;
 
 	if ( ! pFnAddServerAuthRetryRequestDelegate )
-		pFnAddServerAuthRetryRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40548 ];
+		pFnAddServerAuthRetryRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40579 ];
 
 	UOnlineAuthInterfaceImpl_execAddServerAuthRetryRequestDelegate_Parms AddServerAuthRetryRequestDelegate_Parms;
 
@@ -3742,7 +3742,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthRetryRequest ( )
 	static UFunction* pFnOnServerAuthRetryRequest = NULL;
 
 	if ( ! pFnOnServerAuthRetryRequest )
-		pFnOnServerAuthRetryRequest = (UFunction*) UObject::GObjObjects()->Data[ 40546 ];
+		pFnOnServerAuthRetryRequest = (UFunction*) UObject::GObjObjects()->Data[ 40577 ];
 
 	UOnlineAuthInterfaceImpl_execOnServerAuthRetryRequest_Parms OnServerAuthRetryRequest_Parms;
 
@@ -3758,7 +3758,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthEndSessionRequestDelegate ( )
 	static UFunction* pFnClearClientAuthEndSessionRequestDelegate = NULL;
 
 	if ( ! pFnClearClientAuthEndSessionRequestDelegate )
-		pFnClearClientAuthEndSessionRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40543 ];
+		pFnClearClientAuthEndSessionRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40574 ];
 
 	UOnlineAuthInterfaceImpl_execClearClientAuthEndSessionRequestDelegate_Parms ClearClientAuthEndSessionRequestDelegate_Parms;
 
@@ -3774,7 +3774,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthEndSessionRequestDelegate ( )
 	static UFunction* pFnAddClientAuthEndSessionRequestDelegate = NULL;
 
 	if ( ! pFnAddClientAuthEndSessionRequestDelegate )
-		pFnAddClientAuthEndSessionRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40541 ];
+		pFnAddClientAuthEndSessionRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40572 ];
 
 	UOnlineAuthInterfaceImpl_execAddClientAuthEndSessionRequestDelegate_Parms AddClientAuthEndSessionRequestDelegate_Parms;
 
@@ -3790,7 +3790,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthEndSessionRequest ( )
 	static UFunction* pFnOnClientAuthEndSessionRequest = NULL;
 
 	if ( ! pFnOnClientAuthEndSessionRequest )
-		pFnOnClientAuthEndSessionRequest = (UFunction*) UObject::GObjObjects()->Data[ 40539 ];
+		pFnOnClientAuthEndSessionRequest = (UFunction*) UObject::GObjObjects()->Data[ 40570 ];
 
 	UOnlineAuthInterfaceImpl_execOnClientAuthEndSessionRequest_Parms OnClientAuthEndSessionRequest_Parms;
 
@@ -3806,7 +3806,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthCompleteDelegate ( )
 	static UFunction* pFnClearServerAuthCompleteDelegate = NULL;
 
 	if ( ! pFnClearServerAuthCompleteDelegate )
-		pFnClearServerAuthCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40536 ];
+		pFnClearServerAuthCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40567 ];
 
 	UOnlineAuthInterfaceImpl_execClearServerAuthCompleteDelegate_Parms ClearServerAuthCompleteDelegate_Parms;
 
@@ -3822,7 +3822,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthCompleteDelegate ( )
 	static UFunction* pFnAddServerAuthCompleteDelegate = NULL;
 
 	if ( ! pFnAddServerAuthCompleteDelegate )
-		pFnAddServerAuthCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40534 ];
+		pFnAddServerAuthCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40565 ];
 
 	UOnlineAuthInterfaceImpl_execAddServerAuthCompleteDelegate_Parms AddServerAuthCompleteDelegate_Parms;
 
@@ -3838,7 +3838,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthComplete ( )
 	static UFunction* pFnOnServerAuthComplete = NULL;
 
 	if ( ! pFnOnServerAuthComplete )
-		pFnOnServerAuthComplete = (UFunction*) UObject::GObjObjects()->Data[ 40529 ];
+		pFnOnServerAuthComplete = (UFunction*) UObject::GObjObjects()->Data[ 40560 ];
 
 	UOnlineAuthInterfaceImpl_execOnServerAuthComplete_Parms OnServerAuthComplete_Parms;
 
@@ -3854,7 +3854,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthCompleteDelegate ( )
 	static UFunction* pFnClearClientAuthCompleteDelegate = NULL;
 
 	if ( ! pFnClearClientAuthCompleteDelegate )
-		pFnClearClientAuthCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40526 ];
+		pFnClearClientAuthCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40557 ];
 
 	UOnlineAuthInterfaceImpl_execClearClientAuthCompleteDelegate_Parms ClearClientAuthCompleteDelegate_Parms;
 
@@ -3870,7 +3870,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthCompleteDelegate ( )
 	static UFunction* pFnAddClientAuthCompleteDelegate = NULL;
 
 	if ( ! pFnAddClientAuthCompleteDelegate )
-		pFnAddClientAuthCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40524 ];
+		pFnAddClientAuthCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40555 ];
 
 	UOnlineAuthInterfaceImpl_execAddClientAuthCompleteDelegate_Parms AddClientAuthCompleteDelegate_Parms;
 
@@ -3886,7 +3886,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthComplete ( )
 	static UFunction* pFnOnClientAuthComplete = NULL;
 
 	if ( ! pFnOnClientAuthComplete )
-		pFnOnClientAuthComplete = (UFunction*) UObject::GObjObjects()->Data[ 40519 ];
+		pFnOnClientAuthComplete = (UFunction*) UObject::GObjObjects()->Data[ 40550 ];
 
 	UOnlineAuthInterfaceImpl_execOnClientAuthComplete_Parms OnClientAuthComplete_Parms;
 
@@ -3902,7 +3902,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthResponseDelegate ( )
 	static UFunction* pFnClearServerAuthResponseDelegate = NULL;
 
 	if ( ! pFnClearServerAuthResponseDelegate )
-		pFnClearServerAuthResponseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40516 ];
+		pFnClearServerAuthResponseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40547 ];
 
 	UOnlineAuthInterfaceImpl_execClearServerAuthResponseDelegate_Parms ClearServerAuthResponseDelegate_Parms;
 
@@ -3918,7 +3918,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthResponseDelegate ( )
 	static UFunction* pFnAddServerAuthResponseDelegate = NULL;
 
 	if ( ! pFnAddServerAuthResponseDelegate )
-		pFnAddServerAuthResponseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40514 ];
+		pFnAddServerAuthResponseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40545 ];
 
 	UOnlineAuthInterfaceImpl_execAddServerAuthResponseDelegate_Parms AddServerAuthResponseDelegate_Parms;
 
@@ -3934,7 +3934,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthResponse ( )
 	static UFunction* pFnOnServerAuthResponse = NULL;
 
 	if ( ! pFnOnServerAuthResponse )
-		pFnOnServerAuthResponse = (UFunction*) UObject::GObjObjects()->Data[ 40510 ];
+		pFnOnServerAuthResponse = (UFunction*) UObject::GObjObjects()->Data[ 40541 ];
 
 	UOnlineAuthInterfaceImpl_execOnServerAuthResponse_Parms OnServerAuthResponse_Parms;
 
@@ -3950,7 +3950,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthResponseDelegate ( )
 	static UFunction* pFnClearClientAuthResponseDelegate = NULL;
 
 	if ( ! pFnClearClientAuthResponseDelegate )
-		pFnClearClientAuthResponseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40507 ];
+		pFnClearClientAuthResponseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40538 ];
 
 	UOnlineAuthInterfaceImpl_execClearClientAuthResponseDelegate_Parms ClearClientAuthResponseDelegate_Parms;
 
@@ -3966,7 +3966,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthResponseDelegate ( )
 	static UFunction* pFnAddClientAuthResponseDelegate = NULL;
 
 	if ( ! pFnAddClientAuthResponseDelegate )
-		pFnAddClientAuthResponseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40505 ];
+		pFnAddClientAuthResponseDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40536 ];
 
 	UOnlineAuthInterfaceImpl_execAddClientAuthResponseDelegate_Parms AddClientAuthResponseDelegate_Parms;
 
@@ -3982,7 +3982,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthResponse ( )
 	static UFunction* pFnOnClientAuthResponse = NULL;
 
 	if ( ! pFnOnClientAuthResponse )
-		pFnOnClientAuthResponse = (UFunction*) UObject::GObjObjects()->Data[ 40501 ];
+		pFnOnClientAuthResponse = (UFunction*) UObject::GObjObjects()->Data[ 40532 ];
 
 	UOnlineAuthInterfaceImpl_execOnClientAuthResponse_Parms OnClientAuthResponse_Parms;
 
@@ -3998,7 +3998,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthRequestDelegate ( )
 	static UFunction* pFnClearServerAuthRequestDelegate = NULL;
 
 	if ( ! pFnClearServerAuthRequestDelegate )
-		pFnClearServerAuthRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40498 ];
+		pFnClearServerAuthRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40529 ];
 
 	UOnlineAuthInterfaceImpl_execClearServerAuthRequestDelegate_Parms ClearServerAuthRequestDelegate_Parms;
 
@@ -4014,7 +4014,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthRequestDelegate ( )
 	static UFunction* pFnAddServerAuthRequestDelegate = NULL;
 
 	if ( ! pFnAddServerAuthRequestDelegate )
-		pFnAddServerAuthRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40496 ];
+		pFnAddServerAuthRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40527 ];
 
 	UOnlineAuthInterfaceImpl_execAddServerAuthRequestDelegate_Parms AddServerAuthRequestDelegate_Parms;
 
@@ -4030,7 +4030,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthRequest ( )
 	static UFunction* pFnOnServerAuthRequest = NULL;
 
 	if ( ! pFnOnServerAuthRequest )
-		pFnOnServerAuthRequest = (UFunction*) UObject::GObjObjects()->Data[ 40491 ];
+		pFnOnServerAuthRequest = (UFunction*) UObject::GObjObjects()->Data[ 40522 ];
 
 	UOnlineAuthInterfaceImpl_execOnServerAuthRequest_Parms OnServerAuthRequest_Parms;
 
@@ -4046,7 +4046,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthRequestDelegate ( )
 	static UFunction* pFnClearClientAuthRequestDelegate = NULL;
 
 	if ( ! pFnClearClientAuthRequestDelegate )
-		pFnClearClientAuthRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40488 ];
+		pFnClearClientAuthRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40519 ];
 
 	UOnlineAuthInterfaceImpl_execClearClientAuthRequestDelegate_Parms ClearClientAuthRequestDelegate_Parms;
 
@@ -4062,7 +4062,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthRequestDelegate ( )
 	static UFunction* pFnAddClientAuthRequestDelegate = NULL;
 
 	if ( ! pFnAddClientAuthRequestDelegate )
-		pFnAddClientAuthRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40486 ];
+		pFnAddClientAuthRequestDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40517 ];
 
 	UOnlineAuthInterfaceImpl_execAddClientAuthRequestDelegate_Parms AddClientAuthRequestDelegate_Parms;
 
@@ -4078,7 +4078,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthRequest ( )
 	static UFunction* pFnOnClientAuthRequest = NULL;
 
 	if ( ! pFnOnClientAuthRequest )
-		pFnOnClientAuthRequest = (UFunction*) UObject::GObjObjects()->Data[ 40481 ];
+		pFnOnClientAuthRequest = (UFunction*) UObject::GObjObjects()->Data[ 40512 ];
 
 	UOnlineAuthInterfaceImpl_execOnClientAuthRequest_Parms OnClientAuthRequest_Parms;
 
@@ -4094,7 +4094,7 @@ void UOnlineAuthInterfaceImpl::ClearAuthReadyDelegate ( )
 	static UFunction* pFnClearAuthReadyDelegate = NULL;
 
 	if ( ! pFnClearAuthReadyDelegate )
-		pFnClearAuthReadyDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40478 ];
+		pFnClearAuthReadyDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40509 ];
 
 	UOnlineAuthInterfaceImpl_execClearAuthReadyDelegate_Parms ClearAuthReadyDelegate_Parms;
 
@@ -4110,7 +4110,7 @@ void UOnlineAuthInterfaceImpl::AddAuthReadyDelegate ( )
 	static UFunction* pFnAddAuthReadyDelegate = NULL;
 
 	if ( ! pFnAddAuthReadyDelegate )
-		pFnAddAuthReadyDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40476 ];
+		pFnAddAuthReadyDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40507 ];
 
 	UOnlineAuthInterfaceImpl_execAddAuthReadyDelegate_Parms AddAuthReadyDelegate_Parms;
 
@@ -4126,7 +4126,7 @@ void UOnlineAuthInterfaceImpl::OnAuthReady ( )
 	static UFunction* pFnOnAuthReady = NULL;
 
 	if ( ! pFnOnAuthReady )
-		pFnOnAuthReady = (UFunction*) UObject::GObjObjects()->Data[ 40475 ];
+		pFnOnAuthReady = (UFunction*) UObject::GObjObjects()->Data[ 40506 ];
 
 	UOnlineAuthInterfaceImpl_execOnAuthReady_Parms OnAuthReady_Parms;
 
@@ -4142,7 +4142,7 @@ void UOnlineAuthInterfaceImpl::IsReady ( )
 	static UFunction* pFnIsReady = NULL;
 
 	if ( ! pFnIsReady )
-		pFnIsReady = (UFunction*) UObject::GObjObjects()->Data[ 40473 ];
+		pFnIsReady = (UFunction*) UObject::GObjObjects()->Data[ 40504 ];
 
 	UOnlineAuthInterfaceImpl_execIsReady_Parms IsReady_Parms;
 
@@ -4158,7 +4158,7 @@ void UOnlineGameInterfaceImpl::ClearOnlineDelegates ( )
 	static UFunction* pFnClearOnlineDelegates = NULL;
 
 	if ( ! pFnClearOnlineDelegates )
-		pFnClearOnlineDelegates = (UFunction*) UObject::GObjObjects()->Data[ 41190 ];
+		pFnClearOnlineDelegates = (UFunction*) UObject::GObjObjects()->Data[ 41221 ];
 
 	UOnlineGameInterfaceImpl_execClearOnlineDelegates_Parms ClearOnlineDelegates_Parms;
 
@@ -4174,7 +4174,7 @@ void UOnlineGameInterfaceImpl::RemoveSearchResultFromFavorites ( )
 	static UFunction* pFnRemoveSearchResultFromFavorites = NULL;
 
 	if ( ! pFnRemoveSearchResultFromFavorites )
-		pFnRemoveSearchResultFromFavorites = (UFunction*) UObject::GObjObjects()->Data[ 41187 ];
+		pFnRemoveSearchResultFromFavorites = (UFunction*) UObject::GObjObjects()->Data[ 41218 ];
 
 	UOnlineGameInterfaceImpl_execRemoveSearchResultFromFavorites_Parms RemoveSearchResultFromFavorites_Parms;
 
@@ -4190,7 +4190,7 @@ void UOnlineGameInterfaceImpl::ClearGetPlayerListCompleteDelegate ( )
 	static UFunction* pFnClearGetPlayerListCompleteDelegate = NULL;
 
 	if ( ! pFnClearGetPlayerListCompleteDelegate )
-		pFnClearGetPlayerListCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41185 ];
+		pFnClearGetPlayerListCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41216 ];
 
 	UOnlineGameInterfaceImpl_execClearGetPlayerListCompleteDelegate_Parms ClearGetPlayerListCompleteDelegate_Parms;
 
@@ -4206,7 +4206,7 @@ void UOnlineGameInterfaceImpl::AddGetPlayerListCompleteDelegate ( )
 	static UFunction* pFnAddGetPlayerListCompleteDelegate = NULL;
 
 	if ( ! pFnAddGetPlayerListCompleteDelegate )
-		pFnAddGetPlayerListCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41183 ];
+		pFnAddGetPlayerListCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41214 ];
 
 	UOnlineGameInterfaceImpl_execAddGetPlayerListCompleteDelegate_Parms AddGetPlayerListCompleteDelegate_Parms;
 
@@ -4222,7 +4222,7 @@ void UOnlineGameInterfaceImpl::OnGetPlayerListComplete ( )
 	static UFunction* pFnOnGetPlayerListComplete = NULL;
 
 	if ( ! pFnOnGetPlayerListComplete )
-		pFnOnGetPlayerListComplete = (UFunction*) UObject::GObjObjects()->Data[ 41180 ];
+		pFnOnGetPlayerListComplete = (UFunction*) UObject::GObjObjects()->Data[ 41211 ];
 
 	UOnlineGameInterfaceImpl_execOnGetPlayerListComplete_Parms OnGetPlayerListComplete_Parms;
 
@@ -4238,7 +4238,7 @@ void UOnlineGameInterfaceImpl::IsSearchResultInFavoritesList ( )
 	static UFunction* pFnIsSearchResultInFavoritesList = NULL;
 
 	if ( ! pFnIsSearchResultInFavoritesList )
-		pFnIsSearchResultInFavoritesList = (UFunction*) UObject::GObjObjects()->Data[ 41177 ];
+		pFnIsSearchResultInFavoritesList = (UFunction*) UObject::GObjObjects()->Data[ 41208 ];
 
 	UOnlineGameInterfaceImpl_execIsSearchResultInFavoritesList_Parms IsSearchResultInFavoritesList_Parms;
 
@@ -4254,7 +4254,7 @@ void UOnlineGameInterfaceImpl::AddSearchResultToFavorites ( )
 	static UFunction* pFnAddSearchResultToFavorites = NULL;
 
 	if ( ! pFnAddSearchResultToFavorites )
-		pFnAddSearchResultToFavorites = (UFunction*) UObject::GObjObjects()->Data[ 41174 ];
+		pFnAddSearchResultToFavorites = (UFunction*) UObject::GObjObjects()->Data[ 41205 ];
 
 	UOnlineGameInterfaceImpl_execAddSearchResultToFavorites_Parms AddSearchResultToFavorites_Parms;
 
@@ -4270,7 +4270,7 @@ void UOnlineGameInterfaceImpl::SetMatchmakingTypeMode ( )
 	static UFunction* pFnSetMatchmakingTypeMode = NULL;
 
 	if ( ! pFnSetMatchmakingTypeMode )
-		pFnSetMatchmakingTypeMode = (UFunction*) UObject::GObjObjects()->Data[ 41172 ];
+		pFnSetMatchmakingTypeMode = (UFunction*) UObject::GObjObjects()->Data[ 41203 ];
 
 	UOnlineGameInterfaceImpl_execSetMatchmakingTypeMode_Parms SetMatchmakingTypeMode_Parms;
 
@@ -4286,7 +4286,7 @@ void UOnlineGameInterfaceImpl::RunBandwidthTest ( )
 	static UFunction* pFnRunBandwidthTest = NULL;
 
 	if ( ! pFnRunBandwidthTest )
-		pFnRunBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 41171 ];
+		pFnRunBandwidthTest = (UFunction*) UObject::GObjObjects()->Data[ 41202 ];
 
 	UOnlineGameInterfaceImpl_execRunBandwidthTest_Parms RunBandwidthTest_Parms;
 
@@ -4302,7 +4302,7 @@ void UOnlineGameInterfaceImpl::IsAllowedToNetworkHost ( )
 	static UFunction* pFnIsAllowedToNetworkHost = NULL;
 
 	if ( ! pFnIsAllowedToNetworkHost )
-		pFnIsAllowedToNetworkHost = (UFunction*) UObject::GObjObjects()->Data[ 41169 ];
+		pFnIsAllowedToNetworkHost = (UFunction*) UObject::GObjObjects()->Data[ 41200 ];
 
 	UOnlineGameInterfaceImpl_execIsAllowedToNetworkHost_Parms IsAllowedToNetworkHost_Parms;
 
@@ -4318,7 +4318,7 @@ void UOnlineGameInterfaceImpl::ClearGetRoomIdFromTitleServiceDelegate ( )
 	static UFunction* pFnClearGetRoomIdFromTitleServiceDelegate = NULL;
 
 	if ( ! pFnClearGetRoomIdFromTitleServiceDelegate )
-		pFnClearGetRoomIdFromTitleServiceDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41167 ];
+		pFnClearGetRoomIdFromTitleServiceDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41198 ];
 
 	UOnlineGameInterfaceImpl_execClearGetRoomIdFromTitleServiceDelegate_Parms ClearGetRoomIdFromTitleServiceDelegate_Parms;
 
@@ -4334,7 +4334,7 @@ void UOnlineGameInterfaceImpl::AddGetRoomIdFromTitleServiceDelegate ( )
 	static UFunction* pFnAddGetRoomIdFromTitleServiceDelegate = NULL;
 
 	if ( ! pFnAddGetRoomIdFromTitleServiceDelegate )
-		pFnAddGetRoomIdFromTitleServiceDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41165 ];
+		pFnAddGetRoomIdFromTitleServiceDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41196 ];
 
 	UOnlineGameInterfaceImpl_execAddGetRoomIdFromTitleServiceDelegate_Parms AddGetRoomIdFromTitleServiceDelegate_Parms;
 
@@ -4350,7 +4350,7 @@ void UOnlineGameInterfaceImpl::GetRoomIdFromSessionId ( )
 	static UFunction* pFnGetRoomIdFromSessionId = NULL;
 
 	if ( ! pFnGetRoomIdFromSessionId )
-		pFnGetRoomIdFromSessionId = (UFunction*) UObject::GObjObjects()->Data[ 41163 ];
+		pFnGetRoomIdFromSessionId = (UFunction*) UObject::GObjObjects()->Data[ 41194 ];
 
 	UOnlineGameInterfaceImpl_execGetRoomIdFromSessionId_Parms GetRoomIdFromSessionId_Parms;
 
@@ -4366,7 +4366,7 @@ void UOnlineGameInterfaceImpl::GetRoomIdFromTitleService ( )
 	static UFunction* pFnGetRoomIdFromTitleService = NULL;
 
 	if ( ! pFnGetRoomIdFromTitleService )
-		pFnGetRoomIdFromTitleService = (UFunction*) UObject::GObjObjects()->Data[ 41161 ];
+		pFnGetRoomIdFromTitleService = (UFunction*) UObject::GObjObjects()->Data[ 41192 ];
 
 	UOnlineGameInterfaceImpl_execGetRoomIdFromTitleService_Parms GetRoomIdFromTitleService_Parms;
 
@@ -4382,7 +4382,7 @@ void UOnlineGameInterfaceImpl::OnGetRoomIdFromTitleService ( )
 	static UFunction* pFnOnGetRoomIdFromTitleService = NULL;
 
 	if ( ! pFnOnGetRoomIdFromTitleService )
-		pFnOnGetRoomIdFromTitleService = (UFunction*) UObject::GObjObjects()->Data[ 41159 ];
+		pFnOnGetRoomIdFromTitleService = (UFunction*) UObject::GObjObjects()->Data[ 41190 ];
 
 	UOnlineGameInterfaceImpl_execOnGetRoomIdFromTitleService_Parms OnGetRoomIdFromTitleService_Parms;
 
@@ -4398,7 +4398,7 @@ void UOnlineGameInterfaceImpl::GetRoomId ( )
 	static UFunction* pFnGetRoomId = NULL;
 
 	if ( ! pFnGetRoomId )
-		pFnGetRoomId = (UFunction*) UObject::GObjObjects()->Data[ 41157 ];
+		pFnGetRoomId = (UFunction*) UObject::GObjObjects()->Data[ 41188 ];
 
 	UOnlineGameInterfaceImpl_execGetRoomId_Parms GetRoomId_Parms;
 
@@ -4414,7 +4414,7 @@ void UOnlineGameInterfaceImpl::SendPlayerList ( )
 	static UFunction* pFnSendPlayerList = NULL;
 
 	if ( ! pFnSendPlayerList )
-		pFnSendPlayerList = (UFunction*) UObject::GObjObjects()->Data[ 41153 ];
+		pFnSendPlayerList = (UFunction*) UObject::GObjObjects()->Data[ 41184 ];
 
 	UOnlineGameInterfaceImpl_execSendPlayerList_Parms SendPlayerList_Parms;
 
@@ -4430,7 +4430,7 @@ void UOnlineGameInterfaceImpl::ClearGetNumberOfCurrentPlayersCompleteDelegate ( 
 	static UFunction* pFnClearGetNumberOfCurrentPlayersCompleteDelegate = NULL;
 
 	if ( ! pFnClearGetNumberOfCurrentPlayersCompleteDelegate )
-		pFnClearGetNumberOfCurrentPlayersCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41151 ];
+		pFnClearGetNumberOfCurrentPlayersCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41182 ];
 
 	UOnlineGameInterfaceImpl_execClearGetNumberOfCurrentPlayersCompleteDelegate_Parms ClearGetNumberOfCurrentPlayersCompleteDelegate_Parms;
 
@@ -4446,7 +4446,7 @@ void UOnlineGameInterfaceImpl::AddGetNumberOfCurrentPlayersCompleteDelegate ( )
 	static UFunction* pFnAddGetNumberOfCurrentPlayersCompleteDelegate = NULL;
 
 	if ( ! pFnAddGetNumberOfCurrentPlayersCompleteDelegate )
-		pFnAddGetNumberOfCurrentPlayersCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41149 ];
+		pFnAddGetNumberOfCurrentPlayersCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41180 ];
 
 	UOnlineGameInterfaceImpl_execAddGetNumberOfCurrentPlayersCompleteDelegate_Parms AddGetNumberOfCurrentPlayersCompleteDelegate_Parms;
 
@@ -4462,7 +4462,7 @@ void UOnlineGameInterfaceImpl::OnGetNumberOfCurrentPlayersComplete ( )
 	static UFunction* pFnOnGetNumberOfCurrentPlayersComplete = NULL;
 
 	if ( ! pFnOnGetNumberOfCurrentPlayersComplete )
-		pFnOnGetNumberOfCurrentPlayersComplete = (UFunction*) UObject::GObjObjects()->Data[ 41147 ];
+		pFnOnGetNumberOfCurrentPlayersComplete = (UFunction*) UObject::GObjObjects()->Data[ 41178 ];
 
 	UOnlineGameInterfaceImpl_execOnGetNumberOfCurrentPlayersComplete_Parms OnGetNumberOfCurrentPlayersComplete_Parms;
 
@@ -4478,7 +4478,7 @@ void UOnlineGameInterfaceImpl::GetNumberOfCurrentPlayersCached ( )
 	static UFunction* pFnGetNumberOfCurrentPlayersCached = NULL;
 
 	if ( ! pFnGetNumberOfCurrentPlayersCached )
-		pFnGetNumberOfCurrentPlayersCached = (UFunction*) UObject::GObjObjects()->Data[ 41145 ];
+		pFnGetNumberOfCurrentPlayersCached = (UFunction*) UObject::GObjObjects()->Data[ 41176 ];
 
 	UOnlineGameInterfaceImpl_execGetNumberOfCurrentPlayersCached_Parms GetNumberOfCurrentPlayersCached_Parms;
 
@@ -4494,7 +4494,7 @@ void UOnlineGameInterfaceImpl::GetNumberOfCurrentPlayers ( )
 	static UFunction* pFnGetNumberOfCurrentPlayers = NULL;
 
 	if ( ! pFnGetNumberOfCurrentPlayers )
-		pFnGetNumberOfCurrentPlayers = (UFunction*) UObject::GObjObjects()->Data[ 41143 ];
+		pFnGetNumberOfCurrentPlayers = (UFunction*) UObject::GObjObjects()->Data[ 41174 ];
 
 	UOnlineGameInterfaceImpl_execGetNumberOfCurrentPlayers_Parms GetNumberOfCurrentPlayers_Parms;
 
@@ -4510,7 +4510,7 @@ void UOnlineGameInterfaceImpl::ClearQosStatusChangedDelegate ( )
 	static UFunction* pFnClearQosStatusChangedDelegate = NULL;
 
 	if ( ! pFnClearQosStatusChangedDelegate )
-		pFnClearQosStatusChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41141 ];
+		pFnClearQosStatusChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41172 ];
 
 	UOnlineGameInterfaceImpl_execClearQosStatusChangedDelegate_Parms ClearQosStatusChangedDelegate_Parms;
 
@@ -4526,7 +4526,7 @@ void UOnlineGameInterfaceImpl::AddQosStatusChangedDelegate ( )
 	static UFunction* pFnAddQosStatusChangedDelegate = NULL;
 
 	if ( ! pFnAddQosStatusChangedDelegate )
-		pFnAddQosStatusChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41139 ];
+		pFnAddQosStatusChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41170 ];
 
 	UOnlineGameInterfaceImpl_execAddQosStatusChangedDelegate_Parms AddQosStatusChangedDelegate_Parms;
 
@@ -4542,7 +4542,7 @@ void UOnlineGameInterfaceImpl::OnQosStatusChanged ( )
 	static UFunction* pFnOnQosStatusChanged = NULL;
 
 	if ( ! pFnOnQosStatusChanged )
-		pFnOnQosStatusChanged = (UFunction*) UObject::GObjObjects()->Data[ 41136 ];
+		pFnOnQosStatusChanged = (UFunction*) UObject::GObjObjects()->Data[ 41167 ];
 
 	UOnlineGameInterfaceImpl_execOnQosStatusChanged_Parms OnQosStatusChanged_Parms;
 
@@ -4558,7 +4558,7 @@ void UOnlineGameInterfaceImpl::BindSessionGuidToSearch ( )
 	static UFunction* pFnBindSessionGuidToSearch = NULL;
 
 	if ( ! pFnBindSessionGuidToSearch )
-		pFnBindSessionGuidToSearch = (UFunction*) UObject::GObjObjects()->Data[ 41131 ];
+		pFnBindSessionGuidToSearch = (UFunction*) UObject::GObjObjects()->Data[ 41162 ];
 
 	UOnlineGameInterfaceImpl_execBindSessionGuidToSearch_Parms BindSessionGuidToSearch_Parms;
 
@@ -4574,7 +4574,7 @@ void UOnlineGameInterfaceImpl::BindPlatformSpecificSessionToSearch ( )
 	static UFunction* pFnBindPlatformSpecificSessionToSearch = NULL;
 
 	if ( ! pFnBindPlatformSpecificSessionToSearch )
-		pFnBindPlatformSpecificSessionToSearch = (UFunction*) UObject::GObjObjects()->Data[ 41126 ];
+		pFnBindPlatformSpecificSessionToSearch = (UFunction*) UObject::GObjObjects()->Data[ 41157 ];
 
 	UOnlineGameInterfaceImpl_execBindPlatformSpecificSessionToSearch_Parms BindPlatformSpecificSessionToSearch_Parms;
 
@@ -4594,7 +4594,7 @@ void UOnlineGameInterfaceImpl::ReadSessionGuidBySessionName ( )
 	static UFunction* pFnReadSessionGuidBySessionName = NULL;
 
 	if ( ! pFnReadSessionGuidBySessionName )
-		pFnReadSessionGuidBySessionName = (UFunction*) UObject::GObjObjects()->Data[ 41122 ];
+		pFnReadSessionGuidBySessionName = (UFunction*) UObject::GObjObjects()->Data[ 41153 ];
 
 	UOnlineGameInterfaceImpl_execReadSessionGuidBySessionName_Parms ReadSessionGuidBySessionName_Parms;
 
@@ -4610,7 +4610,7 @@ void UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfoBySessionName ( )
 	static UFunction* pFnReadPlatformSpecificSessionInfoBySessionName = NULL;
 
 	if ( ! pFnReadPlatformSpecificSessionInfoBySessionName )
-		pFnReadPlatformSpecificSessionInfoBySessionName = (UFunction*) UObject::GObjObjects()->Data[ 41118 ];
+		pFnReadPlatformSpecificSessionInfoBySessionName = (UFunction*) UObject::GObjObjects()->Data[ 41149 ];
 
 	UOnlineGameInterfaceImpl_execReadPlatformSpecificSessionInfoBySessionName_Parms ReadPlatformSpecificSessionInfoBySessionName_Parms;
 
@@ -4630,7 +4630,7 @@ void UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfo ( )
 	static UFunction* pFnReadPlatformSpecificSessionInfo = NULL;
 
 	if ( ! pFnReadPlatformSpecificSessionInfo )
-		pFnReadPlatformSpecificSessionInfo = (UFunction*) UObject::GObjObjects()->Data[ 41114 ];
+		pFnReadPlatformSpecificSessionInfo = (UFunction*) UObject::GObjObjects()->Data[ 41145 ];
 
 	UOnlineGameInterfaceImpl_execReadPlatformSpecificSessionInfo_Parms ReadPlatformSpecificSessionInfo_Parms;
 
@@ -4650,7 +4650,7 @@ void UOnlineGameInterfaceImpl::QueryNonAdvertisedData ( )
 	static UFunction* pFnQueryNonAdvertisedData = NULL;
 
 	if ( ! pFnQueryNonAdvertisedData )
-		pFnQueryNonAdvertisedData = (UFunction*) UObject::GObjObjects()->Data[ 41110 ];
+		pFnQueryNonAdvertisedData = (UFunction*) UObject::GObjObjects()->Data[ 41141 ];
 
 	UOnlineGameInterfaceImpl_execQueryNonAdvertisedData_Parms QueryNonAdvertisedData_Parms;
 
@@ -4666,7 +4666,7 @@ void UOnlineGameInterfaceImpl::ClearJoinMigratedOnlineGameCompleteDelegate ( )
 	static UFunction* pFnClearJoinMigratedOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnClearJoinMigratedOnlineGameCompleteDelegate )
-		pFnClearJoinMigratedOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41107 ];
+		pFnClearJoinMigratedOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41138 ];
 
 	UOnlineGameInterfaceImpl_execClearJoinMigratedOnlineGameCompleteDelegate_Parms ClearJoinMigratedOnlineGameCompleteDelegate_Parms;
 
@@ -4682,7 +4682,7 @@ void UOnlineGameInterfaceImpl::AddJoinMigratedOnlineGameCompleteDelegate ( )
 	static UFunction* pFnAddJoinMigratedOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnAddJoinMigratedOnlineGameCompleteDelegate )
-		pFnAddJoinMigratedOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41105 ];
+		pFnAddJoinMigratedOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41136 ];
 
 	UOnlineGameInterfaceImpl_execAddJoinMigratedOnlineGameCompleteDelegate_Parms AddJoinMigratedOnlineGameCompleteDelegate_Parms;
 
@@ -4698,7 +4698,7 @@ void UOnlineGameInterfaceImpl::OnJoinMigratedOnlineGameComplete ( )
 	static UFunction* pFnOnJoinMigratedOnlineGameComplete = NULL;
 
 	if ( ! pFnOnJoinMigratedOnlineGameComplete )
-		pFnOnJoinMigratedOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 41102 ];
+		pFnOnJoinMigratedOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 41133 ];
 
 	UOnlineGameInterfaceImpl_execOnJoinMigratedOnlineGameComplete_Parms OnJoinMigratedOnlineGameComplete_Parms;
 
@@ -4714,7 +4714,7 @@ void UOnlineGameInterfaceImpl::JoinMigratedOnlineGame ( )
 	static UFunction* pFnJoinMigratedOnlineGame = NULL;
 
 	if ( ! pFnJoinMigratedOnlineGame )
-		pFnJoinMigratedOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 41097 ];
+		pFnJoinMigratedOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 41128 ];
 
 	UOnlineGameInterfaceImpl_execJoinMigratedOnlineGame_Parms JoinMigratedOnlineGame_Parms;
 
@@ -4730,7 +4730,7 @@ void UOnlineGameInterfaceImpl::ClearMigrateOnlineGameCompleteDelegate ( )
 	static UFunction* pFnClearMigrateOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnClearMigrateOnlineGameCompleteDelegate )
-		pFnClearMigrateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41094 ];
+		pFnClearMigrateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41125 ];
 
 	UOnlineGameInterfaceImpl_execClearMigrateOnlineGameCompleteDelegate_Parms ClearMigrateOnlineGameCompleteDelegate_Parms;
 
@@ -4746,7 +4746,7 @@ void UOnlineGameInterfaceImpl::AddMigrateOnlineGameCompleteDelegate ( )
 	static UFunction* pFnAddMigrateOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnAddMigrateOnlineGameCompleteDelegate )
-		pFnAddMigrateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41092 ];
+		pFnAddMigrateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41123 ];
 
 	UOnlineGameInterfaceImpl_execAddMigrateOnlineGameCompleteDelegate_Parms AddMigrateOnlineGameCompleteDelegate_Parms;
 
@@ -4762,7 +4762,7 @@ void UOnlineGameInterfaceImpl::OnMigrateOnlineGameComplete ( )
 	static UFunction* pFnOnMigrateOnlineGameComplete = NULL;
 
 	if ( ! pFnOnMigrateOnlineGameComplete )
-		pFnOnMigrateOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 41089 ];
+		pFnOnMigrateOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 41120 ];
 
 	UOnlineGameInterfaceImpl_execOnMigrateOnlineGameComplete_Parms OnMigrateOnlineGameComplete_Parms;
 
@@ -4778,7 +4778,7 @@ void UOnlineGameInterfaceImpl::MigrateOnlineGame ( )
 	static UFunction* pFnMigrateOnlineGame = NULL;
 
 	if ( ! pFnMigrateOnlineGame )
-		pFnMigrateOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 41085 ];
+		pFnMigrateOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 41116 ];
 
 	UOnlineGameInterfaceImpl_execMigrateOnlineGame_Parms MigrateOnlineGame_Parms;
 
@@ -4794,7 +4794,7 @@ void UOnlineGameInterfaceImpl::ClearRecalculateSkillRatingCompleteDelegate ( )
 	static UFunction* pFnClearRecalculateSkillRatingCompleteDelegate = NULL;
 
 	if ( ! pFnClearRecalculateSkillRatingCompleteDelegate )
-		pFnClearRecalculateSkillRatingCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41083 ];
+		pFnClearRecalculateSkillRatingCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41114 ];
 
 	UOnlineGameInterfaceImpl_execClearRecalculateSkillRatingCompleteDelegate_Parms ClearRecalculateSkillRatingCompleteDelegate_Parms;
 
@@ -4810,7 +4810,7 @@ void UOnlineGameInterfaceImpl::AddRecalculateSkillRatingCompleteDelegate ( )
 	static UFunction* pFnAddRecalculateSkillRatingCompleteDelegate = NULL;
 
 	if ( ! pFnAddRecalculateSkillRatingCompleteDelegate )
-		pFnAddRecalculateSkillRatingCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41081 ];
+		pFnAddRecalculateSkillRatingCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41112 ];
 
 	UOnlineGameInterfaceImpl_execAddRecalculateSkillRatingCompleteDelegate_Parms AddRecalculateSkillRatingCompleteDelegate_Parms;
 
@@ -4826,7 +4826,7 @@ void UOnlineGameInterfaceImpl::OnRecalculateSkillRatingComplete ( )
 	static UFunction* pFnOnRecalculateSkillRatingComplete = NULL;
 
 	if ( ! pFnOnRecalculateSkillRatingComplete )
-		pFnOnRecalculateSkillRatingComplete = (UFunction*) UObject::GObjObjects()->Data[ 41078 ];
+		pFnOnRecalculateSkillRatingComplete = (UFunction*) UObject::GObjObjects()->Data[ 41109 ];
 
 	UOnlineGameInterfaceImpl_execOnRecalculateSkillRatingComplete_Parms OnRecalculateSkillRatingComplete_Parms;
 
@@ -4842,7 +4842,7 @@ void UOnlineGameInterfaceImpl::RecalculateSkillRating ( )
 	static UFunction* pFnRecalculateSkillRating = NULL;
 
 	if ( ! pFnRecalculateSkillRating )
-		pFnRecalculateSkillRating = (UFunction*) UObject::GObjObjects()->Data[ 41073 ];
+		pFnRecalculateSkillRating = (UFunction*) UObject::GObjObjects()->Data[ 41104 ];
 
 	UOnlineGameInterfaceImpl_execRecalculateSkillRating_Parms RecalculateSkillRating_Parms;
 
@@ -4858,7 +4858,7 @@ void UOnlineGameInterfaceImpl::SetPendingMembersToInvite ( )
 	static UFunction* pFnSetPendingMembersToInvite = NULL;
 
 	if ( ! pFnSetPendingMembersToInvite )
-		pFnSetPendingMembersToInvite = (UFunction*) UObject::GObjObjects()->Data[ 41070 ];
+		pFnSetPendingMembersToInvite = (UFunction*) UObject::GObjObjects()->Data[ 41101 ];
 
 	UOnlineGameInterfaceImpl_execSetPendingMembersToInvite_Parms SetPendingMembersToInvite_Parms;
 
@@ -4874,7 +4874,7 @@ void UOnlineGameInterfaceImpl::ResetPendingMembersToInvite ( )
 	static UFunction* pFnResetPendingMembersToInvite = NULL;
 
 	if ( ! pFnResetPendingMembersToInvite )
-		pFnResetPendingMembersToInvite = (UFunction*) UObject::GObjObjects()->Data[ 41069 ];
+		pFnResetPendingMembersToInvite = (UFunction*) UObject::GObjObjects()->Data[ 41100 ];
 
 	UOnlineGameInterfaceImpl_execResetPendingMembersToInvite_Parms ResetPendingMembersToInvite_Parms;
 
@@ -4890,7 +4890,7 @@ void UOnlineGameInterfaceImpl::GetPendingMembersToInvite ( )
 	static UFunction* pFnGetPendingMembersToInvite = NULL;
 
 	if ( ! pFnGetPendingMembersToInvite )
-		pFnGetPendingMembersToInvite = (UFunction*) UObject::GObjObjects()->Data[ 41066 ];
+		pFnGetPendingMembersToInvite = (UFunction*) UObject::GObjObjects()->Data[ 41097 ];
 
 	UOnlineGameInterfaceImpl_execGetPendingMembersToInvite_Parms GetPendingMembersToInvite_Parms;
 
@@ -4906,7 +4906,7 @@ void UOnlineGameInterfaceImpl::ClearPlayTogetherStartedDelegate ( )
 	static UFunction* pFnClearPlayTogetherStartedDelegate = NULL;
 
 	if ( ! pFnClearPlayTogetherStartedDelegate )
-		pFnClearPlayTogetherStartedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41063 ];
+		pFnClearPlayTogetherStartedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41094 ];
 
 	UOnlineGameInterfaceImpl_execClearPlayTogetherStartedDelegate_Parms ClearPlayTogetherStartedDelegate_Parms;
 
@@ -4922,7 +4922,7 @@ void UOnlineGameInterfaceImpl::AddPlayTogetherStartedDelegate ( )
 	static UFunction* pFnAddPlayTogetherStartedDelegate = NULL;
 
 	if ( ! pFnAddPlayTogetherStartedDelegate )
-		pFnAddPlayTogetherStartedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41060 ];
+		pFnAddPlayTogetherStartedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41091 ];
 
 	UOnlineGameInterfaceImpl_execAddPlayTogetherStartedDelegate_Parms AddPlayTogetherStartedDelegate_Parms;
 
@@ -4938,7 +4938,7 @@ void UOnlineGameInterfaceImpl::OnPlayTogetherStarted ( )
 	static UFunction* pFnOnPlayTogetherStarted = NULL;
 
 	if ( ! pFnOnPlayTogetherStarted )
-		pFnOnPlayTogetherStarted = (UFunction*) UObject::GObjObjects()->Data[ 41059 ];
+		pFnOnPlayTogetherStarted = (UFunction*) UObject::GObjObjects()->Data[ 41090 ];
 
 	UOnlineGameInterfaceImpl_execOnPlayTogetherStarted_Parms OnPlayTogetherStarted_Parms;
 
@@ -4954,7 +4954,7 @@ void UOnlineGameInterfaceImpl::AcceptGameInvite ( )
 	static UFunction* pFnAcceptGameInvite = NULL;
 
 	if ( ! pFnAcceptGameInvite )
-		pFnAcceptGameInvite = (UFunction*) UObject::GObjObjects()->Data[ 41054 ];
+		pFnAcceptGameInvite = (UFunction*) UObject::GObjObjects()->Data[ 41085 ];
 
 	UOnlineGameInterfaceImpl_execAcceptGameInvite_Parms AcceptGameInvite_Parms;
 
@@ -4970,7 +4970,7 @@ void UOnlineGameInterfaceImpl::ClearGameInviteAcceptedDelegate ( )
 	static UFunction* pFnClearGameInviteAcceptedDelegate = NULL;
 
 	if ( ! pFnClearGameInviteAcceptedDelegate )
-		pFnClearGameInviteAcceptedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41051 ];
+		pFnClearGameInviteAcceptedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41082 ];
 
 	UOnlineGameInterfaceImpl_execClearGameInviteAcceptedDelegate_Parms ClearGameInviteAcceptedDelegate_Parms;
 
@@ -4986,7 +4986,7 @@ void UOnlineGameInterfaceImpl::AddGameInviteAcceptedDelegate ( )
 	static UFunction* pFnAddGameInviteAcceptedDelegate = NULL;
 
 	if ( ! pFnAddGameInviteAcceptedDelegate )
-		pFnAddGameInviteAcceptedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41048 ];
+		pFnAddGameInviteAcceptedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41079 ];
 
 	UOnlineGameInterfaceImpl_execAddGameInviteAcceptedDelegate_Parms AddGameInviteAcceptedDelegate_Parms;
 
@@ -5002,7 +5002,7 @@ void UOnlineGameInterfaceImpl::OnGameInviteAccepted ( )
 	static UFunction* pFnOnGameInviteAccepted = NULL;
 
 	if ( ! pFnOnGameInviteAccepted )
-		pFnOnGameInviteAccepted = (UFunction*) UObject::GObjObjects()->Data[ 41045 ];
+		pFnOnGameInviteAccepted = (UFunction*) UObject::GObjObjects()->Data[ 41076 ];
 
 	UOnlineGameInterfaceImpl_execOnGameInviteAccepted_Parms OnGameInviteAccepted_Parms;
 
@@ -5018,7 +5018,7 @@ void UOnlineGameInterfaceImpl::GetArbitratedPlayers ( )
 	static UFunction* pFnGetArbitratedPlayers = NULL;
 
 	if ( ! pFnGetArbitratedPlayers )
-		pFnGetArbitratedPlayers = (UFunction*) UObject::GObjObjects()->Data[ 41041 ];
+		pFnGetArbitratedPlayers = (UFunction*) UObject::GObjObjects()->Data[ 41072 ];
 
 	UOnlineGameInterfaceImpl_execGetArbitratedPlayers_Parms GetArbitratedPlayers_Parms;
 
@@ -5034,7 +5034,7 @@ void UOnlineGameInterfaceImpl::ClearArbitrationRegistrationCompleteDelegate ( )
 	static UFunction* pFnClearArbitrationRegistrationCompleteDelegate = NULL;
 
 	if ( ! pFnClearArbitrationRegistrationCompleteDelegate )
-		pFnClearArbitrationRegistrationCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41039 ];
+		pFnClearArbitrationRegistrationCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41070 ];
 
 	UOnlineGameInterfaceImpl_execClearArbitrationRegistrationCompleteDelegate_Parms ClearArbitrationRegistrationCompleteDelegate_Parms;
 
@@ -5050,7 +5050,7 @@ void UOnlineGameInterfaceImpl::AddArbitrationRegistrationCompleteDelegate ( )
 	static UFunction* pFnAddArbitrationRegistrationCompleteDelegate = NULL;
 
 	if ( ! pFnAddArbitrationRegistrationCompleteDelegate )
-		pFnAddArbitrationRegistrationCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41037 ];
+		pFnAddArbitrationRegistrationCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41068 ];
 
 	UOnlineGameInterfaceImpl_execAddArbitrationRegistrationCompleteDelegate_Parms AddArbitrationRegistrationCompleteDelegate_Parms;
 
@@ -5066,7 +5066,7 @@ void UOnlineGameInterfaceImpl::OnArbitrationRegistrationComplete ( )
 	static UFunction* pFnOnArbitrationRegistrationComplete = NULL;
 
 	if ( ! pFnOnArbitrationRegistrationComplete )
-		pFnOnArbitrationRegistrationComplete = (UFunction*) UObject::GObjObjects()->Data[ 41034 ];
+		pFnOnArbitrationRegistrationComplete = (UFunction*) UObject::GObjObjects()->Data[ 41065 ];
 
 	UOnlineGameInterfaceImpl_execOnArbitrationRegistrationComplete_Parms OnArbitrationRegistrationComplete_Parms;
 
@@ -5082,7 +5082,7 @@ void UOnlineGameInterfaceImpl::RegisterForArbitration ( )
 	static UFunction* pFnRegisterForArbitration = NULL;
 
 	if ( ! pFnRegisterForArbitration )
-		pFnRegisterForArbitration = (UFunction*) UObject::GObjObjects()->Data[ 41031 ];
+		pFnRegisterForArbitration = (UFunction*) UObject::GObjObjects()->Data[ 41062 ];
 
 	UOnlineGameInterfaceImpl_execRegisterForArbitration_Parms RegisterForArbitration_Parms;
 
@@ -5098,7 +5098,7 @@ void UOnlineGameInterfaceImpl::ClearEndOnlineGameCompleteDelegate ( )
 	static UFunction* pFnClearEndOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnClearEndOnlineGameCompleteDelegate )
-		pFnClearEndOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41028 ];
+		pFnClearEndOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41059 ];
 
 	UOnlineGameInterfaceImpl_execClearEndOnlineGameCompleteDelegate_Parms ClearEndOnlineGameCompleteDelegate_Parms;
 
@@ -5114,7 +5114,7 @@ void UOnlineGameInterfaceImpl::AddEndOnlineGameCompleteDelegate ( )
 	static UFunction* pFnAddEndOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnAddEndOnlineGameCompleteDelegate )
-		pFnAddEndOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41026 ];
+		pFnAddEndOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41057 ];
 
 	UOnlineGameInterfaceImpl_execAddEndOnlineGameCompleteDelegate_Parms AddEndOnlineGameCompleteDelegate_Parms;
 
@@ -5130,7 +5130,7 @@ void UOnlineGameInterfaceImpl::OnEndOnlineGameComplete ( )
 	static UFunction* pFnOnEndOnlineGameComplete = NULL;
 
 	if ( ! pFnOnEndOnlineGameComplete )
-		pFnOnEndOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 41023 ];
+		pFnOnEndOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 41054 ];
 
 	UOnlineGameInterfaceImpl_execOnEndOnlineGameComplete_Parms OnEndOnlineGameComplete_Parms;
 
@@ -5146,7 +5146,7 @@ void UOnlineGameInterfaceImpl::EndOnlineGame ( )
 	static UFunction* pFnEndOnlineGame = NULL;
 
 	if ( ! pFnEndOnlineGame )
-		pFnEndOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 41020 ];
+		pFnEndOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 41051 ];
 
 	UOnlineGameInterfaceImpl_execEndOnlineGame_Parms EndOnlineGame_Parms;
 
@@ -5166,7 +5166,7 @@ void UOnlineGameInterfaceImpl::ClearStartOnlineGameCompleteDelegate ( )
 	static UFunction* pFnClearStartOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnClearStartOnlineGameCompleteDelegate )
-		pFnClearStartOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41017 ];
+		pFnClearStartOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41048 ];
 
 	UOnlineGameInterfaceImpl_execClearStartOnlineGameCompleteDelegate_Parms ClearStartOnlineGameCompleteDelegate_Parms;
 
@@ -5182,7 +5182,7 @@ void UOnlineGameInterfaceImpl::AddStartOnlineGameCompleteDelegate ( )
 	static UFunction* pFnAddStartOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnAddStartOnlineGameCompleteDelegate )
-		pFnAddStartOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41015 ];
+		pFnAddStartOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41046 ];
 
 	UOnlineGameInterfaceImpl_execAddStartOnlineGameCompleteDelegate_Parms AddStartOnlineGameCompleteDelegate_Parms;
 
@@ -5198,7 +5198,7 @@ void UOnlineGameInterfaceImpl::OnStartOnlineGameComplete ( )
 	static UFunction* pFnOnStartOnlineGameComplete = NULL;
 
 	if ( ! pFnOnStartOnlineGameComplete )
-		pFnOnStartOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 41012 ];
+		pFnOnStartOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 41043 ];
 
 	UOnlineGameInterfaceImpl_execOnStartOnlineGameComplete_Parms OnStartOnlineGameComplete_Parms;
 
@@ -5214,7 +5214,7 @@ void UOnlineGameInterfaceImpl::StartOnlineGame ( )
 	static UFunction* pFnStartOnlineGame = NULL;
 
 	if ( ! pFnStartOnlineGame )
-		pFnStartOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 41009 ];
+		pFnStartOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 41040 ];
 
 	UOnlineGameInterfaceImpl_execStartOnlineGame_Parms StartOnlineGame_Parms;
 
@@ -5234,7 +5234,7 @@ void UOnlineGameInterfaceImpl::RetrieveGameSettingsForIP ( )
 	static UFunction* pFnRetrieveGameSettingsForIP = NULL;
 
 	if ( ! pFnRetrieveGameSettingsForIP )
-		pFnRetrieveGameSettingsForIP = (UFunction*) UObject::GObjObjects()->Data[ 41007 ];
+		pFnRetrieveGameSettingsForIP = (UFunction*) UObject::GObjObjects()->Data[ 41038 ];
 
 	UOnlineGameInterfaceImpl_execRetrieveGameSettingsForIP_Parms RetrieveGameSettingsForIP_Parms;
 
@@ -5250,7 +5250,7 @@ void UOnlineGameInterfaceImpl::ClearOnRetrieveGameSettingsForIPDelegate ( )
 	static UFunction* pFnClearOnRetrieveGameSettingsForIPDelegate = NULL;
 
 	if ( ! pFnClearOnRetrieveGameSettingsForIPDelegate )
-		pFnClearOnRetrieveGameSettingsForIPDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41005 ];
+		pFnClearOnRetrieveGameSettingsForIPDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41036 ];
 
 	UOnlineGameInterfaceImpl_execClearOnRetrieveGameSettingsForIPDelegate_Parms ClearOnRetrieveGameSettingsForIPDelegate_Parms;
 
@@ -5266,7 +5266,7 @@ void UOnlineGameInterfaceImpl::AddOnRetrieveGameSettingsForIPDelegate ( )
 	static UFunction* pFnAddOnRetrieveGameSettingsForIPDelegate = NULL;
 
 	if ( ! pFnAddOnRetrieveGameSettingsForIPDelegate )
-		pFnAddOnRetrieveGameSettingsForIPDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41003 ];
+		pFnAddOnRetrieveGameSettingsForIPDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41034 ];
 
 	UOnlineGameInterfaceImpl_execAddOnRetrieveGameSettingsForIPDelegate_Parms AddOnRetrieveGameSettingsForIPDelegate_Parms;
 
@@ -5282,7 +5282,7 @@ void UOnlineGameInterfaceImpl::OnRetrievedGameSettingsForIP ( )
 	static UFunction* pFnOnRetrievedGameSettingsForIP = NULL;
 
 	if ( ! pFnOnRetrievedGameSettingsForIP )
-		pFnOnRetrievedGameSettingsForIP = (UFunction*) UObject::GObjObjects()->Data[ 41000 ];
+		pFnOnRetrievedGameSettingsForIP = (UFunction*) UObject::GObjObjects()->Data[ 41031 ];
 
 	UOnlineGameInterfaceImpl_execOnRetrievedGameSettingsForIP_Parms OnRetrievedGameSettingsForIP_Parms;
 
@@ -5298,7 +5298,7 @@ void UOnlineGameInterfaceImpl::ClearUnregisterPlayerCompleteDelegate ( )
 	static UFunction* pFnClearUnregisterPlayerCompleteDelegate = NULL;
 
 	if ( ! pFnClearUnregisterPlayerCompleteDelegate )
-		pFnClearUnregisterPlayerCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40998 ];
+		pFnClearUnregisterPlayerCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41029 ];
 
 	UOnlineGameInterfaceImpl_execClearUnregisterPlayerCompleteDelegate_Parms ClearUnregisterPlayerCompleteDelegate_Parms;
 
@@ -5314,7 +5314,7 @@ void UOnlineGameInterfaceImpl::AddUnregisterPlayerCompleteDelegate ( )
 	static UFunction* pFnAddUnregisterPlayerCompleteDelegate = NULL;
 
 	if ( ! pFnAddUnregisterPlayerCompleteDelegate )
-		pFnAddUnregisterPlayerCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40996 ];
+		pFnAddUnregisterPlayerCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41027 ];
 
 	UOnlineGameInterfaceImpl_execAddUnregisterPlayerCompleteDelegate_Parms AddUnregisterPlayerCompleteDelegate_Parms;
 
@@ -5330,7 +5330,7 @@ void UOnlineGameInterfaceImpl::OnUnregisterPlayerComplete ( )
 	static UFunction* pFnOnUnregisterPlayerComplete = NULL;
 
 	if ( ! pFnOnUnregisterPlayerComplete )
-		pFnOnUnregisterPlayerComplete = (UFunction*) UObject::GObjObjects()->Data[ 40992 ];
+		pFnOnUnregisterPlayerComplete = (UFunction*) UObject::GObjObjects()->Data[ 41023 ];
 
 	UOnlineGameInterfaceImpl_execOnUnregisterPlayerComplete_Parms OnUnregisterPlayerComplete_Parms;
 
@@ -5346,7 +5346,7 @@ void UOnlineGameInterfaceImpl::UnregisterPlayers ( )
 	static UFunction* pFnUnregisterPlayers = NULL;
 
 	if ( ! pFnUnregisterPlayers )
-		pFnUnregisterPlayers = (UFunction*) UObject::GObjObjects()->Data[ 40987 ];
+		pFnUnregisterPlayers = (UFunction*) UObject::GObjObjects()->Data[ 41018 ];
 
 	UOnlineGameInterfaceImpl_execUnregisterPlayers_Parms UnregisterPlayers_Parms;
 
@@ -5362,7 +5362,7 @@ void UOnlineGameInterfaceImpl::UnregisterPlayer ( )
 	static UFunction* pFnUnregisterPlayer = NULL;
 
 	if ( ! pFnUnregisterPlayer )
-		pFnUnregisterPlayer = (UFunction*) UObject::GObjObjects()->Data[ 40983 ];
+		pFnUnregisterPlayer = (UFunction*) UObject::GObjObjects()->Data[ 41014 ];
 
 	UOnlineGameInterfaceImpl_execUnregisterPlayer_Parms UnregisterPlayer_Parms;
 
@@ -5378,7 +5378,7 @@ void UOnlineGameInterfaceImpl::ClearRegisterPlayerCompleteDelegate ( )
 	static UFunction* pFnClearRegisterPlayerCompleteDelegate = NULL;
 
 	if ( ! pFnClearRegisterPlayerCompleteDelegate )
-		pFnClearRegisterPlayerCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40981 ];
+		pFnClearRegisterPlayerCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41012 ];
 
 	UOnlineGameInterfaceImpl_execClearRegisterPlayerCompleteDelegate_Parms ClearRegisterPlayerCompleteDelegate_Parms;
 
@@ -5394,7 +5394,7 @@ void UOnlineGameInterfaceImpl::AddRegisterPlayerCompleteDelegate ( )
 	static UFunction* pFnAddRegisterPlayerCompleteDelegate = NULL;
 
 	if ( ! pFnAddRegisterPlayerCompleteDelegate )
-		pFnAddRegisterPlayerCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40979 ];
+		pFnAddRegisterPlayerCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 41010 ];
 
 	UOnlineGameInterfaceImpl_execAddRegisterPlayerCompleteDelegate_Parms AddRegisterPlayerCompleteDelegate_Parms;
 
@@ -5410,7 +5410,7 @@ void UOnlineGameInterfaceImpl::OnRegisterPlayerComplete ( )
 	static UFunction* pFnOnRegisterPlayerComplete = NULL;
 
 	if ( ! pFnOnRegisterPlayerComplete )
-		pFnOnRegisterPlayerComplete = (UFunction*) UObject::GObjObjects()->Data[ 40975 ];
+		pFnOnRegisterPlayerComplete = (UFunction*) UObject::GObjObjects()->Data[ 41006 ];
 
 	UOnlineGameInterfaceImpl_execOnRegisterPlayerComplete_Parms OnRegisterPlayerComplete_Parms;
 
@@ -5426,7 +5426,7 @@ void UOnlineGameInterfaceImpl::RegisterPlayers ( )
 	static UFunction* pFnRegisterPlayers = NULL;
 
 	if ( ! pFnRegisterPlayers )
-		pFnRegisterPlayers = (UFunction*) UObject::GObjObjects()->Data[ 40970 ];
+		pFnRegisterPlayers = (UFunction*) UObject::GObjObjects()->Data[ 41001 ];
 
 	UOnlineGameInterfaceImpl_execRegisterPlayers_Parms RegisterPlayers_Parms;
 
@@ -5442,7 +5442,7 @@ void UOnlineGameInterfaceImpl::RegisterPlayer ( )
 	static UFunction* pFnRegisterPlayer = NULL;
 
 	if ( ! pFnRegisterPlayer )
-		pFnRegisterPlayer = (UFunction*) UObject::GObjObjects()->Data[ 40965 ];
+		pFnRegisterPlayer = (UFunction*) UObject::GObjObjects()->Data[ 40996 ];
 
 	UOnlineGameInterfaceImpl_execRegisterPlayer_Parms RegisterPlayer_Parms;
 
@@ -5458,7 +5458,7 @@ void UOnlineGameInterfaceImpl::GetResolvedConnectString ( )
 	static UFunction* pFnGetResolvedConnectString = NULL;
 
 	if ( ! pFnGetResolvedConnectString )
-		pFnGetResolvedConnectString = (UFunction*) UObject::GObjObjects()->Data[ 40961 ];
+		pFnGetResolvedConnectString = (UFunction*) UObject::GObjObjects()->Data[ 40992 ];
 
 	UOnlineGameInterfaceImpl_execGetResolvedConnectString_Parms GetResolvedConnectString_Parms;
 
@@ -5478,7 +5478,7 @@ void UOnlineGameInterfaceImpl::ClearQuerySessionsForUserCompleteDelegate ( )
 	static UFunction* pFnClearQuerySessionsForUserCompleteDelegate = NULL;
 
 	if ( ! pFnClearQuerySessionsForUserCompleteDelegate )
-		pFnClearQuerySessionsForUserCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40959 ];
+		pFnClearQuerySessionsForUserCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40990 ];
 
 	UOnlineGameInterfaceImpl_execClearQuerySessionsForUserCompleteDelegate_Parms ClearQuerySessionsForUserCompleteDelegate_Parms;
 
@@ -5494,7 +5494,7 @@ void UOnlineGameInterfaceImpl::AddQuerySessionsForUserCompleteDelegate ( )
 	static UFunction* pFnAddQuerySessionsForUserCompleteDelegate = NULL;
 
 	if ( ! pFnAddQuerySessionsForUserCompleteDelegate )
-		pFnAddQuerySessionsForUserCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40957 ];
+		pFnAddQuerySessionsForUserCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40988 ];
 
 	UOnlineGameInterfaceImpl_execAddQuerySessionsForUserCompleteDelegate_Parms AddQuerySessionsForUserCompleteDelegate_Parms;
 
@@ -5510,7 +5510,7 @@ void UOnlineGameInterfaceImpl::OnQuerySessionsForUserComplete ( )
 	static UFunction* pFnOnQuerySessionsForUserComplete = NULL;
 
 	if ( ! pFnOnQuerySessionsForUserComplete )
-		pFnOnQuerySessionsForUserComplete = (UFunction*) UObject::GObjObjects()->Data[ 40954 ];
+		pFnOnQuerySessionsForUserComplete = (UFunction*) UObject::GObjObjects()->Data[ 40985 ];
 
 	UOnlineGameInterfaceImpl_execOnQuerySessionsForUserComplete_Parms OnQuerySessionsForUserComplete_Parms;
 
@@ -5526,7 +5526,7 @@ void UOnlineGameInterfaceImpl::QuerySessionsByKeyword ( )
 	static UFunction* pFnQuerySessionsByKeyword = NULL;
 
 	if ( ! pFnQuerySessionsByKeyword )
-		pFnQuerySessionsByKeyword = (UFunction*) UObject::GObjObjects()->Data[ 40949 ];
+		pFnQuerySessionsByKeyword = (UFunction*) UObject::GObjObjects()->Data[ 40980 ];
 
 	UOnlineGameInterfaceImpl_execQuerySessionsByKeyword_Parms QuerySessionsByKeyword_Parms;
 
@@ -5542,7 +5542,7 @@ void UOnlineGameInterfaceImpl::QuerySessionsForUser ( )
 	static UFunction* pFnQuerySessionsForUser = NULL;
 
 	if ( ! pFnQuerySessionsForUser )
-		pFnQuerySessionsForUser = (UFunction*) UObject::GObjObjects()->Data[ 40946 ];
+		pFnQuerySessionsForUser = (UFunction*) UObject::GObjObjects()->Data[ 40977 ];
 
 	UOnlineGameInterfaceImpl_execQuerySessionsForUser_Parms QuerySessionsForUser_Parms;
 
@@ -5558,7 +5558,7 @@ void UOnlineGameInterfaceImpl::LeaveAllOnlineSessions ( )
 	static UFunction* pFnLeaveAllOnlineSessions = NULL;
 
 	if ( ! pFnLeaveAllOnlineSessions )
-		pFnLeaveAllOnlineSessions = (UFunction*) UObject::GObjObjects()->Data[ 40944 ];
+		pFnLeaveAllOnlineSessions = (UFunction*) UObject::GObjObjects()->Data[ 40975 ];
 
 	UOnlineGameInterfaceImpl_execLeaveAllOnlineSessions_Parms LeaveAllOnlineSessions_Parms;
 
@@ -5574,7 +5574,7 @@ void UOnlineGameInterfaceImpl::LeaveOnlineSession ( )
 	static UFunction* pFnLeaveOnlineSession = NULL;
 
 	if ( ! pFnLeaveOnlineSession )
-		pFnLeaveOnlineSession = (UFunction*) UObject::GObjObjects()->Data[ 40939 ];
+		pFnLeaveOnlineSession = (UFunction*) UObject::GObjObjects()->Data[ 40970 ];
 
 	UOnlineGameInterfaceImpl_execLeaveOnlineSession_Parms LeaveOnlineSession_Parms;
 
@@ -5590,7 +5590,7 @@ void UOnlineGameInterfaceImpl::ClearMatchStatusChangedDelegate ( )
 	static UFunction* pFnClearMatchStatusChangedDelegate = NULL;
 
 	if ( ! pFnClearMatchStatusChangedDelegate )
-		pFnClearMatchStatusChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40937 ];
+		pFnClearMatchStatusChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40968 ];
 
 	UOnlineGameInterfaceImpl_execClearMatchStatusChangedDelegate_Parms ClearMatchStatusChangedDelegate_Parms;
 
@@ -5606,7 +5606,7 @@ void UOnlineGameInterfaceImpl::AddMatchStatusChangedDelegate ( )
 	static UFunction* pFnAddMatchStatusChangedDelegate = NULL;
 
 	if ( ! pFnAddMatchStatusChangedDelegate )
-		pFnAddMatchStatusChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40935 ];
+		pFnAddMatchStatusChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40966 ];
 
 	UOnlineGameInterfaceImpl_execAddMatchStatusChangedDelegate_Parms AddMatchStatusChangedDelegate_Parms;
 
@@ -5622,7 +5622,7 @@ void UOnlineGameInterfaceImpl::OnMatchStatusChanged ( )
 	static UFunction* pFnOnMatchStatusChanged = NULL;
 
 	if ( ! pFnOnMatchStatusChanged )
-		pFnOnMatchStatusChanged = (UFunction*) UObject::GObjObjects()->Data[ 40932 ];
+		pFnOnMatchStatusChanged = (UFunction*) UObject::GObjObjects()->Data[ 40963 ];
 
 	UOnlineGameInterfaceImpl_execOnMatchStatusChanged_Parms OnMatchStatusChanged_Parms;
 
@@ -5638,7 +5638,7 @@ void UOnlineGameInterfaceImpl::ClearGamePlayersChangedDelegate ( )
 	static UFunction* pFnClearGamePlayersChangedDelegate = NULL;
 
 	if ( ! pFnClearGamePlayersChangedDelegate )
-		pFnClearGamePlayersChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40930 ];
+		pFnClearGamePlayersChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40961 ];
 
 	UOnlineGameInterfaceImpl_execClearGamePlayersChangedDelegate_Parms ClearGamePlayersChangedDelegate_Parms;
 
@@ -5654,7 +5654,7 @@ void UOnlineGameInterfaceImpl::AddGamePlayersChangedDelegate ( )
 	static UFunction* pFnAddGamePlayersChangedDelegate = NULL;
 
 	if ( ! pFnAddGamePlayersChangedDelegate )
-		pFnAddGamePlayersChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40928 ];
+		pFnAddGamePlayersChangedDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40959 ];
 
 	UOnlineGameInterfaceImpl_execAddGamePlayersChangedDelegate_Parms AddGamePlayersChangedDelegate_Parms;
 
@@ -5670,7 +5670,7 @@ void UOnlineGameInterfaceImpl::OnGamePlayersChanged ( )
 	static UFunction* pFnOnGamePlayersChanged = NULL;
 
 	if ( ! pFnOnGamePlayersChanged )
-		pFnOnGamePlayersChanged = (UFunction*) UObject::GObjObjects()->Data[ 40924 ];
+		pFnOnGamePlayersChanged = (UFunction*) UObject::GObjObjects()->Data[ 40955 ];
 
 	UOnlineGameInterfaceImpl_execOnGamePlayersChanged_Parms OnGamePlayersChanged_Parms;
 
@@ -5686,7 +5686,7 @@ void UOnlineGameInterfaceImpl::ClearUpdateSessionPropertiesCompleteDelegate ( )
 	static UFunction* pFnClearUpdateSessionPropertiesCompleteDelegate = NULL;
 
 	if ( ! pFnClearUpdateSessionPropertiesCompleteDelegate )
-		pFnClearUpdateSessionPropertiesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40922 ];
+		pFnClearUpdateSessionPropertiesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40953 ];
 
 	UOnlineGameInterfaceImpl_execClearUpdateSessionPropertiesCompleteDelegate_Parms ClearUpdateSessionPropertiesCompleteDelegate_Parms;
 
@@ -5702,7 +5702,7 @@ void UOnlineGameInterfaceImpl::AddUpdateSessionPropertiesCompleteDelegate ( )
 	static UFunction* pFnAddUpdateSessionPropertiesCompleteDelegate = NULL;
 
 	if ( ! pFnAddUpdateSessionPropertiesCompleteDelegate )
-		pFnAddUpdateSessionPropertiesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40920 ];
+		pFnAddUpdateSessionPropertiesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40951 ];
 
 	UOnlineGameInterfaceImpl_execAddUpdateSessionPropertiesCompleteDelegate_Parms AddUpdateSessionPropertiesCompleteDelegate_Parms;
 
@@ -5718,7 +5718,7 @@ void UOnlineGameInterfaceImpl::OnUpdateSessionPropertiesComplete ( )
 	static UFunction* pFnOnUpdateSessionPropertiesComplete = NULL;
 
 	if ( ! pFnOnUpdateSessionPropertiesComplete )
-		pFnOnUpdateSessionPropertiesComplete = (UFunction*) UObject::GObjObjects()->Data[ 40917 ];
+		pFnOnUpdateSessionPropertiesComplete = (UFunction*) UObject::GObjObjects()->Data[ 40948 ];
 
 	UOnlineGameInterfaceImpl_execOnUpdateSessionPropertiesComplete_Parms OnUpdateSessionPropertiesComplete_Parms;
 
@@ -5734,7 +5734,7 @@ void UOnlineGameInterfaceImpl::UpdateSessionProperties ( )
 	static UFunction* pFnUpdateSessionProperties = NULL;
 
 	if ( ! pFnUpdateSessionProperties )
-		pFnUpdateSessionProperties = (UFunction*) UObject::GObjObjects()->Data[ 40913 ];
+		pFnUpdateSessionProperties = (UFunction*) UObject::GObjObjects()->Data[ 40944 ];
 
 	UOnlineGameInterfaceImpl_execUpdateSessionProperties_Parms UpdateSessionProperties_Parms;
 
@@ -5750,7 +5750,7 @@ void UOnlineGameInterfaceImpl::DeleteCustomMemberProperty ( )
 	static UFunction* pFnDeleteCustomMemberProperty = NULL;
 
 	if ( ! pFnDeleteCustomMemberProperty )
-		pFnDeleteCustomMemberProperty = (UFunction*) UObject::GObjObjects()->Data[ 40909 ];
+		pFnDeleteCustomMemberProperty = (UFunction*) UObject::GObjObjects()->Data[ 40940 ];
 
 	UOnlineGameInterfaceImpl_execDeleteCustomMemberProperty_Parms DeleteCustomMemberProperty_Parms;
 
@@ -5766,7 +5766,7 @@ void UOnlineGameInterfaceImpl::SetCustomMemberProperty ( )
 	static UFunction* pFnSetCustomMemberProperty = NULL;
 
 	if ( ! pFnSetCustomMemberProperty )
-		pFnSetCustomMemberProperty = (UFunction*) UObject::GObjObjects()->Data[ 40904 ];
+		pFnSetCustomMemberProperty = (UFunction*) UObject::GObjObjects()->Data[ 40935 ];
 
 	UOnlineGameInterfaceImpl_execSetCustomMemberProperty_Parms SetCustomMemberProperty_Parms;
 
@@ -5782,7 +5782,7 @@ void UOnlineGameInterfaceImpl::DeleteCustomSessionProperty ( )
 	static UFunction* pFnDeleteCustomSessionProperty = NULL;
 
 	if ( ! pFnDeleteCustomSessionProperty )
-		pFnDeleteCustomSessionProperty = (UFunction*) UObject::GObjObjects()->Data[ 40900 ];
+		pFnDeleteCustomSessionProperty = (UFunction*) UObject::GObjObjects()->Data[ 40931 ];
 
 	UOnlineGameInterfaceImpl_execDeleteCustomSessionProperty_Parms DeleteCustomSessionProperty_Parms;
 
@@ -5798,7 +5798,7 @@ void UOnlineGameInterfaceImpl::SetCustomSessionProperty ( )
 	static UFunction* pFnSetCustomSessionProperty = NULL;
 
 	if ( ! pFnSetCustomSessionProperty )
-		pFnSetCustomSessionProperty = (UFunction*) UObject::GObjObjects()->Data[ 40895 ];
+		pFnSetCustomSessionProperty = (UFunction*) UObject::GObjObjects()->Data[ 40926 ];
 
 	UOnlineGameInterfaceImpl_execSetCustomSessionProperty_Parms SetCustomSessionProperty_Parms;
 
@@ -5814,7 +5814,7 @@ void UOnlineGameInterfaceImpl::ClearDeleteMatchTicketCompleteDelegate ( )
 	static UFunction* pFnClearDeleteMatchTicketCompleteDelegate = NULL;
 
 	if ( ! pFnClearDeleteMatchTicketCompleteDelegate )
-		pFnClearDeleteMatchTicketCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40893 ];
+		pFnClearDeleteMatchTicketCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40924 ];
 
 	UOnlineGameInterfaceImpl_execClearDeleteMatchTicketCompleteDelegate_Parms ClearDeleteMatchTicketCompleteDelegate_Parms;
 
@@ -5830,7 +5830,7 @@ void UOnlineGameInterfaceImpl::AddDeleteMatchTicketCompleteDelegate ( )
 	static UFunction* pFnAddDeleteMatchTicketCompleteDelegate = NULL;
 
 	if ( ! pFnAddDeleteMatchTicketCompleteDelegate )
-		pFnAddDeleteMatchTicketCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40891 ];
+		pFnAddDeleteMatchTicketCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40922 ];
 
 	UOnlineGameInterfaceImpl_execAddDeleteMatchTicketCompleteDelegate_Parms AddDeleteMatchTicketCompleteDelegate_Parms;
 
@@ -5846,7 +5846,7 @@ void UOnlineGameInterfaceImpl::OnDeleteMatchTicketComplete ( )
 	static UFunction* pFnOnDeleteMatchTicketComplete = NULL;
 
 	if ( ! pFnOnDeleteMatchTicketComplete )
-		pFnOnDeleteMatchTicketComplete = (UFunction*) UObject::GObjObjects()->Data[ 40888 ];
+		pFnOnDeleteMatchTicketComplete = (UFunction*) UObject::GObjObjects()->Data[ 40919 ];
 
 	UOnlineGameInterfaceImpl_execOnDeleteMatchTicketComplete_Parms OnDeleteMatchTicketComplete_Parms;
 
@@ -5862,7 +5862,7 @@ void UOnlineGameInterfaceImpl::DeleteMatchTicketWithHopper ( )
 	static UFunction* pFnDeleteMatchTicketWithHopper = NULL;
 
 	if ( ! pFnDeleteMatchTicketWithHopper )
-		pFnDeleteMatchTicketWithHopper = (UFunction*) UObject::GObjObjects()->Data[ 40883 ];
+		pFnDeleteMatchTicketWithHopper = (UFunction*) UObject::GObjObjects()->Data[ 40914 ];
 
 	UOnlineGameInterfaceImpl_execDeleteMatchTicketWithHopper_Parms DeleteMatchTicketWithHopper_Parms;
 
@@ -5878,7 +5878,7 @@ void UOnlineGameInterfaceImpl::DeleteMatchTicket ( )
 	static UFunction* pFnDeleteMatchTicket = NULL;
 
 	if ( ! pFnDeleteMatchTicket )
-		pFnDeleteMatchTicket = (UFunction*) UObject::GObjObjects()->Data[ 40879 ];
+		pFnDeleteMatchTicket = (UFunction*) UObject::GObjObjects()->Data[ 40910 ];
 
 	UOnlineGameInterfaceImpl_execDeleteMatchTicket_Parms DeleteMatchTicket_Parms;
 
@@ -5894,7 +5894,7 @@ void UOnlineGameInterfaceImpl::ClearQueryMatchmakingForSessionCompleteDelegate (
 	static UFunction* pFnClearQueryMatchmakingForSessionCompleteDelegate = NULL;
 
 	if ( ! pFnClearQueryMatchmakingForSessionCompleteDelegate )
-		pFnClearQueryMatchmakingForSessionCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40877 ];
+		pFnClearQueryMatchmakingForSessionCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40908 ];
 
 	UOnlineGameInterfaceImpl_execClearQueryMatchmakingForSessionCompleteDelegate_Parms ClearQueryMatchmakingForSessionCompleteDelegate_Parms;
 
@@ -5910,7 +5910,7 @@ void UOnlineGameInterfaceImpl::AddQueryMatchmakingForSessionCompleteDelegate ( )
 	static UFunction* pFnAddQueryMatchmakingForSessionCompleteDelegate = NULL;
 
 	if ( ! pFnAddQueryMatchmakingForSessionCompleteDelegate )
-		pFnAddQueryMatchmakingForSessionCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40875 ];
+		pFnAddQueryMatchmakingForSessionCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40906 ];
 
 	UOnlineGameInterfaceImpl_execAddQueryMatchmakingForSessionCompleteDelegate_Parms AddQueryMatchmakingForSessionCompleteDelegate_Parms;
 
@@ -5926,7 +5926,7 @@ void UOnlineGameInterfaceImpl::OnQueryMatchmakingForSessionComplete ( )
 	static UFunction* pFnOnQueryMatchmakingForSessionComplete = NULL;
 
 	if ( ! pFnOnQueryMatchmakingForSessionComplete )
-		pFnOnQueryMatchmakingForSessionComplete = (UFunction*) UObject::GObjObjects()->Data[ 40872 ];
+		pFnOnQueryMatchmakingForSessionComplete = (UFunction*) UObject::GObjObjects()->Data[ 40903 ];
 
 	UOnlineGameInterfaceImpl_execOnQueryMatchmakingForSessionComplete_Parms OnQueryMatchmakingForSessionComplete_Parms;
 
@@ -5942,7 +5942,7 @@ void UOnlineGameInterfaceImpl::QueryMatchmakingForSessionWithHopper ( )
 	static UFunction* pFnQueryMatchmakingForSessionWithHopper = NULL;
 
 	if ( ! pFnQueryMatchmakingForSessionWithHopper )
-		pFnQueryMatchmakingForSessionWithHopper = (UFunction*) UObject::GObjObjects()->Data[ 40865 ];
+		pFnQueryMatchmakingForSessionWithHopper = (UFunction*) UObject::GObjObjects()->Data[ 40896 ];
 
 	UOnlineGameInterfaceImpl_execQueryMatchmakingForSessionWithHopper_Parms QueryMatchmakingForSessionWithHopper_Parms;
 
@@ -5958,7 +5958,7 @@ void UOnlineGameInterfaceImpl::QueryMatchmakingForSession ( )
 	static UFunction* pFnQueryMatchmakingForSession = NULL;
 
 	if ( ! pFnQueryMatchmakingForSession )
-		pFnQueryMatchmakingForSession = (UFunction*) UObject::GObjObjects()->Data[ 40859 ];
+		pFnQueryMatchmakingForSession = (UFunction*) UObject::GObjObjects()->Data[ 40890 ];
 
 	UOnlineGameInterfaceImpl_execQueryMatchmakingForSession_Parms QueryMatchmakingForSession_Parms;
 
@@ -5974,7 +5974,7 @@ void UOnlineGameInterfaceImpl::ClearMultiplayerSessionChangeDelegate ( )
 	static UFunction* pFnClearMultiplayerSessionChangeDelegate = NULL;
 
 	if ( ! pFnClearMultiplayerSessionChangeDelegate )
-		pFnClearMultiplayerSessionChangeDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40857 ];
+		pFnClearMultiplayerSessionChangeDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40888 ];
 
 	UOnlineGameInterfaceImpl_execClearMultiplayerSessionChangeDelegate_Parms ClearMultiplayerSessionChangeDelegate_Parms;
 
@@ -5990,7 +5990,7 @@ void UOnlineGameInterfaceImpl::AddMultiplayerSessionChangeDelegate ( )
 	static UFunction* pFnAddMultiplayerSessionChangeDelegate = NULL;
 
 	if ( ! pFnAddMultiplayerSessionChangeDelegate )
-		pFnAddMultiplayerSessionChangeDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40855 ];
+		pFnAddMultiplayerSessionChangeDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40886 ];
 
 	UOnlineGameInterfaceImpl_execAddMultiplayerSessionChangeDelegate_Parms AddMultiplayerSessionChangeDelegate_Parms;
 
@@ -6006,7 +6006,7 @@ void UOnlineGameInterfaceImpl::OnMultiplayerSessionChange ( )
 	static UFunction* pFnOnMultiplayerSessionChange = NULL;
 
 	if ( ! pFnOnMultiplayerSessionChange )
-		pFnOnMultiplayerSessionChange = (UFunction*) UObject::GObjObjects()->Data[ 40852 ];
+		pFnOnMultiplayerSessionChange = (UFunction*) UObject::GObjObjects()->Data[ 40883 ];
 
 	UOnlineGameInterfaceImpl_execOnMultiplayerSessionChange_Parms OnMultiplayerSessionChange_Parms;
 
@@ -6022,7 +6022,7 @@ void UOnlineGameInterfaceImpl::ClearJoinOnlineGameCompleteDelegate ( )
 	static UFunction* pFnClearJoinOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnClearJoinOnlineGameCompleteDelegate )
-		pFnClearJoinOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40849 ];
+		pFnClearJoinOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40880 ];
 
 	UOnlineGameInterfaceImpl_execClearJoinOnlineGameCompleteDelegate_Parms ClearJoinOnlineGameCompleteDelegate_Parms;
 
@@ -6038,7 +6038,7 @@ void UOnlineGameInterfaceImpl::AddJoinOnlineGameCompleteDelegate ( )
 	static UFunction* pFnAddJoinOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnAddJoinOnlineGameCompleteDelegate )
-		pFnAddJoinOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40847 ];
+		pFnAddJoinOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40878 ];
 
 	UOnlineGameInterfaceImpl_execAddJoinOnlineGameCompleteDelegate_Parms AddJoinOnlineGameCompleteDelegate_Parms;
 
@@ -6054,7 +6054,7 @@ void UOnlineGameInterfaceImpl::OnJoinOnlineGameComplete ( )
 	static UFunction* pFnOnJoinOnlineGameComplete = NULL;
 
 	if ( ! pFnOnJoinOnlineGameComplete )
-		pFnOnJoinOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 40844 ];
+		pFnOnJoinOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 40875 ];
 
 	UOnlineGameInterfaceImpl_execOnJoinOnlineGameComplete_Parms OnJoinOnlineGameComplete_Parms;
 
@@ -6070,7 +6070,7 @@ void UOnlineGameInterfaceImpl::IsCurrentRoomOwner ( )
 	static UFunction* pFnIsCurrentRoomOwner = NULL;
 
 	if ( ! pFnIsCurrentRoomOwner )
-		pFnIsCurrentRoomOwner = (UFunction*) UObject::GObjObjects()->Data[ 40842 ];
+		pFnIsCurrentRoomOwner = (UFunction*) UObject::GObjObjects()->Data[ 40873 ];
 
 	UOnlineGameInterfaceImpl_execIsCurrentRoomOwner_Parms IsCurrentRoomOwner_Parms;
 
@@ -6086,7 +6086,7 @@ void UOnlineGameInterfaceImpl::SetRankedReadyStatus ( )
 	static UFunction* pFnSetRankedReadyStatus = NULL;
 
 	if ( ! pFnSetRankedReadyStatus )
-		pFnSetRankedReadyStatus = (UFunction*) UObject::GObjObjects()->Data[ 40839 ];
+		pFnSetRankedReadyStatus = (UFunction*) UObject::GObjObjects()->Data[ 40870 ];
 
 	UOnlineGameInterfaceImpl_execSetRankedReadyStatus_Parms SetRankedReadyStatus_Parms;
 
@@ -6102,7 +6102,7 @@ void UOnlineGameInterfaceImpl::IsJoinOperationInProgress ( )
 	static UFunction* pFnIsJoinOperationInProgress = NULL;
 
 	if ( ! pFnIsJoinOperationInProgress )
-		pFnIsJoinOperationInProgress = (UFunction*) UObject::GObjObjects()->Data[ 40837 ];
+		pFnIsJoinOperationInProgress = (UFunction*) UObject::GObjObjects()->Data[ 40868 ];
 
 	UOnlineGameInterfaceImpl_execIsJoinOperationInProgress_Parms IsJoinOperationInProgress_Parms;
 
@@ -6118,7 +6118,7 @@ void UOnlineGameInterfaceImpl::JoinOnlineGameByMatchingParams ( )
 	static UFunction* pFnJoinOnlineGameByMatchingParams = NULL;
 
 	if ( ! pFnJoinOnlineGameByMatchingParams )
-		pFnJoinOnlineGameByMatchingParams = (UFunction*) UObject::GObjObjects()->Data[ 40833 ];
+		pFnJoinOnlineGameByMatchingParams = (UFunction*) UObject::GObjObjects()->Data[ 40864 ];
 
 	UOnlineGameInterfaceImpl_execJoinOnlineGameByMatchingParams_Parms JoinOnlineGameByMatchingParams_Parms;
 
@@ -6134,7 +6134,7 @@ void UOnlineGameInterfaceImpl::JoinOnlineGameBySessionHandle ( )
 	static UFunction* pFnJoinOnlineGameBySessionHandle = NULL;
 
 	if ( ! pFnJoinOnlineGameBySessionHandle )
-		pFnJoinOnlineGameBySessionHandle = (UFunction*) UObject::GObjObjects()->Data[ 40828 ];
+		pFnJoinOnlineGameBySessionHandle = (UFunction*) UObject::GObjObjects()->Data[ 40859 ];
 
 	UOnlineGameInterfaceImpl_execJoinOnlineGameBySessionHandle_Parms JoinOnlineGameBySessionHandle_Parms;
 
@@ -6150,7 +6150,7 @@ void UOnlineGameInterfaceImpl::JoinOnlineGame ( )
 	static UFunction* pFnJoinOnlineGame = NULL;
 
 	if ( ! pFnJoinOnlineGame )
-		pFnJoinOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 40823 ];
+		pFnJoinOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 40854 ];
 
 	UOnlineGameInterfaceImpl_execJoinOnlineGame_Parms JoinOnlineGame_Parms;
 
@@ -6170,7 +6170,7 @@ void UOnlineGameInterfaceImpl::FreeSearchResults ( )
 	static UFunction* pFnFreeSearchResults = NULL;
 
 	if ( ! pFnFreeSearchResults )
-		pFnFreeSearchResults = (UFunction*) UObject::GObjObjects()->Data[ 40820 ];
+		pFnFreeSearchResults = (UFunction*) UObject::GObjObjects()->Data[ 40851 ];
 
 	UOnlineGameInterfaceImpl_execFreeSearchResults_Parms FreeSearchResults_Parms;
 
@@ -6190,7 +6190,7 @@ void UOnlineGameInterfaceImpl::ClearCancelFindOnlineGamesCompleteDelegate ( )
 	static UFunction* pFnClearCancelFindOnlineGamesCompleteDelegate = NULL;
 
 	if ( ! pFnClearCancelFindOnlineGamesCompleteDelegate )
-		pFnClearCancelFindOnlineGamesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40817 ];
+		pFnClearCancelFindOnlineGamesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40848 ];
 
 	UOnlineGameInterfaceImpl_execClearCancelFindOnlineGamesCompleteDelegate_Parms ClearCancelFindOnlineGamesCompleteDelegate_Parms;
 
@@ -6206,7 +6206,7 @@ void UOnlineGameInterfaceImpl::AddCancelFindOnlineGamesCompleteDelegate ( )
 	static UFunction* pFnAddCancelFindOnlineGamesCompleteDelegate = NULL;
 
 	if ( ! pFnAddCancelFindOnlineGamesCompleteDelegate )
-		pFnAddCancelFindOnlineGamesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40815 ];
+		pFnAddCancelFindOnlineGamesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40846 ];
 
 	UOnlineGameInterfaceImpl_execAddCancelFindOnlineGamesCompleteDelegate_Parms AddCancelFindOnlineGamesCompleteDelegate_Parms;
 
@@ -6222,7 +6222,7 @@ void UOnlineGameInterfaceImpl::OnCancelFindOnlineGamesComplete ( )
 	static UFunction* pFnOnCancelFindOnlineGamesComplete = NULL;
 
 	if ( ! pFnOnCancelFindOnlineGamesComplete )
-		pFnOnCancelFindOnlineGamesComplete = (UFunction*) UObject::GObjObjects()->Data[ 40813 ];
+		pFnOnCancelFindOnlineGamesComplete = (UFunction*) UObject::GObjObjects()->Data[ 40844 ];
 
 	UOnlineGameInterfaceImpl_execOnCancelFindOnlineGamesComplete_Parms OnCancelFindOnlineGamesComplete_Parms;
 
@@ -6238,7 +6238,7 @@ void UOnlineGameInterfaceImpl::CancelFindOnlineGames ( )
 	static UFunction* pFnCancelFindOnlineGames = NULL;
 
 	if ( ! pFnCancelFindOnlineGames )
-		pFnCancelFindOnlineGames = (UFunction*) UObject::GObjObjects()->Data[ 40811 ];
+		pFnCancelFindOnlineGames = (UFunction*) UObject::GObjObjects()->Data[ 40842 ];
 
 	UOnlineGameInterfaceImpl_execCancelFindOnlineGames_Parms CancelFindOnlineGames_Parms;
 
@@ -6258,7 +6258,7 @@ void UOnlineGameInterfaceImpl::ClearFindOnlineGamesCompleteDelegate ( )
 	static UFunction* pFnClearFindOnlineGamesCompleteDelegate = NULL;
 
 	if ( ! pFnClearFindOnlineGamesCompleteDelegate )
-		pFnClearFindOnlineGamesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40808 ];
+		pFnClearFindOnlineGamesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40839 ];
 
 	UOnlineGameInterfaceImpl_execClearFindOnlineGamesCompleteDelegate_Parms ClearFindOnlineGamesCompleteDelegate_Parms;
 
@@ -6274,7 +6274,7 @@ void UOnlineGameInterfaceImpl::AddFindOnlineGamesCompleteDelegate ( )
 	static UFunction* pFnAddFindOnlineGamesCompleteDelegate = NULL;
 
 	if ( ! pFnAddFindOnlineGamesCompleteDelegate )
-		pFnAddFindOnlineGamesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40806 ];
+		pFnAddFindOnlineGamesCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40837 ];
 
 	UOnlineGameInterfaceImpl_execAddFindOnlineGamesCompleteDelegate_Parms AddFindOnlineGamesCompleteDelegate_Parms;
 
@@ -6290,7 +6290,7 @@ void UOnlineGameInterfaceImpl::FindOnlineGames ( )
 	static UFunction* pFnFindOnlineGames = NULL;
 
 	if ( ! pFnFindOnlineGames )
-		pFnFindOnlineGames = (UFunction*) UObject::GObjObjects()->Data[ 40802 ];
+		pFnFindOnlineGames = (UFunction*) UObject::GObjObjects()->Data[ 40833 ];
 
 	UOnlineGameInterfaceImpl_execFindOnlineGames_Parms FindOnlineGames_Parms;
 
@@ -6310,7 +6310,7 @@ void UOnlineGameInterfaceImpl::ClearDestroyOnlineGameCompleteDelegate ( )
 	static UFunction* pFnClearDestroyOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnClearDestroyOnlineGameCompleteDelegate )
-		pFnClearDestroyOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40799 ];
+		pFnClearDestroyOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40830 ];
 
 	UOnlineGameInterfaceImpl_execClearDestroyOnlineGameCompleteDelegate_Parms ClearDestroyOnlineGameCompleteDelegate_Parms;
 
@@ -6326,7 +6326,7 @@ void UOnlineGameInterfaceImpl::AddDestroyOnlineGameCompleteDelegate ( )
 	static UFunction* pFnAddDestroyOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnAddDestroyOnlineGameCompleteDelegate )
-		pFnAddDestroyOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40797 ];
+		pFnAddDestroyOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40828 ];
 
 	UOnlineGameInterfaceImpl_execAddDestroyOnlineGameCompleteDelegate_Parms AddDestroyOnlineGameCompleteDelegate_Parms;
 
@@ -6342,7 +6342,7 @@ void UOnlineGameInterfaceImpl::OnDestroyOnlineGameComplete ( )
 	static UFunction* pFnOnDestroyOnlineGameComplete = NULL;
 
 	if ( ! pFnOnDestroyOnlineGameComplete )
-		pFnOnDestroyOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 40794 ];
+		pFnOnDestroyOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 40825 ];
 
 	UOnlineGameInterfaceImpl_execOnDestroyOnlineGameComplete_Parms OnDestroyOnlineGameComplete_Parms;
 
@@ -6358,7 +6358,7 @@ void UOnlineGameInterfaceImpl::DestroyOnlineGame ( )
 	static UFunction* pFnDestroyOnlineGame = NULL;
 
 	if ( ! pFnDestroyOnlineGame )
-		pFnDestroyOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 40791 ];
+		pFnDestroyOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 40822 ];
 
 	UOnlineGameInterfaceImpl_execDestroyOnlineGame_Parms DestroyOnlineGame_Parms;
 
@@ -6378,7 +6378,7 @@ void UOnlineGameInterfaceImpl::ClearUpdateOnlineGameCompleteDelegate ( )
 	static UFunction* pFnClearUpdateOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnClearUpdateOnlineGameCompleteDelegate )
-		pFnClearUpdateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40788 ];
+		pFnClearUpdateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40819 ];
 
 	UOnlineGameInterfaceImpl_execClearUpdateOnlineGameCompleteDelegate_Parms ClearUpdateOnlineGameCompleteDelegate_Parms;
 
@@ -6394,7 +6394,7 @@ void UOnlineGameInterfaceImpl::AddUpdateOnlineGameCompleteDelegate ( )
 	static UFunction* pFnAddUpdateOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnAddUpdateOnlineGameCompleteDelegate )
-		pFnAddUpdateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40786 ];
+		pFnAddUpdateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40817 ];
 
 	UOnlineGameInterfaceImpl_execAddUpdateOnlineGameCompleteDelegate_Parms AddUpdateOnlineGameCompleteDelegate_Parms;
 
@@ -6410,7 +6410,7 @@ void UOnlineGameInterfaceImpl::OnUpdateOnlineGameComplete ( )
 	static UFunction* pFnOnUpdateOnlineGameComplete = NULL;
 
 	if ( ! pFnOnUpdateOnlineGameComplete )
-		pFnOnUpdateOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 40783 ];
+		pFnOnUpdateOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 40814 ];
 
 	UOnlineGameInterfaceImpl_execOnUpdateOnlineGameComplete_Parms OnUpdateOnlineGameComplete_Parms;
 
@@ -6426,7 +6426,7 @@ void UOnlineGameInterfaceImpl::UpdateOnlineGame ( )
 	static UFunction* pFnUpdateOnlineGame = NULL;
 
 	if ( ! pFnUpdateOnlineGame )
-		pFnUpdateOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 40778 ];
+		pFnUpdateOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 40809 ];
 
 	UOnlineGameInterfaceImpl_execUpdateOnlineGame_Parms UpdateOnlineGame_Parms;
 
@@ -6442,7 +6442,7 @@ void UOnlineGameInterfaceImpl::ClearCreateOnlineGameCompleteDelegate ( )
 	static UFunction* pFnClearCreateOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnClearCreateOnlineGameCompleteDelegate )
-		pFnClearCreateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40775 ];
+		pFnClearCreateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40806 ];
 
 	UOnlineGameInterfaceImpl_execClearCreateOnlineGameCompleteDelegate_Parms ClearCreateOnlineGameCompleteDelegate_Parms;
 
@@ -6458,7 +6458,7 @@ void UOnlineGameInterfaceImpl::AddCreateOnlineGameCompleteDelegate ( )
 	static UFunction* pFnAddCreateOnlineGameCompleteDelegate = NULL;
 
 	if ( ! pFnAddCreateOnlineGameCompleteDelegate )
-		pFnAddCreateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40773 ];
+		pFnAddCreateOnlineGameCompleteDelegate = (UFunction*) UObject::GObjObjects()->Data[ 40804 ];
 
 	UOnlineGameInterfaceImpl_execAddCreateOnlineGameCompleteDelegate_Parms AddCreateOnlineGameCompleteDelegate_Parms;
 
@@ -6474,7 +6474,7 @@ void UOnlineGameInterfaceImpl::OnCreateOnlineGameComplete ( )
 	static UFunction* pFnOnCreateOnlineGameComplete = NULL;
 
 	if ( ! pFnOnCreateOnlineGameComplete )
-		pFnOnCreateOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 40770 ];
+		pFnOnCreateOnlineGameComplete = (UFunction*) UObject::GObjObjects()->Data[ 40801 ];
 
 	UOnlineGameInterfaceImpl_execOnCreateOnlineGameComplete_Parms OnCreateOnlineGameComplete_Parms;
 
@@ -6490,7 +6490,7 @@ void UOnlineGameInterfaceImpl::CreateOnlineGame ( )
 	static UFunction* pFnCreateOnlineGame = NULL;
 
 	if ( ! pFnCreateOnlineGame )
-		pFnCreateOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 40765 ];
+		pFnCreateOnlineGame = (UFunction*) UObject::GObjObjects()->Data[ 40796 ];
 
 	UOnlineGameInterfaceImpl_execCreateOnlineGame_Parms CreateOnlineGame_Parms;
 
@@ -6510,7 +6510,7 @@ void UOnlineGameInterfaceImpl::GetGameServerRemoteAddress ( )
 	static UFunction* pFnGetGameServerRemoteAddress = NULL;
 
 	if ( ! pFnGetGameServerRemoteAddress )
-		pFnGetGameServerRemoteAddress = (UFunction*) UObject::GObjObjects()->Data[ 40762 ];
+		pFnGetGameServerRemoteAddress = (UFunction*) UObject::GObjObjects()->Data[ 40793 ];
 
 	UOnlineGameInterfaceImpl_execGetGameServerRemoteAddress_Parms GetGameServerRemoteAddress_Parms;
 
@@ -6530,7 +6530,7 @@ void UOnlineGameInterfaceImpl::GetGameSearch ( )
 	static UFunction* pFnGetGameSearch = NULL;
 
 	if ( ! pFnGetGameSearch )
-		pFnGetGameSearch = (UFunction*) UObject::GObjObjects()->Data[ 40760 ];
+		pFnGetGameSearch = (UFunction*) UObject::GObjObjects()->Data[ 40791 ];
 
 	UOnlineGameInterfaceImpl_execGetGameSearch_Parms GetGameSearch_Parms;
 
@@ -6546,7 +6546,7 @@ void UOnlineGameInterfaceImpl::GetGameSettings ( )
 	static UFunction* pFnGetGameSettings = NULL;
 
 	if ( ! pFnGetGameSettings )
-		pFnGetGameSettings = (UFunction*) UObject::GObjObjects()->Data[ 40757 ];
+		pFnGetGameSettings = (UFunction*) UObject::GObjObjects()->Data[ 40788 ];
 
 	UOnlineGameInterfaceImpl_execGetGameSettings_Parms GetGameSettings_Parms;
 
@@ -6562,7 +6562,7 @@ void UOnlineGameInterfaceImpl::OnFindOnlineGamesComplete ( )
 	static UFunction* pFnOnFindOnlineGamesComplete = NULL;
 
 	if ( ! pFnOnFindOnlineGamesComplete )
-		pFnOnFindOnlineGamesComplete = (UFunction*) UObject::GObjObjects()->Data[ 40755 ];
+		pFnOnFindOnlineGamesComplete = (UFunction*) UObject::GObjObjects()->Data[ 40786 ];
 
 	UOnlineGameInterfaceImpl_execOnFindOnlineGamesComplete_Parms OnFindOnlineGamesComplete_Parms;
 
@@ -6578,7 +6578,7 @@ void UOnlinePlaylistManager::ParseDataCenterId ( )
 	static UFunction* pFnParseDataCenterId = NULL;
 
 	if ( ! pFnParseDataCenterId )
-		pFnParseDataCenterId = (UFunction*) UObject::GObjObjects()->Data[ 41429 ];
+		pFnParseDataCenterId = (UFunction*) UObject::GObjObjects()->Data[ 41460 ];
 
 	UOnlinePlaylistManager_execParseDataCenterId_Parms ParseDataCenterId_Parms;
 
@@ -6598,7 +6598,7 @@ void UOnlinePlaylistManager::OnReadDataCenterIdComplete ( )
 	static UFunction* pFnOnReadDataCenterIdComplete = NULL;
 
 	if ( ! pFnOnReadDataCenterIdComplete )
-		pFnOnReadDataCenterIdComplete = (UFunction*) UObject::GObjObjects()->Data[ 41424 ];
+		pFnOnReadDataCenterIdComplete = (UFunction*) UObject::GObjObjects()->Data[ 41455 ];
 
 	UOnlinePlaylistManager_execOnReadDataCenterIdComplete_Parms OnReadDataCenterIdComplete_Parms;
 
@@ -6614,7 +6614,7 @@ void UOnlinePlaylistManager::ReadDataCenterId ( )
 	static UFunction* pFnReadDataCenterId = NULL;
 
 	if ( ! pFnReadDataCenterId )
-		pFnReadDataCenterId = (UFunction*) UObject::GObjObjects()->Data[ 41422 ];
+		pFnReadDataCenterId = (UFunction*) UObject::GObjObjects()->Data[ 41453 ];
 
 	UOnlinePlaylistManager_execReadDataCenterId_Parms ReadDataCenterId_Parms;
 
@@ -6630,7 +6630,7 @@ void UOnlinePlaylistManager::eventSendPlaylistPopulationUpdate ( )
 	static UFunction* pFnSendPlaylistPopulationUpdate = NULL;
 
 	if ( ! pFnSendPlaylistPopulationUpdate )
-		pFnSendPlaylistPopulationUpdate = (UFunction*) UObject::GObjObjects()->Data[ 41418 ];
+		pFnSendPlaylistPopulationUpdate = (UFunction*) UObject::GObjObjects()->Data[ 41449 ];
 
 	UOnlinePlaylistManager_eventSendPlaylistPopulationUpdate_Parms SendPlaylistPopulationUpdate_Parms;
 
@@ -6646,7 +6646,7 @@ void UOnlinePlaylistManager::GetPopulationInfoFromPlaylist ( )
 	static UFunction* pFnGetPopulationInfoFromPlaylist = NULL;
 
 	if ( ! pFnGetPopulationInfoFromPlaylist )
-		pFnGetPopulationInfoFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41413 ];
+		pFnGetPopulationInfoFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41444 ];
 
 	UOnlinePlaylistManager_execGetPopulationInfoFromPlaylist_Parms GetPopulationInfoFromPlaylist_Parms;
 
@@ -6662,7 +6662,7 @@ void UOnlinePlaylistManager::ParsePlaylistPopulationData ( )
 	static UFunction* pFnParsePlaylistPopulationData = NULL;
 
 	if ( ! pFnParsePlaylistPopulationData )
-		pFnParsePlaylistPopulationData = (UFunction*) UObject::GObjObjects()->Data[ 41410 ];
+		pFnParsePlaylistPopulationData = (UFunction*) UObject::GObjObjects()->Data[ 41441 ];
 
 	UOnlinePlaylistManager_execParsePlaylistPopulationData_Parms ParsePlaylistPopulationData_Parms;
 
@@ -6682,7 +6682,7 @@ void UOnlinePlaylistManager::OnPlaylistPopulationDataUpdated ( )
 	static UFunction* pFnOnPlaylistPopulationDataUpdated = NULL;
 
 	if ( ! pFnOnPlaylistPopulationDataUpdated )
-		pFnOnPlaylistPopulationDataUpdated = (UFunction*) UObject::GObjObjects()->Data[ 41409 ];
+		pFnOnPlaylistPopulationDataUpdated = (UFunction*) UObject::GObjObjects()->Data[ 41440 ];
 
 	UOnlinePlaylistManager_execOnPlaylistPopulationDataUpdated_Parms OnPlaylistPopulationDataUpdated_Parms;
 
@@ -6698,7 +6698,7 @@ void UOnlinePlaylistManager::OnReadPlaylistPopulationComplete ( )
 	static UFunction* pFnOnReadPlaylistPopulationComplete = NULL;
 
 	if ( ! pFnOnReadPlaylistPopulationComplete )
-		pFnOnReadPlaylistPopulationComplete = (UFunction*) UObject::GObjObjects()->Data[ 41404 ];
+		pFnOnReadPlaylistPopulationComplete = (UFunction*) UObject::GObjObjects()->Data[ 41435 ];
 
 	UOnlinePlaylistManager_execOnReadPlaylistPopulationComplete_Parms OnReadPlaylistPopulationComplete_Parms;
 
@@ -6714,7 +6714,7 @@ void UOnlinePlaylistManager::ReadPlaylistPopulation ( )
 	static UFunction* pFnReadPlaylistPopulation = NULL;
 
 	if ( ! pFnReadPlaylistPopulation )
-		pFnReadPlaylistPopulation = (UFunction*) UObject::GObjObjects()->Data[ 41402 ];
+		pFnReadPlaylistPopulation = (UFunction*) UObject::GObjObjects()->Data[ 41433 ];
 
 	UOnlinePlaylistManager_execReadPlaylistPopulation_Parms ReadPlaylistPopulation_Parms;
 
@@ -6730,7 +6730,7 @@ void UOnlinePlaylistManager::Reset ( )
 	static UFunction* pFnReset = NULL;
 
 	if ( ! pFnReset )
-		pFnReset = (UFunction*) UObject::GObjObjects()->Data[ 41400 ];
+		pFnReset = (UFunction*) UObject::GObjObjects()->Data[ 41431 ];
 
 	UOnlinePlaylistManager_execReset_Parms Reset_Parms;
 
@@ -6746,7 +6746,7 @@ void UOnlinePlaylistManager::GetContentIdsFromPlaylist ( )
 	static UFunction* pFnGetContentIdsFromPlaylist = NULL;
 
 	if ( ! pFnGetContentIdsFromPlaylist )
-		pFnGetContentIdsFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41395 ];
+		pFnGetContentIdsFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41426 ];
 
 	UOnlinePlaylistManager_execGetContentIdsFromPlaylist_Parms GetContentIdsFromPlaylist_Parms;
 
@@ -6762,7 +6762,7 @@ void UOnlinePlaylistManager::GetInventorySwapFromPlaylist ( )
 	static UFunction* pFnGetInventorySwapFromPlaylist = NULL;
 
 	if ( ! pFnGetInventorySwapFromPlaylist )
-		pFnGetInventorySwapFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41389 ];
+		pFnGetInventorySwapFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41420 ];
 
 	UOnlinePlaylistManager_execGetInventorySwapFromPlaylist_Parms GetInventorySwapFromPlaylist_Parms;
 
@@ -6778,7 +6778,7 @@ void UOnlinePlaylistManager::GetMapCycleFromPlaylist ( )
 	static UFunction* pFnGetMapCycleFromPlaylist = NULL;
 
 	if ( ! pFnGetMapCycleFromPlaylist )
-		pFnGetMapCycleFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41384 ];
+		pFnGetMapCycleFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41415 ];
 
 	UOnlinePlaylistManager_execGetMapCycleFromPlaylist_Parms GetMapCycleFromPlaylist_Parms;
 
@@ -6794,7 +6794,7 @@ void UOnlinePlaylistManager::GetUrlFromPlaylist ( )
 	static UFunction* pFnGetUrlFromPlaylist = NULL;
 
 	if ( ! pFnGetUrlFromPlaylist )
-		pFnGetUrlFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41380 ];
+		pFnGetUrlFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41411 ];
 
 	UOnlinePlaylistManager_execGetUrlFromPlaylist_Parms GetUrlFromPlaylist_Parms;
 
@@ -6810,7 +6810,7 @@ void UOnlinePlaylistManager::GetMatchType ( )
 	static UFunction* pFnGetMatchType = NULL;
 
 	if ( ! pFnGetMatchType )
-		pFnGetMatchType = (UFunction*) UObject::GObjObjects()->Data[ 41376 ];
+		pFnGetMatchType = (UFunction*) UObject::GObjObjects()->Data[ 41407 ];
 
 	UOnlinePlaylistManager_execGetMatchType_Parms GetMatchType_Parms;
 
@@ -6826,7 +6826,7 @@ void UOnlinePlaylistManager::IsPlaylistArbitrated ( )
 	static UFunction* pFnIsPlaylistArbitrated = NULL;
 
 	if ( ! pFnIsPlaylistArbitrated )
-		pFnIsPlaylistArbitrated = (UFunction*) UObject::GObjObjects()->Data[ 41372 ];
+		pFnIsPlaylistArbitrated = (UFunction*) UObject::GObjObjects()->Data[ 41403 ];
 
 	UOnlinePlaylistManager_execIsPlaylistArbitrated_Parms IsPlaylistArbitrated_Parms;
 
@@ -6842,7 +6842,7 @@ void UOnlinePlaylistManager::GetLoadBalanceIdFromPlaylist ( )
 	static UFunction* pFnGetLoadBalanceIdFromPlaylist = NULL;
 
 	if ( ! pFnGetLoadBalanceIdFromPlaylist )
-		pFnGetLoadBalanceIdFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41368 ];
+		pFnGetLoadBalanceIdFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41399 ];
 
 	UOnlinePlaylistManager_execGetLoadBalanceIdFromPlaylist_Parms GetLoadBalanceIdFromPlaylist_Parms;
 
@@ -6858,7 +6858,7 @@ void UOnlinePlaylistManager::GetTeamInfoFromPlaylist ( )
 	static UFunction* pFnGetTeamInfoFromPlaylist = NULL;
 
 	if ( ! pFnGetTeamInfoFromPlaylist )
-		pFnGetTeamInfoFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41362 ];
+		pFnGetTeamInfoFromPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41393 ];
 
 	UOnlinePlaylistManager_execGetTeamInfoFromPlaylist_Parms GetTeamInfoFromPlaylist_Parms;
 
@@ -6874,7 +6874,7 @@ void UOnlinePlaylistManager::PlaylistSupportsDedicatedServers ( )
 	static UFunction* pFnPlaylistSupportsDedicatedServers = NULL;
 
 	if ( ! pFnPlaylistSupportsDedicatedServers )
-		pFnPlaylistSupportsDedicatedServers = (UFunction*) UObject::GObjObjects()->Data[ 41358 ];
+		pFnPlaylistSupportsDedicatedServers = (UFunction*) UObject::GObjObjects()->Data[ 41389 ];
 
 	UOnlinePlaylistManager_execPlaylistSupportsDedicatedServers_Parms PlaylistSupportsDedicatedServers_Parms;
 
@@ -6890,7 +6890,7 @@ void UOnlinePlaylistManager::HasAnyGameSettings ( )
 	static UFunction* pFnHasAnyGameSettings = NULL;
 
 	if ( ! pFnHasAnyGameSettings )
-		pFnHasAnyGameSettings = (UFunction*) UObject::GObjObjects()->Data[ 41353 ];
+		pFnHasAnyGameSettings = (UFunction*) UObject::GObjObjects()->Data[ 41384 ];
 
 	UOnlinePlaylistManager_execHasAnyGameSettings_Parms HasAnyGameSettings_Parms;
 
@@ -6906,7 +6906,7 @@ void UOnlinePlaylistManager::GetGameSettings ( )
 	static UFunction* pFnGetGameSettings = NULL;
 
 	if ( ! pFnGetGameSettings )
-		pFnGetGameSettings = (UFunction*) UObject::GObjObjects()->Data[ 41347 ];
+		pFnGetGameSettings = (UFunction*) UObject::GObjObjects()->Data[ 41378 ];
 
 	UOnlinePlaylistManager_execGetGameSettings_Parms GetGameSettings_Parms;
 
@@ -6922,7 +6922,7 @@ void UOnlinePlaylistManager::FinalizePlaylistObjects ( )
 	static UFunction* pFnFinalizePlaylistObjects = NULL;
 
 	if ( ! pFnFinalizePlaylistObjects )
-		pFnFinalizePlaylistObjects = (UFunction*) UObject::GObjObjects()->Data[ 41346 ];
+		pFnFinalizePlaylistObjects = (UFunction*) UObject::GObjObjects()->Data[ 41377 ];
 
 	UOnlinePlaylistManager_execFinalizePlaylistObjects_Parms FinalizePlaylistObjects_Parms;
 
@@ -6942,7 +6942,7 @@ void UOnlinePlaylistManager::OnReadTitleFileComplete ( )
 	static UFunction* pFnOnReadTitleFileComplete = NULL;
 
 	if ( ! pFnOnReadTitleFileComplete )
-		pFnOnReadTitleFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 41341 ];
+		pFnOnReadTitleFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 41372 ];
 
 	UOnlinePlaylistManager_execOnReadTitleFileComplete_Parms OnReadTitleFileComplete_Parms;
 
@@ -6958,7 +6958,7 @@ void UOnlinePlaylistManager::ShouldRefreshPlaylists ( )
 	static UFunction* pFnShouldRefreshPlaylists = NULL;
 
 	if ( ! pFnShouldRefreshPlaylists )
-		pFnShouldRefreshPlaylists = (UFunction*) UObject::GObjObjects()->Data[ 41339 ];
+		pFnShouldRefreshPlaylists = (UFunction*) UObject::GObjObjects()->Data[ 41370 ];
 
 	UOnlinePlaylistManager_execShouldRefreshPlaylists_Parms ShouldRefreshPlaylists_Parms;
 
@@ -6978,7 +6978,7 @@ void UOnlinePlaylistManager::DetermineFilesToDownload ( )
 	static UFunction* pFnDetermineFilesToDownload = NULL;
 
 	if ( ! pFnDetermineFilesToDownload )
-		pFnDetermineFilesToDownload = (UFunction*) UObject::GObjObjects()->Data[ 41338 ];
+		pFnDetermineFilesToDownload = (UFunction*) UObject::GObjObjects()->Data[ 41369 ];
 
 	UOnlinePlaylistManager_execDetermineFilesToDownload_Parms DetermineFilesToDownload_Parms;
 
@@ -6998,7 +6998,7 @@ void UOnlinePlaylistManager::DownloadPlaylist ( )
 	static UFunction* pFnDownloadPlaylist = NULL;
 
 	if ( ! pFnDownloadPlaylist )
-		pFnDownloadPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41335 ];
+		pFnDownloadPlaylist = (UFunction*) UObject::GObjObjects()->Data[ 41366 ];
 
 	UOnlinePlaylistManager_execDownloadPlaylist_Parms DownloadPlaylist_Parms;
 
@@ -7014,7 +7014,7 @@ void UOnlinePlaylistManager::OnReadPlaylistComplete ( )
 	static UFunction* pFnOnReadPlaylistComplete = NULL;
 
 	if ( ! pFnOnReadPlaylistComplete )
-		pFnOnReadPlaylistComplete = (UFunction*) UObject::GObjObjects()->Data[ 41333 ];
+		pFnOnReadPlaylistComplete = (UFunction*) UObject::GObjObjects()->Data[ 41364 ];
 
 	UOnlinePlaylistManager_execOnReadPlaylistComplete_Parms OnReadPlaylistComplete_Parms;
 
@@ -7030,7 +7030,7 @@ void UPartyBeacon::OnDestroyComplete ( )
 	static UFunction* pFnOnDestroyComplete = NULL;
 
 	if ( ! pFnOnDestroyComplete )
-		pFnOnDestroyComplete = (UFunction*) UObject::GObjObjects()->Data[ 41504 ];
+		pFnOnDestroyComplete = (UFunction*) UObject::GObjObjects()->Data[ 41535 ];
 
 	UPartyBeacon_execOnDestroyComplete_Parms OnDestroyComplete_Parms;
 
@@ -7046,7 +7046,7 @@ void UPartyBeacon::eventDestroyBeacon ( )
 	static UFunction* pFnDestroyBeacon = NULL;
 
 	if ( ! pFnDestroyBeacon )
-		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 41503 ];
+		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 41534 ];
 
 	UPartyBeacon_eventDestroyBeacon_Parms DestroyBeacon_Parms;
 
@@ -7066,7 +7066,7 @@ void UPartyBeaconClient::eventDestroyBeacon ( )
 	static UFunction* pFnDestroyBeacon = NULL;
 
 	if ( ! pFnDestroyBeacon )
-		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 41546 ];
+		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 41577 ];
 
 	UPartyBeaconClient_eventDestroyBeacon_Parms DestroyBeacon_Parms;
 
@@ -7086,7 +7086,7 @@ void UPartyBeaconClient::CancelReservation ( )
 	static UFunction* pFnCancelReservation = NULL;
 
 	if ( ! pFnCancelReservation )
-		pFnCancelReservation = (UFunction*) UObject::GObjObjects()->Data[ 41543 ];
+		pFnCancelReservation = (UFunction*) UObject::GObjObjects()->Data[ 41574 ];
 
 	UPartyBeaconClient_execCancelReservation_Parms CancelReservation_Parms;
 
@@ -7106,7 +7106,7 @@ void UPartyBeaconClient::RequestReservationUpdate ( )
 	static UFunction* pFnRequestReservationUpdate = NULL;
 
 	if ( ! pFnRequestReservationUpdate )
-		pFnRequestReservationUpdate = (UFunction*) UObject::GObjObjects()->Data[ 41537 ];
+		pFnRequestReservationUpdate = (UFunction*) UObject::GObjObjects()->Data[ 41568 ];
 
 	UPartyBeaconClient_execRequestReservationUpdate_Parms RequestReservationUpdate_Parms;
 
@@ -7126,7 +7126,7 @@ void UPartyBeaconClient::RequestReservation ( )
 	static UFunction* pFnRequestReservation = NULL;
 
 	if ( ! pFnRequestReservation )
-		pFnRequestReservation = (UFunction*) UObject::GObjObjects()->Data[ 41531 ];
+		pFnRequestReservation = (UFunction*) UObject::GObjObjects()->Data[ 41562 ];
 
 	UPartyBeaconClient_execRequestReservation_Parms RequestReservation_Parms;
 
@@ -7146,7 +7146,7 @@ void UPartyBeaconClient::OnHostHasCancelled ( )
 	static UFunction* pFnOnHostHasCancelled = NULL;
 
 	if ( ! pFnOnHostHasCancelled )
-		pFnOnHostHasCancelled = (UFunction*) UObject::GObjObjects()->Data[ 41530 ];
+		pFnOnHostHasCancelled = (UFunction*) UObject::GObjObjects()->Data[ 41561 ];
 
 	UPartyBeaconClient_execOnHostHasCancelled_Parms OnHostHasCancelled_Parms;
 
@@ -7162,7 +7162,7 @@ void UPartyBeaconClient::OnHostIsReady ( )
 	static UFunction* pFnOnHostIsReady = NULL;
 
 	if ( ! pFnOnHostIsReady )
-		pFnOnHostIsReady = (UFunction*) UObject::GObjObjects()->Data[ 41529 ];
+		pFnOnHostIsReady = (UFunction*) UObject::GObjObjects()->Data[ 41560 ];
 
 	UPartyBeaconClient_execOnHostIsReady_Parms OnHostIsReady_Parms;
 
@@ -7178,7 +7178,7 @@ void UPartyBeaconClient::OnTravelRequestReceived ( )
 	static UFunction* pFnOnTravelRequestReceived = NULL;
 
 	if ( ! pFnOnTravelRequestReceived )
-		pFnOnTravelRequestReceived = (UFunction*) UObject::GObjObjects()->Data[ 41525 ];
+		pFnOnTravelRequestReceived = (UFunction*) UObject::GObjObjects()->Data[ 41556 ];
 
 	UPartyBeaconClient_execOnTravelRequestReceived_Parms OnTravelRequestReceived_Parms;
 
@@ -7194,7 +7194,7 @@ void UPartyBeaconClient::OnReservationCountUpdated ( )
 	static UFunction* pFnOnReservationCountUpdated = NULL;
 
 	if ( ! pFnOnReservationCountUpdated )
-		pFnOnReservationCountUpdated = (UFunction*) UObject::GObjObjects()->Data[ 41523 ];
+		pFnOnReservationCountUpdated = (UFunction*) UObject::GObjObjects()->Data[ 41554 ];
 
 	UPartyBeaconClient_execOnReservationCountUpdated_Parms OnReservationCountUpdated_Parms;
 
@@ -7210,7 +7210,7 @@ void UPartyBeaconClient::OnReservationRequestComplete ( )
 	static UFunction* pFnOnReservationRequestComplete = NULL;
 
 	if ( ! pFnOnReservationRequestComplete )
-		pFnOnReservationRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 41521 ];
+		pFnOnReservationRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 41552 ];
 
 	UPartyBeaconClient_execOnReservationRequestComplete_Parms OnReservationRequestComplete_Parms;
 
@@ -7226,7 +7226,7 @@ void UPartyBeaconHost::DumpReservations ( )
 	static UFunction* pFnDumpReservations = NULL;
 
 	if ( ! pFnDumpReservations )
-		pFnDumpReservations = (UFunction*) UObject::GObjObjects()->Data[ 41642 ];
+		pFnDumpReservations = (UFunction*) UObject::GObjObjects()->Data[ 41673 ];
 
 	UPartyBeaconHost_execDumpReservations_Parms DumpReservations_Parms;
 
@@ -7242,7 +7242,7 @@ void UPartyBeaconHost::GetMaxAvailableTeamSize ( )
 	static UFunction* pFnGetMaxAvailableTeamSize = NULL;
 
 	if ( ! pFnGetMaxAvailableTeamSize )
-		pFnGetMaxAvailableTeamSize = (UFunction*) UObject::GObjObjects()->Data[ 41640 ];
+		pFnGetMaxAvailableTeamSize = (UFunction*) UObject::GObjObjects()->Data[ 41671 ];
 
 	UPartyBeaconHost_execGetMaxAvailableTeamSize_Parms GetMaxAvailableTeamSize_Parms;
 
@@ -7262,7 +7262,7 @@ void UPartyBeaconHost::GetPartyLeaders ( )
 	static UFunction* pFnGetPartyLeaders = NULL;
 
 	if ( ! pFnGetPartyLeaders )
-		pFnGetPartyLeaders = (UFunction*) UObject::GObjObjects()->Data[ 41636 ];
+		pFnGetPartyLeaders = (UFunction*) UObject::GObjObjects()->Data[ 41667 ];
 
 	UPartyBeaconHost_execGetPartyLeaders_Parms GetPartyLeaders_Parms;
 
@@ -7278,7 +7278,7 @@ void UPartyBeaconHost::GetPlayers ( )
 	static UFunction* pFnGetPlayers = NULL;
 
 	if ( ! pFnGetPlayers )
-		pFnGetPlayers = (UFunction*) UObject::GObjObjects()->Data[ 41630 ];
+		pFnGetPlayers = (UFunction*) UObject::GObjObjects()->Data[ 41661 ];
 
 	UPartyBeaconHost_execGetPlayers_Parms GetPlayers_Parms;
 
@@ -7294,7 +7294,7 @@ void UPartyBeaconHost::AppendReservationSkillsToSearch ( )
 	static UFunction* pFnAppendReservationSkillsToSearch = NULL;
 
 	if ( ! pFnAppendReservationSkillsToSearch )
-		pFnAppendReservationSkillsToSearch = (UFunction*) UObject::GObjObjects()->Data[ 41628 ];
+		pFnAppendReservationSkillsToSearch = (UFunction*) UObject::GObjObjects()->Data[ 41659 ];
 
 	UPartyBeaconHost_execAppendReservationSkillsToSearch_Parms AppendReservationSkillsToSearch_Parms;
 
@@ -7314,7 +7314,7 @@ void UPartyBeaconHost::eventUnregisterParty ( )
 	static UFunction* pFnUnregisterParty = NULL;
 
 	if ( ! pFnUnregisterParty )
-		pFnUnregisterParty = (UFunction*) UObject::GObjObjects()->Data[ 41622 ];
+		pFnUnregisterParty = (UFunction*) UObject::GObjObjects()->Data[ 41653 ];
 
 	UPartyBeaconHost_eventUnregisterParty_Parms UnregisterParty_Parms;
 
@@ -7330,7 +7330,7 @@ void UPartyBeaconHost::eventUnregisterPartyMembers ( )
 	static UFunction* pFnUnregisterPartyMembers = NULL;
 
 	if ( ! pFnUnregisterPartyMembers )
-		pFnUnregisterPartyMembers = (UFunction*) UObject::GObjObjects()->Data[ 41617 ];
+		pFnUnregisterPartyMembers = (UFunction*) UObject::GObjObjects()->Data[ 41648 ];
 
 	UPartyBeaconHost_eventUnregisterPartyMembers_Parms UnregisterPartyMembers_Parms;
 
@@ -7346,7 +7346,7 @@ void UPartyBeaconHost::eventRegisterPartyMembers ( )
 	static UFunction* pFnRegisterPartyMembers = NULL;
 
 	if ( ! pFnRegisterPartyMembers )
-		pFnRegisterPartyMembers = (UFunction*) UObject::GObjObjects()->Data[ 41609 ];
+		pFnRegisterPartyMembers = (UFunction*) UObject::GObjObjects()->Data[ 41640 ];
 
 	UPartyBeaconHost_eventRegisterPartyMembers_Parms RegisterPartyMembers_Parms;
 
@@ -7362,7 +7362,7 @@ void UPartyBeaconHost::AreReservationsFull ( )
 	static UFunction* pFnAreReservationsFull = NULL;
 
 	if ( ! pFnAreReservationsFull )
-		pFnAreReservationsFull = (UFunction*) UObject::GObjObjects()->Data[ 41607 ];
+		pFnAreReservationsFull = (UFunction*) UObject::GObjObjects()->Data[ 41638 ];
 
 	UPartyBeaconHost_execAreReservationsFull_Parms AreReservationsFull_Parms;
 
@@ -7378,7 +7378,7 @@ void UPartyBeaconHost::TellClientsHostHasCancelled ( )
 	static UFunction* pFnTellClientsHostHasCancelled = NULL;
 
 	if ( ! pFnTellClientsHostHasCancelled )
-		pFnTellClientsHostHasCancelled = (UFunction*) UObject::GObjObjects()->Data[ 41606 ];
+		pFnTellClientsHostHasCancelled = (UFunction*) UObject::GObjObjects()->Data[ 41637 ];
 
 	UPartyBeaconHost_execTellClientsHostHasCancelled_Parms TellClientsHostHasCancelled_Parms;
 
@@ -7398,7 +7398,7 @@ void UPartyBeaconHost::TellClientsHostIsReady ( )
 	static UFunction* pFnTellClientsHostIsReady = NULL;
 
 	if ( ! pFnTellClientsHostIsReady )
-		pFnTellClientsHostIsReady = (UFunction*) UObject::GObjObjects()->Data[ 41605 ];
+		pFnTellClientsHostIsReady = (UFunction*) UObject::GObjObjects()->Data[ 41636 ];
 
 	UPartyBeaconHost_execTellClientsHostIsReady_Parms TellClientsHostIsReady_Parms;
 
@@ -7418,7 +7418,7 @@ void UPartyBeaconHost::TellClientsToTravel ( )
 	static UFunction* pFnTellClientsToTravel = NULL;
 
 	if ( ! pFnTellClientsToTravel )
-		pFnTellClientsToTravel = (UFunction*) UObject::GObjObjects()->Data[ 41601 ];
+		pFnTellClientsToTravel = (UFunction*) UObject::GObjObjects()->Data[ 41632 ];
 
 	UPartyBeaconHost_execTellClientsToTravel_Parms TellClientsToTravel_Parms;
 
@@ -7438,7 +7438,7 @@ void UPartyBeaconHost::eventDestroyBeacon ( )
 	static UFunction* pFnDestroyBeacon = NULL;
 
 	if ( ! pFnDestroyBeacon )
-		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 41600 ];
+		pFnDestroyBeacon = (UFunction*) UObject::GObjObjects()->Data[ 41631 ];
 
 	UPartyBeaconHost_eventDestroyBeacon_Parms DestroyBeacon_Parms;
 
@@ -7458,7 +7458,7 @@ void UPartyBeaconHost::OnClientCancellationReceived ( )
 	static UFunction* pFnOnClientCancellationReceived = NULL;
 
 	if ( ! pFnOnClientCancellationReceived )
-		pFnOnClientCancellationReceived = (UFunction*) UObject::GObjObjects()->Data[ 41598 ];
+		pFnOnClientCancellationReceived = (UFunction*) UObject::GObjObjects()->Data[ 41629 ];
 
 	UPartyBeaconHost_execOnClientCancellationReceived_Parms OnClientCancellationReceived_Parms;
 
@@ -7474,7 +7474,7 @@ void UPartyBeaconHost::OnReservationsFull ( )
 	static UFunction* pFnOnReservationsFull = NULL;
 
 	if ( ! pFnOnReservationsFull )
-		pFnOnReservationsFull = (UFunction*) UObject::GObjObjects()->Data[ 41597 ];
+		pFnOnReservationsFull = (UFunction*) UObject::GObjObjects()->Data[ 41628 ];
 
 	UPartyBeaconHost_execOnReservationsFull_Parms OnReservationsFull_Parms;
 
@@ -7490,7 +7490,7 @@ void UPartyBeaconHost::OnReservationChange ( )
 	static UFunction* pFnOnReservationChange = NULL;
 
 	if ( ! pFnOnReservationChange )
-		pFnOnReservationChange = (UFunction*) UObject::GObjObjects()->Data[ 41596 ];
+		pFnOnReservationChange = (UFunction*) UObject::GObjObjects()->Data[ 41627 ];
 
 	UPartyBeaconHost_execOnReservationChange_Parms OnReservationChange_Parms;
 
@@ -7506,7 +7506,7 @@ void UPartyBeaconHost::HandlePlayerLogout ( )
 	static UFunction* pFnHandlePlayerLogout = NULL;
 
 	if ( ! pFnHandlePlayerLogout )
-		pFnHandlePlayerLogout = (UFunction*) UObject::GObjObjects()->Data[ 41593 ];
+		pFnHandlePlayerLogout = (UFunction*) UObject::GObjObjects()->Data[ 41624 ];
 
 	UPartyBeaconHost_execHandlePlayerLogout_Parms HandlePlayerLogout_Parms;
 
@@ -7526,7 +7526,7 @@ void UPartyBeaconHost::GetExistingReservation ( )
 	static UFunction* pFnGetExistingReservation = NULL;
 
 	if ( ! pFnGetExistingReservation )
-		pFnGetExistingReservation = (UFunction*) UObject::GObjObjects()->Data[ 41590 ];
+		pFnGetExistingReservation = (UFunction*) UObject::GObjObjects()->Data[ 41621 ];
 
 	UPartyBeaconHost_execGetExistingReservation_Parms GetExistingReservation_Parms;
 
@@ -7546,7 +7546,7 @@ void UPartyBeaconHost::UpdatePartyReservationEntry ( )
 	static UFunction* pFnUpdatePartyReservationEntry = NULL;
 
 	if ( ! pFnUpdatePartyReservationEntry )
-		pFnUpdatePartyReservationEntry = (UFunction*) UObject::GObjObjects()->Data[ 41585 ];
+		pFnUpdatePartyReservationEntry = (UFunction*) UObject::GObjObjects()->Data[ 41616 ];
 
 	UPartyBeaconHost_execUpdatePartyReservationEntry_Parms UpdatePartyReservationEntry_Parms;
 
@@ -7566,7 +7566,7 @@ void UPartyBeaconHost::AddPartyReservationEntry ( )
 	static UFunction* pFnAddPartyReservationEntry = NULL;
 
 	if ( ! pFnAddPartyReservationEntry )
-		pFnAddPartyReservationEntry = (UFunction*) UObject::GObjObjects()->Data[ 41578 ];
+		pFnAddPartyReservationEntry = (UFunction*) UObject::GObjObjects()->Data[ 41609 ];
 
 	UPartyBeaconHost_execAddPartyReservationEntry_Parms AddPartyReservationEntry_Parms;
 
@@ -7586,7 +7586,7 @@ void UPartyBeaconHost::InitHostBeacon ( )
 	static UFunction* pFnInitHostBeacon = NULL;
 
 	if ( ! pFnInitHostBeacon )
-		pFnInitHostBeacon = (UFunction*) UObject::GObjObjects()->Data[ 41571 ];
+		pFnInitHostBeacon = (UFunction*) UObject::GObjObjects()->Data[ 41602 ];
 
 	UPartyBeaconHost_execInitHostBeacon_Parms InitHostBeacon_Parms;
 
@@ -7606,7 +7606,7 @@ void UPartyBeaconHost::PauseReservationRequests ( )
 	static UFunction* pFnPauseReservationRequests = NULL;
 
 	if ( ! pFnPauseReservationRequests )
-		pFnPauseReservationRequests = (UFunction*) UObject::GObjObjects()->Data[ 41569 ];
+		pFnPauseReservationRequests = (UFunction*) UObject::GObjObjects()->Data[ 41600 ];
 
 	UPartyBeaconHost_execPauseReservationRequests_Parms PauseReservationRequests_Parms;
 
@@ -7626,7 +7626,7 @@ void UWebRequest::GetHexDigit ( )
 	static UFunction* pFnGetHexDigit = NULL;
 
 	if ( ! pFnGetHexDigit )
-		pFnGetHexDigit = (UFunction*) UObject::GObjObjects()->Data[ 41884 ];
+		pFnGetHexDigit = (UFunction*) UObject::GObjObjects()->Data[ 41915 ];
 
 	UWebRequest_execGetHexDigit_Parms GetHexDigit_Parms;
 
@@ -7642,7 +7642,7 @@ void UWebRequest::DecodeFormData ( )
 	static UFunction* pFnDecodeFormData = NULL;
 
 	if ( ! pFnDecodeFormData )
-		pFnDecodeFormData = (UFunction*) UObject::GObjObjects()->Data[ 41875 ];
+		pFnDecodeFormData = (UFunction*) UObject::GObjObjects()->Data[ 41906 ];
 
 	UWebRequest_execDecodeFormData_Parms DecodeFormData_Parms;
 
@@ -7658,7 +7658,7 @@ void UWebRequest::ProcessHeaderString ( )
 	static UFunction* pFnProcessHeaderString = NULL;
 
 	if ( ! pFnProcessHeaderString )
-		pFnProcessHeaderString = (UFunction*) UObject::GObjObjects()->Data[ 41872 ];
+		pFnProcessHeaderString = (UFunction*) UObject::GObjObjects()->Data[ 41903 ];
 
 	UWebRequest_execProcessHeaderString_Parms ProcessHeaderString_Parms;
 
@@ -7674,7 +7674,7 @@ void UWebRequest::Dump ( )
 	static UFunction* pFnDump = NULL;
 
 	if ( ! pFnDump )
-		pFnDump = (UFunction*) UObject::GObjObjects()->Data[ 41871 ];
+		pFnDump = (UFunction*) UObject::GObjObjects()->Data[ 41902 ];
 
 	UWebRequest_execDump_Parms Dump_Parms;
 
@@ -7694,7 +7694,7 @@ void UWebRequest::GetVariables ( )
 	static UFunction* pFnGetVariables = NULL;
 
 	if ( ! pFnGetVariables )
-		pFnGetVariables = (UFunction*) UObject::GObjObjects()->Data[ 41868 ];
+		pFnGetVariables = (UFunction*) UObject::GObjObjects()->Data[ 41899 ];
 
 	UWebRequest_execGetVariables_Parms GetVariables_Parms;
 
@@ -7714,7 +7714,7 @@ void UWebRequest::GetVariableNumber ( )
 	static UFunction* pFnGetVariableNumber = NULL;
 
 	if ( ! pFnGetVariableNumber )
-		pFnGetVariableNumber = (UFunction*) UObject::GObjObjects()->Data[ 38049 ];
+		pFnGetVariableNumber = (UFunction*) UObject::GObjObjects()->Data[ 38080 ];
 
 	UWebRequest_execGetVariableNumber_Parms GetVariableNumber_Parms;
 
@@ -7734,7 +7734,7 @@ void UWebRequest::GetVariableCount ( )
 	static UFunction* pFnGetVariableCount = NULL;
 
 	if ( ! pFnGetVariableCount )
-		pFnGetVariableCount = (UFunction*) UObject::GObjObjects()->Data[ 38047 ];
+		pFnGetVariableCount = (UFunction*) UObject::GObjObjects()->Data[ 38078 ];
 
 	UWebRequest_execGetVariableCount_Parms GetVariableCount_Parms;
 
@@ -7754,7 +7754,7 @@ void UWebRequest::GetVariable ( )
 	static UFunction* pFnGetVariable = NULL;
 
 	if ( ! pFnGetVariable )
-		pFnGetVariable = (UFunction*) UObject::GObjObjects()->Data[ 38045 ];
+		pFnGetVariable = (UFunction*) UObject::GObjObjects()->Data[ 38076 ];
 
 	UWebRequest_execGetVariable_Parms GetVariable_Parms;
 
@@ -7774,7 +7774,7 @@ void UWebRequest::AddVariable ( )
 	static UFunction* pFnAddVariable = NULL;
 
 	if ( ! pFnAddVariable )
-		pFnAddVariable = (UFunction*) UObject::GObjObjects()->Data[ 41859 ];
+		pFnAddVariable = (UFunction*) UObject::GObjObjects()->Data[ 41890 ];
 
 	UWebRequest_execAddVariable_Parms AddVariable_Parms;
 
@@ -7794,7 +7794,7 @@ void UWebRequest::GetHeaders ( )
 	static UFunction* pFnGetHeaders = NULL;
 
 	if ( ! pFnGetHeaders )
-		pFnGetHeaders = (UFunction*) UObject::GObjObjects()->Data[ 41856 ];
+		pFnGetHeaders = (UFunction*) UObject::GObjObjects()->Data[ 41887 ];
 
 	UWebRequest_execGetHeaders_Parms GetHeaders_Parms;
 
@@ -7814,7 +7814,7 @@ void UWebRequest::GetHeader ( )
 	static UFunction* pFnGetHeader = NULL;
 
 	if ( ! pFnGetHeader )
-		pFnGetHeader = (UFunction*) UObject::GObjObjects()->Data[ 41852 ];
+		pFnGetHeader = (UFunction*) UObject::GObjObjects()->Data[ 41883 ];
 
 	UWebRequest_execGetHeader_Parms GetHeader_Parms;
 
@@ -7834,7 +7834,7 @@ void UWebRequest::AddHeader ( )
 	static UFunction* pFnAddHeader = NULL;
 
 	if ( ! pFnAddHeader )
-		pFnAddHeader = (UFunction*) UObject::GObjObjects()->Data[ 41849 ];
+		pFnAddHeader = (UFunction*) UObject::GObjObjects()->Data[ 41880 ];
 
 	UWebRequest_execAddHeader_Parms AddHeader_Parms;
 
@@ -7854,7 +7854,7 @@ void UWebRequest::EncodeBase64 ( )
 	static UFunction* pFnEncodeBase64 = NULL;
 
 	if ( ! pFnEncodeBase64 )
-		pFnEncodeBase64 = (UFunction*) UObject::GObjObjects()->Data[ 41846 ];
+		pFnEncodeBase64 = (UFunction*) UObject::GObjObjects()->Data[ 41877 ];
 
 	UWebRequest_execEncodeBase64_Parms EncodeBase64_Parms;
 
@@ -7874,7 +7874,7 @@ void UWebRequest::DecodeBase64 ( )
 	static UFunction* pFnDecodeBase64 = NULL;
 
 	if ( ! pFnDecodeBase64 )
-		pFnDecodeBase64 = (UFunction*) UObject::GObjObjects()->Data[ 41843 ];
+		pFnDecodeBase64 = (UFunction*) UObject::GObjObjects()->Data[ 41874 ];
 
 	UWebRequest_execDecodeBase64_Parms DecodeBase64_Parms;
 
@@ -7894,7 +7894,7 @@ void UWebResponse::SentResponse ( )
 	static UFunction* pFnSentResponse = NULL;
 
 	if ( ! pFnSentResponse )
-		pFnSentResponse = (UFunction*) UObject::GObjObjects()->Data[ 41943 ];
+		pFnSentResponse = (UFunction*) UObject::GObjObjects()->Data[ 41974 ];
 
 	UWebResponse_execSentResponse_Parms SentResponse_Parms;
 
@@ -7910,7 +7910,7 @@ void UWebResponse::SentText ( )
 	static UFunction* pFnSentText = NULL;
 
 	if ( ! pFnSentText )
-		pFnSentText = (UFunction*) UObject::GObjObjects()->Data[ 41941 ];
+		pFnSentText = (UFunction*) UObject::GObjObjects()->Data[ 41972 ];
 
 	UWebResponse_execSentText_Parms SentText_Parms;
 
@@ -7926,7 +7926,7 @@ void UWebResponse::Redirect ( )
 	static UFunction* pFnRedirect = NULL;
 
 	if ( ! pFnRedirect )
-		pFnRedirect = (UFunction*) UObject::GObjObjects()->Data[ 41939 ];
+		pFnRedirect = (UFunction*) UObject::GObjObjects()->Data[ 41970 ];
 
 	UWebResponse_execRedirect_Parms Redirect_Parms;
 
@@ -7942,7 +7942,7 @@ void UWebResponse::SendStandardHeaders ( )
 	static UFunction* pFnSendStandardHeaders = NULL;
 
 	if ( ! pFnSendStandardHeaders )
-		pFnSendStandardHeaders = (UFunction*) UObject::GObjObjects()->Data[ 41936 ];
+		pFnSendStandardHeaders = (UFunction*) UObject::GObjObjects()->Data[ 41967 ];
 
 	UWebResponse_execSendStandardHeaders_Parms SendStandardHeaders_Parms;
 
@@ -7958,7 +7958,7 @@ void UWebResponse::HTTPError ( )
 	static UFunction* pFnHTTPError = NULL;
 
 	if ( ! pFnHTTPError )
-		pFnHTTPError = (UFunction*) UObject::GObjObjects()->Data[ 41933 ];
+		pFnHTTPError = (UFunction*) UObject::GObjObjects()->Data[ 41964 ];
 
 	UWebResponse_execHTTPError_Parms HTTPError_Parms;
 
@@ -7974,7 +7974,7 @@ void UWebResponse::SendHeaders ( )
 	static UFunction* pFnSendHeaders = NULL;
 
 	if ( ! pFnSendHeaders )
-		pFnSendHeaders = (UFunction*) UObject::GObjObjects()->Data[ 41931 ];
+		pFnSendHeaders = (UFunction*) UObject::GObjObjects()->Data[ 41962 ];
 
 	UWebResponse_execSendHeaders_Parms SendHeaders_Parms;
 
@@ -7990,7 +7990,7 @@ void UWebResponse::AddHeader ( )
 	static UFunction* pFnAddHeader = NULL;
 
 	if ( ! pFnAddHeader )
-		pFnAddHeader = (UFunction*) UObject::GObjObjects()->Data[ 41924 ];
+		pFnAddHeader = (UFunction*) UObject::GObjObjects()->Data[ 41955 ];
 
 	UWebResponse_execAddHeader_Parms AddHeader_Parms;
 
@@ -8006,7 +8006,7 @@ void UWebResponse::HTTPHeader ( )
 	static UFunction* pFnHTTPHeader = NULL;
 
 	if ( ! pFnHTTPHeader )
-		pFnHTTPHeader = (UFunction*) UObject::GObjObjects()->Data[ 41922 ];
+		pFnHTTPHeader = (UFunction*) UObject::GObjObjects()->Data[ 41953 ];
 
 	UWebResponse_execHTTPHeader_Parms HTTPHeader_Parms;
 
@@ -8022,7 +8022,7 @@ void UWebResponse::HttpResponse ( )
 	static UFunction* pFnHttpResponse = NULL;
 
 	if ( ! pFnHttpResponse )
-		pFnHttpResponse = (UFunction*) UObject::GObjObjects()->Data[ 41920 ];
+		pFnHttpResponse = (UFunction*) UObject::GObjObjects()->Data[ 41951 ];
 
 	UWebResponse_execHttpResponse_Parms HttpResponse_Parms;
 
@@ -8038,7 +8038,7 @@ void UWebResponse::FailAuthentication ( )
 	static UFunction* pFnFailAuthentication = NULL;
 
 	if ( ! pFnFailAuthentication )
-		pFnFailAuthentication = (UFunction*) UObject::GObjObjects()->Data[ 41918 ];
+		pFnFailAuthentication = (UFunction*) UObject::GObjObjects()->Data[ 41949 ];
 
 	UWebResponse_execFailAuthentication_Parms FailAuthentication_Parms;
 
@@ -8054,7 +8054,7 @@ void UWebResponse::SendCachedFile ( )
 	static UFunction* pFnSendCachedFile = NULL;
 
 	if ( ! pFnSendCachedFile )
-		pFnSendCachedFile = (UFunction*) UObject::GObjObjects()->Data[ 41914 ];
+		pFnSendCachedFile = (UFunction*) UObject::GObjObjects()->Data[ 41945 ];
 
 	UWebResponse_execSendCachedFile_Parms SendCachedFile_Parms;
 
@@ -8070,7 +8070,7 @@ void UWebResponse::eventSendBinary ( )
 	static UFunction* pFnSendBinary = NULL;
 
 	if ( ! pFnSendBinary )
-		pFnSendBinary = (UFunction*) UObject::GObjObjects()->Data[ 41911 ];
+		pFnSendBinary = (UFunction*) UObject::GObjObjects()->Data[ 41942 ];
 
 	UWebResponse_eventSendBinary_Parms SendBinary_Parms;
 
@@ -8086,7 +8086,7 @@ void UWebResponse::eventSendText ( )
 	static UFunction* pFnSendText = NULL;
 
 	if ( ! pFnSendText )
-		pFnSendText = (UFunction*) UObject::GObjObjects()->Data[ 41908 ];
+		pFnSendText = (UFunction*) UObject::GObjObjects()->Data[ 41939 ];
 
 	UWebResponse_eventSendText_Parms SendText_Parms;
 
@@ -8102,7 +8102,7 @@ void UWebResponse::Dump ( )
 	static UFunction* pFnDump = NULL;
 
 	if ( ! pFnDump )
-		pFnDump = (UFunction*) UObject::GObjObjects()->Data[ 41907 ];
+		pFnDump = (UFunction*) UObject::GObjObjects()->Data[ 41938 ];
 
 	UWebResponse_execDump_Parms Dump_Parms;
 
@@ -8122,7 +8122,7 @@ void UWebResponse::GetHTTPExpiration ( )
 	static UFunction* pFnGetHTTPExpiration = NULL;
 
 	if ( ! pFnGetHTTPExpiration )
-		pFnGetHTTPExpiration = (UFunction*) UObject::GObjObjects()->Data[ 41904 ];
+		pFnGetHTTPExpiration = (UFunction*) UObject::GObjObjects()->Data[ 41935 ];
 
 	UWebResponse_execGetHTTPExpiration_Parms GetHTTPExpiration_Parms;
 
@@ -8142,7 +8142,7 @@ void UWebResponse::LoadParsedUHTM ( )
 	static UFunction* pFnLoadParsedUHTM = NULL;
 
 	if ( ! pFnLoadParsedUHTM )
-		pFnLoadParsedUHTM = (UFunction*) UObject::GObjObjects()->Data[ 41901 ];
+		pFnLoadParsedUHTM = (UFunction*) UObject::GObjObjects()->Data[ 41932 ];
 
 	UWebResponse_execLoadParsedUHTM_Parms LoadParsedUHTM_Parms;
 
@@ -8162,7 +8162,7 @@ void UWebResponse::IncludeBinaryFile ( )
 	static UFunction* pFnIncludeBinaryFile = NULL;
 
 	if ( ! pFnIncludeBinaryFile )
-		pFnIncludeBinaryFile = (UFunction*) UObject::GObjObjects()->Data[ 38062 ];
+		pFnIncludeBinaryFile = (UFunction*) UObject::GObjObjects()->Data[ 38093 ];
 
 	UWebResponse_execIncludeBinaryFile_Parms IncludeBinaryFile_Parms;
 
@@ -8182,7 +8182,7 @@ void UWebResponse::IncludeUHTM ( )
 	static UFunction* pFnIncludeUHTM = NULL;
 
 	if ( ! pFnIncludeUHTM )
-		pFnIncludeUHTM = (UFunction*) UObject::GObjObjects()->Data[ 38052 ];
+		pFnIncludeUHTM = (UFunction*) UObject::GObjObjects()->Data[ 38083 ];
 
 	UWebResponse_execIncludeUHTM_Parms IncludeUHTM_Parms;
 
@@ -8202,7 +8202,7 @@ void UWebResponse::ClearSubst ( )
 	static UFunction* pFnClearSubst = NULL;
 
 	if ( ! pFnClearSubst )
-		pFnClearSubst = (UFunction*) UObject::GObjObjects()->Data[ 41898 ];
+		pFnClearSubst = (UFunction*) UObject::GObjObjects()->Data[ 41929 ];
 
 	UWebResponse_execClearSubst_Parms ClearSubst_Parms;
 
@@ -8222,7 +8222,7 @@ void UWebResponse::Subst ( )
 	static UFunction* pFnSubst = NULL;
 
 	if ( ! pFnSubst )
-		pFnSubst = (UFunction*) UObject::GObjObjects()->Data[ 38051 ];
+		pFnSubst = (UFunction*) UObject::GObjObjects()->Data[ 38082 ];
 
 	UWebResponse_execSubst_Parms Subst_Parms;
 
@@ -8242,7 +8242,7 @@ void UWebResponse::FileExists ( )
 	static UFunction* pFnFileExists = NULL;
 
 	if ( ! pFnFileExists )
-		pFnFileExists = (UFunction*) UObject::GObjObjects()->Data[ 38060 ];
+		pFnFileExists = (UFunction*) UObject::GObjObjects()->Data[ 38091 ];
 
 	UWebResponse_execFileExists_Parms FileExists_Parms;
 
@@ -8262,7 +8262,7 @@ void UUIDataStore_OnlinePlaylists::eventGetMatchTypeForPlaylistId ( )
 	static UFunction* pFnGetMatchTypeForPlaylistId = NULL;
 
 	if ( ! pFnGetMatchTypeForPlaylistId )
-		pFnGetMatchTypeForPlaylistId = (UFunction*) UObject::GObjObjects()->Data[ 41791 ];
+		pFnGetMatchTypeForPlaylistId = (UFunction*) UObject::GObjObjects()->Data[ 41822 ];
 
 	UUIDataStore_OnlinePlaylists_eventGetMatchTypeForPlaylistId_Parms GetMatchTypeForPlaylistId_Parms;
 
@@ -8278,7 +8278,7 @@ void UUIDataStore_OnlinePlaylists::GetOnlinePlaylistProvider ( )
 	static UFunction* pFnGetOnlinePlaylistProvider = NULL;
 
 	if ( ! pFnGetOnlinePlaylistProvider )
-		pFnGetOnlinePlaylistProvider = (UFunction*) UObject::GObjObjects()->Data[ 41782 ];
+		pFnGetOnlinePlaylistProvider = (UFunction*) UObject::GObjObjects()->Data[ 41813 ];
 
 	UUIDataStore_OnlinePlaylists_execGetOnlinePlaylistProvider_Parms GetOnlinePlaylistProvider_Parms;
 
@@ -8294,7 +8294,7 @@ void UUIDataStore_OnlinePlaylists::GetPlaylistProvider ( )
 	static UFunction* pFnGetPlaylistProvider = NULL;
 
 	if ( ! pFnGetPlaylistProvider )
-		pFnGetPlaylistProvider = (UFunction*) UObject::GObjObjects()->Data[ 41777 ];
+		pFnGetPlaylistProvider = (UFunction*) UObject::GObjObjects()->Data[ 41808 ];
 
 	UUIDataStore_OnlinePlaylists_execGetPlaylistProvider_Parms GetPlaylistProvider_Parms;
 
@@ -8314,7 +8314,7 @@ void UUIDataStore_OnlinePlaylists::GetResourceProviders ( )
 	static UFunction* pFnGetResourceProviders = NULL;
 
 	if ( ! pFnGetResourceProviders )
-		pFnGetResourceProviders = (UFunction*) UObject::GObjObjects()->Data[ 41772 ];
+		pFnGetResourceProviders = (UFunction*) UObject::GObjObjects()->Data[ 41803 ];
 
 	UUIDataStore_OnlinePlaylists_execGetResourceProviders_Parms GetResourceProviders_Parms;
 
@@ -8334,7 +8334,7 @@ void UUIDataStore_OnlinePlaylists::eventInit ( )
 	static UFunction* pFnInit = NULL;
 
 	if ( ! pFnInit )
-		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 41770 ];
+		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 41801 ];
 
 	UUIDataStore_OnlinePlaylists_eventInit_Parms Init_Parms;
 
@@ -8350,7 +8350,7 @@ void UWebApplication::PostQuery ( )
 	static UFunction* pFnPostQuery = NULL;
 
 	if ( ! pFnPostQuery )
-		pFnPostQuery = (UFunction*) UObject::GObjObjects()->Data[ 38031 ];
+		pFnPostQuery = (UFunction*) UObject::GObjObjects()->Data[ 38062 ];
 
 	UWebApplication_execPostQuery_Parms PostQuery_Parms;
 
@@ -8366,7 +8366,7 @@ void UWebApplication::Query ( )
 	static UFunction* pFnQuery = NULL;
 
 	if ( ! pFnQuery )
-		pFnQuery = (UFunction*) UObject::GObjObjects()->Data[ 38028 ];
+		pFnQuery = (UFunction*) UObject::GObjObjects()->Data[ 38059 ];
 
 	UWebApplication_execQuery_Parms Query_Parms;
 
@@ -8382,7 +8382,7 @@ void UWebApplication::PreQuery ( )
 	static UFunction* pFnPreQuery = NULL;
 
 	if ( ! pFnPreQuery )
-		pFnPreQuery = (UFunction*) UObject::GObjObjects()->Data[ 38024 ];
+		pFnPreQuery = (UFunction*) UObject::GObjObjects()->Data[ 38055 ];
 
 	UWebApplication_execPreQuery_Parms PreQuery_Parms;
 
@@ -8398,7 +8398,7 @@ void UWebApplication::CleanupApp ( )
 	static UFunction* pFnCleanupApp = NULL;
 
 	if ( ! pFnCleanupApp )
-		pFnCleanupApp = (UFunction*) UObject::GObjObjects()->Data[ 38023 ];
+		pFnCleanupApp = (UFunction*) UObject::GObjObjects()->Data[ 38054 ];
 
 	UWebApplication_execCleanupApp_Parms CleanupApp_Parms;
 
@@ -8414,7 +8414,7 @@ void UWebApplication::Cleanup ( )
 	static UFunction* pFnCleanup = NULL;
 
 	if ( ! pFnCleanup )
-		pFnCleanup = (UFunction*) UObject::GObjObjects()->Data[ 38022 ];
+		pFnCleanup = (UFunction*) UObject::GObjObjects()->Data[ 38053 ];
 
 	UWebApplication_execCleanup_Parms Cleanup_Parms;
 
@@ -8430,7 +8430,7 @@ void UWebApplication::Init ( )
 	static UFunction* pFnInit = NULL;
 
 	if ( ! pFnInit )
-		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 38021 ];
+		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 38052 ];
 
 	UWebApplication_execInit_Parms Init_Parms;
 
@@ -8446,7 +8446,7 @@ void AWebServer::GetApplication ( )
 	static UFunction* pFnGetApplication = NULL;
 
 	if ( ! pFnGetApplication )
-		pFnGetApplication = (UFunction*) UObject::GObjObjects()->Data[ 41834 ];
+		pFnGetApplication = (UFunction*) UObject::GObjObjects()->Data[ 41865 ];
 
 	AWebServer_execGetApplication_Parms GetApplication_Parms;
 
@@ -8462,7 +8462,7 @@ void AWebServer::eventLostChild ( )
 	static UFunction* pFnLostChild = NULL;
 
 	if ( ! pFnLostChild )
-		pFnLostChild = (UFunction*) UObject::GObjObjects()->Data[ 41964 ];
+		pFnLostChild = (UFunction*) UObject::GObjObjects()->Data[ 41995 ];
 
 	AWebServer_eventLostChild_Parms LostChild_Parms;
 
@@ -8478,7 +8478,7 @@ void AWebServer::eventGainedChild ( )
 	static UFunction* pFnGainedChild = NULL;
 
 	if ( ! pFnGainedChild )
-		pFnGainedChild = (UFunction*) UObject::GObjObjects()->Data[ 41962 ];
+		pFnGainedChild = (UFunction*) UObject::GObjObjects()->Data[ 41993 ];
 
 	AWebServer_eventGainedChild_Parms GainedChild_Parms;
 
@@ -8494,7 +8494,7 @@ void AWebServer::eventDestroyed ( )
 	static UFunction* pFnDestroyed = NULL;
 
 	if ( ! pFnDestroyed )
-		pFnDestroyed = (UFunction*) UObject::GObjObjects()->Data[ 41960 ];
+		pFnDestroyed = (UFunction*) UObject::GObjObjects()->Data[ 41991 ];
 
 	AWebServer_eventDestroyed_Parms Destroyed_Parms;
 
@@ -8510,7 +8510,7 @@ void AWebServer::PostBeginPlay ( )
 	static UFunction* pFnPostBeginPlay = NULL;
 
 	if ( ! pFnPostBeginPlay )
-		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 41955 ];
+		pFnPostBeginPlay = (UFunction*) UObject::GObjObjects()->Data[ 41986 ];
 
 	AWebServer_execPostBeginPlay_Parms PostBeginPlay_Parms;
 
@@ -8526,7 +8526,7 @@ void UHelloWeb::eventQuery ( )
 	static UFunction* pFnQuery = NULL;
 
 	if ( ! pFnQuery )
-		pFnQuery = (UFunction*) UObject::GObjObjects()->Data[ 38038 ];
+		pFnQuery = (UFunction*) UObject::GObjObjects()->Data[ 38069 ];
 
 	UHelloWeb_eventQuery_Parms Query_Parms;
 
@@ -8542,7 +8542,7 @@ void UHelloWeb::Init ( )
 	static UFunction* pFnInit = NULL;
 
 	if ( ! pFnInit )
-		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 38037 ];
+		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 38068 ];
 
 	UHelloWeb_execInit_Parms Init_Parms;
 
@@ -8558,7 +8558,7 @@ void UImageServer::eventQuery ( )
 	static UFunction* pFnQuery = NULL;
 
 	if ( ! pFnQuery )
-		pFnQuery = (UFunction*) UObject::GObjObjects()->Data[ 38056 ];
+		pFnQuery = (UFunction*) UObject::GObjObjects()->Data[ 38087 ];
 
 	UImageServer_eventQuery_Parms Query_Parms;
 
@@ -8574,7 +8574,7 @@ void UMcpServiceConfig::GetUserAuthTicket ( )
 	static UFunction* pFnGetUserAuthTicket = NULL;
 
 	if ( ! pFnGetUserAuthTicket )
-		pFnGetUserAuthTicket = (UFunction*) UObject::GObjObjects()->Data[ 38115 ];
+		pFnGetUserAuthTicket = (UFunction*) UObject::GObjObjects()->Data[ 38146 ];
 
 	UMcpServiceConfig_execGetUserAuthTicket_Parms GetUserAuthTicket_Parms;
 
@@ -8590,7 +8590,7 @@ void UMcpClashMobBase::UpdateChallengeUserReward ( )
 	static UFunction* pFnUpdateChallengeUserReward = NULL;
 
 	if ( ! pFnUpdateChallengeUserReward )
-		pFnUpdateChallengeUserReward = (UFunction*) UObject::GObjObjects()->Data[ 38264 ];
+		pFnUpdateChallengeUserReward = (UFunction*) UObject::GObjObjects()->Data[ 38295 ];
 
 	UMcpClashMobBase_execUpdateChallengeUserReward_Parms UpdateChallengeUserReward_Parms;
 
@@ -8606,7 +8606,7 @@ void UMcpClashMobBase::OnUpdateChallengeUserRewardComplete ( )
 	static UFunction* pFnOnUpdateChallengeUserRewardComplete = NULL;
 
 	if ( ! pFnOnUpdateChallengeUserRewardComplete )
-		pFnOnUpdateChallengeUserRewardComplete = (UFunction*) UObject::GObjObjects()->Data[ 38259 ];
+		pFnOnUpdateChallengeUserRewardComplete = (UFunction*) UObject::GObjObjects()->Data[ 38290 ];
 
 	UMcpClashMobBase_execOnUpdateChallengeUserRewardComplete_Parms OnUpdateChallengeUserRewardComplete_Parms;
 
@@ -8622,7 +8622,7 @@ void UMcpClashMobBase::UpdateChallengeUserProgress ( )
 	static UFunction* pFnUpdateChallengeUserProgress = NULL;
 
 	if ( ! pFnUpdateChallengeUserProgress )
-		pFnUpdateChallengeUserProgress = (UFunction*) UObject::GObjObjects()->Data[ 38254 ];
+		pFnUpdateChallengeUserProgress = (UFunction*) UObject::GObjObjects()->Data[ 38285 ];
 
 	UMcpClashMobBase_execUpdateChallengeUserProgress_Parms UpdateChallengeUserProgress_Parms;
 
@@ -8638,7 +8638,7 @@ void UMcpClashMobBase::OnUpdateChallengeUserProgressComplete ( )
 	static UFunction* pFnOnUpdateChallengeUserProgressComplete = NULL;
 
 	if ( ! pFnOnUpdateChallengeUserProgressComplete )
-		pFnOnUpdateChallengeUserProgressComplete = (UFunction*) UObject::GObjObjects()->Data[ 38249 ];
+		pFnOnUpdateChallengeUserProgressComplete = (UFunction*) UObject::GObjObjects()->Data[ 38280 ];
 
 	UMcpClashMobBase_execOnUpdateChallengeUserProgressComplete_Parms OnUpdateChallengeUserProgressComplete_Parms;
 
@@ -8654,7 +8654,7 @@ void UMcpClashMobBase::GetChallengeUserStatus ( )
 	static UFunction* pFnGetChallengeUserStatus = NULL;
 
 	if ( ! pFnGetChallengeUserStatus )
-		pFnGetChallengeUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38245 ];
+		pFnGetChallengeUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38276 ];
 
 	UMcpClashMobBase_execGetChallengeUserStatus_Parms GetChallengeUserStatus_Parms;
 
@@ -8670,7 +8670,7 @@ void UMcpClashMobBase::QueryChallengeMultiUserStatus ( )
 	static UFunction* pFnQueryChallengeMultiUserStatus = NULL;
 
 	if ( ! pFnQueryChallengeMultiUserStatus )
-		pFnQueryChallengeMultiUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38240 ];
+		pFnQueryChallengeMultiUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38271 ];
 
 	UMcpClashMobBase_execQueryChallengeMultiUserStatus_Parms QueryChallengeMultiUserStatus_Parms;
 
@@ -8686,7 +8686,7 @@ void UMcpClashMobBase::QueryChallengeUserStatus ( )
 	static UFunction* pFnQueryChallengeUserStatus = NULL;
 
 	if ( ! pFnQueryChallengeUserStatus )
-		pFnQueryChallengeUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38237 ];
+		pFnQueryChallengeUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38268 ];
 
 	UMcpClashMobBase_execQueryChallengeUserStatus_Parms QueryChallengeUserStatus_Parms;
 
@@ -8702,7 +8702,7 @@ void UMcpClashMobBase::OnQueryChallengeUserStatusComplete ( )
 	static UFunction* pFnOnQueryChallengeUserStatusComplete = NULL;
 
 	if ( ! pFnOnQueryChallengeUserStatusComplete )
-		pFnOnQueryChallengeUserStatusComplete = (UFunction*) UObject::GObjObjects()->Data[ 38232 ];
+		pFnOnQueryChallengeUserStatusComplete = (UFunction*) UObject::GObjObjects()->Data[ 38263 ];
 
 	UMcpClashMobBase_execOnQueryChallengeUserStatusComplete_Parms OnQueryChallengeUserStatusComplete_Parms;
 
@@ -8718,7 +8718,7 @@ void UMcpClashMobBase::AcceptChallenge ( )
 	static UFunction* pFnAcceptChallenge = NULL;
 
 	if ( ! pFnAcceptChallenge )
-		pFnAcceptChallenge = (UFunction*) UObject::GObjObjects()->Data[ 38229 ];
+		pFnAcceptChallenge = (UFunction*) UObject::GObjObjects()->Data[ 38260 ];
 
 	UMcpClashMobBase_execAcceptChallenge_Parms AcceptChallenge_Parms;
 
@@ -8734,7 +8734,7 @@ void UMcpClashMobBase::OnAcceptChallengeComplete ( )
 	static UFunction* pFnOnAcceptChallengeComplete = NULL;
 
 	if ( ! pFnOnAcceptChallengeComplete )
-		pFnOnAcceptChallengeComplete = (UFunction*) UObject::GObjObjects()->Data[ 38224 ];
+		pFnOnAcceptChallengeComplete = (UFunction*) UObject::GObjObjects()->Data[ 38255 ];
 
 	UMcpClashMobBase_execOnAcceptChallengeComplete_Parms OnAcceptChallengeComplete_Parms;
 
@@ -8750,7 +8750,7 @@ void UMcpClashMobBase::DeleteCachedChallengeFile ( )
 	static UFunction* pFnDeleteCachedChallengeFile = NULL;
 
 	if ( ! pFnDeleteCachedChallengeFile )
-		pFnDeleteCachedChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38221 ];
+		pFnDeleteCachedChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38252 ];
 
 	UMcpClashMobBase_execDeleteCachedChallengeFile_Parms DeleteCachedChallengeFile_Parms;
 
@@ -8766,7 +8766,7 @@ void UMcpClashMobBase::ClearCachedChallengeFile ( )
 	static UFunction* pFnClearCachedChallengeFile = NULL;
 
 	if ( ! pFnClearCachedChallengeFile )
-		pFnClearCachedChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38218 ];
+		pFnClearCachedChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38249 ];
 
 	UMcpClashMobBase_execClearCachedChallengeFile_Parms ClearCachedChallengeFile_Parms;
 
@@ -8782,7 +8782,7 @@ void UMcpClashMobBase::GetChallengeFileContents ( )
 	static UFunction* pFnGetChallengeFileContents = NULL;
 
 	if ( ! pFnGetChallengeFileContents )
-		pFnGetChallengeFileContents = (UFunction*) UObject::GObjObjects()->Data[ 38213 ];
+		pFnGetChallengeFileContents = (UFunction*) UObject::GObjObjects()->Data[ 38244 ];
 
 	UMcpClashMobBase_execGetChallengeFileContents_Parms GetChallengeFileContents_Parms;
 
@@ -8798,7 +8798,7 @@ void UMcpClashMobBase::DownloadChallengeFile ( )
 	static UFunction* pFnDownloadChallengeFile = NULL;
 
 	if ( ! pFnDownloadChallengeFile )
-		pFnDownloadChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38210 ];
+		pFnDownloadChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38241 ];
 
 	UMcpClashMobBase_execDownloadChallengeFile_Parms DownloadChallengeFile_Parms;
 
@@ -8814,7 +8814,7 @@ void UMcpClashMobBase::GetChallengeFileList ( )
 	static UFunction* pFnGetChallengeFileList = NULL;
 
 	if ( ! pFnGetChallengeFileList )
-		pFnGetChallengeFileList = (UFunction*) UObject::GObjObjects()->Data[ 38206 ];
+		pFnGetChallengeFileList = (UFunction*) UObject::GObjObjects()->Data[ 38237 ];
 
 	UMcpClashMobBase_execGetChallengeFileList_Parms GetChallengeFileList_Parms;
 
@@ -8830,7 +8830,7 @@ void UMcpClashMobBase::OnDownloadChallengeFileComplete ( )
 	static UFunction* pFnOnDownloadChallengeFileComplete = NULL;
 
 	if ( ! pFnOnDownloadChallengeFileComplete )
-		pFnOnDownloadChallengeFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 38200 ];
+		pFnOnDownloadChallengeFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 38231 ];
 
 	UMcpClashMobBase_execOnDownloadChallengeFileComplete_Parms OnDownloadChallengeFileComplete_Parms;
 
@@ -8846,7 +8846,7 @@ void UMcpClashMobBase::GetChallengeList ( )
 	static UFunction* pFnGetChallengeList = NULL;
 
 	if ( ! pFnGetChallengeList )
-		pFnGetChallengeList = (UFunction*) UObject::GObjObjects()->Data[ 38197 ];
+		pFnGetChallengeList = (UFunction*) UObject::GObjObjects()->Data[ 38228 ];
 
 	UMcpClashMobBase_execGetChallengeList_Parms GetChallengeList_Parms;
 
@@ -8862,7 +8862,7 @@ void UMcpClashMobBase::QueryChallengeList ( )
 	static UFunction* pFnQueryChallengeList = NULL;
 
 	if ( ! pFnQueryChallengeList )
-		pFnQueryChallengeList = (UFunction*) UObject::GObjObjects()->Data[ 38196 ];
+		pFnQueryChallengeList = (UFunction*) UObject::GObjObjects()->Data[ 38227 ];
 
 	UMcpClashMobBase_execQueryChallengeList_Parms QueryChallengeList_Parms;
 
@@ -8878,7 +8878,7 @@ void UMcpClashMobBase::OnQueryChallengeListComplete ( )
 	static UFunction* pFnOnQueryChallengeListComplete = NULL;
 
 	if ( ! pFnOnQueryChallengeListComplete )
-		pFnOnQueryChallengeListComplete = (UFunction*) UObject::GObjObjects()->Data[ 38193 ];
+		pFnOnQueryChallengeListComplete = (UFunction*) UObject::GObjObjects()->Data[ 38224 ];
 
 	UMcpClashMobBase_execOnQueryChallengeListComplete_Parms OnQueryChallengeListComplete_Parms;
 
@@ -8894,7 +8894,7 @@ void UMcpClashMobBase::CreateInstance ( )
 	static UFunction* pFnCreateInstance = NULL;
 
 	if ( ! pFnCreateInstance )
-		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 38189 ];
+		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 38220 ];
 
 	UMcpClashMobBase_execCreateInstance_Parms CreateInstance_Parms;
 
@@ -8910,7 +8910,7 @@ void UMcpClashMobFileDownload::GetUrlForFile ( )
 	static UFunction* pFnGetUrlForFile = NULL;
 
 	if ( ! pFnGetUrlForFile )
-		pFnGetUrlForFile = (UFunction*) UObject::GObjObjects()->Data[ 38397 ];
+		pFnGetUrlForFile = (UFunction*) UObject::GObjObjects()->Data[ 38428 ];
 
 	UMcpClashMobFileDownload_execGetUrlForFile_Parms GetUrlForFile_Parms;
 
@@ -8926,7 +8926,7 @@ void UMcpClashMobManager::OnUpdateChallengeUserRewardHTTPRequestComplete ( )
 	static UFunction* pFnOnUpdateChallengeUserRewardHTTPRequestComplete = NULL;
 
 	if ( ! pFnOnUpdateChallengeUserRewardHTTPRequestComplete )
-		pFnOnUpdateChallengeUserRewardHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38600 ];
+		pFnOnUpdateChallengeUserRewardHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38631 ];
 
 	UMcpClashMobManager_execOnUpdateChallengeUserRewardHTTPRequestComplete_Parms OnUpdateChallengeUserRewardHTTPRequestComplete_Parms;
 
@@ -8942,7 +8942,7 @@ void UMcpClashMobManager::UpdateChallengeUserReward ( )
 	static UFunction* pFnUpdateChallengeUserReward = NULL;
 
 	if ( ! pFnUpdateChallengeUserReward )
-		pFnUpdateChallengeUserReward = (UFunction*) UObject::GObjObjects()->Data[ 38590 ];
+		pFnUpdateChallengeUserReward = (UFunction*) UObject::GObjObjects()->Data[ 38621 ];
 
 	UMcpClashMobManager_execUpdateChallengeUserReward_Parms UpdateChallengeUserReward_Parms;
 
@@ -8958,7 +8958,7 @@ void UMcpClashMobManager::OnUpdateChallengeUserProgressHTTPRequestComplete ( )
 	static UFunction* pFnOnUpdateChallengeUserProgressHTTPRequestComplete = NULL;
 
 	if ( ! pFnOnUpdateChallengeUserProgressHTTPRequestComplete )
-		pFnOnUpdateChallengeUserProgressHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38580 ];
+		pFnOnUpdateChallengeUserProgressHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38611 ];
 
 	UMcpClashMobManager_execOnUpdateChallengeUserProgressHTTPRequestComplete_Parms OnUpdateChallengeUserProgressHTTPRequestComplete_Parms;
 
@@ -8974,7 +8974,7 @@ void UMcpClashMobManager::UpdateChallengeUserProgress ( )
 	static UFunction* pFnUpdateChallengeUserProgress = NULL;
 
 	if ( ! pFnUpdateChallengeUserProgress )
-		pFnUpdateChallengeUserProgress = (UFunction*) UObject::GObjObjects()->Data[ 38569 ];
+		pFnUpdateChallengeUserProgress = (UFunction*) UObject::GObjObjects()->Data[ 38600 ];
 
 	UMcpClashMobManager_execUpdateChallengeUserProgress_Parms UpdateChallengeUserProgress_Parms;
 
@@ -8990,7 +8990,7 @@ void UMcpClashMobManager::GetChallengeUserStatus ( )
 	static UFunction* pFnGetChallengeUserStatus = NULL;
 
 	if ( ! pFnGetChallengeUserStatus )
-		pFnGetChallengeUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38563 ];
+		pFnGetChallengeUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38594 ];
 
 	UMcpClashMobManager_execGetChallengeUserStatus_Parms GetChallengeUserStatus_Parms;
 
@@ -9006,7 +9006,7 @@ void UMcpClashMobManager::OnQueryChallengeMultiStatusHTTPRequestComplete ( )
 	static UFunction* pFnOnQueryChallengeMultiStatusHTTPRequestComplete = NULL;
 
 	if ( ! pFnOnQueryChallengeMultiStatusHTTPRequestComplete )
-		pFnOnQueryChallengeMultiStatusHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38550 ];
+		pFnOnQueryChallengeMultiStatusHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38581 ];
 
 	UMcpClashMobManager_execOnQueryChallengeMultiStatusHTTPRequestComplete_Parms OnQueryChallengeMultiStatusHTTPRequestComplete_Parms;
 
@@ -9022,7 +9022,7 @@ void UMcpClashMobManager::QueryChallengeMultiUserStatus ( )
 	static UFunction* pFnQueryChallengeMultiUserStatus = NULL;
 
 	if ( ! pFnQueryChallengeMultiUserStatus )
-		pFnQueryChallengeMultiUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38537 ];
+		pFnQueryChallengeMultiUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38568 ];
 
 	UMcpClashMobManager_execQueryChallengeMultiUserStatus_Parms QueryChallengeMultiUserStatus_Parms;
 
@@ -9038,7 +9038,7 @@ void UMcpClashMobManager::OnQueryChallengeStatusHTTPRequestComplete ( )
 	static UFunction* pFnOnQueryChallengeStatusHTTPRequestComplete = NULL;
 
 	if ( ! pFnOnQueryChallengeStatusHTTPRequestComplete )
-		pFnOnQueryChallengeStatusHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38525 ];
+		pFnOnQueryChallengeStatusHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38556 ];
 
 	UMcpClashMobManager_execOnQueryChallengeStatusHTTPRequestComplete_Parms OnQueryChallengeStatusHTTPRequestComplete_Parms;
 
@@ -9054,7 +9054,7 @@ void UMcpClashMobManager::QueryChallengeUserStatus ( )
 	static UFunction* pFnQueryChallengeUserStatus = NULL;
 
 	if ( ! pFnQueryChallengeUserStatus )
-		pFnQueryChallengeUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38516 ];
+		pFnQueryChallengeUserStatus = (UFunction*) UObject::GObjObjects()->Data[ 38547 ];
 
 	UMcpClashMobManager_execQueryChallengeUserStatus_Parms QueryChallengeUserStatus_Parms;
 
@@ -9070,7 +9070,7 @@ void UMcpClashMobManager::OnAcceptChallengeHTTPRequestComplete ( )
 	static UFunction* pFnOnAcceptChallengeHTTPRequestComplete = NULL;
 
 	if ( ! pFnOnAcceptChallengeHTTPRequestComplete )
-		pFnOnAcceptChallengeHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38506 ];
+		pFnOnAcceptChallengeHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38537 ];
 
 	UMcpClashMobManager_execOnAcceptChallengeHTTPRequestComplete_Parms OnAcceptChallengeHTTPRequestComplete_Parms;
 
@@ -9086,7 +9086,7 @@ void UMcpClashMobManager::AcceptChallenge ( )
 	static UFunction* pFnAcceptChallenge = NULL;
 
 	if ( ! pFnAcceptChallenge )
-		pFnAcceptChallenge = (UFunction*) UObject::GObjObjects()->Data[ 38497 ];
+		pFnAcceptChallenge = (UFunction*) UObject::GObjObjects()->Data[ 38528 ];
 
 	UMcpClashMobManager_execAcceptChallenge_Parms AcceptChallenge_Parms;
 
@@ -9102,7 +9102,7 @@ void UMcpClashMobManager::DeleteCachedChallengeFile ( )
 	static UFunction* pFnDeleteCachedChallengeFile = NULL;
 
 	if ( ! pFnDeleteCachedChallengeFile )
-		pFnDeleteCachedChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38492 ];
+		pFnDeleteCachedChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38523 ];
 
 	UMcpClashMobManager_execDeleteCachedChallengeFile_Parms DeleteCachedChallengeFile_Parms;
 
@@ -9118,7 +9118,7 @@ void UMcpClashMobManager::ClearCachedChallengeFile ( )
 	static UFunction* pFnClearCachedChallengeFile = NULL;
 
 	if ( ! pFnClearCachedChallengeFile )
-		pFnClearCachedChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38487 ];
+		pFnClearCachedChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38518 ];
 
 	UMcpClashMobManager_execClearCachedChallengeFile_Parms ClearCachedChallengeFile_Parms;
 
@@ -9134,7 +9134,7 @@ void UMcpClashMobManager::GetChallengeFileContents ( )
 	static UFunction* pFnGetChallengeFileContents = NULL;
 
 	if ( ! pFnGetChallengeFileContents )
-		pFnGetChallengeFileContents = (UFunction*) UObject::GObjObjects()->Data[ 38480 ];
+		pFnGetChallengeFileContents = (UFunction*) UObject::GObjObjects()->Data[ 38511 ];
 
 	UMcpClashMobManager_execGetChallengeFileContents_Parms GetChallengeFileContents_Parms;
 
@@ -9150,7 +9150,7 @@ void UMcpClashMobManager::OnDownloadMcpFileComplete ( )
 	static UFunction* pFnOnDownloadMcpFileComplete = NULL;
 
 	if ( ! pFnOnDownloadMcpFileComplete )
-		pFnOnDownloadMcpFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 38472 ];
+		pFnOnDownloadMcpFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 38503 ];
 
 	UMcpClashMobManager_execOnDownloadMcpFileComplete_Parms OnDownloadMcpFileComplete_Parms;
 
@@ -9166,7 +9166,7 @@ void UMcpClashMobManager::OnLoadCachedFileComplete ( )
 	static UFunction* pFnOnLoadCachedFileComplete = NULL;
 
 	if ( ! pFnOnLoadCachedFileComplete )
-		pFnOnLoadCachedFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 38461 ];
+		pFnOnLoadCachedFileComplete = (UFunction*) UObject::GObjObjects()->Data[ 38492 ];
 
 	UMcpClashMobManager_execOnLoadCachedFileComplete_Parms OnLoadCachedFileComplete_Parms;
 
@@ -9182,7 +9182,7 @@ void UMcpClashMobManager::DownloadChallengeFile ( )
 	static UFunction* pFnDownloadChallengeFile = NULL;
 
 	if ( ! pFnDownloadChallengeFile )
-		pFnDownloadChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38454 ];
+		pFnDownloadChallengeFile = (UFunction*) UObject::GObjObjects()->Data[ 38485 ];
 
 	UMcpClashMobManager_execDownloadChallengeFile_Parms DownloadChallengeFile_Parms;
 
@@ -9198,7 +9198,7 @@ void UMcpClashMobManager::GetChallengeFileList ( )
 	static UFunction* pFnGetChallengeFileList = NULL;
 
 	if ( ! pFnGetChallengeFileList )
-		pFnGetChallengeFileList = (UFunction*) UObject::GObjObjects()->Data[ 38449 ];
+		pFnGetChallengeFileList = (UFunction*) UObject::GObjObjects()->Data[ 38480 ];
 
 	UMcpClashMobManager_execGetChallengeFileList_Parms GetChallengeFileList_Parms;
 
@@ -9214,7 +9214,7 @@ void UMcpClashMobManager::GetChallengeList ( )
 	static UFunction* pFnGetChallengeList = NULL;
 
 	if ( ! pFnGetChallengeList )
-		pFnGetChallengeList = (UFunction*) UObject::GObjObjects()->Data[ 38446 ];
+		pFnGetChallengeList = (UFunction*) UObject::GObjObjects()->Data[ 38477 ];
 
 	UMcpClashMobManager_execGetChallengeList_Parms GetChallengeList_Parms;
 
@@ -9230,7 +9230,7 @@ void UMcpClashMobManager::OnQueryChallengeListHTTPRequestComplete ( )
 	static UFunction* pFnOnQueryChallengeListHTTPRequestComplete = NULL;
 
 	if ( ! pFnOnQueryChallengeListHTTPRequestComplete )
-		pFnOnQueryChallengeListHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38439 ];
+		pFnOnQueryChallengeListHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38470 ];
 
 	UMcpClashMobManager_execOnQueryChallengeListHTTPRequestComplete_Parms OnQueryChallengeListHTTPRequestComplete_Parms;
 
@@ -9246,7 +9246,7 @@ void UMcpClashMobManager::QueryChallengeList ( )
 	static UFunction* pFnQueryChallengeList = NULL;
 
 	if ( ! pFnQueryChallengeList )
-		pFnQueryChallengeList = (UFunction*) UObject::GObjObjects()->Data[ 38435 ];
+		pFnQueryChallengeList = (UFunction*) UObject::GObjObjects()->Data[ 38466 ];
 
 	UMcpClashMobManager_execQueryChallengeList_Parms QueryChallengeList_Parms;
 
@@ -9262,7 +9262,7 @@ void UMcpClashMobManager::Init ( )
 	static UFunction* pFnInit = NULL;
 
 	if ( ! pFnInit )
-		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 38434 ];
+		pFnInit = (UFunction*) UObject::GObjObjects()->Data[ 38465 ];
 
 	UMcpClashMobManager_execInit_Parms Init_Parms;
 
@@ -9278,7 +9278,7 @@ void UMcpGroupsBase::OnAcceptGroupInviteComplete ( )
 	static UFunction* pFnOnAcceptGroupInviteComplete = NULL;
 
 	if ( ! pFnOnAcceptGroupInviteComplete )
-		pFnOnAcceptGroupInviteComplete = (UFunction*) UObject::GObjObjects()->Data[ 38703 ];
+		pFnOnAcceptGroupInviteComplete = (UFunction*) UObject::GObjObjects()->Data[ 38734 ];
 
 	UMcpGroupsBase_execOnAcceptGroupInviteComplete_Parms OnAcceptGroupInviteComplete_Parms;
 
@@ -9294,7 +9294,7 @@ void UMcpGroupsBase::AcceptGroupInvite ( )
 	static UFunction* pFnAcceptGroupInvite = NULL;
 
 	if ( ! pFnAcceptGroupInvite )
-		pFnAcceptGroupInvite = (UFunction*) UObject::GObjObjects()->Data[ 38699 ];
+		pFnAcceptGroupInvite = (UFunction*) UObject::GObjObjects()->Data[ 38730 ];
 
 	UMcpGroupsBase_execAcceptGroupInvite_Parms AcceptGroupInvite_Parms;
 
@@ -9310,7 +9310,7 @@ void UMcpGroupsBase::GetGroupInviteList ( )
 	static UFunction* pFnGetGroupInviteList = NULL;
 
 	if ( ! pFnGetGroupInviteList )
-		pFnGetGroupInviteList = (UFunction*) UObject::GObjObjects()->Data[ 38696 ];
+		pFnGetGroupInviteList = (UFunction*) UObject::GObjObjects()->Data[ 38727 ];
 
 	UMcpGroupsBase_execGetGroupInviteList_Parms GetGroupInviteList_Parms;
 
@@ -9326,7 +9326,7 @@ void UMcpGroupsBase::OnQueryGroupInvitesComplete ( )
 	static UFunction* pFnOnQueryGroupInvitesComplete = NULL;
 
 	if ( ! pFnOnQueryGroupInvitesComplete )
-		pFnOnQueryGroupInvitesComplete = (UFunction*) UObject::GObjObjects()->Data[ 38693 ];
+		pFnOnQueryGroupInvitesComplete = (UFunction*) UObject::GObjObjects()->Data[ 38724 ];
 
 	UMcpGroupsBase_execOnQueryGroupInvitesComplete_Parms OnQueryGroupInvitesComplete_Parms;
 
@@ -9342,7 +9342,7 @@ void UMcpGroupsBase::QueryGroupInvites ( )
 	static UFunction* pFnQueryGroupInvites = NULL;
 
 	if ( ! pFnQueryGroupInvites )
-		pFnQueryGroupInvites = (UFunction*) UObject::GObjObjects()->Data[ 38691 ];
+		pFnQueryGroupInvites = (UFunction*) UObject::GObjObjects()->Data[ 38722 ];
 
 	UMcpGroupsBase_execQueryGroupInvites_Parms QueryGroupInvites_Parms;
 
@@ -9358,7 +9358,7 @@ void UMcpGroupsBase::OnDeleteAllGroupsComplete ( )
 	static UFunction* pFnOnDeleteAllGroupsComplete = NULL;
 
 	if ( ! pFnOnDeleteAllGroupsComplete )
-		pFnOnDeleteAllGroupsComplete = (UFunction*) UObject::GObjObjects()->Data[ 38687 ];
+		pFnOnDeleteAllGroupsComplete = (UFunction*) UObject::GObjObjects()->Data[ 38718 ];
 
 	UMcpGroupsBase_execOnDeleteAllGroupsComplete_Parms OnDeleteAllGroupsComplete_Parms;
 
@@ -9374,7 +9374,7 @@ void UMcpGroupsBase::DeleteAllGroups ( )
 	static UFunction* pFnDeleteAllGroups = NULL;
 
 	if ( ! pFnDeleteAllGroups )
-		pFnDeleteAllGroups = (UFunction*) UObject::GObjObjects()->Data[ 38685 ];
+		pFnDeleteAllGroups = (UFunction*) UObject::GObjObjects()->Data[ 38716 ];
 
 	UMcpGroupsBase_execDeleteAllGroups_Parms DeleteAllGroups_Parms;
 
@@ -9390,7 +9390,7 @@ void UMcpGroupsBase::OnRemoveGroupMembersComplete ( )
 	static UFunction* pFnOnRemoveGroupMembersComplete = NULL;
 
 	if ( ! pFnOnRemoveGroupMembersComplete )
-		pFnOnRemoveGroupMembersComplete = (UFunction*) UObject::GObjObjects()->Data[ 38681 ];
+		pFnOnRemoveGroupMembersComplete = (UFunction*) UObject::GObjObjects()->Data[ 38712 ];
 
 	UMcpGroupsBase_execOnRemoveGroupMembersComplete_Parms OnRemoveGroupMembersComplete_Parms;
 
@@ -9406,7 +9406,7 @@ void UMcpGroupsBase::RemoveGroupMembers ( )
 	static UFunction* pFnRemoveGroupMembers = NULL;
 
 	if ( ! pFnRemoveGroupMembers )
-		pFnRemoveGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38676 ];
+		pFnRemoveGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38707 ];
 
 	UMcpGroupsBase_execRemoveGroupMembers_Parms RemoveGroupMembers_Parms;
 
@@ -9422,7 +9422,7 @@ void UMcpGroupsBase::OnAddGroupMembersComplete ( )
 	static UFunction* pFnOnAddGroupMembersComplete = NULL;
 
 	if ( ! pFnOnAddGroupMembersComplete )
-		pFnOnAddGroupMembersComplete = (UFunction*) UObject::GObjObjects()->Data[ 38672 ];
+		pFnOnAddGroupMembersComplete = (UFunction*) UObject::GObjObjects()->Data[ 38703 ];
 
 	UMcpGroupsBase_execOnAddGroupMembersComplete_Parms OnAddGroupMembersComplete_Parms;
 
@@ -9438,7 +9438,7 @@ void UMcpGroupsBase::AddGroupMembers ( )
 	static UFunction* pFnAddGroupMembers = NULL;
 
 	if ( ! pFnAddGroupMembers )
-		pFnAddGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38666 ];
+		pFnAddGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38697 ];
 
 	UMcpGroupsBase_execAddGroupMembers_Parms AddGroupMembers_Parms;
 
@@ -9454,7 +9454,7 @@ void UMcpGroupsBase::GetGroupMembers ( )
 	static UFunction* pFnGetGroupMembers = NULL;
 
 	if ( ! pFnGetGroupMembers )
-		pFnGetGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38662 ];
+		pFnGetGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38693 ];
 
 	UMcpGroupsBase_execGetGroupMembers_Parms GetGroupMembers_Parms;
 
@@ -9470,7 +9470,7 @@ void UMcpGroupsBase::OnQueryGroupMembersComplete ( )
 	static UFunction* pFnOnQueryGroupMembersComplete = NULL;
 
 	if ( ! pFnOnQueryGroupMembersComplete )
-		pFnOnQueryGroupMembersComplete = (UFunction*) UObject::GObjObjects()->Data[ 38658 ];
+		pFnOnQueryGroupMembersComplete = (UFunction*) UObject::GObjObjects()->Data[ 38689 ];
 
 	UMcpGroupsBase_execOnQueryGroupMembersComplete_Parms OnQueryGroupMembersComplete_Parms;
 
@@ -9486,7 +9486,7 @@ void UMcpGroupsBase::QueryGroupMembers ( )
 	static UFunction* pFnQueryGroupMembers = NULL;
 
 	if ( ! pFnQueryGroupMembers )
-		pFnQueryGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38655 ];
+		pFnQueryGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38686 ];
 
 	UMcpGroupsBase_execQueryGroupMembers_Parms QueryGroupMembers_Parms;
 
@@ -9502,7 +9502,7 @@ void UMcpGroupsBase::GetGroupList ( )
 	static UFunction* pFnGetGroupList = NULL;
 
 	if ( ! pFnGetGroupList )
-		pFnGetGroupList = (UFunction*) UObject::GObjObjects()->Data[ 38652 ];
+		pFnGetGroupList = (UFunction*) UObject::GObjObjects()->Data[ 38683 ];
 
 	UMcpGroupsBase_execGetGroupList_Parms GetGroupList_Parms;
 
@@ -9518,7 +9518,7 @@ void UMcpGroupsBase::OnQueryGroupsComplete ( )
 	static UFunction* pFnOnQueryGroupsComplete = NULL;
 
 	if ( ! pFnOnQueryGroupsComplete )
-		pFnOnQueryGroupsComplete = (UFunction*) UObject::GObjObjects()->Data[ 38648 ];
+		pFnOnQueryGroupsComplete = (UFunction*) UObject::GObjObjects()->Data[ 38679 ];
 
 	UMcpGroupsBase_execOnQueryGroupsComplete_Parms OnQueryGroupsComplete_Parms;
 
@@ -9534,7 +9534,7 @@ void UMcpGroupsBase::QueryGroups ( )
 	static UFunction* pFnQueryGroups = NULL;
 
 	if ( ! pFnQueryGroups )
-		pFnQueryGroups = (UFunction*) UObject::GObjObjects()->Data[ 38646 ];
+		pFnQueryGroups = (UFunction*) UObject::GObjObjects()->Data[ 38677 ];
 
 	UMcpGroupsBase_execQueryGroups_Parms QueryGroups_Parms;
 
@@ -9550,7 +9550,7 @@ void UMcpGroupsBase::OnDeleteGroupComplete ( )
 	static UFunction* pFnOnDeleteGroupComplete = NULL;
 
 	if ( ! pFnOnDeleteGroupComplete )
-		pFnOnDeleteGroupComplete = (UFunction*) UObject::GObjObjects()->Data[ 38642 ];
+		pFnOnDeleteGroupComplete = (UFunction*) UObject::GObjObjects()->Data[ 38673 ];
 
 	UMcpGroupsBase_execOnDeleteGroupComplete_Parms OnDeleteGroupComplete_Parms;
 
@@ -9566,7 +9566,7 @@ void UMcpGroupsBase::DeleteGroup ( )
 	static UFunction* pFnDeleteGroup = NULL;
 
 	if ( ! pFnDeleteGroup )
-		pFnDeleteGroup = (UFunction*) UObject::GObjObjects()->Data[ 38639 ];
+		pFnDeleteGroup = (UFunction*) UObject::GObjObjects()->Data[ 38670 ];
 
 	UMcpGroupsBase_execDeleteGroup_Parms DeleteGroup_Parms;
 
@@ -9582,7 +9582,7 @@ void UMcpGroupsBase::OnCreateGroupComplete ( )
 	static UFunction* pFnOnCreateGroupComplete = NULL;
 
 	if ( ! pFnOnCreateGroupComplete )
-		pFnOnCreateGroupComplete = (UFunction*) UObject::GObjObjects()->Data[ 38635 ];
+		pFnOnCreateGroupComplete = (UFunction*) UObject::GObjObjects()->Data[ 38666 ];
 
 	UMcpGroupsBase_execOnCreateGroupComplete_Parms OnCreateGroupComplete_Parms;
 
@@ -9598,7 +9598,7 @@ void UMcpGroupsBase::CreateGroup ( )
 	static UFunction* pFnCreateGroup = NULL;
 
 	if ( ! pFnCreateGroup )
-		pFnCreateGroup = (UFunction*) UObject::GObjObjects()->Data[ 38632 ];
+		pFnCreateGroup = (UFunction*) UObject::GObjObjects()->Data[ 38663 ];
 
 	UMcpGroupsBase_execCreateGroup_Parms CreateGroup_Parms;
 
@@ -9614,7 +9614,7 @@ void UMcpGroupsBase::CreateInstance ( )
 	static UFunction* pFnCreateInstance = NULL;
 
 	if ( ! pFnCreateInstance )
-		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 38628 ];
+		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 38659 ];
 
 	UMcpGroupsBase_execCreateInstance_Parms CreateInstance_Parms;
 
@@ -9630,7 +9630,7 @@ void UMcpGroupsManager::CacheGroupMember ( )
 	static UFunction* pFnCacheGroupMember = NULL;
 
 	if ( ! pFnCacheGroupMember )
-		pFnCacheGroupMember = (UFunction*) UObject::GObjObjects()->Data[ 38869 ];
+		pFnCacheGroupMember = (UFunction*) UObject::GObjObjects()->Data[ 38900 ];
 
 	UMcpGroupsManager_execCacheGroupMember_Parms CacheGroupMember_Parms;
 
@@ -9646,7 +9646,7 @@ void UMcpGroupsManager::CacheGroup ( )
 	static UFunction* pFnCacheGroup = NULL;
 
 	if ( ! pFnCacheGroup )
-		pFnCacheGroup = (UFunction*) UObject::GObjObjects()->Data[ 38861 ];
+		pFnCacheGroup = (UFunction*) UObject::GObjObjects()->Data[ 38892 ];
 
 	UMcpGroupsManager_execCacheGroup_Parms CacheGroup_Parms;
 
@@ -9662,7 +9662,7 @@ void UMcpGroupsManager::OnAcceptGroupInviteRequestComplete ( )
 	static UFunction* pFnOnAcceptGroupInviteRequestComplete = NULL;
 
 	if ( ! pFnOnAcceptGroupInviteRequestComplete )
-		pFnOnAcceptGroupInviteRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38854 ];
+		pFnOnAcceptGroupInviteRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38885 ];
 
 	UMcpGroupsManager_execOnAcceptGroupInviteRequestComplete_Parms OnAcceptGroupInviteRequestComplete_Parms;
 
@@ -9678,7 +9678,7 @@ void UMcpGroupsManager::AcceptGroupInvite ( )
 	static UFunction* pFnAcceptGroupInvite = NULL;
 
 	if ( ! pFnAcceptGroupInvite )
-		pFnAcceptGroupInvite = (UFunction*) UObject::GObjObjects()->Data[ 38848 ];
+		pFnAcceptGroupInvite = (UFunction*) UObject::GObjObjects()->Data[ 38879 ];
 
 	UMcpGroupsManager_execAcceptGroupInvite_Parms AcceptGroupInvite_Parms;
 
@@ -9694,7 +9694,7 @@ void UMcpGroupsManager::OnDeleteAllGroupsRequestComplete ( )
 	static UFunction* pFnOnDeleteAllGroupsRequestComplete = NULL;
 
 	if ( ! pFnOnDeleteAllGroupsRequestComplete )
-		pFnOnDeleteAllGroupsRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38841 ];
+		pFnOnDeleteAllGroupsRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38872 ];
 
 	UMcpGroupsManager_execOnDeleteAllGroupsRequestComplete_Parms OnDeleteAllGroupsRequestComplete_Parms;
 
@@ -9710,7 +9710,7 @@ void UMcpGroupsManager::DeleteAllGroups ( )
 	static UFunction* pFnDeleteAllGroups = NULL;
 
 	if ( ! pFnDeleteAllGroups )
-		pFnDeleteAllGroups = (UFunction*) UObject::GObjObjects()->Data[ 38837 ];
+		pFnDeleteAllGroups = (UFunction*) UObject::GObjObjects()->Data[ 38868 ];
 
 	UMcpGroupsManager_execDeleteAllGroups_Parms DeleteAllGroups_Parms;
 
@@ -9726,7 +9726,7 @@ void UMcpGroupsManager::OnRemoveGroupMembersRequestComplete ( )
 	static UFunction* pFnOnRemoveGroupMembersRequestComplete = NULL;
 
 	if ( ! pFnOnRemoveGroupMembersRequestComplete )
-		pFnOnRemoveGroupMembersRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38830 ];
+		pFnOnRemoveGroupMembersRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38861 ];
 
 	UMcpGroupsManager_execOnRemoveGroupMembersRequestComplete_Parms OnRemoveGroupMembersRequestComplete_Parms;
 
@@ -9742,7 +9742,7 @@ void UMcpGroupsManager::RemoveGroupMembers ( )
 	static UFunction* pFnRemoveGroupMembers = NULL;
 
 	if ( ! pFnRemoveGroupMembers )
-		pFnRemoveGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38821 ];
+		pFnRemoveGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38852 ];
 
 	UMcpGroupsManager_execRemoveGroupMembers_Parms RemoveGroupMembers_Parms;
 
@@ -9758,7 +9758,7 @@ void UMcpGroupsManager::OnAddGroupMembersRequestComplete ( )
 	static UFunction* pFnOnAddGroupMembersRequestComplete = NULL;
 
 	if ( ! pFnOnAddGroupMembersRequestComplete )
-		pFnOnAddGroupMembersRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38814 ];
+		pFnOnAddGroupMembersRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38845 ];
 
 	UMcpGroupsManager_execOnAddGroupMembersRequestComplete_Parms OnAddGroupMembersRequestComplete_Parms;
 
@@ -9774,7 +9774,7 @@ void UMcpGroupsManager::AddGroupMembers ( )
 	static UFunction* pFnAddGroupMembers = NULL;
 
 	if ( ! pFnAddGroupMembers )
-		pFnAddGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38804 ];
+		pFnAddGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38835 ];
 
 	UMcpGroupsManager_execAddGroupMembers_Parms AddGroupMembers_Parms;
 
@@ -9790,7 +9790,7 @@ void UMcpGroupsManager::GetGroupMembers ( )
 	static UFunction* pFnGetGroupMembers = NULL;
 
 	if ( ! pFnGetGroupMembers )
-		pFnGetGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38797 ];
+		pFnGetGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38828 ];
 
 	UMcpGroupsManager_execGetGroupMembers_Parms GetGroupMembers_Parms;
 
@@ -9806,7 +9806,7 @@ void UMcpGroupsManager::OnQueryGroupMembersRequestComplete ( )
 	static UFunction* pFnOnQueryGroupMembersRequestComplete = NULL;
 
 	if ( ! pFnOnQueryGroupMembersRequestComplete )
-		pFnOnQueryGroupMembersRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38785 ];
+		pFnOnQueryGroupMembersRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38816 ];
 
 	UMcpGroupsManager_execOnQueryGroupMembersRequestComplete_Parms OnQueryGroupMembersRequestComplete_Parms;
 
@@ -9822,7 +9822,7 @@ void UMcpGroupsManager::QueryGroupMembers ( )
 	static UFunction* pFnQueryGroupMembers = NULL;
 
 	if ( ! pFnQueryGroupMembers )
-		pFnQueryGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38780 ];
+		pFnQueryGroupMembers = (UFunction*) UObject::GObjObjects()->Data[ 38811 ];
 
 	UMcpGroupsManager_execQueryGroupMembers_Parms QueryGroupMembers_Parms;
 
@@ -9838,7 +9838,7 @@ void UMcpGroupsManager::GetGroupList ( )
 	static UFunction* pFnGetGroupList = NULL;
 
 	if ( ! pFnGetGroupList )
-		pFnGetGroupList = (UFunction*) UObject::GObjObjects()->Data[ 38776 ];
+		pFnGetGroupList = (UFunction*) UObject::GObjObjects()->Data[ 38807 ];
 
 	UMcpGroupsManager_execGetGroupList_Parms GetGroupList_Parms;
 
@@ -9854,7 +9854,7 @@ void UMcpGroupsManager::OnQueryGroupsRequestComplete ( )
 	static UFunction* pFnOnQueryGroupsRequestComplete = NULL;
 
 	if ( ! pFnOnQueryGroupsRequestComplete )
-		pFnOnQueryGroupsRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38765 ];
+		pFnOnQueryGroupsRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38796 ];
 
 	UMcpGroupsManager_execOnQueryGroupsRequestComplete_Parms OnQueryGroupsRequestComplete_Parms;
 
@@ -9870,7 +9870,7 @@ void UMcpGroupsManager::QueryGroups ( )
 	static UFunction* pFnQueryGroups = NULL;
 
 	if ( ! pFnQueryGroups )
-		pFnQueryGroups = (UFunction*) UObject::GObjObjects()->Data[ 38761 ];
+		pFnQueryGroups = (UFunction*) UObject::GObjObjects()->Data[ 38792 ];
 
 	UMcpGroupsManager_execQueryGroups_Parms QueryGroups_Parms;
 
@@ -9886,7 +9886,7 @@ void UMcpGroupsManager::OnDeleteGroupRequestComplete ( )
 	static UFunction* pFnOnDeleteGroupRequestComplete = NULL;
 
 	if ( ! pFnOnDeleteGroupRequestComplete )
-		pFnOnDeleteGroupRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38754 ];
+		pFnOnDeleteGroupRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38785 ];
 
 	UMcpGroupsManager_execOnDeleteGroupRequestComplete_Parms OnDeleteGroupRequestComplete_Parms;
 
@@ -9902,7 +9902,7 @@ void UMcpGroupsManager::DeleteGroup ( )
 	static UFunction* pFnDeleteGroup = NULL;
 
 	if ( ! pFnDeleteGroup )
-		pFnDeleteGroup = (UFunction*) UObject::GObjObjects()->Data[ 38749 ];
+		pFnDeleteGroup = (UFunction*) UObject::GObjObjects()->Data[ 38780 ];
 
 	UMcpGroupsManager_execDeleteGroup_Parms DeleteGroup_Parms;
 
@@ -9918,7 +9918,7 @@ void UMcpGroupsManager::OnCreateGroupRequestComplete ( )
 	static UFunction* pFnOnCreateGroupRequestComplete = NULL;
 
 	if ( ! pFnOnCreateGroupRequestComplete )
-		pFnOnCreateGroupRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38740 ];
+		pFnOnCreateGroupRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38771 ];
 
 	UMcpGroupsManager_execOnCreateGroupRequestComplete_Parms OnCreateGroupRequestComplete_Parms;
 
@@ -9934,7 +9934,7 @@ void UMcpGroupsManager::CreateGroup ( )
 	static UFunction* pFnCreateGroup = NULL;
 
 	if ( ! pFnCreateGroup )
-		pFnCreateGroup = (UFunction*) UObject::GObjObjects()->Data[ 38734 ];
+		pFnCreateGroup = (UFunction*) UObject::GObjObjects()->Data[ 38765 ];
 
 	UMcpGroupsManager_execCreateGroup_Parms CreateGroup_Parms;
 
@@ -9950,7 +9950,7 @@ void UMcpIdMappingBase::GetIdMappings ( )
 	static UFunction* pFnGetIdMappings = NULL;
 
 	if ( ! pFnGetIdMappings )
-		pFnGetIdMappings = (UFunction*) UObject::GObjObjects()->Data[ 38910 ];
+		pFnGetIdMappings = (UFunction*) UObject::GObjObjects()->Data[ 38941 ];
 
 	UMcpIdMappingBase_execGetIdMappings_Parms GetIdMappings_Parms;
 
@@ -9966,7 +9966,7 @@ void UMcpIdMappingBase::OnQueryMappingsComplete ( )
 	static UFunction* pFnOnQueryMappingsComplete = NULL;
 
 	if ( ! pFnOnQueryMappingsComplete )
-		pFnOnQueryMappingsComplete = (UFunction*) UObject::GObjObjects()->Data[ 38906 ];
+		pFnOnQueryMappingsComplete = (UFunction*) UObject::GObjObjects()->Data[ 38937 ];
 
 	UMcpIdMappingBase_execOnQueryMappingsComplete_Parms OnQueryMappingsComplete_Parms;
 
@@ -9982,7 +9982,7 @@ void UMcpIdMappingBase::QueryMappings ( )
 	static UFunction* pFnQueryMappings = NULL;
 
 	if ( ! pFnQueryMappings )
-		pFnQueryMappings = (UFunction*) UObject::GObjObjects()->Data[ 38902 ];
+		pFnQueryMappings = (UFunction*) UObject::GObjObjects()->Data[ 38933 ];
 
 	UMcpIdMappingBase_execQueryMappings_Parms QueryMappings_Parms;
 
@@ -9998,7 +9998,7 @@ void UMcpIdMappingBase::OnAddMappingComplete ( )
 	static UFunction* pFnOnAddMappingComplete = NULL;
 
 	if ( ! pFnOnAddMappingComplete )
-		pFnOnAddMappingComplete = (UFunction*) UObject::GObjObjects()->Data[ 38896 ];
+		pFnOnAddMappingComplete = (UFunction*) UObject::GObjObjects()->Data[ 38927 ];
 
 	UMcpIdMappingBase_execOnAddMappingComplete_Parms OnAddMappingComplete_Parms;
 
@@ -10014,7 +10014,7 @@ void UMcpIdMappingBase::AddMapping ( )
 	static UFunction* pFnAddMapping = NULL;
 
 	if ( ! pFnAddMapping )
-		pFnAddMapping = (UFunction*) UObject::GObjObjects()->Data[ 38892 ];
+		pFnAddMapping = (UFunction*) UObject::GObjObjects()->Data[ 38923 ];
 
 	UMcpIdMappingBase_execAddMapping_Parms AddMapping_Parms;
 
@@ -10030,7 +10030,7 @@ void UMcpIdMappingBase::CreateInstance ( )
 	static UFunction* pFnCreateInstance = NULL;
 
 	if ( ! pFnCreateInstance )
-		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 38888 ];
+		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 38919 ];
 
 	UMcpIdMappingBase_execCreateInstance_Parms CreateInstance_Parms;
 
@@ -10046,7 +10046,7 @@ void UMcpIdMappingManager::GetIdMappings ( )
 	static UFunction* pFnGetIdMappings = NULL;
 
 	if ( ! pFnGetIdMappings )
-		pFnGetIdMappings = (UFunction*) UObject::GObjObjects()->Data[ 38971 ];
+		pFnGetIdMappings = (UFunction*) UObject::GObjObjects()->Data[ 39002 ];
 
 	UMcpIdMappingManager_execGetIdMappings_Parms GetIdMappings_Parms;
 
@@ -10062,7 +10062,7 @@ void UMcpIdMappingManager::OnQueryMappingsRequestComplete ( )
 	static UFunction* pFnOnQueryMappingsRequestComplete = NULL;
 
 	if ( ! pFnOnQueryMappingsRequestComplete )
-		pFnOnQueryMappingsRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38956 ];
+		pFnOnQueryMappingsRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38987 ];
 
 	UMcpIdMappingManager_execOnQueryMappingsRequestComplete_Parms OnQueryMappingsRequestComplete_Parms;
 
@@ -10078,7 +10078,7 @@ void UMcpIdMappingManager::QueryMappings ( )
 	static UFunction* pFnQueryMappings = NULL;
 
 	if ( ! pFnQueryMappings )
-		pFnQueryMappings = (UFunction*) UObject::GObjObjects()->Data[ 38946 ];
+		pFnQueryMappings = (UFunction*) UObject::GObjObjects()->Data[ 38977 ];
 
 	UMcpIdMappingManager_execQueryMappings_Parms QueryMappings_Parms;
 
@@ -10094,7 +10094,7 @@ void UMcpIdMappingManager::OnAddMappingRequestComplete ( )
 	static UFunction* pFnOnAddMappingRequestComplete = NULL;
 
 	if ( ! pFnOnAddMappingRequestComplete )
-		pFnOnAddMappingRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38939 ];
+		pFnOnAddMappingRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 38970 ];
 
 	UMcpIdMappingManager_execOnAddMappingRequestComplete_Parms OnAddMappingRequestComplete_Parms;
 
@@ -10110,7 +10110,7 @@ void UMcpIdMappingManager::AddMapping ( )
 	static UFunction* pFnAddMapping = NULL;
 
 	if ( ! pFnAddMapping )
-		pFnAddMapping = (UFunction*) UObject::GObjObjects()->Data[ 38932 ];
+		pFnAddMapping = (UFunction*) UObject::GObjObjects()->Data[ 38963 ];
 
 	UMcpIdMappingManager_execAddMapping_Parms AddMapping_Parms;
 
@@ -10126,7 +10126,7 @@ void UMcpManagedValueManagerBase::OnDeleteValueComplete ( )
 	static UFunction* pFnOnDeleteValueComplete = NULL;
 
 	if ( ! pFnOnDeleteValueComplete )
-		pFnOnDeleteValueComplete = (UFunction*) UObject::GObjObjects()->Data[ 39038 ];
+		pFnOnDeleteValueComplete = (UFunction*) UObject::GObjObjects()->Data[ 39069 ];
 
 	UMcpManagedValueManagerBase_execOnDeleteValueComplete_Parms OnDeleteValueComplete_Parms;
 
@@ -10142,7 +10142,7 @@ void UMcpManagedValueManagerBase::DeleteValue ( )
 	static UFunction* pFnDeleteValue = NULL;
 
 	if ( ! pFnDeleteValue )
-		pFnDeleteValue = (UFunction*) UObject::GObjObjects()->Data[ 39034 ];
+		pFnDeleteValue = (UFunction*) UObject::GObjObjects()->Data[ 39065 ];
 
 	UMcpManagedValueManagerBase_execDeleteValue_Parms DeleteValue_Parms;
 
@@ -10158,7 +10158,7 @@ void UMcpManagedValueManagerBase::OnUpdateValueComplete ( )
 	static UFunction* pFnOnUpdateValueComplete = NULL;
 
 	if ( ! pFnOnUpdateValueComplete )
-		pFnOnUpdateValueComplete = (UFunction*) UObject::GObjObjects()->Data[ 39027 ];
+		pFnOnUpdateValueComplete = (UFunction*) UObject::GObjObjects()->Data[ 39058 ];
 
 	UMcpManagedValueManagerBase_execOnUpdateValueComplete_Parms OnUpdateValueComplete_Parms;
 
@@ -10174,7 +10174,7 @@ void UMcpManagedValueManagerBase::UpdateValue ( )
 	static UFunction* pFnUpdateValue = NULL;
 
 	if ( ! pFnUpdateValue )
-		pFnUpdateValue = (UFunction*) UObject::GObjObjects()->Data[ 39022 ];
+		pFnUpdateValue = (UFunction*) UObject::GObjObjects()->Data[ 39053 ];
 
 	UMcpManagedValueManagerBase_execUpdateValue_Parms UpdateValue_Parms;
 
@@ -10190,7 +10190,7 @@ void UMcpManagedValueManagerBase::GetValue ( )
 	static UFunction* pFnGetValue = NULL;
 
 	if ( ! pFnGetValue )
-		pFnGetValue = (UFunction*) UObject::GObjObjects()->Data[ 39017 ];
+		pFnGetValue = (UFunction*) UObject::GObjObjects()->Data[ 39048 ];
 
 	UMcpManagedValueManagerBase_execGetValue_Parms GetValue_Parms;
 
@@ -10206,7 +10206,7 @@ void UMcpManagedValueManagerBase::GetValues ( )
 	static UFunction* pFnGetValues = NULL;
 
 	if ( ! pFnGetValues )
-		pFnGetValues = (UFunction*) UObject::GObjObjects()->Data[ 39012 ];
+		pFnGetValues = (UFunction*) UObject::GObjObjects()->Data[ 39043 ];
 
 	UMcpManagedValueManagerBase_execGetValues_Parms GetValues_Parms;
 
@@ -10222,7 +10222,7 @@ void UMcpManagedValueManagerBase::OnReadSaveSlotComplete ( )
 	static UFunction* pFnOnReadSaveSlotComplete = NULL;
 
 	if ( ! pFnOnReadSaveSlotComplete )
-		pFnOnReadSaveSlotComplete = (UFunction*) UObject::GObjObjects()->Data[ 39007 ];
+		pFnOnReadSaveSlotComplete = (UFunction*) UObject::GObjObjects()->Data[ 39038 ];
 
 	UMcpManagedValueManagerBase_execOnReadSaveSlotComplete_Parms OnReadSaveSlotComplete_Parms;
 
@@ -10238,7 +10238,7 @@ void UMcpManagedValueManagerBase::ReadSaveSlot ( )
 	static UFunction* pFnReadSaveSlot = NULL;
 
 	if ( ! pFnReadSaveSlot )
-		pFnReadSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39004 ];
+		pFnReadSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39035 ];
 
 	UMcpManagedValueManagerBase_execReadSaveSlot_Parms ReadSaveSlot_Parms;
 
@@ -10254,7 +10254,7 @@ void UMcpManagedValueManagerBase::OnCreateSaveSlotComplete ( )
 	static UFunction* pFnOnCreateSaveSlotComplete = NULL;
 
 	if ( ! pFnOnCreateSaveSlotComplete )
-		pFnOnCreateSaveSlotComplete = (UFunction*) UObject::GObjObjects()->Data[ 38999 ];
+		pFnOnCreateSaveSlotComplete = (UFunction*) UObject::GObjObjects()->Data[ 39030 ];
 
 	UMcpManagedValueManagerBase_execOnCreateSaveSlotComplete_Parms OnCreateSaveSlotComplete_Parms;
 
@@ -10270,7 +10270,7 @@ void UMcpManagedValueManagerBase::CreateSaveSlot ( )
 	static UFunction* pFnCreateSaveSlot = NULL;
 
 	if ( ! pFnCreateSaveSlot )
-		pFnCreateSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 38996 ];
+		pFnCreateSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39027 ];
 
 	UMcpManagedValueManagerBase_execCreateSaveSlot_Parms CreateSaveSlot_Parms;
 
@@ -10286,7 +10286,7 @@ void UMcpManagedValueManagerBase::CreateInstance ( )
 	static UFunction* pFnCreateInstance = NULL;
 
 	if ( ! pFnCreateInstance )
-		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 38992 ];
+		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 39023 ];
 
 	UMcpManagedValueManagerBase_execCreateInstance_Parms CreateInstance_Parms;
 
@@ -10302,7 +10302,7 @@ void UMcpManagedValueManager::OnDeleteValueRequestComplete ( )
 	static UFunction* pFnOnDeleteValueRequestComplete = NULL;
 
 	if ( ! pFnOnDeleteValueRequestComplete )
-		pFnOnDeleteValueRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39146 ];
+		pFnOnDeleteValueRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39177 ];
 
 	UMcpManagedValueManager_execOnDeleteValueRequestComplete_Parms OnDeleteValueRequestComplete_Parms;
 
@@ -10318,7 +10318,7 @@ void UMcpManagedValueManager::DeleteValue ( )
 	static UFunction* pFnDeleteValue = NULL;
 
 	if ( ! pFnDeleteValue )
-		pFnDeleteValue = (UFunction*) UObject::GObjObjects()->Data[ 39139 ];
+		pFnDeleteValue = (UFunction*) UObject::GObjObjects()->Data[ 39170 ];
 
 	UMcpManagedValueManager_execDeleteValue_Parms DeleteValue_Parms;
 
@@ -10334,7 +10334,7 @@ void UMcpManagedValueManager::OnUpdateValueRequestComplete ( )
 	static UFunction* pFnOnUpdateValueRequestComplete = NULL;
 
 	if ( ! pFnOnUpdateValueRequestComplete )
-		pFnOnUpdateValueRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39131 ];
+		pFnOnUpdateValueRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39162 ];
 
 	UMcpManagedValueManager_execOnUpdateValueRequestComplete_Parms OnUpdateValueRequestComplete_Parms;
 
@@ -10350,7 +10350,7 @@ void UMcpManagedValueManager::UpdateValue ( )
 	static UFunction* pFnUpdateValue = NULL;
 
 	if ( ! pFnUpdateValue )
-		pFnUpdateValue = (UFunction*) UObject::GObjObjects()->Data[ 39123 ];
+		pFnUpdateValue = (UFunction*) UObject::GObjObjects()->Data[ 39154 ];
 
 	UMcpManagedValueManager_execUpdateValue_Parms UpdateValue_Parms;
 
@@ -10366,7 +10366,7 @@ void UMcpManagedValueManager::GetValue ( )
 	static UFunction* pFnGetValue = NULL;
 
 	if ( ! pFnGetValue )
-		pFnGetValue = (UFunction*) UObject::GObjObjects()->Data[ 39115 ];
+		pFnGetValue = (UFunction*) UObject::GObjObjects()->Data[ 39146 ];
 
 	UMcpManagedValueManager_execGetValue_Parms GetValue_Parms;
 
@@ -10382,7 +10382,7 @@ void UMcpManagedValueManager::GetValues ( )
 	static UFunction* pFnGetValues = NULL;
 
 	if ( ! pFnGetValues )
-		pFnGetValues = (UFunction*) UObject::GObjObjects()->Data[ 39107 ];
+		pFnGetValues = (UFunction*) UObject::GObjObjects()->Data[ 39138 ];
 
 	UMcpManagedValueManager_execGetValues_Parms GetValues_Parms;
 
@@ -10398,7 +10398,7 @@ void UMcpManagedValueManager::OnReadSaveSlotRequestComplete ( )
 	static UFunction* pFnOnReadSaveSlotRequestComplete = NULL;
 
 	if ( ! pFnOnReadSaveSlotRequestComplete )
-		pFnOnReadSaveSlotRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39100 ];
+		pFnOnReadSaveSlotRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39131 ];
 
 	UMcpManagedValueManager_execOnReadSaveSlotRequestComplete_Parms OnReadSaveSlotRequestComplete_Parms;
 
@@ -10414,7 +10414,7 @@ void UMcpManagedValueManager::ReadSaveSlot ( )
 	static UFunction* pFnReadSaveSlot = NULL;
 
 	if ( ! pFnReadSaveSlot )
-		pFnReadSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39094 ];
+		pFnReadSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39125 ];
 
 	UMcpManagedValueManager_execReadSaveSlot_Parms ReadSaveSlot_Parms;
 
@@ -10430,7 +10430,7 @@ void UMcpManagedValueManager::ParseValuesForSaveSlot ( )
 	static UFunction* pFnParseValuesForSaveSlot = NULL;
 
 	if ( ! pFnParseValuesForSaveSlot )
-		pFnParseValuesForSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39084 ];
+		pFnParseValuesForSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39115 ];
 
 	UMcpManagedValueManager_execParseValuesForSaveSlot_Parms ParseValuesForSaveSlot_Parms;
 
@@ -10446,7 +10446,7 @@ void UMcpManagedValueManager::FindSaveSlotIndex ( )
 	static UFunction* pFnFindSaveSlotIndex = NULL;
 
 	if ( ! pFnFindSaveSlotIndex )
-		pFnFindSaveSlotIndex = (UFunction*) UObject::GObjObjects()->Data[ 39079 ];
+		pFnFindSaveSlotIndex = (UFunction*) UObject::GObjObjects()->Data[ 39110 ];
 
 	UMcpManagedValueManager_execFindSaveSlotIndex_Parms FindSaveSlotIndex_Parms;
 
@@ -10462,7 +10462,7 @@ void UMcpManagedValueManager::OnCreateSaveSlotRequestComplete ( )
 	static UFunction* pFnOnCreateSaveSlotRequestComplete = NULL;
 
 	if ( ! pFnOnCreateSaveSlotRequestComplete )
-		pFnOnCreateSaveSlotRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39072 ];
+		pFnOnCreateSaveSlotRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39103 ];
 
 	UMcpManagedValueManager_execOnCreateSaveSlotRequestComplete_Parms OnCreateSaveSlotRequestComplete_Parms;
 
@@ -10478,7 +10478,7 @@ void UMcpManagedValueManager::CreateSaveSlot ( )
 	static UFunction* pFnCreateSaveSlot = NULL;
 
 	if ( ! pFnCreateSaveSlot )
-		pFnCreateSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39066 ];
+		pFnCreateSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39097 ];
 
 	UMcpManagedValueManager_execCreateSaveSlot_Parms CreateSaveSlot_Parms;
 
@@ -10494,7 +10494,7 @@ void UMcpServerTimeBase::GetLastServerTime ( )
 	static UFunction* pFnGetLastServerTime = NULL;
 
 	if ( ! pFnGetLastServerTime )
-		pFnGetLastServerTime = (UFunction*) UObject::GObjObjects()->Data[ 39381 ];
+		pFnGetLastServerTime = (UFunction*) UObject::GObjObjects()->Data[ 39412 ];
 
 	UMcpServerTimeBase_execGetLastServerTime_Parms GetLastServerTime_Parms;
 
@@ -10510,7 +10510,7 @@ void UMcpServerTimeBase::OnQueryServerTimeComplete ( )
 	static UFunction* pFnOnQueryServerTimeComplete = NULL;
 
 	if ( ! pFnOnQueryServerTimeComplete )
-		pFnOnQueryServerTimeComplete = (UFunction*) UObject::GObjObjects()->Data[ 39377 ];
+		pFnOnQueryServerTimeComplete = (UFunction*) UObject::GObjObjects()->Data[ 39408 ];
 
 	UMcpServerTimeBase_execOnQueryServerTimeComplete_Parms OnQueryServerTimeComplete_Parms;
 
@@ -10526,7 +10526,7 @@ void UMcpServerTimeBase::QueryServerTime ( )
 	static UFunction* pFnQueryServerTime = NULL;
 
 	if ( ! pFnQueryServerTime )
-		pFnQueryServerTime = (UFunction*) UObject::GObjObjects()->Data[ 39376 ];
+		pFnQueryServerTime = (UFunction*) UObject::GObjObjects()->Data[ 39407 ];
 
 	UMcpServerTimeBase_execQueryServerTime_Parms QueryServerTime_Parms;
 
@@ -10542,7 +10542,7 @@ void UMcpServerTimeBase::CreateInstance ( )
 	static UFunction* pFnCreateInstance = NULL;
 
 	if ( ! pFnCreateInstance )
-		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 39372 ];
+		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 39403 ];
 
 	UMcpServerTimeBase_execCreateInstance_Parms CreateInstance_Parms;
 
@@ -10558,7 +10558,7 @@ void UMcpServerTimeManager::GetLastServerTime ( )
 	static UFunction* pFnGetLastServerTime = NULL;
 
 	if ( ! pFnGetLastServerTime )
-		pFnGetLastServerTime = (UFunction*) UObject::GObjObjects()->Data[ 39401 ];
+		pFnGetLastServerTime = (UFunction*) UObject::GObjObjects()->Data[ 39432 ];
 
 	UMcpServerTimeManager_execGetLastServerTime_Parms GetLastServerTime_Parms;
 
@@ -10574,7 +10574,7 @@ void UMcpServerTimeManager::OnQueryServerTimeHTTPRequestComplete ( )
 	static UFunction* pFnOnQueryServerTimeHTTPRequestComplete = NULL;
 
 	if ( ! pFnOnQueryServerTimeHTTPRequestComplete )
-		pFnOnQueryServerTimeHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39392 ];
+		pFnOnQueryServerTimeHTTPRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39423 ];
 
 	UMcpServerTimeManager_execOnQueryServerTimeHTTPRequestComplete_Parms OnQueryServerTimeHTTPRequestComplete_Parms;
 
@@ -10590,7 +10590,7 @@ void UMcpServerTimeManager::QueryServerTime ( )
 	static UFunction* pFnQueryServerTime = NULL;
 
 	if ( ! pFnQueryServerTime )
-		pFnQueryServerTime = (UFunction*) UObject::GObjObjects()->Data[ 39388 ];
+		pFnQueryServerTime = (UFunction*) UObject::GObjObjects()->Data[ 39419 ];
 
 	UMcpServerTimeManager_execQueryServerTime_Parms QueryServerTime_Parms;
 
@@ -10606,7 +10606,7 @@ void UMcpUserInventoryBase::OnRecordIapComplete ( )
 	static UFunction* pFnOnRecordIapComplete = NULL;
 
 	if ( ! pFnOnRecordIapComplete )
-		pFnOnRecordIapComplete = (UFunction*) UObject::GObjObjects()->Data[ 39756 ];
+		pFnOnRecordIapComplete = (UFunction*) UObject::GObjObjects()->Data[ 39787 ];
 
 	UMcpUserInventoryBase_execOnRecordIapComplete_Parms OnRecordIapComplete_Parms;
 
@@ -10622,7 +10622,7 @@ void UMcpUserInventoryBase::RecordIap ( )
 	static UFunction* pFnRecordIap = NULL;
 
 	if ( ! pFnRecordIap )
-		pFnRecordIap = (UFunction*) UObject::GObjObjects()->Data[ 39752 ];
+		pFnRecordIap = (UFunction*) UObject::GObjObjects()->Data[ 39783 ];
 
 	UMcpUserInventoryBase_execRecordIap_Parms RecordIap_Parms;
 
@@ -10638,7 +10638,7 @@ void UMcpUserInventoryBase::OnDeleteItemComplete ( )
 	static UFunction* pFnOnDeleteItemComplete = NULL;
 
 	if ( ! pFnOnDeleteItemComplete )
-		pFnOnDeleteItemComplete = (UFunction*) UObject::GObjObjects()->Data[ 39746 ];
+		pFnOnDeleteItemComplete = (UFunction*) UObject::GObjObjects()->Data[ 39777 ];
 
 	UMcpUserInventoryBase_execOnDeleteItemComplete_Parms OnDeleteItemComplete_Parms;
 
@@ -10654,7 +10654,7 @@ void UMcpUserInventoryBase::DeleteItem ( )
 	static UFunction* pFnDeleteItem = NULL;
 
 	if ( ! pFnDeleteItem )
-		pFnDeleteItem = (UFunction*) UObject::GObjObjects()->Data[ 39741 ];
+		pFnDeleteItem = (UFunction*) UObject::GObjObjects()->Data[ 39772 ];
 
 	UMcpUserInventoryBase_execDeleteItem_Parms DeleteItem_Parms;
 
@@ -10670,7 +10670,7 @@ void UMcpUserInventoryBase::OnConsumeItemComplete ( )
 	static UFunction* pFnOnConsumeItemComplete = NULL;
 
 	if ( ! pFnOnConsumeItemComplete )
-		pFnOnConsumeItemComplete = (UFunction*) UObject::GObjObjects()->Data[ 39733 ];
+		pFnOnConsumeItemComplete = (UFunction*) UObject::GObjObjects()->Data[ 39764 ];
 
 	UMcpUserInventoryBase_execOnConsumeItemComplete_Parms OnConsumeItemComplete_Parms;
 
@@ -10686,7 +10686,7 @@ void UMcpUserInventoryBase::ConsumeItem ( )
 	static UFunction* pFnConsumeItem = NULL;
 
 	if ( ! pFnConsumeItem )
-		pFnConsumeItem = (UFunction*) UObject::GObjObjects()->Data[ 39727 ];
+		pFnConsumeItem = (UFunction*) UObject::GObjObjects()->Data[ 39758 ];
 
 	UMcpUserInventoryBase_execConsumeItem_Parms ConsumeItem_Parms;
 
@@ -10702,7 +10702,7 @@ void UMcpUserInventoryBase::OnEarnItemComplete ( )
 	static UFunction* pFnOnEarnItemComplete = NULL;
 
 	if ( ! pFnOnEarnItemComplete )
-		pFnOnEarnItemComplete = (UFunction*) UObject::GObjObjects()->Data[ 39719 ];
+		pFnOnEarnItemComplete = (UFunction*) UObject::GObjObjects()->Data[ 39750 ];
 
 	UMcpUserInventoryBase_execOnEarnItemComplete_Parms OnEarnItemComplete_Parms;
 
@@ -10718,7 +10718,7 @@ void UMcpUserInventoryBase::EarnItem ( )
 	static UFunction* pFnEarnItem = NULL;
 
 	if ( ! pFnEarnItem )
-		pFnEarnItem = (UFunction*) UObject::GObjObjects()->Data[ 39713 ];
+		pFnEarnItem = (UFunction*) UObject::GObjObjects()->Data[ 39744 ];
 
 	UMcpUserInventoryBase_execEarnItem_Parms EarnItem_Parms;
 
@@ -10734,7 +10734,7 @@ void UMcpUserInventoryBase::OnSellItemComplete ( )
 	static UFunction* pFnOnSellItemComplete = NULL;
 
 	if ( ! pFnOnSellItemComplete )
-		pFnOnSellItemComplete = (UFunction*) UObject::GObjObjects()->Data[ 39705 ];
+		pFnOnSellItemComplete = (UFunction*) UObject::GObjObjects()->Data[ 39736 ];
 
 	UMcpUserInventoryBase_execOnSellItemComplete_Parms OnSellItemComplete_Parms;
 
@@ -10750,7 +10750,7 @@ void UMcpUserInventoryBase::SellItem ( )
 	static UFunction* pFnSellItem = NULL;
 
 	if ( ! pFnSellItem )
-		pFnSellItem = (UFunction*) UObject::GObjObjects()->Data[ 39697 ];
+		pFnSellItem = (UFunction*) UObject::GObjObjects()->Data[ 39728 ];
 
 	UMcpUserInventoryBase_execSellItem_Parms SellItem_Parms;
 
@@ -10766,7 +10766,7 @@ void UMcpUserInventoryBase::OnPurchaseItemComplete ( )
 	static UFunction* pFnOnPurchaseItemComplete = NULL;
 
 	if ( ! pFnOnPurchaseItemComplete )
-		pFnOnPurchaseItemComplete = (UFunction*) UObject::GObjObjects()->Data[ 39689 ];
+		pFnOnPurchaseItemComplete = (UFunction*) UObject::GObjObjects()->Data[ 39720 ];
 
 	UMcpUserInventoryBase_execOnPurchaseItemComplete_Parms OnPurchaseItemComplete_Parms;
 
@@ -10782,7 +10782,7 @@ void UMcpUserInventoryBase::PurchaseItem ( )
 	static UFunction* pFnPurchaseItem = NULL;
 
 	if ( ! pFnPurchaseItem )
-		pFnPurchaseItem = (UFunction*) UObject::GObjObjects()->Data[ 39680 ];
+		pFnPurchaseItem = (UFunction*) UObject::GObjObjects()->Data[ 39711 ];
 
 	UMcpUserInventoryBase_execPurchaseItem_Parms PurchaseItem_Parms;
 
@@ -10798,7 +10798,7 @@ void UMcpUserInventoryBase::GetInventoryItem ( )
 	static UFunction* pFnGetInventoryItem = NULL;
 
 	if ( ! pFnGetInventoryItem )
-		pFnGetInventoryItem = (UFunction*) UObject::GObjObjects()->Data[ 39674 ];
+		pFnGetInventoryItem = (UFunction*) UObject::GObjObjects()->Data[ 39705 ];
 
 	UMcpUserInventoryBase_execGetInventoryItem_Parms GetInventoryItem_Parms;
 
@@ -10814,7 +10814,7 @@ void UMcpUserInventoryBase::GetInventoryItems ( )
 	static UFunction* pFnGetInventoryItems = NULL;
 
 	if ( ! pFnGetInventoryItems )
-		pFnGetInventoryItems = (UFunction*) UObject::GObjObjects()->Data[ 39669 ];
+		pFnGetInventoryItems = (UFunction*) UObject::GObjObjects()->Data[ 39700 ];
 
 	UMcpUserInventoryBase_execGetInventoryItems_Parms GetInventoryItems_Parms;
 
@@ -10830,7 +10830,7 @@ void UMcpUserInventoryBase::OnQueryInventoryItemsComplete ( )
 	static UFunction* pFnOnQueryInventoryItemsComplete = NULL;
 
 	if ( ! pFnOnQueryInventoryItemsComplete )
-		pFnOnQueryInventoryItemsComplete = (UFunction*) UObject::GObjObjects()->Data[ 39664 ];
+		pFnOnQueryInventoryItemsComplete = (UFunction*) UObject::GObjObjects()->Data[ 39695 ];
 
 	UMcpUserInventoryBase_execOnQueryInventoryItemsComplete_Parms OnQueryInventoryItemsComplete_Parms;
 
@@ -10846,7 +10846,7 @@ void UMcpUserInventoryBase::QueryInventoryItems ( )
 	static UFunction* pFnQueryInventoryItems = NULL;
 
 	if ( ! pFnQueryInventoryItems )
-		pFnQueryInventoryItems = (UFunction*) UObject::GObjObjects()->Data[ 39661 ];
+		pFnQueryInventoryItems = (UFunction*) UObject::GObjObjects()->Data[ 39692 ];
 
 	UMcpUserInventoryBase_execQueryInventoryItems_Parms QueryInventoryItems_Parms;
 
@@ -10862,7 +10862,7 @@ void UMcpUserInventoryBase::OnQuerySaveSlotListComplete ( )
 	static UFunction* pFnOnQuerySaveSlotListComplete = NULL;
 
 	if ( ! pFnOnQuerySaveSlotListComplete )
-		pFnOnQuerySaveSlotListComplete = (UFunction*) UObject::GObjObjects()->Data[ 39657 ];
+		pFnOnQuerySaveSlotListComplete = (UFunction*) UObject::GObjObjects()->Data[ 39688 ];
 
 	UMcpUserInventoryBase_execOnQuerySaveSlotListComplete_Parms OnQuerySaveSlotListComplete_Parms;
 
@@ -10878,7 +10878,7 @@ void UMcpUserInventoryBase::GetSaveSlotList ( )
 	static UFunction* pFnGetSaveSlotList = NULL;
 
 	if ( ! pFnGetSaveSlotList )
-		pFnGetSaveSlotList = (UFunction*) UObject::GObjObjects()->Data[ 39653 ];
+		pFnGetSaveSlotList = (UFunction*) UObject::GObjObjects()->Data[ 39684 ];
 
 	UMcpUserInventoryBase_execGetSaveSlotList_Parms GetSaveSlotList_Parms;
 
@@ -10894,7 +10894,7 @@ void UMcpUserInventoryBase::QuerySaveSlotList ( )
 	static UFunction* pFnQuerySaveSlotList = NULL;
 
 	if ( ! pFnQuerySaveSlotList )
-		pFnQuerySaveSlotList = (UFunction*) UObject::GObjObjects()->Data[ 39651 ];
+		pFnQuerySaveSlotList = (UFunction*) UObject::GObjObjects()->Data[ 39682 ];
 
 	UMcpUserInventoryBase_execQuerySaveSlotList_Parms QuerySaveSlotList_Parms;
 
@@ -10910,7 +10910,7 @@ void UMcpUserInventoryBase::OnDeleteSaveSlotComplete ( )
 	static UFunction* pFnOnDeleteSaveSlotComplete = NULL;
 
 	if ( ! pFnOnDeleteSaveSlotComplete )
-		pFnOnDeleteSaveSlotComplete = (UFunction*) UObject::GObjObjects()->Data[ 39646 ];
+		pFnOnDeleteSaveSlotComplete = (UFunction*) UObject::GObjObjects()->Data[ 39677 ];
 
 	UMcpUserInventoryBase_execOnDeleteSaveSlotComplete_Parms OnDeleteSaveSlotComplete_Parms;
 
@@ -10926,7 +10926,7 @@ void UMcpUserInventoryBase::DeleteSaveSlot ( )
 	static UFunction* pFnDeleteSaveSlot = NULL;
 
 	if ( ! pFnDeleteSaveSlot )
-		pFnDeleteSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39643 ];
+		pFnDeleteSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39674 ];
 
 	UMcpUserInventoryBase_execDeleteSaveSlot_Parms DeleteSaveSlot_Parms;
 
@@ -10942,7 +10942,7 @@ void UMcpUserInventoryBase::OnCreateSaveSlotComplete ( )
 	static UFunction* pFnOnCreateSaveSlotComplete = NULL;
 
 	if ( ! pFnOnCreateSaveSlotComplete )
-		pFnOnCreateSaveSlotComplete = (UFunction*) UObject::GObjObjects()->Data[ 39638 ];
+		pFnOnCreateSaveSlotComplete = (UFunction*) UObject::GObjObjects()->Data[ 39669 ];
 
 	UMcpUserInventoryBase_execOnCreateSaveSlotComplete_Parms OnCreateSaveSlotComplete_Parms;
 
@@ -10958,7 +10958,7 @@ void UMcpUserInventoryBase::CreateSaveSlot ( )
 	static UFunction* pFnCreateSaveSlot = NULL;
 
 	if ( ! pFnCreateSaveSlot )
-		pFnCreateSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39634 ];
+		pFnCreateSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39665 ];
 
 	UMcpUserInventoryBase_execCreateSaveSlot_Parms CreateSaveSlot_Parms;
 
@@ -10974,7 +10974,7 @@ void UMcpUserInventoryBase::CreateInstance ( )
 	static UFunction* pFnCreateInstance = NULL;
 
 	if ( ! pFnCreateInstance )
-		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 39630 ];
+		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 39661 ];
 
 	UMcpUserInventoryBase_execCreateInstance_Parms CreateInstance_Parms;
 
@@ -10990,7 +10990,7 @@ void UMcpUserInventoryManager::OnRecordIapRequestComplete ( )
 	static UFunction* pFnOnRecordIapRequestComplete = NULL;
 
 	if ( ! pFnOnRecordIapRequestComplete )
-		pFnOnRecordIapRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40031 ];
+		pFnOnRecordIapRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40062 ];
 
 	UMcpUserInventoryManager_execOnRecordIapRequestComplete_Parms OnRecordIapRequestComplete_Parms;
 
@@ -11006,7 +11006,7 @@ void UMcpUserInventoryManager::RecordIap ( )
 	static UFunction* pFnRecordIap = NULL;
 
 	if ( ! pFnRecordIap )
-		pFnRecordIap = (UFunction*) UObject::GObjObjects()->Data[ 40023 ];
+		pFnRecordIap = (UFunction*) UObject::GObjObjects()->Data[ 40054 ];
 
 	UMcpUserInventoryManager_execRecordIap_Parms RecordIap_Parms;
 
@@ -11022,7 +11022,7 @@ void UMcpUserInventoryManager::OnDeleteItemRequestComplete ( )
 	static UFunction* pFnOnDeleteItemRequestComplete = NULL;
 
 	if ( ! pFnOnDeleteItemRequestComplete )
-		pFnOnDeleteItemRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40015 ];
+		pFnOnDeleteItemRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40046 ];
 
 	UMcpUserInventoryManager_execOnDeleteItemRequestComplete_Parms OnDeleteItemRequestComplete_Parms;
 
@@ -11038,7 +11038,7 @@ void UMcpUserInventoryManager::DeleteItem ( )
 	static UFunction* pFnDeleteItem = NULL;
 
 	if ( ! pFnDeleteItem )
-		pFnDeleteItem = (UFunction*) UObject::GObjObjects()->Data[ 40006 ];
+		pFnDeleteItem = (UFunction*) UObject::GObjObjects()->Data[ 40037 ];
 
 	UMcpUserInventoryManager_execDeleteItem_Parms DeleteItem_Parms;
 
@@ -11054,7 +11054,7 @@ void UMcpUserInventoryManager::OnConsumeItemRequestComplete ( )
 	static UFunction* pFnOnConsumeItemRequestComplete = NULL;
 
 	if ( ! pFnOnConsumeItemRequestComplete )
-		pFnOnConsumeItemRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39997 ];
+		pFnOnConsumeItemRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40028 ];
 
 	UMcpUserInventoryManager_execOnConsumeItemRequestComplete_Parms OnConsumeItemRequestComplete_Parms;
 
@@ -11070,7 +11070,7 @@ void UMcpUserInventoryManager::ConsumeItem ( )
 	static UFunction* pFnConsumeItem = NULL;
 
 	if ( ! pFnConsumeItem )
-		pFnConsumeItem = (UFunction*) UObject::GObjObjects()->Data[ 39987 ];
+		pFnConsumeItem = (UFunction*) UObject::GObjObjects()->Data[ 40018 ];
 
 	UMcpUserInventoryManager_execConsumeItem_Parms ConsumeItem_Parms;
 
@@ -11086,7 +11086,7 @@ void UMcpUserInventoryManager::OnEarnItemRequestComplete ( )
 	static UFunction* pFnOnEarnItemRequestComplete = NULL;
 
 	if ( ! pFnOnEarnItemRequestComplete )
-		pFnOnEarnItemRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39978 ];
+		pFnOnEarnItemRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40009 ];
 
 	UMcpUserInventoryManager_execOnEarnItemRequestComplete_Parms OnEarnItemRequestComplete_Parms;
 
@@ -11102,7 +11102,7 @@ void UMcpUserInventoryManager::EarnItem ( )
 	static UFunction* pFnEarnItem = NULL;
 
 	if ( ! pFnEarnItem )
-		pFnEarnItem = (UFunction*) UObject::GObjObjects()->Data[ 39968 ];
+		pFnEarnItem = (UFunction*) UObject::GObjObjects()->Data[ 39999 ];
 
 	UMcpUserInventoryManager_execEarnItem_Parms EarnItem_Parms;
 
@@ -11118,7 +11118,7 @@ void UMcpUserInventoryManager::OnSellItemRequestComplete ( )
 	static UFunction* pFnOnSellItemRequestComplete = NULL;
 
 	if ( ! pFnOnSellItemRequestComplete )
-		pFnOnSellItemRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39956 ];
+		pFnOnSellItemRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39987 ];
 
 	UMcpUserInventoryManager_execOnSellItemRequestComplete_Parms OnSellItemRequestComplete_Parms;
 
@@ -11134,7 +11134,7 @@ void UMcpUserInventoryManager::SellItem ( )
 	static UFunction* pFnSellItem = NULL;
 
 	if ( ! pFnSellItem )
-		pFnSellItem = (UFunction*) UObject::GObjObjects()->Data[ 39942 ];
+		pFnSellItem = (UFunction*) UObject::GObjObjects()->Data[ 39973 ];
 
 	UMcpUserInventoryManager_execSellItem_Parms SellItem_Parms;
 
@@ -11150,7 +11150,7 @@ void UMcpUserInventoryManager::OnPurchaseItemRequestComplete ( )
 	static UFunction* pFnOnPurchaseItemRequestComplete = NULL;
 
 	if ( ! pFnOnPurchaseItemRequestComplete )
-		pFnOnPurchaseItemRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39930 ];
+		pFnOnPurchaseItemRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39961 ];
 
 	UMcpUserInventoryManager_execOnPurchaseItemRequestComplete_Parms OnPurchaseItemRequestComplete_Parms;
 
@@ -11166,7 +11166,7 @@ void UMcpUserInventoryManager::PurchaseItem ( )
 	static UFunction* pFnPurchaseItem = NULL;
 
 	if ( ! pFnPurchaseItem )
-		pFnPurchaseItem = (UFunction*) UObject::GObjObjects()->Data[ 39915 ];
+		pFnPurchaseItem = (UFunction*) UObject::GObjObjects()->Data[ 39946 ];
 
 	UMcpUserInventoryManager_execPurchaseItem_Parms PurchaseItem_Parms;
 
@@ -11182,7 +11182,7 @@ void UMcpUserInventoryManager::FindItemRequest ( )
 	static UFunction* pFnFindItemRequest = NULL;
 
 	if ( ! pFnFindItemRequest )
-		pFnFindItemRequest = (UFunction*) UObject::GObjObjects()->Data[ 39907 ];
+		pFnFindItemRequest = (UFunction*) UObject::GObjObjects()->Data[ 39938 ];
 
 	UMcpUserInventoryManager_execFindItemRequest_Parms FindItemRequest_Parms;
 
@@ -11198,7 +11198,7 @@ void UMcpUserInventoryManager::FindSaveSlotRequest ( )
 	static UFunction* pFnFindSaveSlotRequest = NULL;
 
 	if ( ! pFnFindSaveSlotRequest )
-		pFnFindSaveSlotRequest = (UFunction*) UObject::GObjObjects()->Data[ 39900 ];
+		pFnFindSaveSlotRequest = (UFunction*) UObject::GObjObjects()->Data[ 39931 ];
 
 	UMcpUserInventoryManager_execFindSaveSlotRequest_Parms FindSaveSlotRequest_Parms;
 
@@ -11214,7 +11214,7 @@ void UMcpUserInventoryManager::FindSaveSlotIndex ( )
 	static UFunction* pFnFindSaveSlotIndex = NULL;
 
 	if ( ! pFnFindSaveSlotIndex )
-		pFnFindSaveSlotIndex = (UFunction*) UObject::GObjObjects()->Data[ 39895 ];
+		pFnFindSaveSlotIndex = (UFunction*) UObject::GObjObjects()->Data[ 39926 ];
 
 	UMcpUserInventoryManager_execFindSaveSlotIndex_Parms FindSaveSlotIndex_Parms;
 
@@ -11230,7 +11230,7 @@ void UMcpUserInventoryManager::ParseSaveSlotList ( )
 	static UFunction* pFnParseSaveSlotList = NULL;
 
 	if ( ! pFnParseSaveSlotList )
-		pFnParseSaveSlotList = (UFunction*) UObject::GObjObjects()->Data[ 39888 ];
+		pFnParseSaveSlotList = (UFunction*) UObject::GObjObjects()->Data[ 39919 ];
 
 	UMcpUserInventoryManager_execParseSaveSlotList_Parms ParseSaveSlotList_Parms;
 
@@ -11246,7 +11246,7 @@ void UMcpUserInventoryManager::ParseInventoryForSaveSlot ( )
 	static UFunction* pFnParseInventoryForSaveSlot = NULL;
 
 	if ( ! pFnParseInventoryForSaveSlot )
-		pFnParseInventoryForSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39870 ];
+		pFnParseInventoryForSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39901 ];
 
 	UMcpUserInventoryManager_execParseInventoryForSaveSlot_Parms ParseInventoryForSaveSlot_Parms;
 
@@ -11262,7 +11262,7 @@ void UMcpUserInventoryManager::GetInventoryItem ( )
 	static UFunction* pFnGetInventoryItem = NULL;
 
 	if ( ! pFnGetInventoryItem )
-		pFnGetInventoryItem = (UFunction*) UObject::GObjObjects()->Data[ 39862 ];
+		pFnGetInventoryItem = (UFunction*) UObject::GObjObjects()->Data[ 39893 ];
 
 	UMcpUserInventoryManager_execGetInventoryItem_Parms GetInventoryItem_Parms;
 
@@ -11278,7 +11278,7 @@ void UMcpUserInventoryManager::GetInventoryItems ( )
 	static UFunction* pFnGetInventoryItems = NULL;
 
 	if ( ! pFnGetInventoryItems )
-		pFnGetInventoryItems = (UFunction*) UObject::GObjObjects()->Data[ 39856 ];
+		pFnGetInventoryItems = (UFunction*) UObject::GObjObjects()->Data[ 39887 ];
 
 	UMcpUserInventoryManager_execGetInventoryItems_Parms GetInventoryItems_Parms;
 
@@ -11294,7 +11294,7 @@ void UMcpUserInventoryManager::OnQueryInventoryItemsRequestComplete ( )
 	static UFunction* pFnOnQueryInventoryItemsRequestComplete = NULL;
 
 	if ( ! pFnOnQueryInventoryItemsRequestComplete )
-		pFnOnQueryInventoryItemsRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39848 ];
+		pFnOnQueryInventoryItemsRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39879 ];
 
 	UMcpUserInventoryManager_execOnQueryInventoryItemsRequestComplete_Parms OnQueryInventoryItemsRequestComplete_Parms;
 
@@ -11310,7 +11310,7 @@ void UMcpUserInventoryManager::QueryInventoryItems ( )
 	static UFunction* pFnQueryInventoryItems = NULL;
 
 	if ( ! pFnQueryInventoryItems )
-		pFnQueryInventoryItems = (UFunction*) UObject::GObjObjects()->Data[ 39841 ];
+		pFnQueryInventoryItems = (UFunction*) UObject::GObjObjects()->Data[ 39872 ];
 
 	UMcpUserInventoryManager_execQueryInventoryItems_Parms QueryInventoryItems_Parms;
 
@@ -11326,7 +11326,7 @@ void UMcpUserInventoryManager::GetSaveSlotList ( )
 	static UFunction* pFnGetSaveSlotList = NULL;
 
 	if ( ! pFnGetSaveSlotList )
-		pFnGetSaveSlotList = (UFunction*) UObject::GObjObjects()->Data[ 39834 ];
+		pFnGetSaveSlotList = (UFunction*) UObject::GObjObjects()->Data[ 39865 ];
 
 	UMcpUserInventoryManager_execGetSaveSlotList_Parms GetSaveSlotList_Parms;
 
@@ -11342,7 +11342,7 @@ void UMcpUserInventoryManager::OnQuerySaveSlotListRequestComplete ( )
 	static UFunction* pFnOnQuerySaveSlotListRequestComplete = NULL;
 
 	if ( ! pFnOnQuerySaveSlotListRequestComplete )
-		pFnOnQuerySaveSlotListRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39827 ];
+		pFnOnQuerySaveSlotListRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39858 ];
 
 	UMcpUserInventoryManager_execOnQuerySaveSlotListRequestComplete_Parms OnQuerySaveSlotListRequestComplete_Parms;
 
@@ -11358,7 +11358,7 @@ void UMcpUserInventoryManager::QuerySaveSlotList ( )
 	static UFunction* pFnQuerySaveSlotList = NULL;
 
 	if ( ! pFnQuerySaveSlotList )
-		pFnQuerySaveSlotList = (UFunction*) UObject::GObjObjects()->Data[ 39821 ];
+		pFnQuerySaveSlotList = (UFunction*) UObject::GObjObjects()->Data[ 39852 ];
 
 	UMcpUserInventoryManager_execQuerySaveSlotList_Parms QuerySaveSlotList_Parms;
 
@@ -11374,7 +11374,7 @@ void UMcpUserInventoryManager::OnDeleteSaveSlotRequestComplete ( )
 	static UFunction* pFnOnDeleteSaveSlotRequestComplete = NULL;
 
 	if ( ! pFnOnDeleteSaveSlotRequestComplete )
-		pFnOnDeleteSaveSlotRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39814 ];
+		pFnOnDeleteSaveSlotRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39845 ];
 
 	UMcpUserInventoryManager_execOnDeleteSaveSlotRequestComplete_Parms OnDeleteSaveSlotRequestComplete_Parms;
 
@@ -11390,7 +11390,7 @@ void UMcpUserInventoryManager::DeleteSaveSlot ( )
 	static UFunction* pFnDeleteSaveSlot = NULL;
 
 	if ( ! pFnDeleteSaveSlot )
-		pFnDeleteSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39807 ];
+		pFnDeleteSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39838 ];
 
 	UMcpUserInventoryManager_execDeleteSaveSlot_Parms DeleteSaveSlot_Parms;
 
@@ -11406,7 +11406,7 @@ void UMcpUserInventoryManager::OnCreateSaveSlotRequestComplete ( )
 	static UFunction* pFnOnCreateSaveSlotRequestComplete = NULL;
 
 	if ( ! pFnOnCreateSaveSlotRequestComplete )
-		pFnOnCreateSaveSlotRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39799 ];
+		pFnOnCreateSaveSlotRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 39830 ];
 
 	UMcpUserInventoryManager_execOnCreateSaveSlotRequestComplete_Parms OnCreateSaveSlotRequestComplete_Parms;
 
@@ -11422,7 +11422,7 @@ void UMcpUserInventoryManager::CreateSaveSlot ( )
 	static UFunction* pFnCreateSaveSlot = NULL;
 
 	if ( ! pFnCreateSaveSlot )
-		pFnCreateSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39791 ];
+		pFnCreateSaveSlot = (UFunction*) UObject::GObjObjects()->Data[ 39822 ];
 
 	UMcpUserInventoryManager_execCreateSaveSlot_Parms CreateSaveSlot_Parms;
 
@@ -11438,7 +11438,7 @@ void UMcpUserManagerBase::OnDeleteUserComplete ( )
 	static UFunction* pFnOnDeleteUserComplete = NULL;
 
 	if ( ! pFnOnDeleteUserComplete )
-		pFnOnDeleteUserComplete = (UFunction*) UObject::GObjObjects()->Data[ 40099 ];
+		pFnOnDeleteUserComplete = (UFunction*) UObject::GObjObjects()->Data[ 40130 ];
 
 	UMcpUserManagerBase_execOnDeleteUserComplete_Parms OnDeleteUserComplete_Parms;
 
@@ -11454,7 +11454,7 @@ void UMcpUserManagerBase::DeleteUser ( )
 	static UFunction* pFnDeleteUser = NULL;
 
 	if ( ! pFnDeleteUser )
-		pFnDeleteUser = (UFunction*) UObject::GObjObjects()->Data[ 40097 ];
+		pFnDeleteUser = (UFunction*) UObject::GObjObjects()->Data[ 40128 ];
 
 	UMcpUserManagerBase_execDeleteUser_Parms DeleteUser_Parms;
 
@@ -11470,7 +11470,7 @@ void UMcpUserManagerBase::GetUser ( )
 	static UFunction* pFnGetUser = NULL;
 
 	if ( ! pFnGetUser )
-		pFnGetUser = (UFunction*) UObject::GObjObjects()->Data[ 40093 ];
+		pFnGetUser = (UFunction*) UObject::GObjObjects()->Data[ 40124 ];
 
 	UMcpUserManagerBase_execGetUser_Parms GetUser_Parms;
 
@@ -11486,7 +11486,7 @@ void UMcpUserManagerBase::GetUsers ( )
 	static UFunction* pFnGetUsers = NULL;
 
 	if ( ! pFnGetUsers )
-		pFnGetUsers = (UFunction*) UObject::GObjObjects()->Data[ 40090 ];
+		pFnGetUsers = (UFunction*) UObject::GObjObjects()->Data[ 40121 ];
 
 	UMcpUserManagerBase_execGetUsers_Parms GetUsers_Parms;
 
@@ -11502,7 +11502,7 @@ void UMcpUserManagerBase::OnQueryUsersComplete ( )
 	static UFunction* pFnOnQueryUsersComplete = NULL;
 
 	if ( ! pFnOnQueryUsersComplete )
-		pFnOnQueryUsersComplete = (UFunction*) UObject::GObjObjects()->Data[ 40087 ];
+		pFnOnQueryUsersComplete = (UFunction*) UObject::GObjObjects()->Data[ 40118 ];
 
 	UMcpUserManagerBase_execOnQueryUsersComplete_Parms OnQueryUsersComplete_Parms;
 
@@ -11518,7 +11518,7 @@ void UMcpUserManagerBase::QueryUsers ( )
 	static UFunction* pFnQueryUsers = NULL;
 
 	if ( ! pFnQueryUsers )
-		pFnQueryUsers = (UFunction*) UObject::GObjObjects()->Data[ 40084 ];
+		pFnQueryUsers = (UFunction*) UObject::GObjObjects()->Data[ 40115 ];
 
 	UMcpUserManagerBase_execQueryUsers_Parms QueryUsers_Parms;
 
@@ -11534,7 +11534,7 @@ void UMcpUserManagerBase::QueryUser ( )
 	static UFunction* pFnQueryUser = NULL;
 
 	if ( ! pFnQueryUser )
-		pFnQueryUser = (UFunction*) UObject::GObjObjects()->Data[ 40081 ];
+		pFnQueryUser = (UFunction*) UObject::GObjObjects()->Data[ 40112 ];
 
 	UMcpUserManagerBase_execQueryUser_Parms QueryUser_Parms;
 
@@ -11550,7 +11550,7 @@ void UMcpUserManagerBase::OnAuthenticateUserComplete ( )
 	static UFunction* pFnOnAuthenticateUserComplete = NULL;
 
 	if ( ! pFnOnAuthenticateUserComplete )
-		pFnOnAuthenticateUserComplete = (UFunction*) UObject::GObjObjects()->Data[ 40076 ];
+		pFnOnAuthenticateUserComplete = (UFunction*) UObject::GObjObjects()->Data[ 40107 ];
 
 	UMcpUserManagerBase_execOnAuthenticateUserComplete_Parms OnAuthenticateUserComplete_Parms;
 
@@ -11566,7 +11566,7 @@ void UMcpUserManagerBase::AuthenticateUserMcp ( )
 	static UFunction* pFnAuthenticateUserMcp = NULL;
 
 	if ( ! pFnAuthenticateUserMcp )
-		pFnAuthenticateUserMcp = (UFunction*) UObject::GObjObjects()->Data[ 40072 ];
+		pFnAuthenticateUserMcp = (UFunction*) UObject::GObjObjects()->Data[ 40103 ];
 
 	UMcpUserManagerBase_execAuthenticateUserMcp_Parms AuthenticateUserMcp_Parms;
 
@@ -11582,7 +11582,7 @@ void UMcpUserManagerBase::AuthenticateUserFacebook ( )
 	static UFunction* pFnAuthenticateUserFacebook = NULL;
 
 	if ( ! pFnAuthenticateUserFacebook )
-		pFnAuthenticateUserFacebook = (UFunction*) UObject::GObjObjects()->Data[ 40068 ];
+		pFnAuthenticateUserFacebook = (UFunction*) UObject::GObjObjects()->Data[ 40099 ];
 
 	UMcpUserManagerBase_execAuthenticateUserFacebook_Parms AuthenticateUserFacebook_Parms;
 
@@ -11598,7 +11598,7 @@ void UMcpUserManagerBase::OnRegisterUserComplete ( )
 	static UFunction* pFnOnRegisterUserComplete = NULL;
 
 	if ( ! pFnOnRegisterUserComplete )
-		pFnOnRegisterUserComplete = (UFunction*) UObject::GObjObjects()->Data[ 40064 ];
+		pFnOnRegisterUserComplete = (UFunction*) UObject::GObjObjects()->Data[ 40095 ];
 
 	UMcpUserManagerBase_execOnRegisterUserComplete_Parms OnRegisterUserComplete_Parms;
 
@@ -11614,7 +11614,7 @@ void UMcpUserManagerBase::RegisterUserFacebook ( )
 	static UFunction* pFnRegisterUserFacebook = NULL;
 
 	if ( ! pFnRegisterUserFacebook )
-		pFnRegisterUserFacebook = (UFunction*) UObject::GObjObjects()->Data[ 40061 ];
+		pFnRegisterUserFacebook = (UFunction*) UObject::GObjObjects()->Data[ 40092 ];
 
 	UMcpUserManagerBase_execRegisterUserFacebook_Parms RegisterUserFacebook_Parms;
 
@@ -11630,7 +11630,7 @@ void UMcpUserManagerBase::RegisterUserGenerated ( )
 	static UFunction* pFnRegisterUserGenerated = NULL;
 
 	if ( ! pFnRegisterUserGenerated )
-		pFnRegisterUserGenerated = (UFunction*) UObject::GObjObjects()->Data[ 40060 ];
+		pFnRegisterUserGenerated = (UFunction*) UObject::GObjObjects()->Data[ 40091 ];
 
 	UMcpUserManagerBase_execRegisterUserGenerated_Parms RegisterUserGenerated_Parms;
 
@@ -11646,7 +11646,7 @@ void UMcpUserManagerBase::CreateInstance ( )
 	static UFunction* pFnCreateInstance = NULL;
 
 	if ( ! pFnCreateInstance )
-		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 40056 ];
+		pFnCreateInstance = (UFunction*) UObject::GObjObjects()->Data[ 40087 ];
 
 	UMcpUserManagerBase_execCreateInstance_Parms CreateInstance_Parms;
 
@@ -11662,7 +11662,7 @@ void UMcpUserManager::OnDeleteUserRequestComplete ( )
 	static UFunction* pFnOnDeleteUserRequestComplete = NULL;
 
 	if ( ! pFnOnDeleteUserRequestComplete )
-		pFnOnDeleteUserRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40221 ];
+		pFnOnDeleteUserRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40252 ];
 
 	UMcpUserManager_execOnDeleteUserRequestComplete_Parms OnDeleteUserRequestComplete_Parms;
 
@@ -11678,7 +11678,7 @@ void UMcpUserManager::DeleteUser ( )
 	static UFunction* pFnDeleteUser = NULL;
 
 	if ( ! pFnDeleteUser )
-		pFnDeleteUser = (UFunction*) UObject::GObjObjects()->Data[ 40216 ];
+		pFnDeleteUser = (UFunction*) UObject::GObjObjects()->Data[ 40247 ];
 
 	UMcpUserManager_execDeleteUser_Parms DeleteUser_Parms;
 
@@ -11694,7 +11694,7 @@ void UMcpUserManager::GetUser ( )
 	static UFunction* pFnGetUser = NULL;
 
 	if ( ! pFnGetUser )
-		pFnGetUser = (UFunction*) UObject::GObjObjects()->Data[ 40211 ];
+		pFnGetUser = (UFunction*) UObject::GObjObjects()->Data[ 40242 ];
 
 	UMcpUserManager_execGetUser_Parms GetUser_Parms;
 
@@ -11710,7 +11710,7 @@ void UMcpUserManager::GetUsers ( )
 	static UFunction* pFnGetUsers = NULL;
 
 	if ( ! pFnGetUsers )
-		pFnGetUsers = (UFunction*) UObject::GObjObjects()->Data[ 40208 ];
+		pFnGetUsers = (UFunction*) UObject::GObjObjects()->Data[ 40239 ];
 
 	UMcpUserManager_execGetUsers_Parms GetUsers_Parms;
 
@@ -11726,7 +11726,7 @@ void UMcpUserManager::OnQueryUsersRequestComplete ( )
 	static UFunction* pFnOnQueryUsersRequestComplete = NULL;
 
 	if ( ! pFnOnQueryUsersRequestComplete )
-		pFnOnQueryUsersRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40201 ];
+		pFnOnQueryUsersRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40232 ];
 
 	UMcpUserManager_execOnQueryUsersRequestComplete_Parms OnQueryUsersRequestComplete_Parms;
 
@@ -11742,7 +11742,7 @@ void UMcpUserManager::ParseUsers ( )
 	static UFunction* pFnParseUsers = NULL;
 
 	if ( ! pFnParseUsers )
-		pFnParseUsers = (UFunction*) UObject::GObjObjects()->Data[ 40195 ];
+		pFnParseUsers = (UFunction*) UObject::GObjObjects()->Data[ 40226 ];
 
 	UMcpUserManager_execParseUsers_Parms ParseUsers_Parms;
 
@@ -11758,7 +11758,7 @@ void UMcpUserManager::QueryUsers ( )
 	static UFunction* pFnQueryUsers = NULL;
 
 	if ( ! pFnQueryUsers )
-		pFnQueryUsers = (UFunction*) UObject::GObjObjects()->Data[ 40187 ];
+		pFnQueryUsers = (UFunction*) UObject::GObjObjects()->Data[ 40218 ];
 
 	UMcpUserManager_execQueryUsers_Parms QueryUsers_Parms;
 
@@ -11774,7 +11774,7 @@ void UMcpUserManager::OnQueryUserRequestComplete ( )
 	static UFunction* pFnOnQueryUserRequestComplete = NULL;
 
 	if ( ! pFnOnQueryUserRequestComplete )
-		pFnOnQueryUserRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40179 ];
+		pFnOnQueryUserRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40210 ];
 
 	UMcpUserManager_execOnQueryUserRequestComplete_Parms OnQueryUserRequestComplete_Parms;
 
@@ -11790,7 +11790,7 @@ void UMcpUserManager::QueryUser ( )
 	static UFunction* pFnQueryUser = NULL;
 
 	if ( ! pFnQueryUser )
-		pFnQueryUser = (UFunction*) UObject::GObjObjects()->Data[ 40173 ];
+		pFnQueryUser = (UFunction*) UObject::GObjObjects()->Data[ 40204 ];
 
 	UMcpUserManager_execQueryUser_Parms QueryUser_Parms;
 
@@ -11806,7 +11806,7 @@ void UMcpUserManager::OnAuthenticateUserRequestComplete ( )
 	static UFunction* pFnOnAuthenticateUserRequestComplete = NULL;
 
 	if ( ! pFnOnAuthenticateUserRequestComplete )
-		pFnOnAuthenticateUserRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40163 ];
+		pFnOnAuthenticateUserRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40194 ];
 
 	UMcpUserManager_execOnAuthenticateUserRequestComplete_Parms OnAuthenticateUserRequestComplete_Parms;
 
@@ -11822,7 +11822,7 @@ void UMcpUserManager::AuthenticateUserMcp ( )
 	static UFunction* pFnAuthenticateUserMcp = NULL;
 
 	if ( ! pFnAuthenticateUserMcp )
-		pFnAuthenticateUserMcp = (UFunction*) UObject::GObjObjects()->Data[ 40156 ];
+		pFnAuthenticateUserMcp = (UFunction*) UObject::GObjObjects()->Data[ 40187 ];
 
 	UMcpUserManager_execAuthenticateUserMcp_Parms AuthenticateUserMcp_Parms;
 
@@ -11838,7 +11838,7 @@ void UMcpUserManager::AuthenticateUserFacebook ( )
 	static UFunction* pFnAuthenticateUserFacebook = NULL;
 
 	if ( ! pFnAuthenticateUserFacebook )
-		pFnAuthenticateUserFacebook = (UFunction*) UObject::GObjObjects()->Data[ 40149 ];
+		pFnAuthenticateUserFacebook = (UFunction*) UObject::GObjObjects()->Data[ 40180 ];
 
 	UMcpUserManager_execAuthenticateUserFacebook_Parms AuthenticateUserFacebook_Parms;
 
@@ -11854,7 +11854,7 @@ void UMcpUserManager::OnRegisterUserRequestComplete ( )
 	static UFunction* pFnOnRegisterUserRequestComplete = NULL;
 
 	if ( ! pFnOnRegisterUserRequestComplete )
-		pFnOnRegisterUserRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40140 ];
+		pFnOnRegisterUserRequestComplete = (UFunction*) UObject::GObjObjects()->Data[ 40171 ];
 
 	UMcpUserManager_execOnRegisterUserRequestComplete_Parms OnRegisterUserRequestComplete_Parms;
 
@@ -11870,7 +11870,7 @@ void UMcpUserManager::ParseUser ( )
 	static UFunction* pFnParseUser = NULL;
 
 	if ( ! pFnParseUser )
-		pFnParseUser = (UFunction*) UObject::GObjObjects()->Data[ 40134 ];
+		pFnParseUser = (UFunction*) UObject::GObjObjects()->Data[ 40165 ];
 
 	UMcpUserManager_execParseUser_Parms ParseUser_Parms;
 
@@ -11886,7 +11886,7 @@ void UMcpUserManager::RegisterUserFacebook ( )
 	static UFunction* pFnRegisterUserFacebook = NULL;
 
 	if ( ! pFnRegisterUserFacebook )
-		pFnRegisterUserFacebook = (UFunction*) UObject::GObjObjects()->Data[ 40128 ];
+		pFnRegisterUserFacebook = (UFunction*) UObject::GObjObjects()->Data[ 40159 ];
 
 	UMcpUserManager_execRegisterUserFacebook_Parms RegisterUserFacebook_Parms;
 
@@ -11902,7 +11902,7 @@ void UMcpUserManager::RegisterUserGenerated ( )
 	static UFunction* pFnRegisterUserGenerated = NULL;
 
 	if ( ! pFnRegisterUserGenerated )
-		pFnRegisterUserGenerated = (UFunction*) UObject::GObjObjects()->Data[ 40124 ];
+		pFnRegisterUserGenerated = (UFunction*) UObject::GObjObjects()->Data[ 40155 ];
 
 	UMcpUserManager_execRegisterUserGenerated_Parms RegisterUserGenerated_Parms;
 
@@ -11918,7 +11918,7 @@ void UOnlineImageDownloaderWeb::DebugDraw ( )
 	static UFunction* pFnDebugDraw = NULL;
 
 	if ( ! pFnDebugDraw )
-		pFnDebugDraw = (UFunction*) UObject::GObjObjects()->Data[ 41234 ];
+		pFnDebugDraw = (UFunction*) UObject::GObjObjects()->Data[ 41265 ];
 
 	UOnlineImageDownloaderWeb_execDebugDraw_Parms DebugDraw_Parms;
 
@@ -11934,7 +11934,7 @@ void UOnlineImageDownloaderWeb::OnDownloadComplete ( )
 	static UFunction* pFnOnDownloadComplete = NULL;
 
 	if ( ! pFnOnDownloadComplete )
-		pFnOnDownloadComplete = (UFunction*) UObject::GObjObjects()->Data[ 41227 ];
+		pFnOnDownloadComplete = (UFunction*) UObject::GObjObjects()->Data[ 41258 ];
 
 	UOnlineImageDownloaderWeb_execOnDownloadComplete_Parms OnDownloadComplete_Parms;
 
@@ -11950,7 +11950,7 @@ void UOnlineImageDownloaderWeb::DownloadNextImage ( )
 	static UFunction* pFnDownloadNextImage = NULL;
 
 	if ( ! pFnDownloadNextImage )
-		pFnDownloadNextImage = (UFunction*) UObject::GObjObjects()->Data[ 41224 ];
+		pFnDownloadNextImage = (UFunction*) UObject::GObjObjects()->Data[ 41255 ];
 
 	UOnlineImageDownloaderWeb_execDownloadNextImage_Parms DownloadNextImage_Parms;
 
@@ -11966,7 +11966,7 @@ void UOnlineImageDownloaderWeb::ClearAllDownloads ( )
 	static UFunction* pFnClearAllDownloads = NULL;
 
 	if ( ! pFnClearAllDownloads )
-		pFnClearAllDownloads = (UFunction*) UObject::GObjObjects()->Data[ 41223 ];
+		pFnClearAllDownloads = (UFunction*) UObject::GObjObjects()->Data[ 41254 ];
 
 	UOnlineImageDownloaderWeb_execClearAllDownloads_Parms ClearAllDownloads_Parms;
 
@@ -11982,7 +11982,7 @@ void UOnlineImageDownloaderWeb::ClearDownloads ( )
 	static UFunction* pFnClearDownloads = NULL;
 
 	if ( ! pFnClearDownloads )
-		pFnClearDownloads = (UFunction*) UObject::GObjObjects()->Data[ 41219 ];
+		pFnClearDownloads = (UFunction*) UObject::GObjObjects()->Data[ 41250 ];
 
 	UOnlineImageDownloaderWeb_execClearDownloads_Parms ClearDownloads_Parms;
 
@@ -11998,7 +11998,7 @@ void UOnlineImageDownloaderWeb::GetNumPendingDownloads ( )
 	static UFunction* pFnGetNumPendingDownloads = NULL;
 
 	if ( ! pFnGetNumPendingDownloads )
-		pFnGetNumPendingDownloads = (UFunction*) UObject::GObjObjects()->Data[ 41215 ];
+		pFnGetNumPendingDownloads = (UFunction*) UObject::GObjObjects()->Data[ 41246 ];
 
 	UOnlineImageDownloaderWeb_execGetNumPendingDownloads_Parms GetNumPendingDownloads_Parms;
 
@@ -12014,7 +12014,7 @@ void UOnlineImageDownloaderWeb::RequestOnlineImages ( )
 	static UFunction* pFnRequestOnlineImages = NULL;
 
 	if ( ! pFnRequestOnlineImages )
-		pFnRequestOnlineImages = (UFunction*) UObject::GObjObjects()->Data[ 41209 ];
+		pFnRequestOnlineImages = (UFunction*) UObject::GObjObjects()->Data[ 41240 ];
 
 	UOnlineImageDownloaderWeb_execRequestOnlineImages_Parms RequestOnlineImages_Parms;
 
@@ -12030,7 +12030,7 @@ void UOnlineImageDownloaderWeb::GetOnlineImageTexture ( )
 	static UFunction* pFnGetOnlineImageTexture = NULL;
 
 	if ( ! pFnGetOnlineImageTexture )
-		pFnGetOnlineImageTexture = (UFunction*) UObject::GObjObjects()->Data[ 41205 ];
+		pFnGetOnlineImageTexture = (UFunction*) UObject::GObjObjects()->Data[ 41236 ];
 
 	UOnlineImageDownloaderWeb_execGetOnlineImageTexture_Parms GetOnlineImageTexture_Parms;
 
@@ -12046,7 +12046,7 @@ void UOnlineImageDownloaderWeb::OnOnlineImageDownloaded ( )
 	static UFunction* pFnOnOnlineImageDownloaded = NULL;
 
 	if ( ! pFnOnOnlineImageDownloaded )
-		pFnOnOnlineImageDownloaded = (UFunction*) UObject::GObjObjects()->Data[ 41203 ];
+		pFnOnOnlineImageDownloaded = (UFunction*) UObject::GObjObjects()->Data[ 41234 ];
 
 	UOnlineImageDownloaderWeb_execOnOnlineImageDownloaded_Parms OnOnlineImageDownloaded_Parms;
 
@@ -12062,7 +12062,7 @@ void AWebConnection::IsHanging ( )
 	static UFunction* pFnIsHanging = NULL;
 
 	if ( ! pFnIsHanging )
-		pFnIsHanging = (UFunction*) UObject::GObjObjects()->Data[ 41827 ];
+		pFnIsHanging = (UFunction*) UObject::GObjObjects()->Data[ 41858 ];
 
 	AWebConnection_execIsHanging_Parms IsHanging_Parms;
 
@@ -12078,7 +12078,7 @@ void AWebConnection::Cleanup ( )
 	static UFunction* pFnCleanup = NULL;
 
 	if ( ! pFnCleanup )
-		pFnCleanup = (UFunction*) UObject::GObjObjects()->Data[ 41826 ];
+		pFnCleanup = (UFunction*) UObject::GObjObjects()->Data[ 41857 ];
 
 	AWebConnection_execCleanup_Parms Cleanup_Parms;
 
@@ -12094,7 +12094,7 @@ void AWebConnection::CheckRawBytes ( )
 	static UFunction* pFnCheckRawBytes = NULL;
 
 	if ( ! pFnCheckRawBytes )
-		pFnCheckRawBytes = (UFunction*) UObject::GObjObjects()->Data[ 41825 ];
+		pFnCheckRawBytes = (UFunction*) UObject::GObjObjects()->Data[ 41856 ];
 
 	AWebConnection_execCheckRawBytes_Parms CheckRawBytes_Parms;
 
@@ -12110,7 +12110,7 @@ void AWebConnection::EndOfHeaders ( )
 	static UFunction* pFnEndOfHeaders = NULL;
 
 	if ( ! pFnEndOfHeaders )
-		pFnEndOfHeaders = (UFunction*) UObject::GObjObjects()->Data[ 41824 ];
+		pFnEndOfHeaders = (UFunction*) UObject::GObjObjects()->Data[ 41855 ];
 
 	AWebConnection_execEndOfHeaders_Parms EndOfHeaders_Parms;
 
@@ -12126,7 +12126,7 @@ void AWebConnection::CreateResponseObject ( )
 	static UFunction* pFnCreateResponseObject = NULL;
 
 	if ( ! pFnCreateResponseObject )
-		pFnCreateResponseObject = (UFunction*) UObject::GObjObjects()->Data[ 41822 ];
+		pFnCreateResponseObject = (UFunction*) UObject::GObjObjects()->Data[ 41853 ];
 
 	AWebConnection_execCreateResponseObject_Parms CreateResponseObject_Parms;
 
@@ -12142,7 +12142,7 @@ void AWebConnection::ProcessPost ( )
 	static UFunction* pFnProcessPost = NULL;
 
 	if ( ! pFnProcessPost )
-		pFnProcessPost = (UFunction*) UObject::GObjObjects()->Data[ 41819 ];
+		pFnProcessPost = (UFunction*) UObject::GObjObjects()->Data[ 41850 ];
 
 	AWebConnection_execProcessPost_Parms ProcessPost_Parms;
 
@@ -12158,7 +12158,7 @@ void AWebConnection::ProcessGet ( )
 	static UFunction* pFnProcessGet = NULL;
 
 	if ( ! pFnProcessGet )
-		pFnProcessGet = (UFunction*) UObject::GObjObjects()->Data[ 41816 ];
+		pFnProcessGet = (UFunction*) UObject::GObjObjects()->Data[ 41847 ];
 
 	AWebConnection_execProcessGet_Parms ProcessGet_Parms;
 
@@ -12174,7 +12174,7 @@ void AWebConnection::ProcessHead ( )
 	static UFunction* pFnProcessHead = NULL;
 
 	if ( ! pFnProcessHead )
-		pFnProcessHead = (UFunction*) UObject::GObjObjects()->Data[ 41814 ];
+		pFnProcessHead = (UFunction*) UObject::GObjObjects()->Data[ 41845 ];
 
 	AWebConnection_execProcessHead_Parms ProcessHead_Parms;
 
@@ -12190,7 +12190,7 @@ void AWebConnection::ReceivedLine ( )
 	static UFunction* pFnReceivedLine = NULL;
 
 	if ( ! pFnReceivedLine )
-		pFnReceivedLine = (UFunction*) UObject::GObjObjects()->Data[ 41812 ];
+		pFnReceivedLine = (UFunction*) UObject::GObjObjects()->Data[ 41843 ];
 
 	AWebConnection_execReceivedLine_Parms ReceivedLine_Parms;
 
@@ -12206,7 +12206,7 @@ void AWebConnection::eventReceivedText ( )
 	static UFunction* pFnReceivedText = NULL;
 
 	if ( ! pFnReceivedText )
-		pFnReceivedText = (UFunction*) UObject::GObjObjects()->Data[ 41808 ];
+		pFnReceivedText = (UFunction*) UObject::GObjObjects()->Data[ 41839 ];
 
 	AWebConnection_eventReceivedText_Parms ReceivedText_Parms;
 
@@ -12222,7 +12222,7 @@ void AWebConnection::eventTimer ( )
 	static UFunction* pFnTimer = NULL;
 
 	if ( ! pFnTimer )
-		pFnTimer = (UFunction*) UObject::GObjObjects()->Data[ 41807 ];
+		pFnTimer = (UFunction*) UObject::GObjObjects()->Data[ 41838 ];
 
 	AWebConnection_eventTimer_Parms Timer_Parms;
 
@@ -12238,7 +12238,7 @@ void AWebConnection::eventClosed ( )
 	static UFunction* pFnClosed = NULL;
 
 	if ( ! pFnClosed )
-		pFnClosed = (UFunction*) UObject::GObjObjects()->Data[ 41806 ];
+		pFnClosed = (UFunction*) UObject::GObjObjects()->Data[ 41837 ];
 
 	AWebConnection_eventClosed_Parms Closed_Parms;
 
@@ -12254,7 +12254,7 @@ void AWebConnection::eventAccepted ( )
 	static UFunction* pFnAccepted = NULL;
 
 	if ( ! pFnAccepted )
-		pFnAccepted = (UFunction*) UObject::GObjObjects()->Data[ 41805 ];
+		pFnAccepted = (UFunction*) UObject::GObjObjects()->Data[ 41836 ];
 
 	AWebConnection_eventAccepted_Parms Accepted_Parms;
 
