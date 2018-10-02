@@ -3,7 +3,7 @@ Killing Floor 2 UE3 Hook
 */
 Example hook made for Unreal Engine 3 on the game Killing Floor 2
 
-1) When the game updates, the hardcoded FName indexes in ProcessEvent have a low probability of shifting or breaking. 
+1) When the game updates, the hardcoded FName indexes in ProcessEvent have a low probability of shifting or breaking. After 2018 I fixed this for you in the SDK, most functions included will work properly without needing updates. The only time you should need to fix is if some major shift occurs that breaks or crashes the game.. (you're welcome)
 To fix:
 Simply redump the SDK and replace/redo the 5 or so function calls that the hook actually uses.
 See post here for help https://www.unknowncheats.me/forum/unreal-engine-3-a/237415-killing-floor-2-ue3-sdk.html
