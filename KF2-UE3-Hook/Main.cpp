@@ -65,10 +65,17 @@ void SetRotation(UCanvas* Canvas, AKFPawn_Monster* Target)
 	FVector Difference = FVector();
 	
 	if (!Target || !gUE.gPlayerController || !gUE.gPlayerController->PlayerCamera) return;
-
+	
+	// Do FOV calculations here
+	
 	// Get head location
 	Target->Mesh->GetBoneLocation(Target->HeadBoneName, AimLocation); //headbone is just named "head" for all zeds
 	AimLocation.Z += (1.5f * Target->CurrentHeadScale); // scale of the head
+	
+	// Use velocity based prediction here
+	
+	// one way to set player rotation is here
+	gUE.gPlayerController->Rotation = AimRotation;
 }
 
 
