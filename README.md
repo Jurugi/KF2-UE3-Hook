@@ -6,7 +6,7 @@ Example hook made for Unreal Engine 3 on the game Killing Floor 2
 
 When the game updates, the GName and Object indexes had a low probability of shifting or breaking. If the SDK breaks: Simply redump the SDK and fix any few functions needed. See my post for copy-pasteable code to dump the SDK at https://www.unknowncheats.me/forum/unreal-engine-3-a/237415-killing-floor-2-ue3-sdk.html
 
-2) VAC doesn't really work on this game, it's just to serve as an example of a hook done on x64 bit for Unreal Engine 3.
+2) VAC doesn't really work on this game, it's just to serve as a base hook.
 
 3) Updated SDK for Halloween update 10/1/2018. 
 
