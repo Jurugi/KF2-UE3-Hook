@@ -14,4 +14,4 @@ When the game updates, the GName and Object indexes had a low probability of shi
 
 The purpose is mostly to demonstrate how a hack could be made on any Unreal Engine game in 64bit very quickly, even given the lack of references/info around. 
 
-I added anti-copy paste which are easy to fix and striped a few lines of features to deter noobs that can't use the supplied SDK or dump one from the signatures given.
+I added anti-copy paste which are easy to fix and striped a few lines of features to deter noobs that can't use the supplied SDK or dump it from the signatures given.
