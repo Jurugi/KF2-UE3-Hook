@@ -1,6 +1,4 @@
-/*
-Killing Floor 2 UE3 Hook
-*/
+
 
 Example hook made for Unreal Engine 3 on the game Killing Floor 2
 
