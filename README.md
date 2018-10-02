@@ -1,6 +1,7 @@
 /*
 Killing Floor 2 UE3 Hook
 */
+
 Example hook made for Unreal Engine 3 on the game Killing Floor 2
 
 1) When the game updates, the hardcoded FName indexes in ProcessEvent have a low probability of shifting or breaking. 
