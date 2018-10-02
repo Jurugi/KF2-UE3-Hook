@@ -28,7 +28,7 @@ void LoadSignatures()
 	// UWorld pointer
 	dwSignatures[2] = dwFindPattern(ModuleAddress, 0x1000000, (BYTE*)"\x48\x8B\x0D\x00\x00\x00\x00\xE8\x00\x00\x00\x00\x48\x85\xC0\x74\x10\x83\xB8", "xxx????x????xxxxxxx");
 
-	// ProcessEvent (x64) address (detour sizes 6, 13, 18, 26) (Halloween Beta change)
+	// ProcessEvent (x64) address (detour sizes 6, 13, 18, 26) (Halloween Beta change )
 	dwSignatures[3] = dwFindPattern(ModuleAddress, 0x1000000, (BYTE*)"\x40\x55\x41\x56\x41\x57\x48\x81\xEC\xB0\x00\x00\x00\x48\x8D\x6C\x24\x20", "xxxxxxxxxxxxxxxxxx");
 
 	// Automatically exit if a signature fails 
