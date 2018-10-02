@@ -8,7 +8,7 @@ When the game updates, the GName and Object indexes had a low probability of shi
 
 2) VAC doesn't really work on this game, it's just to serve as a base hook.
 
-3) Updated SDK for Halloween update 10/1/2018. 
+3) Updated SDK & Signatures for Halloween update 10/1/2018. 
 
 The purpose is mostly to demonstrate how a hack could be made on any Unreal Engine game in 64bit very quickly, even given the lack of references/info around. 
 
