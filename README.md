@@ -2,9 +2,9 @@
 
 Example hook made for Unreal Engine 3 on the game Killing Floor 2
 
-1) Note: after the 2018 update, I fixed this for you in the SDK. The relevant functions are not using indexes, but searchable names. It was already obvious to do this change before if you wanted to maintain this.. (you're welcome).
+1) When the game updates, the GName and Object indexes had a low probability of shifting or breaking. If the SDK breaks: Simply redump the SDK and fix any few functions needed. Search my internet posts for copy-pasteable code.
 
-When the game updates, the GName and Object indexes had a low probability of shifting or breaking. If the SDK breaks: Simply redump the SDK and fix any few functions needed. Search my internet posts for copy-pasteable code.
+Note: after the 2018 update, I fixed this for you in the SDK. The relevant functions are not using indexes, but searchable names. It was already obvious to do this change before if you wanted to maintain this.. (you're welcome).
 
 2) VAC doesn't really work on this game, it's just to serve as a base hook.
 
